@@ -1,0 +1,63 @@
+\documentclass[12pt]{report}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{fancyhdr}
+\usepackage{float}
+\pagestyle{fancy}
+\graphicspath{{images/}}
+
+\title{
+{Photonic experiments for Advanced LIGO and 3G gravitational wave detectors}\\
+{\large Syracuse University}\\
+%%{\includegraphics{}}
+}
+
+\author{Daniel Vander-Hyde}
+
+\date{June 10 2020}
+
+
+\begin{document}
+
+\maketitle
+
+\chapter*{Abstract}
+Abstract goes here
+
+\chapter*{Dedication}
+This one's for Mikey
+
+\chapter*{Declaration}
+I declare that..
+
+\chapter*{Acknowledgements}
+
+
+\tableofcontents
+
+\maketitle
+
+\section{Introduction}
+\input{chapters/intro}
+\newpage
+
+\section{Delay line Cavity for Jitter attenuation}
+\input{chapters/JAC}
+\newpage
+
+\section{Some O3 investigations for Hanford}
+\input{chapters/hanford_tcs}
+
+\begin{figure}[H]
+\includegraphics[width=\textwidth]{IRHF/IRHF_compare_w_self}
+\caption{Comparison of the natural RH response and the response to the conditioned input. The above plot is simulated in Matlab by passing the RH input time series (top plot) through the $[H(s)]^{-1*}$ and $H(s)$ to acquire with the result lensing behavior on the bottom plot.}
+\label{fig:comparison}
+\end{figure}
+\newpage
+
+\section{Piezoelectric noise of AlGaAs}
+\input{chapters/pen}
+
+
+
+\end{document}
