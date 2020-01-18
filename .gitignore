@@ -4,5 +4,7 @@
 *.fls
 *.gz
 *.fdb_latexmk
+*.log
+*.toc
 
 .DS_Store
