@@ -1,0 +1,25 @@
+Stefan suggested initial outline:
+
+AlGaAs
+  Intro
+    * Why AlGaAs
+    * Known Params
+    * Estimate
+  E-field Model
+    * Poisson calculator
+    * Coupling in coating
+  Initial setup
+    * Electronics
+    * OLG
+    * Actuation funciton
+    * Problems (Some O() estimates)
+      * PLA coupling
+      * Capacitive force coupling
+    * New design
+      * Updated noise
+
+TCS
+  Ring heater tuning
+    * Tuning for TC
+    * Filter design
+    * Tuning for PI

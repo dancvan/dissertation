@@ -1,0 +1,25 @@
+\begin{thebibliography}{1}
+
+\bibitem{tvo}
+T.~Vo, {\em Adaptive Mode Matching in Advanced LIGO and beyond}.
+\newblock PhD thesis, Syracuse NY, 2019.
+
+\bibitem{brooks2021}
+A.~Brooks {\em et~al.}, ``Point absorbers in advanced ligo,'' {\em Optical
+  Scoiety of America}, vol.~60, pp.~4047--4063, 2021.
+
+\bibitem{hello_vinet}
+P.~Hello and J.-Y. Vinet, ``Analytical models of thermal aberrations in massive
+  mirrors heated by high power laser beams,'' {\em Journal de Physique},
+  vol.~51, pp.~1267--1282, 1990.
+
+\bibitem{yariv}
+A.~Yariv, {\em Quantum Electronics (3rd. ed)}.
+\newblock John Wiley \& Sons, 1989.
+
+\bibitem{nye}
+J.~F. Nye, {\em Physical properties of crystals (Their representation by
+  tensors and matrices)}.
+\newblock Oxford University Press, 1985.
+
+\end{thebibliography}

@@ -3,29 +3,39 @@
 \usepackage{graphicx}
 \usepackage{fancyhdr}
 \usepackage{float}
+\usepackage{setspace}
 \pagestyle{fancy}
-\graphicspath{{images/}}
+\graphicspath{{figs/}}
+\usepackage[margin=1in]{geometry}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{hyperref}
+\renewcommand{\bibname}{References}
+
+\fancyhead{}
+\fancyhead[L]{\MakeUppercase{\leftmark}}
 
 \title{
-{Photonic experiments for Advanced LIGO and 3G gravitational wave detectors}\\
+{Thermal compensation system comissioning for O3 and a study of the
+the Pockels effect of an AlGaAs coating}\\
 {\large Syracuse University}\\
 %%{\includegraphics{}}
 }
 
 \author{Daniel Vander-Hyde}
 
-\date{June 10 2020}
+\date{\today}
 
+\onehalfspacing
 
 \begin{document}
 
 \maketitle
 
+\pagenumbering{roman}
 \chapter*{Abstract}
 Abstract goes here
 
 \chapter*{Dedication}
-This one's for Mikey. Thanks for believing in me.
 
 \chapter*{Declaration}
 I declare that
@@ -37,27 +47,27 @@ I declare that
 
 \maketitle
 
-\section{Introduction}
-\input{chapters/intro}
 \newpage
 
-\section{Delay line Cavity for Jitter attenuation}
-\input{chapters/JAC}
+
+\pagenumbering{arabic}
+\chapter{Introduction}
+\input{chapters/ligo_fundamentals}
 \newpage
 
-\section{Some O3 investigations for Hanford}
+\chapter{TCS comissioning for O3}
 \input{chapters/hanford_tcs}
 
-\begin{figure}[H]
-\includegraphics[width=\textwidth]{IRHF/IRHF_compare_w_self}
-\caption{Comparison of the natural RH response and the response to the conditioned input. The above plot is simulated in Matlab by passing the RH input time series (top plot) through the $[H(s)]^{-1*}$ and $H(s)$ to acquire with the result lensing behavior on the bottom plot.}
-\label{fig:comparison}
-\end{figure}
-\newpage
+\chapter{Electro-optic study of an AlGaAs coated sample}
+\input{chapters/pock}
 
-\section{Piezoelectric noise of AlGaAs}
-\input{chapters/pen}
+\chapter{Conclusion}
 
+\chapter{Appendix}
+\input{chapters/appendix}
 
+\addcontentsline{toc}{chapter}{References}
+\bibliography{ref}
+\bibliographystyle{ieeetr}
 
 \end{document}

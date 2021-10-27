@@ -1,0 +1,55 @@
+This is BibTeX, Version 0.99d (TeX Live 2021)
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: main.aux
+The style file: ieeetr.bst
+Database file #1: ref.bib
+I was expecting a `,' or a `}'---line 49 of file ref.bib
+ : 
+ : @book{leissa,
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+Warning--empty school in tvo
+Name 1 in "Aiden Brooks, and others" has a comma at the end for entry brooks2021
+while executing---line 969 of file ieeetr.bst
+You've used 5 entries,
+            1876 wiz_defined-function locations,
+            507 strings with 4046 characters,
+and the built_in function-call counts, 1152 in all, are:
+= -- 121
+> -- 28
+< -- 0
++ -- 12
+- -- 7
+* -- 63
+:= -- 164
+add.period$ -- 8
+call.type$ -- 5
+change.case$ -- 2
+chr.to.int$ -- 0
+cite$ -- 6
+duplicate$ -- 63
+empty$ -- 118
+format.name$ -- 7
+if$ -- 289
+int.to.chr$ -- 0
+int.to.str$ -- 5
+missing$ -- 6
+newline$ -- 21
+num.names$ -- 5
+pop$ -- 18
+preamble$ -- 1
+purify$ -- 0
+quote$ -- 0
+skip$ -- 40
+stack$ -- 0
+substring$ -- 72
+swap$ -- 25
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 0
+warning$ -- 1
+while$ -- 9
+width$ -- 6
+write$ -- 50
+(There were 2 error messages)
