@@ -7,31 +7,32 @@
  %% Increasing RH tuning speed
 
 
-As shown in Chapter 1,  increasing input power directly relates to an interferometer's sensitivity to detecting gravitational waves. This comes with a few implications, but one in particular is the necessity for thermal compensation. As the interferometer increases input power, you directly couple more light into the Fabry-P\'{e}rot cavity arms. The optics, even with super low absorption ($\approx$ 400 ppb) still induce thermo-optic effects with the projected circulating arm power of 200 kW. A symptom of this is mode mismatching throughout the interferometer, a problem that contributes to loss of optical power at the anti-symmetric port which can reduce sensitivity two-fold: loss of power to your readout and reduced efficacy of implementing quantum squeezing.
+As shown in Chapter 1,  increasing input power directly relates to an interferometer's sensitivity to detecting gravitational waves, one implication of this is the necessity for thermal compensation. As the interferometer increases input power, you directly couple more light into the Fabry-P\'{e}rot cavity arms. The input test masses, even with extra low absorption ($\approx 400 \; \mathrm{ppb} \pm 150 \; \mathrm{ppb}$ \textcolor{red}{alog ? or point absorber paper}) still induce thermo-optic effects with the projected circulating arm power of 200 kW. A symptom of this is mode mismatching throughout the interferometer, a problem that contributes to loss of optical power at the anti-symmetric port which can reduce sensitivity two-fold: loss of power to your readout and reduced efficacy of implementing quantum squeezing.
+
+\section{The Mode Matching requirements}
+
+
+\section{aLIGO Thermal Compensation System (TCS)}
+Mode Matching
+\begin{itemize}
+\item Annular actuation with RH actuators
+\item Central heating with central $\mathrm{CO}_2$ laser
+\end{itemize} 
 
 \subsection{TCS preloading for O3}
-Reference to TVO's thesis for preloading settings based on his model\cite{tvo}
-
-\subsection{Point absorbers}
-Coupling into control signals (ASC and LSC)
-\begin{itemize}
-\item Loss of interferometer control
-\item Reported in "TCS comissioning for O3" @ LVK, I reference a Craig elog where he reports loss of sideband power after thermalization (particularly POP LF, REFL LF, POP 18, POP 45)
-\item A. Brooks explains in \cite{brooks2021}
-\end{itemize}
+Reference to TVO's thesis for preloading settings based on his model \cite{tvo}
 
 
 \subsection{RH input conditioning}
 Some notes about the analytical calculations of RH (There is a paper on this).
-Notes as to why this 12 hour time constant is not optimal for thermal compensation.
-\section{Optimizing thermo-optic response}
+12 hours to sample single TCS setting
+\subsubsection{Optimizing RH thermo-optic response}
 
 \begin{figure}[H]
  \includegraphics[width=\textwidth]{TCS/IRHF/Meas_response}
  \caption{ITMY thermo-optic response to a 3.13 Watt power reduction to ring heaters. It's after $\approx$ 12 hours after the change was made do you start to see a small enough $\frac{\mathrm{d} \alpha_\mathrm{sp}}{\mathrm{dt}}$ when you can assume a steady thermal lens.}
  \label{fig:meas}
 \end{figure}
-
 
 \begin{figure}[H]
 \includegraphics[page=1,width=\textwidth]{TCS/IRHF/RH_input_filter_figures.pdf}
@@ -51,7 +52,7 @@ Notes as to why this 12 hour time constant is not optimal for thermal compensati
 \label{fig:plant_v_fit}
 \end{figure}
 
-\section{Dynamic Thermal compensation}
+\subsubsection{Dynamic Thermal compensation}
 \begin{figure}[H]
 \includegraphics[width=\textwidth]{TCS/IRHF/IRHF_compare_w_self}
 \caption{Comparison of the natural RH response and the response to the conditioned input. The above plot is simulated in Matlab by passing the RH input time series (top plot) through the $[H(s)]^{-1*}$ and $H(s)$ to acquire with the result lensing behavior on the bottom plot.}
@@ -59,6 +60,38 @@ Notes as to why this 12 hour time constant is not optimal for thermal compensati
 \end{figure}
 \newpage
 
-\textbf{Analytical expression of self heating from beam} \cite{hello_vinet}
 
-\section{Limitations}
+\subsubsection{Limitations}
+\begin{figure}[H]
+\includegraphics[width=\textwidth]{TCS/IRHF/IRHF_compare_w_RH_power}
+\caption{Comparison of the natural RH response and the response to the filtered input with RH power}
+\label{fig:RH_power}
+\end{figure}
+Limitation on RH power is set at 8W \textcolor{red}{Double check source?}
+
+\subsubsection{Implementation into CDS at LHO}
+
+
+
+\section{Higher order TCS}
+
+\subsection{Point absorbers}
+
+
+\begin{itemize}
+\item Impact on RF sidebands with interferometer thermalization
+\end{itemize}
+
+\subsection{Actuation using a $\mathrm{CO_2}$ laser and mask}
+\begin{itemize}
+\item Aiden's design
+\item Imaging 
+\item Installation
+%\begin{figure}[H]
+%\includegraphics[width=\textwidth]{figs/TCS/PA/48349_20190409201649_inital_install_CO2Ymask2_150seconds_900mW.png}
+%\caption{Point absorber figure with second $\mathrm{CO_2}$ mask}
+%\label{fig:RH_power}
+%\end{figure}
+
+\item Metric of improvement? (Impact on sidebands after thermalization)
+\end{itemize}

@@ -10,9 +10,15 @@
 \usepackage[dvipsnames]{xcolor}
 \usepackage{hyperref}
 \renewcommand{\bibname}{References}
+\usepackage{wasysym}
 
 \fancyhead{}
 \fancyhead[L]{\MakeUppercase{\leftmark}}
+
+
+\newcommand{\satoshi}[1]{\textcolor{purple}{#1}}
+\newcommand{\stefan}[1]{\textcolor{orange}{#1}}
+\newcommand{\steve}[1]{\textcolor{green}{#1}}
 
 \title{
 {Thermal compensation system comissioning for O3 and a study of the
@@ -52,13 +58,13 @@ I declare that
 
 \pagenumbering{arabic}
 \chapter{Introduction}
-\input{chapters/ligo_fundamentals}
+\input{chapters/intro}
 \newpage
 
 \chapter{TCS comissioning for O3}
 \input{chapters/hanford_tcs}
 
-\chapter{Electro-optic study of an AlGaAs coated sample}
+\chapter{Electro-optic study of an  GaAs/\textbf{Al}$_{.92}$\textbf{Ga}$_{.08}$\textbf{As} coated sample}
 \input{chapters/pock}
 
 \chapter{Conclusion}
