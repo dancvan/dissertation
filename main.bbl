@@ -43,14 +43,14 @@ G.~M. Harry, H.~Armandula, E.~Black, D.~R.~M. Crooks, G.~Cagnoli, J.~Hough,
   Penn, ``Thermal noise from optical coatings in gravitational wave
   detectors,'' {\em Appl. Opt.}, vol.~45, pp.~1569--1574, Mar 2006.
 
-\bibitem{yariv}
-A.~Yariv, {\em Quantum Electronics (3rd. ed)}.
-\newblock John Wiley \& Sons, 1989.
-
 \bibitem{nye}
 J.~F. Nye, {\em Physical properties of crystals (Their representation by
   tensors and matrices)}.
 \newblock Oxford University Press, 1985.
+
+\bibitem{yariv}
+A.~Yariv, {\em Quantum Electronics (3rd. ed)}.
+\newblock John Wiley \& Sons, 1989.
 
 \bibitem{bonilla_fejer}
 M.~F. Edgard~Bonilla, ``Optical phase perturbations on the reflected wave of a

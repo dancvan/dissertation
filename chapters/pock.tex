@@ -6,7 +6,7 @@ With the potential to reduce coating Brownian noise by a factor of 10 \cite{Cole
 A notable source of noise is the linear electro-optic property of the crystalline material (dn/dE), also known as the Pockels effect \cite{abernathy_poster}. Characterizing currently proposed $\algaas$ coated ``witness" samples thorough extensive analysis and experimental data of the aforementioned property is worthwhile for the use of $\algaas$ coatings in gravitational wave interferometers. The following section is dedicated to the discussion of brownian thermal noise and the fundamental limit it imposes on gravitational wave detection, the improvements of said limitations with $\gaas$/$\algaas$ coated mirrors over $\mathrm{SiO_2}/\mathrm{TiO_2:Ta_2O_5}$ coatings, the $\algaas$ linear electro-optic effect starting with the fundamentals on anisoptropic media and the electro-optic tensor of zincblende crystalline materials, estimates of the differential phase of light reflected from a GaAs/$\algaas$ coating, and an experiment constructed with the intention of measuring the linear electro-optic effect within a 1kHz $\rightarrow$ 1MHz region.
 
 \subsection{Brownian Thermal Noise}
- In 1827 the Scottish botanist Robert Brown noticed a constant motion of pollen particulates on the surface of water; witnessing randomized collisions of the water molecules holding a kinetic energy proportional to the temperature ($k_BT$) \cite{Brown:1828}. It is because of his documented observations we name the phenomena Brownian motion. For high precision optical experiments operating at room temperature (and higher due to high power circulating beams), understanding how much differential phase noise is imparted on the interferometer light passing through and reflecting from core optics is crucial. This requires knowledge of the mean squared displacement from each degree of freedom of the system which can be realized through the Fluctuation Dissapation theorem. Derived by H.B. Callen and T.A. Welton, the theorem states that for a randomly fluctuating linear force \cite{Callen:1951}:
+ In 1827 the Scottish botanist Robert Brown noticed a constant motion of pollen particulates on the surface of water; witnessing randomized collisions of the water molecules holding a kinetic energy proportional to the temperature ($k_BT$) \cite{Brown:1828}. It is because of his documented observations we name the phenomena Brownian motion. And although the observations were on motion of particulates in liquids, molecules and atoms within gases and solids also exhibit Brownian motion. For high precision optical experiments operating at room temperature (and higher due to high power resonant beams), understanding how much differential phase noise is imparted on the interferometer light passing through and reflecting from core optics is crucial. This requires knowledge of the mean squared displacement from each degree of freedom of the system which can be realized through the Fluctuation Dissapation theorem. Derived by H.B. Callen and T.A. Welton, the theorem states that for a randomly fluctuating linear force \cite{Callen:1951}:
 
  %% Further insight into Brownian motion was explored by Einstein where he was able to relate the mean-square displacement of a particle of radius $r_\mathrm{sph}$ on a fluid with viscosity $\eta$.
 
@@ -57,8 +57,7 @@ Y(\omega) = \frac{\dot{x}(\omega)}{F(\omega)} = \frac{-i\omega}{k(1+i\phi) - m\o
 \begin{equation}
 x^2 (f)  = \frac{2k_B T}{\pi}\frac{k\phi}{(k-4\pi^2 m f^2)^2 + k^2 \phi^2}
 \end{equation}
-
-\noindent Computing the admittance from a Gaussian beam impinging upon a HR mirror can require expansion of all individual mechanical degrees of freedom of the test mass system across a relevant frequency range, and with that approach convergence is not guaranteed. Saulson and Gonzalez provide an alternative method to computing the admittance coined the ``direct approach" by Levin when computing the noise from a Gaussian beam on a LIGO HR test mass. The admittance can be acquired through:
+Computing the admittance from a Gaussian beam impinging upon a HR mirror can require expansion of all individual mechanical degrees of freedom of the test mass system across a relevant frequency range, and with that approach convergence is not guaranteed. Saulson and Gonzalez provide an alternative method to computing the admittance coined the ``direct approach" by Levin when computing the noise from a Gaussian beam on a LIGO HR test mass. The admittance can be acquired through:
 
 \begin{equation}\label{admitdirec}
 \Re[Y] = \frac{W_\mathrm{diss}}{F_o^2}
@@ -99,28 +98,97 @@ Currently the LIGO interferometers deposit $\lambda$/4 stacks of silica and tita
  \\
 
 
-\subsection{Anisotropic media and birefringence}
-Unlike with isotropic media, we cannot assume that the index of refraction of anisotropic media is the same for all chosen wave vectors. This is a direct consequence of the birefringence of anisotropic media; characterized by the dielectric, permittivity, and polrization tensors. The relation between the displacement vector and electric field:
+\subsection{Anisotropic media and induced birefringence}
+Unlike with isotropic media, we cannot assume that the index of refraction of anisotropic media is the same for all chosen wave vectors. This is a direct consequence of the birefringence of anisotropic media; characterized by the dielectric, permittivity, and polrization tensors.
 
-\begin{equation}
+\subsubsection{The Dielectric tensor}
+Further elaborating on the nature of a generalized dielectric tensor for any wavevector is required to proceed:
+
+\begin{equation}\label{eq:3.11}
 D_i = \varepsilon_{ij}E_j
 \end{equation}
-Where i=j for isotropic media.
+Where D is the displacement vector and E is the electric field vector and $\varepsilon$ is the dielectric tensor. The displacement vector for isotropic media is retrieved when $i = j$ and $\varepsilon_i = \varepsilon$. To further understand the nature of the dielectric tensor we assert Poynting's theorem providing an energy conservation requirement:
+\begin{equation}\label{eq:3.12}
+\nabla \cdot \vec{S} = \frac{dU}{dt}
+\end{equation}
+Where $\vec{S} = \vec{E} \times \vec{H}$ is the poynting vector and $U = \frac{1}{8 \pi} \big( \vec{E} \cdot \vec{D} + \vec{B} \cdot \vec{H} \big)$ is the electromagnetic field density. The reader is left to perform the exercise and show that in order for \ref{eq:3.12} to hold true given \ref{eq:3.11}
+
+\begin{equation}
+\varepsilon_{ij} = \varepsilon_{ji}
+\end{equation}
+Stating that the dielectric tensor holds only six unique terms. The energy density is represented as an ellipsoid but with a coordinate transformation we can diagonalize and realize principal axes of the dielectric allowing a simpler form of the displacement, and in turn the energy density.
+
+\subsubsection{Birefringence}
+Revisiting Maxwell's equations for simple monochromatic plane wave solution gives provides further direction on how crystalline media may effect impinging light. Further elaborating, the following assumptions are made:
+
+\begin{equation}
+\vec{E} = E_o e^{(i \omega (\frac{n}{c} \vec{r}\cdot \vec{s}-t))}
+\end{equation}
+Where $n$ is the index of refraction, $c$ is the speed of light, $\vec{r}$ is the position vector and $\vec{s}$ is the unit wave normal.
+
+\begin{equation}
+\nabla \times \vec{H}= \frac{\partial \vec{D}}{\partial t}
+\end{equation}
+Where $\vec{H}$ is the magnetic field assuming the permeability $\mu$, and the generalized displacement vector $\vec{D}$ and electric field vector $\vec{E}$.
+
+\begin{equation}
+\nabla \times \vec{E} = -\mu \vec{H}
+\end{equation}
+Reducing to only the displacement and electric fields:
+
+\begin{equation}\label{eq:3.17}
+\vec{D} = \frac{n^2}{\mu}[\vec{E}-\vec{s}(\vec{s}\cdot \vec{E})]
+\end{equation}
+Maxwell's equations show that the electric field is not necessarily parallel to the displacement field and in most materials with non-zero polarizability tensors and dielectric tensors, it is not. But as specified above, the displacement vector, Electric field and unit wave normal are co-planar while remaining orthogonal to $\vec{H}$. Assuming we are operating within a coordinate system aligned with the principal dielectric axes, we substitute \ref{eq:3.11} into \ref{eq:3.17}:
+
+\begin{equation}\label{eq:3.18}
+E_i = \frac{n^2 s_i (\vec{E}\cdot\vec{s})}{n^2 - \mu \varepsilon_i}
+\end{equation}
+From here it can be shown that for a general plane wave there exist two unique refractive index solutions within the constructed dielectric. Though using this result to show this requires revisiting geometrical conditions that are best visualized using a method introduced in the next section. \textcolor{red}{For a more rigorous proof, see Appendix H in} \cite{nye}
+
+\subsubsection{Indicatrix}
+Acquiring solutions of the two indices along with the corresponding directions of propogation in the crystal for a general plane wave with unit wave vector $\vec{s}$ can be done via a conveniant geometrical construction. The construction begins by considering a constant electric energy density ($U_e$) surface in the $\vec{D}$ space; an ellipsoid is formed:
+
+\begin{equation}\label{eq:lagr1}
+\frac{D_x}{\varepsilon_x} + \frac{D_y}{\varepsilon_y} + \frac{D_z}{\varepsilon_z} = 2 U_e \varepsilon_o
+\end{equation}
+With redefined coordinates $(\vec{D}/\sqrt{2 U_e \varepsilon_o}) \rightarrow \vec{r}$ and setting $\varepsilon_i = n^2_i$:
+
+\begin{equation}
+\frac{x^2}{\varepsilon_x} + \frac{y^2}{\varepsilon_y} + \frac{z^2}{\varepsilon_z} = 1
+\end{equation}
+This equation for the ellipsoid is known as the indicatrix. Given the co-planar solution demonstrated in the last section, we can impose the normal of the plane $\vec{r} \cdot \vec{s} = 0$:
+
+\begin{equation}\label{eq:lagr2}
+\vec{r} \cdot \vec{s} = x s_x + y s_y + z s_z = 0
+\end{equation}
+Equations \ref{eq:lagr1} and \ref{eq:lagr2} both contribute constraints to the method of finding extrema using Lagrange multipliers for the function:
+
+\begin{equation}
+r^2 = x^2 + y^2 + z^2
+\end{equation}
+The Lagrangian ($\mathcal{L}$) with the introduced multiplers ($\lambda_1$, $\lambda_2$) then becomes:
+
+\begin{equation}
+\mathcal{L}(\textcolor{red}{\vec{r},\vec{s}},\lambda_1, \lambda_2) =
+x^2 + y^2 + z^2 + \lambda_1 (xs_x + ys_y + zs_z) + \lambda_2 \bigg( \frac{x^2}{\varepsilon_x} + \frac{y^2}{\varepsilon_y} + \frac{z^2}{\varepsilon_z} - 1 \bigg)
+\end{equation}
+With the generated system of equations from the Lagrange multipler method ($\partial F_i/ \partial x_i = 0$, and $\partial F_j/ \partial \lambda_j$) where index $i =x,y,z$ and $j = 1,2$ we obtain a system of 3 equations:
+
+\begin{equation}
+i \bigg(1-\frac{r^2}{\varepsilon_{i}} \bigg) + s_{i} \bigg(\frac{x s_x}{\varepsilon_x} + \frac{y s_y}{\varepsilon_y} + \frac{z s_z}{\varepsilon_z} \bigg) = 0
+\end{equation}
+The result is verified when substituting $r \rightarrow \frac{\vec{D}}{\sqrt{\vec{E} \cdot \vec{D} \varepsilon_o}}$ back which recovers \ref{eq:3.18}.
 \\
+\textcolor{red}{AlGaAs is a cubic crystal, optically isotropic BUT birefringence is induced (becomes uniaxial)}
 \\
-\textcolor{red}{Yariv (Chapter 5)}
-\\
-Uses the Poynting theorem to show the case where assuming the same energy flux through isotropic and anisotropic media leads to principle dielectric axes for the latter.
-\\
-\textcolor{red}{Go through some brief math to show how the property of birefringence deduces the nature of a indicatrix and ordinary and extraordinary axes. }\cite{yariv, nye}
-\\
-\\
+\subsubsection{Induced birefringence (electroptic and photoelastic)}
 \textcolor{red}{Nye (Chapter 8.2)}
 \\
 \\
 \textcolor{red}{Born and Wolf (Chapter 15)}
 \\
-\subsubsection{The electro-optic tensor and the Pockels effect}
+\subsubsection{The pockels effect for cubic crystals}
 Some anisotropic crystalline media (ACM) exhibit characteristics where the indicatrix changes as a function of a slowly (\satoshi{is this statement correct?}) \textcolor{red}{I can very much word this better. Right now it probably is not correct.} (\textcolor{red}{up to the speed of sound within the media?}) varying electric field ~\cite{yariv,nye}.
 \\
 \textcolor{red}{Indicatrix with electro-optic coefficients.}
