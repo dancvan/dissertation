@@ -94,11 +94,9 @@ Currently the LIGO interferometers deposit $\lambda$/4 stacks of silica and tita
 \textcolor{red}{Insert computed curves of the most precise and recent (effective) loss angle measurements (Nick Demos measurements?). More instructive to plot strain spectral density or displacement power spectra}
 
 \noindent Currently thermal noise from the $\mathrm{SiO_2}/\mathrm{TiO_2:Ta_2O_5}$ optical coatings is the largest contributor of Brownian noise in LIGO compared to estimated substrate and suspension thermal noise \cite{Harry:06}. As of the end of O3, Brownian thermal noise is estimated to be ? orders of magnitude below the current sensitivity and it will prove to be the limiting source of noise as that sensitivity is increased with various other upgrades mitigating fundamental and technical noise. (\textcolor{red}{already mentioned in intro prior to this thermal noise section. Need to re-iterate in more detail?})
- \\
- \\
-
-
-\subsection{Anisotropic media and induced birefringence}
+\\
+\\
+\subsection{Anisotropic media}
 Unlike with isotropic media, we cannot assume that the index of refraction of anisotropic media is the same for all chosen wave vectors. This is a direct consequence of the birefringence of anisotropic media; characterized by the dielectric, permittivity, and polrization tensors.
 
 \subsubsection{The Dielectric tensor}
@@ -118,7 +116,7 @@ Where $\vec{S} = \vec{E} \times \vec{H}$ is the poynting vector and $U = \frac{1
 \end{equation}
 Stating that the dielectric tensor holds only six unique terms. The energy density is represented as an ellipsoid but with a coordinate transformation we can diagonalize and realize principal axes of the dielectric allowing a simpler form of the displacement, and in turn the energy density.
 
-\subsubsection{Birefringence}
+\subsubsection{Monochromatic plane wave propogation}
 Revisiting Maxwell's equations for simple monochromatic plane wave solution gives provides further direction on how crystalline media may effect impinging light. Further elaborating, the following assumptions are made:
 
 \begin{equation}
@@ -180,18 +178,66 @@ i \bigg(1-\frac{r^2}{\varepsilon_{i}} \bigg) + s_{i} \bigg(\frac{x s_x}{\varepsi
 \end{equation}
 The result is verified when substituting $r \rightarrow \frac{\vec{D}}{\sqrt{\vec{E} \cdot \vec{D} \varepsilon_o}}$ back which recovers \ref{eq:3.18}.
 \\
-\textcolor{red}{AlGaAs is a cubic crystal, optically isotropic BUT birefringence is induced (becomes uniaxial)}
+\textcolor{red}{Figure here would be nice}
+\subsection{Crystal systems}
+The following section is intended to provide an adequate crystallographic background to allow the further the discussion of light propogation through $\gaas$ and $\algaas$. This includes, crystal classification, the optical crystal classification of $\gaas$ and $\algaas$ under ``normal" operating conditions, and optical crystal classification of $\gaas$  and $\algaas$ with electrical and mechanical perturbations.
+
+\subsubsection{Crystal classification}
+%Crystal classification comes with numerous identifiers all having their place in the field of crystallography but all will not be referred to explicity.
+
+The priority of this section is to provide a crystallographic background to some conventions behind the classification and characterization of crystalline materials through the usage of: Miller indices, unit cells, point groups, Bravais lattices and space groups.
+
+
+% MORE IN DEPTH HISTORY
+% The fundamentals of crystallography began to be developed in the 17th century through macroscopic analysis of perfectly planar fractures of crystals. It was then Saobserved by Nicolaus Steno that the angles between two adjacent faces of a particular crystal species is a constant (Steno's law of constant interfacial angles). In the 18th century René-Just Haüy, a French priest and minerologist, and Jean-Baptiste L. Rome de I'Isle sought to understand the nature of crystals leading to further induced fracturing, better angular measurement precision between crystal cleavage plane normals using a goniometer (confirming Steno's Law), and analysis of the macroscopic symmetries based on the planar crystal faces. Haüy would soon after hypothesize that crystals are composed of polyhedrical molecules arranged in a periodic manner in three-dimensional space. This fundamental geometrical structure is a predecesor of the modern unit cell; the smallest geometric atomic/molecular arrangement that represents the symmetry of the crystal. Alongside Haüy's early interpretation of the unit cell, he was able to note two more crystallographic principles known as the law of rational indices and the law of constancy of symmetry. The law of rational indices carries into the modern day as the second of three laws of crystallography and through the use of Miller indices; a set of three integer values representing intercept values for each of a crystal's cleavage planes.
+%\textcolor{red}{Miller index figure for a zincblende structure}
+%With these geometric tools and crystallographic rules, crystal structures were further categorized into symmetry groups. In the 19th century, Frankenheim, Hessel, and Gadolin independently hypothesized the existence of 32 different crystal classes correlating to different point groups where one of these point groups represents a unique collection of symmetry elements. The ``point" in point group is the analysis of symmetry operations when a single point of a three dimensional object is held fixed, and a group is a set of those symmetry elements that obey multiplication such that it is associative, there exists an idenitiy element in the set, the inverse of the element is an element of the set, and the product of any two elements is an element of the set \cite{sands}.  The symmetry elements that make up these point groups can be decomposed into operations of rotations, mirror planes, inversions, and improper rotations. A more concise description of these operations and the crystallographic point groups can be seen listed in the appendix \textcolor{red}{?}. The point group analysis performed by Frankenheim, Hessel, and Gadolin is an impressive feat given the accuracy while molecular theory was still maturing. These point groups have different label standards but throughout this document we will use Hermann-Maugin notation for AlGaAs. With established crystallographic point groups, established translational symmetries came soon after through the works of Auguste Bravais in the latter part of the 19th century giving rise to 14 different lattice structures corresponding to different crystallographic classes.  The combination of the point group symmetries along with a group of translational symmetries introduced a new symmetry group known as a space group. With maturity of the molecular theory and the introduction of X-ray diffraction more robust models of these unit cells and lattices were developed soon after.
+%\\
+%\textcolor{red}{Details on symmetry elements?}
+%\\
+%\textcolor{red}{Image with cleavaged crystal and crystal unit cell}
+%\\
+%\textcolor{red}{Space groups? (decomposed into point group and bravais lattice categorization)}
+
+
+The fundamentals of crystal categorization come with the emergence of a formal study of cyrstals (crystallography) in the 17th and 18th centuries through the macroscropic analysis of planar fractures of crystals (cleavage planes). Nicolaus Steno and René-Just Hauy are credited with the discovery of the three crystallographic laws: law of constant interfacial angles (Steno), the law of rational indices (Haüy), and the law of constancy of symmetry (Haüy) \cite{aroyo}.
 \\
-\subsubsection{Induced birefringence (electroptic and photoelastic)}
+\\
+ The \textbf{law of constant interfacial angles} states that the angles between two adjacent faces of a crystal species is a constant \cite{steno}.
+\\
+\\
+The \textbf{law of rational indices} states that the intersection of the three intercepts of a crystal plane with the crystallographic axes are constant and can be expressed by rational numbers and whole number multiples of them. Alongside this law Haüy would go on to hypothesize that crystals are composed of polyhedrical molecules arranged in a periodic manner in three-dimensional space \cite{hauy}. This early geometric model of crystals, provided fundamental tools of crystallography that we still use today. The modern unit cell is represented by the smallest geometric atomic/molecular arrangement that represents the symmetry of the crystal. When representing a more macroscopic form of the crystal these unit cells are assembled periodically in 3d space along a grid of points known as a lattice\cite{sands}.
+\\
+\\
+The \textbf{law of constancy of symmetry} states that crystals of a particular substance maintain the same symmetry elements \cite{hauy}. This discovery garnered interest in the 19th century to classify crystal structures under the framework of symmetry groups \textcolor{red}{more on groups in appendix}. Point group symmetries were first addressed and sorted crystals into 32 crystallographic point groups. Soon after translational symmetries were addressed by Auguste Bravais with 14 different lattice structures which also implicitly displayed a formal connection between unit cell geometry and lattice structures \cite{aroyo}. The combination of these point group symmetries and translational symmetries addressed by the Bravais, form a new group known as the crystallographic group: a subset of the more generally space group \textcolor{red}{for more details on point groups, Bravais lattices and space groups, see appendix}.
+\\
+\\
+
+% What are the symmetries that exist in three dimensions?
+% What are the geometric representations given by known crystals?
+% What symmetries are left after performing all prescribed three dimensional symmetry operations on known crystal geometries?
+
+%When observing a crystal on a molecular level, a periodicity in three dimensional space isfeyfe seen containing a specific a specific collection of atoms with a specific orientation. The smallest unique atomic/molecular arrangement describing the crystal's atomic makeup and structure is known as a motif. And the periodicity can be aligned along a three dimensional geometrical construction called a lattice. Crystallographers categorize crystal systems analyzing the three dimensional point-group symmetries of these motifs and space-group symmetries of the crystal's collective periodic arranged motifs. A periodic structure on which the unit cells are arranged or lattice is a conveniant means to organize and quantize the space when describing and characterizing the structure. Crystallographers characterize the detail of a specific unit cell through observed symmetries after a series of prescribed operations. The symmetries that exist for the unit cell as well as the symmetries after lattice translations define a space group.
+
+\subsubsection{$\gaas$ and $\algaas$ classifications}
+The space group of $\gaas$ as well as $\algaas$ are within the $F\bar{4}3m$ space group. Crystals with this particular space group are commonly known as zincblende crystals; a common crystal configuration named after zinc sulfide (ZnS). Cubic crystals by their crystallographic structure display optically isotropic characteristics when no DC and/or slowly varying electric fields are present and are not mechanically perturbed.
+\\
+\textcolor{red}{Insert figure of GaAs structure (Shapr3D construction)}
+\\
+\textcolor{red}{Mention the difference in lattice cell constant between $\gaas$ and $\algaas$}
+\\
+\subsubsection{Perturbed $\gaas$ and $\algaas$}
+\textcolor{red}{AlGaAs is a cubic crystal, optically isotropic BUT birefringence can be induced (displays characteristics of an uniaxial crystal)}
+\\
 \textcolor{red}{Nye (Chapter 8.2)}
 \\
 \\
 \textcolor{red}{Born and Wolf (Chapter 15)}
 \\
-\subsubsection{The pockels effect for cubic crystals}
+\subsubsection{The pockels effect}
 Some anisotropic crystalline media (ACM) exhibit characteristics where the indicatrix changes as a function of a slowly (\satoshi{is this statement correct?}) \textcolor{red}{I can very much word this better. Right now it probably is not correct.} (\textcolor{red}{up to the speed of sound within the media?}) varying electric field ~\cite{yariv,nye}.
 \\
-\textcolor{red}{Indicatrix with electro-optic coefficients.}
+\textcolor{red}{Indicatrix with electro-optic coefficients}
 \\
 Relationship between a slowly varying electric field vector of an arbitrary direction $\vec{E} = [E_1, E_2, E_3]$ to the perturbations of the indicatrix:
 \\
@@ -253,6 +299,9 @@ $r_{41} = r_{52} = r_{63}$
 For GaAs @ $10.6\mu$ $r_{41} = 1.6 \times 10^{-12}$ [m/V]
 \\
 Adachi estimate for $\mathrm{Al_{x}Ga_{1-x}As}$?
+
+
+\subsubsection{Specific propogation (Which Miller index?) direction of 1064 nm light through GaAs and AlGaAs}
 
 
 

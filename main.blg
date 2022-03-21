@@ -1,48 +1,50 @@
-This is BibTeX, Version 0.99d (TeX Live 2021)
-Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+This is BibTeX, Version 0.99d (TeX Live 2016)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: main.aux
 The style file: ieeetr.bst
 Database file #1: ref.bib
+Warning--I didn't find a database entry for "steno"
+Warning--I didn't find a database entry for "hauy"
 Warning--empty school in tvo
-You've used 17 entries,
+You've used 19 entries,
             1876 wiz_defined-function locations,
-            590 strings with 6240 characters,
-and the built_in function-call counts, 3588 in all, are:
-= -- 357
-> -- 132
+            606 strings with 6597 characters,
+and the built_in function-call counts, 3895 in all, are:
+= -- 388
+> -- 140
 < -- 2
-+ -- 54
-- -- 37
-* -- 239
-:= -- 531
-add.period$ -- 23
-call.type$ -- 17
-change.case$ -- 11
++ -- 58
+- -- 39
+* -- 254
+:= -- 576
+add.period$ -- 27
+call.type$ -- 19
+change.case$ -- 12
 chr.to.int$ -- 0
-cite$ -- 18
-duplicate$ -- 190
-empty$ -- 345
-format.name$ -- 37
-if$ -- 870
+cite$ -- 20
+duplicate$ -- 208
+empty$ -- 385
+format.name$ -- 39
+if$ -- 949
 int.to.chr$ -- 0
-int.to.str$ -- 17
-missing$ -- 16
-newline$ -- 60
-num.names$ -- 16
-pop$ -- 48
+int.to.str$ -- 19
+missing$ -- 20
+newline$ -- 68
+num.names$ -- 18
+pop$ -- 55
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 118
+skip$ -- 122
 stack$ -- 0
 substring$ -- 162
-swap$ -- 72
+swap$ -- 74
 text.length$ -- 2
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
 warning$ -- 1
-while$ -- 30
-width$ -- 19
-write$ -- 163
-(There was 1 warning)
+while$ -- 32
+width$ -- 21
+write$ -- 184
+(There were 3 warnings)
