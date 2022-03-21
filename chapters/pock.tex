@@ -98,10 +98,6 @@ Currently the LIGO interferometers deposit $\lambda$/4 stacks of silica and tita
 
 \noindent Currently thermal noise from the $\mathrm{SiO_2}/\mathrm{TiO_2:Ta_2O_5}$ optical coatings is the largest contributor of Brownian noise in LIGO compared to estimated substrate and suspension thermal noise \cite{Harry:06}. As of the end of O3, Brownian thermal noise is estimated to be ? orders of magnitude below the current sensitivity and it will prove to be the limiting source of noise as that sensitivity is increased with various other upgrades mitigating fundamental and technical noise. (\textcolor{red}{already mentioned in intro prior to this thermal noise section. Need to re-iterate in more detail?})
 
- \\
- \\
-
-
 \subsection{Anisotropic media and induced birefringence}
 Unlike with isotropic media, we cannot assume that the index of refraction of anisotropic media is the same for all chosen wave vectors. This is a direct consequence of the birefringence of anisotropic media; characterized by the dielectric, permittivity, and polrization tensors.
 
@@ -185,6 +181,7 @@ i \bigg(1-\frac{r^2}{\varepsilon_{i}} \bigg) + s_{i} \bigg(\frac{x s_x}{\varepsi
 The result is verified when substituting $r \rightarrow \frac{\vec{D}}{\sqrt{\vec{E} \cdot \vec{D} \varepsilon_o}}$ back which recovers \ref{eq:3.18}.
 \\
 \textcolor{red}{AlGaAs is a cubic crystal, optically isotropic BUT birefringence is induced (becomes uniaxial)}
+
 \\
 \subsubsection{Induced birefringence (electroptic and photoelastic)}
 \textcolor{red}{Nye (Chapter 8.2)}
@@ -193,7 +190,7 @@ The result is verified when substituting $r \rightarrow \frac{\vec{D}}{\sqrt{\ve
 \textcolor{red}{Born and Wolf (Chapter 15)}
 \\
 \subsubsection{The pockels effect for cubic crystals}
-Some anisotropic crystalline media (ACM) exhibit characteristics where the indicatrix changes as a function of a slowly (\satoshi{is this statement correct?}) \textcolor{red}{I can very much word this better. Right now it probably is not correct.} (\textcolor{red}{up to the speed of sound within the media?}) varying electric field ~\cite{yariv,nye}.
+Some anisotropic crystalline media (ACM) exhibit characteristics where the indicatrix changes as a function of a slowly (\satoshi{is this statement correct?}) \textcolor{red}{I can very much word this better. Right now it probably is not correct.} (\textcolor{red}{up to what frequency do we care about?}) varying electric field ~\cite{yariv,nye}.
 \\
 \textcolor{red}{Indicatrix with electro-optic coefficients.}
 \\
@@ -383,6 +380,7 @@ The designed cavity is a 0.1651 m long cavity with a HR IBS coated sample (PL-CC
 
 \subsubsection{OLG(f)}
 Isn't quite $\mathrm{A}(f)*\mathrm{S}(f)$ as stated. Doesn't entirely account for the optical plant.
+\satoshi{$*$ represents convolution.}
 How the measurement is taken (important to take between installations to account for the changes in the optical plant) (elog 831)
 
 
