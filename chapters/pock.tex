@@ -3,7 +3,7 @@
  As mentioned in Section (1?) one of the many LIGO fundamental noise sources is coating thermal noise from the $\mathrm{SiO_2}/\mathrm{TiO_2:Ta_2O_5}$ aLIGO coatings. As aLIGO approaches its designed sensitivity various coating solutions are currently proposed to mitigate thermal noise coupling into the detector output.
 With the potential to reduce coating Brownian noise by a factor of 10 \cite{Cole:2013}, $\algaas$ shows much promise with next generation detectors with a corresponding strain reduction by a factor of (5?) in comparison to the aLIGO coatings, though with different material properties of these crystalline coatings introduce new coating noise couplings.
 
-A notable source of noise is the linear electro-optic property of the crystalline material (dn/dE), also known as the Pockels effect \cite{abernathy_poster}. Characterizing currently proposed $\algaas$ coated ``witness" samples thorough extensive analysis and experimental data of the aforementioned property is worthwhile for the use of $\algaas$ coatings in gravitational wave interferometers. The following section is dedicated to the discussion of brownian thermal noise and the fundamental limit it imposes on gravitational wave detection, the improvements of said limitations with $\gaas$/$\algaas$ coated mirrors over $\mathrm{SiO_2}/\mathrm{TiO_2:Ta_2O_5}$ coatings, the $\algaas$ linear electro-optic effect starting with the fundamentals on anisoptropic media and the electro-optic tensor of zincblende crystalline materials, estimates of the differential phase of light reflected from a GaAs/$\algaas$ coating, and an experiment constructed with the intention of measuring the linear electro-optic effect within a 1kHz $\rightarrow$ 1MHz region.
+A notable source of noise is the linear electro-optic property of crystalline materials (dn/dE), also known as the Pockels effect \cite{abernathy_poster}. Characterizing currently proposed $\gaas$ / $\algaas$ coated ``witness" samples through a calibrated measurement of the aforementioned property is worthwhile for the use of $\algaas$ coatings in gravitational wave interferometers. The following section is dedicated to the discussion of brownian thermal noise and the fundamental limit it imposes on gravitational wave detection, the appeal of $\gaas$/$\algaas$ coated mirrors for improved thermal noise, light propogation through anistropic materials, induced optical anisotropy of zincblende materials, estimates of the differential phase of light reflected from a GaAs/$\algaas$ coating, and the measurements from a PDH locked single cavity experiment with a focus on a calibrated electro-optic response from a $\gaas$ / $\algaas$ sample from 1kHz to 1MHz.
 
 \subsection{Brownian Thermal Noise}
  In 1827 the Scottish botanist Robert Brown noticed a constant motion of pollen particulates on the surface of water; witnessing randomized collisions of the water molecules holding a kinetic energy proportional to the temperature ($k_BT$) \cite{Brown:1828}. It is because of his documented observations we name the phenomena Brownian motion. And although the observations were on motion of particulates in liquids, molecules and atoms within gases and solids also exhibit Brownian motion. For high precision optical experiments operating at room temperature (and higher due to high power resonant beams), understanding how much differential phase noise is imparted on the interferometer light passing through and reflecting from core optics is crucial. This requires knowledge of the mean squared displacement from each degree of freedom of the system which can be realized through the Fluctuation Dissapation theorem. Derived by H.B. Callen and T.A. Welton, the theorem states that for a randomly fluctuating linear force \cite{Callen:1951}:
@@ -97,7 +97,7 @@ Currently the LIGO interferometers deposit $\lambda$/4 stacks of silica and tita
 \\
 \\
 \subsection{Anisotropic media}
-Unlike with isotropic media, we cannot assume that the index of refraction of anisotropic media is the same for all chosen wave vectors. This is a direct consequence of the birefringence of anisotropic media; characterized by the dielectric, permittivity, and polrization tensors.
+Unlike with isotropic media, we cannot assume that the index of refraction of anisotropic media is the same for all chosen wave vectors. This is a direct consequence of the birefringence of anisotropic media; characterized by the dielectric, permittivity, and polarization tensors.
 
 \subsubsection{The Dielectric tensor}
 Further elaborating on the nature of a generalized dielectric tensor for any wavevector is required to proceed:
@@ -144,7 +144,7 @@ E_i = \frac{n^2 s_i (\vec{E}\cdot\vec{s})}{n^2 - \mu \varepsilon_i}
 \end{equation}
 From here it can be shown that for a general plane wave there exist two unique refractive index solutions within the constructed dielectric. Though using this result to show this requires revisiting geometrical conditions that are best visualized using a method introduced in the next section. \textcolor{red}{For a more rigorous proof, see Appendix H in} \cite{nye}
 
-\subsubsection{Indicatrix}
+\subsubsection{Indicatrix}\label{sec:indicatrix}
 Acquiring solutions of the two indices along with the corresponding directions of propogation in the crystal for a general plane wave with unit wave vector $\vec{s}$ can be done via a conveniant geometrical construction. The construction begins by considering a constant electric energy density ($U_e$) surface in the $\vec{D}$ space; an ellipsoid is formed:
 
 \begin{equation}\label{eq:lagr1}
@@ -153,7 +153,7 @@ Acquiring solutions of the two indices along with the corresponding directions o
 With redefined coordinates $(\vec{D}/\sqrt{2 U_e \varepsilon_o}) \rightarrow \vec{r}$ and setting $\varepsilon_i = n^2_i$:
 
 \begin{equation}
-\frac{x^2}{\varepsilon_x} + \frac{y^2}{\varepsilon_y} + \frac{z^2}{\varepsilon_z} = 1
+\frac{x^2}{n_x^2} + \frac{y^2}{n_y^2} + \frac{z^2}{n_z^2} = 1
 \end{equation}
 This equation for the ellipsoid is known as the indicatrix. Given the co-planar solution demonstrated in the last section, we can impose the normal of the plane $\vec{r} \cdot \vec{s} = 0$:
 
@@ -178,14 +178,32 @@ i \bigg(1-\frac{r^2}{\varepsilon_{i}} \bigg) + s_{i} \bigg(\frac{x s_x}{\varepsi
 \end{equation}
 The result is verified when substituting $r \rightarrow \frac{\vec{D}}{\sqrt{\vec{E} \cdot \vec{D} \varepsilon_o}}$ back which recovers \ref{eq:3.18}.
 \\
-\textcolor{red}{Figure here would be nice}
-\subsection{Crystal systems}
-The following section is intended to provide an adequate crystallographic background to allow the further the discussion of light propogation through $\gaas$ and $\algaas$. This includes, crystal classification, the optical crystal classification of $\gaas$ and $\algaas$ under ``normal" operating conditions, and optical crystal classification of $\gaas$  and $\algaas$ with electrical and mechanical perturbations.
 
-\subsubsection{Crystal classification}
+\begin{figure}[H]
+\includegraphics[width=\textwidth]{figs/ALGAAS/indicatrix_nye.pdf}
+\caption{General ellipsoid indicatrix with a general propogation direction (Using Nye's figure as placeholder as of now)}
+\label{fig:general_indicatrix}
+\end{figure}
+
+\subsection{$\gaas$ and $\algaas$ crystal classification}
+The space group of $\gaas$ as well as $\algaas$ are within the $F\bar{4}3m$ space group. Crystals of this particular space group are commonly known as zincblende crystals; a common crystal configuration named after zinc sulfide (ZnS). Cubic crystals by their crystallographic structure display optically isotropic characteristics when  stress free and no DC and/or slowly varying electric fields are present.
+\\
+\textcolor{red}{Insert figure of GaAs structure (Shapr3D construction)}
+\\
+\textcolor{red}{Mention the difference in lattice cell constant between $\gaas$ and $\algaas$}
+
+%\subsection{Crystal systems}
+%The following section is intended to provide a brief crystallographic background to progress the discussion of light propogation through $\gaas$ and $\algaas$. This includes, crystal classification, the optical crystal classification of $\gaas$ and $\algaas$ under ``normal" operating conditions, and optical crystal classification of $\gaas$  and $\algaas$ with electrical and mechanical perturbations.
+
 %Crystal classification comes with numerous identifiers all having their place in the field of crystallography but all will not be referred to explicity.
 
-The priority of this section is to provide a crystallographic background to some conventions behind the classification and characterization of crystalline materials through the usage of: Miller indices, unit cells, point groups, Bravais lattices and space groups.
+%The priority of this section is to provide a crystallographic background to some conventions behind the classification and characterization of crystalline materials through the usage of: Miller indices, unit cells, point groups, Bravais lattices and space groups.
+
+%The origins of formal crystal classification and modern crystallography come from the study of the planar fractures from crystals. The analysis of these fractures or ``cleavage planes" lead René-Just Hauy, a French priest and minerologist to inquire about the microscopic nature of crystals and the symmetries held by specific crystal species. His inquiries would lead him to note two of three laws used in modern crystallography. These laws would act as a direct catalyst to the formation of the geometric framework we use in the present day for the classification of crystals.
+%The unit cell is the fundamental geometric building block of the crystal; it is the the smallest geometric arangment of atoms and molecules that represents the macroscopic symmetries of the crystal. Planes of atoms in the unit cell parallel to the planes of the crystal are represented by three rational numeric values ${hkl}$ representing the intercepts of the plane with the crystallographic unit cell axis.
+
+
+%When looking at a more macroscopic picture of a crystal, unit cells are assembled in a periodic matter in 3d space
 
 
 % MORE IN DEPTH HISTORY
@@ -200,54 +218,29 @@ The priority of this section is to provide a crystallographic background to some
 %\textcolor{red}{Space groups? (decomposed into point group and bravais lattice categorization)}
 
 
-The fundamentals of crystal categorization come with the emergence of a formal study of cyrstals (crystallography) in the 17th and 18th centuries through the macroscropic analysis of planar fractures of crystals (cleavage planes). Nicolaus Steno and René-Just Hauy are credited with the discovery of the three crystallographic laws: law of constant interfacial angles (Steno), the law of rational indices (Haüy), and the law of constancy of symmetry (Haüy) \cite{aroyo}.
-\\
-\\
- The \textbf{law of constant interfacial angles} states that the angles between two adjacent faces of a crystal species is a constant \cite{steno}.
-\\
-\\
-The \textbf{law of rational indices} states that the intersection of the three intercepts of a crystal plane with the crystallographic axes are constant and can be expressed by rational numbers and whole number multiples of them. Alongside this law Haüy would go on to hypothesize that crystals are composed of polyhedrical molecules arranged in a periodic manner in three-dimensional space \cite{hauy}. This early geometric model of crystals, provided fundamental tools of crystallography that we still use today. The modern unit cell is represented by the smallest geometric atomic/molecular arrangement that represents the symmetry of the crystal. When representing a more macroscopic form of the crystal these unit cells are assembled periodically in 3d space along a grid of points known as a lattice\cite{sands}.
-\\
-\\
-The \textbf{law of constancy of symmetry} states that crystals of a particular substance maintain the same symmetry elements \cite{hauy}. This discovery garnered interest in the 19th century to classify crystal structures under the framework of symmetry groups \textcolor{red}{more on groups in appendix}. Point group symmetries were first addressed and sorted crystals into 32 crystallographic point groups. Soon after translational symmetries were addressed by Auguste Bravais with 14 different lattice structures which also implicitly displayed a formal connection between unit cell geometry and lattice structures \cite{aroyo}. The combination of these point group symmetries and translational symmetries addressed by the Bravais, form a new group known as the crystallographic group: a subset of the more generally space group \textcolor{red}{for more details on point groups, Bravais lattices and space groups, see appendix}.
-\\
-\\
-
+%The fundamentals of crystal categorization come with the emergence of a formal study of cyrstals (crystallography) in the 17th and 18th centuries through the macroscropic analysis of planar fractures of crystals (cleavage planes). Nicolaus Steno and René-Just Hauy are credited with the discovery of the three crystallographic laws: law of constant interfacial angles (Steno), the law of rational indices (Haüy), and the law of constancy of symmetry (Haüy) ~\cite{aroyo}.
+%\\
+%\\
+ %The \textbf{law of constant interfacial angles} states that the angles between two adjacent faces of a crystal species is a constant ~\cite{steno}.
+%\\
+%%\\
+%The \textbf{law of rational indices} states that the intersection of the three intercepts of a crystal plane with the crystallographic axes are constant and can be expressed by rational numbers and whole number multiples of them. Alongside this law Haüy would go on to hypothesize that crystals are composed of polyhedrical molecules arranged in a periodic manner in three-dimensional space \cite{hauy}. This early geometric model of crystals, provided fundamental tools of crystallography that we still use today. The modern unit cell is represented by the smallest geometric atomic/molecular arrangement that represents the symmetry of the crystal. When representing a more macroscopic form of the crystal these unit cells are assembled periodically in 3d space along a grid of points known as a lattice ~\cite{sands}.
+%\\
+%\\
+%The \textbf{law of constancy of symmetry} states that crystals of a particular substance maintain the same symmetry elements \cite{hauy}. This discovery garnered interest in the 19th century to classify crystal structures under the framework of symmetry groups \textcolor{red}{more on groups in appendix}. Point group symmetries were first addressed and sorted crystals into 32 crystallographic point groups. Soon after translational symmetries were addressed by Auguste Bravais with 14 different lattice structures which also implicitly displayed a formal connection between unit cell geometry and lattice structures \cite{aroyo}. The combination of these point group symmetries and translational symmetries addressed by the Bravais, form a new group known as the crystallographic group: a subset of the more generally space group \textcolor{red}{for more details on point groups, Bravais lattices and space groups, see appendix}.
 % What are the symmetries that exist in three dimensions?
 % What are the geometric representations given by known crystals?
 % What symmetries are left after performing all prescribed three dimensional symmetry operations on known crystal geometries?
 
 %When observing a crystal on a molecular level, a periodicity in three dimensional space isfeyfe seen containing a specific a specific collection of atoms with a specific orientation. The smallest unique atomic/molecular arrangement describing the crystal's atomic makeup and structure is known as a motif. And the periodicity can be aligned along a three dimensional geometrical construction called a lattice. Crystallographers categorize crystal systems analyzing the three dimensional point-group symmetries of these motifs and space-group symmetries of the crystal's collective periodic arranged motifs. A periodic structure on which the unit cells are arranged or lattice is a conveniant means to organize and quantize the space when describing and characterizing the structure. Crystallographers characterize the detail of a specific unit cell through observed symmetries after a series of prescribed operations. The symmetries that exist for the unit cell as well as the symmetries after lattice translations define a space group.
 
-\subsubsection{$\gaas$ and $\algaas$ classifications}
-The space group of $\gaas$ as well as $\algaas$ are within the $F\bar{4}3m$ space group. Crystals with this particular space group are commonly known as zincblende crystals; a common crystal configuration named after zinc sulfide (ZnS). Cubic crystals by their crystallographic structure display optically isotropic characteristics when no DC and/or slowly varying electric fields are present and are not mechanically perturbed.
-\\
-\textcolor{red}{Insert figure of GaAs structure (Shapr3D construction)}
-\\
-\textcolor{red}{Mention the difference in lattice cell constant between $\gaas$ and $\algaas$}
-\\
-\subsubsection{Perturbed $\gaas$ and $\algaas$}
-\textcolor{red}{AlGaAs is a cubic crystal, optically isotropic BUT birefringence can be induced (displays characteristics of an uniaxial crystal)}
-\\
-\satoshi{Is this true?} \textcolor{blue}{Satoshi, I believe so. There seem to be some geometric differences between $\gaas$ and $\algaas$ in terms of Bravais lattices but Adachi claims it's essentially zincblende. To verify it's important to know how the change in the Bravais lattice might change the unit cell and if it's relevant. Otherwise the birefringence we have seen upon installation was stress induced.}
+\subsection{Induced anisotropy in zincblende crystals}
+Zincblende structures, like the crystalline materials in question can exhibit birefringent properties from two elements: stress in the material, and when present in ``DC" electric fields (with respect to an incident carrier field). These two properties of crystalline materials are known as the photoelastic and electro-optic effects respectively.
 \\
 \\
-There seems to be different accounts of a measured birefringence from HR $\gaas$ / $\algaas$ (\href{https://dcc.ligo.org/DocDB/0181/G2200386/001/G2200386.pdf}{Satoshi}, \href{https://dcc.ligo.org/DocDB/0181/G2200559/001/G2200559-v1%20-%20polarization.pdf}{CTN}, \href{https://nodus.ligo.caltech.edu:8081/CTN/1474}{Aidan})
+\noindent \textbf{The electro-optic effect}
 \\
-\textcolor{red}{Is the measured birefringence static? (Layer bonding method might introduce something?)}
-\\
-\textcolor{red}{Does it change from different mounting methods? (Photoelastic)}
-\\
-\textcolor{red}{Electro-optic could probably be ruled out based on ambient field measurements.}
-\\
-\textcolor{red}{Measurement precision of the coating birefringence? Cavity length, Polarization drifts, etc.}
-\\
-\subsubsection{The pockels effect}
-Some anisotropic crystalline media (ACM) exhibit characteristics where the indicatrix changes as a function of a slowly (\satoshi{is this statement correct?}) \textcolor{red}{I can very much word this better. Right now it probably is not correct.} (\textcolor{red}{up to the speed of sound within the media?}) varying electric field ~\cite{yariv,nye}.
-\\
-\textcolor{red}{Indicatrix with electro-optic coefficients}
-\\
-Relationship between a slowly varying electric field vector of an arbitrary direction $\vec{E} = [E_1, E_2, E_3]$ to the perturbations of the indicatrix:
+For non-centrosymmetric crystalline media (ACM) there exists a non-zero rank 2, $6 \times 3$ tensor ($r_{ij}$) connecting a slowly varying electric field $\vec{E} = [E_1, E_2, E_3]$ directly to the \hyperref[sec:indicatrix]{indicatrix} ~\cite{yariv,nye}:
 \begin{equation}
   \left[ {\begin{array}{c}
    \big( \frac{1}{\Delta n ^2 } \big)_1 \\
@@ -275,64 +268,122 @@ Relationship between a slowly varying electric field vector of an arbitrary dire
  \end{array}} \right]
 \end{equation}
 
-The six indices correspond to the six unique elements in the indicatrix.
-\\
-\\
-\textcolor{red}{Nye (Chapter 8.2)}
-\\
-\\
-\textcolor{red}{Yariv (Chapter 14)}
-\\
-\\
-\textcolor{red}{ How the modulation of the phase of the carrier field is dependent on the orientation of its wave vector with respect to the crystal structure, the modulating electric field direction and strength, (other items to discuss in terms of introducing the effect)}
-\\
-This property of ACM is what allows electro-optic modulators to operate as light phase modulators
+The $i$ index runs over the terms in the generalized (non-diagonalized) indicatrix equations:
 
-\subsubsection{Electro-optic tensor for zincblende structures with $\bar{4}3m$ point group symmetry}
 \begin{equation}
+\bigg(\frac{1}{n_x^2} \bigg) x^2\ + \bigg(\frac{1}{n_y^2} \bigg) y^2 + \bigg(\frac{1}{n_z^2} \bigg) z^2 + 2 \bigg(\frac{1}{n_{xz}} \bigg)xz + 2 \bigg(\frac{1}{n_{yz}} \bigg)yz + 2 \bigg(\frac{1}{n_{xy}} \bigg)xy = 1
+\end{equation}
+
+
+
+\noindent \textbf{$r_{ij}$ for zincblende crystals ($r_{\bar{4}3m, ij}$)}
+\\
+The form of the electro-optic tensor for zincblende crystals (including $\gaas$ and $\algaas$) reduces such that $r_{ij} = r_{41} = r_{52} = r_{62} \neq 0$ with all other terms being zero:
+
+\begin{equation}
+r_{\bar{4}3m,ij} =
  \left[ {\begin{array}{ccc}
-   0 & 0 & 0\\
-   0 & 0 & 0\\
-   0 & 0 & 0\\
-   r_{41} & 0 & 0\\
-   0 & r_{41} & 0\\
-   0 & 0 & r_{41}\\
-  \end{array} } \right]
+  0 & 0 & 0\\
+  0 & 0 & 0\\
+  0 & 0 & 0\\
+  r_{41} & 0 & 0\\
+  0 & r_{52} & 0\\
+  0 & 0 & r_{63}\\
+ \end{array}} \right]
 \end{equation}
 \\
-$r_{41} = r_{52} = r_{63}$
+\noindent \textbf{New principal (electro-optic) dielectric axis for zincblende structures}
+\\
+In general the principle dielectric axes of the new ellipsoid do \textbf{not} coincide with the axes of the ellipsoid of the unperturbed crystal. The form of the index ellipsoid accounting for the electro-optic tensor and some generalized DC electric field $\vec{E}$ is gn by:
+
+\begin{equation}\label{eq:zindicatrix}
+\bigg(\frac{1}{n_o^2} \bigg) x^2\ + \bigg(\frac{1}{n_o^2} \bigg) y^2 + \bigg(\frac{1}{n_o^2} \bigg) z^2  + 2r_{41} E_x yz + 2r_{41} E_y xz + 2r_{41}E_z xy= 1
+\end{equation}
+
+Where $n_x = n_y = n_z$ for zincblende structures
+\\
+
+The two principal axes are given by the eigenvectors of the the matrix given from the equation above:
+
+\begin{equation}
+ \left[ {\begin{array}{ccc}
+   \big( \frac{1}{n_o ^2} \big)& r_{41}E_z & r_{41} E_y\\
+   r_{41}E_z & \big( \frac{1}{n_o ^2} \big) & r_{41} E_x\\
+   r_{41} E_y & r_{41} E_x & \big( \frac{1}{n_o ^2} \big)\\
+  \end{array}} \right]
+\end{equation}
+
+\noindent \textbf{The photoelastic effect?}
+\\
+When a general strains $S_{kl}(r) = \frac{1}{2} \bigg[ \frac{\partial u_k (r)}{\partial x_i} + \frac{\partial u_i (r)}{\partial x_k} \bigg]$ are applied to a material, the photoelastic tensor $p_{idkl}$ relates to the indicatrix by the following relation:
+
+\begin{equation}
+\Delta \bigg( \frac{1}{n^2} \bigg)_{id} = p_{idkl} S_{kl}
+\end{equation}
+
+\textcolor{red}{To supplement the measured birefringence from the mentioned intrinsic strain of the high and low index layers}
+\\
+\noindent \textbf{The generalized indicatrix}
+\\
+\\
+\noindent \textbf{Miller indices for highly reflective coatings $\gaas$/$\algaas$ coatings}
+\\
+\textcolor{red}{Unit cell orientation wrt optical axis. Crystal optic coordinates?}
+\\
+Up until this point we have discussed three different coordinate axes: the crystal axis (formally indicated by Miller indices), the principle dielectric axis (coordinates based in diagonalization of the indicatrix), and an optical axis (when considering a desired (laser) light propogation).
+\\
+\textcolor{red}{How the modulation of the phase of the carrier field is dependent on the orientation of its wave vector with respect to the crystal structure, the modulating electric field direction and strength, (other items to discuss in terms of introducing the effect)}
 \\
 For GaAs @ $10.6\mu$ $r_{41} = 1.6 \times 10^{-12}$ [m/V]
 \\
 Adachi estimate for $\mathrm{Al_{x}Ga_{1-x}As}$?
 
+\textcolor{red}{AlGaAs is a cubic crystal, optically isotropic BUT birefringence can be induced (displays characteristics of an uniaxial crystal)}
+\\
+\satoshi{Is this true?} \textcolor{blue}{Yes. Though the birefringence seen from HR $\gaas$ coatings is said to be due to an ``intrinsic stress" in the high and low index layers. (What is breaking the symmetry to cause this? Heteroepitaxy? Annealing? Defects? Is this birefringence the same for all samples?) I think a dedicated high precision birefringence measurement on multiple samples would be cool.}
+
+\noindent \textbf{New principal dielectric axes for zincblende structures}
+
+\subsubsection{Measured birefringence from HR $\gaas$/$\algaas$ mirrors}
+There seems to be different accounts of a measured birefringence from HR $\gaas$ / $\algaas$ (\href{https://dcc.ligo.org/DocDB/0181/G2200386/001/G2200386.pdf}{Satoshi}, \href{https://nodus.ligo.caltech.edu:8081/CTN/1474}{CTN}, \href{https://dcc.ligo.org/DocDB/0181/G2200559/001/G2200559-v1%20-%20polarization.pdf}{Aidan})
+\\
+\textcolor{red}{Is the measured birefringence static? (Layer bonding method might introduce something?)}
+\\
+\textcolor{red}{Does it change from different mounting methods? (Photoelastic)}
+\\
+\textcolor{red}{Electro-optic could probably be ruled out based on ambient field measurements.}
+\\
+\textcolor{red}{Measurement precision of the coating birefringence? Cavity length, Polarization drifts, etc.}
+\\
+The measured birefringence is estimated to be caused by an intrinsic strain between the epitaxial layers of $\gaas$/$\algaas$
 
 \subsubsection{Specific propogation (Which Miller index?) direction of 1064 nm light through GaAs and AlGaAs}
 
 
-
-\section{Phase modulation of light propogating through a anisotropic crystalline thin film stack}
-
-\subsection{Coating parameters}
-
-\textcolor{red}{Is the sample that we have a standard AlGaAs sample from Thorlabs/CMS?}
+\subsection{Optical anisotropy of a HR $\gaas$ / $\algaas$ stack}
 
 
 \subsubsection{Growth orientation (Miller indices) with respect to substrate surface}
 \begin{itemize}
 \item Mirror surface is the [100] plane.
-\item Within the [100] plane the AlGaAs coating is grown with a flat indicator that draws a line within the [0-11] plane where the surface normal is pointing towards the sample center.
+\item Within the [100] plane the AlGaAs coating is grown with a flat indicator that draws a line within the [0-11] plane where the bisected line points towards the sample center.
 \end{itemize}
 
 
 \subsubsection{Layering}
-The coating to be studied consists 36 $\lambda$/4  thick layers of GaAs interspersed with 35 layers of $\lambda$/4 thick AlGaAs.   GaAs forms the top and bottom layer to protect the AlGaAs from absorbing oxygen from the air.
-High Index:  GaAs, n=3.480, layer thickness is 76.43 nm
-Low Index:  $ \mathrm{Al}_{0.92} \mathrm{Ga}_{0.08} \mathrm{As} $, n=2.977, layer thickness is 89.35 nm
-\textcolor{red}{Info from Steve. Written source?}
+The coating to be studied consists 36 $\lambda$/4  thick layers of $\gaas$ interspersed with 35 layers of $\lambda$/4 thick $\algaas$.   $\gaas$ forms the top and bottom layer to prevent oxygen absorption from the AlGaAs layer. The $\gaas$ layers have an index of $n_{\gaas} = 3.480$ and a thickness of $\delta d_{\gaas} = 76.43 nm$ while the low index $\algaas$ layers are $n_{\algaas} = 2.977$ with thickness $\delta d_{\algaas} = 89.35 nm$.
 
 
-\subsection{Analytical approximation}
+%High Index:  GaAs, n=3.480, layer thickness is 76.43 nm
+%Low Index:  $ \mathrm{Al}_{0.92} \mathrm{Ga}_{0.08} \mathrm{As} $, n=2.977, layer thickness is 89.35 nm
+%\textcolor{red}{Info from Steve. Written source?}
+
+\subsubsection{Birefringence measurements from a $\gaas$/$\algaas$ mirror coating}
+Intrinsic strain from the high and low index thin film (heterogeneous expitaxial layers) which manifests in a birefringence. \cite{Cole:2013} \textcolor{red}{Marty's document about Birefringence in Crystalline mirror coatings V.8}
+
+
+
+\subsubsection{Electro-optic coupling to the reflected phase of a HR mirror coating}
 Fejer and Bonilla take an analytical approximation approach when finding the impact of the electric field to the change in phase of the light through a crystalline anisotropic thin film ($\lambda/4$) stack \cite{bonilla_fejer}.
 
 \begin{equation}
@@ -351,7 +402,7 @@ With $\kappa$ being a scalar parameter.
 
 \textcolor{red}{Figure is in the works}
 
-\subsection{Numerical estimate}
+\subsubsection{Numerically friendly estimate}
 
 In the appendix of \cite{ballmer2015} Ballmer explains a formalism that allows the coating transfer function given a differential change in phase due to a scalar parameter to be expressed as follows:
 
