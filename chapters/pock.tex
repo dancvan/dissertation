@@ -187,11 +187,11 @@ The result is verified when substituting $r \rightarrow \frac{\vec{D}}{\sqrt{\ve
 
 \subsection{$\gaas$ and $\algaas$ crystal classification}
 The space group of $\gaas$ as well as $\algaas$ are within the $F\bar{4}3m$ space group. Crystals of this particular space group are commonly known as zincblende crystals; a common crystal configuration named after zinc sulfide (ZnS). Cubic crystals by their crystallographic structure display optically isotropic characteristics when  stress free and no DC and/or slowly varying electric fields are present.
+\satoshi{Is this true?} \textcolor{blue}{Yes. Though the birefringence seen from HR $\gaas$ coatings is said to be due to an ``intrinsic stress" in the high and low index layers. (What is breaking the symmetry to cause this? Heteroepitaxy? Annealing? Defects? Is this birefringence the same for all samples?) I think a dedicated high precision birefringence measurement on multiple samples would be cool.}
 \\
 \textcolor{red}{Insert figure of GaAs structure (Shapr3D construction)}
 \\
 \textcolor{red}{Mention the difference in lattice cell constant between $\gaas$ and $\algaas$}
-
 %\subsection{Crystal systems}
 %The following section is intended to provide a brief crystallographic background to progress the discussion of light propogation through $\gaas$ and $\algaas$. This includes, crystal classification, the optical crystal classification of $\gaas$ and $\algaas$ under ``normal" operating conditions, and optical crystal classification of $\gaas$  and $\algaas$ with electrical and mechanical perturbations.
 
@@ -268,13 +268,11 @@ For non-centrosymmetric crystalline media (ACM) there exists a non-zero rank 2, 
  \end{array}} \right]
 \end{equation}
 
-The $i$ index runs over the terms in the generalized (non-diagonalized) indicatrix equations:
+\noindent The $i$ index runs over the terms in the (diagonalized?) indicatix equation (\textcolor{red}{what are these coordinates for a crystal with initial anisotropy}):
 
 \begin{equation}
-\bigg(\frac{1}{n_x^2} \bigg) x^2\ + \bigg(\frac{1}{n_y^2} \bigg) y^2 + \bigg(\frac{1}{n_z^2} \bigg) z^2 + 2 \bigg(\frac{1}{n_{xz}} \bigg)xz + 2 \bigg(\frac{1}{n_{yz}} \bigg)yz + 2 \bigg(\frac{1}{n_{xy}} \bigg)xy = 1
+\bigg(\frac{1}{\Delta n_x^2} \bigg) x^2\ + \bigg(\frac{1}{\Delta n_y^2} \bigg) y^2 + \bigg(\frac{1}{\Delta n_z^2} \bigg) z^2 + 2 \bigg(\frac{1}{\Delta n_{xz}} \bigg)xz + 2 \bigg(\frac{1}{\Delta n_{yz}} \bigg)yz + 2 \bigg(\frac{1}{\Delta n_{xy}} \bigg)xy = 1
 \end{equation}
-
-
 
 \noindent \textbf{$r_{ij}$ for zincblende crystals ($r_{\bar{4}3m, ij}$)}
 \\
@@ -294,13 +292,13 @@ r_{\bar{4}3m,ij} =
 \\
 \noindent \textbf{New principal (electro-optic) dielectric axis for zincblende structures}
 \\
-In general the principle dielectric axes of the new ellipsoid do \textbf{not} coincide with the axes of the ellipsoid of the unperturbed crystal. The form of the index ellipsoid accounting for the electro-optic tensor and some generalized DC electric field $\vec{E}$ is gn by:
+In general the principle dielectric axes of the new ellipsoid do \textbf{not} coincide with the axes of the ellipsoid of the unperturbed crystal. The form of the index ellipsoid for a zincblende crystalline material accounting for the electro-optic tensor and some generalized DC electric field $\vec{E}$ is given by:
 
 \begin{equation}\label{eq:zindicatrix}
 \bigg(\frac{1}{n_o^2} \bigg) x^2\ + \bigg(\frac{1}{n_o^2} \bigg) y^2 + \bigg(\frac{1}{n_o^2} \bigg) z^2  + 2r_{41} E_x yz + 2r_{41} E_y xz + 2r_{41}E_z xy= 1
 \end{equation}
 
-Where $n_x = n_y = n_z$ for zincblende structures
+Where we have set $n_x = n_y = n_z = n_o$ for zincblende structures
 \\
 
 The two principal axes are given by the eigenvectors of the the matrix given from the equation above:
@@ -326,38 +324,7 @@ When a general strains $S_{kl}(r) = \frac{1}{2} \bigg[ \frac{\partial u_k (r)}{\
 \noindent \textbf{The generalized indicatrix}
 \\
 \\
-\noindent \textbf{Miller indices for highly reflective coatings $\gaas$/$\algaas$ coatings}
-\\
-\textcolor{red}{Unit cell orientation wrt optical axis. Crystal optic coordinates?}
-\\
-Up until this point we have discussed three different coordinate axes: the crystal axis (formally indicated by Miller indices), the principle dielectric axis (coordinates based in diagonalization of the indicatrix), and an optical axis (when considering a desired (laser) light propogation).
-\\
-\textcolor{red}{How the modulation of the phase of the carrier field is dependent on the orientation of its wave vector with respect to the crystal structure, the modulating electric field direction and strength, (other items to discuss in terms of introducing the effect)}
-\\
-For GaAs @ $10.6\mu$ $r_{41} = 1.6 \times 10^{-12}$ [m/V]
-\\
-Adachi estimate for $\mathrm{Al_{x}Ga_{1-x}As}$?
-
-\textcolor{red}{AlGaAs is a cubic crystal, optically isotropic BUT birefringence can be induced (displays characteristics of an uniaxial crystal)}
-\\
-\satoshi{Is this true?} \textcolor{blue}{Yes. Though the birefringence seen from HR $\gaas$ coatings is said to be due to an ``intrinsic stress" in the high and low index layers. (What is breaking the symmetry to cause this? Heteroepitaxy? Annealing? Defects? Is this birefringence the same for all samples?) I think a dedicated high precision birefringence measurement on multiple samples would be cool.}
-
-\noindent \textbf{New principal dielectric axes for zincblende structures}
-
-\subsubsection{Measured birefringence from HR $\gaas$/$\algaas$ mirrors}
-There seems to be different accounts of a measured birefringence from HR $\gaas$ / $\algaas$ (\href{https://dcc.ligo.org/DocDB/0181/G2200386/001/G2200386.pdf}{Satoshi}, \href{https://nodus.ligo.caltech.edu:8081/CTN/1474}{CTN}, \href{https://dcc.ligo.org/DocDB/0181/G2200559/001/G2200559-v1%20-%20polarization.pdf}{Aidan})
-\\
-\textcolor{red}{Is the measured birefringence static? (Layer bonding method might introduce something?)}
-\\
-\textcolor{red}{Does it change from different mounting methods? (Photoelastic)}
-\\
-\textcolor{red}{Electro-optic could probably be ruled out based on ambient field measurements.}
-\\
-\textcolor{red}{Measurement precision of the coating birefringence? Cavity length, Polarization drifts, etc.}
-\\
-The measured birefringence is estimated to be caused by an intrinsic strain between the epitaxial layers of $\gaas$/$\algaas$
-
-\subsubsection{Specific propogation (Which Miller index?) direction of 1064 nm light through GaAs and AlGaAs}
+\noindent \textbf{New principal dielectric axes for zincblende structures (zinblende photoelastic tensor, zincblende electro-optic tensor)}
 
 
 \subsection{Optical anisotropy of a HR $\gaas$ / $\algaas$ stack}
@@ -369,21 +336,63 @@ The measured birefringence is estimated to be caused by an intrinsic strain betw
 \item Within the [100] plane the AlGaAs coating is grown with a flat indicator that draws a line within the [0-11] plane where the bisected line points towards the sample center.
 \end{itemize}
 
+\noindent \textbf{Miller indices for highly reflective coatings $\gaas$/$\algaas$ coatings}
+\\
+\textcolor{red}{Unit cell orientation wrt optical axis. Crystal optic coordinates?}
+\\
+\textcolor{red}{Do the above coordinates hold true for beam optic coordinates?}
+\\
+Up until this point we have discussed three different coordinate axes: the crystal axis (formally indicated by Miller indices), the principle dielectric axis (coordinates based in diagonalization of the indicatrix), and an optical axis (when considering a desired (laser) light propogation).
+\\
+\textcolor{red}{How the modulation of the phase of the carrier field is dependent on the orientation of its wave vector with respect to the crystal structure, the modulating electric field direction and strength, (other items to discuss in terms of introducing the effect)}
+\\
+For GaAs @ $10.6\mu$ $r_{41} = 1.6 \times 10^{-12}$ [m/V]
+\\
+Adachi estimate for $\mathrm{Al_{x}Ga_{1-x}As}$?
 
-\subsubsection{Layering}
-The coating to be studied consists 36 $\lambda$/4  thick layers of $\gaas$ interspersed with 35 layers of $\lambda$/4 thick $\algaas$.   $\gaas$ forms the top and bottom layer to prevent oxygen absorption from the AlGaAs layer. The $\gaas$ layers have an index of $n_{\gaas} = 3.480$ and a thickness of $\delta d_{\gaas} = 76.43 nm$ while the low index $\algaas$ layers are $n_{\algaas} = 2.977$ with thickness $\delta d_{\algaas} = 89.35 nm$.
+\subsubsection{Measured birefringence from HR $\gaas$/$\algaas$ mirrors}
+There seems to be different accounts of a measured birefringence from HR $\gaas$ / $\algaas$ (\href{https://dcc.ligo.org/DocDB/0181/G2200386/001/G2200386.pdf}{Satoshi}, \href{https://nodus.ligo.caltech.edu:8081/CTN/1474}{CTN}, \href{https://dcc.ligo.org/DocDB/0181/G2200559/001/G2200559-v1%20-%20polarization.pdf}{Aidan})
+\\
+\textcolor{red}{Is the measured birefringence static? (Layer bonding method might introduce something?)}
+\\
+\textcolor{red}{Does it change from different mounting methods? (Photoelastic) (order of magnitude estimate)}
+\\
+\textcolor{red}{Electro-optic could probably be ruled out based on ambient field measurements.}
+\\
+\textcolor{red}{Measurement precision of the coating birefringence? Cavity length, Polarization drifts, etc.}
+\\
+The measured birefringence is estimated to be caused by an intrinsic strain between the epitaxial layers of $\gaas$/$\algaas$. \cite{Cole:2013}
+\\
+\textcolor{red}{Marty's document about Birefringence in Crystalline mirror coatings V.8}
 
+
+\subsubsection{Electro-optic coupling to the reflected phase of a HR mirror coating}
+\textcolor{red}{Relevant eigenpolarizations, non-optical field $E_x = E_y = 0$?}
+\\
+\\
+\textcolor{red}{Figure: Transformed indicatrix (Before and after $E_z$)}
+\\
+\\
+\textcolor{red}{Figure: Ellipse cross section. New eigenpolarizations and corresponding indices and their influence on incident field (Marty's result)}
+
+\subsubsection{Relevant coating parameters}
+\textcolor{red}{What is the variability in this coating since \cite{Cole:2013}?}
+\\
+\\
+\textcolor{red}{Cole 2013 coating}
+\begin{itemize}
+\item 81 layers ($6.83 \mu m$ thick)
+\item $\gaas$ ($n_\gaas$ = 3.480)
+\item $\algaas$ ($n_\algaas$ = 2.977)
+\item Base coating layer of 270-nm-thick $\algaas$
+\end{itemize}
+\textcolor{red}{Our coating}
+\\
+The coating to be studied consists 36 $\lambda$/4  thick layers of $\gaas$ interspersed with 35 layers of $\lambda$/4 thick $\algaas$.   $\gaas$ forms the top and bottom layer to prevent oxygen absorption from the AlGaAs layer. The $\gaas$ layers have an index of $n_{\gaas} = 3.480$ and a thickness of $\Delta d_{\gaas} = 76.43$ nm while the low index $\algaas$ layers are $n_{\algaas} = 2.977$ with thickness $\Delta d_{\algaas} = 89.35$ nm.
 
 %High Index:  GaAs, n=3.480, layer thickness is 76.43 nm
 %Low Index:  $ \mathrm{Al}_{0.92} \mathrm{Ga}_{0.08} \mathrm{As} $, n=2.977, layer thickness is 89.35 nm
 %\textcolor{red}{Info from Steve. Written source?}
-
-\subsubsection{Birefringence measurements from a $\gaas$/$\algaas$ mirror coating}
-Intrinsic strain from the high and low index thin film (heterogeneous expitaxial layers) which manifests in a birefringence. \cite{Cole:2013} \textcolor{red}{Marty's document about Birefringence in Crystalline mirror coatings V.8}
-
-
-
-\subsubsection{Electro-optic coupling to the reflected phase of a HR mirror coating}
 Fejer and Bonilla take an analytical approximation approach when finding the impact of the electric field to the change in phase of the light through a crystalline anisotropic thin film ($\lambda/4$) stack \cite{bonilla_fejer}.
 
 \begin{equation}
@@ -413,6 +422,7 @@ M = Q_N D_N ...Q_kD_k...Q_1D_1Q_0
 For a single pass through the coating where the coating thickness and indices are left general.
 
 \satoshi{Both approaches are essentially based on the same calculation method i.e., transfer matrices.}
+
 
 \section{Projected DARM coupling}
 To estimate how much DARM coupling can occur, we use use a measured field spectra acquired from installed electric field meters located within LIGO Hanford Observatory EX and EY vacuum chambers. Taking the upper and the lower EFM measurements in $.3\; [\mathrm{V}/\mathrm{m}/\sqrt{\mathrm{Hz}]}$ @ 60 Hz and $4\times10^{-3}\; [\mathrm{V}/\mathrm{m}/\sqrt{\mathrm{Hz}]}$ @ 4kHz ~\cite{efm_log}.
