@@ -3,7 +3,7 @@
  As mentioned in Section (1?) one of the many LIGO fundamental noise sources is coating thermal noise from the $\mathrm{SiO_2}/\mathrm{TiO_2:Ta_2O_5}$ aLIGO coatings. As aLIGO approaches its designed sensitivity various coating solutions are currently proposed to mitigate thermal noise coupling into the detector output.
 With the potential to reduce coating Brownian noise by a factor of 10 \cite{Cole:2013}, $\algaas$ shows much promise with next generation detectors with a corresponding strain reduction by a factor of (5?) in comparison to the aLIGO coatings, though with different material properties of these crystalline coatings introduce new coating noise couplings.
 
-A notable source of noise is the linear electro-optic property of crystalline materials (dn/dE), also known as the Pockels effect \cite{abernathy_poster}. Characterizing currently proposed $\gaas$ / $\algaas$ coated ``witness" samples through a calibrated measurement of the aforementioned property is worthwhile for the use of $\algaas$ coatings in gravitational wave interferometers. The following section is dedicated to the discussion of brownian thermal noise and the fundamental limit it imposes on gravitational wave detection, the appeal of $\gaas$/$\algaas$ coated mirrors for improved thermal noise, light propogation through anistropic materials, induced optical anisotropy of zincblende materials, estimates of the differential phase of light reflected from a GaAs/$\algaas$ coating, and the measurements from a PDH locked single cavity experiment with a focus on a calibrated electro-optic response from a $\gaas$ / $\algaas$ sample from 1kHz to 1MHz.
+A notable source of noise is the linear electro-optic property of crystalline materials (dn/dE), also known as the Pockels effect \cite{abernathy_poster}. Characterizing currently proposed $\gaas$ / $\algaas$ coated ``witness" samples through a calibrated measurement of the aforementioned property is worthwhile for the use of $\algaas$ coatings in gravitational wave interferometers. The following section is dedicated to the discussion of brownian thermal noise and the fundamental limit it imposes on gravitational wave detection, the appeal of $\gaas$/$\algaas$ coated mirrors for improved thermal noise, light propogation through anistropic materials, induced optical anisotropy of zincblende materials, estimates of the differential phase of light reflected from a GaAs/$\algaas$ coating caused by electric field noise, and the measurements from a PDH locked single cavity experiment with a focus on a calibrated electro-optic response from a $\gaas$ / $\algaas$ sample from 1kHz to 1MHz.
 
 \subsection{Brownian Thermal Noise}
  In 1827 the Scottish botanist Robert Brown noticed a constant motion of pollen particulates on the surface of water; witnessing randomized collisions of the water molecules holding a kinetic energy proportional to the temperature ($k_BT$) \cite{Brown:1828}. It is because of his documented observations we name the phenomena Brownian motion. And although the observations were on motion of particulates in liquids, molecules and atoms within gases and solids also exhibit Brownian motion. For high precision optical experiments operating at room temperature (and higher due to high power resonant beams), understanding how much differential phase noise is imparted on the interferometer light passing through and reflecting from core optics is crucial. This requires knowledge of the mean squared displacement from each degree of freedom of the system which can be realized through the Fluctuation Dissapation theorem. Derived by H.B. Callen and T.A. Welton, the theorem states that for a randomly fluctuating linear force \cite{Callen:1951}:
@@ -94,8 +94,7 @@ Currently the LIGO interferometers deposit $\lambda$/4 stacks of silica and tita
 \textcolor{red}{Insert computed curves of the most precise and recent (effective) loss angle measurements (Nick Demos measurements?). More instructive to plot strain spectral density or displacement power spectra}
 
 \noindent Currently thermal noise from the $\mathrm{SiO_2}/\mathrm{TiO_2:Ta_2O_5}$ optical coatings is the largest contributor of Brownian noise in LIGO compared to estimated substrate and suspension thermal noise \cite{Harry:06}. As of the end of O3, Brownian thermal noise is estimated to be ? orders of magnitude below the current sensitivity and it will prove to be the limiting source of noise as that sensitivity is increased with various other upgrades mitigating fundamental and technical noise. (\textcolor{red}{already mentioned in intro prior to this thermal noise section. Need to re-iterate in more detail?})
-\\
-\\
+
 \subsection{Anisotropic media}
 Unlike with isotropic media, we cannot assume that the index of refraction of anisotropic media is the same for all chosen wave vectors. This is a direct consequence of the birefringence of anisotropic media; characterized by the dielectric, permittivity, and polarization tensors.
 
@@ -180,7 +179,9 @@ The result is verified when substituting $r \rightarrow \frac{\vec{D}}{\sqrt{\ve
 \\
 
 \begin{figure}[H]
-\includegraphics[width=\textwidth]{figs/ALGAAS/indicatrix_nye.pdf}
+\begin{center}
+\includegraphics[width=75mm]{figs/ALGAAS/indicatrix_nye.pdf}
+\end{center}
 \caption{General ellipsoid indicatrix with a general propogation direction (Using Nye's figure as placeholder as of now)}
 \label{fig:general_indicatrix}
 \end{figure}
@@ -188,10 +189,14 @@ The result is verified when substituting $r \rightarrow \frac{\vec{D}}{\sqrt{\ve
 \subsection{$\gaas$ and $\algaas$ crystal classification}
 The space group of $\gaas$ as well as $\algaas$ are within the $F\bar{4}3m$ space group. Crystals of this particular space group are commonly known as zincblende crystals; a common crystal configuration named after zinc sulfide (ZnS). Cubic crystals by their crystallographic structure display optically isotropic characteristics when  stress free and no DC and/or slowly varying electric fields are present.
 \satoshi{Is this true?} \textcolor{blue}{Yes. Though the birefringence seen from HR $\gaas$ coatings is said to be due to an ``intrinsic stress" in the high and low index layers. (What is breaking the symmetry to cause this? Heteroepitaxy? Annealing? Defects? Is this birefringence the same for all samples?) I think a dedicated high precision birefringence measurement on multiple samples would be cool.}
-\\
-\textcolor{red}{Insert figure of GaAs structure (Shapr3D construction)}
-\\
-\textcolor{red}{Mention the difference in lattice cell constant between $\gaas$ and $\algaas$}
+
+\begin{figure}[H]
+\includegraphics[width=\textwidth]{figs/ALGAAS/gaas_unit_cell_mi.PNG}
+\caption{The unit cell of gallium arsenide (GaAs) with associated miller indices as coordinate axes}
+\label{fig:gaas_uc}
+\end{figure}
+
+\textcolor{red}{Mention the difference in lattice cell constant between $\gaas$ and $\algaas$?}
 %\subsection{Crystal systems}
 %The following section is intended to provide a brief crystallographic background to progress the discussion of light propogation through $\gaas$ and $\algaas$. This includes, crystal classification, the optical crystal classification of $\gaas$ and $\algaas$ under ``normal" operating conditions, and optical crystal classification of $\gaas$  and $\algaas$ with electrical and mechanical perturbations.
 
@@ -236,11 +241,10 @@ The space group of $\gaas$ as well as $\algaas$ are within the $F\bar{4}3m$ spac
 
 \subsection{Induced anisotropy in zincblende crystals}
 Zincblende structures, like the crystalline materials in question can exhibit birefringent properties from two elements: stress in the material, and when present in ``DC" electric fields (with respect to an incident carrier field). These two properties of crystalline materials are known as the photoelastic and electro-optic effects respectively.
-\\
-\\
-\noindent \textbf{The electro-optic effect}
-\\
-For non-centrosymmetric crystalline media (ACM) there exists a non-zero rank 2, $6 \times 3$ tensor ($r_{ij}$) connecting a slowly varying electric field $\vec{E} = [E_1, E_2, E_3]$ directly to the \hyperref[sec:indicatrix]{indicatrix} ~\cite{yariv,nye}:
+
+\subsubsection{The (linear) electro-optic effect}
+
+For non-centrosymmetric crystalline media (ACM) there exists a non-zero rank 2, $6 \times 3$ tensor ($r_{ij}$) connecting a slowly varying electric field $\vec{E}(f) = [E_x(f), E_y(f), E_z(f)]$ directly to the \hyperref[sec:indicatrix]{indicatrix} ~\cite{yariv,nye}:
 \begin{equation}
   \left[ {\begin{array}{c}
    \big( \frac{1}{\Delta n ^2 } \big)_1 \\
@@ -262,20 +266,21 @@ For non-centrosymmetric crystalline media (ACM) there exists a non-zero rank 2, 
   \end{array}} \right]
  %
  \left[{\begin{array}{c}
-   E_1\\
-   E_2\\
-   E_3\\
+   E_x (f)\\
+   E_y (f)\\
+   E_z (f)\\
  \end{array}} \right]
 \end{equation}
 
-\noindent The $i$ index runs over the terms in the (diagonalized?) indicatix equation (\textcolor{red}{what are these coordinates for a crystal with initial anisotropy}):
-
+\noindent The $i$ index runs over the terms in the indicatix equation:
 \begin{equation}
 \bigg(\frac{1}{\Delta n_x^2} \bigg) x^2\ + \bigg(\frac{1}{\Delta n_y^2} \bigg) y^2 + \bigg(\frac{1}{\Delta n_z^2} \bigg) z^2 + 2 \bigg(\frac{1}{\Delta n_{xz}} \bigg)xz + 2 \bigg(\frac{1}{\Delta n_{yz}} \bigg)yz + 2 \bigg(\frac{1}{\Delta n_{xy}} \bigg)xy = 1
 \end{equation}
 
-\noindent \textbf{$r_{ij}$ for zincblende crystals ($r_{\bar{4}3m, ij}$)}
-\\
+\noindent \textcolor{red}{Detail on some prior knowledge of $f \leq f_\mathrm{max}$?}
+
+\subsubsection{$r_{ij}$ for zincblende crystals ($r_{\bar{4}3m, ij}$)}
+
 The form of the electro-optic tensor for zincblende crystals (including $\gaas$ and $\algaas$) reduces such that $r_{ij} = r_{41} = r_{52} = r_{62} \neq 0$ with all other terms being zero:
 
 \begin{equation}
@@ -290,18 +295,17 @@ r_{\bar{4}3m,ij} =
  \end{array}} \right]
 \end{equation}
 \\
-\noindent \textbf{New principal (electro-optic) dielectric axis for zincblende structures}
-\\
+\subsubsection{New principal (electro-optic) dielectric axis for zincblende structures}
+
 In general the principle dielectric axes of the new ellipsoid do \textbf{not} coincide with the axes of the ellipsoid of the unperturbed crystal. The form of the index ellipsoid for a zincblende crystalline material accounting for the electro-optic tensor and some generalized DC electric field $\vec{E}$ is given by:
 
 \begin{equation}\label{eq:zindicatrix}
 \bigg(\frac{1}{n_o^2} \bigg) x^2\ + \bigg(\frac{1}{n_o^2} \bigg) y^2 + \bigg(\frac{1}{n_o^2} \bigg) z^2  + 2r_{41} E_x yz + 2r_{41} E_y xz + 2r_{41}E_z xy= 1
 \end{equation}
 
-Where we have set $n_x = n_y = n_z = n_o$ for zincblende structures
-\\
+\noindent Where we have set $n_x = n_y = n_z = n_o$ for zincblende structures.
 
-The two principal axes are given by the eigenvectors of the the matrix given from the equation above:
+\noindent The two principal axes are given by the eigenvectors of the the matrix given from the equation above:
 
 \begin{equation}
  \left[ {\begin{array}{ccc}
@@ -310,38 +314,40 @@ The two principal axes are given by the eigenvectors of the the matrix given fro
    r_{41} E_y & r_{41} E_x & \big( \frac{1}{n_o ^2} \big)\\
   \end{array}} \right]
 \end{equation}
-
-\noindent \textbf{The photoelastic effect?}
 \\
+\\
+\subsubsection{The photoelastic effect?}
+
 When a general strains $S_{kl}(r) = \frac{1}{2} \bigg[ \frac{\partial u_k (r)}{\partial x_i} + \frac{\partial u_i (r)}{\partial x_k} \bigg]$ are applied to a material, the photoelastic tensor $p_{idkl}$ relates to the indicatrix by the following relation:
 
 \begin{equation}
-\Delta \bigg( \frac{1}{n^2} \bigg)_{id} = p_{idkl} S_{kl}
+ \bigg( \frac{1}{\Delta n^2} \bigg)_{id} = p_{idkl} S_{kl}
 \end{equation}
 
-\textcolor{red}{To supplement the measured birefringence from the mentioned intrinsic strain of the high and low index layers}
-\\
-\noindent \textbf{The generalized indicatrix}
-\\
-\\
-\noindent \textbf{New principal dielectric axes for zincblende structures (zinblende photoelastic tensor, zincblende electro-optic tensor)}
+\textcolor{red}{Supplementary comment to the measured birefringence from the mentioned intrinsic strain of the high and low index layers}
 
+\subsubsection{The generalized indicatrix}
+
+\subsubsection{New principal dielectric axes for zincblende structures (zinblende photoelastic tensor, zincblende electro-optic tensor)}
 
 \subsection{Optical anisotropy of a HR $\gaas$ / $\algaas$ stack}
 
+\textcolor{red}{Brief intro discussion?}
+%\subsubsection{Growth orientation (Miller indices) with respect to substrate surface}
+%\begin{itemize}
+%\item Mirror surface is the [100] plane.
+%\item Within the [100] plane the AlGaAs coating is grown with a flat indicator that draws a line within the [0-11] plane where the bisected line points towards the sample center.
+%\end{itemize}
 
-\subsubsection{Growth orientation (Miller indices) with respect to substrate surface}
-\begin{itemize}
-\item Mirror surface is the [100] plane.
-\item Within the [100] plane the AlGaAs coating is grown with a flat indicator that draws a line within the [0-11] plane where the bisected line points towards the sample center.
-\end{itemize}
+\subsubsection{Miller indices for highly reflective coatings $\gaas$/$\algaas$ coatings}
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=\textwidth]{figs/ALGAAS/algaas_sample_diagram.png}
+\end{center}
+\caption{Figure of the beam propogation axis with respect to the AlGaAs/GaAs crystal axes (not final version). Within the [100] plane the AlGaAs coating is grown with a flat indicator that draws a line within the [0-11] plane where the bisected line points towards the sample center. The axis formed by the [100] coincides with the optical axis (z-axis). The polarizations of incident and reflected beam oscillate along vectors within the plane formed by the normal of that axis.}
+\label{fig:algaas_coords}
+\end{figure}
 
-\noindent \textbf{Miller indices for highly reflective coatings $\gaas$/$\algaas$ coatings}
-\\
-\textcolor{red}{Unit cell orientation wrt optical axis. Crystal optic coordinates?}
-\\
-\textcolor{red}{Do the above coordinates hold true for beam optic coordinates?}
-\\
 Up until this point we have discussed three different coordinate axes: the crystal axis (formally indicated by Miller indices), the principle dielectric axis (coordinates based in diagonalization of the indicatrix), and an optical axis (when considering a desired (laser) light propogation).
 \\
 \textcolor{red}{How the modulation of the phase of the carrier field is dependent on the orientation of its wave vector with respect to the crystal structure, the modulating electric field direction and strength, (other items to discuss in terms of introducing the effect)}
@@ -357,7 +363,7 @@ There seems to be different accounts of a measured birefringence from HR $\gaas$
 \\
 \textcolor{red}{Does it change from different mounting methods? (Photoelastic) (order of magnitude estimate)}
 \\
-\textcolor{red}{Electro-optic could probably be ruled out based on ambient field measurements.}
+\textcolor{red}{Electro-optic ruled out based on field measurements and relative coupling factor.}
 \\
 \textcolor{red}{Measurement precision of the coating birefringence? Cavity length, Polarization drifts, etc.}
 \\
@@ -367,13 +373,16 @@ The measured birefringence is estimated to be caused by an intrinsic strain betw
 
 
 \subsubsection{Electro-optic coupling to the reflected phase of a HR mirror coating}
-\textcolor{red}{Relevant eigenpolarizations, non-optical field $E_x = E_y = 0$?}
+\textcolor{red}{Relevant eigenpolarizations, non-optical field $E_y = E_z = 0$?}
 \\
 \\
-\textcolor{red}{Figure: Transformed indicatrix (Before and after $E_z$)}
+\textcolor{red}{Figure: Transformed indicatrix (Before and after $E_x$)}
 \\
 \\
 \textcolor{red}{Figure: Ellipse cross section. New eigenpolarizations and corresponding indices and their influence on incident field (Marty's result)}
+\\
+Assuming we are operating in a coordinate system suggested in \hyperref[fig:algaas_coords]{Figure ?}. Given this configuration, which plane is impacted by some $E_\mathrm{noise}$? Revisiting the \hyperref[eq:zindicatrix]{indicatrix}. We can see that for even non-zero z and y components that the only coupling to the input beam polarization is the index along the cross coupled zy axis through $E_z$ is that of the $E_x$ term. This gives us the ability to easily diagonalize the indicatrix tensor by setting the non-relevant field terms to zero.
+
 
 \subsubsection{Relevant coating parameters}
 \textcolor{red}{What is the variability in this coating since \cite{Cole:2013}?}
