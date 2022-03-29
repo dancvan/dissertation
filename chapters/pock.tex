@@ -100,7 +100,6 @@ Unlike with isotropic media, we cannot assume that the index of refraction of an
 
 \subsubsection{The Dielectric tensor}
 Further elaborating on the nature of a generalized dielectric tensor for any wavevector is required to proceed:
-
 \begin{equation}\label{eq:3.11}
 D_i = \varepsilon_{ij}E_j
 \end{equation}
@@ -113,34 +112,31 @@ Where $\vec{S} = \vec{E} \times \vec{H}$ is the poynting vector and $U = \frac{1
 \begin{equation}
 \varepsilon_{ij} = \varepsilon_{ji}
 \end{equation}
-Stating that the dielectric tensor holds only six unique terms. The energy density is represented as an ellipsoid but with a coordinate transformation we can diagonalize and realize principal axes of the dielectric allowing a simpler form of the displacement, and in turn the energy density.
+Demonstrating that the dielectric tensor is symmetric - exhibiting only six unique terms. Diagonalizing the tensor, the presence of two unique eigenvectors and eigenvalues indicates the existance of two eigenpolarizations with paired eigenindices.
+%The most general form of the energy density can be geometrically represented as ellipsoid but a coordinate transformation we can diagonalize and realize the principal axes of the dielectric allowing a simpler form of the displacement, and in turn the energy density.
 
 \subsubsection{Monochromatic plane wave propogation}
-Revisiting Maxwell's equations for simple monochromatic plane wave solution gives provides further direction on how crystalline media may effect impinging light. Further elaborating, the following assumptions are made:
-
+Revisiting Maxwell's equations for simple monochromatic plane wave solution gives provides further direction on how crystalline media may effect incident light. Further elaborating, the following assumptions are made:
 \begin{equation}
 \vec{E} = E_o e^{(i \omega (\frac{n}{c} \vec{r}\cdot \vec{s}-t))}
 \end{equation}
 Where $n$ is the index of refraction, $c$ is the speed of light, $\vec{r}$ is the position vector and $\vec{s}$ is the unit wave normal.
-
 \begin{equation}
 \nabla \times \vec{H}= \frac{\partial \vec{D}}{\partial t}
 \end{equation}
 Where $\vec{H}$ is the magnetic field assuming the permeability $\mu$, and the generalized displacement vector $\vec{D}$ and electric field vector $\vec{E}$.
-
 \begin{equation}
 \nabla \times \vec{E} = -\mu \vec{H}
 \end{equation}
 Reducing to only the displacement and electric fields:
-
 \begin{equation}\label{eq:3.17}
 \vec{D} = \frac{n^2}{\mu}[\vec{E}-\vec{s}(\vec{s}\cdot \vec{E})]
 \end{equation}
 Maxwell's equations show that the electric field is not necessarily parallel to the displacement field and in most materials with non-zero polarizability tensors and dielectric tensors, it is not. But as specified above, the displacement vector, Electric field and unit wave normal are co-planar while remaining orthogonal to $\vec{H}$. Assuming we are operating within a coordinate system aligned with the principal dielectric axes, we substitute \ref{eq:3.11} into \ref{eq:3.17}:
-
 \begin{equation}\label{eq:3.18}
 E_i = \frac{n^2 s_i (\vec{E}\cdot\vec{s})}{n^2 - \mu \varepsilon_i}
 \end{equation}
+
 From here it can be shown that for a general plane wave there exist two unique refractive index solutions within the constructed dielectric. Though using this result to show this requires revisiting geometrical conditions that are best visualized using a method introduced in the next section. \textcolor{red}{For a more rigorous proof, see Appendix H in} \cite{nye}
 
 \subsubsection{Indicatrix}\label{sec:indicatrix}
@@ -150,7 +146,6 @@ Acquiring solutions of the two indices along with the corresponding directions o
 \frac{D_x}{\varepsilon_x} + \frac{D_y}{\varepsilon_y} + \frac{D_z}{\varepsilon_z} = 2 U_e \varepsilon_o
 \end{equation}
 With redefined coordinates $(\vec{D}/\sqrt{2 U_e \varepsilon_o}) \rightarrow \vec{r}$ and setting $\varepsilon_i = n^2_i$:
-
 \begin{equation}
 \frac{x^2}{n_x^2} + \frac{y^2}{n_y^2} + \frac{z^2}{n_z^2} = 1
 \end{equation}
@@ -160,18 +155,15 @@ This equation for the ellipsoid is known as the indicatrix. Given the co-planar 
 \vec{r} \cdot \vec{s} = x s_x + y s_y + z s_z = 0
 \end{equation}
 Equations \ref{eq:lagr1} and \ref{eq:lagr2} both contribute constraints to the method of finding extrema using Lagrange multipliers for the function:
-
 \begin{equation}
 r^2 = x^2 + y^2 + z^2
 \end{equation}
 The Lagrangian ($\mathcal{L}$) with the introduced multiplers ($\lambda_1$, $\lambda_2$) then becomes:
-
 \begin{equation}
 \mathcal{L}(\textcolor{red}{\vec{r},\vec{s}},\lambda_1, \lambda_2) =
 x^2 + y^2 + z^2 + \lambda_1 (xs_x + ys_y + zs_z) + \lambda_2 \bigg( \frac{x^2}{\varepsilon_x} + \frac{y^2}{\varepsilon_y} + \frac{z^2}{\varepsilon_z} - 1 \bigg)
 \end{equation}
 With the generated system of equations from the Lagrange multipler method ($\partial F_i/ \partial x_i = 0$, and $\partial F_j/ \partial \lambda_j$) where index $i =x,y,z$ and $j = 1,2$ we obtain a system of 3 equations:
-
 \begin{equation}
 i \bigg(1-\frac{r^2}{\varepsilon_{i}} \bigg) + s_{i} \bigg(\frac{x s_x}{\varepsilon_x} + \frac{y s_y}{\varepsilon_y} + \frac{z s_z}{\varepsilon_z} \bigg) = 0
 \end{equation}
@@ -240,11 +232,11 @@ The space group of $\gaas$ as well as $\algaas$ are within the $F\bar{4}3m$ spac
 %When observing a crystal on a molecular level, a periodicity in three dimensional space isfeyfe seen containing a specific a specific collection of atoms with a specific orientation. The smallest unique atomic/molecular arrangement describing the crystal's atomic makeup and structure is known as a motif. And the periodicity can be aligned along a three dimensional geometrical construction called a lattice. Crystallographers categorize crystal systems analyzing the three dimensional point-group symmetries of these motifs and space-group symmetries of the crystal's collective periodic arranged motifs. A periodic structure on which the unit cells are arranged or lattice is a conveniant means to organize and quantize the space when describing and characterizing the structure. Crystallographers characterize the detail of a specific unit cell through observed symmetries after a series of prescribed operations. The symmetries that exist for the unit cell as well as the symmetries after lattice translations define a space group.
 
 \subsection{Induced anisotropy in zincblende crystals}
-Zincblende structures, like the crystalline materials in question can exhibit birefringent properties from two elements: stress in the material, and when present in ``DC" electric fields (with respect to an incident carrier field). These two properties of crystalline materials are known as the photoelastic and electro-optic effects respectively.
+Zincblende structures, like the crystalline materials in question can exhibit birefringent properties when under the influence of two factors: stress in the material, and present within DC electric fields. These two properties of crystalline materials are known as the photoelastic and electro-optic effects respectively.
 
 \subsubsection{The (linear) electro-optic effect}
 
-For non-centrosymmetric crystalline media (ACM) there exists a non-zero rank 2, $6 \times 3$ tensor ($r_{ij}$) connecting a slowly varying electric field $\vec{E}(f) = [E_x(f), E_y(f), E_z(f)]$ directly to the \hyperref[sec:indicatrix]{indicatrix} ~\cite{yariv,nye}:
+For non-centrosymmetric crystalline media there exists a non-zero rank 2, $6 \times 3$ tensor ($r_{ij}$) connecting a slowly varying electric field $\vec{E}(f) = [E_x(f), E_y(f), E_z(f)]$ directly to the \hyperref[sec:indicatrix]{indicatrix} ~\cite{yariv,nye}:
 \begin{equation}
   \left[ {\begin{array}{c}
    \big( \frac{1}{\Delta n ^2 } \big)_1 \\
@@ -294,13 +286,14 @@ r_{\bar{4}3m,ij} =
   0 & 0 & r_{63}\\
  \end{array}} \right]
 \end{equation}
-\\
+
+\noindent Where also $r_{41} = r_{52} = r_{63}$
+
 \subsubsection{New principal (electro-optic) dielectric axis for zincblende structures}
 
-In general the principle dielectric axes of the new ellipsoid do \textbf{not} coincide with the axes of the ellipsoid of the unperturbed crystal. The form of the index ellipsoid for a zincblende crystalline material accounting for the electro-optic tensor and some generalized DC electric field $\vec{E}$ is given by:
-
+In general the principle dielectric axes of the new ellipsoid do \textbf{not} coincide with the axes of the ellipsoid of the unperturbed crystal. The form of the index ellipsoid for a zincblende crystalline material accounting for the electro-optic tensor and some generalized DC electric field $\vec{E}$ expressed in terms of the crystallographic axes is given by:
 \begin{equation}\label{eq:zindicatrix}
-\bigg(\frac{1}{n_o^2} \bigg) x^2\ + \bigg(\frac{1}{n_o^2} \bigg) y^2 + \bigg(\frac{1}{n_o^2} \bigg) z^2  + 2r_{41} E_x yz + 2r_{41} E_y xz + 2r_{41}E_z xy= 1
+\bigg(\frac{1}{n_o^2} \bigg) x^2\ + \bigg(\frac{1}{n_o^2} \bigg) y^2 + \bigg(\frac{1}{n_o^2} \bigg) z^2  + 2r_{41} E_{[100]} yz + 2r_{41} E_{[010]} xz + 2r_{41}E_{[001]} xy= 1
 \end{equation}
 
 \noindent Where we have set $n_x = n_y = n_z = n_o$ for zincblende structures.
@@ -309,13 +302,12 @@ In general the principle dielectric axes of the new ellipsoid do \textbf{not} co
 
 \begin{equation}
  \left[ {\begin{array}{ccc}
-   \big( \frac{1}{n_o ^2} \big)& r_{41}E_z & r_{41} E_y\\
-   r_{41}E_z & \big( \frac{1}{n_o ^2} \big) & r_{41} E_x\\
-   r_{41} E_y & r_{41} E_x & \big( \frac{1}{n_o ^2} \big)\\
+   \big( \frac{1}{n_o ^2} \big)& r_{41}E_{[001]} & r_{41} E_{[010]}\\
+   r_{41}E_{[001]} & \big( \frac{1}{n_o ^2} \big) &  E_{[100]}\\
+   r_{41} E_{[010]} & r_{41} E_{[100]} & \big( \frac{1}{n_o ^2} \big)\\
   \end{array}} \right]
 \end{equation}
-\\
-\\
+
 \subsubsection{The photoelastic effect?}
 
 When a general strains $S_{kl}(r) = \frac{1}{2} \bigg[ \frac{\partial u_k (r)}{\partial x_i} + \frac{\partial u_i (r)}{\partial x_k} \bigg]$ are applied to a material, the photoelastic tensor $p_{idkl}$ relates to the indicatrix by the following relation:
@@ -331,8 +323,7 @@ When a general strains $S_{kl}(r) = \frac{1}{2} \bigg[ \frac{\partial u_k (r)}{\
 \subsubsection{New principal dielectric axes for zincblende structures (zinblende photoelastic tensor, zincblende electro-optic tensor)}
 
 \subsection{Optical anisotropy of a HR $\gaas$ / $\algaas$ stack}
-
-\textcolor{red}{Brief intro discussion?}
+The analysis of a highly reflective $\gaas$/$\algaas$ stack is the sole purpose of the introduction of the geometric tools prepared in the prior section. This section implements said tools by: 1) making considerations of crsytal coordinates when asserting an optical axis on a highly reflective crystalline stack manufactured by Thorlabs, 2) citing coating parameters and observed intrinsic birefringence from the highly reflective coating stack in question, 3) analyzing differential linear electro-optic effect on the phase of a reflected beam, and 4) estimating the the differential phase noise in LIGO based on calibrated electric field measurements.
 %\subsubsection{Growth orientation (Miller indices) with respect to substrate surface}
 %\begin{itemize}
 %\item Mirror surface is the [100] plane.
@@ -344,49 +335,16 @@ When a general strains $S_{kl}(r) = \frac{1}{2} \bigg[ \frac{\partial u_k (r)}{\
 \begin{center}
 \includegraphics[width=\textwidth]{figs/ALGAAS/algaas_sample_diagram.png}
 \end{center}
-\caption{Figure of the beam propogation axis with respect to the AlGaAs/GaAs crystal axes (not final version). Within the [100] plane the AlGaAs coating is grown with a flat indicator that draws a line within the [0-11] plane where the bisected line points towards the sample center. The axis formed by the [100] coincides with the optical axis (z-axis). The polarizations of incident and reflected beam oscillate along vectors within the plane formed by the normal of that axis.}
+\caption{Figure of the beam propogation axis with respect to the AlGaAs/GaAs crystal axes (not final version). Within the [100] plane the AlGaAs coating is grown with a flat indicator that draws a line within the [0-11] plane where the bisecting vector of the plane normal points towards the sample center. The axis formed by the [100] coincides with the optical axis (z-axis). The polarizations of incident and reflected beam oscillate along vectors within the plane formed by the normal of that axis.}
 \label{fig:algaas_coords}
 \end{figure}
 
-Up until this point we have discussed three different coordinate axes: the crystal axis (formally indicated by Miller indices), the principle dielectric axis (coordinates based in diagonalization of the indicatrix), and an optical axis (when considering a desired (laser) light propogation).
-\\
-\textcolor{red}{How the modulation of the phase of the carrier field is dependent on the orientation of its wave vector with respect to the crystal structure, the modulating electric field direction and strength, (other items to discuss in terms of introducing the effect)}
-\\
-For GaAs @ $10.6\mu$ $r_{41} = 1.6 \times 10^{-12}$ [m/V]
-\\
-Adachi estimate for $\mathrm{Al_{x}Ga_{1-x}As}$?
+Up until this point we have discussed three different coordinate axes: the crystal axis (formally indicated by Miller indices), the principal dielectric axis (coordinates based in diagonalization of the indicatrix), and an optical axis (when considering a desired (laser) light propogation). We assert an optical axis with linearly polarized light with variable s and p contributions.
 
-\subsubsection{Measured birefringence from HR $\gaas$/$\algaas$ mirrors}
-There seems to be different accounts of a measured birefringence from HR $\gaas$ / $\algaas$ (\href{https://dcc.ligo.org/DocDB/0181/G2200386/001/G2200386.pdf}{Satoshi}, \href{https://nodus.ligo.caltech.edu:8081/CTN/1474}{CTN}, \href{https://dcc.ligo.org/DocDB/0181/G2200559/001/G2200559-v1%20-%20polarization.pdf}{Aidan})
-\\
-\textcolor{red}{Is the measured birefringence static? (Layer bonding method might introduce something?)}
-\\
-\textcolor{red}{Does it change from different mounting methods? (Photoelastic) (order of magnitude estimate)}
-\\
-\textcolor{red}{Electro-optic ruled out based on field measurements and relative coupling factor.}
-\\
-\textcolor{red}{Measurement precision of the coating birefringence? Cavity length, Polarization drifts, etc.}
-\\
-The measured birefringence is estimated to be caused by an intrinsic strain between the epitaxial layers of $\gaas$/$\algaas$. \cite{Cole:2013}
-\\
-\textcolor{red}{Marty's document about Birefringence in Crystalline mirror coatings V.8}
-
-
-\subsubsection{Electro-optic coupling to the reflected phase of a HR mirror coating}
-\textcolor{red}{Relevant eigenpolarizations, non-optical field $E_y = E_z = 0$?}
-\\
-\\
-\textcolor{red}{Figure: Transformed indicatrix (Before and after $E_x$)}
-\\
-\\
-\textcolor{red}{Figure: Ellipse cross section. New eigenpolarizations and corresponding indices and their influence on incident field (Marty's result)}
-\\
-Assuming we are operating in a coordinate system suggested in \hyperref[fig:algaas_coords]{Figure ?}. Given this configuration, which plane is impacted by some $E_\mathrm{noise}$? Revisiting the \hyperref[eq:zindicatrix]{indicatrix}. We can see that for even non-zero z and y components that the only coupling to the input beam polarization is the index along the cross coupled zy axis through $E_z$ is that of the $E_x$ term. This gives us the ability to easily diagonalize the indicatrix tensor by setting the non-relevant field terms to zero.
 
 
 \subsubsection{Relevant coating parameters}
 \textcolor{red}{What is the variability in this coating since \cite{Cole:2013}?}
-\\
 \\
 \textcolor{red}{Cole 2013 coating}
 \begin{itemize}
@@ -420,6 +378,41 @@ With $\kappa$ being a scalar parameter.
 
 \textcolor{red}{Figure is in the works}
 
+\subsubsection{Electro-optic coupling to the reflected phase of a HR mirror coating}
+With our coordinate considerations and established beam axis, it is now worth considering the influence of a isotropic white noise field ($E_n = [E_{nx},E_{ny},E_{nz}]$):
+
+\begin{equation}
+ \left[ {\begin{array}{ccc}
+   \big( \frac{1}{n_o ^2} \big)& r_{41}E_{ny} & r_{41} E_{nx}\\
+   r_{41}E_{ny} & \big( \frac{1}{n_o ^2} \big) & r_{41} E_{nz}\\
+   r_{41} E_{nx} & r_{41} E_{ny} & \big( \frac{1}{n_o ^2} \big)\\
+  \end{array}} \right]
+\end{equation}
+
+Assuming $E_n$ is small, the indicatrix change of $E_{nx}$ and $E_{ny}$ relative to $E_{ny}$ (as seen by the beam polarization) will be small ($r_{41}E_{n(x/y)} \ll r_{41}E_{nz}$). After diagonalizing with relevant terms in the tensor we are left with the following eigenindices:
+
+\begin{equation}
+n_x' = n_o - r_{41}E_{nz}
+\end{equation}
+
+\begin{equation}
+n_y' = n_o + r_{41}E_{nz}
+\end{equation}
+
+\textcolor{red}{How the modulation of the phase of the carrier field is dependent on the orientation of its wave vector with respect to the crystal structure, the modulating electric field direction and strength, (other items to discuss in terms of introducing the effect)}
+\\
+For GaAs @ $10.6\mu$ $r_{41} = 1.6 \times 10^{-12}$ [m/V]
+\\
+Adachi estimate for $\mathrm{Al_{x}Ga_{1-x}As}$?
+\\
+\textcolor{red}{Relevant eigenpolarizations, non-optical field $E_y = E_z = 0$?}
+\\
+\textcolor{red}{Figure: Transformed indicatrix (Before and after $E_x$)}
+\\
+\textcolor{red}{Figure: Ellipse cross section. New eigenpolarizations and corresponding indices and their influence on incident field (Marty's result)}
+\\
+Assuming we are operating in a coordinate system suggested in \hyperref[fig:algaas_coords]{Figure ?}. Given this configuration, which plane is impacted by some $E_\mathrm{noise}$? Revisiting the \hyperref[eq:zindicatrix]{indicatrix}. We can see that for even non-zero z and y components that the only coupling to the input beam polarization is the index along the cross coupled zy axis through $E_z$ is that of the $E_x$ term. This gives us the ability to easily diagonalize the indicatrix tensor by setting the non-relevant field terms to zero.
+
 \subsubsection{Numerically friendly estimate}
 
 In the appendix of \cite{ballmer2015} Ballmer explains a formalism that allows the coating transfer function given a differential change in phase due to a scalar parameter to be expressed as follows:
@@ -432,6 +425,21 @@ For a single pass through the coating where the coating thickness and indices ar
 
 \satoshi{Both approaches are essentially based on the same calculation method i.e., transfer matrices.}
 
+
+\subsection{Measured birefringence from HR $\gaas$/$\algaas$ mirrors}
+There seems to be different accounts of a measured birefringence from HR $\gaas$ / $\algaas$ (\href{https://dcc.ligo.org/DocDB/0181/G2200386/001/G2200386.pdf}{Satoshi}, \href{https://nodus.ligo.caltech.edu:8081/CTN/1474}{CTN}, \href{https://dcc.ligo.org/DocDB/0181/G2200559/001/G2200559-v1%20-%20polarization.pdf}{Aidan})
+\\
+\textcolor{red}{Is the measured birefringence static? (Layer bonding method might introduce something?)}
+\\
+\textcolor{red}{Does it change from different mounting methods? (Photoelastic) (order of magnitude estimate)}
+\\
+\textcolor{red}{Electro-optic ruled out based on field measurements and relative coupling factor.}
+\\
+\textcolor{red}{Measurement precision of the coating birefringence? Cavity length, Polarization drifts, etc.}
+\\
+The measured birefringence is estimated to be caused by an intrinsic strain between the epitaxial layers of $\gaas$/$\algaas$. \cite{Cole:2013}
+\\
+\textcolor{red}{Marty's document about Birefringence in Crystalline mirror coatings V.8}
 
 \section{Projected DARM coupling}
 To estimate how much DARM coupling can occur, we use use a measured field spectra acquired from installed electric field meters located within LIGO Hanford Observatory EX and EY vacuum chambers. Taking the upper and the lower EFM measurements in $.3\; [\mathrm{V}/\mathrm{m}/\sqrt{\mathrm{Hz}]}$ @ 60 Hz and $4\times10^{-3}\; [\mathrm{V}/\mathrm{m}/\sqrt{\mathrm{Hz}]}$ @ 4kHz ~\cite{efm_log}.
