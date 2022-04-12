@@ -3,7 +3,7 @@
  As mentioned in Section (1?) one of the many LIGO fundamental noise sources is coating thermal noise from the $\mathrm{SiO_2}/\mathrm{TiO_2:Ta_2O_5}$ aLIGO coatings. As aLIGO approaches its designed sensitivity various coating solutions are currently proposed to mitigate thermal noise coupling into the detector output.
 With the potential to reduce coating Brownian noise by a factor of 10 \cite{Cole:2013}, $\algaas$ shows much promise with next generation detectors with a corresponding strain reduction by a factor of (5?) in comparison to the aLIGO coatings, though with different material properties of these crystalline coatings introduce new coating noise couplings.
 
-A notable source of noise is the linear electro-optic property of crystalline materials (dn/dE), also known as the Pockels effect \cite{abernathy_poster}. Characterizing currently proposed $\gaas$ / $\algaas$ coated ``witness" samples through a calibrated measurement of the aforementioned property is worthwhile for the use of $\algaas$ coatings in gravitational wave interferometers. The following section is dedicated to the discussion of brownian thermal noise and the fundamental limit it imposes on gravitational wave detection, the appeal of $\gaas$/$\algaas$ coated mirrors for improved thermal noise, light propogation through anistropic materials, induced optical anisotropy of zincblende materials, estimates of the differential phase of light reflected from a GaAs/$\algaas$ coating caused by electric field noise, and the measurements from a PDH locked single cavity experiment with a focus on a calibrated electro-optic response from a $\gaas$ / $\algaas$ sample from 1kHz to 1MHz.
+A notable source of noise is the linear electro-optic property of crystalline materials (dn/dE), also known as the Pockels effect \cite{abernathy_poster}. Characterizing currently proposed $\gaas$ / $\algaas$ coated ``witness" samples through a calibrated measurement of the aforementioned property is worthwhile for the use of $\algaas$ coatings in gravitational wave interferometers. The following section is dedicated to the discussion of brownian thermal noise and the fundamental limit it imposes on gravitational wave detection, the appeal of $\gaas$/$\algaas$ coated mirrors for improved thermal noise, light propogation through anistropic materials, induced optical anisotropy of zincblende materials, estimates of the differential phase of light reflected from a GaAs/$\algaas$ coating caused by electric field noise, and the measurements from a Pound-Drever-Hall locked single cavity experiment with a focus on a calibrated electro-optic response from a $\gaas$ / $\algaas$ sample from 1kHz to 1MHz.
 
 \subsection{Brownian Thermal Noise}
  In 1827 the Scottish botanist Robert Brown noticed a constant motion of pollen particulates on the surface of water; witnessing randomized collisions of the water molecules holding a kinetic energy proportional to the temperature ($k_BT$) \cite{Brown:1828}. It is because of his documented observations we name the phenomena Brownian motion. And although the observations were on motion of particulates in liquids, molecules and atoms within gases and solids also exhibit Brownian motion. For high precision optical experiments operating at room temperature (and higher due to high power resonant beams), understanding how much differential phase noise is imparted on the interferometer light passing through and reflecting from core optics is crucial. This requires knowledge of the mean squared displacement from each degree of freedom of the system which can be realized through the Fluctuation Dissapation theorem. Derived by H.B. Callen and T.A. Welton, the theorem states that for a randomly fluctuating linear force \cite{Callen:1951}:
@@ -189,47 +189,7 @@ The space group of $\gaas$ as well as $\algaas$ are within the $F\bar{4}3m$ spac
 \end{figure}
 
 \textcolor{red}{Mention the difference in lattice cell constant between $\gaas$ and $\algaas$?}
-%\subsection{Crystal systems}
-%The following section is intended to provide a brief crystallographic background to progress the discussion of light propogation through $\gaas$ and $\algaas$. This includes, crystal classification, the optical crystal classification of $\gaas$ and $\algaas$ under ``normal" operating conditions, and optical crystal classification of $\gaas$  and $\algaas$ with electrical and mechanical perturbations.
 
-%Crystal classification comes with numerous identifiers all having their place in the field of crystallography but all will not be referred to explicity.
-
-%The priority of this section is to provide a crystallographic background to some conventions behind the classification and characterization of crystalline materials through the usage of: Miller indices, unit cells, point groups, Bravais lattices and space groups.
-
-%The origins of formal crystal classification and modern crystallography come from the study of the planar fractures from crystals. The analysis of these fractures or ``cleavage planes" lead René-Just Hauy, a French priest and minerologist to inquire about the microscopic nature of crystals and the symmetries held by specific crystal species. His inquiries would lead him to note two of three laws used in modern crystallography. These laws would act as a direct catalyst to the formation of the geometric framework we use in the present day for the classification of crystals.
-%The unit cell is the fundamental geometric building block of the crystal; it is the the smallest geometric arangment of atoms and molecules that represents the macroscopic symmetries of the crystal. Planes of atoms in the unit cell parallel to the planes of the crystal are represented by three rational numeric values ${hkl}$ representing the intercepts of the plane with the crystallographic unit cell axis.
-
-
-%When looking at a more macroscopic picture of a crystal, unit cells are assembled in a periodic matter in 3d space
-
-
-% MORE IN DEPTH HISTORY
-% The fundamentals of crystallography began to be developed in the 17th century through macroscopic analysis of perfectly planar fractures of crystals. It was then Saobserved by Nicolaus Steno that the angles between two adjacent faces of a particular crystal species is a constant (Steno's law of constant interfacial angles). In the 18th century René-Just Haüy, a French priest and minerologist, and Jean-Baptiste L. Rome de I'Isle sought to understand the nature of crystals leading to further induced fracturing, better angular measurement precision between crystal cleavage plane normals using a goniometer (confirming Steno's Law), and analysis of the macroscopic symmetries based on the planar crystal faces. Haüy would soon after hypothesize that crystals are composed of polyhedrical molecules arranged in a periodic manner in three-dimensional space. This fundamental geometrical structure is a predecesor of the modern unit cell; the smallest geometric atomic/molecular arrangement that represents the symmetry of the crystal. Alongside Haüy's early interpretation of the unit cell, he was able to note two more crystallographic principles known as the law of rational indices and the law of constancy of symmetry. The law of rational indices carries into the modern day as the second of three laws of crystallography and through the use of Miller indices; a set of three integer values representing intercept values for each of a crystal's cleavage planes.
-%\textcolor{red}{Miller index figure for a zincblende structure}
-%With these geometric tools and crystallographic rules, crystal structures were further categorized into symmetry groups. In the 19th century, Frankenheim, Hessel, and Gadolin independently hypothesized the existence of 32 different crystal classes correlating to different point groups where one of these point groups represents a unique collection of symmetry elements. The ``point" in point group is the analysis of symmetry operations when a single point of a three dimensional object is held fixed, and a group is a set of those symmetry elements that obey multiplication such that it is associative, there exists an idenitiy element in the set, the inverse of the element is an element of the set, and the product of any two elements is an element of the set \cite{sands}.  The symmetry elements that make up these point groups can be decomposed into operations of rotations, mirror planes, inversions, and improper rotations. A more concise description of these operations and the crystallographic point groups can be seen listed in the appendix \textcolor{red}{?}. The point group analysis performed by Frankenheim, Hessel, and Gadolin is an impressive feat given the accuracy while molecular theory was still maturing. These point groups have different label standards but throughout this document we will use Hermann-Maugin notation for AlGaAs. With established crystallographic point groups, established translational symmetries came soon after through the works of Auguste Bravais in the latter part of the 19th century giving rise to 14 different lattice structures corresponding to different crystallographic classes.  The combination of the point group symmetries along with a group of translational symmetries introduced a new symmetry group known as a space group. With maturity of the molecular theory and the introduction of X-ray diffraction more robust models of these unit cells and lattices were developed soon after.
-%\\
-%\textcolor{red}{Details on symmetry elements?}
-%\\
-%\textcolor{red}{Image with cleavaged crystal and crystal unit cell}
-%\\
-%\textcolor{red}{Space groups? (decomposed into point group and bravais lattice categorization)}
-
-
-%The fundamentals of crystal categorization come with the emergence of a formal study of cyrstals (crystallography) in the 17th and 18th centuries through the macroscropic analysis of planar fractures of crystals (cleavage planes). Nicolaus Steno and René-Just Hauy are credited with the discovery of the three crystallographic laws: law of constant interfacial angles (Steno), the law of rational indices (Haüy), and the law of constancy of symmetry (Haüy) ~\cite{aroyo}.
-%\\
-%\\
- %The \textbf{law of constant interfacial angles} states that the angles between two adjacent faces of a crystal species is a constant ~\cite{steno}.
-%\\
-%%\\
-%The \textbf{law of rational indices} states that the intersection of the three intercepts of a crystal plane with the crystallographic axes are constant and can be expressed by rational numbers and whole number multiples of them. Alongside this law Haüy would go on to hypothesize that crystals are composed of polyhedrical molecules arranged in a periodic manner in three-dimensional space \cite{hauy}. This early geometric model of crystals, provided fundamental tools of crystallography that we still use today. The modern unit cell is represented by the smallest geometric atomic/molecular arrangement that represents the symmetry of the crystal. When representing a more macroscopic form of the crystal these unit cells are assembled periodically in 3d space along a grid of points known as a lattice ~\cite{sands}.
-%\\
-%\\
-%The \textbf{law of constancy of symmetry} states that crystals of a particular substance maintain the same symmetry elements \cite{hauy}. This discovery garnered interest in the 19th century to classify crystal structures under the framework of symmetry groups \textcolor{red}{more on groups in appendix}. Point group symmetries were first addressed and sorted crystals into 32 crystallographic point groups. Soon after translational symmetries were addressed by Auguste Bravais with 14 different lattice structures which also implicitly displayed a formal connection between unit cell geometry and lattice structures \cite{aroyo}. The combination of these point group symmetries and translational symmetries addressed by the Bravais, form a new group known as the crystallographic group: a subset of the more generally space group \textcolor{red}{for more details on point groups, Bravais lattices and space groups, see appendix}.
-% What are the symmetries that exist in three dimensions?
-% What are the geometric representations given by known crystals?
-% What symmetries are left after performing all prescribed three dimensional symmetry operations on known crystal geometries?
-
-%When observing a crystal on a molecular level, a periodicity in three dimensional space isfeyfe seen containing a specific a specific collection of atoms with a specific orientation. The smallest unique atomic/molecular arrangement describing the crystal's atomic makeup and structure is known as a motif. And the periodicity can be aligned along a three dimensional geometrical construction called a lattice. Crystallographers categorize crystal systems analyzing the three dimensional point-group symmetries of these motifs and space-group symmetries of the crystal's collective periodic arranged motifs. A periodic structure on which the unit cells are arranged or lattice is a conveniant means to organize and quantize the space when describing and characterizing the structure. Crystallographers characterize the detail of a specific unit cell through observed symmetries after a series of prescribed operations. The symmetries that exist for the unit cell as well as the symmetries after lattice translations define a space group.
 
 \subsection{Induced anisotropy in zincblende crystals}
 Zincblende structures, like the crystalline materials in question can exhibit birefringent properties when under the influence of two factors: stress in the material, and present within DC electric fields. These two properties of crystalline materials are known as the photoelastic and electro-optic effects respectively.
@@ -360,23 +320,6 @@ The coating to be studied consists 36 $\lambda$/4  thick layers of $\gaas$ inter
 %High Index:  GaAs, n=3.480, layer thickness is 76.43 nm
 %Low Index:  $ \mathrm{Al}_{0.92} \mathrm{Ga}_{0.08} \mathrm{As} $, n=2.977, layer thickness is 89.35 nm
 %\textcolor{red}{Info from Steve. Written source?}
-Fejer and Bonilla take an analytical approximation approach when finding the impact of the electric field to the change in phase of the light through a crystalline anisotropic thin film ($\lambda/4$) stack \cite{bonilla_fejer}.
-
-\begin{equation}
-\hat{\phi}' = \frac{\pi n_1 z}{1-z^2}(z^{2N} -1) \frac{z^{2N} \frac{(n_f)^2}{n_2 n_3}(n_2 \kappa_{\gamma 2} + n_3\kappa_{\gamma 3}) - (n_2 \kappa_{\gamma 3} + n_3\kappa_{\gamma 3})}{(n_1)^2 -(n_f)^2 z^{4N}}
-\end{equation}
-
-with $z = \frac{n_2}{n_3}$
-and
-$
-\kappa_{\gamma j} = \frac{d}{d \gamma} \mathrm{log}(n_j h_j)|_{\gamma =\gamma_{O}} \bigg(\frac{\hat{n}_j'}{\hat{n}_j} +\frac{\hat{h}_j'}{\hat{h}_j} \bigg)
-$
-
-With $\kappa$ being a scalar parameter.
-
-\satoshi{Adding a schematic would be helpful.}
-
-\textcolor{red}{Figure is in the works}
 
 \subsubsection{Electro-optic coupling to the reflected phase of a HR mirror coating}
 With our coordinate considerations and established beam axis, it is now worth considering the influence of a isotropic white noise field ($E_n = [E_{nx},E_{ny},E_{nz}]$):
@@ -412,6 +355,23 @@ Adachi estimate for $\mathrm{Al_{x}Ga_{1-x}As}$?
 \textcolor{red}{Figure: Ellipse cross section. New eigenpolarizations and corresponding indices and their influence on incident field (Marty's result)}
 \\
 Assuming we are operating in a coordinate system suggested in \hyperref[fig:algaas_coords]{Figure ?}. Given this configuration, which plane is impacted by some $E_\mathrm{noise}$? Revisiting the \hyperref[eq:zindicatrix]{indicatrix}. We can see that for even non-zero z and y components that the only coupling to the input beam polarization is the index along the cross coupled zy axis through $E_z$ is that of the $E_x$ term. This gives us the ability to easily diagonalize the indicatrix tensor by setting the non-relevant field terms to zero.
+Fejer and Bonilla take an analytical approximation approach when finding the impact of the electric field to the change in phase of the light through a crystalline anisotropic thin film ($\lambda/4$) stack \cite{bonilla_fejer}.
+
+\begin{equation}
+\hat{\phi}' = \frac{\pi n_1 z}{1-z^2}(z^{2N} -1) \frac{z^{2N} \frac{(n_f)^2}{n_2 n_3}(n_2 \kappa_{\gamma 2} + n_3\kappa_{\gamma 3}) - (n_2 \kappa_{\gamma 3} + n_3\kappa_{\gamma 3})}{(n_1)^2 -(n_f)^2 z^{4N}}
+\end{equation}
+
+with $z = \frac{n_2}{n_3}$
+and
+$
+\kappa_{\gamma j} = \frac{d}{d \gamma} \mathrm{log}(n_j h_j)|_{\gamma =\gamma_{O}} \bigg(\frac{\hat{n}_j'}{\hat{n}_j} +\frac{\hat{h}_j'}{\hat{h}_j} \bigg)
+$
+
+With $\kappa$ being a scalar parameter.
+
+\satoshi{Adding a schematic would be helpful.}
+
+\textcolor{red}{Figure is in the works}
 
 \subsubsection{Numerically friendly estimate}
 
@@ -447,35 +407,58 @@ To estimate how much DARM coupling can occur, we use use a measured field spectr
 This along with computed estimate above allows us to create an upper limit for what this noise might be assuming incoherent fields between the end stations and a flat frequency response within LIGO's bandwidth.
 
 \section{Experiment}
-To probe for this effect, we took the approach of an in-air Fabry-P\'{e}rot cavity with a GaAs/$\mathrm{Al_{.92}Ga_{.08}As}$ coated sample end mirror mounted in a custom designed MACOR mount with the ability to install electrodes maintaining a fixed distance from the sample surfaces for a controlled E-field injection. Details and specifications are discussed as well as relevant measurements. An improved experimental design is also detailed for a higher sensitivity measurement.
+An in-air Pound-Drever-Hall ``locked" Fabry-P\'{e}rot cavity with a highly reflective $\gaas$/$\algaas$ coated sample installed and mounted in a custom designed MACOR mount / electrode assembly was designed and implemented to attempt a calibrated measurement of the Pockels effect. Details and specifications are discussed as well as relevant measurements. The discovery of unforseen driven mechanical couplings through this study have lead to an improved dual-polarization locked experimental design.
 
 \subsection{Design}
-This section details the Pound-Drever-Hall servo which is at the heart of this experiment, the on-table design, a sample / electrode assembly used for a controlled electric field injection, and electrode drive parameters
+This section details the Pound-Drever-Hall servo which is at the heart of this experiment, the schema of the servo used, a sample / electrode assembly used for a controlled electric field injection, and the estimated calibration of the measurement.
+
 \subsubsection{PDH servo}
-The Pound-Drever-Hall technique, originally imagined for laser frequency stabilization to an ultra-stable length reference, achieves constant resonance with said reference by tracking the phase of the cavity input light with respect to the light reflected from the cavity. Tracking the approximately linear phase response across resonance is at the heart of this technique and recognizes that physical property to be probed around a cavity's resonance cannot be the intensity of the transmitted or reflected light because of the quadratic symmetry. (\textcolor{red}{Derivative of the intensity could work but depends on us operating off resonance})
-\\
-\textcolor{red}{Insert figure of reflected intensity and phase response around resonance (cavity transfer function). Maybe also have a figure corresponding to what this could represent in a lab. (sweeping a mirror of the laser cavity through resonance)}
-\\
-Another novelty and insight to the technique is the use of phase modulation onto the carrier field which is the mathematical and physical equivalent to imposing separate optical fields which in most cases do not resonate in the optical cavity.
-\\
+The Pound-Drever-Hall technique, originally imagined for laser frequency stabilization to an ultra-stable length reference, allows the tracking of the linear phase response of an input carrier field through the resonance of said reference. The ability for the servo to track said response across the cavity resonance fully utilizes the ability of an optical cavity to act as a length / frequency discriminator. Cavity offset locks also provide a linear response in intensity which may be adequate for some applications but with reduced sensitivity due to the required power reduction by operating off resonance.
+\begin{figure}[H]
+\includegraphics[width=\textwidth]{figs/ALGAAS/DC_power_cav_resonance.png}
+\caption{Reflected and transmitted power around resonance. Phase as dotted line?}
+\label{fig:cav_length_response_DCpow}
+\end{figure}
+Measurements of the phase can be achieved by beating a separate optical field with a known frequency separation from the carrier at the cavity input. The PDH servo offers a way to avoid complicated phase-locked two laser configurations by imposing a phase modulation on the carrier field via electro-optical modulator. The phase modulation onto the carrier field is mathematically and physically equivalent to imposing separate optical fields (sidebands) which in most cases do not resonate in the optical cavity of interest. The modulation imposed onto the carrier is by a physically equivalent process to that mentioned in section (?). The simplified anatomy of the EOM is split into three components, a crystal used to impose the modulation, capacitor plates sandwiching the crystal to introduce a controlled electric field across, and an oscillator / signal generator used to drive the capacitor at a specified frequency $\Omega$ and a voltage amplitude associated to the phase amplitude known as the modulation depth ($\beta$).
+
 \begin{equation}
 E_\mathrm{inp} = E_o e^{i \omega t + \beta \mathrm{sin}( \Omega t)}
 \end{equation}
 
-\textcolor{red}{Approximation with Bessel functions (assumptions about modulation depth)}
+If the modulation depth is set such that $\beta < 1$ then the input field may be approximated in terms of the first two Bessel functions $J_0$, $J_1$:
+
 \begin{equation}
-E_\mathrm{inp} \approx E_o \satoshi{E_0} [J_o\satoshi{J_0}(\beta)e^{i \omega t} + J_1(\beta)e^{i (\omega + \Omega) t} - J_1(\beta)e^{i(\omega -\Omega)t}]
+E_\mathrm{inp} \approx E_0 [J_0(\beta)e^{i \omega t} + J_1(\beta)e^{i (\omega + \Omega) t} - J_1(\beta)e^{i(\omega -\Omega)t}]
 \end{equation}
-\\
+
+Setting a photodiode of area ($A_\mathrm{PD}$) in reflection of the cavity reflection coefficient of $r_\mathrm{cav}(\omega,L)$, we measure the power from the field:
+
+\begin{equation}
+ \begin{alignedat}{3}
+    &P_\mathrm{refl} && \approx \frac{|E_\mathrm{refl}|^2}{A_\mathrm{PD}} && \\
+    & &&\approx \frac{E_0^2}{A_\mathrm{PD}} && \bigg\{J_0^2 |r_\mathrm{cav}(\omega,L)|^2 + J_1^2(\beta)|r_\mathrm{cav}(\omega+\Omega,L)|^2 - J_1^2(\beta)|r_\mathrm{cav}(\omega-\Omega,L)|^2 +  \\
+    & && && J_0J_1(\beta)\big[r_\mathrm{cav}\omega,L) r_\mathrm{cav}^*(\omega+\Omega,L)\big] - J_ 0J_1(\beta)\big[r_\mathrm{cav}(\omega,L)r_\mathrm{cav}^*(\omega-\Omega,L)\big]\bigg\}
+  \end{alignedat}
+\end{equation}
+
+The two trailing terms in the above equation for $P_\mathrm{refl}$ generate a beat frequency term between the carrier and lower and upper sidebands. 
 \textcolor{red}{Discuss how the measurement of the beat power between the sideband and the carrier at the RFPD tracks the phase and how with demodulation and filtering, you can create an error signal.}
 
+
 \begin{figure}[H]
-\includegraphics[width=\textwidth]{figs/ALGAAS/electrooptic_study_algaas_0.pdf}
-\caption{Simplified experiment schematic}
-\label{fig:poisson_output}
+\includegraphics[width=\textwidth]{figs/ALGAAS/pdh_error.png}
+\caption{By imposing 25 MHz RF sidebands we have introduced a constant reflected reference field near carrier resonance which when beat with the carrier offers a linear response after demodulating the sideband power. With the introduction of high and low frequency sideband fields, their presence is also detected through the DCPDs and PDH error signal. Their separation from resonance is equal in phase (length, and frequency) from carrier resonance.}
+\label{fig:pdh_error}
 \end{figure}
 
+With this linearity and sensitivity at cavity resonance, implementation into PID feedback is the next task as any small detuning of the cavity can be registered as a drift from the loop's zero point and fed back to an actuator with an estimated calibration gain factor. Given a low-noise design, this technique allows a high sensitivity measurement and calibration of a induced differential phase of the light within the stable reference cavity into differential length (or frequency).
+
 \subsubsection{On-table schema}
+\begin{figure}[H]
+\includegraphics[width=\textwidth]{figs/ALGAAS/electrooptic_study_algaas_0.pdf}
+\caption{The fundamental components of a functional PDH servo along with an electric field injector comprised of a disk capacitor sandwiching the HR AlGaAs sample, a high voltage amplifier, and a signal/network analyzer.}
+\label{fig:experiment_schema}
+\end{figure}
 
 \textcolor{red}{A figure that highlights path that is intended for locking onto the PMC, and a different color highlight for the path to the experiment}
 
@@ -516,9 +499,10 @@ How the measurement is taken (important to take between installations to account
 
 
 \subsubsection{Sample / Electrode assembly}
-Maximizing the electric field ($|E_z|$) and within the coating while requiring a through beam to and through the HR coating lead us to imagine disk electrodes with a 3mm central aperture. The aperture size was chosen to be at least 5 times larger than the beam size at the plate locations. This was to avoid any beam clipping while still allowing to maximize the field strength at the region of interest.
+Maximizing the electric field ($|E_z|$) and within the coating while requiring a through beam to and through the HR coating lead us to a design very similar to that of a longitudinal pockels cell. The assembly is comprised of two disk electrodes with a 3mm central aperture. The aperture size was chosen to be at least 5 times larger than the beam size at the plate locations. This was to avoid any beam clipping while still allowing to maximize the field strength at the region of interest.
 \\
 Most commercial optical mounts are conductive which proved to be a problem when attempting to find a mounting solution while reducing the non-normal field gradients within the volume of interest around the sample. Because of this, we chose to construct an optical mount made of MACOR a machinable ceramic with high a high Young's modulus (66.9 GPa), and a moderate Poisson ratio (.29) \cite{macor}. An optical mount for the sample made with MACOR, along with glass bearnings .48 $\pm$ .01 cm $\diameter$  and a McMaster-Carr 8-32, 1/2" ceramic screw were used to clamp and suspend the optical sample. A 1.24" $\diameter$ hole was bored into the MACOR with a (\textcolor{red}{depth?}) depth so that there is a ? mm clearance between the front and back surface of the sample to the electrode plates.
+
 \textcolor{red}{Figure with  the sample in-situ}
 \\
 \begin{figure}[H]
@@ -529,11 +513,8 @@ Most commercial optical mounts are conductive which proved to be a problem when 
 \end{figure}
 There are two relevant configurations of this experiment: 1) an all-in-one MACOR assembly where the electrodes are mechanically coupled to the optical mount, and 2) larger mechanically decoupled electrode plates.
 \\
-\\
 \textcolor{red}{A lot of time was dedicated towards preliminary mounts made of PLA and PETG. Do I want to do updated measurements and make statements about noise produced from these mounts?}
 \\
-\\
-
 \subsection{$|E_z|$ strength estimate}
 To convey the problem at hand, it is useful to review the illustration seen \textcolor{red}{here (figure showing the the electrode plates, and sample with AlGaAs coating}
 \subsubsection{Math}
@@ -551,7 +532,6 @@ Where $\chi$ is a spatially dependent electric susceptibility. (\textcolor{red}{
 \\
 \satoshi{Definition of $\rho$ must be explained. $\rho$ and $\rho_{\mathrm{free}}$ are confusing.
 Define $\chi$ and $V$.}
-
 \noindent\textcolor{red}{I will change $\rho$ to $r$ am going to modify figure text so it matches soon.}
 
 Utilizing this, we can proceed to a construction of a numerical Laplacian.
@@ -611,9 +591,9 @@ Look at the derived shot noise estimate in the appendix V in the Black paper \ci
 
 \subsubsection{Residual gas noise}
 
+\subsection{Results}
 
 \subsubsection{Mount noise (3D printed mount mechanical noise)}
-
 \subsection{Drive coupling}
 
 \begin{figure}[H]
