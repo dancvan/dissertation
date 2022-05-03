@@ -1,0 +1,39 @@
+\BOOKMARK [0][-]{chapter.1}{Introduction}{}% 1
+\BOOKMARK [1][-]{section.1.1}{Gravitational wave detection}{chapter.1}% 2
+\BOOKMARK [1][-]{section.1.2}{LIGO}{chapter.1}% 3
+\BOOKMARK [2][-]{subsection.1.2.1}{Length and Alignment Stabilization}{section.1.2}% 4
+\BOOKMARK [2][-]{subsection.1.2.2}{Mode Matching}{section.1.2}% 5
+\BOOKMARK [1][-]{section.1.3}{Noise}{chapter.1}% 6
+\BOOKMARK [2][-]{subsection.1.3.1}{Brownian Thermal Noise}{section.1.3}% 7
+\BOOKMARK [0][-]{chapter.2}{TCS comissioning for O3}{}% 8
+\BOOKMARK [1][-]{section.2.1}{The Mode Matching requirements}{chapter.2}% 9
+\BOOKMARK [1][-]{section.2.2}{aLIGO Thermal Compensation System \(TCS\)}{chapter.2}% 10
+\BOOKMARK [2][-]{subsection.2.2.1}{TCS preloading for O3}{section.2.2}% 11
+\BOOKMARK [2][-]{subsection.2.2.2}{RH input conditioning}{section.2.2}% 12
+\BOOKMARK [1][-]{section.2.3}{Higher order TCS}{chapter.2}% 13
+\BOOKMARK [2][-]{subsection.2.3.1}{Point absorbers}{section.2.3}% 14
+\BOOKMARK [2][-]{subsection.2.3.2}{Actuation using a CO2 laser and mask}{section.2.3}% 15
+\BOOKMARK [0][-]{chapter.3}{Electro-optic study of a GaAs/Al0.92Ga0.08As coated mirror}{}% 16
+\BOOKMARK [1][-]{subsection.3.0.1}{Anisotropic media}{chapter.3}% 17
+\BOOKMARK [2][-]{subsection.3.0.2}{GaAs and Al0.92Ga0.08As crystal classification}{subsection.3.0.1}% 18
+\BOOKMARK [2][-]{subsection.3.0.3}{Induced anisotropy in zincblende crystals}{subsection.3.0.1}% 19
+\BOOKMARK [2][-]{subsection.3.0.4}{Electro-optic modulation}{subsection.3.0.1}% 20
+\BOOKMARK [2][-]{subsection.3.0.5}{Optical anisotropy of a HR GaAs / Al0.92Ga0.08As stack}{subsection.3.0.1}% 21
+\BOOKMARK [2][-]{subsection.3.0.6}{Measured birefringence from HR GaAs/Al0.92Ga0.08As mirrors}{subsection.3.0.1}% 22
+\BOOKMARK [1][-]{section.3.1}{Projected DARM coupling}{chapter.3}% 23
+\BOOKMARK [1][-]{section.3.2}{Experiment}{chapter.3}% 24
+\BOOKMARK [2][-]{subsection.3.2.1}{Lock-In detection scheme}{section.3.2}% 25
+\BOOKMARK [2][-]{subsection.3.2.2}{Servo Design}{section.3.2}% 26
+\BOOKMARK [2][-]{subsection.3.2.3}{Longitudinal Pockels Cell mirror mount assembly}{section.3.2}% 27
+\BOOKMARK [2][-]{subsection.3.2.4}{Measurement Calibration}{section.3.2}% 28
+\BOOKMARK [2][-]{subsection.3.2.5}{Noise Floor}{section.3.2}% 29
+\BOOKMARK [2][-]{subsection.3.2.6}{Results}{section.3.2}% 30
+\BOOKMARK [0][-]{chapter.4}{Conclusion}{}% 31
+\BOOKMARK [0][-]{chapter.5}{Appendix}{}% 32
+\BOOKMARK [1][-]{section.5.1}{The Equipartition theorem and the Fluctuation dissapation theorem}{chapter.5}% 33
+\BOOKMARK [1][-]{section.5.2}{Crystal classification, point groups, and Bravais lattices}{chapter.5}% 34
+\BOOKMARK [1][-]{section.5.3}{Calibration}{chapter.5}% 35
+\BOOKMARK [1][-]{section.5.4}{Laplace calculator / code}{chapter.5}% 36
+\BOOKMARK [1][-]{section.5.5}{MACOR assembly}{chapter.5}% 37
+\BOOKMARK [1][-]{section.5.6}{FSS LTSpice model}{chapter.5}% 38
+\BOOKMARK [0][-]{figure.5.2}{References}{}% 39
