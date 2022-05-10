@@ -1,19 +1,96 @@
 \section{Gravitational wave detection}
-\textcolor{red}{Brief background}
-\section{LIGO}
-\textcolor{red}{Figure of the dual recycled Fabry-Perot interferometer}
-\subsection{Length and Alignment Stabilization}
-\subsection{Mode Matching}
+\textcolor{red}{Mention initial detection summarize detections published from O1 to the end of O3.}
+\\
 
-\subsubsection{Optical Loss}
+\newpage
+\subsection{The Simple Michelson interferometer}
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=\textwidth]{figs/INTRO/tempsub_Basic_michelson_labeled.jpg}
+\end{center}
+\caption{\textcolor{red}{PENDING UPDATE} The simple 4km Michelson with associated differential arm length response (left is optical schema, right is frequency response)}
+\label{fig:simple_michelson}
+\end{figure}
+
+The frequency response of the Simple Michelson. Assuming a LIGO configuration (with 4km arm length), the differential arm response provides a reasonable optical gain until you reach a frequency that coorelates to a gravitational wave period $\lambda / 2$ to the interferometer arm length in such a way that the response is null.
+
+\subsection{Fabry-Perot Michelson (FPMI)}
+At the time of the proposal of LIGO, the creation of 4km long vaccum chambers was the most costly requirement for it's construction \cite{?}. When considering the possibility of constructing gravitational wave detectors, two methods for arm extension were considered: the Delay Line and the Fabry-Perot cavity. The choice ultimately became the Fabry-Perot cavity.
+
+\subsubsection{The Fabry-Perot cavity}
+
+
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=\textwidth]{figs/INTRO/tempsub_Basic_michelson_with_FP_labeled.jpg}
+\end{center}
+\caption{\textcolor{red}{PENDING UPDATE} The Fabry-Perot Michelson optical schema with associated differential arm length response (left is optical schema, right is frequency response)}
+\label{fig:fp_michelson}
+\end{figure}
+
+\subsection{Dual-Recycled Fabry-Perot Michelson (DRFPMI)}
+Recycling mirrors are an extension of the FPMI that provide a means of enhancing the optical gain of the instrument through different means by the nature of their placement at the symmetric and anti-symmetric ports.
+
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=\textwidth]{figs/INTRO/tempsub_Basic_michelson_with_FP_and_PR_labeled.jpg}
+\end{center}
+\caption{\textcolor{red}{PENDING UPDATE (also, borrowed figure does not have SR mirror)} The Dual-Recycled Fabry-Perot Michelson optical schema with associated differential arm length response (left is optical schema, right is frequency response)}
+\label{fig:drfp_michelson}
+\end{figure}
+
+
+\subsubsection{Power Recycling}
+When operating a FPMI, power often gets reflected back to the symmetric port leading to a significant waste of power if simply dumped. An additional partially reflective mirror is placed at said port to recirculate (or ``recycle") that power back to the arm cavities. It's positioning is kept fixed enough so that the input light adds coherently with the laser input, while the macroscopic positioning from ITMX/Y is better understood once addressing resonance and optical sidebands.
+
+\subsubsection{Signal Recycling}
+This techinique is commonly addressed to last because of it's contribution after considering the response from the PRFPMI. The principle can be understood similarly as most of the prior discussions; the use of a Fabry-Perot as an optical amplifier. By simply placing a mirror at the output port it is understood that you would take whatever light leakage coming from the PRFPMI (caused by differential arm motion) and re-introduce it to the arms. Now the question is, can that light add coherently for a signal that you are interested in detecting? As it turns out, it definitely can but careful choices must be made. Mirror location (macroscopic and microscopic tuning) as well as reflectivity have some interesting impacts to the cavity frequency response. But the general statement can be made: when introducing a mirror of relatively low reflectivity at the anti-symmetric port, you increase the detector bandwidth but at the cost of reducing the optical gain.
+
+
+\section{ALIGO}
+\textcolor{red}{FIGURE: Of the ALIGO config}
+``Core optics" (Recycling mirrors, Beam splitter, and FP cavity mirrors) are kept suspended with quadruple pendulum suspensions so to decouple seismic activity from the mirror positions.
+
+\subsection{Observing conditions}
+The requirements for the operation of the interferometer require that the interferometer be  ``Locked"; meaning that there are some necessary configurations / criteria in order for the instrument to act as an observatory with the designed sensitivity. Cavity length and alignment stabilization as well as mode matching are some general requirements for observatory operation.
+
+\subsubsection{Length Stabilization}
+With a coupled cavity configuration, maintaining mirror positions is imperative. Techniques such as the offset lock (using a DC photodiode to measure the transmitted, reflected, or circulating power within a linear and slightly off resonance point) \cite{} and the Pound-Drever-Hall technique (reference section) are used to maintain cavity length stabilization.
+
+\textcolor{red}{FIGURE: ALS schema?}
+
+\subsubsection{Gaussian Beams}
+So far, we've primarily discussed light and phase fronts in such a manner that hasn't addressed the important geometric constraint of using Gaussian laser light. We consider a general complex amplitude Gaussian beam propogating along the beam axis ($z$) with wavelength $\lambda$.
+
+\begin{equation}\label{eq:gaussian_beam}
+E(r) = E_o \frac{\sqrt{[\lambda z_o] / \pi}}{W(z)}e^{-r^2 / W^2(z)} e^{-ikz - ik[r^2 / (2R(z))] + i \zeta}
+\end{equation}
+
+Where $E_o$ is a complex amplitude, $r = sqrt{x^2 + y^2}$ defines the transverse beam coordinates, $k$ is the wave number, $W(z)$ is the beam width, $R(z)$ is the beam radius of curvature, and $\zeta$ is the Gouy phase.
+
+\subsubsection{Alignment Stabilization}
+\textcolor{red}{Paraxial equation}
+\\
+\textcolor{red}{HG modes}
+
+
+\subsubsection{Mode Matching}
+\textcolor{red}{LG modes}
+\\
+\textcolor{red}{Optical Loss}
+\\
 \textcolor{red}{Reduced power, Less effective squeezing}
+\\
+\textcolor{red}{Mention thermal compensation system (TCS) but not too much detail}
 
-\subsubsection{Thermal compensation system (TCS)}
-\textcolor{red}{Measuring the ROC of the mirrors}
-\textcolor{red}{RH acutator, and CO2 actuation figures}
 \section{Noise}
+
+\textcolor{red}{General noise budget (LHO and LLO O3?) or just GWINC?)}
+
 \subsection{Brownian Thermal Noise}
- In 1827 the Scottish botanist Robert Brown noticed a constant motion of pollen particulates on the surface of water; witnessing randomized collisions of the water molecules holding a kinetic energy proportional to the temperature ($k_BT$) \cite{Brown:1828}. It is because of his documented observations we name the phenomena Brownian motion. And although the observations were on motion of particulates in liquids, molecules and atoms within gases and solids also exhibit Brownian motion. For high precision optical experiments operating at room temperature (and higher due to high power resonant beams), understanding how much differential phase noise is imparted on the interferometer light passing through and reflecting from core optics is crucial. This requires knowledge of the mean squared displacement from each degree of freedom of the system which can be realized through the Fluctuation Dissapation theorem. Derived by H.B. Callen and T.A. Welton, the theorem states that for a randomly fluctuating linear force \cite{Callen:1951}:
+\textcolor{red}{Might move this section back to the $\algaas$ Electro-optic noise chapter}
+\\
+In 1827 the Scottish botanist Robert Brown noticed a constant motion of pollen particulates on the surface of water; witnessing randomized collisions of the water molecules holding a kinetic energy proportional to the temperature ($k_BT$) \cite{Brown:1828}. It is because of his documented observations we name the phenomena Brownian motion. And although the observations were on motion of particulates in liquids, molecules and atoms within gases and solids also exhibit Brownian motion. For high precision optical experiments operating at room temperature (and higher due to high power resonant beams), understanding how much differential phase noise is imparted on the interferometer light passing through and reflecting from core optics is crucial. This requires knowledge of the mean squared displacement from each degree of freedom of the system which can be realized through the Fluctuation Dissapation theorem. Derived by H.B. Callen and T.A. Welton, the theorem states that for a randomly fluctuating linear force \cite{Callen:1951}:
 
  %% Further insight into Brownian motion was explored by Einstein where he was able to relate the mean-square displacement of a particle of radius $r_\mathrm{sph}$ on a fluid with viscosity $\eta$.
 
