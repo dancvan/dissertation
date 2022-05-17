@@ -1,0 +1,81 @@
+% Results dump
+
+
+TCS
+% Gathered elog sources:
+  % From MARCH LVK 2019 conference presentation on TCS update for O3:
+    TCS comissioning for O3
+      Analysis of input coupler optics for robust picture of thermal compensation
+      Includes actutors as well as probe beams
+      Describe the motivation behind pre-loading
+        - Using assumed absorption values
+        - Updated absorption values when using HWS data (optical power decay over time)
+      Point absorbers
+        - Extremely disruptive and an inherent limitation to high power operation of DRFPMI inferferometers as gravitational wave detectors
+          - Impacts sideband control signals to a point where the interferometer cannot stay locked once ``thermalized"
+          - Optical loss to higher order modes and estimated beam contamination
+        - Establishing metrics of improvement: arm power buildup, improve RF 9 and 45 buildups, reducing 9MHz RIN coupling.
+      Sampling TCS parameter space
+          - Sampling a unique thermal compensation, if the change is significantly large enough, can leave the interferometer in a unusable state for 12+ hours
+          - Constructed a filter at the RH power signal input to achieve the final thermo-optic state within 2-3 hours
+      Some tried solutions
+          - First order problem was to see if adjusting for the ITM curvature mismatch based on the spherical power data alone was a solution:
+            - This alone cannot solve the problem as higher order spatial actuation across the test mass is required for ITMY
+          - CO2 mask
+          - Moving beam spots (off center)
+
+
+AlGaAs electro-optic effect results:
+
+  Motivating the experiment:
+    - EO effect with zincblende crystals
+    - HR coating calculation
+      - Stefan's thermal noise computation
+    - d$\phi$/dE estimate
+
+  Single PDH locked cavity with Electrostatic field assembly to measure the EO effect:
+    - Concept Schema / Block diagram
+    - Servo
+      - Electronics
+      - Optical plant
+        - Cavity params
+          - .1665m length (CVI Melles-Griot, ATFilms)
+          - .333m ROC mirror
+          - pl-pl mirror (AlGaAs)
+        - Modelling E-field injection for chosen cavity length
+          - Quick math for code
+          - Results:
+            - Plot
+            - Relevant $E_z$ estimate
+            - Feasible for EO measurment
+            
+
+  Mount assemblies
+    Objectives: To maximize the normal electric field without clipping the beam. We are answering the question, ``will our cavity be able to yield a high enough SNR for a coherent measurement?"
+      Assembly #1
+        - Mount geometry and material
+          -
+          - Electrodes
+            - Aluminum
+            - 3inch large disks with 3mm diameter aperture
+        - Electrode geometry
+        - Likely dithering
+          - Compliance intended for pitch / yaw control of mirror backfired and most likely coupled noise
+        - Result: Size reduction is
+      Assembly #2
+        - Mount geometry and material
+          - Electrodes
+            - Geometry:
+              - Pucks (Dims: )
+            - Material:
+              - Copper (higher inertia, less AC coupling?) and aluminum
+          - Mount
+            - Geometry:
+              - Simple rectangular mount
+        - Result: Mount design more mature but still suggesting that there is a flaw in design from drive coupling
+      Assembly #3
+        -
+    PETG
+
+    Plotted results:
+: " "
