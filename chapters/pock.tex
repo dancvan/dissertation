@@ -363,8 +363,8 @@ This along with computed estimate above allows us to create an upper limit for w
 \\
 \textcolor{red}{FIGURE: GWINC noise against calibrated electro-optic noise estimate.}
 
-\section{}
-The motivation behind this work is the necessity to acquire a calibrated estimate of the pockels effect from a $\gaas$/$\algaas$ mirror sample from Thorlabs' crystalline mirror coatings. As seen in the prior section, the size of the imparted phase noise for currently existing gravitational wave detector configurations is estimated to be small but notable. Investigation through measurement of said effect requires detection methods with sufficient sensitivity for the differential phase noise imparted by the effect. A Pound-Drever-Hall servo to maintain resonance of a 1064nm carrier field to a Fabry-Perot cavity, with the aforementioned crystalline coated cavity end mirror installed in a custom longitudinal pockels cell mirror mount was tried. Details and specifications of the detection schema are discussed along with relevant measurements and results.
+\section{Short, in-air, Pound-Drever-Hall locked, Fabry-Perot cavity experiment}
+ To attempt to acquire a calibrated estimate of the Electro-optic effect, we propose and use a single, in-air cavity, Pound-Drever-Hall servo to maintain resonance with a 1064nm carrier beam; while the $\gaas$/$\algaas$ coated cavity end mirror installed in a custom longitudinal Pockels cell mirror mount. behind this work is the necessity to acquire a calibrated estimate of the pockels effect from a $\gaas$/$\algaas$ mirror sample from Thorlabs' crystalline mirror coatings. As seen in the prior section, the size of the imparted phase noise for currently existing gravitational wave detector configurations is estimated to be small but notable. Investigation through measurement of said effect requires detection methods with sufficient sensitivity for the differential phase noise imparted by the effect. A Pound-Drever-Hall servo to maintain resonance of a 1064nm carrier field to a Fabry-Perot cavity, with the aforementioned crystalline coated cavity end mirror installed in a custom longitudinal pockels cell mirror mount was tried. Details and specifications of the detection schema are discussed along with relevant measurements and results.
 
 \begin{figure}[H]
 \includegraphics[width=\textwidth]{figs/ALGAAS/algaas_pockels_effect_measurement_schematic.pdf}
@@ -458,8 +458,6 @@ How the measurement is taken (important to take between installations to account
 \subsection{Longitudinal Pockels Cell mirror mount assembly}
 Maximizing the electric field ($|E_z|$) and within the coating while requiring a through beam to and through the HR coating lead us to a design very similar to that of a longitudinal pockels cell \cite{}. The assembly is comprised of two disk electrodes with a 3mm central aperture which is chosen to be at least 5 times larger than the beam size at the plate locations; to avoid significant beam clipping while maximizing field strength at the coating region of interest. There is also a required separation of at least 1/4" accounting for the thickness of the optical sample. Considering these constraints, modelling the system and computing the estimated field strength screened by the coating is the next step to the construction of the assembly.
 
-\subsubsection{Modelling}
-
 \begin{figure}[H]
 \begin{center}
 \includegraphics[width=.7\textwidth]{ALGAAS/assemblies/disk_electrode_concept.png}
@@ -467,6 +465,8 @@ Maximizing the electric field ($|E_z|$) and within the coating while requiring a
 \caption{Concept image of the longitudinal Pockels cell assembly}
 \label{fig:pock_cell_assembly_concept}
 \end{figure}
+
+\subsubsection{Modelling}
 
 To find the Electric field screened by the coating we begin with Gauss' Law:
 
@@ -509,7 +509,7 @@ Where $\chi (z)$ is the electric susceptibility. (\textcolor{red}{Establish coor
 
 
 \section{Results}
-Measurements made with A major challenge in the design choice made for this experiment is the differential noise when mounting the optics in accessible non-conductive materials. Most commercial optical mounts are conductors which proved to be challenging when attempting to find a mounting solution while reducing the non-normal field gradients within the coating volume of interest within the sample. For this reason, efforts were focused on developing a suitable mounting solution that would provide isolation from any uncontrolled field magnitudes while providing one normally incident on the surface, with enough strength and uniformity across the beam area to extract a measurement of the differential length change from the Pockels effect. The mounts are separated by large geometric and / or material differences.
+A major challenge encountered in the design choice made for this experiment is the differential length noise of the cavity when mounting the optics in accessible non-conductive materials. Most commercial optical mounts are conductors which proved to be a barrier when attempting to find a mounting solution while reducing non-normal field gradients within the coating volume of interest within the sample. For this reason, efforts were focused on developing a suitable mounting solution that would provide the best isolation from any uncontrolled field magnitudes while driving a field normally incident on the surface with enough strength and uniformity across the beam area to extract a measurement of the differential length change from the Pockels effect. For reassurance, we installed a flat mirror with an amorphous coating to perform a null measurement reference; ruling out the Pockels effect and providing information for noise investigations.
 
 \subsection{Measurement Calibration}
 The error signal spectra probed at the FSS:
@@ -518,7 +518,7 @@ The error signal spectra probed at the FSS:
 \mathrm{VFSSOUT}_\mathrm{rms}/\sqrt{Hz} \rightarrow m_\mathrm{rms}/\sqrt{\mathrm{Hz}}
 \end{equation}
 
-With the the above servo electronics transfer functions, we calibrate the measurement into a differential length:
+With the the above servo electronics transfer functions, we \href{sec:calibration_math}{calibrate} the measurement into a differential length:
 \begin{equation}
 \Delta \mathrm{L} = \mathrm{source}*\alpha(f) \mathrm{A}(f)*\frac{1+\mathrm{OLG}(f)}{\mathrm{OLG}(f)}*\frac{\mathrm{L_{cav}}}{f_\mathrm{laser}}
 \end{equation}
@@ -558,7 +558,7 @@ With the the above servo electronics transfer functions, we calibrate the measur
 \textcolor{red}{Copper electrodes}
 
 \subsubsection{Assembly 3 (MACOR mount)}
- an optical mount made of MACOR a machinable ceramic with high a high Young's modulus (66.9 GPa), and a moderate Poisson ratio (.29) \cite{macor}. An optical mount for the sample made with MACOR, along with glass bearnings .48 $\pm$ .01 cm $\diameter$  and a McMaster-Carr 8-32, 1/2" ceramic screw were used to clamp and suspend the optical sample. A 1.24" $\diameter$ hole was bored into the MACOR with a (\textcolor{red}{depth?}) depth so that there is a ? mm clearance between the front and back surface of the sample to the electrode plates.
+An optical mount made of MACOR a machinable ceramic with high a high Young's modulus (66.9 GPa), and a moderate Poisson ratio (.29) \cite{macor}. An optical mount for the sample made with MACOR, along with glass bearnings .48 $\pm$ .01 cm $\diameter$  and a McMaster-Carr 8-32, 1/2" ceramic screw were used to clamp and suspend the optical sample. A 1.24" $\diameter$ hole was bored into the MACOR with a (\textcolor{red}{depth?}) depth so that there is a ? mm clearance between the front and back surface of the sample to the electrode plates.
 \textcolor{red}{Figure with the sample in-situ}
 \\
 \begin{figure}[H]
