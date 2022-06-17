@@ -1,6 +1,6 @@
 %% Electro-optic study of AlGaAs coated mirrors
 
- As mentioned in Section \cite{sec:ligo_noise} one of the many LIGO fundamental noise sources is coating thermal noise from the $\mathrm{SiO_2}/\mathrm{TiO_2:Ta_2O_5}$ aLIGO coatings. As aLIGO approaches its designed sensitivity various coating solutions are currently proposed to mitigate thermal noise coupling into the detector output \cite{?}. With the potential to reduce coating Brownian noise by a factor of 10 \cite{Cole:2013}, $\gaas$/$\algaas$ shows much promise with next generation detectors for a potential strain reduction by a factor of 5 \cite{?}, in comparison to the current aLIGO coatings. Though inherent material property differences of these crystalline coatings introduce new and potentially significant noise couplings; one being the linear electro-optic property of crystalline materials (dn/dE), also known as the Pockels effect \cite{abernathy_poster}. Prior to commitment of a $\gaas$/$\algaas$ coating in gravitational wave detectors, a thorough study of these notable noises is worthwhile. This section details a study of starting with a survey of the distinguishing optical and material properties of crystalline materials like $\gaas$ and $\algaas$ by reviewing: light propogation through anistropic materials, and induced optical anisotropy of zincblende materials. Immediately after, estimates of the differential phase of light reflected from a $\gaas$/$\algaas$ coating caused by electric field noise are computed with potential impacts to current generation gravitational wave detectors. With adequate motivation, an experiment designed to measure the pockels effect from a HR $\gaas$/$\algaas$ coated ``witness" sample was constructed and the design, results are discussed.
+ As mentioned in Section \hyperref[sec:ligo_noise] one of the many LIGO fundamental noise sources is coating thermal noise from the $\mathrm{SiO_2}/\mathrm{TiO_2:Ta_2O_5}$ aLIGO coatings. As aLIGO approaches its designed sensitivity various coating solutions are currently proposed to mitigate thermal noise coupling into the detector output \cite{?}. With the potential to reduce coating Brownian noise by a factor of 10, $\gaas$/$\algaas$ shows much promise with next generation detectors for a potential strain reduction by a factor of 5 \cite{Cole:2013}, in comparison to the current aLIGO coatings. Though inherent material property differences of these crystalline coatings introduce new and potentially significant noise couplings; one being the linear electro-optic property of crystalline materials (dn/dE), also known as the Pockels effect \cite{abernathy_poster}. Prior to commitment of a $\gaas$/$\algaas$ coating in gravitational wave detectors, a thorough study of these notable noises is worthwhile. This section details a study of starting with a survey of the distinguishing optical and material properties of crystalline materials like $\gaas$ and $\algaas$ by reviewing: light propogation through anistropic materials, and induced optical anisotropy of zincblende materials. Immediately after, estimates of the differential phase of lightereflected from a $\gaas$/$\algaas$ coating caused by electric field noise are computed with potential impacts to current generation gravitational wave detectors. With adequate motivation, an experiment designed to measure the pockels effect from a HR $\gaas$/$\algaas$ coated ``witness" sample was constructed and the design, results are discussed.
 
 \subsection{Anisotropic media}
 Unlike with isotropic media, we cannot assume that the index of refraction of anisotropic media is the same for all chosen wave vectors. This is a direct consequence of the birefringence of anisotropic media; characterized by the dielectric, permittivity, and polarization tensors.
@@ -91,8 +91,10 @@ The space group of $\gaas$ as well as $\algaas$ are within the $F\bar{4}3m$ spac
 \satoshi{Is this true?} \textcolor{blue}{Yes. Though the birefringence seen from HR $\gaas$ coatings is said to be due to an ``intrinsic stress" in the high and low index layers. (What is breaking the symmetry to cause this? Heteroepitaxy? Annealing? Defects? Is this birefringence the same for all samples?) I think a dedicated high precision birefringence measurement on multiple samples would be cool.}
 
 \begin{figure}[H]
-\includegraphics[width=\textwidth]{figs/ALGAAS/gaas_unit_cell_mi.PNG}
+\begin{center}
+\includegraphics[width=.85\textwidth]{figs/ALGAAS/gaas_unit_cell_mi.pdf}
 \caption{The unit cell of gallium arsenide (GaAs) with associated miller indices as coordinate axes}
+\end{center}
 \label{fig:gaas_uc}
 \end{figure}
 
@@ -200,11 +202,11 @@ When a general strains $S_{kl}(r) = \frac{1}{2} \bigg[ \frac{\partial u_k (r)}{\
 \subsection{Electro-optic modulation}\label{sec:EOM}
 A common application of this effect is phase modulation onto a optical carrier field. Electro-optic modulators or Pockel cells accomplish this by sandwiching two capacitor plates around crystal with a single electrical input port designed to take in a frequency ($\Omega$) within a specified modulation bandwidth. When the field amplitude across the crystal is driven by a voltage controlled oscillation, we exiperience a change in the electro-optic tensor. The voltage amplitude of the signal input is proportional to the strength of the phase modulation on the optical carrier field of frequency ($\omega$) and is commonly quantified in terms of a modulation index ($\beta$).
 
-\begin{figure*}
-     \begin{subfigure}{\includegraphics[width=.40\textwidth]{figs/ALGAAS/pockels_cell_l.png}}
+\begin{figure*}[!h]
+     \begin{subfigure}{\includegraphics[width=.5\textwidth]{figs/ALGAAS/temp/pockels_cell_l.pdf}}
      \end{subfigure}
      \hfill
-     \begin{subfigure}{\includegraphics[width=.40\textwidth]{figs/ALGAAS/pockels_cell_t.png}}
+     \begin{subfigure}{\includegraphics[width=.5\textwidth]{figs/ALGAAS/temp/pockels_cell_t.pdf}}
      \end{subfigure}
     \caption{\textcolor{red}{PENDING UPDATES currently borrowed image from rp photonics} Longitudinal and Transverse Pockels cells}
     \label{fig:lpc_and_tpc}
@@ -224,16 +226,17 @@ E_\mathrm{inp} = E_o e^{i \omega t + \beta \mathrm{sin}( \Omega t)}
 \subsection{Optical anisotropy of a HR $\gaas$ / $\algaas$ stack}
 Our interests primarily lie with the study of birefringent properties of a candidate highly reflective $\gaas$/$\algaas$ mirrorstack. This section is intended to provide a comprehensive review by: 1) making considerations of crystal coordinates when asserting an optical axis on a highly reflective crystalline stack manufactured by Thorlabs, 2) citing coating parameters and observed intrinsic birefringence from the highly reflective coating stack in question, 3) analyzing differential linear electro-optic effect on the phase of a reflected beam, and 4) estimating the the differential phase noise in LIGO based on calibrated electric field measurements.
 
+\begin{figure*}[!h]
+    \begin{subfigure}{\includegraphics[width=.5\textwidth]{figs/ALGAAS/coating_orientation_normal.pdf}}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{\includegraphics[width=.5\textwidth]{figs/ALGAAS/coating_orientation_isometric.pdf}}
+    \end{subfigure}
+\caption{The beam propogation axis ($\vec{S}$, $[-100]$) with respect to the AlGaAs/GaAs crystal axes. The axis formed by the [100] plane normal is parallel with the beam axis (z-axis) and the polarizations of incident and reflected beam oscillate along vectors within the plane formed by the normal of that axis. The AlGaAs coating is grown with a flat indicating a line within the [0-11] plane; where the plane normal points towards the sample center.}
+\label{fig:algaas_coords}
+\end{figure*}
 
 \subsubsection{Miller indices for highly reflective coatings $\gaas$/$\algaas$ coatings}
-
-\begin{figure}[H]
-\begin{center}
-\includegraphics[width=\textwidth]{figs/ALGAAS/algaas_sample_diagram.png}
-\end{center}
-\caption{\textcolor{red}{PENDING UPDATES} Figure of the beam propogation axis with respect to the AlGaAs/GaAs crystal axes (not final version). Within the [100] plane the AlGaAs coating is grown with a flat indicator that draws a line within the [0-11] plane where the bisecting vector of the plane normal points towards the sample center. The axis formed by the [100] is parallel with the beam axis (z-axis). The polarizations of incident and reflected beam oscillate along vectors within the plane formed by the normal of that axis.}
-\label{fig:algaas_coords}
-\end{figure}
 
 Up until this point we have discussed three different coordinate axes: the crystal axis (indicated by Miller index plane normals), the principal dielectric axis (coordinates based in diagonalization of the indicatrix), and an optical axis (when considering a desired (laser) light propogation). We assert the beam axis \cite{fig:algaas_coords} with linearly p-polarized light.
 
@@ -370,9 +373,8 @@ This along with computed estimate above allows us to create an upper limit for w
 \subsection{PDH servo}\label{subsubsec:pdh}
 The Pound-Drever-Hall technique, originally imagined for laser frequency stabilization to an ultra-stable length reference, allows the tracking of the linear phase response of an input carrier field through cavity resonance. The servo fully realizes the ability of an optical cavity to act as a length / frequency discriminator. The alternative cavity offset lock provides a linear response in intensity, which is adequate for some applications but with reduced sensitivity due to the required power reduction by operating off resonance.
 \begin{figure}[H]
-\includegraphics[width=\textwidth]{figs/ALGAAS/DC_power_cav_resonance.png}
-\caption{Reflected and transmitted power around resonance.
-\textcolor{red}{Phase as dotted line?}}
+\includegraphics[width=\textwidth]{figs/ALGAAS/DC_power_cav_resonance.pdf}
+\caption{Reflected and transmitted power around resonance. \textcolor{red}{Phase as dotted line?}}
 \label{fig:cav_length_response_DCpow}
 \end{figure}
 Th phase measurement is achieved through an optical heterodyne; the co-propogation of a separate (but phase-locked) optical field with a known frequency separation to the carrier reflected from the cavity input. To accomplish this, the PDH servo offers a way to avoid complicated phase-locked two laser configurations, by imposing a phase modulation on the carrier field via an electro-optic modulator (aka Pockels cell) mentioned in section \ref{sec:EOM}. If the modulation depth given by \ref{eq:inp_EOM} is set such that $\beta < 1$ then the input field may be approximated in terms of the first two Bessel functions $J_0$, $J_1$:
@@ -394,7 +396,7 @@ With a high enough modulation frequency the terms given above can be far enough 
 The two trailing terms in the above equation for $P_\mathrm{refl}$ generate a beat frequency term between the carrier and lower and upper sidebands. The magnitude and sign of these beat terms directly relate to the phase of the reflected carrier field and can be measured and transformed to the error signal seen in \ref{fig:pdh_error} using resonant electronics (tuned to a chosen sideband frequency) for amplification and a mixer for demodulation.
 
 \begin{figure}[H]
-\includegraphics[width=\textwidth]{figs/ALGAAS/pdh_error.png}
+\includegraphics[width=\textwidth]{figs/ALGAAS/pdh_error.pdf}
 \caption{By imposing 25 MHz RF sidebands we have introduced a constant reflected reference field near carrier resonance which when beat with the carrier offers a linear response after demodulating the sideband power. With the introduction of high and low frequency sideband fields, their presence is also detected through the DCPDs and PDH error signal. Their separations from carrier resonance are equal in phase (length, and frequency).}
 \label{fig:pdh_error}
 \end{figure}
@@ -408,7 +410,7 @@ The quantity we are attempting to measure is on the order of a length change of 
 
 \begin{figure}[H]
 \begin{center}
-\includegraphics[width=.75\textwidth]{ALGAAS/opt_layout_a.jpeg}
+\includegraphics[width=.75\textwidth]{ALGAAS/opt_layout_a.pdf}
 \end{center}
 \caption{\textcolor{red}{Final figure still pending} Detailed optical schema of the experiment. Components highlighted in magenta indicate laser back-reflection protection and output power control. All optics highlighted in PURPLE indicate their function as alignment and mode matching for locking to a triangular ALIGO PMC \textbf{Multiple citations (DCC doc / Fabian's experiment / Erik's experiment)}. Optics highlighted in YELLOW indicate function for alignment and mode matching experimental cavity utilizing the HR $\gaas$/$\algaas$ mirror. Beam profiling to the sample cavity is indicated. For the sake of the numerous mounting strategies tried, the longitudinal pockels cell mirror mount is kept general with the pictured mirror between two disk capacitors}
 \label{fig:detailed_optical_layout}
@@ -421,7 +423,7 @@ The quantity we are attempting to measure is on the order of a length change of 
 The implemented servo design uses a light source from a Mephisto 2000 NE Nd:YAG (1064nm) laser with a 25 MHz phase modulation from a New Focus Model 4003 IR resonant phase modulator. As indicated in the figure above, the electronics chain can be decomposed into various filter components: $S(f)$, $A(f)$, and $A_\mathrm{thermal}(f)$
 
 \subsubsection{Sensing S(f)}
-The sensing filter electronics are composed of a single element photodiode (from?) with a QE of ? and the response found in appendix ?. The signal is then mixed with a 25 MHz oscillator phased 180 degrees ? m of cable so the measured beat signal while sweeping through resonance generates the \href{fig:pdh_error}{PDH error signal profile}.
+The sensing filter electronics are composed of a single element photodiode (from?) with a QE of ? and the response found in appendix ?. The signal is then mixed with a 25 MHz oscillator phased 180 degrees ? m of cable so the measured beat signal while sweeping through resonance generates the \hyperref[fig:pdh_error]{PDH error signal profile}.
 \begin{itemize}
 \item 25 MHz RFPD
 \begin{itemize}
@@ -450,11 +452,11 @@ How the measurement is taken (important to take between installations to account
 
 
 \subsection{Longitudinal Pockels Cell mirror mount assembly}
-Maximizing the electric field ($|E_z|$) and within the coating while requiring a through beam to and through the HR coating lead us to a design very similar to that of a longitudinal pockels cell \cite{}. The assembly is comprised of two disk electrodes with a 3mm central aperture which is chosen to be at least 5 times larger than the beam size at the plate locations; to avoid significant beam clipping while maximizing field strength at the coating region of interest. There is also a required separation of at least 1/4" accounting for the thickness of the optical sample. Considering these constraints, modelling the system and computing the estimated field strength screened by the coating is the next step to the construction of the assembly.
+Maximizing a controlled and well defined electric field ($|E_z|$) within the coating while requiring a through beam to and through the HR coating lead us to a design very similar to that of a longitudinal pockels cell \cite{}. The most common assembly in for this study is comprised of two electrodes with a 3mm central aperture which is chosen to be at least 5 times larger than the beam size at the plate locations; to avoid significant beam clipping while maximizing field strength at the coating region of interest. There is also a required separation of at least 1/4" accounting for the thickness of the optical sample. Considering these constraints, modelling the system and computing the estimated field strength screened by the coating is the next step to the construction of the assembly.
 
 \begin{figure}[H]
 \begin{center}
-\includegraphics[width=.7\textwidth]{ALGAAS/assemblies/disk_electrode_concept.png}
+\includegraphics[width=.7\textwidth]{ALGAAS/assemblies/disk_electrode_concept.pdf}
 \end{center}
 \caption{Concept image of the longitudinal Pockels cell assembly}
 \label{fig:pock_cell_assembly_concept}
@@ -474,10 +476,10 @@ For our problem we assume no free charge, but the fused silica substrate with th
 Where $\chi (z)$ is the electric susceptibility.
 
 \begin{figure}[H]
-\centering
-\includegraphics[width=.65\textwidth]{figs/ALGAAS/laplace_coord_test.png}
-\caption{\textcolor{red}{Use relevant cross sectional figure to establish coordinates for $\gaas$/$\algaas$, as well as the fused silica substrate so the computation is transparent.} Cross sectional diagram indicating relevant axes and boundary conditions utilized in the numerical computation.}
-\label{fig:laplace_coords}
+  \centering
+  \includegraphics[width=.65\textwidth]{figs/ALGAAS/laplace_coord_test.pdf}
+  \caption{\textcolor{red}{Use relevant cross sectional figure to establish coordinates for $\gaas$/$\algaas$, as well as the fused silica substrate so the computation is transparent.} Cross sectional diagram indicating relevant axes and boundary conditions utilized in the numerical computation.}
+  \label{fig:laplace_coords}
 \end{figure}
 
 \noindent \textcolor{red}{Numerical recipe in appendix}
@@ -491,28 +493,30 @@ Where $\chi (z)$ is the electric susceptibility.
 \end{itemize}
 \end{itemize}
 
-\begin{figure}[H]
-\includegraphics[width=\textwidth]{ALGAAS/13-Sep-2021_potential_map}
-\caption{Poisson calculator output potential map ($V(z,r)$ in cylindrical coordinates)}
-\label{fig:poisson_calc_output}
-\end{figure}
 
 \begin{figure}[H]
-\includegraphics[width=\textwidth]{ALGAAS/13-Sep-2021_e_field_inside_outside_normal}
-\caption{$|E_z|$ screened by the coating and immediately outside AlGaAs coating. \textcolor{red}{Needs to be updated with more current voltage settings}}
+  \includegraphics[width=\textwidth]{ALGAAS/13-Sep-2021_potential_map.pdf}
+  \caption{Poisson calculator output potential map ($V(z,r)$ in cylindrical coordinates)}
+  \label{fig:poisson_calc_output}
+\end{figure}
+
+\subsubsection{Voltage drive electronics}
+
+\begin{figure}[H]
+    \includegraphics[width=\textwidth]{ALGAAS/13-Sep-2021_e_field_inside_outside_normal.pdf}
+    \caption{The availablility of required voltage amplifiers during the course of this study was limited and lead to the use of multiple high voltage amplifiers with all transfer functions listed.}
 \label{fig:Ez}
 \end{figure}
 
-\begin{figure}[H]
-\centering
-\includegraphics[width=.75\textwidth]{figs/ALGAAS/tfs/HVA_TREK1010BHS_1260V_out.png}
-\caption{TREK 10/10B-HS HVA frequency dependent measurement. Using Poisson calculator to estimate field strength within coating. (\textcolor{red}{Just HVA for now but will update.} \textcolor{red}{Also, assumes a flat response from coating within this studied region (is this a good assumption or could I do better? (dielectric frequency dependence))}}
-\label{fig:Ez}
-\end{figure}
 
+\begin{figure}[H]
+    \includegraphics[width=\textwidth]{ALGAAS/tfs/hva_compare.pdf}
+    \caption{Different high voltage amplifier transfer functions used for the study}
+    \label{fig:hva_compare}
+\end{figure}
 
 \section{Results}
-A major challenge encountered in the design choice made for this experiment is the differential length noise of the cavity when mounting the optics in accessible non-conductive materials. Most commercial optical mounts are conductors which proved to be a barrier when attempting to find a mounting solution while reducing non-normal field gradients within the coating volume of interest within the sample. For this reason, efforts were focused on developing a suitable mounting solution that would provide the best isolation from any uncontrolled field magnitudes while driving a field normally incident on the surface with enough strength and uniformity across the beam area to extract a measurement of the differential length change from the Pockels effect. For reassurance, we installed a flat mirror with an amorphous coating to perform a null measurement reference; ruling out the Pockels effect and providing information for noise investigations.
+A major challenge encountered in the design choice made for this experiment is the differential length noise of the cavity when mounting the optics in accessible non-conductive materials. Most commercial optical mounts are conductors which proved to be a barrier when attempting to find a mounting solution while reducing non-normal field gradients within the coating volume of interest within the sample. For this reason, efforts were focused on developing a suitable mounting solution that would provide the best isolation from any uncontrolled field magnitudes while driving a field normally incident on the surface with enough strength and uniformity across the beam area to extract a measurement of the differential length change from the Pockels effect. The mounts studied span different geometries and different material properties. The varying geometrical assembly differences created distinguishable mount solutions, and it is how this section will be divided. For reassurance, we compare displacement spectra against that of a nearly identical cavity with a flat non-crystalline mirror coating to perform a null measurement reference; ruling out the Pockels effect and providing information for noise investigations.
 
 \subsection{Measurement Calibration}
 The error signal spectra probed at the FSS:
@@ -521,65 +525,133 @@ The error signal spectra probed at the FSS:
 \mathrm{VFSSOUT}_\mathrm{rms}/\sqrt{Hz} \rightarrow m_\mathrm{rms}/\sqrt{\mathrm{Hz}}
 \end{equation}
 
-With the the above servo electronics transfer functions, we \href{sec:calibration_math}{calibrate} the measurement into a differential length:
+With the the above servo electronics transfer functions, we \hyperref[sec:calibration_math]{calibrate} the measurement into a differential length:
 \begin{equation}
 \Delta \mathrm{L} = \mathrm{source}*\alpha(f) \mathrm{A}(f)*\frac{1+\mathrm{OLG}(f)}{\mathrm{OLG}(f)}*\frac{\mathrm{L_{cav}}}{f_\mathrm{laser}}
 \end{equation}
 
 \subsection{Mounting Strategies}
-
+As mentioned multiple mounting strategies were tried in the attempt to reach adequate sensitivity in measuring the Pockels effect. The following section details measurements performed with various longitudinal pockel cell mounts. Further details (assembly parameters, blueprints, and visual aids) can be found in the appendix.
 
 \subsubsection{Assembly 1}
 
+\begin{figure*}[!h]
+    \begin{subfigure}{\includegraphics[width=.5\textwidth]{figs/ALGAAS/assemblies/assembly1/assembly1_dissassembled.pdf}}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{\includegraphics[width=.5\textwidth]{figs/ALGAAS/assemblies/assembly1/assembly1_flaw.pdf}}
+    \end{subfigure}
+    \caption{Assembly 1 was constructed to meet two criteria: the same solution of housing the sample and electrodes as Assembly 0, but also offer pitch / yaw control via an ortho-planar spring design (Brigham Young University).}
+    \label{fig:assembly1}
+\end{figure*}
+\FloatBarrier
+
+
+The construction revealed flaws; made most obvious when comparing to displacement noise of traditional optical mounts. Pitch and yaw control via the ortho-planar spring were prioritized to avoid metal springs and further mount pieces. The solution became unjustifiable when observing the the displacement noise coupling from the mount.
+
+\textcolor{red}{Re-run this calibration with adequate voltage normalization for a response unit [$m_\mathrm{pk} / [V / m]$}
+
 \begin{figure}[H]
 \centering
-\includegraphics[width=.75\textwidth]{figs/ALGAAS/assemblies/assembly1/assembly_1_dissassembled.png}
-\caption{Assembly 1 was constructed to meet two criteria: the same solution of housing the sample and electrodes as Assembly 0, but also offer pitch / yaw control via an ortho-planar spring design (Brigham Young University).}
-\label{fig:assembly1}
+\includegraphics[width=\textwidth]{figs/ALGAAS/assemblies/assembly1/assembly1_2_compare_standmount.pdf}
+\caption{Measured displacement spectra for Assembly 1.2 of the longitudinal pockels cell mount compared to the standard kinematic mount. Both measurements were recorded with the the CVI Melles-Griot (amorphous) mirror coating sample installed in the assembly. \textcolor{red}{Units and legend labels need increase in font size. Remove Swept sine measurement title}}
+\label{fig:assembly2_compare_kinematic_mount}
 \end{figure}
 
+Attempts at improving the pitch dithering were tried with side set screws but mostly caused significant misalignment (less power in fundamental mode, locking issues, etc.). This lead to the final alternative for this assembly type; with the same PLA stack indicated in ~\hyperref[fig:assembly1]{Assembly 1}.
+
+\begin{figure*}[!h]
+    \begin{subfigure}{\includegraphics[width=.5\textwidth]{figs/ALGAAS/assemblies/assembly1/assembly1_mod_front.pdf}}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{\includegraphics[width=.5\textwidth]{figs/ALGAAS/assemblies/assembly1/assembly1_mod_side.pdf}}
+    \end{subfigure}
+    \caption{A modification implemented  with the intention of reducing pitch dithering while still having control of DC YAW}
+    \label{fig:assembly1_mod}
+\end{figure*}
 
 \begin{figure}[H]
-\centering
-\includegraphics[width=.75\textwidth]{figs/ALGAAS/assemblies/assembly1/assembly_1_dissassembled.png}
-\caption{Assembly 1 was constructed to meet two criteria: the same solution of housing the sample and electrodes as Assembly 0, but also offer pitch / yaw control via an ortho-planar spring design (Brigham Young University).}
-\label{fig:assembly1_results}
+    \includegraphics[width=\textwidth]{figs/ALGAAS/results_figs/assembly1/1_2_algaas_tfwcmb.pdf}
+    \caption{Assembly 1.2 and 1.3 transfer function measurement and separate noise displacement spectra measurement with the $\gaas$/$\algaas$ sample installed. Measurements were taken from 3kHz up to 21kHz on using a Stanford Research 785 spectrum analyzer.}
+    \label{fig:assembly1_2_and_1_3_displacement_spectra_algaas}
 \end{figure}
 
 \begin{figure}[H]
-\centering
-\includegraphics[width=.75\textwidth]{figs/ALGAAS/assemblies/assembly1/assembly1_flaw.jpg}
-\caption{Assembly 1 pitch dithering design flaw}
-\label{fig:assembly2}
+    \includegraphics[width=\textwidth]{figs/ALGAAS/results_figs/assembly1/1_2_cvi_compare_tfwcmb.pdf}
+    \caption{Assembly 1.2 and 1.3 transfer function measurement and separate noise displacement spectra measurement with a CVI Melles Griot flat mirror sample ($R \approx $ sample installed. Measurements were taken from 1kHz up to 30kHz on using a Stanford Research 785 spectrum analyzer.}
+    \label{fig:assembly1_2_and_1_3_displacement_spectra_cvi}
 \end{figure}
-
-\textcolor{red}{Looking through measurements for best noise measurements}
 
 \subsubsection{Assembly 2}
-\textcolor{red}{Different materials: PVC, PLA, PETG}
-\textcolor{red}{Copper electrodes}
+
+With considerations after Assembly 1, a more monolithic optical mount design with a simple geometry was imagined. PLA material compliance factoring to the seen drive noise. To see if it could be due to the compliance of the assembly material or printing, we tested this assembly design against different infills of PLA, PETG, and a version machined from solid PVC. With this modification, came also a different plate geometry. The assumption is the region of interest of the injection would not be heavily influenced by the non-circular plate geometry where it matters.
+
+% Some citations:
+%\cite{PINTO2015635}
+
+\begin{figure*}[!h]
+    \begin{subfigure}{\includegraphics[width=.5\textwidth]{figs/ALGAAS/assemblies/assembly2/assembly2_PVC.pdf}}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{\includegraphics[width=.5\textwidth]{figs/ALGAAS/assemblies/assembly2/assembly2_PVC.pdf}}
+    \end{subfigure}
+    \caption{An iteration of assembly 2 comprised of a PVC mount with two rectangular (1.1"X2") plates with a central aperture of 3mm}
+    \label{fig:assembly2}
+\end{figure*}
+
+\begin{figure}[H]
+    \includegraphics[width=\textwidth]{figs/ALGAAS/results_figs/assembly2/2_0_compare_1_1.pdf} 
+    \caption{Assembly 2.0 transfer function measurements compared to Assembly 1.1, Measurements were taken from 1kHz up to 30kHz on using a Stanford Research 785 spectrum analyzer.}
+    \label{fig:assembly2and1_1}
+\end{figure}
+
+
+\begin{figure}[H]
+    \includegraphics[width=\textwidth]{figs/ALGAAS/results_figs/assembly2/vary_da.pdf}
+    \caption{The varied drive amplitudes input into the HVA to perform the following test}
+    \label{fig:vary_da}
+\end{figure}
+
+\begin{figure}[H]
+    \includegraphics[width=\textwidth]{figs/ALGAAS/results_figs/assembly2/vv53.pdf} 
+    \caption{Assembly 2.0 transfer function measurements with varied drive amplitudes indicated in ~\ref{fig:vary_da}.}
+    \label{fig:vv53}
+\end{figure}
+
+
+\begin{figure}[H]
+    \includegraphics[width=\textwidth]{figs/ALGAAS/results_figs/assembly2/vary_daao.pdf}
+    \caption{The varied drive amplitudes and offsets input into the HVA to perform the following test}
+    \label{fig:vary_daao}
+\end{figure}
+
+\begin{figure}[H]
+    \includegraphics[width=\textwidth]{figs/ALGAAS/results_figs/assembly2/vvao517.pdf} 
+\caption{Assembly 2.0 transfer function measurements with varied drive amplitudes and offsets indicated in ~\ref{fig:vary_daao}.}
+    \label{fig:vvao517}
+\end{figure}
 
 \subsubsection{Assembly 3 (MACOR mount)}
-An optical mount made of MACOR a machinable ceramic with high a high Young's modulus (66.9 GPa), and a moderate Poisson ratio (.29) \cite{macor}. An optical mount for the sample made with MACOR, along with glass bearnings .48 $\pm$ .01 cm $\diameter$  and a McMaster-Carr 8-32, 1/2" ceramic screw were used to clamp and suspend the optical sample. A 1.24" $\diameter$ hole was bored into the MACOR with a (\textcolor{red}{depth?}) depth so that there is a ? mm clearance between the front and back surface of the sample to the electrode plates.
+With most of the same characteristics from Assembly 3, an optical mount made of MACOR, a machinable ceramic, was implementedaoWith the material's high Young's modulus (66.9 GPa), and a moderate Poisson ratio (.29) \cite{macor} making it by far the most durable / non-conductive mounting solution tried.
+
+An optical mount for the sample made with MACOR, along with glass bearnings .48 $\pm$ .01 cm $\diameter$  and a McMaster-Carr 8-32, 1/2" ceramic screw were used to clamp and suspend the optical sample. A 1.24" $\diameter$ hole was bored into the MACOR with a (\textcolor{red}{depth?}) depth so that there is a .351 $\pm$ mm clearance between the front and back surface of the sample to the electrode plates.
+
 \textcolor{red}{Figure with the sample in-situ}
-\\
-\begin{figure}[H]
-\centering
-\includegraphics[width=.75\textwidth]{figs/ALGAAS/macor_assembly.jpeg}
-\caption{Placeholder for more updated MACOR assembly (this figure will end up in appendix to reference parts)}
-\label{fig:Ez}
-\end{figure}
-\textcolor{red}{Review notes and list all experiment configurations. Things modified from experiment to experiment: injection / measurement type (single frequency and transfer functions (with various ranges), mounts (Differing geometries, differing materials: PLA, PETG, MACOR), electrode sizes, separations, and assembly configurations}
+\begin{figure*}[!h]
+    \begin{subfigure}{\includegraphics[width=.5\textwidth]{figs/ALGAAS/assemblies/assembly3/assembly3_disassembled.pdf}}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{\includegraphics[width=.5\textwidth]{figs/ALGAAS/assemblies/assembly3/assembly3_isometric.pdf}}
+    \end{subfigure}
+    \caption{Assembly 3 the left hand figure is a disassembled configuration and the right hand side provides an isometric view of the assembled configuration.}
+    \label{fig:assembly3}
+\end{figure*}
 
-\textcolor{red}{Looking through measurements for best noise measurements}
-
-
-\subsection{Drive coupling}
 
 \begin{figure}[H]
-\includegraphics[width=\textwidth]{figs/ALGAAS/cav_polarization_test.png}
-\caption{Figure that will include the all displacement noise floors, (pockels estimate)*(poisson calculator estimate)*(HVA drive frequency dependence), and the drive coupled measurement \textcolor{red}{figure size needs to be increased}}
-\label{fig:measurement_sum}
+    \includegraphics[width=\textwidth]{figs/ALGAAS/results_figs/assembly3/petgmsvv64.pdf}
+    \caption{A polarization depdendent test using the MACOR mont}
+    \label{fig:measurement_sum}
 \end{figure}
 
 \subsubsection{Opto-mechanical coupling}

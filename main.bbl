@@ -1,0 +1,80 @@
+\begin{thebibliography}{10}
+
+\bibitem{Brown:1828}
+R.~B. F. H. M. . R.~A. V.P.L.S., ``Xxvii. a brief account of microscopical
+  observations made in the months of june, july and august 1827, on the
+  particles contained in the pollen of plants; and on the general existence of
+  active molecules in organic and inorganic bodies,'' {\em The Philosophical
+  Magazine}, vol.~4, no.~21, pp.~161--173, 1828.
+
+\bibitem{Callen:1951}
+H.~B. Callen and T.~A. Welton, ``Irreversibility and generalized noise,'' {\em
+  Phys. Rev.}, vol.~83, pp.~34--40, Jul 1951.
+
+\bibitem{zener:1948}
+C.~Zener, {\em Elasticity and Anelasticity of Metals}.
+\newblock University of Chicago Press, 1948.
+
+\bibitem{levin:1998}
+Y.~Levin, ``Internal thermal noise in the ligo test masses: A direct
+  approach,'' {\em Physical Review D}, vol.~57, p.~659–663, Jan 1998.
+
+\bibitem{Hong:2013}
+T.~Hong, H.~Yang, E.~K. Gustafson, R.~X. Adhikari, and Y.~Chen, ``Brownian
+  thermal noise in multilayer coated mirrors,'' {\em Physical Review D},
+  vol.~87, Apr 2013.
+
+\bibitem{Harry:06}
+G.~M. Harry, H.~Armandula, E.~Black, D.~R.~M. Crooks, G.~Cagnoli, J.~Hough,
+  P.~Murray, S.~Reid, S.~Rowan, P.~Sneddon, M.~M. Fejer, R.~Route, and S.~D.
+  Penn, ``Thermal noise from optical coatings in gravitational wave
+  detectors,'' {\em Appl. Opt.}, vol.~45, pp.~1569--1574, Mar 2006.
+
+\bibitem{Cole:2013}
+G.~D. Cole, W.~Zhang, M.~J. Martin, J.~Ye, and M.~Aspelmeyer, ``Tenfold
+  reduction of brownian noise in high-reflectivity optical coatings,'' {\em
+  Nature Photonics}, vol.~7, no.~8, pp.~644--650, 2013.
+
+\bibitem{tvo}
+T.~Vo, {\em Adaptive Mode Matching in Advanced LIGO and beyond}.
+\newblock PhD thesis, Syracuse NY, 2019.
+
+\bibitem{abernathy_poster}
+M.~Abernathy, ``Noise in crystalline coatings,'' Tech. Rep. G1401060-v1, LIGO
+  Scientific Collaboration, August 2014.
+
+\bibitem{nye}
+J.~F. Nye, {\em Physical properties of crystals (Their representation by
+  tensors and matrices)}.
+\newblock Oxford University Press, 1985.
+
+\bibitem{yariv}
+A.~Yariv, {\em Quantum Electronics (3rd. ed)}.
+\newblock John Wiley \& Sons, 1989.
+
+\bibitem{bonilla_fejer}
+M.~F. Edgard~Bonilla, ``Optical phase perturbations on the reflected wave of a
+  dielectric mirror. application to the electro-optic effect in algaas
+  coatings,'' Tech. Rep. T1800528-v1, LIGO Scientific Collaboration, December
+  2018.
+
+\bibitem{ballmer2015}
+S.~W. Ballmer, ``Photothermal transfer function of dielectric mirrors for
+  precision measurements,'' {\em Physical Review D}, vol.~91, Jan 2015.
+
+\bibitem{efm_log}
+G.~Mansell, ``Electric field meter not coherent with darm (lho elog 56416).''
+  https://alog.ligo-wa.caltech.edu/aLOG/index.php?callRep=56416.
+
+\bibitem{macor}
+Corning, {\em MACOR (Machinable glass ceramic for industrial applications)},
+  2012.
+\newblock Available at
+  \url{https://www.corning.com/media/worldwide/csm/documents/71759a443535431395eb34ebead091cb.pdf}.
+
+\bibitem{leissa}
+A.~W. Leissa, {\em Vibration of Plates}.
+\newblock National Aeronautics and Space Administration Special Publication
+  (SP), 1969.
+
+\end{thebibliography}

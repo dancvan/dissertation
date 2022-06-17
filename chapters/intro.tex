@@ -4,12 +4,33 @@
 
 \newpage
 \subsection{The Simple Michelson interferometer}
+
+\begin{equation}
+\Delta \phi (\omega) = h_0\frac{2 L \Omega}{c}e^{-i L \omega / c} \frac{\mathrm{sin}(L \omega /c)}{L \omega /c}
+\end{equation}
+
+
+\textcolor{red}{Where $h_0$ is the amplitude of the metric perturbation from a gravitational wave with angular frequency $\omega$, L is the length of the interferometer arms, c is the speed of light, $\Omega$ is the angular frequency of light}
+
+
+\begin{figure*}[t!]
+  \begin{subfigure}{\includegraphics[width=.5\textwidth]{figs/INTRO/tempsub_Basic_michelson_labeled.jpg}}
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}{\includegraphics[width=.5\textwidth]{figs/INTRO/tempsub_Basic_michelson_labeled.jpg}}
+  \end{subfigure}
+  \hfill
+  \caption{\textcolor{red}{PENDING UPDATE} The simple 4km Michelson with associated differential arm length response (left is optical schema, right is frequency response)}
+  \label{fig:assembly0_bp}
+\end{figure*}
+\FloatBarrier
+
 \begin{figure}[H]
-\begin{center}
-\includegraphics[width=\textwidth]{figs/INTRO/tempsub_Basic_michelson_labeled.jpg}
-\end{center}
-\caption{\textcolor{red}{PENDING UPDATE} The simple 4km Michelson with associated differential arm length response (left is optical schema, right is frequency response)}
-\label{fig:simple_michelson}
+  \begin{center}
+    \includegraphics[width=\textwidth]{figs/INTRO/tempsub_Basic_michelson_labeled.jpg}
+  \end{center}
+  \caption{\textcolor{red}{PENDING UPDATE} The simple 4km Michelson with associated differential arm length response (left is optical schema, right is frequency response)}
+  \label{fig:simple_michelson}
 \end{figure}
 
 The frequency response of the Simple Michelson. Assuming a LIGO configuration (with 4km arm length), the differential arm response provides a reasonable optical gain until you reach a frequency that coorelates to a gravitational wave period $\lambda / 2$ to the interferometer arm length in such a way that the response is null.
@@ -18,7 +39,6 @@ The frequency response of the Simple Michelson. Assuming a LIGO configuration (w
 At the time of the proposal of LIGO, the creation of 4km long vaccum chambers was the most costly requirement for it's construction \cite{?}. When considering the possibility of constructing gravitational wave detectors, two methods for arm extension were considered: the Delay Line and the Fabry-Perot cavity. The choice ultimately became the Fabry-Perot cavity.
 
 \subsubsection{The Fabry-Perot cavity}
-
 
 \begin{figure}[H]
 \begin{center}
@@ -166,13 +186,13 @@ S_j^X = \frac{4k_B T \lambda \phi_x^j(1- \sigma_j - 2 \sigma_j^2)}{3 \pi^2 f Y_j
 
 Where X represents bulk and shear with j = odd (material 1) and j = even (material 2) alternating layers representing high and low index materials j = odd (material 1) j = even (material 2) for an HR coating.
 
-\begin{figure}[H]
-\begin{center}
-\includegraphics[width=\textwidth]{figs/ALGAAS/aligo_nb_plus_cbn.png}
-\end{center}
-\caption{ALIGO noise budget placeholder for silica-tantala, and gaas-algaas brownian noise comparison}
-\label{fig:aligo_tn_comparison}
-\end{figure}
+%\begin{figure}[H]
+%    \begin{center}
+%    \includegraphics[width=\textwidth]{figs/ALGAAS/aligo_nb_plus_cbn.png}
+%    \end{center}
+%    \caption{ALIGO noise budget placeholder for silica-tantala, and gaas-algaas brownian noise comparison}
+%\label{fig:aligo_tn_comparison}
+%\end{figure}
 
 \subsubsection{$\mathrm{SiO_2}/\mathrm{TiO_2:Ta_2O_5}$ coating parameters}
 Currently the LIGO interferometers deposit $\lambda$/4 stacks of silica and titania doped tantala on fused silica test mass substrates. Effective loss angle measurements \cite{Harry:06}

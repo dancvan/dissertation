@@ -6,114 +6,186 @@
 
 %input{notes/crystal_classification_table}
 
-\section{AlGaAs coating orientation to beam polarization}
-
-\begin{figure*}
-    \begin{subfigure}{\includegraphics[width=.5\textwidth]{figs/ALGAAS/coating_orientation_normal.png}}
-    \end{subfigure}
-    \hfill
-    \begin{subfigure}{\includegraphics[width=.5\textwidth]{figs/ALGAAS/coating_orientation_isometric.png}}
-    \end{subfigure}
-
-    \caption{\textcolor{red}{PENDING UPDATES Laser orientation with respect to the beam axis (isometric and normal views)}}
-    \label{fig:algaas_beam_orienation_blender_1}
-\end{figure*}
 
 
 \section{Mode matching data for Electro-optic sample cavity}
 \subsection{Pre MMT beam scan}
 
 \begin{figure}[H]
-\includegraphics[width=\textwidth]{figs/ALGAAS/beamscans/12_18_2020_preMMT.png}
+\includegraphics[width=\textwidth]{figs/ALGAAS/beam_scans/12_18_2020_preMMT.pdf}
 \caption{Beam scan taken from SM5 (Steering mirror 5)}
-\label{fig:macor_mount_design}
+\label{fig:beam_scan_2020}
 \end{figure}
 
 
 \subsection{``Just another mode matching tool" (JAMMT) solution}
 
-
 \subsection{Post MMT beam scan}
 
 \begin{figure}[H]
-\includegraphics[width=\textwidth]{figs/ALGAAS/beamscans/01_12_2021_postMMT.png}
+\includegraphics[width=\textwidth]{figs/ALGAAS/beam_scans/01_12_2021_postMMT.pdf}
 \caption{Beam scan taken from SM6. Sampling points before SM7 and after the first cavity iris.}
-\label{fig:macor_mount_design}
+\label{fig:beam_scan_2021}
 \end{figure}
 
 \subsection{Laser PZT sweep}
 
 
+\newpage
 
-\section{Assembly 0}
+\section{Assembly blueprints and alternative views}
+
+\subsection{Assembly 1}
+
+\subsubsection{Cross section}
+
+\subsubsection{Electrodes}
+
+\subsubsection{Iteration 1.1}
+
+\begin{figure*}[!h]
+  \begin{subfigure}{\includegraphics[width=.5\textwidth]{figs/ALGAAS/assemblies/assembly0/assembly0.pdf}}
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}{\includegraphics[width=.5\textwidth]{figs/ALGAAS/assemblies/assembly0/assembly0_incident_power.pdf}}
+  \end{subfigure}
+  \hfill
+  \caption{Assembly 0 was constructed to meet the criteria of providing a non-conductive housing for the electrode / sample assembly while maintaining a fixed length spacing using parts 3d printed with polylactic acid (PLA).}
+  \label{fig:assembly0_bp}
+\end{figure*}
+\FloatBarrier
+
+\subsubsection{Iteration 1.2}
+\begin{figure*}[!h]
+  \begin{subfigure}{\includegraphics[width=.5\textwidth]{figs/ALGAAS/assemblies/assembly1/assembly1_dissassembled.pdf}}
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}{\includegraphics[width=.5\textwidth]{figs/ALGAAS/assemblies/assembly1/assembly1_insitu2.pdf}}
+  \end{subfigure}
+  \hfill
+  \caption{Assembly 1 was constructed to meet the criteria of providing a non-conductive housing for the electrode / sample assembly while maintaining a fixed length spacing using parts 3d printed with polylactic acid (PLA).}
+  \label{fig:assembly1_bp}
+\end{figure*}
+\FloatBarrier
+
+\subsubsection{Iteration 1.3}
+\begin{figure*}[!h]
+    \begin{subfigure}{\includegraphics[width=.5\textwidth]{figs/ALGAAS/assemblies/assembly1/assembly1_mod_front.pdf}}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{\includegraphics[width=.5\textwidth]{figs/ALGAAS/assemblies/assembly1/assembly1_mod_side.pdf}}
+    \end{subfigure}
+    \caption{A modification implemented with the intention of reducing pitch dithering while still having control of DC YAW}
+    \label{fig:assembly1_mod}
+\end{figure*}
+
+
+
+\newpage
+
+\subsection{Assembly 2}
+\subsubsection{Cross section}
+
+\subsubsection{Electrodes}
+
 \begin{figure}[H]
-\centering
-\includegraphics[width=.75\textwidth]{figs/ALGAAS/assemblies/assembly0/assembly0.png}
-\caption{Assembly 0 was constructed to meet the criteria of providing a non-conductive housing for the electrode / sample assembly while maintaining a fixed length spacing using parts 3d printed with polylactic acid (PLA).}
-\label{fig:Ez}
+  \centering
+  \includegraphics[width=.776\textwidth]{figs/ALGAAS/assemblies/assembly2/assembly2_electrode.pdf}
+  \caption{Rectangular (.05"X1.1"X2") plates made of aluminum.}
 \end{figure}
 
+\newpage
+\subsubsection{Iteration 2.1}
+\begin{figure*}[!h]
+  \centering
+  \begin{subfigure}{\includegraphics[width=.76\textwidth]{figs/ALGAAS/assemblies/assembly2/assembly2_PVC_mount.pdf}}
+  \end{subfigure}
+  \begin{subfigure}{\includegraphics[width=.76\textwidth]{figs/ALGAAS/assemblies/assembly2/assembly2_PVC_stage.pdf}}
+  \end{subfigure}
+  \hfill
+  \caption{A design iteration of the assembly 2 mounts. Materials tried varied from PVC, PLA, and PETG. Quarter inch holes are bored in order to pass nylon screws holding electrode plates fixed to the mount.}
+  \label{fig:assembly2_bp}
+\end{figure*}
+\FloatBarrier
 
-\section{Calibration}\label{sec:calibration_math}
-The frequency response measurement shown in (?) records the following transfer function in dB of the following:
-
-\begin{equation}
-\alpha(f) = \frac{\mathrm{CH2}(f)}{Source}
-\end{equation}
-
-Channel
-
-We also know that the error signal spectra of the loop is probed by $CH2(f)$:
+\subsubsection{Iteration 2.2}
 
 
-\begin{equation}
-\mathrm{CH2}(f) = \frac{\mathrm{S}(f)*signal_V}{(1-\mathrm{OLG}(f))}
-\end{equation}
+\subsubsection{3D printed w/ MACOR spacers}
 
-Where $signal_V$ is the uncalibrated voltage output from the mixer, $\mathrm{S}(f)$ is the FSS transfer function, and $\mathrm{OLG}(f)$ is the open loop gain of the PDH system.
+\textcolor{red}{Insert blueprints}
 
-And we know $\mathrm{OLG}(f) = \mathrm{S}(f)*\mathrm{A}(f)$ so :
+\textcolor{red}{Insert printed results}
 
-\begin{equation}
-\mathrm{signal}_m = \mathrm{CH2}(f)*\mathrm{A}(f) \frac{1-\mathrm{OLG}(f)}{\mathrm{OLG}(f)} \frac{L_\mathrm{cav}}{f_\mathrm{laser}}
-\end{equation}
+\newpage
 
-Where $\mathrm{A}*(f)$ is the high voltage amplifier response with the Mephisto 2220 laser PZT response. $L_\mathrm{cav}$ is the sample cavity length, $f_\mathrm{laser}$ is the laser frequency. ($\mathrm{signal}_m$)  is the effective cavity length change from the Pockels effect.
+\section{Assembly 3 [MACOR](blueprint)}
+\subsubsection{Cross section}
+\subsubsection{Electrodes}
 
-Substitute (1) into (4):
 
-\begin{equation}
-\mathrm{signal}_m = \mathrm{Source} * \alpha(f) * \mathrm{A}(f) \frac{1-\mathrm{OLG}(f)}{\mathrm{OLG}(f)} \frac{L_\mathrm{cav}}{f_\mathrm{laser}}
-\end{equation}
+\begin{figure}[H]
+\includegraphics[width=\textwidth]{figs/ALGAAS/assemblies/assembly3/MACOR_mount.pdf}
+\caption{MACOR mount design constucted in Shapr3D}
+\label{fig:macor_mount_design}
+\end{figure}
 
-Measured :
-Source, $\alpha (f)$, OLG$(f)$, A$(f)$ and $L_\mathrm{cav}$
+\mbox{}
+\vfill
+
+\section{Calibration}\label{sec:calibration}
+\includepdf[pages=-, pagecommand={}]{notes/pockels_calibration.pdf}
+
+
+\section{Single frequency}
 
 \section{Laplace calculator / code}
 
 \textcolor{red}{Snippets of explicit code with a block diagram for clarity}
 
-\section{MACOR assembly}
-
-\begin{figure}[H]
-\includegraphics[width=\textwidth]{figs/ALGAAS/MACOR_mount.pdf}
-\caption{MACOR mount design constucted in Shapr3D}
-\label{fig:macor_mount_design}
-\end{figure}
 
 \section{HVA}
 
 
 
-
-
-
 \section{FSS}
 
+\begin{figure}[H]
+  \begin{center}
+    \includegraphics[width=\textwidth]{figs/ALGAAS/tfs/spice_FSS_tf.pdf}
+    \caption{The FSS frequency response simulated in LTspice}
+  \end{center}
+  \label{fig:spiceFSS}
+\end{figure}
 
+\section{Measuring OLG [H]}
 
 \begin{figure}[H]
-\includegraphics[width=\textwidth]{figs/ALGAAS/tfs/spice_FSS_tf.png}
-\caption{The FSS frequency response simulated in LTspice}
-\label{fig:spiceFSS}
+  \begin{center}
+    \includegraphics[width=.5\textwidth]{figs/ALGAAS/Loop_gain_measurement_drawn_diagram.pdf}
+    \caption{Open loop gain measurement \textcolor{red}{drawn diagram}}
+  \end{center}
+  \label{fig:spiceFSS}
 \end{figure}
+
+\textcolor{red}{x2 is the PSD taken immediately after the excitation point}
+\begin{equation}
+x_2 = e + He + H^2 e + \mathrm{H.O.T.s} = \frac{e + n}{1-H}
+\end{equation}
+
+\textcolor{red}{x1 is the PSD taken immediately prior to the excitation point}
+\begin{equation}
+x_1 = He + H^2e + H^3e + \mathrm{H.O.T.s}  = \frac{He}{1-H}
+\end{equation}
+
+We take the transfer function measurement $\zeta$:
+
+\begin{equation}
+\zeta = \frac{x_1}{x_2} = \frac{He/(1-H)}{(e+n)/(1-H)}
+\end{equation}
+
+Assuming the excitation is significantly larger than the noise ($e>>n$):
+
+\begin{equation}
+\zeta \approx H
+\end{equation}
