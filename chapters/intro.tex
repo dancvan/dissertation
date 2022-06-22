@@ -1,8 +1,8 @@
 \section{Gravitational wave detection}
 \textcolor{red}{Mention initial detection summarize detections published from O1 to the end of O3.}
 \\
-
 \newpage
+\section{Detector configurations}
 \subsection{The Simple Michelson interferometer}
 
 \begin{equation}
@@ -35,10 +35,8 @@
 
 The frequency response of the Simple Michelson. Assuming a LIGO configuration (with 4km arm length), the differential arm response provides a reasonable optical gain until you reach a frequency that coorelates to a gravitational wave period $\lambda / 2$ to the interferometer arm length in such a way that the response is null.
 
-\subsection{Fabry-Perot Michelson (FPMI)}
+\subsection{Fabry-P\'{e}rot Michelson (FPMI)}
 At the time of the proposal of LIGO, the creation of 4km long vaccum chambers was the most costly requirement for it's construction \cite{?}. When considering the possibility of constructing gravitational wave detectors, two methods for arm extension were considered: the Delay Line and the Fabry-Perot cavity. The choice ultimately became the Fabry-Perot cavity.
-
-\subsubsection{The Fabry-Perot cavity}
 
 \begin{figure}[H]
 \begin{center}
@@ -47,6 +45,8 @@ At the time of the proposal of LIGO, the creation of 4km long vaccum chambers wa
 \caption{\textcolor{red}{PENDING UPDATE} The Fabry-Perot Michelson optical schema with associated differential arm length response (left is optical schema, right is frequency response)}
 \label{fig:fp_michelson}
 \end{figure}
+
+\subsubsection{The Fabry-P\'{e}rot cavity}
 
 \subsection{Dual-Recycled Fabry-Perot Michelson (DRFPMI)}
 Recycling mirrors are an extension of the FPMI that provide a means of enhancing the optical gain of the instrument through different means by the nature of their placement at the symmetric and anti-symmetric ports.
@@ -68,16 +68,22 @@ This techinique is commonly addressed to last because of it's contribution after
 
 
 \section{ALIGO}
-\textcolor{red}{FIGURE: Of the ALIGO config}
+
+\begin{figure}[H]
+  \begin{center}
+	  \includegraphics[width=\textwidth]{aligo_config.pdf}
+  \end{center}
+  \caption{DRFPMI configuration used in ALIGO}
+  \label{fig:simple_michelson}
+\end{figure}
+
 ``Core optics" (Recycling mirrors, Beam splitter, and FP cavity mirrors) are kept suspended with quadruple pendulum suspensions so to decouple seismic activity from the mirror positions.
 
 \subsection{Observing conditions}
-The requirements for the operation of the interferometer require that the interferometer be  ``Locked"; meaning that there are some necessary configurations / criteria in order for the instrument to act as an observatory with the designed sensitivity. Cavity length and alignment stabilization as well as mode matching are some general requirements for observatory operation.
+The requirements for the operation of the interferometer require that the interferometer be  ``locked"; meaning that there are some necessary configurations / criteria in order for the instrument to act as an observatory with the designed sensitivity. Cavity length and alignment stabilization as well as mode matching are some general requirements for observatory operation.
 
 \subsubsection{Length Stabilization}
-With a coupled cavity configuration, maintaining mirror positions is imperative. Techniques such as the offset lock (using a DC photodiode to measure the transmitted, reflected, or circulating power within a linear and slightly off resonance point) \cite{} and the Pound-Drever-Hall technique (reference section) are used to maintain cavity length stabilization.
-
-\textcolor{red}{FIGURE: ALS schema?}
+With a coupled cavity configuration, maintaining mirror positions is imperative. Techniques such as the offset lock (using a DC photodiode to measure the transmitted, reflected, or circulating power within a linear and slightly off resonance point) \cite{} and the Pound-Drever-Hall technique (see \ref{subsubsec:pdh} ) are used to maintain cavity length stabilization.
 
 \subsubsection{Gaussian Beams}
 So far, we've primarily discussed light and phase fronts in such a manner that hasn't addressed the important geometric constraint of using Gaussian laser light. We consider a general complex amplitude Gaussian beam propogating along the beam axis ($z$) with wavelength $\lambda$.
@@ -86,26 +92,46 @@ So far, we've primarily discussed light and phase fronts in such a manner that h
 E(r) = E_o \frac{\sqrt{[\lambda z_o] / \pi}}{W(z)}e^{-r^2 / W^2(z)} e^{-ikz - ik[r^2 / (2R(z))] + i \zeta}
 \end{equation}
 
-Where $E_o$ is a complex amplitude, $r = sqrt{x^2 + y^2}$ defines the transverse beam coordinates, $k$ is the wave number, $W(z)$ is the beam width, $R(z)$ is the beam radius of curvature, and $\zeta$ is the Gouy phase.
+Where $E_o$ is a complex amplitude, $r = \sqrt{x^2 + y^2}$ defines the transverse beam coordinates, $k$ is the wave number, $W(z)$ is the beam width, $R(z)$ is the beam radius of curvature, and $\zeta$ is the Gouy phase.
 
-\subsubsection{Alignment Stabilization}
-\textcolor{red}{Paraxial equation}
-\\
-\textcolor{red}{HG modes}
+Derived from the paraxial approximation of the Helmholtz equation, this field solution is not the only for beams in optical cavities. Alternative higher order solutions are commonly present when configuring optical cavities and are expressed in terms of two mathematical bases: the Hermite-Gauss and Laguerre-Gauss modes. These higher order modes are more often than not power parasites when operating Fabry-P\'{e}rot cavities as displacement sensors and are a symptom of altered cavity geometry; though by virtue of this they can also provide a error signals, allowing us to restore the cavity to a more ideal displacement sensing configuration assuming an adequate sensing and actuation scheme. This is what is what is done with ALIGO and is accomplished with the alignment sensing and control (ASC) and a thermal compensation system (TCS) for mode matching.
 
+\textcolor{red}{FIGURE: ALIGO Sensor and Actuation schema?}
+
+\subsubsection{Alignment sensing and control}
+
+\begin{figure}[H]
+    \begin{center}
+    \includegraphics[width=.5\textwidth]{ALGAAS/aligo_nb_plus_cbn.pdf}
+    \end{center}
+    \caption{A misaligned Fabry-P\'{e}rot cavity scatters circulating light into higher order Hermite-Gauss modes.}
+\label{fig:aligo_tn_comparison}
+\end{figure}
+
+\begin{equation}
+	E_{n,m}(x,y,z) = E_o \bigg[ \frac{W_o}{W(z)} \bigg] H_n \bigg[ \frac{\sqrt{2}x}{W(z)} \bigg] H_m \bigg[ \frac{\sqrt{2}x}{W(z)} \bigg] e^{-(x^2 + y^2)/W(z) - ikz - ik[(x^2 + y^2)/(2R(z))] + i(n + m + 1)\zeta(z)}
+\end{equation}
+
+Even with state-of-the-art isolation from ground motion for terrestrial gravitational detectors and high mass mirrors, current gravitational wave detectors still suffer limitations and require sensing and feedback loops to maintain mirror alignments.
 
 \subsubsection{Mode Matching}
-\textcolor{red}{LG modes}
-\\
-\textcolor{red}{Optical Loss}
-\\
-\textcolor{red}{Reduced power, Less effective squeezing}
-\\
-\textcolor{red}{Mention thermal compensation system (TCS) but not too much detail}
+For Gaussian beams, there are further requirements of macroscopic mirror positions and radius of curvatures in order to  maximize resonant power in the fundamental mode. Failure to match in either one of these leads to mode mismatch, scattering power into higher order Laguerre-Gauss modes.  
 
-\section{Noise}
+\begin{equation}
+	E_{n,m}(\rho, \phi, z) =  E_o \bigg[ \frac{W_o}{W(z)} \bigg] H_n \bigg[ \frac{\rho}{W(z)} \bigg]^2 L^n_m \bigg[ \frac{\sqrt{2}\rho^2}{W^2(z)} \bigg] e^{-\rho^2/W(z) - ikz - ik[\rho^2/(2R(z))] - jn \phi + i(n + 2m + 1)\zeta(z)}
+\end{equation}
 
-\textcolor{red}{General noise budget (LHO and LLO O3?) or just GWINC?)}
+Even with ultra-low absorption fused silica substrates and coatings, circulating power is estimated to reach $\geq$ 200 kW, distorting the radius of curvatures of the arm cavity mirrors by ? m. These distortions introduce mode mismatch, and as gravitational wave detector sensitiviy approaches the quantum noise threshold, we limit ALIGO sensitiviy two-fold with mode mismatch ~\cite{}. The solution implemented in ALIGO to mitigate mode mismatch consists of hartmann wavefront sensors with 800 nm and 833 nm probe beams for providing real-time mirror lensing / surface distortion data, and thermal actuation on mirrors throughout the interferometers with particular focus on the arm cavity mirrors. The thermal actuation comes in two types: a CO2 laser actuator impinging upon a pre-installed fused silica compensation plate (CP) for positive lens actuation and an annular ring heater for negative lens actuation \cite{}. 
+
+\begin{figure}[H]
+	\includegraphics[width=\textwidth]{TCS/FP_input_coupler1.pdf}
+\caption{Thermal compensation at a single Fabry-P\'{e}rot input mirror coupler for ALIGO.}
+ \label{fig:meas}
+\end{figure}
+
+\section{Coating Thermal Noise}
+Contributions of categorized noises for gravitational wave detectors are organized in a "noise budget", comprised of a collection of technical (noise imposed by the practical operation of the detector) and fundamental (inherent physical limitations of DRFPMIs by design) noise sources that impose limitations on gravitational wave detection.
+\textcolor{red}{Contributions of categorized noises for gravitational wave detectors the "noise budget" ((LHO and LLO O3?) or just GWINC?)}
 
 \subsection{Brownian Thermal Noise}
 \textcolor{red}{Might move this section back to the $\algaas$ Electro-optic noise chapter}
@@ -186,13 +212,13 @@ S_j^X = \frac{4k_B T \lambda \phi_x^j(1- \sigma_j - 2 \sigma_j^2)}{3 \pi^2 f Y_j
 
 Where X represents bulk and shear with j = odd (material 1) and j = even (material 2) alternating layers representing high and low index materials j = odd (material 1) j = even (material 2) for an HR coating.
 
-%\begin{figure}[H]
-%    \begin{center}
-%    \includegraphics[width=\textwidth]{figs/ALGAAS/aligo_nb_plus_cbn.png}
-%    \end{center}
-%    \caption{ALIGO noise budget placeholder for silica-tantala, and gaas-algaas brownian noise comparison}
-%\label{fig:aligo_tn_comparison}
-%\end{figure}
+\begin{figure}[H]
+    \begin{center}
+    \includegraphics[width=\textwidth]{ALGAAS/aligo_nb_plus_cbn.pdf}
+    \end{center}
+    \caption{ALIGO noise budget placeholder for silica-tantala, and gaas-algaas brownian noise comparison}
+\label{fig:aligo_tn_comparison}
+\end{figure}
 
 \subsubsection{$\mathrm{SiO_2}/\mathrm{TiO_2:Ta_2O_5}$ coating parameters}
 Currently the LIGO interferometers deposit $\lambda$/4 stacks of silica and titania doped tantala on fused silica test mass substrates. Effective loss angle measurements \cite{Harry:06}

@@ -7,29 +7,27 @@
  %% Increasing RH tuning speed
 
 
-As shown in Chapter 1,  increasing input power leads to a direct increase to the sensitivity of a DRFPMI to make gravitational wave detections. But one implication of this is the necessity for thermal compensation. As the interferometer increases input power, you directly couple more light into the Fabry-P\'{e}rot cavity arms; and even with optics ultra-low absorption ($\approx 400 \; \mathrm{ppb} \pm 150 \; \mathrm{ppb}$ \textcolor{red}{alog ? or point absorber paper}) still induce thermo-optic effects with the projected circulating arm power of 200 kW. A symptom of this is mode mismatch throughout the interferometer, a problem that contributes to loss of usable optical power throughought the DRFPMI which can reduce sensitivity two-fold: loss of power to your readout, and reduced efficacy of the current solution to reduce the quantum noise limit (squeezing).
+%As shown in Chapter 1,  increasing input power leads to a direct increase to the sensitivity of a DRFPMI to make gravitational wave detections. But one implication of this is the necessity for thermal compensation. As the interferometer increases input power, you directly couple more light into the Fabry-P\'{e}rot cavity arms; and even with optics ultra-low absorption ($\approx 400 \; \mathrm{ppb} \pm 150 \; \mathrm{ppb}$ \textcolor{red}{alog ? or point absorber paper}) still induce thermo-optic effects with the projected circulating arm power of 200 kW. A symptom of this is mode mismatch throughout the interferometer, a problem that contributes to loss of usable optical power throughought the DRFPMI which can reduce sensitivity two-fold: loss of power to your readout, and reduced efficacy of the current solution to reduce the quantum noise limit (squeezing).
 
 
-\section{aLIGO Thermal Compensation System (TCS)}
-Thermal deformations of mirrors can be superimposed, allowing an approximate restoration of the desired mirror radius of curvature with the usage of thermal actuators on the Fabry-Perot cavity mirrors at high power
-\begin{itemize}
-\item Annular actuation with RH actuators (Some notes about the analytical calculations of RH (There is a paper on this).
+During O3a circulating arm power reached beyond 180 kW alongside the implementation of squeezed light which called for adequate mode matching. This motivated the thermal compensation system comissioning detailed in the following section at the LIGO Hanford observatory which includes: a citation and implementation of the initial O3 TCS pre-load, the installation of a real-time digital filter for increased ring heater actuation by a factor of 6 allowing faster mode matching and mechanical mode shifting for avoiding parametric instabilities, and some studies of the effects of high absorption points on the arm cavity test mass mirrors and attempted mitigation strategies. 
 
-\item Central heating with central $\mathrm{CO}_2$ laser
-\end{itemize}
+\section{Pre-loading for O3a}
+Countering the problems that occur at high circulating power requires estimated pre-load settings at higher power with the assumption that the test masses to exhibit uniform absorption with the thermo-optic effects characterized \cite{}: 
 
-\subsubsection{Wavefront sensing}
-\textcolor{red}{Hartmann Wavefront Sensors}
+%\begin{equation}
 
+%\end{equation}
 
-\section{Mode Matching in O3}
-Countering the problems that occur at high circulating power
-requires estimated pre-load settings at higher power with the assumption that the test masses act as uniform absorbers.  The presence of high absorption points on the test masses (aka point absorbers) required adjustments to the TCS pre-load and various ring heater and CO2 settings were sampled. Part of this sampling lead to the development of a input ring heater filter allowing actuation to reach ? percent of the desired optical power within 2 hours compared to the 12 hour response pre-filter. Higher spatial frequency actuation in the form of a CO2 mask was also tried.
+Alongside this, we measure a calibrated response of the RH power on the mirror radius of curvature in diopters. 
 
-\subsection{Pre-loading for O3}
+With these two bits of information, a thermal actuation solution can be initially set. Because ring heater settings are 
+
+%The presence of high absorption points on the test masses (aka point absorbers) required adjustments to the TCS pre-load and various ring heater and CO2 settings were sampled. Part of this sampling lead to the development of a input ring heater filter allowing actuation to reach ? percent of the desired optical power within 2 hours compared to the 12 hour response pre-filter. Higher spatial frequency actuation in the form of a CO2 mask was also tried.
+
 Reference to TVO's thesis for pre-loading settings based on his model \cite{tvo}
 
-\subsubsection{Optimizing RH thermo-optic response}
+\section{Optimizing RH thermo-optic response}
 With the inherent
 \begin{figure}[H]
  \includegraphics[width=\textwidth]{TCS/IRHF/Meas_response}
@@ -55,7 +53,7 @@ With the inherent
 \label{fig:plant_v_fit}
 \end{figure}
 
-\subsubsection{Dynamic Thermal compensation}
+\subsection{Dynamic Thermal compensation}
 \begin{figure}[H]
 \includegraphics[width=\textwidth]{TCS/IRHF/IRHF_compare_w_self}
 \caption{Comparison of the natural RH response and the response to the conditioned input. The above plot is simulated in Matlab by passing the RH input time series (top plot) through the $[H(s)]^{-1*}$ and $H(s)$ to acquire with the result lensing behavior on the bottom plot.}
@@ -75,13 +73,13 @@ Limitation on RH power is set at 8W \textcolor{red}{Double check source?}
 \textcolor{red}{Implementation into CDS at LHO (appendix?)}
 
 
-\section{Higher order TCS}
-
-\subsection{Point absorbers}
+\section{Point absorbers in O3a}
 
 \begin{itemize}
 \item Impact on RF sidebands with interferometer thermalization
 \end{itemize}
+
+\subsection{Studies}
 
 \subsection{Actuation using a $\mathrm{CO_2}$ laser and mask}
 \begin{itemize}

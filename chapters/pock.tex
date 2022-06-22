@@ -410,9 +410,9 @@ The quantity we are attempting to measure is on the order of a length change of 
 
 \begin{figure}[H]
 \begin{center}
-\includegraphics[width=.75\textwidth]{ALGAAS/opt_layout_a.pdf}
+\includegraphics[width=.80\textwidth]{ALGAAS/opt_layout_b.pdf}
 \end{center}
-\caption{\textcolor{red}{Final figure still pending} Detailed optical schema of the experiment. Components highlighted in magenta indicate laser back-reflection protection and output power control. All optics highlighted in PURPLE indicate their function as alignment and mode matching for locking to a triangular ALIGO PMC \textbf{Multiple citations (DCC doc / Fabian's experiment / Erik's experiment)}. Optics highlighted in YELLOW indicate function for alignment and mode matching experimental cavity utilizing the HR $\gaas$/$\algaas$ mirror. Beam profiling to the sample cavity is indicated. For the sake of the numerous mounting strategies tried, the longitudinal pockels cell mirror mount is kept general with the pictured mirror between two disk capacitors}
+\caption{\textcolor{red}{Final figure still pending} Detailed optical schema of the experiment. Components highlighted in magenta indicate laser back-reflection protection and output power control. All optics highlighted in PURPLE indicate their function as alignment and mode matching for locking to a triangular ALIGO PMC \textbf{Multiple citations (DCC doc / Fabian's experiment / Erik's experiment)}. Optics highlighted in YELLOW indicate function for alignment and mode matching to the experimental cavity utilizing the HR $\gaas$/$\algaas$ coated mirror sample. Beam profiling to the sample cavity is indicated. For the sake of the numerous mounting strategies tried, the longitudinal pockels cell mirror mount is kept general with the pictured mirror between two disk capacitors}
 \label{fig:detailed_optical_layout}
 \end{figure}
 
@@ -449,6 +449,14 @@ The sensing filter electronics are composed of a single element photodiode (from
 \subsubsection{OLG(f)}
 Isn't quite $\mathrm{A}(f)*\mathrm{S}(f)$ as stated. Doesn't entirely account for the optical plant.
 How the measurement is taken (important to take between installations to account for the changes in the optical plant) (elog 831)
+
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=\textwidth]{ALGAAS/olg_compare.pdf}
+\end{center}
+\caption{Comparison of the open loop gain measurement against the multiplied servo electronics measurements. The maximum gain difference is about a factor of 2.8 which is low passed to a difference of 2.0.}
+\label{fig:OLG_compare}
+\end{figure}
 
 
 \subsection{Longitudinal Pockels Cell mirror mount assembly}
@@ -525,13 +533,13 @@ The error signal spectra probed at the FSS:
 \mathrm{VFSSOUT}_\mathrm{rms}/\sqrt{Hz} \rightarrow m_\mathrm{rms}/\sqrt{\mathrm{Hz}}
 \end{equation}
 
-With the the above servo electronics transfer functions, we \hyperref[sec:calibration_math]{calibrate} the measurement into a differential length:
+With the known frequency response of the servo electronics, we \hyperref[sec:calibration]{calibrate} the measurement into differential length:
 \begin{equation}
-\Delta \mathrm{L} = \mathrm{source}*\alpha(f) \mathrm{A}(f)*\frac{1+\mathrm{OLG}(f)}{\mathrm{OLG}(f)}*\frac{\mathrm{L_{cav}}}{f_\mathrm{laser}}
+	\Delta \mathrm{L} = \mathrm{source}*\alpha(f) \mathrm{A}(f)*\frac{1+\mathrm{OLG}(f)}{\mathrm{OLG}(f)}*\frac{\mathrm{L_{cav}}}{f_\mathrm{laser}} \quad \big[ m_\mathrm{pk} / \sqrt{Hz} \big]
 \end{equation}
 
 \subsection{Mounting Strategies}
-As mentioned multiple mounting strategies were tried in the attempt to reach adequate sensitivity in measuring the Pockels effect. The following section details measurements performed with various longitudinal pockel cell mounts. Further details (assembly parameters, blueprints, and visual aids) can be found in the appendix.
+The following section details measurements performed with various longitudinal pockel cell mounts. Further details (assembly parameters, blueprints, and visual aids) can be found in the appendix.
 
 \subsubsection{Assembly 1}
 
@@ -632,7 +640,7 @@ With considerations after Assembly 1, a more monolithic optical mount design wit
 \end{figure}
 
 \subsubsection{Assembly 3 (MACOR mount)}
-With most of the same characteristics from Assembly 3, an optical mount made of MACOR, a machinable ceramic, was implementedaoWith the material's high Young's modulus (66.9 GPa), and a moderate Poisson ratio (.29) \cite{macor} making it by far the most durable / non-conductive mounting solution tried.
+With most of the same characteristics from Assembly 3, an optical mount made of MACOR, a machinable ceramic, was constructed and installed. With the material's high Young's modulus (66.9 GPa), and a moderate Poisson ratio (.29) \cite{macor} making it by far the most durable / non-conductive mounting solution tried.
 
 An optical mount for the sample made with MACOR, along with glass bearnings .48 $\pm$ .01 cm $\diameter$  and a McMaster-Carr 8-32, 1/2" ceramic screw were used to clamp and suspend the optical sample. A 1.24" $\diameter$ hole was bored into the MACOR with a (\textcolor{red}{depth?}) depth so that there is a .351 $\pm$ mm clearance between the front and back surface of the sample to the electrode plates.
 
@@ -655,6 +663,7 @@ An optical mount for the sample made with MACOR, along with glass bearnings .48 
 \end{figure}
 
 \subsubsection{Opto-mechanical coupling}
+During Assembly 2 tests the drive coupling seen in the transfer function measurements for all mounts tried was hypothesized to be due to mechanical action the assembly construction when driving the voltage on electrodes plates. Tracking consistent mechanical action for assemblies prior to Assembly 3 was difficult due to inconsistent mechanical settings between some measurements. More consistent measurements were realized when mechanical settings were tracked more carefully (i.e. set screw torque) and ceramic / glass materials used for suspending sample within the assembly. 
 Sample and mount mechanical mode excitations. Seen with both AlGaAs and a HR coating from an AtFilm (IBS coating)
 \begin{itemize}
 \item \textbf{Vibration of plates (Leissa)} \cite{leissa} Computing frequencies and order of magnitude
@@ -662,3 +671,4 @@ Sample and mount mechanical mode excitations. Seen with both AlGaAs and a HR coa
 \end{itemize}
 
 \subsubsection{Dual-polarization locked configuration}
+
