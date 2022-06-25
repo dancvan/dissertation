@@ -1,5 +1,21 @@
 \begin{thebibliography}{10}
 
+\bibitem{saulson2017}
+P.~Saulson, {\em Interferometric Gravitational Wave Detectors (2nd edition)}.
+\newblock World Scientific Publishing Co. Pte. Ltd., 2017.
+
+\bibitem{saulson97}
+P.~R. Saulson, ``If light waves are stretched by gravitational waves, how can
+  we use light as a ruler to detect gravitational waves?,'' {\em American
+  Journal of Physics}, vol.~65, no.~6, pp.~501--505, 1997.
+
+\bibitem{Mullavey:12}
+A.~J. Mullavey, B.~J.~J. Slagmolen, J.~Miller, M.~Evans, P.~Fritschel, D.~Sigg,
+  S.~J. Waldman, D.~A. Shaddock, and D.~E. McClelland, ``Arm-length
+  stabilisation for interferometric gravitational-wave detectors using
+  frequency-doubled auxiliary lasers,'' {\em Opt. Express}, vol.~20,
+  pp.~81--89, Jan 2012.
+
 \bibitem{Brown:1828}
 R.~B. F. H. M. . R.~A. V.P.L.S., ``Xxvii. a brief account of microscopical
   observations made in the months of june, july and august 1827, on the
@@ -34,6 +50,17 @@ G.~M. Harry, H.~Armandula, E.~Black, D.~R.~M. Crooks, G.~Cagnoli, J.~Hough,
 G.~D. Cole, W.~Zhang, M.~J. Martin, J.~Ye, and M.~Aspelmeyer, ``Tenfold
   reduction of brownian noise in high-reflectivity optical coatings,'' {\em
   Nature Photonics}, vol.~7, no.~8, pp.~644--650, 2013.
+
+\bibitem{Ramette:16}
+J.~Ramette, M.~Kasprzack, A.~Brooks, C.~Blair, H.~Wang, and M.~Heintze,
+  ``Analytical model for ring heater thermal compensation in the advanced laser
+  interferometer gravitational-wave observatory,'' {\em Appl. Opt.}, vol.~55,
+  pp.~2619--2625, Apr 2016.
+
+\bibitem{hello_vinet}
+P.~Hello and J.-Y. Vinet, ``Analytical models of thermal aberrations in massive
+  mirrors heated by high power laser beams,'' {\em Journal de Physique},
+  vol.~51, pp.~1267--1282, 1990.
 
 \bibitem{tvo}
 T.~Vo, {\em Adaptive Mode Matching in Advanced LIGO and beyond}.
