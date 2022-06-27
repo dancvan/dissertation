@@ -6,5 +6,6 @@
 *.fdb_latexmk
 *.log
 *.toc
+*.swp
 
 .DS_Store
