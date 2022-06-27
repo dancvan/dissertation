@@ -1,5 +1,5 @@
 \section{Gravitational waves}
-``Space-time tells mass how to move; mass tells space-time how to curve" provides a sufficient summarization of Einstein's theory of general relativity ~\cite{Misner1973}. Built into this theory are insights on high energy astrophyical phenomena (highly massive binary coalescences, spherically assymetric compact objects, etc.) one being space-time distortions known as gravitational waves. Explicitly, this is seen as a perturbation in the metric tensor defining a local space-time geometry:
+``Space-time tells mass how to move; mass tells space-time how to curve" provides a sufficient summarization of Einstein's theory of general relativity ~\cite{Misner1973}. Insights on high energy astrophyical phenomena (highly massive binary coalescences, spherically assymetric compact objects, etc.) are built into this theory; one being space-time distortions known as gravitational waves. Explicitly, this is shown as a perturbation in the metric tensor defining a local space-time geometry:
 \\
 \textcolor{red}{Metric tensor}
 \\
@@ -15,16 +15,16 @@ As of September 14th 2015 the LIGO detectors transitioned from the most sensitiv
 \newpage
 \section{Detector configurations}
 \subsection{Interferometry with a Michelson configuration}
-Initially used by Michelson and Morley for an experiment intended to support the existence luminiferous aether, the optical design was discovered nearly a century later to lend itself to a gravitational wave detection schema. The perpendicular beam paths set by the beamsplitter and two end mirrors is the novel geometry offered by A. Michelson, and sets an interference condition by the returning beams at the beamsplitter. This condition is disrupted by differential path length changes which can be tracked at the (anti-symmetric) detection port using the following equation:
+Initially used by Michelson and Morley for an experiment intended to support the existence luminiferous aether, the optical design was discovered nearly a century later to lend itself to a gravitational wave detection schema. The perpendicular beam paths set by the beamsplitter and two end mirror offer create an interference condition of the returning beams at the beamsplitter; which is disrupted by differential path length changes between the beam paths which can be tracked at the (anti-symmetric) detection port using the following equation:
 
 \begin{equation}
-	P_\mathrm{out} = \frac{P_\mathrm{in}}{2}(1+\mathrm{cos}2(k_x L_x -k_y L_y))
+	P_\mathrm{out} = \frac{P_\mathrm{in}}{2}(1+\mathrm{cos}( 4\pi/\lambda (L_x - L_y))
 \end{equation}
 
 Knowing the Michelson will register a diffential arm shift with adjusting fringe brightness, the length response can be reframed into a phase response of the Michelson from a time-dependent metric perturbation:
 
 \begin{equation}
-\Delta \phi = \phi_x - \phi_y =  \int_{t-2L/c}^{t} \Omega \bigg[1 + \frac{1}{2}h(t)\bigg]dt - \int_{t-2L/c}^{t} \Omega \bigg[1 - \frac{1}{2}h(t)\bigg]dt \label{eq1}\tag{1} 
+\Delta \phi(t) = \phi_x(t) - \phi_y(t) =  \int_{t-2L/c}^{t} \Omega \bigg[1 + \frac{1}{2}h(t)\bigg]dt - \int_{t-2L/c}^{t} \Omega \bigg[1 - \frac{1}{2}h(t)\bigg]dt 
 \end{equation}
 
 \begin{equation}
@@ -114,7 +114,7 @@ Recycling mirrors are an extension of the FPMI that provide a means of enhancing
 When operating a FPMI, power often gets reflected back to the symmetric port leading to a significant waste of power if simply dumped. An additional partially reflective mirror is placed at said port to recirculate (or ``recycle") that power back to the arm cavities. It's positioning is kept fixed enough so that the input light adds coherently with the laser input, while the macroscopic positioning from ITMX/Y is better understood once addressing optical sidebands.
 
 \subsubsection{Signal Recycling}
-This techinique is commonly addressed to last because of it's contribution after considering the response from the PRFPMI. The principle can be understood similarly as most of the prior discussions; the use of a Fabry-Perot as an optical amplifier. By simply placing a mirror at the output port it is understood that you would take whatever light leakage coming from the PRFPMI (caused by differential arm motion) and re-introduce it to the arms. Now the question is, can that light add coherently for a signal that you are interested in detecting? As it turns out, it definitely can but careful choices must be made. Mirror location (macroscopic and microscopic tuning) as well as reflectivity have some interesting impacts to the cavity frequency response. But the general statement can be made: when introducing a mirror of relatively low reflectivity at the anti-symmetric port, you increase the detector bandwidth but at the cost of reducing the optical gain.
+This techinique is commonly addressed to last because of it's contribution after considering the response from the PRFPMI. The principle can be understood similarly as most of the prior discussions; the use of a Fabry-Perot as an optical amplifier. By simply placing a mirror at the output port it is understood that you would take whatever light leakage coming from the PRFPMI (caused by differential arm motion) and re-introduce it to the arms. Now the question is, can that light add coherently for a signal that you are interested in detecting? As it turns out, it definitely can but careful choices must be made. Mirror location (macroscopic and microscopic tuning) as well as reflectivity have some interesting impacts to the cavity frequency response. But the general statement can be made: when introducing a mirror of relatively low reflectivity at the anti-symmetric port, you can increase the detector bandwidth but at the cost of reducing the optical gain.
 
 
 \section{ALIGO}
