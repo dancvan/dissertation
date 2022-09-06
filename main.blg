@@ -1,0 +1,52 @@
+This is BibTeX, Version 0.99d (TeX Live 2016)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: main.aux
+The style file: ieeetr.bst
+Database file #1: ref.bib
+Warning--I didn't find a database entry for "?"
+Warning--I didn't find a database entry for "fig:algaas_coords"
+Warning--can't use both author and editor fields in Misner1973
+Warning--empty publisher in Misner1973
+Warning--empty school in tvo
+You've used 22 entries,
+            1876 wiz_defined-function locations,
+            628 strings with 7407 characters,
+and the built_in function-call counts, 5098 in all, are:
+= -- 503
+> -- 204
+< -- 2
++ -- 80
+- -- 58
+* -- 352
+:= -- 742
+add.period$ -- 30
+call.type$ -- 22
+change.case$ -- 14
+chr.to.int$ -- 0
+cite$ -- 25
+duplicate$ -- 261
+empty$ -- 476
+format.name$ -- 58
+if$ -- 1234
+int.to.chr$ -- 0
+int.to.str$ -- 22
+missing$ -- 23
+newline$ -- 77
+num.names$ -- 21
+pop$ -- 64
+preamble$ -- 1
+purify$ -- 0
+quote$ -- 0
+skip$ -- 171
+stack$ -- 0
+substring$ -- 270
+swap$ -- 106
+text.length$ -- 2
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 0
+warning$ -- 3
+while$ -- 43
+width$ -- 24
+write$ -- 210
+(There were 5 warnings)

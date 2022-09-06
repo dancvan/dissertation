@@ -1,4 +1,4 @@
-%% Electro-optic study of AlGaAs coated mirrors
+%Electro-optic study of AlGaAs coated mirrors
 
  As mentioned in Section \hyperref[sec:ligo_noise] one of the many LIGO fundamental noise sources is coating thermal noise from the $\mathrm{SiO_2}/\mathrm{TiO_2:Ta_2O_5}$ aLIGO coatings. As aLIGO approaches its designed sensitivity various coating solutions are currently proposed to mitigate thermal noise coupling into the detector output \cite{?}. With the potential to reduce coating Brownian noise by a factor of 10, $\gaas$/$\algaas$ shows much promise with next generation detectors for a potential strain reduction by a factor of 5 \cite{Cole:2013}, in comparison to the current aLIGO coatings. Though inherent material property differences of these crystalline coatings introduce new and potentially significant noise couplings; one being the linear electro-optic property of crystalline materials (dn/dE), also known as the Pockels effect \cite{abernathy_poster}. Prior to commitment of a $\gaas$/$\algaas$ coating in gravitational wave detectors, a thorough study of these notable noises is worthwhile. This section details a study of starting with a survey of the distinguishing optical and material properties of crystalline materials like $\gaas$ and $\algaas$ by reviewing: light propogation through anistropic materials, and induced optical anisotropy of zincblende materials. Immediately after, estimates of the differential phase of lightereflected from a $\gaas$/$\algaas$ coating caused by electric field noise are computed with potential impacts to current generation gravitational wave detectors. With adequate motivation, an experiment designed to measure the pockels effect from a HR $\gaas$/$\algaas$ coated ``witness" sample was constructed and the design, results are discussed.
 
@@ -474,9 +474,9 @@ To find the Electric field screened by the coating we begin with Gauss' Law:
 \end{equation}
 For our problem we assume no free charge, but the fused silica substrate with the AlGaAs coating presents dielectric material between the plates. Our initial boundary conditions are also expressed in terms of plate potentials so it is natural to first solve for the potential ($V$) for every point within our system. We can exploit the cylindrical symmetry with the optic and plate geometry in the $r$ coordinate so we shall express the Laplacian accordingly:
 \begin{equation}
-(1-\chi(z))\bigg[\frac{1}{r}\frac{\partial}{\partial r} \bigg( r \frac{\partial}{\partial r}\bigg) + \frac{\partial^2}{\partial z^2}\bigg]V = 0
+\bigg[\frac{1}{r}\frac{\partial}{\partial r} \bigg( r \frac{\partial}{\partial r}\bigg) + \frac{\partial^2}{\partial z^2}\bigg](\varepsilon V) = 0
 \end{equation}
-Where $\chi (z)$ is the electric susceptibility.
+Where $\varepsilon$ is the dielectric
 
 \begin{figure}[H]
   \centering
@@ -498,7 +498,7 @@ Where $\chi (z)$ is the electric susceptibility.
 
 
 \begin{figure}[H]
-  \includegraphics[width=\textwidth]{ALGAAS/13-Sep-2021_potential_map.pdf}
+  \includegraphics[width=\textwidth]{ALGAAS/assembly1_sim.pdf}
   \caption{Poisson calculator output potential map ($V(z,r)$ in cylindrical coordinates)}
   \label{fig:poisson_calc_output}
 \end{figure}
