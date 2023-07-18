@@ -1,28 +1,26 @@
 \section{Gravitational waves}
-``Space-time tells mass how to move; mass tells space-time how to curve" provides a sufficient summarization of Einstein's theory of general relativity ~\cite{Misner1973}. Insights on high energy astrophyical phenomena (highly massive binary coalescences, spherically assymetric compact objects, etc.) are built into this theory; one being space-time distortions known as gravitational waves. Explicitly, this is shown as a perturbation in the metric tensor defining a local space-time geometry:
+``Space-time tells mass how to move; mass tells space-time how to curve" can provide a sufficient summarization of Einstein's theory of general relativity (GR) ~\cite{Misner1973}. Built into this most complete theory of gravity to date, GR makes considerations of high energy astrophyical phenomena (highly massive binary coalescences, spherically assymetric compact objects, etc.) whose fractional mass/energy output generates distortions in space-time known as gravitational waves. 
+This can be represented as a perturbation ($h_{\mu \nu}<<1$) in the Minkowski metric tensor defining a local linearized space-time:
 \\
-\textcolor{red}{Metric tensor}
+$$g_{\mu \nu} = \eta_{\mu \nu} + h_{\mu \nu}$$
 \\
-Such a perturbation arises from a time varying quadrupole moment.
+Wave-like behavior for $h_{\mu \nu}$ is realized by imposing a transverse traceless (TT) gauge on the above metric perturbation:
+\\ 
+$$\nabla^2 h_{+} - \frac{1}{c^2} \frac{\partial}{\partial t} h_{+} = 0$$
+$$\nabla^2 h_{\times} - \frac{1}{c^2} \frac{\partial}{\partial t} h_{\times} = 0$$
 \\
-\textcolor{red}{Refer to GR notes}
-\\
-Information on the progenitors of these systems are encoded in these waves and the detection and study of them open an entirely new chapter in astronomy.
-\subsection{Gravitational wave astronomy}
-Gravitational wave detection has a history starting with a desire for further experimentation in gravity. The literature provided by those part of this history offers important motivations and details of the field supplemented by fascinating and humbling stories.
+This is merely a simple plane wave solution with two separate transverse polarizations ($h_{+}$ and $h_{\times}$) with a $45^{\circ}$ separation between them. The measurement and analysis of these waves allows the analysis of novel information on the GW progenitors by testing various hypotheses pertaining to the violent dynamics of these systems. September 14th, 2015 the first confirmed gravitational wave detection was made from two black holes coalescing and since then, other detectors (Virgo, KAGRA, etc.) have joined the GW detector network, ushering in an entirely new catalogue of astronomical data.
 
-As of September 14th 2015 the LIGO detectors transitioned from the most sensitive differential displacement sensors ever built to also becoming the first ever gravitational wave observatory with ?? confirmed gravitational wave detections from O1 to O3b as of the date of the submission of this dissertation. 
-\textcolor{red}{Figure of detections published from O1 to the end of O3.}
 \newpage
 \section{Detector configurations}
 \subsection{Interferometry with a Michelson configuration}
-Initially used by Michelson and Morley for an experiment intended to support the existence luminiferous aether, the optical design was discovered nearly a century later to lend itself to a gravitational wave detection schema. The perpendicular beam paths set by the beamsplitter and two end mirror offer create an interference condition of the returning beams at the beamsplitter; which is disrupted by differential path length changes between the beam paths which can be tracked at the (anti-symmetric) detection port using the following equation:
+Initially used by Michelson and Morley for an experiment intended to support the existence luminiferous aether, the optical design is now applied nearly a century later for gravitational wave detection schema. The perpendicular beam paths set by the beamsplitter and two end mirrors create an interference condition of the returning beams at the beamsplitter; disrupted by differential path length changes between the beam paths tracked at the (anti-symmetric) detection port:
 
 \begin{equation}
 	P_\mathrm{out} = \frac{P_\mathrm{in}}{2}(1+\mathrm{cos}( 4\pi/\lambda (L_x - L_y))
 \end{equation}
 
-Knowing the Michelson will register a diffential arm shift with adjusting fringe brightness, the length response can be reframed into a phase response of the Michelson from a time-dependent metric perturbation:
+Knowing the Michelson will register a diffential shift in length between the arm lengths (L) with adjusting fringe brightness, the length response can be reframed into a phase response of the Michelson imposed by a time-dependent metric perturbation:
 
 \begin{equation}
 \Delta \phi(t) = \phi_x(t) - \phi_y(t) =  \int_{t-2L/c}^{t} \Omega \bigg[1 + \frac{1}{2}h(t)\bigg]dt - \int_{t-2L/c}^{t} \Omega \bigg[1 - \frac{1}{2}h(t)\bigg]dt 
@@ -47,18 +45,18 @@ Where $h(t)$ is the time dependent metric perturbation from a gravitational wave
 \end{figure*}
 \FloatBarrier
 
-Assuming a LIGO configuration (with 4km arm length), the differential arm response provides a reasonable optical gain proportional to the differential phase until you reach a frequency that coorelates to a integer number of gravitational wave half periods $\mathrm{n}\lambda_gw / 2$ to the interferometer arm length in such a way that the response is null.
+Assuming a current LIGO configuration (with 4km arm length), the differential arm response provides a reasonable optical gain proportional to the differential phase until you reach a frequency that coorelates to a integer number of gravitational wave half periods $\mathrm{n}\lambda_gw / 2$ to the interferometer arm length in such a way that the response is null.
 
 \subsection{Fabry-P\'{e}rot Michelson (FPMI)}
-At the time of proposal, financial and physical constraints for terrestrial gravitational wave detectors required a compact solution for extending arm lengths on the build~\cite{}. Two proposed techniques were considered: the Delay Line and the Fabry-Perot cavity. Though choice ultimately became the Fabry-Perot cavity.
+At the time of proposal, constraints (both financial and physical) for terrestrial gravitational wave detectors required a compact solution for extending arm lengths on the build~\cite{}. Two proposed techniques were considered: the Delay Line and the Fabry-P\'{e}rot cavity. Though ultimately the Fabry-P\'{e}rot cavity schema won out.
 
 
 \subsubsection{The Fabry-P\'{e}rot cavity}
-Prior to this discussion, the Michelson interferometer would not provide a sufficient optical gain for any practical arm length, so how does a Fabry-P\'{e}rot cavity offer a solution or even relate?  To understand we consider an an idealized coherent light wave encountering an optical cavity with input and output mirror transmission and reflection coefficients of $t_1$, $r_1$ and $t_2$, $r_2$ respectively (and assuming a loss coefficient of $l=0$).
+\label{section:FPC}
+Prior to this discussion, the Michelson interferometer would not provide a sufficient optical gain for any practical arm length, so how does a Fabry-P\'{e}rot cavity offer a solution or even relate? To understand, we consider an an idealized coherent light wave encountering an optical cavity with input and output mirror transmission and reflection coefficients of $t_1$, $r_1$ and $t_2$, $r_2$ respectively (and assuming no optical loss $l=0$).
 
 \textcolor{red}{Figure of Fabry-P\'{e}rot cavity}
-
-It enters the cavity only after passing the input mirror with a field amplitude reduced by the mirror reflection coefficient. So far this doesn't seem quite useful as we have already reduced the power for the phasefront of interest, until the realization that said phasefront will stay stored within the cavity until its final photon exits the cavity; this ``cavity storage time" ($\tau_s \appropto L r_1r_2$) can be imagined as length elongation with the phasefront travel history encoded in the arrival time of the phasefront's photons back at the light source source. But this assumes that the photons of belonging to a particular phasefront can be experimentally tracked, and with a constant source at the cavity input the phasefronts entering the cavity are superimposed onto the circulating cavity field and, more often than not, add incoherently which can makes this thought experiment this seem silly. It is with careful microscopic tuning of mirror positions that there can be coherent addition of these intra-cavity phasefronts and the true novelty of the Fabry-P\'{e}rot can be fully realized. This condition described is known as cavity resonance and appears when deriving the cavity reflection and transmission coefficients:
+Light enters the cavity only after passing the input mirror with a field amplitude reduced by the mirror reflection coefficient. So far this doesn't seem quite useful as we have already reduced the power for the phasefront of interest, until the realization that said phasefront will stay stored within the cavity until its final photon exits the cavity; this ``cavity storage time" ($\tau_s \appropto L r_1r_2$) can be imagined as length elongation with the phasefront travel history encoded in the arrival time of the phasefront's photons back at the light source source. But this assumes that the photons belonging to a particular phasefront can be experimentally tracked, and with a constant source at the cavity input the phasefronts entering the cavity are superimposed onto the circulating cavity field and, more often than not, add incoherently which can makes this thought experiment seem silly. It is with careful microscopic tuning of mirror positions that there can be coherent addition of these intra-cavity phasefronts and the utility of the Fabry-P\'{e}rot can be fully realized. The condition described is known as cavity resonance and appears when deriving the cavity reflection and transmission coefficients:
 
 \begin{equation}
 	r_c = -r_1 + \frac{t^2_1r_2 e^{-i2kL}}{1-r_1 r_2 e^{-i2kl}}
@@ -67,7 +65,6 @@ It enters the cavity only after passing the input mirror with a field amplitude 
 \begin{equation}
 	t_c = \frac{t_1 t_2 e^{-ikL}}{1-r_1 r_2 e^{-i2kL}}	
 \end{equation}
-
 
 The storage time of the phasefronts within the cavity can now be correlated to the amplitude of the superimposed intracavity field, which can be measured as a power reflected and/or transmitted from the resonant cavity. 
 
@@ -82,8 +79,7 @@ Derived by analogy to the delay line, the Fabry-P\'{e}rot cavity storage time ($
 \begin{equation}
 	\tau_s = \frac{L}{c} \frac{r_1r_2}{1-r_1r_2} \approx \frac{L F}{c \pi}
 \end{equation}
-
-You may begin to see that the solution for arm elongation is not answered in a literal sense with the Fabry-P\'{e}rot. This is to say that, although there is no physical arm elongation through the usage of Fabry-Perot cavities, a higher sensitivity to differential phase of the light within the cavity for a given cavity length can be achieved and is seen in the difference in the improved frequency response. Though the reader may view the initial part of this discussion of Fabry-Perot cavities as misleading, the intuition gained when addressing their effectiveness for gravitational wave detectors \cite{saulson97}, exhibits the usefulness in this approach.
+Although there is no physical arm elongation through the usage of Fabry-P\'{e}rot cavities, a higher sensitivity to differential phase of the light within a given cavity length can be achieved. The arguments by analogy hold, and intuition can be gained when elaborating the Fabry-P\'{e}rot characteristics for gravitational wave detectors in such a manner \cite{saulson97}.
 
 \begin{figure*}[h!]
   \begin{subfigure}{\includegraphics[width=.45\textwidth,page=3]{INTRO/ifo_configs.pdf}}
@@ -92,15 +88,15 @@ You may begin to see that the solution for arm elongation is not answered in a l
   \begin{subfigure}{\includegraphics[width=.5\textwidth]{mich_fr.pdf}}%{fpmi_fr.pdf}
   \end{subfigure}
   \hfill
-  \caption{\textcolor{red}{PENDING UPDATE} The Fabry-Perot Michelson optical schema with associated differential arm length response (left is optical schema, right is frequency response)}
+  \caption{\textcolor{red}{PENDING UPDATE} The Fabry-P\'{e}rot Michelson optical schema with associated differential arm length response (left is optical schema, right is frequency response)}
   \label{fig:fpmi}
 \end{figure*}
 
-Advanced LIGO, with it's length and estimated Finesse has a storage time of ?.
-It's curious how a laser and two mirrors with empty space between them can be such a ubquitous and invaluable tool in experimental science, though its application for high sensitivity differential phase measurements can provide sufficient explanation for it's use ~\cite{?}. 
+Advanced LIGO, with it's length and estimated finesse has a storage time of ?.
+It's curious how theoretically a laser and two mirrors with empty space between them can perform such highly sensitive differential phase measurements, though in practice this doesn't go without some nuiance (i.e. maintainging fixed mirror positions within a fraction of the wavelength of the light used). In spite of this, clever experimental techniques like the Pound-Drever-Hall technique allow experimentalists to achieve measurements with high stability and precision~\cite{?}. 
 
 \subsection{Dual-Recycled Fabry-Perot Michelson (DRFPMI)}
-Recycling mirrors are an extension of the FPMI that provide a means of enhancing the optical gain of the instrument through different means by the nature of their placement at the symmetric and anti-symmetric ports.
+Recycling mirrors are an extension of the FPMI that exploit otherwise wasted optical power by providing a means of enhancing the optical gain and bandwidth of the instrument. Strategic placement of mirrors with carefully tuned coating parameters at symmetric and anti-symmetric ports can incorporate power recycling and signal recycling respectively.
 
 \begin{figure}[H]
 \begin{center}
@@ -112,10 +108,10 @@ Recycling mirrors are an extension of the FPMI that provide a means of enhancing
 
 
 \subsubsection{Power Recycling}
-When operating a FPMI, power often gets reflected back to the symmetric port leading to a significant waste of power if simply dumped. An additional partially reflective mirror is placed at said port to recirculate (or ``recycle") that power back to the arm cavities. It's positioning is kept fixed enough so that the input light adds coherently with the laser input, while the macroscopic positioning from ITMX/Y is better understood once addressing optical sidebands.
+When operating a FPMI, power is reflected back to the symmetric port as mentioned in~\ref{section:FPC} leading to a significant waste of power if simply dumped. Placing an additional partially reflective mirror at the symmetric port recirculates (or ``recycles") previously dumped power back to the arm cavities. It's positioning is kept fixed enough so that the input light adds coherently with the laser input, while also installing at a fixed macroscopic position from ITMX/Y. This macroscopic positioning is better informed when considering optical sideband frequencies required for the numerous feedback loops utilizing the PDH technique.
 
 \subsubsection{Signal Recycling}
-This techinique is commonly addressed to last because of it's contribution after considering the response from the PRFPMI. The principle can be understood similarly as most of the prior discussions; the use of a Fabry-Perot as an optical amplifier. By simply placing a mirror at the output port it is understood that you would take whatever light leakage coming from the PRFPMI (caused by differential arm motion) and re-introduce it to the arms. Now the question is, can that light add coherently for a signal that you are interested in detecting? As it turns out, it definitely can but careful choices must be made. Mirror location (macroscopic and microscopic tuning) as well as reflectivity have some interesting impacts to the cavity frequency response. But the general statement can be made: when introducing a mirror of relatively low reflectivity at the anti-symmetric port, you can increase the detector bandwidth but at the cost of reducing the optical gain.
+The principle can be understood similarly as most of the prior discussions; the use of the Fabry-Perot as an optical amplifier. By simply placing a mirror at the output port it is understood that you would take whatever light leakage coming from the PRFPMI (caused by differential arm motion) and re-introduce it to the arms. Now the question is, can light add coherently for a signal that you are interested in detecting? As it turns out, it definitely can but careful choices must be made. Mirror location (macroscopic and microscopic tuning) as well as reflectivity have some interesting impacts to the detector frequency response. But the general statement can be made: when introducing a mirror with relatively low reflectivity at the anti-symmetric port, you can increase the detector bandwidth but at the cost of reducing optical gain.
 
 
 \section{ALIGO}
@@ -128,16 +124,16 @@ This techinique is commonly addressed to last because of it's contribution after
   \label{fig:simple_michelson}
 \end{figure}
 
-``Core optics" (Recycling mirrors, Beam splitter, and FP cavity mirrors) are kept suspended with quadruple pendulum suspensions so to decouple seismic activity from the mirror positions.
+``Core optics" (Recycling mirrors, Beam splitter, and FP arm cavity mirrors) are suspended with quadruple pendulum suspensions decoupling seismic activity from the mirror positions to as low as a frequency as possible. 
 
 \subsection{Reaching ``Observing Mode"}
-The requirements for the operation of the interferometer require that the interferometer be  ``locked"; meaning that there are some necessary configurations / criteria in order for the instrument to act as an observatory with the designed sensitivity. The objective at hand is to convey to the reader some of the essential interferometer operation criteria as it pertains to this dissertation. Cavity length and alignment stabilization as well as mode matching are some general requirements for observatory operation. The first order requirements of the interferometer with 
+The requirements for the operation of this ultra sensitive displacement sensor require that the interferometer be  ``locked"; meaning that there are required configurations / criteria in order for the instrument to act as an observatory with the designed sensitivity. The objective at hand is to convey to the reader some of the essential criteria for interferometer operations as it pertains to this dissertation. As can be imagined with any highly coupled cavity configuration, length and alignment stabilization as well as mode matching are essential. The first order requirements of the interferometer
 
 \subsubsection{Length Stabilization}
 With LIGO's coupled cavity configuration, maintaining mirror positions is imperative. Techniques such as the offset lock (using a DC photodiode to measure the transmitted, reflected, or circulating power within a linear and slightly off resonance point) \cite{} and the Pound-Drever-Hall technique (see \ref{subsubsec:pdh} ) are used to maintain cavity length stabilization. Stabilizing cavity lengths to configure the detector into a highly sensitive differential arm sensor is a process that is worthwhile understanding with more ample discussions ~\cite{Mullavey:12}.
 
 \subsubsection{Gaussian Beams}
-So far, we've discussed light and phase fronts in such a manner that hasn't addressed the necessary geometric constraints when using Gaussian laser light. We consider a general complex Gaussian beam mode propogating along the beam axis ($z$) with wavelength $\lambda$.
+So far, we've discussed light and phase fronts without addressing geometric constraints when using Gaussian laser light. We consider a general complex Gaussian beam mode propogating along the beam axis ($z$) with wavelength $\lambda$.
 
 \begin{equation}\label{eq:gaussian_beam}
 E(r) = E_o \frac{\sqrt{[\lambda z_o] / \pi}}{W(z)}e^{-r^2 / W^2(z)} e^{-ikz - ik[r^2 / (2R(z))] + i \zeta}
@@ -145,7 +141,7 @@ E(r) = E_o \frac{\sqrt{[\lambda z_o] / \pi}}{W(z)}e^{-r^2 / W^2(z)} e^{-ikz - ik
 
 Where $E_o$ is a complex amplitude, $r = \sqrt{x^2 + y^2}$ defines the transverse beam coordinates, $k$ is the wave number, $W(z)$ is the beam width, $R(z)$ is the beam radius of curvature, and $\zeta$ is the Gouy phase.
 
-Derived from the paraxial approximation of the Helmholtz equation, this field is not the only solution for optical cavities. Alternative higher order solutions are commonly present and are expressed in terms of two mathematical bases: the Hermite-Gauss and Laguerre-Gauss modes. These higher order modes are more often than not power parasites when operating Fabry-P\'{e}rot cavities as displacement sensors and are a symptom of altered cavity geometry; though by virtue of this they can provide error signals for sensing and actuation schemes. This is what is what is done with ALIGO and is accomplished with the alignment sensing and control (ASC) system and thermal compensation system (TCS) for mode matching actuation.
+Derived from the paraxial approximation of the Helmholtz equation, this field is not the only solution for optical cavities. Alternative higher order mode (HOM) solutions are commonly present and are expressed in terms of two mathematical bases: the Hermite-Gauss and Laguerre-Gauss modes. These HOMs are more often than not power parasites when attempting to only sense displacement Fabry-P\'{e}rot cavities and are a symptom of altered cavity geometry; though a virtue of the lost power is its utility as an error signal for sensing and actuation schemes. This is what is what is accomplished with an alignment sensing and control (ASC) system and a thermal compensation system (TCS) for mode matching actuation.
 
 \textcolor{red}{FIGURE: ALIGO Sensor and Actuation schema?}
 
@@ -163,16 +159,16 @@ Derived from the paraxial approximation of the Helmholtz equation, this field is
 	E_{n,m}(x,y,z) = E_o \bigg[ \frac{W_o}{W(z)} \bigg] H_n \bigg[ \frac{\sqrt{2}x}{W(z)} \bigg] H_m \bigg[ \frac{\sqrt{2}x}{W(z)} \bigg] e^{-(x^2 + y^2)/W(z) - ikz - ik[(x^2 + y^2)/(2R(z))] + i(n + m + 1)\zeta(z)}
 \end{equation}
 
-Even with state-of-the-art isolation from ground motion for terrestrial gravitational detectors and high mass mirrors, current gravitational wave detectors still suffer limitations and require sensing and feedback loops to maintain mirror alignments.
+Even with state-of-the-art ground motion isolation for terrestrial gravitational detectors and high mass mirrors, current gravitational wave detectors still suffer from occasional misalignment and require sensing and feedback loops to meet mirror alignment requirements.
 
 \subsubsection{Mode Matching}
-For Gaussian beams, there are further requirements of macroscopic mirror positions and radius of curvatures in order to  maximize resonant power in the fundamental mode. Failure to plan and maintain these sucessfully results in a mismatch of the beam mode to the cavity mode and scattering power into higher order Laguerre-Gauss modes.  
+For Gaussian beams, there are further requirements of macroscopic mirror positions and radius of curvatures to maximize resonant power in the fundamental (TEM00) mode. Failure to plan and maintain these conditions sucessfully results in a mismatch of the beam mode to the cavity mode, scattering power into higher order Laguerre-Gauss modes.  
 
 \begin{equation}
 	E_{n,m}(\rho, \phi, z) =  E_o \bigg[ \frac{W_o}{W(z)} \bigg] H_n \bigg[ \frac{\rho}{W(z)} \bigg]^2 L^n_m \bigg[ \frac{\sqrt{2}\rho^2}{W^2(z)} \bigg] e^{-\rho^2/W(z) - ikz - ik[\rho^2/(2R(z))] - jn \phi + i(n + 2m + 1)\zeta(z)}
 \end{equation}
 
-Even with ultra-low absorption fused silica substrates and coatings, circulating power is estimated to reach $\geq$ 200 kW, distorting the radius of curvatures of the arm cavity mirrors by ? m. In LIGO's coupled cavity configuration, these distortions can introduce significant optical loss due to mode mismatch, and as gravitational wave detector sensitivity approaches the quantum noise threshold, we limit ALIGO sensitiviy two-fold with mode mismatch ~\cite{}. The solution implemented in ALIGO to mitigate mode mismatch consists of hartmann wavefront sensors with 800 nm and 833 nm probe beams for providing real-time mirror lensing / surface distortion data, and thermal actuation on mirrors throughout the interferometers with particular focus on the arm cavity mirrors. The thermal actuation of the core optics comes in two types: a CO2 laser actuator impinging upon a pre-installed fused silica compensation plate (CP) for positive lens actuation and an annular ring heater for negative lens actuation \cite{}. 
+Even with ultra-low absorption HR mirror coatings and fused silica substrates, circulating power is estimated to reach $\geq$ 200 kW, distorting the radius of curvatures of the arm cavity mirrors by ? m; which can introduce significant optical loss due to mode mismatch (esp. for coupled cavities). And as a DRFPMI like aLIGO approaches designed sensitivity, instances of mode mismatch can be a two-fold threat with optical loss to higher order modes also impacting the ability to produced squeezed light states~\cite{}. The solution implemented in aLIGO as of O3 to sense mode mismatch consists of hartmann wavefront sensors (HWS) with 800 nm and 833 nm probe beams providing real-time mirror lensing / surface distortion data while actuation comes in the form of induced thermal actuation on mirrors throughout the interferometers with particular focus on the arm cavity mirrors. The thermal actuation of the core optics comes in two varieties: a CO2 laser actuator impinging upon a pre-installed fused silica compensation plate (CP) for positive lens actuation and an annular ring heater for negative lens actuation \cite{}. 
 
 \begin{figure}[H]
 	\includegraphics[width=\textwidth]{TCS/FP_input_coupler.pdf}
@@ -181,8 +177,8 @@ Even with ultra-low absorption fused silica substrates and coatings, circulating
 \end{figure}
 
 \section{Coating Thermal Noise}
-Contributions of categorized noises for gravitational wave detectors are organized in a "noise budget", comprised of a collection of technical (noise imposed by the practical operation of the detector) and fundamental (inherent physical limitations of DRFPMIs by design) noise sources that impose limitations on gravitational wave detection.
-\textcolor{red}{Contributions of categorized noises for gravitational wave detectors the "noise budget" ((LHO and LLO O3?) or just GWINC?)}
+Contributions of categorized noises for gravitational wave detectors are organized in a ''noise budget", comprised of a collection of technical (noise imposed by the practical operation of the detector) and fundamental (inherent physical limitations of DRFPMIs by design) noise sources that impose limitations on gravitational wave detection.
+\textcolor{red}{Contributions of categorized noises for gravitational wave detectors the ''noise budget" ((LHO and LLO O3?) or just GWINC?)}
 
 \subsection{Brownian Thermal Noise}
 \textcolor{red}{Might move this section back to the $\algaas$ Electro-optic noise chapter}

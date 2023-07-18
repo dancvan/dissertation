@@ -1,12 +1,11 @@
 %Electro-optic study of AlGaAs coated mirrors
-
- As mentioned in Section \hyperref[sec:ligo_noise] one of the many LIGO fundamental noise sources is coating thermal noise from the $\mathrm{SiO_2}/\mathrm{TiO_2:Ta_2O_5}$ aLIGO coatings. As aLIGO approaches its designed sensitivity various coating solutions are currently proposed to mitigate thermal noise coupling into the detector output \cite{?}. With the potential to reduce coating Brownian noise by a factor of 10, $\gaas$/$\algaas$ shows much promise with next generation detectors for a potential strain reduction by a factor of 5 \cite{Cole:2013}, in comparison to the current aLIGO coatings. Though inherent material property differences of these crystalline coatings introduce new and potentially significant noise couplings; one being the linear electro-optic property of crystalline materials (dn/dE), also known as the Pockels effect \cite{abernathy_poster}. Prior to commitment of a $\gaas$/$\algaas$ coating in gravitational wave detectors, a thorough study of these notable noises is worthwhile. This section details a study of starting with a survey of the distinguishing optical and material properties of crystalline materials like $\gaas$ and $\algaas$ by reviewing: light propogation through anistropic materials, and induced optical anisotropy of zincblende materials. Immediately after, estimates of the differential phase of lightereflected from a $\gaas$/$\algaas$ coating caused by electric field noise are computed with potential impacts to current generation gravitational wave detectors. With adequate motivation, an experiment designed to measure the pockels effect from a HR $\gaas$/$\algaas$ coated ``witness" sample was constructed and the design, results are discussed.
+Once mirror coating materials are selected for DRFPMI core optics, a ''fundamental" coating thermal noise limit is imposed upon your gravitational wave detector. For aLIGO $\siotao$ this is represented in \hyperref[sec:ligo_noise]. As aLIGO approaches its designed sensitivity (using alternative mirror coating solutions are currently being proposed with the sole purpose of pushing down the thermal noise limit and enhancing detector sensitivity \cite{?}. With the potential to reduce coating Brownian noise by a factor of 10, $\gaas$/$\algaas$ shows much promise with next generation detectors for a potential strain reduction by a factor of 5 \cite{Cole:2013}, when compared to the current aLIGO coating thermal noise limit. Though due to the introduction of crystalline coating properties novel to detector operations, potentially significant noise couplings are introduced; one being linear electro-optic of $\gaas$/$\algaas$ (dn/dE), also known as the Pockels effect \cite{abernathy_poster}. A differential phase noise estimate of ? [m/V], alongside measured ambient field noise of ? [V/m] provides adequate motivation for a thorough study dedicated to the electro-optical properties of $\gaas$/$\algaas$ coatings. This section details such a study: starting with a survey of the distinguishing optical and material properties of crystalline materials like $\gaas$ and $\algaas$ by reviewing: light propogation through anistropic materials, and induced optical anisotropy of zincblende materials. Preliminary estimates of the differential phase of light reflected from a $\gaas$/$\algaas$ coating stack caused by electric field noise are computed with considerations to potential impacts to current generation gravitational wave detectors. Also discussed are dn/dE estimates from a calibrated differential length PDH locked signal from a short experimental optical cavity with a primarily normal electric field driven across a HR $\gaas$/$\algaas$ coating ``witness" sample.
 
 \subsection{Anisotropic media}
 Unlike with isotropic media, we cannot assume that the index of refraction of anisotropic media is the same for all chosen wave vectors. This is a direct consequence of the birefringence of anisotropic media; characterized by the dielectric, permittivity, and polarization tensors.
 
 \subsubsection{The Dielectric tensor}
-Further elaborating on the nature of a generalized dielectric tensor for any wavevector is required to proceed:
+Further elaborating on the nature of a generalized dielectric tensor ($\varepsilon$) for any wavevector is required to proceed:
 \begin{equation}\label{eq:3.11}
 D_i = \varepsilon_{ij}E_j
 \end{equation}
@@ -24,7 +23,7 @@ Demonstrating that the dielectric tensor is symmetric - exhibiting only six uniq
 %The most general form of the energy density can be geometrically represented as ellipsoid but a coordinate transformation we can diagonalize and realize the principal axes of the dielectric allowing a simpler form of the displacement, and in turn the energy density.
 
 \subsubsection{Monochromatic plane wave propogation}
-Revisiting Maxwell's equations for simple monochromatic plane wave solution gives provides further direction on how crystalline media may effect incident light. Further elaborating, the following assumptions are made:
+Revisiting Maxwell's equations for a simple monochromatic plane wave solution provides further direction on how crystalline media may effect incident light. Further elaborating, the following assumptions are made:
 \begin{equation}
 \vec{E} = E_o e^{(i \omega (\frac{n}{c} \vec{r}\cdot \vec{s}-t))}
 \end{equation}
@@ -32,7 +31,7 @@ Where $n$ is the index of refraction, $c$ is the speed of light, $\vec{r}$ is th
 \begin{equation}
 \nabla \times \vec{H}= \frac{\partial \vec{D}}{\partial t}
 \end{equation}
-Where $\vec{H}$ is the magnetic field assuming the permeability $\mu$, and the generalized displacement vector $\vec{D}$ and electric field vector $\vec{E}$.
+Where $\vec{H}$ is the magnetic field assuming permeability $\mu$, and the generalized displacement vector $\vec{D}$ and electric field vector $\vec{E}$.
 \begin{equation}
 \nabla \times \vec{E} = -\mu \vec{H}
 \end{equation}
@@ -87,7 +86,7 @@ The result is verified when substituting $r \rightarrow \frac{\vec{D}}{\sqrt{\ve
 \end{figure}
 
 \subsection{$\gaas$ and $\algaas$ crystal classification}
-The space group of $\gaas$ as well as $\algaas$ are within the $F\bar{4}3m$ space group. Crystals of this particular space group are commonly known as zincblende crystals; a common crystal configuration named after zinc sulfide (ZnS). Cubic crystals by their crystallographic structure display optically isotropic characteristics when  stress free and no DC and/or slowly varying electric fields are present.
+The space group of $\gaas$ as well as $\algaas$ are within the $F\bar{4}3m$ space group \cite{}. Crystals of this space group are commonly known as zincblende crystals; a common crystal configuration named after zinc sulfide (ZnS). Also categorized as a cubic crystal, their crystallographic structure displays optically isotropic characteristics when stress free and no DC and/or slowly varying electric fields are present.
 \satoshi{Is this true?} \textcolor{blue}{Yes. Though the birefringence seen from HR $\gaas$ coatings is said to be due to an ``intrinsic stress" in the high and low index layers. (What is breaking the symmetry to cause this? Heteroepitaxy? Annealing? Defects? Is this birefringence the same for all samples?) I think a dedicated high precision birefringence measurement on multiple samples would be cool.}
 
 \begin{figure}[H]
@@ -168,7 +167,7 @@ In general the principle dielectric axes of the new ellipsoid do \textbf{not} co
 
 \noindent Where we have set $n_x = n_y = n_z = n_o$ for zincblende structures.
 
-\noindent The two principal axes are given by the eigenvectors of the the matrix given from the equation above:
+\noindent Eigenvectors of the above tensor equation, produce the two principal axes:	
 
 \begin{equation}
  \left[ {\begin{array}{ccc}
@@ -180,16 +179,15 @@ In general the principle dielectric axes of the new ellipsoid do \textbf{not} co
 
 \subsubsection{The photoelastic effect}
 
-When a general strains $S_{kl}(r) = \frac{1}{2} \bigg[ \frac{\partial u_k (r)}{\partial x_i} + \frac{\partial u_i (r)}{\partial x_k} \bigg]$ are applied to a material, the photoelastic tensor $p_{idkl}$ relates to the indicatrix by the following relation:
+When general strains $S_{kl}(r) = \frac{1}{2} \bigg[ \frac{\partial u_k (r)}{\partial x_i} + \frac{\partial u_i (r)}{\partial x_k} \bigg]$ are applied to a material, the photoelastic tensor $p_{idkl}$ relates to the indicatrix by the following relation:
 
 \begin{equation}
  \bigg( \frac{1}{\Delta n^2} \bigg)_{id} = p_{idkl} S_{kl}
 \end{equation}
 
-\textcolor{red}{Supplementary comment to the measured birefringence from the mentioned intrinsic strain of the high and low index layers}
+For realistic coatings it may be reasonable to assume the heteroepitaxial bonds between $\gaas$/$\algaas$ layers, may produce intrinsic strain within the HR stack, leading to the existance of a static non-negligible birefringence throughout all the coating layers \cite{garret_cole?}.
 
 \subsubsection{The generalized indicatrix}
-
 
 \begin{equation}
 \bigg( \frac{1}{\Delta n^2} \bigg)_{ij} = r_ijE_j + p_{ijkl} S_{kl}
@@ -200,7 +198,7 @@ When a general strains $S_{kl}(r) = \frac{1}{2} \bigg[ \frac{\partial u_k (r)}{\
 \textcolor{red}{New principal dielectric axes for zincblende structures (zinblende photoelastic tensor, zincblende electro-optic tensor)}
 
 \subsection{Electro-optic modulation}\label{sec:EOM}
-A common application of this effect is phase modulation onto a optical carrier field. Electro-optic modulators or Pockel cells accomplish this by sandwiching two capacitor plates around crystal with a single electrical input port designed to take in a frequency ($\Omega$) within a specified modulation bandwidth. When the field amplitude across the crystal is driven by a voltage controlled oscillation, we exiperience a change in the electro-optic tensor. The voltage amplitude of the signal input is proportional to the strength of the phase modulation on the optical carrier field of frequency ($\omega$) and is commonly quantified in terms of a modulation index ($\beta$).
+A common application is to impart phase modulations onto an optical carrier field. Electro-optic modulators or Pockel cells accomplish this by sandwiching two capacitor plates around a block of crystalline material with a single electrical input port (typically coaxial) designed to take in a voltage input of frequency ($\Omega$) within a specified modulation bandwidth. When the field amplitude across the crystal is driven by a voltage controlled oscillation, the coefficients within the electro-optic tensor vary linearly (as indicated in \cite{}) The voltage amplitude of the signal input is proportional to the strength of the phase modulation on the optical carrier field of frequency ($\omega$) and is commonly quantified in terms of a modulation index ($\beta$).
 
 \begin{figure*}[!h]
      \begin{subfigure}{\includegraphics[width=.5\textwidth]{figs/ALGAAS/temp/pockels_cell_l.pdf}}
@@ -210,21 +208,20 @@ A common application of this effect is phase modulation onto a optical carrier f
      \end{subfigure}
     \caption{\textcolor{red}{PENDING UPDATES currently borrowed image from rp photonics} Longitudinal and Transverse Pockels cells}
     \label{fig:lpc_and_tpc}
-\end{figure*}
-
-
+\end{figure*} 
 
 \textcolor{red}{Consider specific crystal that gives us our $\beta \mathrm{sin}(\Omega t)$}
 
-
 \begin{equation}\label{eq:inp_EOM}
-E_\mathrm{inp} = E_o e^{i \omega t + \beta \mathrm{sin}( \Omega t)}
+E_\mathrm{out} = E_o e^{i \omega t + \beta \mathrm{sin}( \Omega t)}
 \end{equation}
+
+An approximation of this expression pertaining to the measurable field power after exiting the Pockels cell indicates the carrier imparting power to higher order optical sidebands whose respective frequencies are separated by an integer multiple of the modulation $n \cdot \Omega$. Typically $Omega$ is intentional and monochromatic, which can allow instances of optical heterodyne detection; while in a noise case the phase coupling varies based off of relevant E-field spectra alongside the crystal dimensions
 
 \textcolor{red}{This construction resembles that of the electrostatic optical mount used to drive a longitudinal electric field}
 
 \subsection{Optical anisotropy of a HR $\gaas$ / $\algaas$ stack}
-Our interests primarily lie with the study of birefringent properties of a candidate highly reflective $\gaas$/$\algaas$ mirrorstack. This section is intended to provide a comprehensive review by: 1) making considerations of crystal coordinates when asserting an optical axis on a highly reflective crystalline stack manufactured by Thorlabs, 2) citing coating parameters and observed intrinsic birefringence from the highly reflective coating stack in question, 3) analyzing differential linear electro-optic effect on the phase of a reflected beam, and 4) estimating the the differential phase noise in LIGO based on calibrated electric field measurements.
+As mentioned before, the primary interest lies in the birefringent properties of a highly reflective $\gaas$/$\algaas$ mirrorstack. The chosen HR stack is a candidate for current and future gravitational wave iterations. This section is intended to provide a comprehensive review through: 1) making considerations of crystal coordinates when asserting an optical axis on a highly reflective crystalline stack manufactured by Thorlabs \textcolor{red}{crystalline coatings division?} 2) citing coating parameters and observed intrinsic birefringence from the highly reflective coating stack in question, 3) analyzing the differential electro-optic effect on the phase of a reflected beam, and 4) estimating the the differential phase noise in LIGO based on calibrated electric field measurements.
 
 \begin{figure*}[!h]
     \begin{subfigure}{\includegraphics[width=.5\textwidth]{figs/ALGAAS/coating_orientation_normal.pdf}}
@@ -237,8 +234,7 @@ Our interests primarily lie with the study of birefringent properties of a candi
 \end{figure*}
 
 \subsubsection{Miller indices for highly reflective coatings $\gaas$/$\algaas$ coatings}
-
-Up until this point we have discussed three different coordinate axes: the crystal axis (indicated by Miller index plane normals), the principal dielectric axis (coordinates based in diagonalization of the indicatrix), and an optical axis (when considering a desired (laser) light propogation). We assert the beam axis \cite{fig:algaas_coords} with linearly p-polarized light.
+Up to this point three different coordinate axes are addressed: the crystal axis (indicated by Miller index plane normals), the principal dielectric axis (coordinates based in diagonalization of the indicatrix), and an optical axis (when considering a desired (laser) light propogation). We assert the beam axis \cite{fig:algaas_coords} with linearly p-polarized light.
 
 \subsubsection{Electro-optic coupling to the reflected phase of a HR mirror coating}
 With our coordinate considerations and established beam axis, it is now worth considering the influence of an isotropic white noise field ($E_n = [E_{nx},E_{ny},E_{nz}]$):
@@ -519,7 +515,7 @@ Where $\varepsilon$ is the dielectric
 \end{figure}
 
 \section{Results}
-A major challenge encountered in the design choice made for this experiment is the differential length noise of the cavity when mounting the optics in accessible non-conductive materials. Most commercial optical mounts are conductors which proved to be a barrier when attempting to find a mounting solution while reducing non-normal field gradients within the coating volume of interest within the sample. For this reason, efforts were focused on developing a suitable mounting solution that would provide the best isolation from any uncontrolled field magnitudes while driving a field normally incident on the surface with enough strength and uniformity across the beam area to extract a measurement of the differential length change from the Pockels effect. The mounts studied span different geometries and different material properties. The varying geometrical assembly differences created distinguishable mount solutions, and it is how this section will be divided. For reassurance, we compare displacement spectra against that of a nearly identical cavity with a flat non-crystalline mirror coating to perform a null measurement reference; ruling out the Pockels effect and providing information for noise investigations.
+A major challenge encountered in the design choice made for this experiment is differential length noise of the cavity when mounting the optics in accessible non-conductive materials. Most commercial optical mounts are constructed with conducting materials which proved to be a barrier when attempting to find a mounting solution while reducing non-normal field gradients within the coating volume of interest within the sample. For this reason, efforts were focused on developing a suitable mounting solution that would provide adequate isolation from any uncontrolled field magnitudes while driving a field normally incident on the surface with enough strength and uniformity across the beam area to extract a measurement of the differential length change from the Pockels effect. The mounts studied span different geometries and different material properties. The varying geometrical assembly differences created distinguishable mount solutions, and it is how this section will be divided. For reassurance, we compare displacement spectra against that of a nearly identical cavity with a flat non-crystalline mirror coating to perform a null measurement reference; ruling out the Pockels effect and providing information for noise investigations.
 
 \subsection{Measurement Calibration}
 The error signal spectra probed at the FSS:
@@ -552,7 +548,7 @@ The following section details measurements performed with various longitudinal p
 
 The construction revealed flaws; made most obvious when comparing to displacement noise of traditional optical mounts. Pitch and yaw control via the ortho-planar spring were prioritized to avoid metal springs and further mount pieces. The solution became unjustifiable when observing the the displacement noise coupling from the mount.
 
-\textcolor{red}{Re-run this calibration with adequate voltage normalization for a response unit [$m_\mathrm{pk} / [V / m]$}
+\textcolor{red}{Re-run this calibration with adequate voltage normalization for a response unit [$m_\mathrm{pk} / [V / m]$]}
 
 \begin{figure}[H]
 \centering

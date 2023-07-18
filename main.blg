@@ -4,13 +4,14 @@ The top-level auxiliary file: main.aux
 The style file: ieeetr.bst
 Database file #1: ref.bib
 Warning--I didn't find a database entry for "?"
+Warning--I didn't find a database entry for "garret_cole?"
 Warning--I didn't find a database entry for "fig:algaas_coords"
 Warning--can't use both author and editor fields in Misner1973
 Warning--empty publisher in Misner1973
 Warning--empty school in tvo
 You've used 22 entries,
             1876 wiz_defined-function locations,
-            628 strings with 7407 characters,
+            629 strings with 7419 characters,
 and the built_in function-call counts, 5098 in all, are:
 = -- 503
 > -- 204
@@ -49,4 +50,4 @@ warning$ -- 3
 while$ -- 43
 width$ -- 24
 write$ -- 210
-(There were 5 warnings)
+(There were 6 warnings)
