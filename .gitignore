@@ -7,5 +7,9 @@
 *.log
 *.toc
 *.swp
+*.ipynb_checkpoints
+
+main.pdf
+notes.txt
 
 .DS_Store

@@ -1,26 +1,29 @@
 \section{Gravitational waves}
-``Space-time tells mass how to move; mass tells space-time how to curve" can provide a sufficient summarization of Einstein's theory of general relativity (GR) ~\cite{Misner1973}. Built into this most complete theory of gravity to date, GR makes considerations of high energy astrophyical phenomena (highly massive binary coalescences, spherically assymetric compact objects, etc.) whose fractional mass/energy output generates distortions in space-time known as gravitational waves. 
-This can be represented as a perturbation ($h_{\mu \nu}<<1$) in the Minkowski metric tensor defining a local linearized space-time:
+``Space-time tells mass how to move; mass tells space-time how to curve" can provide a concise and sufficient summarization of Einstein's theory of general relativity (GR) ~\cite{Misner1973}. While providing the most complete theory of gravity to date, GR provides tools containing considerations of high energy astrophyical phenomena (highly massive binary coalescences, spherically assymetric compact objects, etc.) whose fractional mass/energy output generates distortions in space-time known as gravitational waves. 
+This can be represented as a perturbation ($|h_{\mu \nu}|<<1$) in the Minkowski metric tensor defining a local linearized space-time:
 \\
 $$g_{\mu \nu} = \eta_{\mu \nu} + h_{\mu \nu}$$
 \\
-Wave-like behavior for $h_{\mu \nu}$ is realized by imposing a transverse traceless (TT) gauge on the above metric perturbation:
-\\ 
+Wave-like behavior for $h_{\mu \nu}$ is realized after imposing the Lorentz gauge; producing 10 harmonic wave amplitudes from the Einstein field equations. By further imposing a wave vector ($k_j$) onto one of three linearly independent spatial coordinates ($h^{ij}k_j$), the non-trivial amplitudes from the equations imply a transverse and traceless $h^{i}_{i}$ gauge:
+\\
 $$\nabla^2 h_{+} - \frac{1}{c^2} \frac{\partial}{\partial t} h_{+} = 0$$
 $$\nabla^2 h_{\times} - \frac{1}{c^2} \frac{\partial}{\partial t} h_{\times} = 0$$
 \\
-This is merely a simple plane wave solution with two separate transverse polarizations ($h_{+}$ and $h_{\times}$) with a $45^{\circ}$ separation between them. The measurement and analysis of these waves allows the analysis of novel information on the GW progenitors by testing various hypotheses pertaining to the violent dynamics of these systems. September 14th, 2015 the first confirmed gravitational wave detection was made from two black holes coalescing and since then, other detectors (Virgo, KAGRA, etc.) have joined the GW detector network, ushering in an entirely new catalogue of astronomical data.
+In other words, there exists a wave solution with two separate transverse polarizations $h_{+}$ and $h_{\times}$ with a $45^{\circ}$ separation between them. Measurement and analysis of these waves allows astronomers to extract novel information on the GW progenitors by testing various hypotheses pertaining to the violent dynamics of these systems. On September 14th, 2015 the first confirmed gravitational wave detection was made from a coalescing black hole pair 1.3 billion light years away. Since the first detection, other detectors (Virgo, KAGRA, etc.) have joined the GW detector network and are adding to an entirely new catalogue of astronomical data; by providing further insight on relevant multi-messenger events ~\cite{gw170817} and new observations of more exotic systems ~\cite{Nitz_2023}.
+
 
 \newpage
 \section{Detector configurations}
+Motivation for the current ALIGO experimental schema for gravitational wave detection frankly cannot be taken for granted by the author. High amounts of subsystems with significant cross couplings are what make this observatory work. There are many supplementary resources cited which provide exceptional descriptions of the ALIGO detectors and subsystems as they operate. The goal of this section is to provide a holistic approach of the detector configurations, with further elaboration and emphasis on topics as they pertain to the main body of this dissertation work.   
+
 \subsection{Interferometry with a Michelson configuration}
-Initially used by Michelson and Morley for an experiment intended to support the existence luminiferous aether, the optical design is now applied nearly a century later for gravitational wave detection schema. The perpendicular beam paths set by the beamsplitter and two end mirrors create an interference condition of the returning beams at the beamsplitter; disrupted by differential path length changes between the beam paths tracked at the (anti-symmetric) detection port:
+Initially used by Michelson and Morley to test for the existence of luminiferous aether; the optical design is applied nearly a century later for gravitational wave detection schema. The perpendicular beam paths set by the beamsplitter, and two end mirrors, create an interference condition of the returning beams at the beamsplitter; disrupted by differential path length changes between the beam paths tracked at the (anti-symmetric) detection port:
 
 \begin{equation}
 	P_\mathrm{out} = \frac{P_\mathrm{in}}{2}(1+\mathrm{cos}( 4\pi/\lambda (L_x - L_y))
 \end{equation}
 
-Knowing the Michelson will register a diffential shift in length between the arm lengths (L) with adjusting fringe brightness, the length response can be reframed into a phase response of the Michelson imposed by a time-dependent metric perturbation:
+Knowing the Michelson will register a diffential shift in length between the arm lengths ($L_x = L_y = L$) with adjusting fringe brightness, the microsocopic length change can also be viewed as a differential phase response of the Michelson imposed by a time-dependent metric perturbation:
 
 \begin{equation}
 \Delta \phi(t) = \phi_x(t) - \phi_y(t) =  \int_{t-2L/c}^{t} \Omega \bigg[1 + \frac{1}{2}h(t)\bigg]dt - \int_{t-2L/c}^{t} \Omega \bigg[1 - \frac{1}{2}h(t)\bigg]dt 
@@ -30,8 +33,7 @@ Knowing the Michelson will register a diffential shift in length between the arm
 \Delta \phi (\omega) = h_0\frac{2 L \Omega}{c}e^{-i L \omega / c} \frac{\mathrm{sin}(L \omega /c)}{L \omega /c}
 \end{equation}
 
-Where $h(t)$ is the time dependent metric perturbation from a gravitational wave with amplitude $h_0$ angular frequency $\omega$, L is the length of the interferometer arms, c is the speed of light, $\Omega$ is the angular frequency of light.
-
+Where $h(t)$ is the time dependent metric perturbation from a gravitational wave with amplitude $h_0$ angular frequency $\omega$, $L$ is the nominal interferometer arm length, $c$ is the speed of light, $\Omega$ is the angular frequency of light.
 
 \begin{figure*}[h!]
 	\begin{subfigure}{\includegraphics[width=.45\textwidth,page=2]{INTRO/ifo_configs.pdf}}
@@ -40,15 +42,17 @@ Where $h(t)$ is the time dependent metric perturbation from a gravitational wave
   	\begin{subfigure}{\includegraphics[width=.5\textwidth]{figs/mich_fr.pdf}}
  	 \end{subfigure}
   	\hfill
-  	\caption{\textcolor{red}{PENDING UPDATE} The simple 4km Michelson with associated differential arm length response (left is optical schema, right is frequency response)}
+ n 	\caption{The simple 4km Michelson with associated differential arm length response (left is optical schema, right is frequency response)}
   	\label{fig:mich}
 \end{figure*}
 \FloatBarrier
 
-Assuming a current LIGO configuration (with 4km arm length), the differential arm response provides a reasonable optical gain proportional to the differential phase until you reach a frequency that coorelates to a integer number of gravitational wave half periods $\mathrm{n}\lambda_gw / 2$ to the interferometer arm length in such a way that the response is null.
+Assuming the advanced LIGO configuration (with 4km arm length), the differential arm response provides a reasonable optical gain proportional to the differential phase until you reach a frequency that coorelates to an integer number of gravitational wave half periods $\mathrm{n}\lambda_{gw} / 2$ to the interferometer arm length in such a way that the response is null. Also, with the 4km arm length no resonable gain can be attained at the gravitational wave frequencies we are looking to detect @ 100 Hz. 
 
 \subsection{Fabry-P\'{e}rot Michelson (FPMI)}
-At the time of proposal, constraints (both financial and physical) for terrestrial gravitational wave detectors required a compact solution for extending arm lengths on the build~\cite{}. Two proposed techniques were considered: the Delay Line and the Fabry-P\'{e}rot cavity. Though ultimately the Fabry-P\'{e}rot cavity schema won out.
+At the time of proposal, constraints (both financial and physical) for terrestrial gravitational wave detectors required a compact solution for increasing length L of the Michelson arms. the beam phasefront lifetime within the Michelson arms~\cite{}. Two proposed arm folding techniques were considered: the Herriot Delay Line and the Fabry-P\'{e}rot cavity. Though ultimately the Fabry-P\'{e}rot cavity schema won out.
+
+\textcolor{red}{Herriot Delay line figure (from MATLAB sim)}
 
 
 \subsubsection{The Fabry-P\'{e}rot cavity}
@@ -56,7 +60,7 @@ At the time of proposal, constraints (both financial and physical) for terrestri
 Prior to this discussion, the Michelson interferometer would not provide a sufficient optical gain for any practical arm length, so how does a Fabry-P\'{e}rot cavity offer a solution or even relate? To understand, we consider an an idealized coherent light wave encountering an optical cavity with input and output mirror transmission and reflection coefficients of $t_1$, $r_1$ and $t_2$, $r_2$ respectively (and assuming no optical loss $l=0$).
 
 \textcolor{red}{Figure of Fabry-P\'{e}rot cavity}
-Light enters the cavity only after passing the input mirror with a field amplitude reduced by the mirror reflection coefficient. So far this doesn't seem quite useful as we have already reduced the power for the phasefront of interest, until the realization that said phasefront will stay stored within the cavity until its final photon exits the cavity; this ``cavity storage time" ($\tau_s \appropto L r_1r_2$) can be imagined as length elongation with the phasefront travel history encoded in the arrival time of the phasefront's photons back at the light source source. But this assumes that the photons belonging to a particular phasefront can be experimentally tracked, and with a constant source at the cavity input the phasefronts entering the cavity are superimposed onto the circulating cavity field and, more often than not, add incoherently which can makes this thought experiment seem silly. It is with careful microscopic tuning of mirror positions that there can be coherent addition of these intra-cavity phasefronts and the utility of the Fabry-P\'{e}rot can be fully realized. The condition described is known as cavity resonance and appears when deriving the cavity reflection and transmission coefficients:
+Light enters the cavity only after passing the input mirror with a field amplitude reduced by the mirror reflection coefficient. So far this doesn't seem quite useful as we have already reduced the power for every approaching phasefront; until the realization that every phasefront will stay stored within the cavity until its final photon exits the cavity; this ``cavity storage time" ($\tau_s \appropto L r_1r_2$) can be imagined as length elongation with the phasefront travel history encoded in the arrival time of the phasefront's photons back at the light source source. But this assumes that the photons belonging to a particular phasefront can be experimentally tracked, and with a constant source at the cavity input the phasefronts entering the cavity are superimposed onto the circulating cavity field and, more often than not, add incoherently which can makes this thought experiment seem silly. It is with careful microscopic tuning and maintaining of the mirror positions that there can be coherent addition of these intra-cavity phasefronts and the utility of the Fabry-P\'{e}rot can be fully realized. The condition described is known as cavity resonance and appears when deriving the cavity reflection and transmission coefficients:
 
 \begin{equation}
 	r_c = -r_1 + \frac{t^2_1r_2 e^{-i2kL}}{1-r_1 r_2 e^{-i2kl}}
@@ -74,7 +78,7 @@ The storage time of the phasefronts within the cavity can now be correlated to t
 \label{fig:cav_length_response_DCpow}
 \end{figure}
 
-Derived by analogy to the delay line, the Fabry-P\'{e}rot cavity storage time ($\tau_s$) is defined in ~\cite{saulson2017} as:
+Similar to the delay line, the Fabry-P\'{e}rot cavity storage time ($\tau_s$) is defined in ~\cite{saulson2017} as:
 
 \begin{equation}
 	\tau_s = \frac{L}{c} \frac{r_1r_2}{1-r_1r_2} \approx \frac{L F}{c \pi}
@@ -93,7 +97,7 @@ Although there is no physical arm elongation through the usage of Fabry-P\'{e}ro
 \end{figure*}
 
 Advanced LIGO, with it's length and estimated finesse has a storage time of ?.
-It's curious how theoretically a laser and two mirrors with empty space between them can perform such highly sensitive differential phase measurements, though in practice this doesn't go without some nuiance (i.e. maintainging fixed mirror positions within a fraction of the wavelength of the light used). In spite of this, clever experimental techniques like the Pound-Drever-Hall technique allow experimentalists to achieve measurements with high stability and precision~\cite{?}. 
+It's curious how theoretically a laser and two mirrors with empty space between them can perform such highly sensitive differential phase measurements, though in practice this doesn't go without some nuiance (i.e. maintainging fixed mirror positions within a fraction of the wavelength of the light used). In spite of this, clever experimental techniques like the Pound-Drever-Hall technique allow experimentalists to achieve measurements with high precision~\cite{?}. 
 
 \subsection{Dual-Recycled Fabry-Perot Michelson (DRFPMI)}
 Recycling mirrors are an extension of the FPMI that exploit otherwise wasted optical power by providing a means of enhancing the optical gain and bandwidth of the instrument. Strategic placement of mirrors with carefully tuned coating parameters at symmetric and anti-symmetric ports can incorporate power recycling and signal recycling respectively.
