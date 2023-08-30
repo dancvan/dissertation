@@ -7,8 +7,8 @@
 *.log
 *.toc
 *.swp
-*.ipynb_checkpoints
 
+code/.ipynb_checkpoints/
 main.pdf
 notes.txt
 
