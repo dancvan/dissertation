@@ -9,6 +9,7 @@
 *.swp
 
 code/.ipynb_checkpoints/
+code/stash/.ipynb_checkpoints/
 main.pdf
 notes.txt
 
