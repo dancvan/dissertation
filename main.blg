@@ -3,51 +3,56 @@ Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: main.aux
 The style file: ieeetr.bst
 Database file #1: ref.bib
+"{" immediately follows a field name---line 375 of file ref.bib
+ : @article
+ :         {gw170817,
+I'm skipping whatever remains of this entry
+Warning--I didn't find a database entry for "gw170817"
 Warning--I didn't find a database entry for "?"
 Warning--I didn't find a database entry for "garret_cole?"
 Warning--I didn't find a database entry for "fig:algaas_coords"
 Warning--can't use both author and editor fields in Misner1973
 Warning--empty publisher in Misner1973
 Warning--empty school in tvo
-You've used 22 entries,
+You've used 23 entries,
             1876 wiz_defined-function locations,
-            629 strings with 7419 characters,
-and the built_in function-call counts, 5098 in all, are:
-= -- 503
-> -- 204
+            639 strings with 7720 characters,
+and the built_in function-call counts, 5381 in all, are:
+= -- 523
+> -- 230
 < -- 2
-+ -- 80
-- -- 58
-* -- 352
-:= -- 742
-add.period$ -- 30
-call.type$ -- 22
-change.case$ -- 14
++ -- 89
+- -- 66
+* -- 380
+:= -- 791
+add.period$ -- 31
+call.type$ -- 23
+change.case$ -- 15
 chr.to.int$ -- 0
-cite$ -- 25
-duplicate$ -- 261
-empty$ -- 476
-format.name$ -- 58
-if$ -- 1234
+cite$ -- 26
+duplicate$ -- 273
+empty$ -- 494
+format.name$ -- 66
+if$ -- 1297
 int.to.chr$ -- 0
-int.to.str$ -- 22
-missing$ -- 23
-newline$ -- 77
-num.names$ -- 21
-pop$ -- 64
+int.to.str$ -- 23
+missing$ -- 24
+newline$ -- 80
+num.names$ -- 22
+pop$ -- 66
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 171
+skip$ -- 179
 stack$ -- 0
-substring$ -- 270
-swap$ -- 106
+substring$ -- 274
+swap$ -- 111
 text.length$ -- 2
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
 warning$ -- 3
-while$ -- 43
-width$ -- 24
-write$ -- 210
-(There were 6 warnings)
+while$ -- 45
+width$ -- 25
+write$ -- 220
+(There was 1 error message)
