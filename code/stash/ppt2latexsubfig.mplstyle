@@ -2,7 +2,7 @@
 figure.figsize : 25, 20
 
 #tex 
-text.usetex : true
+#text.usetex : true
 
 #title and axes fontsize
 axes.titlesize : 90
