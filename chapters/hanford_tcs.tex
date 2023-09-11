@@ -22,18 +22,19 @@ An inital counter to the thermo-optic test mass response from the self heating t
 %The presence of high absorption points on the test masses (aka point absorbers) required adjustments to the TCS pre-load and various ring heater and CO2 settings were sampled. Part of this sampling lead to the development of a input ring heater filter allowing actuation to reach ? percent of the desired optical power within 2 hours compared to the 12 hour response pre-filter. Higher spatial frequency actuation in the form of a CO2 mask was also tried.
 
 
-\begin{figure*}[!h]
+\begin{figure}[!h]
   \centering
-  \begin{subfigure}{\includegraphics[width=\textwidth]{TCS/ITMX_TCS_Settings_tvo.pdf}}
-  \end{subfigure}
-  \begin{subfigure}{\includegraphics[width=\textwidth]{TCS/ITMY_TCS_Settings_tvo.pdf}}
-  \end{subfigure}
-  %\begin{subfigure}{\includegraphics[width=.75\textwidth]{TCS/ETM_TCS_Settings_tvo.pdf}}
-  %\end{subfigure}
+  \begin{subcaptiongroup}
+	  \includegraphics[width=\textwidth]{TCS/ITMX_TCS_Settings_tvo.pdf}
+	  \phantomcaption\label{ITMX_TCS}
+	  \includegraphics[width=\textwidth]{TCS/ITMY_TCS_Settings_tvo.pdf}
+	  \phantomcaption\label{ITMY_TCS}
+  \end{subcaptiongroup}
+  \captionsetup{subrefformat=parens}
   \hfill
   \caption{The initial pre-load estimates for the ITMs at the LIGO Hanford Observatory for O3a as provided in \cite{tvo}} 
   \label{fig:O3_preload_tvo}
-\end{figure*}
+\end{figure}
 
 \section{Optimizing RH thermo-optic response}
 An analytical model of transient ring heater actuation from a radially symmetric thermal aberration ($\Psi(t,r)$) is realized \cite{Ramette:16}:

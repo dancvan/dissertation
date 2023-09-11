@@ -35,16 +35,15 @@ Knowing the Michelson will register a diffential in length ($L_x = L_y = L$) bet
 
 Where $h(t)$ is the time dependent metric perturbation from a gravitational wave with amplitude $h_0$ angular frequency $\omega$, $L$ is the nominal interferometer arm length, $c$ is the speed of light, $\Omega$ is the angular frequency of light.
 
-\begin{figure*}[h!]
-	\begin{subfigure}{\includegraphics[width=.45\textwidth,page=2]{INTRO/ifo_configs.pdf}}
-  	\end{subfigure}
-  	\hfill
-  	\begin{subfigure}{\includegraphics[width=.575\textwidth]{INTRO/mich_fr.pdf}}
- 	 \end{subfigure}
+\begin{figure}[h!]
+	\begin{subcaptiongroup}
+		\includegraphics[width=.45\textwidth,page=2]{INTRO/ifo_configs.pdf}
+		\includegraphics[width=.575\textwidth]{INTRO/mich_fr.pdf}
+ 	\end{subcaptiongroup}
   	\hfill
 	\caption{[Left] A simplified schematic of a Michelson interferometer with 4km long arms. [Right] The associated response function $H(\omega) = \frac{\Delta \phi (\omega)}{h(\omega}$ to differential arm length. }
   	\label{fig:mich}
-\end{figure*}
+\end{figure}
 \FloatBarrier
 
 Assuming the advanced LIGO configuration (with 4km arm length), the differential arm response provides reasonable optical gain proportional to the differential phase until you reach a frequency that coorelates to an integer number of gravitational wave half periods $\mathrm{n}\lambda_{gw} / 2$ to the interferometer arm length in such a way that the response is null. Also, with the 4km arm length no resonable gain can be attained at the gravitational wave frequencies we are looking to detect @ 100 Hz. 
@@ -85,16 +84,16 @@ Similar to the delay line, the Fabry-P\'{e}rot cavity storage time ($\tau_s$) is
 \end{equation}
 Although there is no physical arm elongation through the usage of Fabry-P\'{e}rot cavities, a higher sensitivity to differential phase of the light within a given cavity length can be achieved. The arguments by analogy hold, and intuition can be gained when elaborating the Fabry-P\'{e}rot characteristics for gravitational wave detectors in such a manner \cite{saulson97}.
 
-\begin{figure*}[h!]
-  \begin{subfigure}{\includegraphics[width=.45\textwidth,page=3]{INTRO/ifo_configs.pdf}}
-  \end{subfigure}
+\begin{figure}[h!]
+  \begin{subcaptiongroup}{\includegraphics[width=.45\textwidth,page=3]{INTRO/ifo_configs.pdf}}
+  
   \hfill
-  \begin{subfigure}{\includegraphics[width=.575\textwidth]{INTRO/fpmi_fr.pdf}}
-  \end{subfigure}
+  \includegraphics[width=.575\textwidth]{INTRO/fpmi_fr.pdf}
+  \end{subcaptiongroup}
   \hfill
   \caption{\textcolor{red}{PENDING UPDATE} The Fabry-P\'{e}rot Michelson optical schema with associated differential arm length response (left is optical schema, right is frequency response)}
   \label{fig:fpmi}
-\end{figure*}
+\end{figure}
 
 Advanced LIGO, with it's length and estimated finesse has a storage time of ?.
 It's curious how theoretically a laser and two mirrors with empty space between them can perform such highly sensitive differential phase measurements, though in practice this doesn't go without some nuiance (i.e. maintainging fixed mirror positions within a fraction of the wavelength of the light used). In spite of this, clever experimental techniques like the Pound-Drever-Hall technique allow experimentalists to achieve measurements with high precision~\cite{?}. 
