@@ -11,6 +11,8 @@
 code/.ipynb_checkpoints/
 code/stash/.ipynb_checkpoints/
 main.pdf
+main.bbl
+main.blg
 notes.txt
 
 .DS_Store
