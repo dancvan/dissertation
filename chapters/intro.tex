@@ -1,39 +1,43 @@
 \section{Gravitational waves}
 ``Space-time tells mass how to move; mass tells space-time how to curve" can provide a concise and sufficient summarization of Einstein's theory of general relativity (GR) ~\cite{Misner1973}. While providing the most complete theory of gravity to date, GR provides tools containing considerations of high energy astrophyical phenomena (highly massive binary coalescences, spherically assymetric compact objects, etc.) whose fractional mass/energy output generates distortions in space-time known as gravitational waves. 
-This can be represented as a perturbation ($|h_{\mu \nu}|<<1$) in the Minkowski metric tensor defining a local linearized space-time:
+This is represented as a perturbation ($|h_{\mu \nu}|<<1$) in the Minkowski metric tensor defining a local linearized space-time:
 \\
 $$g_{\mu \nu} = \eta_{\mu \nu} + h_{\mu \nu}$$
 \\
-Wave-like behavior for $h_{\mu \nu}$ is realized after imposing the Lorentz gauge; producing 10 harmonic wave amplitudes from the Einstein field equations. By further imposing a wave vector ($k_j$) onto one of three linearly independent spatial coordinates ($h^{ij}k_j$), the non-trivial amplitudes from the equations imply a transverse and traceless $h^{i}_{i}$ gauge:
+Wave-like behavior for $h_{\mu \nu}$ is realized after imposing the Lorentz gauge; producing 10 harmonic wave amplitudes from the Einstein field equations. By further imposing a wave vector ($k_j$) onto one of three linearly independent spatial coordinates ($h^{ij}k_j$), the non-trivial amplitudes from the equations imply a transverse and traceless ($h^{i}_{i}$) gauge:
 \\
 $$\nabla^2 h_{+} - \frac{1}{c^2} \frac{\partial}{\partial t} h_{+} = 0$$
 $$\nabla^2 h_{\times} - \frac{1}{c^2} \frac{\partial}{\partial t} h_{\times} = 0$$
 \\
-In other words, there exists a wave solution with two separate transverse polarizations $h_{+}$ and $h_{\times}$ with a $45^{\circ}$ separation between them. Measurement and analysis of these waves allows astronomers to extract novel information on the GW progenitors by testing various hypotheses pertaining to the violent dynamics of these systems. On September 14th, 2015 the first confirmed gravitational wave detection was made from a coalescing black hole pair 1.3 billion light years away. Since the first detection, other detectors (Virgo, KAGRA, etc.) have joined the GW detector network and are adding to an entirely new catalogue of astronomical data; by providing further insight on relevant multi-messenger events ~\cite{gw170817} and new observations of more exotic systems ~\cite{Nitz_2023}.
+In other words, there exists a wave solution with two separate transverse polarizations $h_{+}$ and $h_{\times}$ with a $45^{\circ}$ separation between them. Measurement and analysis of these waves allow astronomers to extract novel information related to the progenitors through testing various hypotheses pertaining to the violent dynamics of these systems. On September 14th, 2015 the first confirmed gravitational wave detection was made from a coalescing black hole pair 1.3 billion light years away, and since the first detection, other detectors (Virgo, KAGRA, etc.) have joined the GW detector network; continuing the search for novel events new catalogue of astronomical data; by providing further insight on multi-messenger events ~\cite{gw170817} and new observations of more exotic systems ~\cite{Nitz_2023}.
 
 
 \newpage
 \section{Detector configurations}
-Motivation for the current ALIGO experimental schema frankly cannot be taken for granted by the author; with a high number of subsystems it is easy to get lost working within specialized observatory operations. The goal of this section is to compile a brief narrative and holistic view of the various detector configurations: starting with the michelson interferometer and ending at the dual-recycled Fabry-Perot Michelson interferometer. The narrative here is kept as brief as possible so to only mention that which is necessary and provide further udnerstanding and context of the main body of this work. Alongside the discussion are supplementary resources cited that provide exceptional alternative and detailed descriptions of the ALIGO detectors. 
+Motivation for the current ALIGO experimental schema frankly cannot be taken for granted by the author; with a high number of subsystems it can be easy to get lost working within specialized observatory operations. The goal of this section is to compile a brief narrative and with the hopes of developing a holistic view of the LIGO detection schema. The various detector configurations start with the michelson interferometer and end at the dual-recycled Fabry-Perot Michelson interferometer. The narrative here is kept as brief as possible so to only mention that which is necessary and provide further udnerstanding and context of the main body of this work. Alongside the discussion are supplementary resources cited that provide exceptional alternative and detailed descriptions of the ALIGO detectors. 
 
 \subsection{Interferometry with a Michelson configuration}
-Initially used by Michelson and Morley to test for the existence of luminiferous aether; the optical design is applied a century later for gravitational wave detection schema. The perpendicular beam paths at the beamsplitter and two end mirrors, create an interference condition between the returning beams which are disrupted by differential path length changes between the beam paths and tracked at the (anti-symmetric) detection port:
+Initially used by Michelson and Morley to test for the existence of luminiferous aether; the optical schema and detection philosophy demonstrate an extraordinary potential for measuring the quadrapole moment of a gravitational wave and make it a prime candidate as a means of detection. The perpendicular beam paths set at the beamsplitter and two end mirrors create an interference condition between the returning beams which are disrupted by differential path length changes between the beam paths and tracked at the (anti-symmetric) detection port:
 
 \begin{equation}
-	P_\mathrm{out} = \frac{P_\mathrm{in}}{2}(1+\mathrm{cos}( 4\pi/\lambda (L_x - L_y))
+	P_\mathrm{out} = \frac{P_\mathrm{in}}{2} \bigg[1+\mathrm{cos}\Big(\frac{4\pi}{\lambda} (L_x - L_y)\Big) \bigg]
 \end{equation}
 
-Knowing the Michelson will register a diffential in length ($L_x = L_y = L$) between the arms with adjusting fringe brightness, the microsocopic length change can also be viewed as a differential phase response of the Michelson imposed by a time-dependent metric perturbation:
+The Michelson does well registering a microsocopic length change on a sub-wavelength level and is more appropriately discussed as a differential phase response. From here the influence of a time-dependent metric perturbation ($h(t)$) on the interferometer is evaluated:
 
 \begin{equation}
 \Delta \phi(t) = \phi_x(t) - \phi_y(t) =  \int_{t-2L/c}^{t} \Omega \bigg[1 + \frac{1}{2}h(t)\bigg]dt - \int_{t-2L/c}^{t} \Omega \bigg[1 - \frac{1}{2}h(t)\bigg]dt 
 \end{equation}
 
+Evaluating the above in the frequency domain yields:
+
 \begin{equation}
 \Delta \phi (\omega) = h_0\frac{2 L \Omega}{c}e^{-i L \omega / c} \frac{\mathrm{sin}(L \omega /c)}{L \omega /c}
 \end{equation}
 
-Where $h(t)$ is the time dependent metric perturbation from a gravitational wave with amplitude $h_0$ angular frequency $\omega$, $L$ is the nominal interferometer arm length, $c$ is the speed of light, $\Omega$ is the angular frequency of light.
+With the wave amplitude $h_0$, angular frequency $\omega$, nominal interferometer arm length $L$, the speed of light $c$, and angular optical frequency $\Omega$.
+
+And inserting this differential phase back into our power measurement we are left with the following:
 
 \begin{figure}[ht!]
 	\begin{subcaptiongroup}
@@ -41,15 +45,15 @@ Where $h(t)$ is the time dependent metric perturbation from a gravitational wave
 		\includegraphics[width=.575\textwidth]{INTRO/mich_fr.pdf}
  	\end{subcaptiongroup}
   	\hfill
-	\caption{[Left] A simplified schematic of a Michelson interferometer with 4km long arms. [Right] The associated response function $H(\omega) = \frac{\Delta \phi (\omega)}{h(\omega}$ to differential arm length. }
+	\caption{[Left] A simplified schematic of a Michelson interferometer with 4km long arms. [Right] The associated frequency dependent optical gain $H(\omega) = \frac{\Delta \phi (\omega)}{h(\omega)}$ to differential arm length. }
   	\label{fig:mich}
 \end{figure}
 \FloatBarrier
 
-Assuming the advanced LIGO configuration (with 4km arm length), the differential arm response provides reasonable optical gain proportional to the differential phase until you reach a frequency that coorelates to an integer number of gravitational wave half periods $\mathrm{n}\lambda_{gw} / 2$ to the interferometer arm length in such a way that the response is null. Also, with the 4km Michelson arm length, no resonable gain can be attained at the gravitational wave frequencies we are looking to detect @ 100 Hz~\cite{}.
+Assuming the advanced LIGO configuration (with 4km arm length), the differential arm response provides reasonable optical gain proportional to the differential phase until you reach a frequency that coorelates to an integer number of gravitational wave half periods $\mathrm{n}\lambda_{gw} / 2$ to the interferometer arm length in such a way that the response is null. Also, with the 4km Michelson arm length, the detector sensitivity at the gravitational wave frequencies we are looking to detect @ 100 Hz is not enough with the basic Michelson alone~\cite{} and enhancements are deemed necessary. 
 
 \subsection{Fabry-P\'{e}rot Michelson (FPMI)}
-With a strain sensitivity of $10^{-18} \; [\frac{1}{\sqrt{\mathrm{Hz}}}]$~\cite{}, the simple Michelson interferometer does not provide sufficient optical gain for any practical arm length; and at the time of proposal constraints (both financial and physical) for terrestrial gravitational wave detectors required a compact solution for increasing length L of the Michelson arms so to increase the beam phasefront lifetime within the Michelson arms. Two proposed arm folding techniques were considered: the Herriot Delay Line and the Fabry-P\'{e}rot cavity. Though ultimately the Fabry-P\'{e}rot cavity has become the prominent choice.
+With a minimum strain sensitivity of $10^{-18} \; [\frac{1}{\sqrt{\mathrm{Hz}}}]$~\cite{}, the simple Michelson interferometer does not provide sufficient optical gain for any practical arm length; and at the time of proposal constraints (both financial and physical) for terrestrial gravitational wave detectors required a compact solution for increasing length L of the Michelson arms so to increase the beam phasefront lifetime within the Michelson arms. Two proposed arm folding techniques were considered: the Herriot Delay Line and the Fabry-P\'{e}rot cavity. Though ultimately the Fabry-P\'{e}rot cavity has become the prominent choice.
 
 \textcolor{red}{Herriot Delay line figure (from MATLAB sim)}
 
