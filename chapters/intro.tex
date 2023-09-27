@@ -17,13 +17,13 @@ In other words, there exists a wave solution with two separate transverse polari
 Motivation for the current ALIGO experimental schema frankly cannot be taken for granted by the author; with a high number of subsystems it can be easy to get lost working within specialized observatory operations. The goal of this section is to compile a brief narrative and with the hopes of developing a holistic view of the LIGO detection schema. The various detector configurations start with the michelson interferometer and end at the dual-recycled Fabry-Perot Michelson interferometer. The narrative here is kept as brief as possible so to only mention that which is necessary and provide further udnerstanding and context of the main body of this work. Alongside the discussion are supplementary resources cited that provide exceptional alternative and detailed descriptions of the ALIGO detectors. 
 
 \subsection{Interferometry with a Michelson configuration}
-Initially used by Michelson and Morley to test for the existence of luminiferous aether; the optical schema and detection philosophy demonstrate an extraordinary potential for measuring the quadrapole moment of a gravitational wave and make it a prime candidate as a means of detection. The perpendicular beam paths set at the beamsplitter and two end mirrors create an interference condition between the returning beams which are disrupted by differential path length changes between the beam paths and tracked at the (anti-symmetric) detection port:
+Initially used by Michelson and Morley to test for the existence of luminiferous aether, the schema of the Michelson interferometer and detection philosophy demonstrate extraordinary potential for measuring the quadrapole moment of a gravitational wave; making it a prime candidate as a gravitational wave detector / observatory. The perpendicular beam paths are set at the beamsplitter and two end mirrors to reflect and create an interference condition between the beams which are disrupted by differential path length changes between the beam paths and tracked at the (anti-symmetric) detection port:
 
-\begin{equation}
+\begin{equation}\label{P_MICH}
 	P_\mathrm{out} = \frac{P_\mathrm{in}}{2} \bigg[1+\mathrm{cos}\Big(\frac{4\pi}{\lambda} (L_x - L_y)\Big) \bigg]
 \end{equation}
 
-The Michelson does well registering a microsocopic length change on a sub-wavelength level and is more appropriately discussed as a differential phase response. From here the influence of a time-dependent metric perturbation ($h(t)$) on the interferometer is evaluated:
+The Michelson does well registering microsocopic differential length changes on a sub-wavelength level and can be more appropriately discussed as differential phase. Understanding the inherent mechanism of detection, a time-dependent metric perturbation ($h(t)$) on the interferometer is evaluated:
 
 \begin{equation}
 \Delta \phi(t) = \phi_x(t) - \phi_y(t) =  \int_{t-2L/c}^{t} \Omega \bigg[1 + \frac{1}{2}h(t)\bigg]dt - \int_{t-2L/c}^{t} \Omega \bigg[1 - \frac{1}{2}h(t)\bigg]dt 
@@ -37,7 +37,11 @@ Evaluating the above in the frequency domain yields:
 
 With the wave amplitude $h_0$, angular frequency $\omega$, nominal interferometer arm length $L$, the speed of light $c$, and angular optical frequency $\Omega$.
 
-And inserting this differential phase back into our power measurement we are left with the following:
+This differential phase, along with the Michelson function of Power \ref{P_MICH} give us an expression for differential power given a strain amplitude h_0:
+
+\begin{equation}
+	\Delta P(\omega, \phi_0) = \frac{P_in}{2} \Delta \phi (\omega) \cdot \mathrm{sin}(\phi_0)
+\end{equation}
 
 \begin{figure}[ht!]
 	\begin{subcaptiongroup}
@@ -45,7 +49,7 @@ And inserting this differential phase back into our power measurement we are lef
 		\includegraphics[width=.575\textwidth]{INTRO/mich_fr.pdf}
  	\end{subcaptiongroup}
   	\hfill
-	\caption{[Left] A simplified schematic of a Michelson interferometer with 4km long arms. [Right] The associated frequency dependent optical gain $H(\omega) = \frac{\Delta \phi (\omega)}{h(\omega)}$ to differential arm length. }
+	\caption{[Left] A simplified schematic of a Michelson interferometer with 4km long arms. [Right] The associated frequency dependent optical gain $H(\omega) = \frac{\Delta \phi (\omega)}{h(\omega)}$ to differential arm length.}
   	\label{fig:mich}
 \end{figure}
 \FloatBarrier
@@ -53,7 +57,7 @@ And inserting this differential phase back into our power measurement we are lef
 Assuming the advanced LIGO configuration (with 4km arm length), the differential arm response provides reasonable optical gain proportional to the differential phase until you reach a frequency that coorelates to an integer number of gravitational wave half periods $\mathrm{n}\lambda_{gw} / 2$ to the interferometer arm length in such a way that the response is null. Also, with the 4km Michelson arm length, the detector sensitivity at the gravitational wave frequencies we are looking to detect @ 100 Hz is not enough with the basic Michelson alone~\cite{} and enhancements are deemed necessary. 
 
 \subsection{Fabry-P\'{e}rot Michelson (FPMI)}
-With a minimum strain sensitivity of $10^{-18} \; [\frac{1}{\sqrt{\mathrm{Hz}}}]$~\cite{}, the simple Michelson interferometer does not provide sufficient optical gain for any practical arm length; and at the time of proposal constraints (both financial and physical) for terrestrial gravitational wave detectors required a compact solution for increasing length L of the Michelson arms so to increase the beam phasefront lifetime within the Michelson arms. Two proposed arm folding techniques were considered: the Herriot Delay Line and the Fabry-P\'{e}rot cavity. Though ultimately the Fabry-P\'{e}rot cavity has become the prominent choice.
+With a minimum strain sensitivity of $10^{-18} \; [\frac{1}{\sqrt{\mathrm{Hz}}}]$~\cite{}, the simple Michelson interferometer does not provide sufficient optical gain for any practical arm length; and at the time of the LIGO proposal, constraints (both financial and physical) for terrestrial gravitational wave detectors required a compact solution for increasing length L of the Michelson arms so to increase the beam phasefront lifetime within the Michelson arms. Two proposed arm folding techniques were considered: the Herriot Delay Line and the Fabry-P\'{e}rot cavity. Though ultimately the Fabry-P\'{e}rot cavity has become the prominent choice.
 
 \textcolor{red}{Herriot Delay line figure (from MATLAB sim)}
 
