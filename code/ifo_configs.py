@@ -5,7 +5,7 @@ def bode_amp(H):
     """
     Returns amplitude information on transfer function (H)
     """
-    return np.real(H)**2 + np.imag(H)**2
+    return np.sqrt(np.real(H)**2 + np.imag(H)**2)
 
 def bode_ph(H):
     """
@@ -50,8 +50,8 @@ def fpmi_freq_resp(freq, r_1, t_1, r_2, L, phi_0, P_in, OMEGA, low_pass=False):
     if low_pass:
         f_pole = 1/(((4*np.pi*L)*np.sqrt(r_1*r_2))/(cee*(1-r_1*r_2)))
         fpmi_resp = 1/(1 + 1j*(freq/f_pole))
-    else: 
-        fpmi_resp = ((t_1**2 * r_2)/((t_1**2 + r_1**2)*r_2 - r_1))*((P_in*L*OMEGA*np.sin(phi_0)*np.exp((-1j*L*2.0*np.pi*freq)/cee)*np.sin((L*2.0*np.pi*freq)/cee)/(L*2.0*np.pi*freq))/(1-r_1*r_2*np.exp(-1j*L*4.0*np.pi*freq/cee)))
+    else:
+        fpmi_resp = ((t_1**2 * r_2)/((t_1**2 + r_1**2)*r_2 - r_1))*(mich_freq_resp(freq, L, phi_0, P_in, OMEGA)/(1-r_1*r_2*np.exp(-1j*L*4.0*np.pi*freq/cee)))
     return fpmi_resp
 
 def PRG(L_rt, Finn):
@@ -63,7 +63,7 @@ def PRG(L_rt, Finn):
     """
     return np.pi/(2*Finn*L_rt*(1-((Finn*L_rt)/(2*np.pi))))
 
-def drfpmi_freq_resp(freq, G_PRC_opt, r_1, t_1, r_2, r_SRM, t_SRM, L, P_in, OMEGA):
+def drfpmi_freq_resp(freq, G_PRC_opt, r_1, t_1, r_2, r_SRM, t_SRM, L, phi_0, P_in, OMEGA):
     """
     DUAL RECYCLED FABRY PEROT MICHELSON FREQUENCY RESPONSE CALCULATOR
     freq: standard (gravitational wave) frequency [Hz]
@@ -76,11 +76,11 @@ def drfpmi_freq_resp(freq, G_PRC_opt, r_1, t_1, r_2, r_SRM, t_SRM, L, P_in, OMEG
     L: Length of the Fabry-Perot arms [m]
     OMEGA: OPTICAL angular frequency [rad Hz]
     """
-    return ((t_1**2 * r_2)/((t_1**2 + r_1**2)*r_2 - r_1))*(np.sqrt(G_PRC_opt)*t_SRM*t_1/(1-r_1*r_SRM))*(P_in*L*OMEGA*np.exp((-1j*L*2.0*np.pi*freq)/cee)*np.sin((L*2.0*np.pi*freq)/cee)/(L*2.0*np.pi*freq))/(1-((r_1-r_SRM)/(1-r_1*r_SRM))*r_2*np.exp(-1j*L*4.0*np.pi*freq/cee))
+    return ((t_1**2 * r_2)/((t_1**2 + r_1**2)*r_2 - r_1))*(G_PRC_opt*t_SRM*t_1/(1-r_1*r_SRM))*(P_in*L*OMEGA*np.exp((-1j*L*2.0*np.pi*freq)/cee)*np.sin((L*2.0*np.pi*freq)/cee)/(L*2.0*np.pi*freq))/(1-((r_1-r_SRM)/(1-r_1*r_SRM))*r_2*np.exp(-1j*L*4.0*np.pi*freq/cee))
 
 
 # Shot noise
-def N_shot(OMEGA, Length, phi_0, P_in):
+def N_shot(OMEGA, P_in):
     """
     Interferometer shot noise calculator
     OMEG: OPTICAL angular frequency [rad Hz]
@@ -88,4 +88,4 @@ def N_shot(OMEGA, Length, phi_0, P_in):
     phi_0 : static differential arm length tuning phase [rad]
     P_in : Input power [W]
     """
-    return 2*np.sqrt(2*h_bar*OMEGA*(2 - 2*np.cos(phi_0)))
+    return np.sqrt(2*h_bar*OMEGA*P_in)

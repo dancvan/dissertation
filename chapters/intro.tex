@@ -17,7 +17,7 @@ In other words, there exists a wave solution with two separate transverse polari
 Motivation for the current ALIGO experimental schema frankly cannot be taken for granted by the author; with a high number of subsystems it can be easy to get lost working within specialized observatory operations. The goal of this section is to compile a brief narrative and with the hopes of developing a holistic view of the LIGO detection schema. The various detector configurations start with the michelson interferometer and end at the dual-recycled Fabry-Perot Michelson interferometer. The narrative here is kept as brief as possible so to only mention that which is necessary and provide further udnerstanding and context of the main body of this work. Alongside the discussion are supplementary resources cited that provide exceptional alternative and detailed descriptions of the ALIGO detectors. 
 
 \subsection{Interferometry with a Michelson configuration}
-Initially used by Michelson and Morley to test for the existence of luminiferous aether, the schema of the Michelson interferometer and detection methodology demonstrate extraordinary potential for measuring gravitational wave amplitudes generated from the time varying quadrapole moment from an astrophysical source; making it a prime candidate as a gravitational wave detector / observatory. The two perpendicular beam paths are formed at the beamsplitter, back-reflected from end mirrors and interfere back at the beam splitter creating a disrupted by differential path length changes between the beam paths and tracked at the (anti-symmetric) detection port:
+Initially used by Michelson and Morley to test for the existence of luminiferous aether, the schema of the Michelson interferometer and detection methodology demonstrate extraordinary potential for measuring gravitational wave amplitudes generated from the time varying quadrapole moment from an astrophysical source; making it a prime candidate as a gravitational wave detector / observatory. Two perpendicular beam paths are formed at a 50/50 beamsplitter, back-reflected from carefully placed end mirrors which are made to interfere back at the beam splitter disrupted by differential path length changes between the beam paths and tracked at the (anti-symmetric) detection port:
 
 \begin{equation}\label{P_MICH_AS}
 	P_\mathrm{out} = \frac{P_\mathrm{in}}{2} \bigg[1+\mathrm{cos}\Big(\frac{4\pi}{\lambda} (L_x - L_y)\Big) \bigg]
@@ -31,8 +31,8 @@ The Michelson detects microsocopic differential length changes on a sub-waveleng
 
 Evaluating the above as a function of frequency yields:
 
-\begin{equation}
-\Delta \phi (\omega) = h_0\frac{2 L \Omega}{c}e^{-i L \omega / c} \frac{\mathrm{sin}(L \omega /c)}{L \omega /c}
+\begin{equation}\label{MICH_del_phi}
+	\Delta \phi (\omega) = h_0\frac{2 L \Omega}{c}e^{-i L \omega / c} \frac{\mathrm{sin}(L \omega /c)}{L \omega /c} = h_0 \cdot H(\omega, \phi_0)
 \end{equation}
 
 With the wave amplitude $h_0$, angular frequency $\omega$, nominal interferometer arm length $L$, speed of light $c$, and optical angular frequency $\Omega$.
@@ -49,12 +49,22 @@ The differential phase \ref{MICH_del_phi} combine with the power at the anti-sym
 		\includegraphics[width=.575\textwidth]{INTRO/mich_fr.pdf}
  	\end{subcaptiongroup}
   	\hfill
-	\caption{[Left] A simplified schematic of a Michelson interferometer with 4km long arms. [Right] The associated optical transfer function with $H(\omega, \pi/2) = \frac{\Delta \phi (\omega)}{h_0}$ defining the optical gain of the Michelson }
+	\caption{[Left] A simplified schematic of a Michelson interferometer. [Right] The associated optical transfer function with $H(\omega, \pi/2)$ defining the optical gain of a Michelson interferometer with 4 km long arms and an input power of 25 [W]}
 	\label{fig:mich}
 \end{figure}
 \FloatBarrier
 
-Assuming the advanced LIGO configuration (with 4km arm length), the differential arm response provides a reasonable optical gain with occasional notches coorelating to an integer number of gravitational wave half periods $\mathrm{n}\lambda_{gw} / 2$ to the interferometer arm length in such a way that the response is null. It is also noteworthy that with a 4km Michelson arm length the detector sensitivity at the gravitational wave frequencies we are looking to detect @ 100 Hz is not enough with a basic Michelson alone~\cite{} and enhancements are deemed necessary. 
+Assuming a 4km arm configuration with 25 Watts input power as indicated in figure \ref{MICH_del_phi} the differential arm response provides a reasonable optical gain with the notches coorelating to an integer number of gravitational wave half periods $\mathrm{n}\lambda_{gw} / 2$ to the interferometer arm length in such a way that the response is null. Though with an initial goal of detecting neutron star binaries @ 100 Hz it remains to be not enough with a basic Michelson alone and enhancements are deemed necessary.
+
+
+\begin{figure}[ht!]
+	\centering
+	\includegraphics[width=\textwidth]{INTRO/mich_sensi.pdf}
+	\caption{The shot noise limited sensitivity ($\sqrt{\hbar \Omega P_\mathdefault{in}}$ of a Michelson with 4 km long arms and an input power of }
+	\label{fig:mich}
+\end{figure}
+
+\textcolor{red}{Sensitivity and Shot noise}
 
 \subsection{Fabry-P\'{e}rot Michelson (FPMI)}
 With a minimum strain sensitivity of $10^{-18} \; [\frac{1}{\sqrt{\mathrm{Hz}}}]$~\cite{}, the simple Michelson interferometer does not provide sufficient optical gain for any practical arm length; and at the time of the LIGO proposal, constraints (both financial and physical) for terrestrial gravitational wave detectors required a compact solution for increasing length L of the Michelson arms so to increase the beam phasefront lifetime within the Michelson arms. Two proposed arm folding techniques were considered: the Herriot Delay Line and the Fabry-P\'{e}rot cavity. Though ultimately the Fabry-P\'{e}rot cavity has become the prominent choice.
