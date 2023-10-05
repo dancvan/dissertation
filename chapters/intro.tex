@@ -136,34 +136,43 @@ Recycling mirrors are an extension of the FPMI that exploit otherwise wasted opt
 \end{figure}
 
 \subsubsection{Power Recycling}
-When operating a FPMI, power is reflected back to the symmetric port as mentioned in~\ref{section:FPC} leading to a significant waste of power if simply dumped. Placing an additional highly reflective mirror at the symmetric port recirculates (or ``recycles") previously dumped power back to the arm cavities. A fixed positioning guarantees that the input light adds coherently with the laser input, while its macroscopic positioning is better informed when considering optical sideband frequencies required for the numerous feedback loops utilizing the PDH technique.
-
-\begin{figure}[H]
-\begin{center}
-\includegraphics[width=\textwidth]{INTRO/prfpmi_fr.pdf}
-\end{center}
-\caption{The Dual-Recycled Fabry-Perot Michelson optical schema with associated differential arm length response}
-\label{fig:drfp_michelson}
-\end{figure}
+When operating a FPMI, power is reflected back to the symmetric port as mentioned in~\ref{section:FPC} leading to a significant waste of power if simply dumped. Placing an additional highly reflective mirror at the symmetric port recirculates (or ``recycles") previously dumped power back to the arm cavities. A PDH loop is utilized for carrier resonance, and the Power Recycling mirror macroscopic positioning is informed when considering optical sideband frequencies required when applying PDH. 
 
 \begin{equation}
-	\mathdefault{G_{PR}} = \frac{\pi}{2 \matchscr{F} \mathscr{L}_\mathdefault{RT}} \bigg[ \frac{1}{1- \frac{ \matchscr{F} \mathscr{L}_\mathdefault{RT}}{ 2 \pi}} \bigg]
+	\mathrm{G_{PR}} = \frac{(1-r_\mathrm{PRM}^2)}{1-r_\mathrm{PRM}[1- (\mathscr{F} \mathscr{L}_\mathrm{RT})/ \pi]}
+\end{equation}
+
+With a maximum recycling gain \ref{}: 
+
+\begin{equation}
+	\mathrm{G_{PR}} = \frac{\pi}{2 \matchscr{F} \mathscr{L}_\mathrm{RT}} \bigg[ \frac{1}{1- \frac{ \matchscr{F} \mathscr{L}_\mathrm{RT}}{ 2 \pi}} \bigg]
 \end{equation}
 
 \subsubsection{Signal Recycling}
 The principle can be understood similarly as most of the prior discussions; the use of the Fabry-Perot as an optical amplifier. By simply placing a mirror at the output port it is understood that you would take whatever light leakage coming from the PRFPMI (caused by differential arm motion) and re-introduce it to the arms. Now the question is, can light add coherently for a signal that you are interested in detecting? As it turns out, it definitely can but careful choices must be made. Mirror location (macroscopic and microscopic tuning) as well as reflectivity have some interesting impacts to the detector frequency response. But the general statement can be made: when introducing a mirror with relatively low reflectivity at the anti-symmetric port, you can increase the detector bandwidth but at the cost of reducing optical gain.
 
 \begin{figure}[H]
-\begin{center}
-\includegraphics[width=\textwidth]{INTRO/drfpmi_fr.pdf}
-\end{center}
-\caption{The Dual-Recycled Fabry-Perot Michelson with associated differential arm length response}
-\label{fig:drfp_michelson}
+  \begin{subcaptiongroup}
+	  \includegraphics[width=.487\textwidth]{INTRO/drfpmi_fr.pdf}
+ 	  \includegraphics[width=.5\textwidth]{INTRO/strain_compare.pdf}
+  \end{subcaptiongroup}
+  \hfill
+  \caption{The Fabry-P\'{e}rot Michelson optical schema with associated differential arm length response (left is optical schema, right is frequency response)}
+  \label{fig:fpmi}
 \end{figure}
 
 \begin{equation}
-\mathrm{H}_\mathrm{DRFPMI} = \mathrm{G}_\mathrm{PR} \mathrm{P}_\mathrm{in} L \Omega \bigg[ \frac{ t_1^2 r_2}{(t_1^2 + r_1^2)r_2 - r_1} \frac{t_\mathrm{SRM} t_1}{1-r_1 r_\mathrm{SRM}} \frac{e^{-i 2 \pi L f / c} \mathrm{sin}( 2 \pi f / c)}{ 2 \pi L f } \frac{1}{(1- r_1 r_\mathrm{SRM}) e^{-i 4 \pi L f / c}} \bigg]
+	\mathrm{H}_\mathrm{DRFPMI} = \mathrm{G}_\mathrm{PR} \mathrm{P}_\mathrm{in} L \Omega \bigg[ \frac{ t_\mathrm{ITM}^2 r_\mathrm{ETM}}{(t_\mathrm{ITM}^2 + r_\mathrm{ITM}^2)r_\mathrm{ETM} - r_\mathrm{ITM}}  t_\mathrm{SRC} \frac{e^{-i 2 \pi L f / c} \mathrm{sin}( 2 \pi f / c)}{ 2 \pi L f } \frac{\mathrm{sin}(\phi_0)}{1- r_\mathrm{SRC}r_\mathrm{ETM} e^{-i 4 \pi L f / c}} \bigg]
 \end{equation}
+
+\begin{equation}
+\begin{align}
+	t_\mathrm{SRC} & = \frac{t_\mathrm{SRM} t_\mathrm{ITM} e^{i\phi_\mathrm{SRC}}}{1-r_\mathrm{ITM} r_\mathrm{SRM} e^{i2\phi_\mathrm{SRC}}}, \\
+	r_\mathrm{SRC} & = \frac{r_\mathrm{ITM} - r_\mathrm{SRM} e^{i2\phi_\mathrm{SRC}}}{1-r_\mathrm{ITM} r_\mathrm{SRM} e^{i2\phi_\mathrm{SRC}}} \\
+\end{align}
+\end{equation}
+
+
 
 \section{ALIGO}
 
