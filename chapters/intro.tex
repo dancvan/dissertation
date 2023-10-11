@@ -54,17 +54,14 @@ The differential phase \ref{MICH_del_phi} combine with the power at the anti-sym
 \end{figure}
 \FloatBarrier
 
-Assuming a 4km arm configuration with 25 Watts input power as indicated in figure \ref{MICH_del_phi} the differential arm response provides a reasonable optical gain with the notches coorelating to an integer number of gravitational wave half periods $\mathrm{n}\lambda_{gw} / 2$ to the interferometer arm length in such a way that the response is null. Though with an initial goal of detecting neutron star binaries @ 100 Hz it remains to be not enough with a basic Michelson alone and enhancements are deemed necessary.
-
+Assuming a 4km arm configuration with 25 Watts input power as indicated in figure \ref{MICH_del_phi} the differential arm response provides a reasonable optical gain with the notches coorelating to an integer number of gravitational wave half periods $\mathrm{n}\lambda_{gw} / 2$ to the interferometer arm length in such a way that the response is null. Though with an initial goal of detecting neutron star binaries @ 100 Hz it remains to be insufficient with a basic Michelson alone and enhancements are deemed necessary.  
 
 \begin{figure}[ht!]
 	\centering
 	\includegraphics[width=\textwidth]{INTRO/mich_sensi.pdf}
-	\caption{The shot noise limited sensitivity ($\sqrt{\hbar \Omega P_\mathdefault{in}}$ of a Michelson with 4 km long arms and an input power of }
+	\caption{The shot noise~\ref{} limited sensitivity ($\sqrt{\hbar \Omega P_\mathdefault{in}}$ of a Michelson with 4 km long arms and an input power of 25 [W]. Compared to the apriori estimate of $10^{-21}$ the signal to noise (SNR) comes to be unity. The desired confidence is set at a much higher standard with unquestionable measurements set at SNR = 5.}
 	\label{fig:mich}
 \end{figure}
-
-\textcolor{red}{Sensitivity and Shot noise}
 
 \subsection{Fabry-P\'{e}rot Michelson (FPMI)}
 With a minimum strain sensitivity of $10^{-18} \; [\frac{1}{\sqrt{\mathrm{Hz}}}]$~\cite{}, the simple Michelson interferometer does not provide sufficient optical gain for any practical arm length; and at the time of the LIGO proposal, constraints (both financial and physical) for terrestrial gravitational wave detectors required a compact solution for increasing length L of the Michelson arms so to increase the beam phasefront lifetime within the Michelson arms. Two proposed arm folding techniques were considered: the Herriot Delay Line and the Fabry-P\'{e}rot cavity. Though ultimately the Fabry-P\'{e}rot cavity has become the prominent choice.
@@ -109,7 +106,7 @@ An analogue to the delay line storage time can be used to draw out further intui
 And as shown with \ref{?} the increased arm length cooresponds to a higher optical gain to the Michelson's differential degree of freedom. 
 
 \begin{equation}
-	\mathdefault{H_FPMI} = \frac{t_1 ^2 r_2}{(t_1^2 + r_1^2)r_2 - r_1} \frac{\mathdefault{H_MICH}}{1 - r_1 r_2 e^{-2i \omega L / c}}
+	\mathrm{H_{FPMI}} = \frac{t_1 ^2 r_2}{(t_1^2 + r_1^2)r_2 - r_1} \frac{\mathrm{H_{MICH}}}{1 - r_1 r_2 e^{-2i \omega L / c}}
 \end{equation}
 
 \begin{figure}[ht!]
@@ -117,26 +114,26 @@ And as shown with \ref{?} the increased arm length cooresponds to a higher optic
   \includegraphics[width=.575\textwidth]{INTRO/fpmi_fr.pdf}
   \end{subcaptiongroup}
   \hfill
-  \caption{The Fabry-P\'{e}rot Michelson optical schema with associated differential arm length response (left is optical schema, right is frequency response)}
+  \caption{[Left] The Fabry-P\'{e}rot Michelson optical schema and [Right] associated optical gain.}
   \label{fig:fpmi}
 \end{figure}
 
 Advanced LIGO, with it's length 4km and projected finesse of ? coorelates to a storage time of ?.
-It's curious how theoretically only a laser and two mirrors with empty space between them can provide such an enhancement to measuring differential phase; though in practice this does not go without the nuiance of maintaining fixed mirror positions within a fraction of the wavelength of the light used. In spite of this, clever experimental techniques like the Pound-Drever-Hall technique allow experimentalists to achieve measurements with high precision~\cite{?}. 
+It's curious how theoretically only a laser and two mirrors with empty space between them can provide such an enhancement to measuring differential phase; though in practice this does not go without the nuiance of maintaining fixed mirror positions within a fraction of the wavelength of the light used. In spite of this, clever experimental techniques like the Pound-Drever-Hall technique allow experimentalists to achieve cavity perturbation measurements with high precision~\cite{?}. 
 
 \subsection{Dual-Recycled Fabry-Perot Michelson (DRFPMI)}
-Recycling mirrors are an extension of the FPMI that exploit otherwise wasted optical power by providing a means of enhancing the optical gain and bandwidth of the instrument. Strategic placement of mirrors with carefully tuned coating parameters and positioning at symmetric and anti-symmetric ports can incorporate power recycling and signal recycling respectively.
+Recycling mirrors are an extension of the FPMI that exploit otherwise wasted optical power by providing a means of enhancing the optical gain and bandwidth of the instrument. Strategic tuning of mirror coating parameters and positions at symmetric and anti-symmetric ports can incorporate power recycling and signal recycling respectively.
 
 \begin{figure}[H]
 \begin{center}
 \includegraphics[width=\textwidth,page=4]{INTRO/ifo_configs.pdf}
 \end{center}
-\caption{The Dual-Recycled Fabry-Perot Michelson optical schema with associated differential arm length response}
+\caption{The Dual-Recycled Fabry-Perot Michelson optical schema}
 \label{fig:drfp_michelson}
 \end{figure}
 
 \subsubsection{Power Recycling}
-When operating a FPMI, power is reflected back to the symmetric port as mentioned in~\ref{section:FPC} leading to a significant waste of power if simply dumped. Placing an additional highly reflective mirror at the symmetric port recirculates (or ``recycles") previously dumped power back to the arm cavities. A PDH loop is utilized for carrier resonance, and the Power Recycling mirror macroscopic positioning is informed when considering optical sideband frequencies required when applying PDH. 
+When operating a FPMI at a dark fringe, a significant amount of power is reflected back to the symmetric port as mentioned in~\ref{section:FPC} leading to the consistent waste of optical power if simply dumped. Placing an additional highly reflective mirror at the symmetric port and while maintaining resonance of the carrier to the arms, you can recirculate (or ``recycle") power back to the arm cavities. A PDH loop is utilized for carrier resonance, and the Power Recycling mirror macroscopic positioning is informed when considering optical sideband frequencies required when applying PDH. 
 
 \begin{equation}
 	\mathrm{G_{PR}} = \frac{(1-r_\mathrm{PRM}^2)}{1-r_\mathrm{PRM}[1- (\mathscr{F} \mathscr{L}_\mathrm{RT})/ \pi]}
@@ -145,21 +142,11 @@ When operating a FPMI, power is reflected back to the symmetric port as mentione
 With a maximum recycling gain \ref{}: 
 
 \begin{equation}
-	\mathrm{G_{PR}} = \frac{\pi}{2 \matchscr{F} \mathscr{L}_\mathrm{RT}} \bigg[ \frac{1}{1- \frac{ \matchscr{F} \mathscr{L}_\mathrm{RT}}{ 2 \pi}} \bigg]
+	\mathrm{G_{PR}} = \frac{\pi}{2 \mathscr{F} \mathscr{L}_\mathrm{RT}} \bigg[ \frac{1}{1- \frac{ \mathscr{F} \mathscr{L}_\mathrm{RT}}{ 2 \pi}} \bigg]
 \end{equation}
 
 \subsubsection{Signal Recycling}
-The principle can be understood similarly as most of the prior discussions; the use of the Fabry-Perot as an optical amplifier. By simply placing a mirror at the output port it is understood that you would take whatever light leakage coming from the PRFPMI (caused by differential arm motion) and re-introduce it to the arms. Now the question is, can light add coherently for a signal that you are interested in detecting? As it turns out, it definitely can but careful choices must be made. Mirror location (macroscopic and microscopic tuning) as well as reflectivity have some interesting impacts to the detector frequency response. But the general statement can be made: when introducing a mirror with relatively low reflectivity at the anti-symmetric port, you can increase the detector bandwidth but at the cost of reducing optical gain.
-
-\begin{figure}[H]
-  \begin{subcaptiongroup}
-	  \includegraphics[width=.487\textwidth]{INTRO/drfpmi_fr.pdf}
- 	  \includegraphics[width=.5\textwidth]{INTRO/strain_compare.pdf}
-  \end{subcaptiongroup}
-  \hfill
-  \caption{The Fabry-P\'{e}rot Michelson optical schema with associated differential arm length response (left is optical schema, right is frequency response)}
-  \label{fig:fpmi}
-\end{figure}
+As may be implied, the technique requires a mirror installation at the anti-symmetric port; though with a more nuianced approach than that of power recycling. By simply placing a partially reflective mirror at the output port it is understood that light leakage coming from the PRFPMI at the anti-symmetric port (caused by differential arm motion) is re-introduced to the arms. The signal recycling mirror reflectivity cannot be set too high to avoid attenuation to the PRFPMI output. Though the detector enhancement only comes after exacting the cost of trading off the detector bandwidth for increased detector gain and vice versa. The operating point between the maxima of these two detection characteristics is a function of the microscopic length (phase) tuning:
 
 \begin{equation}
 	\mathrm{H}_\mathrm{DRFPMI} = \mathrm{G}_\mathrm{PR} \mathrm{P}_\mathrm{in} L \Omega \bigg[ \frac{ t_\mathrm{ITM}^2 r_\mathrm{ETM}}{(t_\mathrm{ITM}^2 + r_\mathrm{ITM}^2)r_\mathrm{ETM} - r_\mathrm{ITM}}  t_\mathrm{SRC} \frac{e^{-i 2 \pi L f / c} \mathrm{sin}( 2 \pi f / c)}{ 2 \pi L f } \frac{\mathrm{sin}(\phi_0)}{1- r_\mathrm{SRC}r_\mathrm{ETM} e^{-i 4 \pi L f / c}} \bigg]
@@ -167,12 +154,20 @@ The principle can be understood similarly as most of the prior discussions; the 
 
 \begin{equation}
 \begin{align}
-	t_\mathrm{SRC} & = \frac{t_\mathrm{SRM} t_\mathrm{ITM} e^{i\phi_\mathrm{SRC}}}{1-r_\mathrm{ITM} r_\mathrm{SRM} e^{i2\phi_\mathrm{SRC}}}, \\
+	t_\mathm{SRC} & = \frac{t_\mathrm{SRM} t_\mathrm{ITM} e^{i\phi_\mathrm{SRC}}}{1-r_\mathrm{ITM} r_\mathrm{SRM} e^{i2\phi_\mathrm{SRC}}}, \\
 	r_\mathrm{SRC} & = \frac{r_\mathrm{ITM} - r_\mathrm{SRM} e^{i2\phi_\mathrm{SRC}}}{1-r_\mathrm{ITM} r_\mathrm{SRM} e^{i2\phi_\mathrm{SRC}}} \\
 \end{align}
 \end{equation}
 
-
+\begin{figure}[H]
+  \begin{subcaptiongroup}
+	  \includegraphics[width=.487\textwidth]{INTRO/drfpmi_fr.pdf}
+ 	  \includegraphics[width=.5\textwidth]{INTRO/strain_compare.pdf}
+  \end{subcaptiongroup}
+  \hfill
+  \caption{[Left] Comparison of all optical gain functions [Right] Coorelated shot nosie strain sensitivity.}
+  \label{fig:drfpmi_gain_and_strain}
+\end{figure}
 
 \section{ALIGO}
 

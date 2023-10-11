@@ -1,0 +1,910 @@
+\documentclass[11pt]{article}
+    \usepackage[breakable]{tcolorbox}
+    \usepackage{parskip} % Stop auto-indenting (to mimic markdown behaviour)
+    
+
+    % Basic figure setup, for now with no caption control since it's done
+    % automatically by Pandoc (which extracts ![](path) syntax from Markdown).
+    \usepackage{graphicx}
+    % Maintain compatibility with old templates. Remove in nbconvert 6.0
+    \let\Oldincludegraphics\includegraphics
+    % Ensure that by default, figures have no caption (until we provide a
+    % proper Figure object with a Caption API and a way to capture that
+    % in the conversion process - todo).
+    \usepackage{caption}
+    \DeclareCaptionFormat{nocaption}{}
+    \captionsetup{format=nocaption,aboveskip=0pt,belowskip=0pt}
+
+    \usepackage{float}
+    \floatplacement{figure}{H} % forces figures to be placed at the correct location
+    \usepackage{xcolor} % Allow colors to be defined
+    \usepackage{enumerate} % Needed for markdown enumerations to work
+    \usepackage{geometry} % Used to adjust the document margins
+    \usepackage{amsmath} % Equations
+    \usepackage{amssymb} % Equations
+    \usepackage{textcomp} % defines textquotesingle
+    % Hack from http://tex.stackexchange.com/a/47451/13684:
+    \AtBeginDocument{%
+        \def\PYZsq{\textquotesingle}% Upright quotes in Pygmentized code
+    }
+    \usepackage{upquote} % Upright quotes for verbatim code
+    \usepackage{eurosym} % defines \euro
+
+    \usepackage{iftex}
+    \ifPDFTeX
+        \usepackage[T1]{fontenc}
+        \IfFileExists{alphabeta.sty}{
+              \usepackage{alphabeta}
+          }{
+              \usepackage[mathletters]{ucs}
+              \usepackage[utf8x]{inputenc}
+          }
+    \else
+        \usepackage{fontspec}
+        \usepackage{unicode-math}
+    \fi
+
+    \usepackage{fancyvrb} % verbatim replacement that allows latex
+    \usepackage{grffile} % extends the file name processing of package graphics
+                         % to support a larger range
+    \makeatletter % fix for old versions of grffile with XeLaTeX
+    \@ifpackagelater{grffile}{2019/11/01}
+    {
+      % Do nothing on new versions
+    }
+    {
+      \def\Gread@@xetex#1{%
+        \IfFileExists{"\Gin@base".bb}%
+        {\Gread@eps{\Gin@base.bb}}%
+        {\Gread@@xetex@aux#1}%
+      }
+    }
+    \makeatother
+    \usepackage[Export]{adjustbox} % Used to constrain images to a maximum size
+    \adjustboxset{max size={0.9\linewidth}{0.9\paperheight}}
+
+    % The hyperref package gives us a pdf with properly built
+    % internal navigation ('pdf bookmarks' for the table of contents,
+    % internal cross-reference links, web links for URLs, etc.)
+    \usepackage{hyperref}
+    % The default LaTeX title has an obnoxious amount of whitespace. By default,
+    % titling removes some of it. It also provides customization options.
+    \usepackage{titling}
+    \usepackage{longtable} % longtable support required by pandoc >1.10
+    \usepackage{booktabs}  % table support for pandoc > 1.12.2
+    \usepackage{array}     % table support for pandoc >= 2.11.3
+    \usepackage{calc}      % table minipage width calculation for pandoc >= 2.11.1
+    \usepackage[inline]{enumitem} % IRkernel/repr support (it uses the enumerate* environment)
+    \usepackage[normalem]{ulem} % ulem is needed to support strikethroughs (\sout)
+                                % normalem makes italics be italics, not underlines
+    \usepackage{soul}      % strikethrough (\st) support for pandoc >= 3.0.0
+    \usepackage{mathrsfs}
+    
+
+    
+    % Colors for the hyperref package
+    \definecolor{urlcolor}{rgb}{0,.145,.698}
+    \definecolor{linkcolor}{rgb}{.71,0.21,0.01}
+    \definecolor{citecolor}{rgb}{.12,.54,.11}
+
+    % ANSI colors
+    \definecolor{ansi-black}{HTML}{3E424D}
+    \definecolor{ansi-black-intense}{HTML}{282C36}
+    \definecolor{ansi-red}{HTML}{E75C58}
+    \definecolor{ansi-red-intense}{HTML}{B22B31}
+    \definecolor{ansi-green}{HTML}{00A250}
+    \definecolor{ansi-green-intense}{HTML}{007427}
+    \definecolor{ansi-yellow}{HTML}{DDB62B}
+    \definecolor{ansi-yellow-intense}{HTML}{B27D12}
+    \definecolor{ansi-blue}{HTML}{208FFB}
+    \definecolor{ansi-blue-intense}{HTML}{0065CA}
+    \definecolor{ansi-magenta}{HTML}{D160C4}
+    \definecolor{ansi-magenta-intense}{HTML}{A03196}
+    \definecolor{ansi-cyan}{HTML}{60C6C8}
+    \definecolor{ansi-cyan-intense}{HTML}{258F8F}
+    \definecolor{ansi-white}{HTML}{C5C1B4}
+    \definecolor{ansi-white-intense}{HTML}{A1A6B2}
+    \definecolor{ansi-default-inverse-fg}{HTML}{FFFFFF}
+    \definecolor{ansi-default-inverse-bg}{HTML}{000000}
+
+    % common color for the border for error outputs.
+    \definecolor{outerrorbackground}{HTML}{FFDFDF}
+
+    % commands and environments needed by pandoc snippets
+    % extracted from the output of `pandoc -s`
+    \providecommand{\tightlist}{%
+      \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+    \DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+    % Add ',fontsize=\small' for more characters per line
+    \newenvironment{Shaded}{}{}
+    \newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{{#1}}}}
+    \newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.56,0.13,0.00}{{#1}}}
+    \newcommand{\DecValTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\FloatTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\CharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\StringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\CommentTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textit{{#1}}}}
+    \newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{{#1}}}
+    \newcommand{\AlertTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{{#1}}}}
+    \newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.02,0.16,0.49}{{#1}}}
+    \newcommand{\RegionMarkerTok}[1]{{#1}}
+    \newcommand{\ErrorTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{{#1}}}}
+    \newcommand{\NormalTok}[1]{{#1}}
+
+    % Additional commands for more recent versions of Pandoc
+    \newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.53,0.00,0.00}{{#1}}}
+    \newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.73,0.40,0.53}{{#1}}}
+    \newcommand{\ImportTok}[1]{{#1}}
+    \newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.73,0.13,0.13}{\textit{{#1}}}}
+    \newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+    \newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+    \newcommand{\VariableTok}[1]{\textcolor[rgb]{0.10,0.09,0.49}{{#1}}}
+    \newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{{#1}}}}
+    \newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.40,0.40,0.40}{{#1}}}
+    \newcommand{\BuiltInTok}[1]{{#1}}
+    \newcommand{\ExtensionTok}[1]{{#1}}
+    \newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.74,0.48,0.00}{{#1}}}
+    \newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.49,0.56,0.16}{{#1}}}
+    \newcommand{\InformationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+    \newcommand{\WarningTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+
+
+    % Define a nice break command that doesn't care if a line doesn't already
+    % exist.
+    \def\br{\hspace*{\fill} \\* }
+    % Math Jax compatibility definitions
+    \def\gt{>}
+    \def\lt{<}
+    \let\Oldtex\TeX
+    \let\Oldlatex\LaTeX
+    \renewcommand{\TeX}{\textrm{\Oldtex}}
+    \renewcommand{\LaTeX}{\textrm{\Oldlatex}}
+    % Document parameters
+    % Document title
+    \title{fpmi\_fr}
+    
+    
+    
+    
+    
+    
+    
+% Pygments definitions
+\makeatletter
+\def\PY@reset{\let\PY@it=\relax \let\PY@bf=\relax%
+    \let\PY@ul=\relax \let\PY@tc=\relax%
+    \let\PY@bc=\relax \let\PY@ff=\relax}
+\def\PY@tok#1{\csname PY@tok@#1\endcsname}
+\def\PY@toks#1+{\ifx\relax#1\empty\else%
+    \PY@tok{#1}\expandafter\PY@toks\fi}
+\def\PY@do#1{\PY@bc{\PY@tc{\PY@ul{%
+    \PY@it{\PY@bf{\PY@ff{#1}}}}}}}
+\def\PY#1#2{\PY@reset\PY@toks#1+\relax+\PY@do{#2}}
+
+\@namedef{PY@tok@w}{\def\PY@tc##1{\textcolor[rgb]{0.73,0.73,0.73}{##1}}}
+\@namedef{PY@tok@c}{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.24,0.48,0.48}{##1}}}
+\@namedef{PY@tok@cp}{\def\PY@tc##1{\textcolor[rgb]{0.61,0.40,0.00}{##1}}}
+\@namedef{PY@tok@k}{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\@namedef{PY@tok@kp}{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\@namedef{PY@tok@kt}{\def\PY@tc##1{\textcolor[rgb]{0.69,0.00,0.25}{##1}}}
+\@namedef{PY@tok@o}{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\@namedef{PY@tok@ow}{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.67,0.13,1.00}{##1}}}
+\@namedef{PY@tok@nb}{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\@namedef{PY@tok@nf}{\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\@namedef{PY@tok@nc}{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\@namedef{PY@tok@nn}{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\@namedef{PY@tok@ne}{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.80,0.25,0.22}{##1}}}
+\@namedef{PY@tok@nv}{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\@namedef{PY@tok@no}{\def\PY@tc##1{\textcolor[rgb]{0.53,0.00,0.00}{##1}}}
+\@namedef{PY@tok@nl}{\def\PY@tc##1{\textcolor[rgb]{0.46,0.46,0.00}{##1}}}
+\@namedef{PY@tok@ni}{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.44,0.44,0.44}{##1}}}
+\@namedef{PY@tok@na}{\def\PY@tc##1{\textcolor[rgb]{0.41,0.47,0.13}{##1}}}
+\@namedef{PY@tok@nt}{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\@namedef{PY@tok@nd}{\def\PY@tc##1{\textcolor[rgb]{0.67,0.13,1.00}{##1}}}
+\@namedef{PY@tok@s}{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\@namedef{PY@tok@sd}{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\@namedef{PY@tok@si}{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.64,0.35,0.47}{##1}}}
+\@namedef{PY@tok@se}{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.67,0.36,0.12}{##1}}}
+\@namedef{PY@tok@sr}{\def\PY@tc##1{\textcolor[rgb]{0.64,0.35,0.47}{##1}}}
+\@namedef{PY@tok@ss}{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\@namedef{PY@tok@sx}{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\@namedef{PY@tok@m}{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\@namedef{PY@tok@gh}{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,0.50}{##1}}}
+\@namedef{PY@tok@gu}{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.50,0.00,0.50}{##1}}}
+\@namedef{PY@tok@gd}{\def\PY@tc##1{\textcolor[rgb]{0.63,0.00,0.00}{##1}}}
+\@namedef{PY@tok@gi}{\def\PY@tc##1{\textcolor[rgb]{0.00,0.52,0.00}{##1}}}
+\@namedef{PY@tok@gr}{\def\PY@tc##1{\textcolor[rgb]{0.89,0.00,0.00}{##1}}}
+\@namedef{PY@tok@ge}{\let\PY@it=\textit}
+\@namedef{PY@tok@gs}{\let\PY@bf=\textbf}
+\@namedef{PY@tok@ges}{\let\PY@bf=\textbf\let\PY@it=\textit}
+\@namedef{PY@tok@gp}{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,0.50}{##1}}}
+\@namedef{PY@tok@go}{\def\PY@tc##1{\textcolor[rgb]{0.44,0.44,0.44}{##1}}}
+\@namedef{PY@tok@gt}{\def\PY@tc##1{\textcolor[rgb]{0.00,0.27,0.87}{##1}}}
+\@namedef{PY@tok@err}{\def\PY@bc##1{{\setlength{\fboxsep}{\string -\fboxrule}\fcolorbox[rgb]{1.00,0.00,0.00}{1,1,1}{\strut ##1}}}}
+\@namedef{PY@tok@kc}{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\@namedef{PY@tok@kd}{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\@namedef{PY@tok@kn}{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\@namedef{PY@tok@kr}{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\@namedef{PY@tok@bp}{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\@namedef{PY@tok@fm}{\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\@namedef{PY@tok@vc}{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\@namedef{PY@tok@vg}{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\@namedef{PY@tok@vi}{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\@namedef{PY@tok@vm}{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\@namedef{PY@tok@sa}{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\@namedef{PY@tok@sb}{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\@namedef{PY@tok@sc}{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\@namedef{PY@tok@dl}{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\@namedef{PY@tok@s2}{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\@namedef{PY@tok@sh}{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\@namedef{PY@tok@s1}{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\@namedef{PY@tok@mb}{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\@namedef{PY@tok@mf}{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\@namedef{PY@tok@mh}{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\@namedef{PY@tok@mi}{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\@namedef{PY@tok@il}{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\@namedef{PY@tok@mo}{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\@namedef{PY@tok@ch}{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.24,0.48,0.48}{##1}}}
+\@namedef{PY@tok@cm}{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.24,0.48,0.48}{##1}}}
+\@namedef{PY@tok@cpf}{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.24,0.48,0.48}{##1}}}
+\@namedef{PY@tok@c1}{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.24,0.48,0.48}{##1}}}
+\@namedef{PY@tok@cs}{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.24,0.48,0.48}{##1}}}
+
+\def\PYZbs{\char`\\}
+\def\PYZus{\char`\_}
+\def\PYZob{\char`\{}
+\def\PYZcb{\char`\}}
+\def\PYZca{\char`\^}
+\def\PYZam{\char`\&}
+\def\PYZlt{\char`\<}
+\def\PYZgt{\char`\>}
+\def\PYZsh{\char`\#}
+\def\PYZpc{\char`\%}
+\def\PYZdl{\char`\$}
+\def\PYZhy{\char`\-}
+\def\PYZsq{\char`\'}
+\def\PYZdq{\char`\"}
+\def\PYZti{\char`\~}
+% for compatibility with earlier versions
+\def\PYZat{@}
+\def\PYZlb{[}
+\def\PYZrb{]}
+\makeatother
+
+
+    % For linebreaks inside Verbatim environment from package fancyvrb.
+    \makeatletter
+        \newbox\Wrappedcontinuationbox
+        \newbox\Wrappedvisiblespacebox
+        \newcommand*\Wrappedvisiblespace {\textcolor{red}{\textvisiblespace}}
+        \newcommand*\Wrappedcontinuationsymbol {\textcolor{red}{\llap{\tiny$\m@th\hookrightarrow$}}}
+        \newcommand*\Wrappedcontinuationindent {3ex }
+        \newcommand*\Wrappedafterbreak {\kern\Wrappedcontinuationindent\copy\Wrappedcontinuationbox}
+        % Take advantage of the already applied Pygments mark-up to insert
+        % potential linebreaks for TeX processing.
+        %        {, <, #, %, $, ' and ": go to next line.
+        %        _, }, ^, &, >, - and ~: stay at end of broken line.
+        % Use of \textquotesingle for straight quote.
+        \newcommand*\Wrappedbreaksatspecials {%
+            \def\PYGZus{\discretionary{\char`\_}{\Wrappedafterbreak}{\char`\_}}%
+            \def\PYGZob{\discretionary{}{\Wrappedafterbreak\char`\{}{\char`\{}}%
+            \def\PYGZcb{\discretionary{\char`\}}{\Wrappedafterbreak}{\char`\}}}%
+            \def\PYGZca{\discretionary{\char`\^}{\Wrappedafterbreak}{\char`\^}}%
+            \def\PYGZam{\discretionary{\char`\&}{\Wrappedafterbreak}{\char`\&}}%
+            \def\PYGZlt{\discretionary{}{\Wrappedafterbreak\char`\<}{\char`\<}}%
+            \def\PYGZgt{\discretionary{\char`\>}{\Wrappedafterbreak}{\char`\>}}%
+            \def\PYGZsh{\discretionary{}{\Wrappedafterbreak\char`\#}{\char`\#}}%
+            \def\PYGZpc{\discretionary{}{\Wrappedafterbreak\char`\%}{\char`\%}}%
+            \def\PYGZdl{\discretionary{}{\Wrappedafterbreak\char`\$}{\char`\$}}%
+            \def\PYGZhy{\discretionary{\char`\-}{\Wrappedafterbreak}{\char`\-}}%
+            \def\PYGZsq{\discretionary{}{\Wrappedafterbreak\textquotesingle}{\textquotesingle}}%
+            \def\PYGZdq{\discretionary{}{\Wrappedafterbreak\char`\"}{\char`\"}}%
+            \def\PYGZti{\discretionary{\char`\~}{\Wrappedafterbreak}{\char`\~}}%
+        }
+        % Some characters . , ; ? ! / are not pygmentized.
+        % This macro makes them "active" and they will insert potential linebreaks
+        \newcommand*\Wrappedbreaksatpunct {%
+            \lccode`\~`\.\lowercase{\def~}{\discretionary{\hbox{\char`\.}}{\Wrappedafterbreak}{\hbox{\char`\.}}}%
+            \lccode`\~`\,\lowercase{\def~}{\discretionary{\hbox{\char`\,}}{\Wrappedafterbreak}{\hbox{\char`\,}}}%
+            \lccode`\~`\;\lowercase{\def~}{\discretionary{\hbox{\char`\;}}{\Wrappedafterbreak}{\hbox{\char`\;}}}%
+            \lccode`\~`\:\lowercase{\def~}{\discretionary{\hbox{\char`\:}}{\Wrappedafterbreak}{\hbox{\char`\:}}}%
+            \lccode`\~`\?\lowercase{\def~}{\discretionary{\hbox{\char`\?}}{\Wrappedafterbreak}{\hbox{\char`\?}}}%
+            \lccode`\~`\!\lowercase{\def~}{\discretionary{\hbox{\char`\!}}{\Wrappedafterbreak}{\hbox{\char`\!}}}%
+            \lccode`\~`\/\lowercase{\def~}{\discretionary{\hbox{\char`\/}}{\Wrappedafterbreak}{\hbox{\char`\/}}}%
+            \catcode`\.\active
+            \catcode`\,\active
+            \catcode`\;\active
+            \catcode`\:\active
+            \catcode`\?\active
+            \catcode`\!\active
+            \catcode`\/\active
+            \lccode`\~`\~
+        }
+    \makeatother
+
+    \let\OriginalVerbatim=\Verbatim
+    \makeatletter
+    \renewcommand{\Verbatim}[1][1]{%
+        %\parskip\z@skip
+        \sbox\Wrappedcontinuationbox {\Wrappedcontinuationsymbol}%
+        \sbox\Wrappedvisiblespacebox {\FV@SetupFont\Wrappedvisiblespace}%
+        \def\FancyVerbFormatLine ##1{\hsize\linewidth
+            \vtop{\raggedright\hyphenpenalty\z@\exhyphenpenalty\z@
+                \doublehyphendemerits\z@\finalhyphendemerits\z@
+                \strut ##1\strut}%
+        }%
+        % If the linebreak is at a space, the latter will be displayed as visible
+        % space at end of first line, and a continuation symbol starts next line.
+        % Stretch/shrink are however usually zero for typewriter font.
+        \def\FV@Space {%
+            \nobreak\hskip\z@ plus\fontdimen3\font minus\fontdimen4\font
+            \discretionary{\copy\Wrappedvisiblespacebox}{\Wrappedafterbreak}
+            {\kern\fontdimen2\font}%
+        }%
+
+        % Allow breaks at special characters using \PYG... macros.
+        \Wrappedbreaksatspecials
+        % Breaks at punctuation characters . , ; ? ! and / need catcode=\active
+        \OriginalVerbatim[#1,codes*=\Wrappedbreaksatpunct]%
+    }
+    \makeatother
+
+    % Exact colors from NB
+    \definecolor{incolor}{HTML}{303F9F}
+    \definecolor{outcolor}{HTML}{D84315}
+    \definecolor{cellborder}{HTML}{CFCFCF}
+    \definecolor{cellbackground}{HTML}{F7F7F7}
+
+    % prompt
+    \makeatletter
+    \newcommand{\boxspacing}{\kern\kvtcb@left@rule\kern\kvtcb@boxsep}
+    \makeatother
+    \newcommand{\prompt}[4]{
+        {\ttfamily\llap{{\color{#2}[#3]:\hspace{3pt}#4}}\vspace{-\baselineskip}}
+    }
+    
+
+    
+    % Prevent overflowing lines due to hard-to-break entities
+    \sloppy
+    % Setup hyperref package
+    \hypersetup{
+      breaklinks=true,  % so long urls are correctly broken across lines
+      colorlinks=true,
+      urlcolor=urlcolor,
+      linkcolor=linkcolor,
+      citecolor=citecolor,
+      }
+    % Slightly bigger margins than the latex defaults
+    
+    \geometry{verbose,tmargin=1in,bmargin=1in,lmargin=1in,rmargin=1in}
+    
+    
+
+\pagenumbering{gobble}
+\begin{document}
+    
+    
+    
+
+    
+    \hypertarget{fpmi-frequency-response-to-gravitational-wave-perturbation}{%
+\section{FPMI frequency response to gravitational wave
+perturbation*}\label{fpmi-frequency-response-to-gravitational-wave-perturbation}}
+
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{1}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{k+kn}{import} \PY{n+nn}{numpy} \PY{k}{as} \PY{n+nn}{np} 
+\PY{k+kn}{import} \PY{n+nn}{matplotlib}\PY{n+nn}{.}\PY{n+nn}{pyplot} \PY{k}{as} \PY{n+nn}{plt}
+\PY{k+kn}{import} \PY{n+nn}{scipy}\PY{n+nn}{.}\PY{n+nn}{signal} \PY{k}{as} \PY{n+nn}{sig}
+\PY{k+kn}{import} \PY{n+nn}{os}
+\PY{k+kn}{from} \PY{n+nn}{ifo\PYZus{}configs} \PY{k+kn}{import} \PY{n}{mich\PYZus{}freq\PYZus{}resp} \PY{k}{as} \PY{n}{MICH}
+\PY{k+kn}{from} \PY{n+nn}{ifo\PYZus{}configs} \PY{k+kn}{import} \PY{n}{fpmi\PYZus{}freq\PYZus{}resp} \PY{k}{as} \PY{n}{FPMI}
+\PY{k+kn}{from} \PY{n+nn}{ifo\PYZus{}configs} \PY{k+kn}{import} \PY{n}{N\PYZus{}shot}\PY{p}{,} \PY{n}{bode\PYZus{}amp}\PY{p}{,} \PY{n}{bode\PYZus{}ph}
+\PY{n}{plt\PYZus{}style\PYZus{}dir} \PY{o}{=} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{stash/}\PY{l+s+s1}{\PYZsq{}}
+\PY{k}{if} \PY{n}{os}\PY{o}{.}\PY{n}{path}\PY{o}{.}\PY{n}{isdir}\PY{p}{(}\PY{n}{plt\PYZus{}style\PYZus{}dir}\PY{p}{)} \PY{o}{==} \PY{k+kc}{True}\PY{p}{:}
+    \PY{n}{plt}\PY{o}{.}\PY{n}{style}\PY{o}{.}\PY{n}{use}\PY{p}{(}\PY{n}{plt\PYZus{}style\PYZus{}dir} \PY{o}{+} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{ppt2latexsubfig.mplstyle}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\PY{n}{plt}\PY{o}{.}\PY{n}{rcParams}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{font.family}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]} \PY{o}{=} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Times New Roman}\PY{l+s+s2}{\PYZdq{}}
+\PY{n}{line\PYZus{}width}\PY{o}{=}\PY{l+m+mf}{7.5}
+\end{Verbatim}
+\end{tcolorbox}
+
+    I often find it helpful to revisit that which we will need to build upon
+before moving forward, especially if one has not done this derivation
+more than a couple of times. Sooooo\ldots{}
+
+\hypertarget{last-time-when-working-with-ifo-configs}{%
+\subsection{Last time when working with IFO
+configs:}\label{last-time-when-working-with-ifo-configs}}
+
+\textbf{Michelson frequency response to gravitational wave}
+
+The Michelson interferometer by it's design is a measurement device that
+can detect small changes in light phase between it's two perpendicular
+arms.
+
+A gravitational wave offers a unique phase differential that can be
+characterized mathematically by the following:
+
+\[
+\phi_X - \phi_Y = \int_{t-2L/c}^{t} \Omega \bigg[1 + \frac{1}{2}h(t)\bigg]dt - \int_{t-2L/c}^{t} \Omega \bigg[1 - \frac{1}{2}h(t)\bigg]dt \label{eq1}\tag{1}
+\]
+
+This eventually led us to the time independent phase response to a
+monochromatic gravitational wave (\(h(t)\)):
+
+\[
+\Delta \phi (\omega) = h_0\frac{2 L \Omega}{c}e^{-i L \omega / c} \frac{\mathrm{sin}(L \omega /c)}{L \omega /c} \label{eq2}\tag{2}
+\]
+
+Now, we are going to look at how Fabry Perót cavitites can help our
+Michelson become a gravitational wave observatory
+
+    \hypertarget{derivation}{%
+\section{Derivation}\label{derivation}}
+
+Let's start with the simple Fabry Perót cavity. The following are
+equations that characterize the circulating and reflected fields (both
+critical to measuring the phase response of the FP cavity to GWs):
+
+\[
+E(t) = t_1 E_{in} + r_1 r_2 E(t - 2T) e^{-i \Delta \phi(t)} \label{eq3}\tag{3}
+\]
+
+\[
+E_r(t) = -r_1 E_{in} + t_1 r_2 E(t - 2T) e^{-i \Delta \phi(t)} \label{eq4}\tag{4}
+\]
+
+\(T = L/c\) is the time it takes light to reach the end of the cavity
+and \(\Delta \phi(t)\) is the phase rotation.
+
+We can define the static phase rotation (no GW passing through) as :
+\[\Delta \phi = 2kL = 4 \pi L /\lambda_{opt}  \label{eq5}\tag{5}\]
+
+And if L is tuned just right \(2kL = 2 \pi n\) so the cavity is just
+tuned for resonance
+
+If we put a gravitational wave in the mix we redefine this phase
+rotation as such that:
+\[\Delta \phi =  \frac{\omega_0}{2} \int_{t-\frac{2L}{c}}^{t} h(t')dt'  \label{eq6}\tag{6}\]
+
+This assumes that the static phase rotation satisfies
+\(2\omega_0L/c = 2 \pi n\). Which is the same thing that we said above
+but with different symbols (because we're fancy ;D )
+
+Say that we have something that does throw the cavity slightly off
+resonance.. doesn't have to be a gravitational wave\ldots{} but that's
+what we hope for. ANYWAY\ldots{}
+
+If the \(\Delta \phi\) becomes such that the cavity is thrown off
+resonance we get a time dependent intra-cavity field:
+
+\[ E(t) = \bar{E} + \delta E(t) \label{eq7}\tag{7} \]
+
+and if the phase rotation (\(\Delta \phi\)) is super small\ldots{} which
+is pretty much guaranteed with gravy waves, we can say:
+
+\[ e^{i\Delta \phi} = 1- i \Delta \phi \label{eq8}\tag{8}\]
+
+Using equations \ref{eq7} and \ref{eq8} in \ref{eq3} we get:
+
+\[ \bar{E} + \delta E(t) = t_1 E_{in} -r_1r_2\bar{E} + r_1r_2 \delta E(t-2T) - ir_1r_2\bar{E}\Delta \phi(t)) \label{eq9}\tag{9} \]
+
+We can parse this into time dependent and time independent terms:
+
+\[ \bar{E} = t_1 E_{in} -r_1r_2\bar{E} \label{eq10}\tag{10} \]
+
+\[ \delta E(t) = r_1r_2 \delta E(t-2T) - ir_1r_2\bar{E}\Delta \phi(t) \label{eq11}\tag{11} \]
+
+Since the time dependent phase information is encoded in \ref{eq11} we
+will take the laplace transform of this equation to yield:
+
+\[\delta E(s) = -i \frac{r_1r_2 \bar{E}}{1-r_1r_2e^{-2sT}} \Delta \phi(s)\]
+
+\textbf{YAS!} we are now one step closer to getting a useful expression
+for the phase response. But again.. what does this last equation mean?
+That last equation is how the change in the electric field directly
+relates to a small perturbation in phase (which could be either a small
+change in laser frequency or length modulation)
+
+Now.. we're not done yet because that last expression does not tell us
+the entire story yet.. we want to see how this effects the phase
+differential with the \textbf{reflected} electric field.
+
+To do this.. we have to combine equations \ref{eq3} and \ref{eq4}.
+(\emph{an easy way to do this is to get rid of the \$ r\_2 E(t - 2T)
+e\^{}\{-i \Delta \phi(t)\}\$ term}) :
+
+\[ E_r(t) = \frac{t_1}{r_1}E(t) - \frac{t_1^2 + r_2^2}{r_1} E_{in}\]
+
+if the cavity is unperturbed:
+
+\[ \bar{E}_r = \bigg(\frac{r_2(r_1^2 + t_1^2) - r_1}{t_1} \bigg) \bar{E} \]
+
+and if we perturb the cavity we see that the change in the intra-cavity
+field is directly related to the change in the reflected field:
+
+\[ \Delta \phi_r(s) \equiv \frac{\delta E(s)}{\bar{E}} = \frac{t_1^2r_2}{(t_1^2 + r_1^2)r_2 -r_1} \frac{\Delta \phi(s)}{1-r_1r_2e^{-2sT}}\]
+
+This implies that there is an additional frequency dependent factor in
+your phase shift and this translates into your FPMI transfer function
+as:
+
+\[ H_{FPMI}(\omega_g) = \frac{2 \Delta \phi_r(\omega_g)}{h(\omega_g)} =  \frac{t_1^2r_2}{(t_1^2 + r_1^2)r_2 -r_1} \frac{H_{\mathrm{MI}}(\omega_g, L)}{1-r_1r_2e^{-2i \omega_g L /c }}  \]
+
+Whew\ldots. that was a lot\ldots. now let's code it up
+
+    Since we can seperate the calculation into two.. I'm going to parse out
+the calculation between the constant Fabry Perót term and the term with
+the frequency dependence. But first, lets set up our parameters for our
+FPMI:
+
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{2}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{c+c1}{\PYZsh{} Some parameters}
+\PY{n}{cee} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{float64}\PY{p}{(}\PY{l+m+mi}{299792458}\PY{p}{)}
+\PY{n}{OMEG} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{float64}\PY{p}{(}\PY{l+m+mi}{2}\PY{o}{*}\PY{n}{np}\PY{o}{.}\PY{n}{pi}\PY{o}{*}\PY{n}{cee}\PY{o}{/}\PY{p}{(}\PY{l+m+mf}{1064.0}\PY{o}{*}\PY{l+m+mf}{1e\PYZhy{}9}\PY{p}{)}\PY{p}{)}
+\PY{n}{L} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{float64}\PY{p}{(}\PY{l+m+mf}{4000.0}\PY{p}{)}
+\PY{n}{nu} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{arange}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{1000000}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{)}
+\PY{n}{nat\PYZus{}nu} \PY{o}{=} \PY{p}{[}\PY{n}{np}\PY{o}{.}\PY{n}{float64}\PY{p}{(}\PY{n}{i}\PY{o}{*}\PY{l+m+mi}{2}\PY{o}{*}\PY{n}{np}\PY{o}{.}\PY{n}{pi}\PY{p}{)} \PY{k}{for} \PY{n}{i} \PY{o+ow}{in} \PY{n}{nu}\PY{p}{]}
+\PY{n}{h\PYZus{}0} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{float64}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{)}
+
+\PY{n}{PHI\PYZus{}0} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{pi}\PY{o}{/}\PY{l+m+mi}{2} \PY{c+c1}{\PYZsh{}[rad]}
+\PY{n}{P\PYZus{}IN} \PY{o}{=} \PY{l+m+mi}{25}
+
+\PY{n}{T\PYZus{}1} \PY{o}{=} \PY{l+m+mf}{.014}
+\PY{c+c1}{\PYZsh{}T\PYZus{}1 = 25e\PYZhy{}6 }
+\PY{n}{T\PYZus{}2} \PY{o}{=} \PY{l+m+mf}{50e\PYZhy{}6}
+\PY{n}{R\PYZus{}1} \PY{o}{=} \PY{l+m+mi}{1}\PY{o}{\PYZhy{}}\PY{n}{T\PYZus{}1}
+\PY{n}{R\PYZus{}2} \PY{o}{=} \PY{l+m+mi}{1}\PY{o}{\PYZhy{}}\PY{n}{T\PYZus{}2}
+
+\PY{n}{t\PYZus{}1} \PY{o}{=} \PY{n}{T\PYZus{}1}\PY{o}{*}\PY{o}{*}\PY{l+m+mf}{.5}
+\PY{n}{r\PYZus{}1} \PY{o}{=} \PY{n}{R\PYZus{}1}\PY{o}{*}\PY{o}{*}\PY{l+m+mf}{.5}
+\PY{n}{r\PYZus{}2} \PY{o}{=} \PY{n}{R\PYZus{}2}\PY{o}{*}\PY{o}{*}\PY{l+m+mf}{.5}
+ 
+\end{Verbatim}
+\end{tcolorbox}
+
+    Now we can compute:
+\[ H_{FPMI}(\omega_g) =  \frac{t_1^2r_2}{(t_1^2 + r_1^2)r_2 -r_1}\cdot \frac{H_{\mathrm{MI}}(\omega_g, L)}{1-r_1r_2e^{-2i \omega_g L /c }}  \]
+
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{3}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+FPMI\PY{o}{?}
+\end{Verbatim}
+\end{tcolorbox}
+
+    
+    \begin{Verbatim}[commandchars=\\\{\}]
+\textcolor{ansi-red}{Signature:} FPMI\textcolor{ansi-blue}{(}freq\textcolor{ansi-blue}{,} r\_1\textcolor{ansi-blue}{,} t\_1\textcolor{ansi-blue}{,} r\_2\textcolor{ansi-blue}{,} L\textcolor{ansi-blue}{,} phi\_0\textcolor{ansi-blue}{,} P\_in\textcolor{ansi-blue}{,} OMEGA\textcolor{ansi-blue}{,} low\_pass\textcolor{ansi-blue}{=}\textcolor{ansi-green}{False}\textcolor{ansi-blue}{)}
+\textcolor{ansi-red}{Docstring:}
+FABRY PEROT MICHELSON FREQUENCY RESPONSE CALCULATOR
+freq : standard (gravitational wave) frequency [Hz]
+r\_1, t\_1, r\_2: Assuming arm symmetry where the ITM has r\_1, t\_1 coefficients and the ETM has a r\_2 reflectivity coefficient. Also assumes no loss. [arb]
+OMEGA: OPTICAL angular frequency [rad Hz]
+Length: Michelson ifo arm length [m]
+phi\_0 : static differential arm length tuning phase [rad]
+\textcolor{ansi-red}{File:}      \textasciitilde{}/Documents/git/SU/dissertation/code/ifo\_configs.py
+\textcolor{ansi-red}{Type:}      function
+
+    \end{Verbatim}
+
+    
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{4}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{n}{H\PYZus{}FPMI} \PY{o}{=} \PY{n}{FPMI}\PY{p}{(}\PY{n}{nu}\PY{p}{,} \PY{n}{r\PYZus{}1}\PY{p}{,} \PY{n}{t\PYZus{}1}\PY{p}{,} \PY{n}{r\PYZus{}2}\PY{p}{,} \PY{n}{L}\PY{p}{,} \PY{n}{PHI\PYZus{}0}\PY{p}{,} \PY{n}{P\PYZus{}IN}\PY{p}{,} \PY{n}{OMEG}\PY{p}{)}
+\end{Verbatim}
+\end{tcolorbox}
+
+    We estimate the FP's pole frequency
+\[  1 - r_1 r_2 e^{-2i \omega_g L / c} = 0 \] therefore when:
+\[ e^{-i \omega_g L / c} = \frac{1}{\sqrt{r_1 r_2}} \] we acquire the
+pole frequency \(\omega_\mathrm{pole}\) as indicated in the low pass
+\[ f_\mathrm{pole} = \frac{1}{4\pi \tau_{s}} =  \frac{c}{4 \pi L} \frac{1- r_1 r_2}{\sqrt{r_1 r_2}} = \frac{\nu_\mathrm{FSR}}{2 \pi} \frac{1- r_1 r_2}{\sqrt{r_1 r_2}} = \frac{\nu_\mathrm{FSR}}{\mathcal{F}} \]
+
+ALso, understanding that the cavity Finesse can be defined as
+
+\[ \mathcal{F} = \frac{\pi \sqrt{r_i r_e}}{1- r_i r_e} \]
+
+we also can invert for a high value of finesse \[ \mathcal{F}
+\textgreater\textgreater{} \pi \]:
+
+\[ r_i r_e \approx 1 - \frac{\pi}{\mathcal{F}} \]
+
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{5}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{n}{f\PYZus{}pole} \PY{o}{=} \PY{l+m+mi}{1}\PY{o}{/}\PY{p}{(}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{4}\PY{o}{*}\PY{n}{np}\PY{o}{.}\PY{n}{pi}\PY{o}{*}\PY{n}{L}\PY{p}{)}\PY{o}{*}\PY{n}{np}\PY{o}{.}\PY{n}{sqrt}\PY{p}{(}\PY{n}{r\PYZus{}1}\PY{o}{*}\PY{n}{r\PYZus{}2}\PY{p}{)}\PY{p}{)}\PY{o}{/}\PY{p}{(}\PY{n}{cee}\PY{o}{*}\PY{p}{(}\PY{l+m+mi}{1}\PY{o}{\PYZhy{}}\PY{n}{r\PYZus{}1}\PY{o}{*}\PY{n}{r\PYZus{}2}\PY{p}{)}\PY{p}{)}\PY{p}{)}
+\PY{k}{def} \PY{n+nf}{fpmi\PYZus{}lp}\PY{p}{(}\PY{n}{freq}\PY{p}{,} \PY{n}{cav\PYZus{}pole}\PY{p}{)}\PY{p}{:}
+    \PY{k}{return} \PY{l+m+mi}{1}\PY{o}{/}\PY{p}{(}\PY{l+m+mi}{1} \PY{o}{+} \PY{l+m+mi}{1}\PY{n}{j}\PY{o}{*}\PY{p}{(}\PY{n}{freq}\PY{o}{/}\PY{n}{cav\PYZus{}pole}\PY{p}{)}\PY{p}{)}\PY{c+c1}{\PYZsh{}*np.exp(1j*freq/cav\PYZus{}pole))}
+\PY{n}{H\PYZus{}FPMI\PYZus{}LP} \PY{o}{=} \PY{n}{fpmi\PYZus{}lp}\PY{p}{(}\PY{n}{nu}\PY{p}{,} \PY{n}{f\PYZus{}pole}\PY{p}{)}
+\end{Verbatim}
+\end{tcolorbox}
+
+    Might as well compare it to our Michelson response:
+\[ H_{\mathrm{MI}}(\omega_g) = \frac{2 L \Omega}{c}e^{-i L \omega / c} \frac{\mathrm{sin}(L \omega /c)}{L \omega /c} \]
+
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{6}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+MICH\PY{o}{?}
+\end{Verbatim}
+\end{tcolorbox}
+
+    
+    \begin{Verbatim}[commandchars=\\\{\}]
+\textcolor{ansi-red}{Signature:} MICH\textcolor{ansi-blue}{(}freq\textcolor{ansi-blue}{,} Length\textcolor{ansi-blue}{,} phi\_0\textcolor{ansi-blue}{,} P\_in\textcolor{ansi-blue}{,} OMEGA\textcolor{ansi-blue}{)}
+\textcolor{ansi-red}{Docstring:}
+MICHELSON FREQEUNCY RESPONSE CALCULATOR
+freq : standard (gravitational wave) frequency [Hz]
+Length : Michelson ifo arm length [m]
+phi\_0 : static differential arm length tuning phase [rad]
+P\_in : input power [W] 
+\textcolor{ansi-red}{File:}      \textasciitilde{}/Documents/git/SU/dissertation/code/ifo\_configs.py
+\textcolor{ansi-red}{Type:}      function
+
+    \end{Verbatim}
+    
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{7}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{n}{H\PYZus{}MICH} \PY{o}{=} \PY{n}{MICH}\PY{p}{(}\PY{n}{nu}\PY{p}{,} \PY{n}{L}\PY{p}{,} \PY{n}{PHI\PYZus{}0}\PY{p}{,} \PY{n}{P\PYZus{}IN}\PY{p}{,} \PY{n}{OMEG}\PY{p}{)}
+\end{Verbatim}
+\end{tcolorbox}
+
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{8}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{n}{fig}\PY{p}{,} \PY{n}{ax1} \PY{o}{=} \PY{n}{plt}\PY{o}{.}\PY{n}{subplots}\PY{p}{(}\PY{p}{)}
+\PY{n}{ax1}\PY{o}{.}\PY{n}{set\PYZus{}xlabel}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{frequency [Hz]}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\PY{n}{ax1}\PY{o}{.}\PY{n}{set\PYZus{}ylabel}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{H\PYZdl{}\PYZus{}}\PY{l+s+s1}{\PYZbs{}}\PY{l+s+s1}{mathdefault}\PY{l+s+si}{\PYZob{}FPMI\PYZcb{}}\PY{l+s+s1}{ }\PY{l+s+s1}{\PYZbs{}}\PY{l+s+s1}{; }\PY{l+s+s1}{\PYZbs{}}\PY{l+s+s1}{mathdefault}\PY{l+s+s1}{\PYZob{}}\PY{l+s+s1}{ [W / m] \PYZcb{} \PYZdl{} }\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{color}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{C0}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\PY{c+c1}{\PYZsh{}ax1.plot(w/(FSR), F\PYZus{}w\PYZus{}cc\PYZus{}modsq*100)}
+\PY{n}{ax1}\PY{o}{.}\PY{n}{loglog}\PY{p}{(}\PY{n}{bode\PYZus{}amp}\PY{p}{(}\PY{n}{H\PYZus{}FPMI}\PY{p}{)}\PY{p}{,} \PY{n}{label}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{FPMI}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{linewidth}\PY{o}{=}\PY{n}{line\PYZus{}width}\PY{p}{,}\PY{n}{color}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{C0}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\PY{c+c1}{\PYZsh{}ax1.loglog(w,H\PYZus{}MI\PYZus{}modsq, label= \PYZsq{}MICH\PYZsq{}, linewidth= 5)}
+\PY{c+c1}{\PYZsh{}ax1.loglog(w,H\PYZus{}FPMI\PYZus{}LP\PYZus{}modsq*H\PYZus{}FPMI\PYZus{}modsq[0], label=\PYZsq{}FPMI LP\PYZsq{}, linewidth = 20.0, alpha=0.25,color=\PYZsq{}C2\PYZsq{})}
+\PY{c+c1}{\PYZsh{}ax1.axvline (x=f\PYZus{}pole,ymin=1e\PYZhy{}13, color=\PYZsq{}red\PYZsq{}, linestyle=\PYZsq{}dotted\PYZsq{}, linewidth=3)}
+\PY{n}{ax2} \PY{o}{=} \PY{n}{ax1}\PY{o}{.}\PY{n}{twinx}\PY{p}{(}\PY{p}{)}
+\PY{n}{ax2}\PY{o}{.}\PY{n}{semilogx}\PY{p}{(}\PY{n}{nu}\PY{p}{,}\PY{n}{bode\PYZus{}ph}\PY{p}{(}\PY{n}{H\PYZus{}FPMI}\PY{p}{)}\PY{p}{,}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{\PYZhy{}\PYZhy{}}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{linewidth}\PY{o}{=}\PY{n}{line\PYZus{}width}\PY{p}{,} \PY{n}{color}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{C1}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\PY{c+c1}{\PYZsh{}ax2.semilogx(w,(180/np.pi)*np.arctan(np.imag(H\PYZus{}MI)/np.real(H\PYZus{}MI)), \PYZsq{}\PYZhy{}\PYZhy{}\PYZsq{})}
+\PY{c+c1}{\PYZsh{}ax2.semilogx(w,(180/np.pi)*np.arctan(np.imag(H\PYZus{}FPMI\PYZus{}LP)/np.real(H\PYZus{}FPMI\PYZus{}LP)),linestyle=\PYZsq{}\PYZhy{}\PYZhy{}\PYZsq{}, linewidth=20.0,dashes=(4,10),alpha=.25, color=\PYZsq{}C2\PYZsq{})}
+\PY{n}{plt}\PY{o}{.}\PY{n}{xlim}\PY{p}{(}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mf}{1e5}\PY{p}{]}\PY{p}{)}
+\PY{n}{plt}\PY{o}{.}\PY{n}{ylabel}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{phase [deg]}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{color}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{C1}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\PY{c+c1}{\PYZsh{}fig.savefig(\PYZsq{}../figs/INTRO/fpmi\PYZus{}fr.pdf\PYZsq{}, dpi=300, bbox\PYZus{}inches=\PYZsq{}tight\PYZsq{})}
+\end{Verbatim}
+\end{tcolorbox}
+
+            \begin{tcolorbox}[breakable, size=fbox, boxrule=.5pt, pad at break*=1mm, opacityfill=0]
+\prompt{Out}{outcolor}{8}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+Text(0, 0.5, 'phase [deg]')
+\end{Verbatim}
+\end{tcolorbox}
+        
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{fpmi_fr_files/fpmi_fr_14_1.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{9}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{n}{plt}\PY{o}{.}\PY{n}{loglog}\PY{p}{(}\PY{n}{nu}\PY{p}{,}\PY{n}{bode\PYZus{}amp}\PY{p}{(}\PY{n}{H\PYZus{}MICH}\PY{p}{)}\PY{p}{,} \PY{n}{label}\PY{o}{=} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{MICH}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{linewidth}\PY{o}{=} \PY{n}{line\PYZus{}width}\PY{p}{,} \PY{n}{alpha}\PY{o}{=}\PY{l+m+mf}{.5}\PY{p}{)}
+\PY{n}{plt}\PY{o}{.}\PY{n}{loglog}\PY{p}{(}\PY{n}{nu}\PY{p}{,}\PY{n}{bode\PYZus{}amp}\PY{p}{(}\PY{n}{H\PYZus{}FPMI}\PY{p}{)}\PY{p}{,} \PY{n}{label}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{FPMI}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{linewidth}\PY{o}{=}\PY{n}{line\PYZus{}width}\PY{p}{)}
+\PY{c+c1}{\PYZsh{}plt.loglog(nu,bode\PYZus{}amp(H\PYZus{}FPMI\PYZus{}LP)*bode\PYZus{}amp(H\PYZus{}FPMI)[0], label=\PYZsq{}FPMI LP\PYZsq{}, linewidth = 20.0, alpha=0.25)}
+\PY{n}{plt}\PY{o}{.}\PY{n}{axvline} \PY{p}{(}\PY{n}{x}\PY{o}{=}\PY{n}{f\PYZus{}pole}\PY{p}{,}\PY{n}{ymin}\PY{o}{=}\PY{l+m+mf}{1e\PYZhy{}11}\PY{p}{,} \PY{n}{color}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{red}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{linestyle}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{dotted}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{linewidth}\PY{o}{=}\PY{l+m+mf}{3.0}\PY{p}{)}
+\PY{n}{plt}\PY{o}{.}\PY{n}{ylim}\PY{p}{(}\PY{p}{[}\PY{l+m+mf}{5e7}\PY{p}{,} \PY{l+m+mf}{5e14}\PY{p}{]}\PY{p}{)}
+\PY{n}{plt}\PY{o}{.}\PY{n}{xlim}\PY{p}{(}\PY{p}{[}\PY{l+m+mf}{1e0}\PY{p}{,} \PY{l+m+mf}{1e5}\PY{p}{]}\PY{p}{)}
+\PY{c+c1}{\PYZsh{}plt.grid(visible=True, which=\PYZsq{}minor\PYZsq{}, axis=\PYZsq{}y\PYZsq{})}
+\PY{n}{plt}\PY{o}{.}\PY{n}{xlabel}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{frequency [Hz]}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\PY{n}{plt}\PY{o}{.}\PY{n}{ylabel}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{H(f) \PYZdl{}}\PY{l+s+s1}{\PYZbs{}}\PY{l+s+s1}{mathdefault}\PY{l+s+s1}{\PYZob{}}\PY{l+s+s1}{[W/m]\PYZcb{}\PYZdl{}}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\PY{n}{lgd}\PY{o}{=}\PY{n}{plt}\PY{o}{.}\PY{n}{legend}\PY{p}{(}\PY{p}{)}
+\PY{n}{plt}\PY{o}{.}\PY{n}{savefig}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{../figs/INTRO/fpmi\PYZus{}fr.pdf}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{dpi}\PY{o}{=}\PY{l+m+mi}{300}\PY{p}{,} \PY{n}{bbox\PYZus{}inches}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{tight}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\end{Verbatim}
+\end{tcolorbox}
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{fpmi_fr_files/fpmi_fr_15_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    You can clearly see that there is a clear increase in gain at lower
+frequencies (below 5000 kHz) Doesn't exactly look like Kiwamu's but
+close enough?
+
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{10}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{n}{plt}\PY{o}{.}\PY{n}{semilogx}\PY{p}{(}\PY{n}{nu}\PY{p}{,}\PY{n}{bode\PYZus{}ph}\PY{p}{(}\PY{n}{H\PYZus{}MICH}\PY{p}{)}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{\PYZhy{}\PYZhy{}}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{label}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{MICH}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{linewidth}\PY{o}{=} \PY{n}{line\PYZus{}width}\PY{p}{,} \PY{n}{alpha}\PY{o}{=}\PY{l+m+mf}{.5}\PY{p}{)}
+\PY{n}{plt}\PY{o}{.}\PY{n}{semilogx}\PY{p}{(}\PY{n}{nu}\PY{p}{,}\PY{n}{bode\PYZus{}ph}\PY{p}{(}\PY{n}{H\PYZus{}FPMI}\PY{p}{)}\PY{p}{,}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{\PYZhy{}\PYZhy{}}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{label}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{FPMI}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{linewidth}\PY{o}{=} \PY{n}{line\PYZus{}width}\PY{p}{)}
+\PY{c+c1}{\PYZsh{}plt.semilogx(nu,bode\PYZus{}ph(H\PYZus{}FPMI\PYZus{}LP),linestyle=\PYZsq{}\PYZhy{}\PYZhy{}\PYZsq{}, linewidth=3.0,dashes=(3,10))}
+\PY{n}{plt}\PY{o}{.}\PY{n}{xlim}\PY{p}{(}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{100000}\PY{p}{]}\PY{p}{)}
+\PY{n}{plt}\PY{o}{.}\PY{n}{ylabel}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{phase [deg]}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\PY{n}{plt}\PY{o}{.}\PY{n}{xlabel}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Frequency [Hz]}\PY{l+s+s1}{\PYZsq{}} \PY{p}{)}
+\PY{n}{lgd}\PY{o}{=}\PY{n}{plt}\PY{o}{.}\PY{n}{legend}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+\end{tcolorbox}
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{fpmi_fr_files/fpmi_fr_17_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{11}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{n}{Sh\PYZus{}noise} \PY{o}{=} \PY{n}{N\PYZus{}shot}\PY{p}{(}\PY{n}{OMEG}\PY{p}{,} \PY{n}{P\PYZus{}IN}\PY{p}{)}
+\end{Verbatim}
+\end{tcolorbox}
+
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{12}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{n}{plt}\PY{o}{.}\PY{n}{loglog}\PY{p}{(}\PY{n}{nu}\PY{p}{,}\PY{n}{Sh\PYZus{}noise}\PY{o}{/}\PY{n}{bode\PYZus{}amp}\PY{p}{(}\PY{n}{H\PYZus{}MICH}\PY{p}{)}\PY{p}{,} \PY{n}{label}\PY{o}{=} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{MICH}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{linewidth}\PY{o}{=} \PY{n}{line\PYZus{}width}\PY{p}{,} \PY{n}{alpha}\PY{o}{=}\PY{l+m+mf}{.5}\PY{p}{)}
+\PY{n}{plt}\PY{o}{.}\PY{n}{loglog}\PY{p}{(}\PY{n}{nu}\PY{p}{,}\PY{n}{Sh\PYZus{}noise}\PY{o}{/}\PY{n}{bode\PYZus{}amp}\PY{p}{(}\PY{n}{H\PYZus{}FPMI}\PY{p}{)}\PY{p}{,} \PY{n}{label}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{FPMI}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{linewidth}\PY{o}{=}\PY{n}{line\PYZus{}width}\PY{p}{)}
+\PY{c+c1}{\PYZsh{}plt.loglog(nu,Sh\PYZus{}noise/(bode\PYZus{}amp(H\PYZus{}FPMI\PYZus{}LP)*bode\PYZus{}amp(H\PYZus{}FPMI)[0]), label=\PYZsq{}FPMI LP\PYZsq{}, linewidth = 20.0, alpha=0.25)}
+\PY{c+c1}{\PYZsh{}plt.axvline (x=f\PYZus{}pole,ymin=1e\PYZhy{}11, color=\PYZsq{}red\PYZsq{}, linestyle=\PYZsq{}dotted\PYZsq{}, linewidth=3)}
+\PY{n}{plt}\PY{o}{.}\PY{n}{ylim}\PY{p}{(}\PY{p}{[}\PY{l+m+mf}{1e\PYZhy{}23}\PY{p}{,} \PY{l+m+mf}{1e\PYZhy{}16}\PY{p}{]}\PY{p}{)}
+\PY{n}{plt}\PY{o}{.}\PY{n}{xlim}\PY{p}{(}\PY{p}{[}\PY{l+m+mf}{1e0}\PY{p}{,} \PY{l+m+mf}{1e5}\PY{p}{]}\PY{p}{)}
+\PY{n}{plt}\PY{o}{.}\PY{n}{xlabel}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{frequency [Hz]}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\PY{n}{plt}\PY{o}{.}\PY{n}{ylabel}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{H(f) \PYZdl{}}\PY{l+s+s1}{\PYZbs{}}\PY{l+s+s1}{mathdefault}\PY{l+s+s1}{\PYZob{}}\PY{l+s+s1}{[1/}\PY{l+s+s1}{\PYZbs{}}\PY{l+s+s1}{sqrt}\PY{l+s+s1}{\PYZob{}}\PY{l+s+s1}{\PYZbs{}}\PY{l+s+s1}{mathdefault}\PY{l+s+si}{\PYZob{}Hz\PYZcb{}}\PY{l+s+s1}{\PYZcb{}]\PYZcb{}\PYZdl{}}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\PY{n}{lgd}\PY{o}{=}\PY{n}{plt}\PY{o}{.}\PY{n}{legend}\PY{p}{(}\PY{p}{)}
+\PY{n}{fig}\PY{o}{.}\PY{n}{savefig}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{../figs/INTRO/fpmi\PYZus{}sensi.pdf}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{dpi}\PY{o}{=}\PY{l+m+mi}{300}\PY{p}{,} \PY{n}{bbox\PYZus{}inches}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{tight}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\end{Verbatim}
+\end{tcolorbox}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+/Users/daniel\_vander-hyde/anaconda3/envs/jupy/lib/python3.7/site-
+packages/IPython/core/pylabtools.py:151: UserWarning: Creating legend with
+loc="best" can be slow with large amounts of data.
+  fig.canvas.print\_figure(bytes\_io, **kw)
+    \end{Verbatim}
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{fpmi_fr_files/fpmi_fr_19_1.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \hypertarget{heavily-heavily-inspired-by-kiwamus-thesis-chapter-on-this-subject-httpsgwic.ligo.orgthesisprize2012izumi-thesis.pdf}{%
+\subsubsection{*Heavily HEAVILY inspired by Kiwamu's thesis chapter on
+this subject
+(https://gwic.ligo.org/thesisprize/2012/izumi-thesis.pdf)}\label{heavily-heavily-inspired-by-kiwamus-thesis-chapter-on-this-subject-httpsgwic.ligo.orgthesisprize2012izumi-thesis.pdf}}
+
+    Next it might be useful to see the frequency dependence of just the FP
+alone
+
+    \hypertarget{vs.-the-delay-line}{%
+\subsection{Vs. the delay line}\label{vs.-the-delay-line}}
+
+    \hypertarget{expressing-part-of-the-transfer-function-in-terms-of-cavity-storage-time-tau_mathrmstor.-this-helps-us-create-a-concept-of-a-equivalent-length-or-total-elapsed-travel-time-of-a-given-phasefront-in-the-cavity.}{%
+\paragraph{\texorpdfstring{Expressing part of the transfer function in
+terms of cavity storage time \(\tau_\mathrm{stor}\). This helps us
+create a concept of a ``equivalent length'' or total elapsed travel time
+of a given phasefront in the
+cavity.}{Expressing part of the transfer function in terms of cavity storage time \textbackslash tau\_\textbackslash mathrm\{stor\}. This helps us create a concept of a ``equivalent length'' or total elapsed travel time of a given phasefront in the cavity.}}\label{expressing-part-of-the-transfer-function-in-terms-of-cavity-storage-time-tau_mathrmstor.-this-helps-us-create-a-concept-of-a-equivalent-length-or-total-elapsed-travel-time-of-a-given-phasefront-in-the-cavity.}}
+
+    Revisiting our Michelson response:
+\[ H_{\mathrm{MI}}(f_\mathrm{gw}) = \tau_\mathrm{stor}\frac{2 \pi c}{\lambda}e^{-i \pi f_\mathrm{gw} \tau_\mathrm{stor}} \frac{\mathrm{sin}(f_\mathrm{gw} \tau_\mathrm{stor})}{f_\mathrm{gw}\tau_\mathrm{stor}} \]
+
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{13}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{c+c1}{\PYZsh{} Delay line storage time}
+\PY{n}{N\PYZus{}rt} \PY{o}{=} \PY{l+m+mi}{10}
+\PY{n}{tau\PYZus{}stor\PYZus{}dl} \PY{o}{=} \PY{n}{N\PYZus{}rt}\PY{o}{*}\PY{p}{(}\PY{l+m+mi}{2}\PY{o}{*}\PY{n}{L}\PY{p}{)}\PY{o}{/}\PY{n}{cee}
+\end{Verbatim}
+\end{tcolorbox}
+
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{24}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{c+c1}{\PYZsh{} Fabry perot storage tim }
+\PY{c+c1}{\PYZsh{}Finn = np.pi*np.sqrt(r\PYZus{}1*r\PYZus{}2)/(1\PYZhy{}(r\PYZus{}1*r\PYZus{}2))}
+\PY{n}{Finn} \PY{o}{=} \PY{l+m+mi}{3}
+\PY{n}{tau\PYZus{}stor\PYZus{}fp} \PY{o}{=} \PY{p}{(}\PY{n}{L}\PY{o}{*}\PY{n}{Finn}\PY{p}{)}\PY{o}{/}\PY{p}{(}\PY{n}{cee}\PY{o}{*}\PY{n}{np}\PY{o}{.}\PY{n}{pi}\PY{p}{)}
+\end{Verbatim}
+\end{tcolorbox}
+
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{15}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{k}{def} \PY{n+nf}{mich\PYZus{}freq\PYZus{}resp\PYZus{}}\PY{p}{(}\PY{n}{freq}\PY{p}{,} \PY{n}{L}\PY{p}{,} \PY{n}{t\PYZus{}s}\PY{p}{,} \PY{n}{lambd}\PY{p}{,} \PY{n}{h0}\PY{p}{)}\PY{p}{:}
+    \PY{k}{return} \PY{p}{(}\PY{p}{(}\PY{n}{h0}\PY{o}{*}\PY{n}{t\PYZus{}s}\PY{o}{*}\PY{l+m+mf}{2.0}\PY{o}{*}\PY{n}{np}\PY{o}{.}\PY{n}{pi}\PY{o}{*}\PY{n}{cee}\PY{p}{)}\PY{o}{/}\PY{n}{lambd}\PY{p}{)}\PY{o}{*}\PY{n}{np}\PY{o}{.}\PY{n}{exp}\PY{p}{(}\PY{p}{(}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{n}{j}\PY{o}{*}\PY{n}{np}\PY{o}{.}\PY{n}{pi}\PY{o}{*}\PY{l+m+mf}{2.0}\PY{o}{*}\PY{n}{np}\PY{o}{.}\PY{n}{pi}\PY{o}{*}\PY{n}{freq}\PY{p}{)}\PY{o}{/}\PY{n}{cee}\PY{p}{)}\PY{o}{*}\PY{n}{np}\PY{o}{.}\PY{n}{sin}\PY{p}{(}\PY{p}{(}\PY{n}{L}\PY{o}{*}\PY{l+m+mf}{2.0}\PY{o}{*}\PY{n}{np}\PY{o}{.}\PY{n}{pi}\PY{o}{*}\PY{n}{freq}\PY{p}{)}\PY{o}{/}\PY{n}{cee}\PY{p}{)}\PY{o}{/}\PY{p}{(}\PY{n}{L}\PY{o}{*}\PY{l+m+mf}{2.0}\PY{o}{*}\PY{n}{np}\PY{o}{.}\PY{n}{pi}\PY{o}{*}\PY{n}{freq}\PY{p}{)}
+\end{Verbatim}
+\end{tcolorbox}
+
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{ }{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{k}{def} \PY{n+nf}{mich\PYZus{}freq\PYZus{}resp\PYZus{}}\PY{p}{(}
+\end{Verbatim}
+\end{tcolorbox}
+
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{17}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{n}{H\PYZus{}MI\PYZus{}sto} \PY{o}{=} \PY{n}{mich\PYZus{}freq\PYZus{}resp\PYZus{}}\PY{p}{(}\PY{n}{nu}\PY{p}{,} \PY{n}{L}\PY{p}{,} \PY{n}{tau\PYZus{}stor\PYZus{}dl}\PY{p}{,} \PY{l+m+mf}{1064e\PYZhy{}9}\PY{p}{,} \PY{n}{h\PYZus{}0}\PY{p}{)}
+\end{Verbatim}
+\end{tcolorbox}
+
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{25}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{n}{H\PYZus{}FPMI\PYZus{}sto} \PY{o}{=} \PY{n}{mich\PYZus{}freq\PYZus{}resp\PYZus{}}\PY{p}{(}\PY{n}{nu}\PY{p}{,} \PY{n}{L}\PY{p}{,} \PY{n}{tau\PYZus{}stor\PYZus{}fp}\PY{p}{,} \PY{l+m+mf}{1064e\PYZhy{}9}\PY{p}{,} \PY{n}{h\PYZus{}0}\PY{p}{)}
+\end{Verbatim}
+\end{tcolorbox}
+
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{26}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{n}{H\PYZus{}MI\PYZus{}sto\PYZus{}modsq} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{real}\PY{p}{(}\PY{n}{H\PYZus{}MI\PYZus{}sto}\PY{p}{)}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{2} \PY{o}{+} \PY{n}{np}\PY{o}{.}\PY{n}{imag}\PY{p}{(}\PY{n}{H\PYZus{}MI\PYZus{}sto}\PY{p}{)}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{2}
+\PY{n}{H\PYZus{}FPMI\PYZus{}sto\PYZus{}modsq} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{real}\PY{p}{(}\PY{n}{H\PYZus{}FPMI\PYZus{}sto}\PY{p}{)}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{2} \PY{o}{+} \PY{n}{np}\PY{o}{.}\PY{n}{imag}\PY{p}{(}\PY{n}{H\PYZus{}FPMI\PYZus{}sto}\PY{p}{)}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{2}
+\end{Verbatim}
+\end{tcolorbox}
+
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{27}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{n}{H\PYZus{}MI\PYZus{}sto\PYZus{}ph} \PY{o}{=} \PY{p}{(}\PY{l+m+mi}{180}\PY{o}{/}\PY{n}{np}\PY{o}{.}\PY{n}{pi}\PY{p}{)}\PY{o}{*}\PY{n}{np}\PY{o}{.}\PY{n}{arctan}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{imag}\PY{p}{(}\PY{n}{H\PYZus{}MI\PYZus{}sto}\PY{p}{)}\PY{o}{/}\PY{n}{np}\PY{o}{.}\PY{n}{real}\PY{p}{(}\PY{n}{H\PYZus{}MI\PYZus{}sto}\PY{p}{)}\PY{p}{)}
+\PY{n}{H\PYZus{}FPMI\PYZus{}sto\PYZus{}ph} \PY{o}{=} \PY{p}{(}\PY{l+m+mi}{180}\PY{o}{/}\PY{n}{np}\PY{o}{.}\PY{n}{pi}\PY{p}{)}\PY{o}{*}\PY{n}{np}\PY{o}{.}\PY{n}{arctan}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{imag}\PY{p}{(}\PY{n}{H\PYZus{}FPMI\PYZus{}sto}\PY{p}{)}\PY{o}{/}\PY{n}{np}\PY{o}{.}\PY{n}{real}\PY{p}{(}\PY{n}{H\PYZus{}FPMI\PYZus{}sto}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+\end{tcolorbox}
+
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{28}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{n}{plt}\PY{o}{.}\PY{n}{loglog}\PY{p}{(}\PY{n}{nu}\PY{p}{,} \PY{n}{H\PYZus{}MI\PYZus{}sto\PYZus{}modsq}\PY{p}{)}
+\PY{n}{plt}\PY{o}{.}\PY{n}{loglog}\PY{p}{(}\PY{n}{nu}\PY{p}{,} \PY{n}{H\PYZus{}FPMI\PYZus{}sto\PYZus{}modsq}\PY{p}{)}
+\end{Verbatim}
+\end{tcolorbox}
+
+            \begin{tcolorbox}[breakable, size=fbox, boxrule=.5pt, pad at break*=1mm, opacityfill=0]
+\prompt{Out}{outcolor}{28}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+[<matplotlib.lines.Line2D at 0x177cc23d0>]
+\end{Verbatim}
+\end{tcolorbox}
+        
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{fpmi_fr_files/fpmi_fr_33_1.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{20}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{n}{plt}\PY{o}{.}\PY{n}{semilogx}\PY{p}{(}\PY{n}{nu}\PY{p}{,} \PY{n}{H\PYZus{}MI\PYZus{}sto\PYZus{}ph}\PY{p}{)}
+\end{Verbatim}
+\end{tcolorbox}
+
+            \begin{tcolorbox}[breakable, size=fbox, boxrule=.5pt, pad at break*=1mm, opacityfill=0]
+\prompt{Out}{outcolor}{20}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+[<matplotlib.lines.Line2D at 0x2a0c078b0>]
+\end{Verbatim}
+\end{tcolorbox}
+        
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{fpmi_fr_files/fpmi_fr_34_1.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{ }{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+
+\end{Verbatim}
+\end{tcolorbox}
+
+
+    % Add a bibliography block to the postdoc
+    
+    
+    
+\end{document}
