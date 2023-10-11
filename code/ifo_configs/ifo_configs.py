@@ -73,7 +73,7 @@ def drfpmi_freq_resp(freq, G_PRC_opt, r_1, t_1, r_2, r_SRM, t_SRM, phi_SRC, L, p
     """
     DUAL RECYCLED FABRY PEROT MICHELSON FREQUENCY RESPONSE CALCULATOR
 
-   $$ \mathrm{H}_\mathrm{DRFPMI} = \mathrm{G}_\mathrm{PR} \mathrm{P}_\mathrm{in} L \Omega \bigg[ \frac{ t_1^2 r_2}{(t_1^2 + r_1^2)r_2 - r_1} \frac{t_\mathrm{SRM} t_1 e^{-i\phi_\mathrm{SRC}}}{1-r_1 r_\mathrm{SRM} e^{-i2\phi_\mathrm{SRC}}} \frac{e^{-i 2 \pi L f / c} \mathrm{sin}( 2 \pi f / c)}{ 2 \pi L f } \frac{\mathrm{sin}(\phi_0)}{1- [(r_1 - r_\mathrm{SRM} e^{-i2\phi_\mathrm{SRC}})/(1-r_1 r_\mathrm{SRM}e^{-i2\phi_\mathrm{SRC}})] r_2 e^{-i 4 \pi L f / c}} \bigg] $$ 
+    %%%$$\mathrm{H}_\mathrm{DRFPMI} = \mathrm{G}_\mathrm{PR} \mathrm{P}_\mathrm{in} L \Omega \bigg[ \frac{ t_1^2 r_2}{(t_1^2 + r_1^2)r_2 - r_1} \frac{t_\mathrm{SRM} t_1 e^{-i\phi_\mathrm{SRC}}}{1-r_1 r_\mathrm{SRM} e^{-i2\phi_\mathrm{SRC}}} \frac{e^{-i 2 \pi L f / c} \mathrm{sin}( 2 \pi f / c)}{ 2 \pi L f } \frac{\mathrm{sin}(\phi_0)}{1- [(r_1 - r_\mathrm{SRM} e^{-i2\phi_\mathrm{SRC}})/(1-r_1 r_\mathrm{SRM}e^{-i2\phi_\mathrm{SRC}})] r_2 e^{-i 4 \pi L f / c}} \bigg]$$%%%
 
     freq: standard (gravitational wave) frequency [Hz]
     G_PRC_opt: maximum power recycling gain (optimal) [arb]
