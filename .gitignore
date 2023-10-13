@@ -8,9 +8,8 @@
 *.toc
 *.swp
 
-code/.ipynb_checkpoints/
-code/stash/.ipynb_checkpoints/
-code/__pycache__/
+**/.ipynb_checkpoints
+**/__pycache__
 main.pdf
 main.bbl
 main.blg
