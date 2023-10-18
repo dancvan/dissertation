@@ -60,20 +60,30 @@ Assuming a 4km arm configuration with 25 Watts input power as indicated in figur
 	\centering
 	\includegraphics[width=\textwidth]{INTRO/mich_sensi.pdf}
 	\caption{The shot noise~\ref{} limited sensitivity ($\sqrt{\hbar \Omega P_\mathdefault{in}}$ of a Michelson with 4 km long arms and an input power of 25 [W]. Compared to the apriori estimate of $10^{-21}$ the signal to noise (SNR) comes to be unity. The desired confidence is set at a much higher standard with unquestionable measurements set at SNR = 5.}
-	\label{fig:mich}
+	\label{fig:michsensitivity}
 \end{figure}
 
 \subsection{Fabry-P\'{e}rot Michelson (FPMI)}
 With a minimum strain sensitivity of $10^{-18} \; [\frac{1}{\sqrt{\mathrm{Hz}}}]$~\cite{}, the simple Michelson interferometer does not provide sufficient optical gain for any practical arm length; and at the time of the LIGO proposal, constraints (both financial and physical) for terrestrial gravitational wave detectors required a compact solution for increasing length L of the Michelson arms so to increase the beam phasefront lifetime within the Michelson arms. Two proposed arm folding techniques were considered: the Herriot Delay Line and the Fabry-P\'{e}rot cavity. Though ultimately the Fabry-P\'{e}rot cavity has become the prominent choice.
 
-\textcolor{red}{Herriot Delay line figure (from MATLAB sim)}
+\begin{figure}[ht!]
+	\centering
+	\includegraphics[width=\textwidth]{INTRO/HDL.pdf}
+	\caption{\textcolor{red}{Figure of a Herriot Delay Line}}
+	\label{fig:hdl_cav}
+\end{figure}
 
 
 \subsubsection{The Fabry-P\'{e}rot cavity}
 \label{section:FPC}
 To understand the relevancy of the Fabry-P\'{e}rot, we consider an an idealized coherent light wave encountering an optical cavity with input and output mirror transmission and reflection coefficients of $t_1$, $r_1$ and $t_2$, $r_2$ respectively (and lossless mirrors $l=0$).
 
-\textcolor{red}{Figure of Fabry-P\'{e}rot cavity}
+\begin{figure}[ht!]
+	\centering
+	\includegraphics[width=\textwidth]{INTRO/FP_cav.pdf}
+	\caption{Figure of a Fabry Perot Cavity. \texcolor{red}{Add HR surface to ITM and ETM. With a faint transmission beam to the more deliberately labeled transmission photodiode}}
+	\label{fig:fp_cav}
+\end{figure}
 
 
 Light enters the cavity only after passing the input mirror with a field amplitude reduced by the mirror reflection coefficient. So far this doesn't seem quite useful as we have already reduced the power for every entering phasefront. But a parallel realization can be made: that every phasefront admitted stays stored within the cavity until its final photon exits the cavity. This ``cavity storage time" ($\tau_s \appropto L r_1r_2$) is imagined as length elongation with the phasefront travel history encoded in the arrival time of its photons back at the beam splitter. But these benefits cannot be fully realized nor measured without the cost of achieving the cavity resonance condition: requiring coherent addition of the circulating phasefronts and demanding the cavity length be an integer number of wavelengths. A cavity of length $L$ and comprised of an input coupler ($r_1$,$t_1$) and end mirror ($r_2$, $t_2$) yield the following reflection and transmission coefficients: 
