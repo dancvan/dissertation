@@ -14,16 +14,16 @@ In other words, there exists a wave solution with two separate transverse polari
 
 \newpage
 \section{Detector configurations}
-Motivation for the current ALIGO experimental schema frankly cannot be taken for granted by the author; with a high number of subsystems it can be easy to get lost working within specialized observatory operations. The goal of this section is to compile a brief narrative and with the hopes of developing a holistic view of the LIGO detection schema. The various detector configurations start with the michelson interferometer and end at the dual-recycled Fabry-Perot Michelson interferometer. The narrative here is kept as brief as possible so to only mention that which is necessary and provide further udnerstanding and context of the main body of this work. Alongside the discussion are supplementary resources cited that provide exceptional alternative and detailed descriptions of the ALIGO detectors. 
+Motivation for the current ALIGO experimental schema frankly cannot be taken for granted by the author; with a high number of subsystems it can be easy to get lost when working within specialized observatory operations. The goal of this section is to compile a brief narrative, with the hopes of developing a holistic view of the LIGO detection schema. The various detector configurations start with the michelson interferometer and end at the dual-recycled Fabry-Perot Michelson interferometer. The narrative here is kept as brief as possible so to only mention that which is necessary and provide further udnerstanding and context of the main body of this work. Alongside the discussion are supplementary resources cited that provide exceptional alternative and detailed descriptions of the ALIGO detectors. 
 
 \subsection{Interferometry with a Michelson configuration}
-Initially used by Michelson and Morley to test for the existence of luminiferous aether, the schema of the Michelson interferometer and detection methodology demonstrate extraordinary potential for measuring gravitational wave amplitudes generated from the time varying quadrapole moment from an astrophysical source; making it a prime candidate as a gravitational wave detector / observatory. Two perpendicular beam paths are formed at a 50/50 beamsplitter, back-reflected from carefully placed end mirrors which are made to interfere back at the beam splitter disrupted by differential path length changes between the beam paths and tracked at the (anti-symmetric) detection port:
+Initially used by Michelson and Morley to test for the existence of luminiferous aether, the schema of the Michelson interferometer and detection methodology demonstrate extraordinary potential for measuring gravitational wave amplitudes generated from a time varying quadrapole moment from an astrophysical source; making it a prime candidate as a gravitational wave detector / observatory. Two perpendicular beam paths are formed at a 50/50 beamsplitter and back-reflected from carefully placed end mirrors which are made to interfere back at the beam splitter and are disrupted by differential path length changes between beam paths and tracked at the (anti-symmetric) detection port:
 
 \begin{equation}\label{P_MICH_AS}
 	P_\mathrm{out} = \frac{P_\mathrm{in}}{2} \bigg[1+\mathrm{cos}\Big(\frac{4\pi}{\lambda} (L_x - L_y)\Big) \bigg]
 \end{equation}
 
-The Michelson detects microsocopic differential length changes on a sub-wavelength order of magnitude and are more appropriately discussed as changes in differential phase ($\phi(t)$) between the returning perpendicular phasefronts ($\phi_x(t)$, $\phi_y(t)$). Understanding this inherent method of detection, a time-dependent metric perturbation ($h(t)$), like that generated from a gravitational wave, is tested on a Michelson interferometer with a nominal arm length of L and a laser with optical angular frequency of $\Omega$:
+The Michelson detects microsocopic differential length changes on a fractional wavelength order of magnitude and are more appropriately discussed as changes in differential phase ($\phi(t)$) between the returning perpendicular phasefronts ($\phi_x(t)$, $\phi_y(t)$). Understanding this inherent method of detection, a time-varying metric perturbation ($h(t)$), like that generated from a gravitational wave, is tested on a Michelson interferometer with a nominal arm length of L and a laser with optical angular frequency of $\Omega$:
 
 \begin{equation}
 \Delta \phi(t) = \phi_x(t) - \phi_y(t) =  \int_{t-2L/c}^{t} \Omega \bigg[1 + \frac{1}{2}h(t)\bigg]dt - \int_{t-2L/c}^{t} \Omega \bigg[1 - \frac{1}{2}h(t)\bigg]dt 
@@ -37,7 +37,7 @@ Evaluating the above as a function of frequency yields:
 
 With the wave amplitude $h_0$, angular frequency $\omega$, nominal interferometer arm length $L$, speed of light $c$, and optical angular frequency $\Omega$.
 
-The differential phase \ref{MICH_del_phi} combine with the power at the anti-symmetric port \ref{P_MICH_AS} provides a function of optical gain, dependent on freqency and a differential offset phase ($\phi_0$):
+The differential phase \ref{MICH_del_phi} combined with the power at the anti-symmetric port \ref{P_MICH_AS} provides a function of optical gain, dependent on freqency and a differential offset phase ($\phi_0$):
 
 \begin{equation}
 	\Delta P(\omega, \phi_0) = h_0 \frac{P_\mathrm{in}}{2} \Delta \phi (\omega) \cdot \mathrm{sin}(\phi_0)
@@ -85,8 +85,7 @@ To understand the relevancy of the Fabry-P\'{e}rot, we consider an an idealized 
 	\label{fig:fp_cav}
 \end{figure}
 
-
-Light enters the cavity only after passing the input mirror with a field amplitude reduced by the mirror reflection coefficient. So far this doesn't seem quite useful as we have already reduced the power for every entering phasefront. But a parallel realization can be made: that every phasefront admitted stays stored within the cavity until its final photon exits the cavity. This ``cavity storage time" ($\tau_s \appropto L r_1r_2$) is imagined as length elongation with the phasefront travel history encoded in the arrival time of its photons back at the beam splitter. But these benefits cannot be fully realized nor measured without the cost of achieving the cavity resonance condition: requiring coherent addition of the circulating phasefronts and demanding the cavity length be an integer number of wavelengths. A cavity of length $L$ and comprised of an input coupler ($r_1$,$t_1$) and end mirror ($r_2$, $t_2$) yield the following reflection and transmission coefficients: 
+Light enters the cavity only after passing the input mirror with a field amplitude reduced by the mirror reflection coefficient. Quick observation may suggest that this isn't quite useful as we have already reduced the power for every entering phasefront. Though with an integer number of wavelengths between these two mirrors and their coherent addition with the input beam, achieves cavity resonance. The power stored between the two cavity mirrors coorelates with how long a phasefront remains stored in an optical cavity through its finesse (\mathscr{F}). This ``cavity storage time" ($\tau_s \appropto L r_1 r_2$) translates as a length elongation with the phasefront travel history encoded in the arrival time of its photons back at the beam splitter. A cavity of length $L$ and comprised of an input coupler ($r_1$,$t_1$) and end mirror ($r_2$, $t_2$) yield the following effective cavity reflection and transmission coefficients: 
 
 \iffalse that the input and circulating that the photons belonging to a particular phasefront can be experimentally tracked, and lucky for us this is is why we measure interference at the anti-symmetric port. But these benefit
  with a constant source at the cavity input the phasefronts entering the cavity are superimposed onto the circulating cavity field and, more often than not, add incoherently which can makes this thought experiment seem silly.\fi 
@@ -99,15 +98,15 @@ Light enters the cavity only after passing the input mirror with a field amplitu
 	t_c = \frac{t_1 t_2 e^{-ikL}}{1-r_1 r_2 e^{-i2kL}}	
 \end{equation}
 
-It is with the careful microscopic tuning and maintanence of the mirror positions that creates the coherent addition of these intra-cavity phasefronts and the utility of the Fabry-P\'{e}rot can be fully realized. 
+The tuning of mirror positions for infared lasers with high reflectivity coefficients sets a condition for resonance that may require strict length tuning and maintenance $$\leq 1e-7$$ [m]. 
 
 \begin{figure}[H]
 \includegraphics[width=\textwidth]{ALGAAS/REFL_cav_intensity.pdf}
-\caption{Reflected cavity intensity (I$_\mathrm{REFL}$) around resonance. The resonance peak full width half maximum is set by mirror reflectivities quantified by cavity finesse ($\mathscr{F} = \frac{\mathrm{FWHM}_\mathrm{res}}{f_\mathrm{FSR}} = \frac{\pi \sqrt{r_1 r_2}}{1-r_1 r_2}$).}
+\caption{Reflected cavity intensity (I$_\mathrm{REFL}$) around resonance. The resonance peak full width half maximum is set by mirror reflectivities and succinctly quantified by cavity finesse ($\mathscr{F} = \frac{\mathrm{FWHM}_\mathrm{res}}{f_\mathrm{FSR}} = \frac{\pi \sqrt{r_1 r_2}}{1-r_1 r_2}$).}
 \label{fig:cav_length_response_DCpow}
 \end{figure}
 
-An analogue to the delay line storage time can be used to draw out further intuition of the effective ''arm elongation"~\cite{saulson2017}:
+An intuitive analogue of the Fabry-P\'{e}rot's arm elongation capabilities can be drawn out when comparing against the Delay Line storage time~\cite{saulson2017}:
 
 \begin{equation}
 	\tau_s = \frac{L}{c} \frac{r_1r_2}{1-r_1r_2} = \frac{1}{4 \pi \mathscr{F}}
@@ -124,11 +123,11 @@ And as shown with \ref{?} the increased arm length cooresponds to a higher optic
   \includegraphics[width=.575\textwidth]{INTRO/fpmi_fr.pdf}
   \end{subcaptiongroup}
   \hfill
-  \caption{[Left] The Fabry-P\'{e}rot Michelson optical schema and [Right] associated optical gain.}
+  \caption{[Left] The Fabry-P\'{e}rot Michelson optical schema and [Right] an associated optical gain.}
   \label{fig:fpmi}
 \end{figure}
 
-Advanced LIGO, with it's length 4km and projected finesse of ? coorelates to a storage time of ?.
+Advanced LIGO, with it's 4km length and projected finesse of  coorelates to a storage time of ?.
 It's curious how theoretically only a laser and two mirrors with empty space between them can provide such an enhancement to measuring differential phase; though in practice this does not go without the nuiance of maintaining fixed mirror positions within a fraction of the wavelength of the light used. In spite of this, clever experimental techniques like the Pound-Drever-Hall technique allow experimentalists to achieve cavity perturbation measurements with high precision~\cite{?}. 
 
 \subsection{Dual-Recycled Fabry-Perot Michelson (DRFPMI)}
@@ -192,12 +191,26 @@ As may be implied, the technique requires a mirror installation at the anti-symm
 ``Core optics" (Recycling mirrors, Beam splitter, and FP arm cavity mirrors) are suspended with quadruple pendulum suspensions decoupling seismic activity from the mirror positions to as low as a frequency as possible. 
 
 \subsection{Reaching ``Observing Mode"}
-The requirements for the operation of this ultra sensitive displacement sensor require that the interferometer be  ``locked"; meaning that there are required configurations / criteria in order for the instrument to act as an observatory with the designed sensitivity. The objective at hand is to convey to the reader some of the essential criteria for interferometer operations as it pertains to this dissertation. As can be imagined with any highly coupled cavity configuration, length and alignment stabilization as well as mode matching are essential. The first order requirements of the interferometer
+The prior discussions still have yet to discuss most of the practical considerations that are required to operate a DRFPMI as a gravitational wave observatory. For the sake of narrowing down the relevance to the body of this work, we discuss more subtle features of the detector: one requires some knowledge of beam optics while the other involves an imposed thermodynamic noise limitation when selecting highly reflective coatings. And alongside this, it is important to know that the studies take place at two very different stages of detector comissoning (One is aimed at comissioning current detectors and the other aims at informing choices to be made for next generation detectors) though both are aimed at increasing gravitational wave detector sensitivity.  The current objective at hand is to inform of these essential criteria for interferometer operations as they pertain to this dissertation. More details on setting up the simple Michelson provides on some of the initial requirements; while the second order is establishing the strict conditions of the Fabry-P\'{e}rot cavities.
+
+
+\subsubsection{Mode Matching}
+Mention of the transverse beam wavefront has eluded the conversation, though if we hold no care for preserving the Gaussian beam profile (TEM00 mode) of our field we confront the problem of imperfect beam interference at of the returning beams at the beamsplitter. We consider a general complex Gaussian beam mode propogating along the beam axis ($z$) with wavelength $\lambda$.
+
+\begin{equation}\label{eq:gaussian_beam}
+E(r) = E_o \frac{\sqrt{[\lambda z_o] / \pi}}{W(z)}e^{-r^2 / W^2(z)} e^{-ikz - ik[r^2 / (2R(z))] + i \zeta}
+\end{equation}
+
+Where $E_o$ is a complex amplitude, $r = \sqrt{x^2 + y^2}$ defines the transverse beam coordinates, $k$ is the wave number, $W(z)$ is the beam width, $R(z)$ is the beam radius of curvature, and $\zeta$ is the Gouy phase.
+
+As seen in the field expression this profile evolves with the longitudinal propogation of the beam and introduces another means of introducing harmful assymetry between the interferometer arms. 
+
+Derived from the paraxial approximation of the Helmholtz equation, this field is not the only solution for optical cavities. Alternative higher order mode (HOM) solutions are commonly present and are expressed in terms of two mathematical bases: the Hermite-Gauss and Laguerre-Gauss modes. These HOMs are more often than not power parasites when attempting to only sense displacement Fabry-P\'{e}rot cavities and are a symptom of altered cavity geometry; though a virtue of the lost power is its utility as an error signal for sensing and actuation schemes. This is what is what is accomplished with an alignment sensing and control (ASC) system and a thermal compensation system (TCS) for mode matching actuation.
 
 \subsubsection{Length Stabilization}
 With LIGO's coupled cavity configuration, maintaining mirror positions is imperative. Techniques such as the offset lock (using a DC photodiode to measure the transmitted, reflected, or circulating power within a linear and slightly off resonance point) \cite{} and the Pound-Drever-Hall technique (see \ref{subsubsec:pdh} ) are used to maintain cavity length stabilization. Stabilizing cavity lengths to configure the detector into a highly sensitive differential arm sensor is a process that is worthwhile understanding with more ample discussions ~\cite{Mullavey:12}.
 
-\subsubsection{Gaussian Beams}
+
 So far, we've discussed light and phase fronts without addressing geometric constraints when using Gaussian laser light. We consider a general complex Gaussian beam mode propogating along the beam axis ($z$) with wavelength $\lambda$.
 
 \begin{equation}\label{eq:gaussian_beam}
@@ -284,6 +297,7 @@ Zener provides a model of the internal friction of materials incorporating anela
 \begin{equation}
 F = k(1+i\phi)x + m\ddot{x}
 \end{equation}
+
 
 Where $m$ is mass attached to a spring with a spring constant $k(1+ i\phi)$ incorporating the degree of anelasticity $\phi$. From equations 3.5 and 3.3 we perform a Laplace transform and acquire the following form of admittance:
 \begin{equation}
