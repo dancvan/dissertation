@@ -199,7 +199,7 @@ For realistic coatings it may be reasonable to assume the heteroepitaxial bonds 
 \\
 \textcolor{red}{New principal dielectric axes for zincblende structures (zinblende photoelastic tensor, zincblende electro-optic tensor)}
 
-\subsection{Electro-optic modulation}\label{sec:EOM}
+\subsection{EO Modulation}\label{sec:EOM}
 A common application is to impart phase modulations onto an optical carrier field. Electro-optic modulators or Pockel cells accomplish this by sandwiching two capacitor plates around a block of crystalline material with a single electrical input port (typically coaxial) designed to take in a voltage input of frequency ($\Omega$) within a specified modulation bandwidth. When the field amplitude across the crystal is driven by a voltage controlled oscillation, the coefficients within the electro-optic tensor vary linearly (as indicated in \cite{}) The voltage amplitude of the signal input is proportional to the strength of the phase modulation on the optical carrier field of frequency ($\omega$) and is commonly quantified in terms of a modulation index ($\beta$).
 
 \begin{figure}[!h]
@@ -213,18 +213,18 @@ A common application is to impart phase modulations onto an optical carrier fiel
     \label{fig:lpc_and_tpc}
 \end{figure} 
 
-\textcolor{red}{Consider specific crystal that gives us our $\beta \mathrm{sin}(\Omega t)$}
+\textcolor{red}{Consider a specific crystal that gives us our $\beta \mathrm{sin}(\Omega t)$}
 
 \begin{equation}\label{eq:inp_EOM}
-E_\mathrm{out} = E_o e^{i \omega t + \beta \mathrm{sin}( \Omega t)}
+E_\mathrm{out} = E_o e^{i \omega t + \beta \mathrm{sin}( \Omega t)} \approx
 \end{equation}
 
-An approximation of this expression pertaining to the measurable field power after exiting the Pockels cell indicates the carrier imparting power to higher order optical sidebands whose respective frequencies are separated by an integer multiple of the modulation $n \cdot \Omega$. Typically $Omega$ is intentional and monochromatic, which can allow instances of optical heterodyne detection; while in a noise case the phase coupling varies based off of relevant E-field spectra alongside the crystal dimensions
+Bessel function approximations sufficiently demonstrate that the phase modulated carrier field imparts power to optical sideband fields separated in frequncy by an integer multiple of the modulation $n \cdot \Omega$. Typically $\Omega$ can be a chosen single-frequency used for optical heterodyne detection; while for noise-driven modulation, the phase coupling shows strong coorelation to the relevant E-field spectra alongside the length of the beam propogation within the electro-optic media.
 
 \textcolor{red}{This construction resembles that of the electrostatic optical mount used to drive a longitudinal electric field}
 
 \subsection{Optical anisotropy of a HR $\gaas$ / $\algaas$ stack}
-As mentioned before, the primary interest lies in the birefringent properties of a highly reflective $\gaas$/$\algaas$ mirrorstack. The chosen HR stack is a candidate for current and future gravitational wave iterations. This section is intended to provide a comprehensive review through: 1) making considerations of crystal coordinates when asserting an optical axis on a highly reflective crystalline stack manufactured by Thorlabs \textcolor{red}{crystalline coatings division?} 2) citing coating parameters and observed intrinsic birefringence from the highly reflective coating stack in question, 3) analyzing the differential electro-optic effect on the phase of a reflected beam, and 4) estimating the the differential phase noise in LIGO based on calibrated electric field measurements.
+A comprehensive review of the relevant birefringent properties of a HR $\gaas$/$\algaas$ mirrorstack is due, and for this body of work includes: 1) crystal coordinate considerations when asserting an optical axis on a highly reflective crystalline stack manufactured by the Thorlabs crystalline coatings division, 2) citations of coating parameters and observed intrinsic birefringence from the highly reflective coating stack in question, 3) analysis of the differential electro-optic effect on the phase of a reflected beam, and 4) estimating the the differential phase noise in LIGO based on preliminary electric field measurements measured at LHO.
 
 \begin{figure}[!h]
     \begin{subcaptiongroup}
@@ -233,15 +233,15 @@ As mentioned before, the primary interest lies in the birefringent properties of
 	    \includegraphics[width=.5\textwidth]{figs/ALGAAS/coating_orientation_isometric.pdf}
 	    \phantomcaption\label{co_iso}
     \end{subcaptiongroup}
-\caption{The beam propogation axis ($\vec{S}$, $[-100]$) with respect to the AlGaAs/GaAs crystal axes. The axis formed by the [100] plane normal is parallel with the beam axis (z-axis) and the polarizations of incident and reflected beam oscillate along vectors within the plane formed by the normal of that axis. The AlGaAs coating is grown with a flat indicating a line within the [0-11] plane; where the plane normal points towards the sample center.}
+\caption{The beam propogation axis ($\vec{S}$, $[-100]$) with respect to the AlGaAs/GaAs crystal axes. The axis formed by the [100] plane normal is drawn parallel with the beam axis (z-axis) and the polarizations of incident and reflected beam oscillate along vectors within the plane formed by the normal of that axis. The AlGaAs coating is grown with a flat indicating a line within the [0-11] plane; where the plane normal points towards the sample center.}
 \label{fig:algaas_coords}
 \end{figure}
 
 \subsubsection{Miller indices for highly reflective coatings $\gaas$/$\algaas$ coatings}
-Up to this point three different coordinate axes are addressed: the crystal axis (indicated by Miller index plane normals), the principal dielectric axis (coordinates based in diagonalization of the indicatrix), and an optical axis (when considering a desired (laser) light propogation). We assert the beam axis \cite{fig:algaas_coords} with linearly p-polarized light.
+Up to this point three varieties of orthonormal coordinates addressed: the crystal axis (as indicated by Miller index plane normals), the principal dielectric axis (based on diagonalization of the indicatrix), and an optical beam axis (when considering a desired (laser) light propogation). The asserted beam axis is cited \cite{fig:algaas_coords}.
 
 \subsubsection{Electro-optic coupling to the reflected phase of a HR mirror coating}
-With our coordinate considerations and established beam axis, it is now worth considering the influence of an isotropic white noise field ($E_n = [E_{nx},E_{ny},E_{nz}]$):
+With our chosen beam axis, the influence of an isotropic white noise field ($E_n = [E_{nx},E_{ny},E_{nz}]$) is considered:
 
 \begin{equation}
  \left[ {\begin{array}{ccc}
@@ -331,7 +331,7 @@ M = Q_N D_N ...Q_kD_k...Q_1D_1Q_0
 The impact of a differential electric noise field ($E$) on $M$ due to the electro-optic effect on the kth layer, we use the chain rule:
 
 
-The coating to be studied consists 36 $\lambda$/4  thick layers of $\gaas$ interspersed with 35 layers of $\lambda$/4 thick $\algaas$.   $\gaas$ forms the top and bottom layer to prevent oxygen absorption from the AlGaAs layer. The $\gaas$ layers have an index of $n_{\gaas} = 3.480$ and a thickness of $\Delta d_{\gaas} = 76.43$ nm while the low index $\algaas$ layers are $n_{\algaas} = 2.977$ with thickness $\Delta d_{\algaas} = 89.35$ nm. With the cosntructed matrices, we apply these parameters and compute a differential phase of:
+The coating to be studied consists of 36 $\lambda$/4  thick layers of $\gaas$ interspersed with 35 layers of $\lambda$/4 thick $\algaas$. $\gaas$ forms the top and bottom layer to prevent oxygen absorption from the AlGaAs layer. The $\gaas$ layers have an index of $n_{\gaas} = 3.480$ and a thickness of $\Delta d_{\gaas} = 76.43$ nm while the low index $\algaas$ layers are $n_{\algaas} = 2.977$ with thickness $\Delta d_{\algaas} = 89.35$ nm. With the cosntructed matrices, we apply these parameters and compute a differential phase of:
 
 %High Index:  GaAs, n=3.480, layer thickness is 76.43 nm
 %Low Index:  $ \mathrm{Al}_{0.92} \mathrm{Ga}_{0.08} \mathrm{As} $, n=2.977, layer thickness is 89.35 nm
@@ -339,6 +339,7 @@ The coating to be studied consists 36 $\lambda$/4  thick layers of $\gaas$ inter
 
 
 \subsection{Measured birefringence from HR $\gaas$/$\algaas$ mirrors}
+
 There seems to be different accounts of a measured birefringence from HR $\gaas$ / $\algaas$ (\href{https://dcc.ligo.org/DocDB/0181/G2200386/001/G2200386.pdf}{Satoshi}, \href{https://nodus.ligo.caltech.edu:8081/CTN/1474}{CTN}, \href{https://dcc.ligo.org/DocDB/0181/G2200559/001/G2200559-v1%20-%20polarization.pdf}{Aidan})
 \\
 \textcolor{red}{Is the measured birefringence static? (Layer bonding method might introduce something?)}
@@ -354,14 +355,14 @@ The measured birefringence is estimated to be caused by an intrinsic strain betw
 \textcolor{red}{Marty's document about Birefringence in Crystalline mirror coatings V.8}
 
 \section{Projected DARM coupling}
-To estimate how much DARM coupling can occur, we use use a measured field spectra acquired from installed electric field meters located within LIGO Hanford Observatory EX and EY vacuum chambers. Taking the upper and the lower EFM measurements in $.3\; [\mathrm{V}/\mathrm{m}/\sqrt{\mathrm{Hz}]}$ @ 60 Hz and $4\times10^{-3}\; [\mathrm{V}/\mathrm{m}/\sqrt{\mathrm{Hz}]}$ @ 4kHz ~\cite{efm_log}.
+To estimate how much DARM coupling can occur, we use use a measured field spectra acquired from installed electric field meters located within LIGO Hanford Observatory ETMX and ETMY vacuum chambers. Taking the upper and the lower EFM measurements in $.3\; [\mathrm{V}/\mathrm{m}/\sqrt{\mathrm{Hz}]}$ @ 60 Hz and $4\times10^{-3}\; [\mathrm{V}/\mathrm{m}/\sqrt{\mathrm{Hz}]}$ @ 4kHz ~\cite{efm_log}.
 \satoshi{I don't think these values are calibrated. According to Martynov et al. 2016, the fluctuations in the electric filed is $\sim10^{-5}\,\mathrm{[(V/m)/\sqrt{Hz}]}$.}
-This along with computed estimate above allows us to create an upper limit for what this noise might be assuming incoherent fields between the end stations and a flat frequency response within LIGO's bandwidth.
+This along with computed estimate allows us to create an upper limit for what this noise might be assuming incoherent fields between the end stations and a flat frequency response within LIGO's bandwidth.
 \\
-\textcolor{red}{FIGURE: GWINC noise against calibrated electro-optic noise estimate.}
+\textcolor{red}{FIGURE: GWINC noise against calibrated electro-optic noise estimate. Full bandwidth}
 
-\section{Short, in-air, Pound-Drever-Hall locked, Fabry-Perot cavity experiment}
- To attempt to acquire a calibrated estimate of the Electro-optic effect, we propose and use a single, in-air cavity, Pound-Drever-Hall servo to maintain resonance with a 1064nm carrier beam; while the $\gaas$/$\algaas$ coated cavity end mirror installed in a custom longitudinal Pockels cell mirror mount. behind this work is the necessity to acquire a calibrated estimate of the pockels effect from a $\gaas$/$\algaas$ mirror sample from Thorlabs' crystalline mirror coatings. As seen in the prior section, the size of the imparted phase noise for currently existing gravitational wave detector configurations is estimated to be small but notable. Investigation through measurement of said effect requires detection methods with sufficient sensitivity for the differential phase noise imparted by the effect. A Pound-Drever-Hall servo to maintain resonance of a 1064nm carrier field to a Fabry-Perot cavity, with the aforementioned crystalline coated cavity end mirror installed in a custom longitudinal pockels cell mirror mount was tried. Details and specifications of the detection schema are discussed along with relevant measurements and results.
+\section{A Short in-air FPC test}
+ To attempt to acquire a calibrated estimate of the electro-optic effect, we test the usage of a single, in-air cavity, Pound-Drever-Hall servo to maintain resonance with a 1064nm carrier beam; while the $\gaas$/$\algaas$ coated cavity end mirror installed in a custom longitudinal Pockels cell mirror mount. behind this work is the necessity to acquire a calibrated estimate of the pockels effect from a $\gaas$/$\algaas$ mirror sample from Thorlabs' crystalline mirror coatings. As seen in the prior section, the size of the imparted phase noise for currently existing gravitational wave detector configurations is estimated to be small but notable. Investigation through measurement of said effect requires detection methods with sufficient sensitivity for the differential phase noise imparted by the effect. A Pound-Drever-Hall servo to maintain resonance of a 1064nm carrier field to a Fabry-Perot cavity, with the aforementioned crystalline coated cavity end mirror installed in a custom longitudinal pockels cell mirror mount was tried; and the details and specifications of the detection schema are discussed along with relevant measurements and results.
 
 \begin{figure}[H]
 	\includegraphics[width=\textwidth]{figs/ALGAAS/algaas_pockels_effect_measurement_schematic.pdf}
@@ -371,8 +372,8 @@ This along with computed estimate above allows us to create an upper limit for w
  Measurability of the electro-optic effect is contingent upon two initial design criteria: the sensitivity of the optical plant to be implemented in the PDH servo, and the maximum achievable electric field strength along the beam axis ($|E_z|_\mathrm{max}$).
 
 \subsection{PDH servo}\label{subsubsec:pdh}
-The Pound-Drever-Hall technique, originally imagined for laser frequency stabilization to an ultra-stable length reference, allows the tracking of the linear phase response of an input carrier field through cavity resonance. The servo fully realizes the ability of an optical cavity to act as a length / frequency discriminator. The alternative cavity offset lock provides a linear response in intensity, which is adequate for some applications but with reduced sensitivity due to the required power reduction by operating off resonance.
-The phase measurement is achieved through an optical heterodyne; the co-propogation of a separate (but phase-locked) optical field with a known frequency separation to the carrier reflected from the cavity input. To accomplish this, the PDH servo offers a way to avoid complicated phase-locked two laser configurations, by imposing a phase modulation on the carrier field via an electro-optic modulator (aka Pockels cell) mentioned in section \ref{sec:EOM}. If the modulation depth given by \ref{eq:inp_EOM} is set such that $\beta < 1$ then the input field may be approximated in terms of the first two Bessel functions $J_0$, $J_1$:
+The Pound-Drever-Hall technique, originally and commonly used for laser frequency stabilization to an ultra-stable length reference, allows the tracking of the linear phase response of an input carrier field through cavity resonance. The servo fully realizes the ability of an optical cavity to act as a length / frequency discriminator. The alternative cavity offset lock provides a linear response in intensity, which is adequate for some applications but with reduced sensitivity due to the required power reduction by operating off resonance.
+The phase measurement is extracted through an optical heterodyne; the co-propogation of a separate (but phase-locked) optical field with a known frequency separation to the carrier reflected from the cavity input. The PDH servo avoids complicated phase-locked two laser configurations, by imposing a phase modulation onto the carrier field via an electro-optic modulator (aka Pockels cell) mentioned in section \ref{sec:EOM}. If the modulation depth given by \ref{eq:inp_EOM} is set such that $\beta < 1$ then the input field may be approximated in terms of the first two Bessel functions $J_0$, $J_1$:
 
 \begin{equation} \label{eq:EOM_trans_field}
 E_\mathrm{inp} \approx E_0 [J_0(\beta)e^{i \omega t} + J_1(\beta)e^{i (\omega + \Omega) t} - J_1(\beta)e^{i(\omega -\Omega)t}]

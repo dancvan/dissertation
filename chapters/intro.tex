@@ -63,28 +63,30 @@ Assuming a 4km arm configuration with 25 Watts input power as indicated in figur
 	\label{fig:michsensitivity}
 \end{figure}
 
-\subsubsection{Gaussian beams, mode overlap, and contrast defect}
-Up to this point, mentions of specific transverse phasefronts of the carrier has eluded the conversation. It is worthwhile to define this trait of the carrier with wavelength $\lambda$, and launched from a laser source along the propogation axis ($z$); that being the Gaussian beam (TEM00 mode):
+\subsubsection{Mode overlap}
+Highly idealized depictions of interferometers can implicitly suggest their function and operation by planar phasefronts (for pedagogical purposes), though this assumption does not fully inform the reality. Defining the used laser carrier ''mode" with wavelength $\lambda$, and propogation axis ($z$); that being the Gaussian beam (TEM00 mode):
 
 \begin{equation}\label{eq:gaussian_beam}
 E(r) = E_o \frac{\sqrt{[\lambda z_o] / \pi}}{W(z)}e^{-r^2 / W^2(z)} e^{-ikz - ik[r^2 / (2R(z))] + i \zeta}
 \end{equation}
 
-Where $E_o$ is the complex wave amplitude, $r = \sqrt{x^2 + y^2}$ defines transverse coordinates of a selected phasefront, $k$ is the wave number, $W(z)$ is the beam width, $R(z)$ is the beam radius of curvature, and $\zeta$ is the Gouy phase.
+Where $E_o$ is the complex field amplitude, $r^2/(2(R(z))$ defines the transverse coordinates $r^2$ on the hemisphere, with the ROC of $R(z)$, that defines a surface of uniform phase, $k$ is the wave number, $W(z)$ is the radius from the beam axis that contains (1-1/e^2)*100 \% of the integrated beam power, and $\zeta$ is the Gouy phase.
 
-This evolution of the Gaussian beam wavefront adds another subtle requirement for interference at the beam splitter. As seen in the field expression this profile evolves with the longitudinal propogation of the beam and furthers the possability to introduce assymetries between the interferometer arms that effect interference. Two metrics are used to described how well this overlap can be planned with the mode overlap coefficient and performed interference with contrast defect:
+Shown in \ref{eq:gaussian_beam} is another propogation consideration that implies another symmetry required to be maintained of the co-propogating beams for optimal interference, and wavefront distortions / aberrations and their many forms are realized. Assymetric couplings are more often than not are introduced assymetrically between the orthogonal paths that often limit interference. Two metrics are used to describe how well this interference can is performed is set by and contrast ($\nu$) and mode overlap ($\eta$): 
 
 \begin{equation}\label{eq:mode_overlap}
 	\eta = \bigg|\int E_x E_y dA \bigg|^{2} \bigg/ (P_x P_y)
 \end{equation}
 
-Experimentally, successfully planned and performed mode overlap results in the high maximum power ($P_\mathrm{max}$) and a low minimum power ($P_\mathrm{min}$) at the anti-symmetric port; with the ideal visibility set as close as possible to unity ($\nu$).
-
-\begin{equation}\label{eq:contrast_defect}
+\begin{equation}\label{eq:contrast}
 	\nu = \frac{P_\mathrm{max} - P_\mathrm{min}}{P_\mathrm{max} + P_\mathrm{min}}
 \end{equation}
 
-\textcolor{red}{It is also important to consider for any sufficiently long length, you will most likely limit your Michelson arm length or power at the anti-symmetric port assuming you don't have a large enough beamsplitter and/or focusing lenses} 
+Perfect interference at the beam splitter requires mode overlap of 100\% at the beam splitter, while contrast quantifies the ratio of the
+
+\textcolor{red}{Nonideal interference results in generating any one of the provided interference patterns}
+
+An important consideration for any sufficiently long arm length (like that used for LIGO), you are likely to encounter constraints in length if not without a sufficiently large beamsplitter and/or focusing optics. LIGO achieves this with curved end mirrors that match and focus the impinging wavefronts, though with a sensitivity indicated by ~\cite{} [sensitivity ~ 1/(optical gain)] it still does not reach that required to confirm a measurement from compact binary coalescences ($\approx 10^{-21}$.)
 
 \subsection{Fabry-P\'{e}rot Michelson (FPMI)}
 With a minimum strain sensitivity of $10^{-18} \; [\frac{1}{\sqrt{\mathrm{Hz}}}]$~\cite{}, the simple Michelson interferometer does not provide sufficient optical gain for any practical arm length; and at the time of the LIGO proposal, constraints (both financial and physical) for terrestrial gravitational wave detectors required a compact solution for increasing length L of the Michelson arms so to increase the beam phasefront lifetime within the Michelson arms. Two proposed arm folding techniques were considered: the Herriot Delay Line and the Fabry-P\'{e}rot cavity. Though ultimately the Fabry-P\'{e}rot cavity has become the prominent choice.
@@ -110,8 +112,7 @@ To understand the relevance of the Fabry-P\'{e}rot, we consider an idealized coh
 
 Light enters the cavity only after passing the input mirror with the incident field amplitude reduced by the mirror reflection coefficient. Quick observation may suggest that this isn't quite useful as we have already reduced the power for every entering phasefront. Though with an integer number of wavelengths of light between these two mirrors, the circulating beam coherently adds with the input, achieving resonance.  A cavity of length $L$ and comprised of an input coupler ($r_1$,$t_1$) and end mirror ($r_2$, $t_2$) yield the following effective cavity reflection and transmission coefficients: 
 
-\iffalse that the input and circulating that the photons belonging to a particular phasefront can be experimentally tracked, and lucky for us this is is why we measure interference at the anti-symmetric port. But these benefit
- with a constant source at the cavity input the phasefronts entering the cavity are superimposed onto the circulating cavity field and, more often than not, add incoherently which can makes this thought experiment seem silly.\fi 
+\iffalse that the input and circulating that the photons belonging to a particular phasefront can be experimentally tracked, and lucky for us this is is why we measure interference at the anti-symmetric port. But these benefit with a constant source at the cavity input the phasefronts entering the cavity are superimposed onto the circulating cavity field and, more often than not, add incoherently which can makes this thought experiment seem silly.\fi 
 
 \begin{equation}
 	r_c = -r_1 + \frac{t^2_1r_2 e^{-i2kL}}{1-r_1 r_2 e^{-i2kl}}
