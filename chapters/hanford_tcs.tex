@@ -9,10 +9,10 @@
 
 %As shown in Chapter 1,  increasing input power leads to a direct increase to the sensitivity of a DRFPMI to make gravitational wave detections. But one implication of this is the necessity for thermal compensation. As the interferometer increases input power, you directly couple more light into the Fabry-P\'{e}rot cavity arms; and even with optics ultra-low absorption ($\approx 400 \; \mathrm{ppb} \pm 150 \; \mathrm{ppb}$ \textcolor{red}{alog ? or point absorber paper}) still induce thermo-optic effects with the projected circulating arm power of 200 kW. A symptom of this is mode mismatch throughout the interferometer, a problem that contributes to loss of usable optical power throughought the DRFPMI which can reduce sensitivity two-fold: loss of power to your readout, and reduced efficacy of the current solution to reduce the quantum noise limit (squeezing).
 
-During O3a circulating arm power at the LIGO Hanford observatory reached beyond 180 kW; emphasizing how vital properly tuned thermal compensation is in O3 to avert arm cavity mode mismatch. Detailed in this chapter is a summary of related comissioning efforts at LHO including: a citation of the planned initial O3 TCS pre-load, the development and implementation of real-time digital filtering for improved ring heater actuation response by a factor of $\approx 6$, and the impact of discovered high absorption points aka point absorbers discovered on arm cavity test masses along with the inital efforts to mitigate them. 
+During O3a circulating arm power at the LIGO Hanford observatory reached beyond 180 kW; emphasizing importance on properly tuned thermal compensation is in O3 to avert arm cavity mode mismatch. Detailed in this chapter is a summary of related comissioning efforts at LHO including but not exclusive to: citations of the initial computed O3 TCS pre-load, the development and implementation of real-time digital filtering for improved ring heater actuation response by a factor of $\approx 6$, and the impacts of high absorption points aka point absorbers discovered on arm cavity test masses along with the inital efforts to mitigate them. 
 
 \section{A priori TCS pre-load methodology for O3a}
-Preserving resonance while maintaining the nominal 50km test mass ROC requires countering the positive thermal lens induced by high circulating interferometer arm cavity power. Preparing for the central uniform test mass distortion from the carrier requires well established thermal actuator settings which in turn inform of how to `pre-load' the TCS actuators based on early estimates of test mass absorption. Initial order of magnitude estimates of the wavefront distortion from ultra-low absorption fused silica test mass under the influence of a centered high power gaussian beam as well as annular ring heater actuation are available \cite{hello_vinet, Ramette:16}; though variations of the absorption between any two test mass mirrors calibrated defocus measurements using the Hartmann wavefront sensors \textcolor{red}{sensitive to auxilary beams imaged onto the test mass mirror surfaces}. The measured wavefront distortion is then mapped in real time to Zernike polynomial coefficients used to compute the differential thermal lens in diopters. 
+Preserving the nominal 50km test mass ROC (as well as cavity resonance) requires countering the positive thermal lens induced by high circulating interferometer arm cavity power. Preparing for the central uniform test mass distortion from the carrier requires well established thermal actuator settings which in turn inform of how to `pre-load' the TCS actuators based on early estimates of test mass absorption. Initial order of magnitude estimates of the wavefront distortion from ultra-low absorption fused silica test mass under the influence of a centered high power gaussian beam as well as annular ring heater actuation are available \cite{hello_vinet, Ramette:16}; though variations of the absorption between any two test mass mirrors calibrated defocus measurements using the Hartmann wavefront sensors \textcolor{red}{sensitive to auxilary beams imaged onto the test mass mirror surfaces}. The measured wavefront distortion is then mapped in real time to Zernike polynomial coefficients used to compute the differential thermal lens in diopters. 
 
 \subsection{The thermo-optic response}
 \begin{figure}[!h]
@@ -26,8 +26,7 @@ Preserving resonance while maintaining the nominal 50km test mass ROC requires c
   \caption{Observed thermo-optic responses from the carrier beam self heating and TCS actuation (central CO2 laser heating and annular ring heating.)} 
 \label{fig:thermooptic_response}
 \end{figure}
-The observed time constant for central self-heating is comparable to that seen from central CO2 actuation, though both are quite different from that seen from ring heater actuation. Because of this, LHO maintains static ring heater settings to counteract the anticipated positive thermal lens deformation while using central CO2 laser actuation to mimic the carrier heating; maintaining the arm cavity stability / resonance when approaching the designed maximum circulating power. Once the DRFPMI cavities are tuned to the intended resonance conditions, the interferometer input carrier power is increased while CO2 laser power presets are inversely reduced. 
-
+Although the thermo-optic time constant for central self-heating response is demonstrably different from annular ring heating, it is similar to that seen from central CO2 actuation. Because of this, LHO applies the central CO2 heating and static annular ring heating to a power level that respectively mimics and actuates for projected thermal deformation from the circulating high power resonant carrier beam in the Fabry-Perot arm cavities. Once the DRFPMI coupled cavities are configured or ``locked'', the input carrier power is gradually increased while simultaneously decreasing CO2 laser power, in order to mitigate the differential thermo-optic responses from the arm cavity test masses when reaching maximum power.
 \begin{figure}[!h]
   \centering
   \begin{subcaptiongroup}
@@ -49,15 +48,19 @@ While approaching designed arm cavity power, the presence of non-uniform absorpt
 %The presence of high absorption points on the test masses (aka point absorbers) required adjustments to the TCS pre-load and various ring heater and CO2 settings were sampled. Part of this sampling lead to the development of a input ring heater filter allowing actuation to reach ? percent of the desired optical power within 2 hours compared to the 12 hour response pre-filter. Higher spatial frequency actuation in the form of a CO2 mask was also tried.
 
 \subsection{Point absorbers in O3a}
-A summary of the found absorbers 
-	* Insert Dan's OPD photos 
-	* Reference Aidan's paper
+\textcolor{red}{A summary of the found absorbers \\
+	* Insert optical path distortion photos (taken using Dan's software too) \\
+		* ITMY absorbers \\
+		* ETM absorbers \\
+	* Reference Aidan's paper} \\
 
-Impact on interferometer contrast and transmission / co-resonance of higher order modes 
-	* Reference Aidan's paper
+Impact on interferometer contrast and transmission / co-resonance of higher order modes
 
 \subsubsection{Noted impact}
 	* Controls schema review
+		* Sensor schema
+		* Optical sidebands (higher order beat signals)
+		* 
 	* Lockloss caused by reduced sideband power with interferometer thermalization
 
 \subsubsection{Attempting symptom reduction}
@@ -82,10 +85,10 @@ Impact on interferometer contrast and transmission / co-resonance of higher orde
 %\label{fig:RH_power}
 %\end{figure}
 
-\item Metric of improvement? (Impact on sidebands after thermalization) (Tracking dither line amplitudes)
 \end{itemize}
 
 \section{Dynamic Thermal Compensation}
+\subsection{A closer look at the ring heater / test mass thermo-optic response}
 An analytical model of transient ring heater actuation from a radially symmetric thermal aberration ($\Psi(t,r)$) is realized \cite{Ramette:16}:
 \begin{equation}
 	\Psi(t,r)=2\frac{dn}{dT} \sum^{\infty}_{m,p = 1} A_{m,p} \; c^{u}_{p} \mathrm{sin}(u_m h /2a) (a/u_m)[1-e^{-\alpha t}] J_0(\zeta_p r/a)
@@ -97,7 +100,7 @@ An analytical model of transient ring heater actuation from a radially symmetric
  \label{fig:meas}
 \end{figure}
 
-The measured transient response exhibits a prolonged differential defocus on a time scale of $\approx$ 12 to 15 hours; which can make ring heater adjustments another layer of complexity to the comissioning process especially when leaving the detector with unideal mode matching conditions for an extended period. Reduced actuation times are possible with the construction and implementation of a real time digital filtering applied to the ring heater input power step.
+The measured transient response exhibits a differential defocus on a time scale of $\approx$ 12 to 15 hours; stalling precious observing and/or detector comissioning time with differential mode matching for an extended period. Reducing the time constants for the differential defocus is possible though the construction and implementation of real time digital filtering applied to the ring heater power control input.
 
 \begin{figure}[H]
 \centering
@@ -107,6 +110,7 @@ The measured transient response exhibits a prolonged differential defocus on a t
 \end{figure}
 
 The construction of the filter is realized with the following prescription:
+\textcolor{red}{see appendix}
 %\begin{enumerate}[label=\arabic*),leftmargin=75pt,nosep]
 %	\item Fit step response to a zpk filter $H(s)$ 
 %	\item Invert fitted filter ($H(s) \rightarrow H^{-1}(s)$) 
