@@ -26,7 +26,7 @@ Preserving the nominal 50km test mass ROC (as well as cavity resonance) requires
   \caption{Observed thermo-optic responses from the carrier beam self heating and TCS actuation (central CO2 laser heating and annular ring heating.)} 
 \label{fig:thermooptic_response}
 \end{figure}
-Although the thermo-optic time constant for central self-heating response is demonstrably different from annular ring heating, it is similar to that seen from central CO2 actuation. Because of this, LHO applies the central CO2 heating and static annular ring heating to a power level that respectively mimics and actuates for projected thermal deformation from the circulating high power resonant carrier beam in the Fabry-Perot arm cavities. Once the DRFPMI coupled cavities are configured or ``locked'', the input carrier power is gradually increased while simultaneously decreasing CO2 laser power, in order to mitigate the differential thermo-optic responses from the arm cavity test masses when reaching maximum power.
+The thermo-optic time constant for the central self-heating response is quite similar to that seen from CO2 central actuation, though demonstrably different from annular ring heating. Because of this, LHO applies the central CO2 heating and static annular ring heating to a power level that respectively mimics and actuates for projected thermal deformation from the high power circulating resonant carrier beam in the Fabry-Perot arm cavities. Once the DRFPMI coupled cavities are configured or ``locked'', the input carrier power is gradually increased while CO2 laser powersimultaneously decreased in order to mitigate any possible differential thermo-optic response from the arm cavity test masses when reaching maximum power.
 \begin{figure}[!h]
   \centering
   \begin{subcaptiongroup}
@@ -89,27 +89,28 @@ Impact on interferometer contrast and transmission / co-resonance of higher orde
 
 \section{Dynamic Thermal Compensation}
 \subsection{A closer look at the ring heater / test mass thermo-optic response}
-An analytical model of transient ring heater actuation from a radially symmetric thermal aberration ($\Psi(t,r)$) is realized \cite{Ramette:16}:
+The transient ring heater actuation from a radially symmetric thermal aberration ($\Psi(t,r)$) is realized \cite{Ramette:16}:
 \begin{equation}
 	\Psi(t,r)=2\frac{dn}{dT} \sum^{\infty}_{m,p = 1} A_{m,p} \; c^{u}_{p} \mathrm{sin}(u_m h /2a) (a/u_m)[1-e^{-\alpha t}] J_0(\zeta_p r/a)
 \end{equation}
 
 \begin{figure}[H]
  \includegraphics[width=\textwidth]{TCS/IRHF/Meas_response}
- \caption{ITMY thermo-optic response to a 3.13 Watt power reduction to the top and bottom ring heater elements. It's after $\approx$ 12 hours after the change was made do you start to see a small enough $\frac{\mathrm{d} \alpha_\mathrm{sp}}{\mathrm{dt}}$ when you can assume a steady thermal lens.}
+ \caption{ITMY thermo-optic response to a 3.13 Watt power reduction to the top and bottom ring heater elements. It's after $\approx$ 12 hours after a ring heater power step was made do you start to see a small enough differential defocus ($\frac{\mathrm{d} \alpha_\mathrm{sp}}{\mathrm{dt}}$) and can assume a steady thermal lens.}
  \label{fig:meas}
 \end{figure}
 
-The measured transient response exhibits a differential defocus on a time scale of $\approx$ 12 to 15 hours; stalling precious observing and/or detector comissioning time with differential mode matching for an extended period. Reducing the time constants for the differential defocus is possible though the construction and implementation of real time digital filtering applied to the ring heater power control input.
+The measured thermo-optic step response exhibits a differential defocus for $\approx$ 12 to 15 hours after the ring heater power has been changed; and with a large enough power step, adjustments to ring heater power can stall precious detector observing/comissioning time with differential mode matching in the DRFPMI. Reducing the thermo-optic time constant is possible by applying a real time digital filter to the ring heater power control.
 
 \begin{figure}[H]
 \centering
 \includegraphics[page=1,width=.75\textwidth]{TCS/IRHF/RH_input_filter_figures.pdf}
-\caption{A pictograph showing how the plant transforms the signal. The example of this can be seen in Fig [\ref{fig:meas}]}
+\caption{A feedback-style block pictograph of the plant system (test mass mirror and annular ring heater) transforming the ring heater power control step to a time-varying thermo-optic response. The example of this can be seen in Fig [\ref{fig:meas}]}
 \label{fig:justplant}
 \end{figure}
 
 The construction of the filter is realized with the following prescription:
+\subsection{Appl
 \textcolor{red}{see appendix}
 %\begin{enumerate}[label=\arabic*),leftmargin=75pt,nosep]
 %	\item Fit step response to a zpk filter $H(s)$ 
