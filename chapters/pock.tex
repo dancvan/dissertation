@@ -203,13 +203,16 @@ For realistic coatings it may be reasonable to assume the heteroepitaxial bonds 
 A common application is to impart phase modulations onto an optical carrier field. Electro-optic modulators or Pockel cells accomplish this by sandwiching two capacitor plates around a block of crystalline material with a single electrical input port (typically coaxial) designed to take in a voltage input of frequency ($\Omega$) within a specified modulation bandwidth. When the field amplitude across the crystal is driven by a voltage controlled oscillation, the coefficients within the electro-optic tensor vary linearly (as indicated in \cite{}) The voltage amplitude of the signal input is proportional to the strength of the phase modulation on the optical carrier field of frequency ($\omega$) and is commonly quantified in terms of a modulation index ($\beta$).
 
 \begin{figure}[!h]
-     \begin{subcaptiongroup}
-	     \includegraphics[width=.5\textwidth]{figs/ALGAAS/temp/pockels_cell_l.pdf}
+\begin{center}
+        \begin{subcaptiongroup}
+	     \includegraphics[width=.6\textwidth]{figs/ALGAAS/eom_l_assembly.pdf}
 	     \phantomcaption\label{pc_longitudinal}
-	     \includegraphics[width=.5\textwidth]{figs/ALGAAS/temp/pockels_cell_t.pdf}
+	     \\
+	     \includegraphics[width=.6\textwidth]{figs/ALGAAS/eom_t_assembly.pdf}
 	     \phantomcaption\label{pc_transverse}
-     \end{subcaptiongroup}
-    \caption{\textcolor{red}{PENDING UPDATES currently borrowed image from rp photonics} Longitudinal and Transverse Pockels cells}
+        \end{subcaptiongroup}
+\end{center}
+    \caption{Longitudinal and Transverse Pockels cells}
     \label{fig:lpc_and_tpc}
 \end{figure} 
 
@@ -219,7 +222,7 @@ A common application is to impart phase modulations onto an optical carrier fiel
 E_\mathrm{out} = E_o e^{i \omega t + \beta \mathrm{sin}( \Omega t)} \approx
 \end{equation}
 
-Bessel function approximations sufficiently demonstrate that the phase modulated carrier field imparts power to optical sideband fields separated in frequncy by an integer multiple of the modulation $n \cdot \Omega$. Typically $\Omega$ can be a chosen single-frequency used for optical heterodyne detection; while for noise-driven modulation, the phase coupling shows strong coorelation to the relevant E-field spectra alongside the length of the beam propogation within the electro-optic media.
+Bessel function approximations sufficiently demonstrate that the phase modulated carrier field imparts power to optical sideband fields separated in frequncy by an integer multiple of the modulation $n \cdot \Omega$. Typically $\Omega$ is a chosen frequency used for optical heterodyne detection; while for noise-driven modulation, the phase coupling shows strong coorelation to the relevant E-field spectra alongside the length of the beam propogation within the electro-optic media.
 
 \textcolor{red}{This construction resembles that of the electrostatic optical mount used to drive a longitudinal electric field}
 
@@ -287,6 +290,7 @@ $
 With $\kappa$ being a scalar parameter.
 
 \textcolor{red}{FIGURE: Cross sectional view of multilayer coating}
+
 
 \subsubsection{Numerical estimate}
 
