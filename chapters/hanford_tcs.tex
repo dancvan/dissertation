@@ -43,11 +43,15 @@ The thermo-optic time constant for the central self-heating response is quite si
 
 
 \section{A posteriori thermal compensation for O3a}
-While approaching designed arm cavity power, the presence of non-uniform absorption on the test mass coating surface imposed a limit to acquiring high power and hence detector sensitivity; leading to a significant deviation from the original TCS pre-loading algorithm.  Assessment of the situation to inform methods of improving detector sensitivity required an initial characterization of these high absorbtion points; noting the characteristic optical path distortion as measured on the Hartmann wavefront sensors and the impacts on interferometer operations especially at high power. Current thermal actuation solutions are currently designed to control the TEM00 beam waist size and location though adjusting and modifying current actuators was tried. A summary indicates that these absorbers may impose a barrier to maintaining high power in the arm cavities if no further proactive measures are not taken or are not sufficient to bypass detector symptoms; whether they are a result of preventable surface particulates or improved higher frequency.  
+While approaching designed arm cavity power, the presence of non-uniform absorption on the test mass coating surface imposed limits to acquiring designed power and hence designed sensitivity; leading to a significant deviation from the original TCS pre-loading algorithm.  Assessment of the situation to inform methods of improving detector sensitivity required an initial characterization of these high absorbtion points which includes noting the characteristic optical path distortion as measured on the Hartmann wavefront sensors and the impacts on interferometer operations especially at high power. Current thermal actuation solutions are currently designed to control the TEM00 beam waist size and location though adjustments and modifications of current actuators was tried. A summary indicates that these absorbers may impose a barrier to maintaining high power in the arm cavities if no further proactive measures are not taken or are not sufficient to bypass detector symptoms; whether they are a result of preventable surface particulates or improved higher frequency.  
 
 %The presence of high absorption points on the test masses (aka point absorbers) required adjustments to the TCS pre-load and various ring heater and CO2 settings were sampled. Part of this sampling lead to the development of a input ring heater filter allowing actuation to reach ? percent of the desired optical power within 2 hours compared to the 12 hour response pre-filter. Higher spatial frequency actuation in the form of a CO2 mask was also tried.
 
 \subsection{Point absorbers in O3a}
+\subsubsection{ITMY absorbers}
+
+
+\subsubsection{ITMX absorbers}
 \textcolor{red}{A summary of the found absorbers \\
 	* Insert optical path distortion photos (taken using Dan's software too) \\
 		* ITMY absorbers \\
@@ -56,19 +60,28 @@ While approaching designed arm cavity power, the presence of non-uniform absorpt
 
 Impact on interferometer contrast and transmission / co-resonance of higher order modes
 
-\subsubsection{Noted impact}
-	* Controls schema review
-		* Sensor schema
-		* Optical sidebands (higher order beat signals)
-		* 
-	* Lockloss caused by reduced sideband power with interferometer thermalization
+\subsubsection{Notable impacts}
+A significant number of lockloss events during the comissioning period for O3A when increasing detector input power were a result of the slow degredation of optical sideband power used to maintain the delicate coupled cavity configurations.
 
-\subsubsection{Attempting symptom reduction}
+%\begin{figure}[!h]
+%	\centering
+%	\begin{subcaptiongroup}
+%		\includegraphics[width=\textwidth]{}
+%		\phantomcaption\label{
+
+	* Controls schema review \\
+		* Sensor schema \\
+		* Optical sidebands (higher order beat signals) \\
+	* Parasitic higher order modes \\
+		* Visible higher order modes at the anti-symmetric port \\
+A significant amount of optical loss as a result of losing sideband power is reported \\
+	* Lockloss caused by reduced sideband power with interferometer thermalization \\
+
+\subsubsection{Attempted symptom reduction}
 	* CO2 laser and mask
 		* CO2 with enhanced focus on absorbers and ring heater actuation
 		* Very narrow alignment requirement
-		* Improvement metrics:
-			* Restoring carrier contrast
+		* Improvement metrics
 			* Restoring sideband power	
 	* Adjusting interferometer to OMC mode matching
 		* Improvement metrics:
@@ -89,18 +102,18 @@ Impact on interferometer contrast and transmission / co-resonance of higher orde
 
 \section{Dynamic Thermal Compensation}
 \subsection{A closer look at the ring heater / test mass thermo-optic response}
-The transient ring heater actuation from a radially symmetric thermal aberration ($\Psi(t,r)$) is realized \cite{Ramette:16}:
+Transient ring heater actuation from a radially symmetric thermal aberration ($\Psi(t,r)$) is realized \cite{Ramette:16}:
 \begin{equation}
 	\Psi(t,r)=2\frac{dn}{dT} \sum^{\infty}_{m,p = 1} A_{m,p} \; c^{u}_{p} \mathrm{sin}(u_m h /2a) (a/u_m)[1-e^{-\alpha t}] J_0(\zeta_p r/a)
 \end{equation}
 
 \begin{figure}[H]
  \includegraphics[width=\textwidth]{TCS/IRHF/Meas_response}
- \caption{ITMY thermo-optic response to a 3.13 Watt power reduction to the top and bottom ring heater elements. It's after $\approx$ 12 hours after a ring heater power step was made do you start to see a small enough differential defocus ($\frac{\mathrm{d} \alpha_\mathrm{sp}}{\mathrm{dt}}$) and can assume a steady thermal lens.}
+ \caption{ITMY thermo-optic response to a 3.13 [W] combined power reduction to the top and bottom ring heater elements. It's after $\approx$ 12 hours after the ring heater power control step do you start to see a small enough steady state differential defocus ($\frac{\mathrm{d} \alpha_\mathrm{sp}}{\mathrm{dt}}$) and can assume a steady state thermal lens.}
  \label{fig:meas}
 \end{figure}
 
-The measured thermo-optic step response exhibits a differential defocus for $\approx$ 12 to 15 hours after the ring heater power has been changed; and with a large enough power step, adjustments to ring heater power can stall precious detector observing/comissioning time with differential mode matching in the DRFPMI. Reducing the thermo-optic time constant is possible by applying a real time digital filter to the ring heater power control.
+The measured thermo-optic step response exhibits differential defocusing for $\approx$ 12 to 15 hours once the ring heater power has been changed; and with a large enough power steps, these adjustments to ring heater power can significantly stall precious detector observing/comissioning time from the differential mode matching conditions in the DRFPMI. This thermo-optic time constant can be reduced by applying a real time digital filter to the ring heater power control. The desired thermo-optic response is one that resembles a step from one defocus state to another with no intermediate overshoot. 
 
 \begin{figure}[H]
 \centering
@@ -109,15 +122,14 @@ The measured thermo-optic step response exhibits a differential defocus for $\ap
 \label{fig:justplant}
 \end{figure}
 
-The construction of the filter is realized with the following prescription:
-\subsection{Appl
-\textcolor{red}{see appendix}
+The prescription for creating such a filter is realized through inverting the well known step response. But this alone can generate control instability which can be easily remedied with additional low passing at high frequency.
+
+\textcolor{red}{see appendix for more detail}
 %\begin{enumerate}[label=\arabic*),leftmargin=75pt,nosep]
 %	\item Fit step response to a zpk filter $H(s)$ 
 %	\item Invert fitted filter ($H(s) \rightarrow H^{-1}(s)$) 
 %	\item Apply correction filter $G(s)$ for stability and speed tuning ($H^{-1}(s)*G(s)$)
 %\end{enumerate}
-
 
 \begin{figure}[H]
 \includegraphics[width=\textwidth]{TCS/IRHF/RH_plant_filter_fit}
@@ -138,6 +150,9 @@ The construction of the filter is realized with the following prescription:
 \label{fig:dynam_comparison}
 \end{figure}
 \newpage
+
+\subsection{Reducing Parametric Instabilities}
+Another symptom of resonant / high power optical cavities is an opto-mechanical phenomenon known as parametric instability (PI); where test mass mechanical modes and higher order optical modes form a positive feebackback loop that can drive the detector to lockloss. Passive methods of control by way of acoustic mode dampers (AMD) showed significant reduction of problematic mechanical modes though some proved to remain problematic; requiring manual intervention by way of adjusting test mass geometry to disrupt these persistent PIs. With the test mass geometry directly coorelating to the thermo-optic test mass response, shifting from runaway PIs through slight ring heater adjustments plus DTC has been presented as a feasible solution \cite{Hardwick_2020}. 
 
 \subsubsection{Limitations}
 \begin{figure}[H]
