@@ -49,7 +49,7 @@ E_i = \frac{n^2 s_i (\vec{E}\cdot\vec{s})}{n^2 - \mu \varepsilon_i}
 From here it can be shown that for a general plane wave there exist two unique refractive index solutions within the constructed dielectric. Though using this result to show this requires revisiting geometrical conditions that are best visualized using a method introduced in the next section. \textcolor{red}{For a more rigorous proof, see Appendix H in} \cite{nye}
 
 \subsubsection{Indicatrix}\label{sec:indicatrix}
-Acquiring solutions of the two indices along with the corresponding directions of propogation in the crystal for a general plane wave with unit wave vector $\vec{s}$ can be done via a conveniant geometrical construction. The construction begins by considering a constant electric energy density ($U_e$) surface in the $\vec{D}$ space; an ellipsoid is formed:
+Acquiring solutions of the two indices along with corresponding directions of propogation in the crystal for a general plane wave with unit wave vector $\vec{s}$ can be done via a conveniant geometrical construction. The construction begins by considering a constant electric energy density ($U_e$) surface in the $\vec{D}$ space; an ellipsoid is formed:
 
 \begin{equation}\label{eq:lagr1}
 \frac{D_x}{\varepsilon_x} + \frac{D_y}{\varepsilon_y} + \frac{D_z}{\varepsilon_z} = 2 U_e \varepsilon_o
@@ -202,20 +202,6 @@ For realistic coatings it may be reasonable to assume the heteroepitaxial bonds 
 \subsection{EO Modulation}\label{sec:EOM}
 A common application is to impart phase modulations onto an optical carrier field. Electro-optic modulators or Pockel cells accomplish this by sandwiching two capacitor plates around a block of crystalline material with a single electrical input port (typically coaxial) designed to take in a voltage input of frequency ($\Omega$) within a specified modulation bandwidth. When the field amplitude across the crystal is driven by a voltage controlled oscillation, the coefficients within the electro-optic tensor vary linearly (as indicated in \cite{}) The voltage amplitude of the signal input is proportional to the strength of the phase modulation on the optical carrier field of frequency ($\omega$) and is commonly quantified in terms of a modulation index ($\beta$).
 
-\begin{figure}[!h]
-\begin{center}
-        \begin{subcaptiongroup}
-	     \includegraphics[width=.6\textwidth]{figs/ALGAAS/eom_l_assembly.pdf}
-	     \phantomcaption\label{pc_longitudinal}
-	     \\
-	     \includegraphics[width=.6\textwidth]{figs/ALGAAS/eom_t_assembly.pdf}
-	     \phantomcaption\label{pc_transverse}
-        \end{subcaptiongroup}
-\end{center}
-    \caption{Longitudinal and Transverse Pockels cells}
-    \label{fig:lpc_and_tpc}
-\end{figure} 
-
 \textcolor{red}{Consider a specific crystal that gives us our $\beta \mathrm{sin}(\Omega t)$}
 
 \begin{equation}\label{eq:inp_EOM}
@@ -224,7 +210,19 @@ E_\mathrm{out} = E_o e^{i \omega t + \beta \mathrm{sin}( \Omega t)} \approx
 
 Bessel function approximations sufficiently demonstrate that the phase modulated carrier field imparts power to optical sideband fields separated in frequncy by an integer multiple of the modulation $n \cdot \Omega$. Typically $\Omega$ is a chosen frequency used for optical heterodyne detection; while for noise-driven modulation, the phase coupling shows strong coorelation to the relevant E-field spectra alongside the length of the beam propogation within the electro-optic media.
 
-\textcolor{red}{This construction resembles that of the electrostatic optical mount used to drive a longitudinal electric field}
+\begin{figure}[!h]
+\begin{center}
+	\begin{subcaptiongroup}
+	     \includegraphics[width=.6\textwidth]{figs/ALGAAS/eom_l_assembly.pdf}
+	     \phantomcaption\label{pc_longitudinal}
+	     \\
+	     \includegraphics[width=.6\textwidth]{figs/ALGAAS/eom_t_assembly.pdf}
+	     \phantomcaption\label{pc_transverse}
+	\end{subcaptiongroup}
+\end{center}
+    \caption{Longitudinal and Transverse Pockels cells}
+    \label{fig:lpc_and_tpc}
+\end{figure} 
 
 \subsection{Optical anisotropy of a HR $\gaas$ / $\algaas$ stack}
 A comprehensive review of the relevant birefringent properties of a HR $\gaas$/$\algaas$ mirrorstack is due, and for this body of work includes: 1) crystal coordinate considerations when asserting an optical axis on a highly reflective crystalline stack manufactured by the Thorlabs crystalline coatings division, 2) citations of coating parameters and observed intrinsic birefringence from the highly reflective coating stack in question, 3) analysis of the differential electro-optic effect on the phase of a reflected beam, and 4) estimating the the differential phase noise in LIGO based on preliminary electric field measurements measured at LHO.
@@ -241,7 +239,7 @@ A comprehensive review of the relevant birefringent properties of a HR $\gaas$/$
 \end{figure}
 
 \subsubsection{Miller indices for highly reflective coatings $\gaas$/$\algaas$ coatings}
-Up to this point three varieties of orthonormal coordinates addressed: the crystal axis (as indicated by Miller index plane normals), the principal dielectric axis (based on diagonalization of the indicatrix), and an optical beam axis (when considering a desired (laser) light propogation). The asserted beam axis is cited \cite{fig:algaas_coords}.
+Up to this point three varieties of orthonormal coordinates are addressed: the crystal axis (as indicated by Miller index plane normals), the principal dielectric axis (based on diagonalization of the indicatrix), and an optical beam axis (when considering a desired (laser) light propogation). The asserted beam axis is cited \cite{fig:algaas_coords}.
 
 \subsubsection{Electro-optic coupling to the reflected phase of a HR mirror coating}
 With our chosen beam axis, the influence of an isotropic white noise field ($E_n = [E_{nx},E_{ny},E_{nz}]$) is considered:
