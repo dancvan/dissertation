@@ -49,7 +49,17 @@ E_i = \frac{n^2 s_i (\vec{E}\cdot\vec{s})}{n^2 - \mu \varepsilon_i}
 From here it can be shown that for a general plane wave there exists two unique refractive index solutions within the constructed dielectric. Though using this result to show this requires revisiting geometrical conditions that are best visualized using a method introduced in the next section. \textcolor{red}{For a more rigorous proof, see Appendix H in} \cite{nye}
 
 \subsubsection{Indicatrix}\label{sec:indicatrix}
-Acquiring solutions of the two indices along with corresponding directions of propogation in the crystal for a general plane wave with unit wave vector $\vec{s}$ can be done via a conveniant geometrical construction. The construction begins by considering a constant electric energy density ($U_e$) surface in the $\vec{D}$ space; an ellipsoid is formed:
+Acquiring solutions of the two indices along with corresponding directions of propogation in the crystal for a general plane wave with unit wave vector $\vec{s}$ can be done via a conveniant geometrical construction. 
+
+\begin{figure}[ht!]
+\begin{center}
+\includegraphics[width=.85\textwidth]{figs/ALGAAS/indicatrix_alph.pdf}
+\end{center}
+\caption{General ellipsoid indicatrix with a general propogation direction }
+\label{fig:general_indicatrix}
+\end{figure}
+
+The construction begins by considering a constant electric energy density ($U_e$) surface in the $\vec{D}$ space; an ellipsoid is formed:
 
 \begin{equation}\label{eq:lagr1}
 \frac{D_x}{\varepsilon_x} + \frac{D_y}{\varepsilon_y} + \frac{D_z}{\varepsilon_z} = 2 U_e \varepsilon_o
@@ -79,21 +89,12 @@ i \bigg(1-\frac{r^2}{\varepsilon_{i}} \bigg) + s_{i} \bigg(\frac{x s_x}{\varepsi
 The result is verified when substituting $r \rightarrow \frac{\vec{D}}{\sqrt{\vec{E} \cdot \vec{D} \varepsilon_o}}$ back which recovers \ref{eq:3.18}.
 \\
 
-\begin{figure}[H]
-\begin{center}
-\includegraphics[width=75mm]{figs/ALGAAS/indicatrix_nye.pdf}
-\end{center}
-\caption{General ellipsoid indicatrix with a general propogation direction (Using Nye's figure as placeholder as of now)}
-\label{fig:general_indicatrix}
-\end{figure}
-
 \subsection{$\gaas$ and $\algaas$ crystal classification}
 The space group of $\gaas$ as well as $\algaas$ are within the $F\bar{4}3m$ space group \cite{}. Crystals of this space group are commonly known as zincblende crystals; a common crystal configuration named after zinc sulfide (ZnS). Also categorized as a cubic crystal, their crystallographic structure displays optically isotropic characteristics when stress free and no DC and/or slowly varying electric fields are present.
 \satoshi{Is this true?} \textcolor{blue}{Yes. Though the birefringence seen from HR $\gaas$ coatings is said to be due to an ``intrinsic stress" in the high and low index layers. (What is breaking the symmetry to cause this? Heteroepitaxy? Annealing? Defects? Is this birefringence the same for all samples?) I think a dedicated high precision birefringence measurement on multiple samples would be cool.}
-
-\begin{figure}[H]
+\begin{figure}[h]
 \begin{center}
-\includegraphics[width=.85\textwidth]{figs/ALGAAS/gaas_unit_cell_mi.pdf}
+\includegraphics[width=.5\textwidth]{figs/ALGAAS/gaas_unit_cell_mi.pdf}
 \caption{The unit cell of gallium arsenide (GaAs) with associated miller indices as coordinate axes}
 \end{center}
 \label{fig:gaas_uc}
