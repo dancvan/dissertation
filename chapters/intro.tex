@@ -13,7 +13,7 @@ In other words, there exists a wave solution with two separate transverse polari
 
 \begin{figure}[H]
 	\includegraphics[width=\textwidth]{INTRO/gw_particle_ring1.pdf}
-	\caption{A stop motion pictograph displaying the influence of a single gravitational wave period from the two polarizations on a ring of particles. The top row shows the influence of the `+' polarization while the bottom row demonstrates that of the `x' polariztion}	
+	\caption{A stop motion pictograph displaying the influence of a single gravitational wave period from the two polarizations on a ring of particles. The top row shows the influence of the `+' polarization while the bottom row demonstrates that of the `$\times$' polariztion}	
 
 	\label{fig:gw_polarizations}
 \end{figure}
@@ -93,7 +93,7 @@ Shown in \ref{eq:gaussian_beam} is another propogation consideration that implie
 
 Contrast quantifies measured dark fringe power against the measured bright fringe power; while $\eta$ in the interferometric context produces a similar quantity by integration of phasefront overlap. share matching phase the same phase phase front phasefront matching of the returning phasefronts at the beam splitter. Both these quantities operate on a scale of 0 to 1, from minimum to maximum interference though with one subtle difference. Mode overlap that being the morphology of resulting interference pattern for values less than 1. 
 
-\textcolor{red}{FIGURE: Nonideal interference can result in generating any one of the provided interference patterns. Laguerre-Gauss and Hermite Gauss modes are metrics of mode mismatch and misalignment respectively.}
+%%FIGURE: Nonideal interference can result in generating any one of the provided interference patterns. Laguerre-Gauss and Hermite Gauss modes are metrics of mode mismatch and misalignment respectively.
 
 An important consideration for any sufficiently long arm length (like that used for LIGO), you are likely to encounter constraints in length if not without a sufficiently large beamsplitter and/or focusing optics. LIGO achieves this with curved end mirrors that match and focus the impinging wavefronts, though with a sensitivity indicated by ~\cite{} [$\mathrm{sensitivity} ~ 1/G_\mathrm{MICH} \approx 10^{-18} \; [\frac{1}{\sqrt{\mathrm{Hz}}}]]$ it still does not reach the requirement to confirm a measurement from CBCs @ 100 Hz ($\approx 10^{-21} \; [\frac{1}{\sqrt{\mathrm{Hz}}}]$.)
 
@@ -162,7 +162,7 @@ Imposing a Gaussian beam to our theoretical two mirror cavity and after consider
 	E_\mathrm{LG} = 
 \end{equation}
 
-\textcolor{red}{FIGURE: Various mode wavefront solutions with the following caption: ''The various wavefront geometries of the Hermite-Gauss [left] and Laguerre-Gauss modes [right]. Some of these modes are commonly used as error signals used for quantifying the presence of mirror misalignment and mode mismatch."}
+%%FIGURE: Various mode wavefront solutions with the following caption: ''The various wavefront geometries of the Hermite-Gauss [left] and Laguerre-Gauss modes [right]. Some of these modes are commonly used as error signals used for quantifying the presence of mirror misalignment and mode mismatch."
 
 If it wasn't clear yet, it certainly will be understood that the delicate state of cavity resonance is one that is hard to maintain and easily broken.  
 
@@ -213,12 +213,10 @@ As may be implied, the technique requires a mirror installation at the anti-symm
 	\mathrm{H}_\mathrm{DRFPMI} = \mathrm{G}_\mathrm{PR} \mathrm{P}_\mathrm{in} L \Omega \bigg[ \frac{ t_\mathrm{ITM}^2 r_\mathrm{ETM}}{(t_\mathrm{ITM}^2 + r_\mathrm{ITM}^2)r_\mathrm{ETM} - r_\mathrm{ITM}}  t_\mathrm{SRC} \frac{e^{-i 2 \pi L f / c} \mathrm{sin}( 2 \pi f / c)}{ 2 \pi L f } \frac{\mathrm{sin}(\phi_0)}{1- r_\mathrm{SRC}r_\mathrm{ETM} e^{-i 4 \pi L f / c}} \bigg]
 \end{equation}
 
-\begin{equation}
 \begin{align}
-	t_\mathm{SRC} & = \frac{t_\mathrm{SRM} t_\mathrm{ITM} e^{i\phi_\mathrm{SRC}}}{1-r_\mathrm{ITM} r_\mathrm{SRM} e^{i2\phi_\mathrm{SRC}}}, \\
+	t_\mathrm{SRC} & = \frac{t_\mathrm{SRM} t_\mathrm{ITM} e^{i\phi_\mathrm{SRC}}}{1-r_\mathrm{ITM} r_\mathrm{SRM} e^{i2\phi_\mathrm{SRC}}}, \\
 	r_\mathrm{SRC} & = \frac{r_\mathrm{ITM} - r_\mathrm{SRM} e^{i2\phi_\mathrm{SRC}}}{1-r_\mathrm{ITM} r_\mathrm{SRM} e^{i2\phi_\mathrm{SRC}}} \\
 \end{align}
-\end{equation}
 
 \begin{figure}[h!]
   \begin{subcaptiongroup}
@@ -250,17 +248,17 @@ The prior discussions still have yet to discuss most of the practical considerat
 With LIGO's coupled cavity configuration, maintaining mirror positions is imperative. Techniques such as the offset lock (using a DC photodiode to measure the transmitted, reflected, or circulating power within a linear and slightly off resonance point) \cite{} and the Pound-Drever-Hall technique (see \ref{subsubsec:pdh} ) are used to maintain cavity length stabilization. Stabilizing cavity lengths to configure the detector into a highly sensitive differential arm sensor is a process that is worthwhile understanding with more ample discussions ~\cite{Mullavey:12}.
 
 
-So far, we've discussed light and phase fronts without addressing geometric constraints when using Gaussian laser light. We consider a general complex Gaussian beam mode propogating along the beam axis ($z$) with wavelength $\lambda$.
+%So far, we've discussed light and phase fronts without addressing geometric constraints when using Gaussian laser light. We consider a general complex Gaussian beam mode propogating along the beam axis ($z$) with wavelength $\lambda$.
 
-\begin{equation}\label{eq:gaussian_beam}
-E(r) = E_o \frac{\sqrt{[\lambda z_o] / \pi}}{W(z)}e^{-r^2 / W^2(z)} e^{-ikz - ik[r^2 / (2R(z))] + i \zeta}
-\end{equation}
-
-Where $E_o$ is a complex amplitude, $r = \sqrt{x^2 + y^2}$ defines the transverse beam coordinates, $k$ is the wave number, $W(z)$ is the beam width, $R(z)$ is the beam radius of curvature, and $\zeta$ is the Gouy phase.
+%\begin{equation}\label{eq:gaussian_beam}
+%E(r) = E_o \frac{\sqrt{[\lambda z_o] / \pi}}{W(z)}e^{-r^2 / W^2(z)} e^{-ikz - ik[r^2 / (2R(z))] + i \zeta}
+%\end{equation}
+%
+%Where $E_o$ is a complex amplitude, $r = \sqrt{x^2 + y^2}$ defines the transverse beam coordinates, $k$ is the wave number, $W(z)$ is the beam width, $R(z)$ is the beam radius of curvature, and $\zeta$ is the Gouy phase.
 
 Derived from the paraxial approximation of the Helmholtz equation, this field is not the only solution for optical cavities. Alternative higher order mode (HOM) solutions are commonly present and are expressed in terms of two mathematical bases: the Hermite-Gauss and Laguerre-Gauss modes. These HOMs are more often than not power parasites when attempting to only sense displacement Fabry-P\'{e}rot cavities and are a symptom of altered cavity geometry; though a virtue of the lost power is its utility as an error signal for sensing and actuation schemes. This is what is what is accomplished with an alignment sensing and control (ASC) system and a thermal compensation system (TCS) for mode matching actuation.
 
-\textcolor{red}{FIGURE: ALIGO Sensor and Actuation schema?}
+%%FIGURE: ALIGO Sensor and Actuation schema
 
 \subsubsection{Alignment sensing and control}
 
@@ -269,7 +267,7 @@ Derived from the paraxial approximation of the Helmholtz equation, this field is
     \includegraphics[width=.5\textwidth]{ALGAAS/aligo_nb_plus_cbn.pdf}
     \end{center}
     \caption{A misaligned Fabry-P\'{e}rot cavity scatters circulating light into higher order Hermite-Gauss modes.}
-\label{fig:aligo_tn_comparison}
+    \label{fig:HGLGmodes}
 \end{figure}
 
 \begin{equation}
@@ -282,7 +280,7 @@ Even with state-of-the-art ground motion isolation for terrestrial gravitational
 For Gaussian beams, there are further requirements of macroscopic mirror positions and radius of curvatures to maximize resonant power in the fundamental (TEM00) mode. Failure to plan and maintain these conditions sucessfully results in a mismatch of the beam mode to the cavity mode, scattering power into higher order Laguerre-Gauss modes.  
 
 \begin{equation}
-	E_{n,m}(\rho, \phi, z) =  E_o \bigg[ \frac{W_o}{W(z)} \bigg] H_n \bigg[ \frac{\rho}{W(z)} \bigg]^2 L^n_m \bigg[ \frac{\sqrt{2}\rho^2}{W^2(z)} \bigg] e^{-\rho^2/W(z) - ikz - ik[\rho^2/(2R(z))] - jn \phi + i(n + 2m + 1)\zeta(z)}
+ E_{n,m}(\rho, \phi, z) =  E_o \bigg[ \frac{W_o}{W(z)} \bigg] H_n \bigg[ \frac{\rho}{W(z)} \bigg]^2 L^n_m \bigg[ \frac{\sqrt{2}\rho^2}{W^2(z)} \bigg] e^{-\rho^2/W(z) - ikz - ik[\rho^2/(2R(z))] - jn \phi + i(n + 2m + 1)\zeta(z)}
 \end{equation}
 
 Even with ultra-low absorption HR mirror coatings and fused silica substrates, circulating power is estimated to reach $\geq$ 200 kW, distorting the radius of curvatures of the arm cavity mirrors by ? m; which can introduce significant optical loss due to mode mismatch (esp. for coupled cavities). And as a DRFPMI like aLIGO approaches designed sensitivity, instances of mode mismatch can be a two-fold threat with optical loss to higher order modes also impacting the ability to produced squeezed light states~\cite{}. The solution implemented in aLIGO as of O3 to sense mode mismatch consists of hartmann wavefront sensors (HWS) with 800 nm and 833 nm probe beams providing real-time mirror lensing / surface distortion data while actuation comes in the form of induced thermal actuation on mirrors throughout the interferometers with particular focus on the arm cavity mirrors. The thermal actuation of the core optics comes in two varieties: a CO2 laser actuator impinging upon a pre-installed fused silica compensation plate (CP) for positive lens actuation and an annular ring heater for negative lens actuation \cite{}. 
@@ -297,11 +295,10 @@ Even with ultra-low absorption HR mirror coatings and fused silica substrates, c
 
 \section{Coating Thermal Noise}
 Contributions of categorized noises for gravitational wave detectors are organized in a ''noise budget", comprised of a collection of technical (noise imposed by the practical operation of the detector) and fundamental (inherent physical limitations of DRFPMIs by design) noise sources that impose limitations on gravitational wave detection.
-\textcolor{red}{Contributions of categorized noises for gravitational wave detectors the ''noise budget" ((LHO and LLO O3?) or just GWINC?)}
+%% Contributions of categorized noises for gravitational wave detectors the ''noise budget" ((LHO and LLO O3?) or just GWINC?)}
 
 \subsection{Brownian Thermal Noise}
-\textcolor{red}{Might move this section back to the $\algaas$ Electro-optic noise chapter}
-\\
+%% Might move this section back to the $\algaas$ Electro-optic noise chapter
 In 1827 the Scottish botanist Robert Brown noticed a constant motion of pollen particulates on the surface of water; witnessing randomized collisions of the water molecules holding a kinetic energy proportional to the temperature ($k_BT$) \cite{Brown:1828}. It is because of his documented observations we name the phenomena Brownian motion. And although the observations were on motion of particulates in liquids, molecules and atoms within gases and solids also exhibit Brownian motion. For high precision optical experiments operating at room temperature (and higher due to high power resonant beams), understanding how much differential phase noise is imparted on the interferometer light passing through and reflecting from core optics is crucial. This requires knowledge of the mean squared displacement from each degree of freedom of the system which can be realized through the Fluctuation Dissapation theorem. Derived by H.B. Callen and T.A. Welton, the theorem states that for a randomly fluctuating linear force \cite{Callen:1951}:
 
  %% Further insight into Brownian motion was explored by Einstein where he was able to relate the mean-square displacement of a particle of radius $r_\mathrm{sph}$ on a fluid with viscosity $\eta$.
@@ -368,7 +365,8 @@ S_x(f) = \frac{4 k_B T}{f} \frac{1-\sigma^2}{\pi^3 E_o r_o} I\phi \bigg[1- O\big
 
 %this requires that the driving force used in a lab mimics that of a force from a centered Gaussian beam.
 
-\textcolor{red}{Refer to Levin appendix for more on how elasticity parameters are introduced?} Where $\phi$ and $E_o$ are the Poisson ratio and Young's modulus respectively, and $O(\frac{r_o}{R})$ contains a correction term contribution as a function of the small beam radius ($r_o$) relative to the mirror radius ($R$).
+%%Refer to Levin appendix for more on how elasticity parameters are introduced?
+Where $\phi$ and $E_o$ are the Poisson ratio and Young's modulus respectively, and $O(\frac{r_o}{R})$ contains a correction term contribution as a function of the small beam radius ($r_o$) relative to the mirror radius ($R$).
 
 \subsubsection{Coating Brownian thermal noise}
 Further investigations into the beam/optic system utilizing this approach and elasticity theory led to a deeper understanding about Brownian thermal noise contributions from LIGO test masses (substrate, suspensions, HR coating). Levin mentions, with details from Harry, that the noise contributed by a lossy mirror coating is proven to be to be the most significant contributor of brownian thermal noise. Hong provides a power spectral density \cite{Hong:2013}:
@@ -393,9 +391,10 @@ Currently the LIGO interferometers deposit $\lambda$/4 stacks of silica and tita
 \textbf{Current $\mathrm{SiO_2}/\mathrm{TiO_2:Ta_2O_5}$ elasticity params, power spectra, and strain spectral density (order of magnitude estimate)}
 
 \subsubsection{$\gaas$/$\algaas$ coating parameters}
-\textcolor{red}{Specific coating parameters for most promising $\algaas$ candidates? Chat with Steve. Or just mention parameters that are listed in Cole 2013}
+%%Specific coating parameters for most promising $\algaas$ candidates? Chat with Steve. Or just mention parameters that are listed in Cole 2013
 \cite{Cole:2013}
 
-\textcolor{red}{Insert computed curves of the most precise and recent (effective) loss angle measurements (Nick Demos measurements?). More instructive to plot strain spectral density or displacement power spectra}
+%% Insert computed curves of the most precise and recent (effective) loss angle measurements (Nick Demos measurements?). More instructive to plot strain spectral density or displacement power spectra
 
-\noindent Currently thermal noise from the $\mathrm{SiO_2}/\mathrm{TiO_2:Ta_2O_5}$ optical coatings is the largest contributor of Brownian noise in LIGO compared to estimated substrate and suspension thermal noise \cite{Harry:06}. As of the end of O3, Brownian thermal noise is estimated to be ? orders of magnitude below the current sensitivity and it will prove to be the limiting source of noise as that sensitivity is increased with various other upgrades mitigating fundamental and technical noise. (\textcolor{red}{already mentioned in intro prior to this thermal noise section. Need to re-iterate in more detail?})
+\noindent Currently thermal noise from the $\mathrm{SiO_2}/\mathrm{TiO_2:Ta_2O_5}$ optical coatings is the largest contributor of Brownian noise in LIGO compared to estimated substrate and suspension thermal noise \cite{Harry:06}. As of the end of O3, Brownian thermal noise is estimated to be ? orders of magnitude below the current sensitivity and it will prove to be the limiting source of noise as that sensitivity is increased with various other upgrades mitigating fundamental and technical noise. 
+%% Already mentioned in intro prior to this thermal noise section. Need to re-iterate in more detail?

@@ -15,11 +15,11 @@ During O3a the LIGO Hanford observatory circulating arm power reached beyond 180
 Preserving the nominal 50km test mass ROC (as well as cavity resonance) requires a counter to the positive thermal lens induced by high circulating interferometer arm cavity power. Preparing for the central uniform test mass distortion from the carrier requires calibrated and well established thermal actuator settings which in turn inform of how to `pre-load' the TCS actuators based on early estimates of test mass absorption. Initial order of magnitude estimates of the wavefront distortion from ultra-low absorption fused silica test mass under the influence of a centered high power gaussian beam as well as annular ring heater actuation are available \cite{hello_vinet, Ramette:16}; though variations of the absorption between any two test mass mirrors calibrated defocus measurements using the Hartmann wavefront sensors \textcolor{red}{sensitive to auxilary beams imaged onto the test mass mirror surfaces}. The measured wavefront distortion is then mapped in real time to Zernike polynomial coefficients used to compute the differential thermal lens in diopters. 
 
 \subsection{The thermo-optic response}
-\begin{figure}[!h]
+\begin{figure}[!ht]
   \centering
   \begin{subcaptiongroup}
 	  \includegraphics[width=\textwidth]{TCS/ITMX_TCS_Settings_tvo.pdf}
-	  \phantomcaption\label{ITMX_TCS}
+	  \phantomcaption\label{TO_response}
   \end{subcaptiongroup}
   \captionsetup{subrefformat=parens}
   \hfill
@@ -27,7 +27,7 @@ Preserving the nominal 50km test mass ROC (as well as cavity resonance) requires
 \label{fig:thermooptic_response}
 \end{figure}
 The thermo-optic time constant for the central self-heating response is quite similar to that seen from CO2 central actuation, though demonstrably different from annular ring heating. Because of this, LHO applies the central CO2 heating and static annular ring heating to a power level that respectively mimics and actuates for projected thermal deformation from the high power circulating resonant carrier beam in the Fabry-Perot arm cavities. Once the DRFPMI coupled cavities are configured or ``locked'', the input carrier power is gradually increased while CO2 laser powersimultaneously decreased in order to mitigate any possible differential thermo-optic response from the arm cavity test masses when reaching maximum power.
-\begin{figure}[!h]
+\begin{figure}[!ht]
   \centering
   \begin{subcaptiongroup}
 	  \includegraphics[width=\textwidth]{TCS/ITMX_TCS_Settings_tvo.pdf}
@@ -63,7 +63,7 @@ Impact on interferometer contrast and transmission / co-resonance of higher orde
 \subsubsection{Notable impacts}
 A significant number of lockloss events during the comissioning period for O3A when increasing detector input power were a direct result of the slow degredation of select optical sideband powers used to maintain the delicate coupled cavity configuration.
 
-%\begin{figure}[!h]
+%\begin{figure}[!ht]
 %	\centering
 %	\begin{subcaptiongroup}
 %		\includegraphics[width=\textwidth]{}
@@ -110,7 +110,7 @@ Transient ring heater actuation from a radially symmetric thermal aberration ($\
 \begin{figure}[H]
  \includegraphics[width=\textwidth]{TCS/IRHF/Meas_response}
  \caption{ITMY thermo-optic response to a 3.13 [W] combined power reduction to the top and bottom ring heater elements. It's after $\approx$ 12 hours after the ring heater power control step do you start to see a small enough steady state differential defocus ($\frac{\mathrm{d} \alpha_\mathrm{sp}}{\mathrm{dt}}$) and can assume a steady state thermal lens.}
- \label{fig:meas}
+ \label{fig:RHresp}
 \end{figure}
 
 The measured thermo-optic step response exhibits differential defocusing for $\approx$ 12 to 15 hours once the ring heater power has been changed; and with a large enough power steps, these adjustments to ring heater power can significantly stall precious detector observing/comissioning time from the differential mode matching conditions in the DRFPMI. This thermo-optic time constant can be reduced by applying a real time digital filter to the ring heater power control. The desired thermo-optic response is one that resembles a step from one defocus state to another with no intermediate overshoot. 
@@ -118,7 +118,7 @@ The measured thermo-optic step response exhibits differential defocusing for $\a
 \begin{figure}[H]
 \centering
 \includegraphics[page=1,width=.75\textwidth]{TCS/IRHF/RH_input_filter_figures.pdf}
-\caption{A feedback-style block pictograph of the plant system (test mass mirror and annular ring heater) transforming the ring heater power control step to a time-varying thermo-optic response. The example of this can be seen in Fig [\ref{fig:meas}]}
+\caption{A feedback-style block pictograph of the plant system (test mass mirror and annular ring heater) transforming the ring heater power control step to a time-varying thermo-optic response. The example of this can be seen in Fig [\ref{fig:RHresp}]}
 \label{fig:justplant}
 \end{figure}
 
