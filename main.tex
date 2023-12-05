@@ -20,8 +20,8 @@
 \usepackage{placeins}
 \usepackage{pdfpages}
 
-
 \newcommand{\algaas}{\mathrm{Al_{0.92}Ga_{0.08}As}}
+\newcommand{\algaasgen}{\mathrm{Al_{1-x}Ga_{x}As}}
 \newcommand{\gaas}{\mathrm{GaAs}}
 \newcommand{\siotao}{\mathrm{SiO_2}\mathrm{TiO_2:Ta_2O_5}}
 \newcommand{\appropto}{\mathrel{\vcenter{
@@ -39,6 +39,12 @@
 \newcommand{\stefan}[1]{\textcolor{orange}{#1}}
 \newcommand{\steve}[1]{\textcolor{green}{#1}}
 
+\makeatletter
+\setcounter{secnumdepth}{4}
+\renewcommand\paragraph{\@startsection{paragraph}{4}{\z@}%
+                                     {-3.25ex\@plus -1ex \@minus -.2ex}%
+                                     {1.5ex \@plus .2ex}%
+                                     {\normalfont\normalsize\bfseries}}
 
 \doublespacing
 
