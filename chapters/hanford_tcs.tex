@@ -12,7 +12,7 @@
 During O3a the LIGO Hanford observatory circulating arm power reached beyond 180 kW; emphasizing importance on properly tuned thermal compensation in O3 to avert arm cavity mode mismatch. Detailed in this chapter is a summary of related comissioning efforts at LHO including but not exclusive to: citations of the initial computed O3 TCS pre-load, the development and implementation of real-time digital filtering for an improved ring heater actuation response by a factor of $\approx 6$, and the impacts of high absorption points aka point absorbers discovered on arm cavity test masses along with the inital efforts to mitigate them. 
 
 \section{A priori TCS pre-load methodology for O3a}
-Preserving the nominal 50km test mass ROC (as well as cavity resonance) requires a counter to the positive thermal lens induced by high circulating interferometer arm cavity power. Preparing for the central uniform test mass distortion from the carrier requires calibrated and well established thermal actuator settings which in turn inform of how to `pre-load' the TCS actuators using early estimates of test mass absorption. Initial order of magnitude estimates of the wavefront distortion from ultra-low absorption fused silica test mass under the influence of a centered high power gaussian beam as well as annular ring heater actuation are available \cite{hellovinet, Ramette:16}; though variations of the absorption between any two test mass mirrors calibrated defocus measurements using the Hartmann wavefront sensors \textcolor{red}{sensitive to auxilary beams imaged onto the test mass mirror surfaces}. The measured wavefront distortion is then mapped in real time to Zernike polynomial coefficients used to compute the differential thermal lens in diopters. 
+Preserving arm cavity resonances requires countering the positive thermal lens defocus of the nominal test mass lens induced by high circulating interferometer arm cavity power. Preparing for this central uniform test mass distortion from the carrier beam requires calibrated and well established thermal actuator settings which in turn informs how much to `pre-load' the TCS actuators using early estimates of test mass absorption. Initial order of magnitude estimates of wavefront distortion from ultra-low absorption fused silica test masses under the influence of a centered high power gaussian beam as well as annular ring heater actuation are available \cite{hellovinet, Ramette:16}; though variations of the absorption between any two test mass mirrors are accounted for through calibrated defocus measurements using the Hartmann wavefront sensors sensitive to auxilary beams imaged onto the test mass mirror surfaces. Measured wavefront distortion is then mapped in real time to Zernike polynomial coefficients used to compute a differential defocus in diopters.
 
 \subsection{The thermo-optic response}
 \begin{figure}[!ht]
@@ -23,7 +23,7 @@ Preserving the nominal 50km test mass ROC (as well as cavity resonance) requires
   \end{subcaptiongroup}
   \captionsetup{subrefformat=parens}
   \hfill
-  \caption{Observed thermo-optic responses from the carrier beam self heating and TCS actuation (central CO2 laser heating and annular ring heating.)} 
+  \caption{Measured defocus from the carrier beam self heating and TCS actuation (central CO2 laser heating and annular ring heating.)} 
 \label{fig:thermooptic_response}
 \end{figure}
 The thermo-optic time constant for the central self-heating response is quite similar to that seen from CO2 central actuation, though demonstrably different from annular ring heating. Because of this, LHO applies the central CO2 heating and static annular ring heating to a power level that respectively mimics and actuates for projected thermal deformation from the high power circulating resonant carrier beam in the Fabry-Perot arm cavities. Once the DRFPMI coupled cavities are configured or ``locked'', the input carrier power is gradually increased while CO2 laser powersimultaneously decreased in order to mitigate any possible differential thermo-optic response from the arm cavity test masses when reaching maximum power.
@@ -43,15 +43,40 @@ The thermo-optic time constant for the central self-heating response is quite si
 
 
 \section{A posteriori thermal compensation for O3a}
-While approaching designed arm cavity power, the presence of non-uniform absorption on the test mass coating surface imposed limits to acquiring designed power and hence designed sensitivity; leading to a significant deviation from the original TCS pre-loading algorithm.  Assessment of these absorbers can inform methods of improving detector sensitivity required an initial characterization of these high absorbtion points which includes noting the characteristic optical path distortion as measured on the Hartmann wavefront sensors and the impacts on interferometer operations especially at high power. Current thermal actuation solutions are currently designed to control the TEM00 beam waist size and location though adjustments and modifications of current actuators was tried. A summary indicates that these absorbers may impose a barrier to maintaining high power in the arm cavities if no further proactive measures are not taken or are not sufficient to bypass detector symptoms; whether they are a result of preventable surface particulates or improved higher frequency.  
+While approaching designed arm cavity power, the presence of non-uniform absorption on the test mass coating surface imposed limits to reaching designed power and hence designed sensitivity; which simultaneously lead to a significant deviation from the original TCS pre-loading algorithm.  Assessment of these absorbers can inform methods of improving detector sensitivity required an initial characterization of these high absorbtion points which includes noting the characteristic optical path distortion as measured on the Hartmann wavefront sensors and the impacts on interferometer operations especially at high power. Current thermal actuation solutions are currently designed to control the TEM00 beam waist size and location though adjustments and modifications of current actuators was tried. A summary indicates that these absorbers may impose a barrier to maintaining high power in the arm cavities if no further proactive measures are not taken or are not sufficient to bypass detector symptoms; whether they are a result of preventable surface particulates or improved higher frequency.  
 
 %The presence of high absorption points on the test masses (aka point absorbers) required adjustments to the TCS pre-load and various ring heater and CO2 settings were sampled. Part of this sampling lead to the development of a input ring heater filter allowing actuation to reach ? percent of the desired optical power within 2 hours compared to the 12 hour response pre-filter. Higher spatial frequency actuation in the form of a CO2 mask was also tried.
 
 \subsection{Point absorbers in O3a}
 \subsubsection{ITMY absorbers}
+\begin{figure}[H]
+  \centering
+  \begin{subcaptiongroup}
+	  \includegraphics[width=.495\textwidth]{TCS/PA/ITMY_absorbers.pdf}
+	  \phantomcaption\label{itmxpa_justself}
+	  \includegraphics[width=.495\textwidth]{TCS/PA/ITMY_self.pdf}
+	  \phantomcaption\label{itmxpa_selfplusabs}
+  \end{subcaptiongroup}
+  \captionsetup{subrefformat=parens}
+  \hfill
+  \caption{An isometric view of uniform absorption vs point absorption of LHO ITMY}
+  \label{fig:ITMY_pabs}
+\end{figure}
 
-
-\subsubsection{ITMX absorbers}
+\subsubsection{ETMX absorbers}
+\begin{figure}[H]
+  \centering
+  \begin{subcaptiongroup}
+	  \includegraphics[width=.49\textwidth]{TCS/PA/ETMX_absorber_short_heat.pdf}
+	  \phantomcaption\label{etmxpa_justself}
+	  \includegraphics[width=.49\textwidth]{TCS/PA/ETMX_absorber_full_heat.pdf}
+	  \phantomcaption\label{etmxpa_selfplusabs}
+  \end{subcaptiongroup}
+  \captionsetup{subrefformat=parens}
+  \hfill
+  \caption{An isometric view of uniform absorption vs point absorption of LHO ETMX. The Hartmann probe beam experienced significant clipping on the baffle}
+  \label{fig:ETMX_pabs}
+\end{figure}
 \textcolor{red}{A summary of the found absorbers \\
 	* Insert optical path distortion photos (taken using Dan's software too) \\
 		* ITMY absorbers \\
@@ -61,7 +86,7 @@ While approaching designed arm cavity power, the presence of non-uniform absorpt
 Impact on interferometer contrast and transmission / co-resonance of higher order modes
 
 \subsubsection{Notable impacts}
-A significant number of lockloss events during the comissioning period for O3A when increasing detector input power were a direct result of the slow degredation of select optical sideband powers used to maintain the delicate coupled cavity configuration.
+A significant number of lockloss events during the comissioning period for O3A when increasing detector input power were a direct result of the slow degredation of select optical sideband powers used to maintain the delicate coupled cavity configuration. And while sustaining interferometer DC readout the arm cavity would generate higher order modes sustained by an Output Mode Cleaner resonance; contaminating the carrier field at the output photodiode.
 
 %\begin{figure}[!ht]
 %	\centering
@@ -78,8 +103,16 @@ A significant amount of optical loss as a result of losing sideband power is rep
 	* Lockloss caused by reduced sideband power with interferometer thermalization \\
 
 \subsubsection{Attempted symptom reduction}
-	* CO2 laser and mask
-		* CO2 with enhanced focus on absorbers and ring heater actuation
+The trivial solution of reducing the test mass non-uniformity was tried but exhibited noticable limitations with the available degrees of freedom. To restore the uniformity of the test mass surface, a custom mask was constructed with the intention of imaging a negative of the optical path distortion high absorption points onto the surface with the CO2 laser combined with a static ring heater offset. 
+
+The installation location of the mask and size was established using the relevant propogation and imaging tensors applied to the CO2 actuation field while mitigation of the aforementioned impacts provided comissioners with the notable metrics of success.
+
+
+\textcolor{red}{Results}
+\\
+The extremely strict alignment requirement introduced difficulties while attempting to fulfill the promise of restoring uniform absorption. And although the presence of the absorber symptoms show coorelation with their prominence at high power, their collective reduction proved not to be as straightfoward.
+	
+	* CO2 with enhanced focus on absorbers and ring heater actuation
 		* Very narrow alignment requirement
 		* Improvement metrics
 			* Restoring sideband power	
@@ -88,17 +121,11 @@ A significant amount of optical loss as a result of losing sideband power is rep
 			* Reduced HOM content at detector output
 			* Tracking dither line amplitudes
 
-\begin{itemize}
-\item Aiden's design
-\item Imaging
-\item Installation
 %\begin{figure}[H]
 %\includegraphics[width=\textwidth]{figs/TCS/PA/48349_20190409201649_inital_install_CO2Ymask2_150seconds_900mW.png}
 %\caption{Point absorber figure with second $\mathrm{CO_2}$ mask}
 %\label{fig:RH_power}
 %\end{figure}
-
-\end{itemize}
 
 \section{Dynamic Thermal Compensation}
 \subsection{A closer look at the ring heater / test mass thermo-optic response}
