@@ -18,7 +18,7 @@ In other words, there exists a wave solution with two separate transverse polari
 	\label{fig:gw_polarizations}
 \end{figure}
 
-When measured and analyzed, these waves allow astronomers to extract novel information from their progenitors through the testing of various hypotheses pertinant to the violent dynamics of these systems. On September 14th, 2015 the Laser Interferometric Gravitational Wave Observatories detected the first direct gravitational wave from a pair of coalescing black holes 1.3 billion light years away, and since then other gravitational wave detectors (i.e. Virgo, KAGRA) have joined the search; continuing the search for novel events. This GW detector network has developed a track record with an ever increasing rate of detections including the first multimessenger event ~\cite{gw170817} and a suprising population of compact binary coalescences ~\cite{Nitz:2023}. The incredible perseverence of the women and men participating in this multi-decade effort dedicated to constructing and developing the large scale gravitational wave observatories used today is a testament to their resiliency and that of a curious mind. Though I fear I might insult or possibly bore an experienced reader with verbose and elementary material, personal curiosity has lead me to traverse the works of those before me and I do so with the most outspoken reverence; all while attempting my best to provide context of the novel contributions noted within this document. 
+When measured and analyzed, these waves allow astronomers to extract novel information from their progenitors through the testing of various hypotheses pertinant to the violent dynamics of these systems. On September 14th, 2015 the Laser Interferometric Gravitational Wave Observatories made the first direct gravitational wave detection from a pair of coalescing black holes 1.3 billion light years away, and since then other gravitational wave detectors (i.e. Virgo, KAGRA) have joined the search; continuing the search for novel events. This GW detector network has developed a track record with an ever increasing list and rate of detections including the first multimessenger event ~\cite{gw170817} and a suprising population of compact binary coalescences ~\cite{Nitz:2023}. The incredible perseverence of the women and men participating in this multi-decade effort dedicated to constructing and developing the large scale gravitational wave observatories used today is a testament to their resiliency and that of a curious mind. Though I may possibly bore a more experienced reader with verbose and elementary material, personal curiosity has lead me to traverse the works of those before me and I do so with the most outspoken reverence; all while attempting my best to provide context of novel contributions noted within this document.  
 
 \section{Detector configurations}
 The current gravitational wave detector network primarily uses terrestrial bound Dual-Recycled Fabry-Perot Michelson interferometers; though to configure them into a state of observing, fundamental modes of operation are to be acquired first. We quickly review these modes to inform some of the basic ``whats'' and ``hows'' of detector operation with the hopes of developing a holistic view of the LIGO detection schema especially as it pertains to the body of this work. Most introductory detector configuration discussions start with the michelson interferometer and end at the dual-recycled Fabry-Perot Michelson interferometer; this section follows in kind. Alongside the discussion are citations which can provide exceptional alternative and more detailed explanations of topics discussed.
@@ -72,16 +72,16 @@ Assuming a 4km arm configuration with 25 Watts input power as indicated in figur
 	\label{fig:michsensitivity}
 \end{figure}
 
-\subsubsection{Mode overlap}
-Highly idealized depictions of interferometers can implicitly suggest their function and operation by planar phasefronts (for pedagogical purposes), though this assumption does not fully inform the reality. Defining the used laser carrier ''mode" with wavelength $\lambda$, and propogation axis ($z$); that being the Gaussian beam (TEM00 mode):
+\subsubsection{Mode overlap (Mode Matching Pt. 1)}
+Simplified and highly idealized depictions of interferometers can suggest their function and operation by planar phasefronts, though this assumption does not fully inform the reality. Defining the laser carrier ''mode" with wavelength $\lambda$, and propogation axis ($z$); that being the Gaussian beam (TEM00 mode):
 
 \begin{equation}\label{eq:gaussian_beam}
 E(r) = E_o \frac{\sqrt{[\lambda z_o] / \pi}}{W(z)}e^{-r^2 / W^2(z)} e^{-ikz - ik[r^2 / (2R(z))] + i \zeta}
 \end{equation}
 
-Where $E_o$ is the complex field amplitude, $r^{2}/(2(R(z))$ defines the transverse coordinates $r^{2}$ on the hemisphere, with the ROC of $R(z)$, that defines a surface of uniform phase, $k$ is the wave number, $W(z)$ is the radius from the beam axis that contains $(1-1/e^2) \times 100 \%$ of the integrated beam power, and $\zeta$ is the Gouy phase.
+Where $E_o$ is a complex field amplitude, $r^{2}/(2(R(z))$ defines the transverse coordinates $r^{2}$ on the hemisphere with the ROC of $R(z)$ defining a surface of uniform phase, $k$ is the wave number, $W(z)$ is the radius from the beam axis that contains $(1-1/e^2) \times 100 \%$ of the integrated beam power, and $\zeta$ is the Gouy phase.
 
-Shown in \ref{eq:gaussian_beam} is another propogation consideration that implies another symmetry required to be maintained of the co-propogating beams for optimal interference, and wavefront distortions / aberrations and their many forms are realized. Assymetric couplings are more often than not introduced assymetrically between the orthogonal paths that often limit interference. Two metrics are used to describe how well this interference can is performed is set by and contrast ($\nu$) and mode overlap ($\eta$): 
+Shown in \ref{eq:gaussian_beam} another propogation consideration implies an additional symmetry requirement to be maintained between co-propogating beams for optimal interference; this being the transverse profile.  Optical aberrations are more often than not introduced assymetrically between the orthogonal beam paths that often limit optimal interference. Two numerical quanities, contrast ($\nu$) and mode overlap ($\eta$), are used to quantify an interferometer's performance: 
 
 \begin{equation}\label{eq:mode_overlap}
 	\eta = \bigg|\int E_x E_y dA \bigg|^{2} \bigg/ (P_x P_y)
@@ -91,7 +91,7 @@ Shown in \ref{eq:gaussian_beam} is another propogation consideration that implie
 	\nu = \frac{P_\mathrm{max} - P_\mathrm{min}}{P_\mathrm{max} + P_\mathrm{min}}
 \end{equation}
 
-Contrast quantifies measured dark fringe power against the measured bright fringe power; while $\eta$ in the interferometric context produces a similar quantity by integration of phasefront overlap. share matching phase the same phase phase front phasefront matching of the returning phasefronts at the beam splitter. Both these quantities operate on a scale of 0 to 1, from minimum to maximum interference though with one subtle difference. Mode overlap that being the morphology of resulting interference pattern for values less than 1. 
+Contrast quantifies measured dark fringe power against the measured bright fringe power; while $\eta$ in the interferometric context produces a similar quantity by integration of phasefront overlap. Both these quantities operate on a scale from 0 to 1, respresenting minimum to maximum interference. Contrast requires less detail about the co-propogating beams and their transformations as it just requires two power measurements at the anti-symmetric port while Mode Overlap requires knowledge of the matching beam modes to provide a similar estimate 
 
 %%FIGURE: Nonideal interference can result in generating any one of the provided interference patterns. Laguerre-Gauss and Hermite Gauss modes are metrics of mode mismatch and misalignment respectively.
 
@@ -180,7 +180,7 @@ Advanced LIGO, with its 4km length and approximate finesse of 208 coorelates to 
 	\mathrm{H_{FPMI}} = \frac{t_1 ^2 r_2}{(t_1^2 + r_1^2)r_2 - r_1} \frac{\mathrm{H_{MICH}}}{1 - r_1 r_2 e^{-2i \omega L / c}}
 \end{equation}
 
-It's incredible that in theory adding two mirrors can present such a detector gain improvement. Though in practice this doesn't occur without: 1) maintaining fixed mirror positions within a fraction of the wavelength of the light used and 2) the reduction in detector bandwidth. In spite of this, clever experimental techniques like the Pound-Drever-Hall technique allow experimentalists to maintain these conditions ~\cite{?}.
+It's incredible that simply adding two mirrors can present such detector gain improvement, though in practice the enhancement is contingent upon: 1) maintaining fixed mirror positions within a fraction of the wavelength of the light used and 2) reduction in detector bandwidth. In spite of the narrow mirror displacement requirements, clever experimental techniques like the Pound-Drever-Hall technique allow experimentalists to meet them ~\cite{?}.
 
 \subsection{Dual-Recycled Fabry-Perot Michelson (DRFPMI)}
 Recycling mirrors are an extension of the FPMI that exploits otherwise wasted optical power by providing a means of enhancing the optical gain and bandwidth of the instrument. Strategic tuning of mirror coating parameters and positions at symmetric and anti-symmetric ports can incorporate power recycling and signal recycling respectively.
@@ -194,7 +194,7 @@ Recycling mirrors are an extension of the FPMI that exploits otherwise wasted op
 \end{figure}
 
 \subsubsection{Power Recycling}
-When operating a FPMI at a dark fringe, a significant amount of power is reflected back to the symmetric port as mentioned in~\ref{section:FPC} leading to the consistent waste of optical power if simply dumped. Placing an additional highly reflective mirror at the symmetric port and while maintaining resonance of the carrier to the arms, you can reintroduce (or ``recycle") power back to the arm cavities. A PDH loop is utilized for carrier resonance, and the macroscopic positioning of the PRM is informed by the choice of optical sideband frequency required when applying PDH. 
+When operating a FPMI at a dark fringe, a significant amount of power is reflected back to the symmetric port as mentioned in~\ref{section:FPC} leading to wasted optical power if simply dumped. Placing an additional highly reflective mirror at the symmetric port while maintaining resonance of the carrier to the arms, you can reintroduce (or ``recycle") power back to the arm cavities. A PDH loop is utilized for carrier resonance, and the macroscopic mirror positioning of the PRM is informed by the choice of optical sideband frequency required when applying PDH. 
 
 \begin{equation}
 	\mathrm{G_{PR}} = \frac{(1-r_\mathrm{PRM}^2)}{1-r_\mathrm{PRM}[1- (\mathscr{F} \mathscr{L}_\mathrm{RT})/ \pi]}
@@ -207,7 +207,7 @@ With a maximum recycling gain \ref{}:
 \end{equation}
 
 \subsubsection{Signal Recycling}
-As may be implied, the technique requires a mirror installation at the anti-symmetric port; though with a more nuianced approach than that of power recycling. By simply placing a partially reflective mirror at the output port it is understood that light leakage coming from the PRFPMI at the anti-symmetric port (caused by differential arm motion) is re-introduced to the arms. The signal recycling mirror reflectivity cannot be set too high to avoid attenuation to the PRFPMI output. Though the detector enhancement only comes after exacting the cost of trading off the detector bandwidth for increased detector gain and vice versa. The operating point between the maxima of these two detection characteristics is a function of the microscopic length (phase) tuning:
+As may be inferred, this technique requires a mirror installation at the anti-symmetric port, though with a more nuianced approach than that of power recycling. Placing a partially reflective mirror at the output port it is understood that light leakage coming from the PRFPMI at the anti-symmetric port (caused by differential arm motion) is re-introduced to the arms, but the reflectivity of the new mirror cannot be set too high to avoid attenuating the PRFPMI output. Though detector enhancement only comes after exacting a cost dependent on signal recycling cavity tuning. This cost resides between a trade off of detector bandwidth for increased detector gain or vice versa, with the operating point between the maxima of these two detector characteristics set as a function of the microscopic length (phase) tuning:
 
 \begin{equation}
 	\mathrm{H}_\mathrm{DRFPMI} = \mathrm{G}_\mathrm{PR} \mathrm{P}_\mathrm{in} L \Omega \bigg[ \frac{ t_\mathrm{ITM}^2 r_\mathrm{ETM}}{(t_\mathrm{ITM}^2 + r_\mathrm{ITM}^2)r_\mathrm{ETM} - r_\mathrm{ITM}}  t_\mathrm{SRC} \frac{e^{-i 2 \pi L f / c} \mathrm{sin}( 2 \pi f / c)}{ 2 \pi L f } \frac{\mathrm{sin}(\phi_0)}{1- r_\mathrm{SRC}r_\mathrm{ETM} e^{-i 4 \pi L f / c}} \bigg]
@@ -224,7 +224,7 @@ As may be implied, the technique requires a mirror installation at the anti-symm
  	  \includegraphics[width=.5\textwidth]{INTRO/strain_compare.pdf}
   \end{subcaptiongroup}
   \hfill
-  \caption{[Left] Comparison of all optical gain functions [Right] Coorelated shot nosie strain sensitivity.}
+  \caption{[Left] Comparison of all optical gain functions [Right] Coorelated shot noise strain sensitivity.}
   \label{fig:drfpmi_gain_and_strain}
 \end{figure}
 
@@ -248,7 +248,10 @@ The prior discussions still have yet to discuss most of the practical considerat
 With LIGO's coupled cavity configuration, maintaining mirror positions is imperative. Techniques such as the offset lock (using a DC photodiode to measure the transmitted, reflected, or circulating power within a linear and slightly off resonance point) \cite{} and the Pound-Drever-Hall technique (see \ref{subsubsec:pdh} ) are used to maintain cavity length stabilization. Stabilizing cavity lengths to configure the detector into a highly sensitive differential arm sensor is a process that is worthwhile understanding with more ample discussions ~\cite{Mullavey:12}.
 
 
-%So far, we've discussed light and phase fronts without addressing geometric constraints when using Gaussian laser light. We consider a general complex Gaussian beam mode propogating along the beam axis ($z$) with wavelength $\lambda$.
+%So far, we've discussed light and phase fronts without addressing geometric
+%constraints when using Gaussian laser light. We consider a general complex
+%Gaussian beam mode propogating along the beam axis ($z$) with wavelength
+%$\lambda$.
 
 %\begin{equation}\label{eq:gaussian_beam}
 %E(r) = E_o \frac{\sqrt{[\lambda z_o] / \pi}}{W(z)}e^{-r^2 / W^2(z)} e^{-ikz - ik[r^2 / (2R(z))] + i \zeta}
@@ -287,30 +290,36 @@ Even with ultra-low absorption HR mirror coatings and fused silica substrates, c
 
 \begin{figure}[H]
 	\includegraphics[width=\textwidth]{TCS/FP_input_coupler.pdf}
-\caption{Thermal compensation at a single Fabry-P\'{e}rot input mirror coupler for ALIGO.}
- \label{fig:meas}
+	\caption{Thermal compensation at a single Fabry-P\'{e}rot input mirror coupler for ALIGO.}
+	\label{fig:meas}
 \end{figure}
 
 \begin{figure}[H]
-	\includegraphics[width=\textwidth]{TCS/ITMY_inp_vol_scatter_low_circ.pdf}
-	\\
-	\includegraphics[width=\textwidth]{TCS/ITMY_inp_vol_scatter_high_circ.pdf}
-\caption{Thermal compensation at a single Fabry-P\'{e}rot input mirror coupler for ALIGO.}
- \label{fig:meas2}
+	\begin{subcaptiongroup}
+		\centering
+		\includegraphics[width=.63\textwidth]{TCS/ITMY_inp_vol_scatter_low_circ.pdf}
+		\caption{CO2 actuator set to replicate projected carrier thermo-optic response, with an off resonance circulating beam.}\label{TCSinp_lowcirc}
+		\includegraphics[width=.63\textwidth]{TCS/ITMY_inp_vol_scatter_interm_circ.pdf}
+		\caption{Arm cavity resonance, with reduced CO2 central actuation power and increased input power. The uniform thermo-optic distortion from the high power circulating carrier significantly modifies arm cavity geometry and places an upper limit on the input / circulating carrier power esp. with no ring heater actuation.}\label{TCSinp_intcirc}
+		\includegraphics[width=.63\textwidth]{TCS/ITMY_inp_vol_scatter_high_circ.pdf}
+		\caption{Maximum circulating arm power, with annular heating and no central CO2 actuation. The careful timing and calibration of the CO2 / RH actuators allow designed power / GW detector sensitivity to be reached.}\label{TCSinp_highcirc}
+	\end{subcaptiongroup}
+	\caption{Thermal compensation at a single Fabry-P\'{e}rot input mirror coupler for ALIGO.}
+	\label{fig:meas2}
 \end{figure}
 
 
 
-\begin{figure}[!h]
-  \begin{subcaptiongroup}
-	  \includegraphics[width=.3\textwidth, page=1]{TCS/FP_inp_coupler_TCS.pdf}
- 	  \includegraphics[width=.3\textwidth, page=2]{TCS/FP_inp_coupler_TCS.pdf}
-	  \includegraphics[width=.3\textwidth, page=3]{TCS/FP_inp_coupler_TCS.pdf}
-  \end{subcaptiongroup}
-  \hfill
-  \caption{[Left] Comparison of all optical gain functions [Right] Coorelated shot nosie strain sensitivity.}
-  \label{fig:TCS_inp}
-\end{figure}
+%\begin{figure}[!h]
+%  \begin{subcaptiongroup}
+%	  \includegraphics[width=.3\textwidth, page=1]{TCS/FP_inp_coupler_TCS.pdf}
+% 	  \includegraphics[width=.3\textwidth, page=2]{TCS/FP_inp_coupler_TCS.pdf}
+%	  \includegraphics[width=.3\textwidth, page=3]{TCS/FP_inp_coupler_TCS.pdf}
+%  \end{subcaptiongroup}
+%  \hfill
+%  \caption{[Left] Comparison of all optical gain functions [Right] Coorelated shot nosie strain sensitivity.}
+%  \label{fig:TCS_inp}
+%\end{figure}
 
 
 \section{Detector Noise}
