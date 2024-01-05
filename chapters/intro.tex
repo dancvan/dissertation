@@ -288,39 +288,28 @@ For Gaussian beams, there are further requirements of macroscopic mirror positio
 
 Even with ultra-low absorption HR mirror coatings and fused silica substrates, circulating power is estimated to reach $\geq$ 200 kW, distorting the radius of curvatures of the arm cavity mirrors by ? m; which can introduce significant optical loss due to mode mismatch (esp. for coupled cavities). And as a DRFPMI like aLIGO approaches designed sensitivity, instances of mode mismatch can be a two-fold threat with optical loss to higher order modes also impacting the ability to produced squeezed light states~\cite{}. The solution implemented in aLIGO as of O3 to sense mode mismatch consists of hartmann wavefront sensors (HWS) with 800 nm and 833 nm probe beams providing real-time mirror lensing / surface distortion data while actuation comes in the form of induced thermal actuation on mirrors throughout the interferometers with particular focus on the arm cavity mirrors. The thermal actuation of the core optics comes in two varieties: a CO2 laser actuator impinging upon a pre-installed fused silica compensation plate (CP) for positive lens actuation and an annular ring heater for negative lens actuation \cite{}. 
 
-\begin{figure}[H]
-	\includegraphics[width=\textwidth]{TCS/FP_input_coupler.pdf}
-	\caption{Thermal compensation at a single Fabry-P\'{e}rot input mirror coupler for ALIGO.}
-	\label{fig:meas}
-\end{figure}
+%\begin{figure}[H]
+%	\includegraphics[width=\textwidth]{TCS/FP_input_coupler.pdf}
+%	\caption{Thermal compensation at a single Fabry-P\'{e}rot input mirror coupler for ALIGO.}
+%	\label{fig:meas}
+%\end{figure}
 
 \begin{figure}[H]
 	\begin{subcaptiongroup}
 		\centering
-		\includegraphics[width=.7\textwidth]{TCS/ITMY_inp_vol_scatter_low_circ_ann.pdf}
-		\caption{CO2 actuator set to replicate projected carrier thermo-optic response, with an off resonance circulating beam.}\label{TCSinp_lowcirc}
-		\includegraphics[width=.7\textwidth]{TCS/ITMY_inp_vol_scatter_interm_circ_ann.pdf}
-		\caption{Arm cavity resonance, with reduced CO2 central actuation power and increased arm cavity input power.}\label{TCSinp_intcirc}
-		%% Uniform thermo-optic distortion from the high power circulating carrier significantly modifies arm cavity geometry and places an upper limit on the input / circulating carrier power esp. with no ring heater actuation.	
-		\includegraphics[width=.7\textwidth]{TCS/ITMY_inp_vol_scatter_high_circ_ann.pdf}
-		\caption{Maximum circulating arm power, with annular heating and no central CO2 actuation. The careful timing and calibration of the CO2 / RH actuators allow designed power / GW detector sensitivity to be reached.}\label{TCSinp_highcirc}
+		\includegraphics[width=.6\textwidth]{TCS/ITMYarminp/annotated/max/ITMYinp_lowcirc.pdf}
+		\caption{CO2 actuator set to replicate projected carrier thermo-optic response, with an off resonance circulating beam.}\label{subfig:TCSinp_lowcirc}
+%		\caption{(A) The incident carrier beam and (B) }\label{TCSinp_lowcirc}
+		\includegraphics[width=.6\textwidth]{TCS/ITMYarminp/annotated/max/ITMYinp_intermcirc.pdf}
+		\caption{Arm cavity resonance, with reduced CO2 central actuation power and increased arm cavity input power. The uniform thermo-optic distortion from the high power circulating carrier imposes a differential thermo-refractive lens and thermo-elastic HR surface change to the ITM, placing a low upper to the circulating power limit without annular ring heater actuation.}\label{subfig:TCSinp_intcirc}
+%		\caption{Arm cavity resonance, with reduced CO2 central actuation power and increased arm cavity input power. The uniform thermo-optic distortion from the high power circulating carrier imposes a differential thermorefractive and thermoelastic HR surface change to the ITM, placing a low upper to the circulating power limit without annular ring heater actuation.}\label{TCSinp_intcirc}
+		\includegraphics[width=.6\textwidth]{TCS/ITMYarminp/annotated/max/ITMYinp_highcirc.pdf}
+		\caption{Maximum circulating arm power, with annular heating and no central CO2 actuation. The careful timing and calibration of the CO2 / RH actuators allow designed power / GW detector sensitivity to be reached.}\label{subfig:TCSinp_highcirc}
+%		\caption{Maximum circulating arm power, with annular heating and no central CO2 actuation. The careful timing and calibration of the CO2 / RH actuators allow designed power / GW detector sensitivity to be reached.}\label{TCSinp_highcirc}
 	\end{subcaptiongroup}
-	\caption{Thermal compensation at a single Fabry-P\'{e}rot input mirror coupler for ALIGO.}
-	\label{fig:meas2}
+	\caption{ALIGO thermal compensation design at the input of a single Fabry-P\'{e}rot arm cavity. Though not the only location of thermal mode matching actuators, a careful look here can adequately demonstrates their capabilities and motivates their careful tuning while comissioning the current generation of gravitational wave detectors at high power.}
+	\label{fig:meas}
 \end{figure}
-
-
-
-%\begin{figure}[!h]
-%  \begin{subcaptiongroup}
-%	  \includegraphics[width=.3\textwidth, page=1]{TCS/FP_inp_coupler_TCS.pdf}
-% 	  \includegraphics[width=.3\textwidth, page=2]{TCS/FP_inp_coupler_TCS.pdf}
-%	  \includegraphics[width=.3\textwidth, page=3]{TCS/FP_inp_coupler_TCS.pdf}
-%  \end{subcaptiongroup}
-%  \hfill
-%  \caption{[Left] Comparison of all optical gain functions [Right] Coorelated shot nosie strain sensitivity.}
-%  \label{fig:TCS_inp}
-%\end{figure}
 
 
 \section{Detector Noise}
@@ -333,12 +322,10 @@ Contributions of categorized noises for gravitational wave detectors are organiz
 %% Might move this section back to the $\algaas$ Electro-optic noise chapter
 In 1827 the Scottish botanist Robert Brown noticed a constant motion of pollen particulates on the surface of water; witnessing randomized collisions of the water molecules holding a kinetic energy proportional to the temperature ($k_BT$) \cite{Brown:1828}. It is because of his documented observations we name the phenomena Brownian motion. And although the observations were on motion of particulates in liquids, molecules and atoms within gases and solids also exhibit Brownian motion. For high precision optical experiments operating at room temperature (and higher due to high power resonant beams), understanding how much differential phase noise is imparted on the interferometer light passing through and reflecting from core optics is crucial. This requires knowledge of the mean squared displacement from each degree of freedom of the system which can be realized through the Fluctuation Dissapation theorem. Derived by H.B. Callen and T.A. Welton, the theorem states that for a randomly fluctuating linear force \cite{Callen:1951}:
 
- %% Further insight into Brownian motion was explored by Einstein where he was able to relate the mean-square displacement of a particle of radius $r_\mathrm{sph}$ on a fluid with viscosity $\eta$.
-
+%% Further insight into Brownian motion was explored by Einstein where he was able to relate the mean-square displacement of a particle of radius $r_\mathrm{sph}$ on a fluid with viscosity $\eta$.
  %%\begin{equation}
  %%\overline{x^2} = k_B T  \frac{1}{3 \pi \eta  r_\mathrm{sph}}
  %%\end{equation}
-
  %%This relation has important implications about how the random motion or fluctuations of a particulate (the pollen) is influenced (dissipated) by the viscosity of the surrounding medium (water).
 
 \begin{equation}
