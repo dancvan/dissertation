@@ -72,8 +72,8 @@ Assuming a 4km arm configuration with 25 Watts input power as indicated in figur
 	\label{fig:michsensitivity}
 \end{figure}
 
-\subsubsection{Mode overlap (Mode Matching Pt. 1)}
-Simplified and highly idealized depictions of interferometers can suggest their function and operation by planar phasefronts, though this assumption does not fully inform the reality. Defining the laser carrier ''mode" with wavelength $\lambda$, and propogation axis ($z$); that being the Gaussian beam (TEM00 mode):
+\subsubsection{Contrast (Mode Matching Pt. 1)}
+The functional behavior of the simple Michelson is optical autocoorelation of the field wavefronts in space and time; though simplified and highly idealized depictions of interferometers can suggest a false form operation by planar phasefronts, not fully inform reality. The standard laser carrier ''mode" is represented by the Gaussian beam (TEM00 mode) with wavelength $\lambda$, and propogation axis ($z$):
 
 \begin{equation}\label{eq:gaussian_beam}
 E(r) = E_o \frac{\sqrt{[\lambda z_o] / \pi}}{W(z)}e^{-r^2 / W^2(z)} e^{-ikz - ik[r^2 / (2R(z))] + i \zeta}
@@ -81,19 +81,25 @@ E(r) = E_o \frac{\sqrt{[\lambda z_o] / \pi}}{W(z)}e^{-r^2 / W^2(z)} e^{-ikz - ik
 
 Where $E_o$ is a complex field amplitude, $r^{2}/(2(R(z))$ defines the transverse coordinates $r^{2}$ on the hemisphere with the ROC of $R(z)$ defining a surface of uniform phase, $k$ is the wave number, $W(z)$ is the radius from the beam axis that contains $(1-1/e^2) \times 100 \%$ of the integrated beam power, and $\zeta$ is the Gouy phase.
 
-Shown in \ref{eq:gaussian_beam} another propogation consideration implies an additional symmetry requirement to be maintained between co-propogating beams for optimal interference; this being the transverse profile.  Optical aberrations are more often than not introduced assymetrically between the orthogonal beam paths that often limit optimal interference. Two numerical quanities, contrast ($\nu$) and mode overlap ($\eta$), are used to quantify an interferometer's performance: 
+This revised propogation consideration implicitly contains additional symmetry requirement to be maintained between the perpendicular co-propogating beams for optimal interference.
+\\
+\textcolor{red}{Optical autocorrelation function / mode overlap function [integrated for accumulated PHASE]}
+\\
+\textcolor{red}{This autocoorelation exhibits "on" and "off" behavior for a plane wave field solution, but over the integrated phasefront (or power on a DC photodiode) the maximum interference is also a function of the phase offset.}
+
+Mode overlap $\eta$ characterizes this autocorrelation normalized by the individual field intensity (or power):
 
 \begin{equation}\label{eq:mode_overlap}
-	\eta = \bigg|\int E_x E_y dA \bigg|^{2} \bigg/ (P_x P_y)
+	\eta = \bigg|\int E_x E_y dA \bigg|^{2} \bigg/ (P_x P_y) \cross 100 \%
 \end{equation}
+
+For any given mode overlap configuration we can quantify an interferometer's performance by measuring and computing contrast ($\nu$), by comparing the measured two local extrema (local maxima and local minima): 
 
 \begin{equation}\label{eq:contrast}
 	\nu = \frac{P_\mathrm{max} - P_\mathrm{min}}{P_\mathrm{max} + P_\mathrm{min}}
 \end{equation}
 
-Contrast quantifies measured dark fringe power against the measured bright fringe power; while $\eta$ in the interferometric context produces a similar quantity by integration of phasefront overlap. Both these quantities operate on a scale from 0 to 1, respresenting minimum to maximum interference. Contrast requires less detail about the co-propogating beams and their transformations as it just requires two power measurements at the anti-symmetric port while Mode Overlap requires knowledge of the matching beam modes to provide a similar estimate 
-
-%%FIGURE: Nonideal interference can result in generating any one of the provided interference patterns. Laguerre-Gauss and Hermite Gauss modes are metrics of mode mismatch and misalignment respectively.
+Operating on a scale from 0 to 1, $\nu \le 1$ simple Michelson can be an indication of : mode mismatch at the beam splitter and/or assymetrical optical loss. From the perspective of mode matching $\nu = 1$ represents a mode overlap of $\eta = 100 \%$ (assuming no optical loss).  Though optical aberrations are more often than not introduced asymetrically between the orthogonal beam paths that often limit interference and can be simultaneously indicated through contrast measurements.  
 
 An important consideration for any sufficiently long arm length (like that used for LIGO), you are likely to encounter constraints in length if not without a sufficiently large beamsplitter and/or focusing optics. LIGO achieves this with curved end mirrors that match and focus the impinging wavefronts, though with a sensitivity indicated by ~\cite{} [$\mathrm{sensitivity} ~ 1/G_\mathrm{MICH} \approx 10^{-18} \; [\frac{1}{\sqrt{\mathrm{Hz}}}]]$ it still does not reach the requirement to confirm a measurement from CBCs @ 100 Hz ($\approx 10^{-21} \; [\frac{1}{\sqrt{\mathrm{Hz}}}]$.)
 
@@ -152,6 +158,8 @@ The ratio of the circulating power to the cavity input power is set by the refle
 
 \paragraph{Gaussian beam phasefronts}
 Imposing a Gaussian beam to our theoretical two mirror cavity and after considering \ref{eq:gaussian_beam}, a careful consideration: containing the power of a diverging phasefront between two finite sized mirrors. The resonance of a gaussian beam requires, one or both of the cavity mirrors to have a finite radius of curvature to match a resonant beam's phasefront \textcolor{red}{see stability criteria}. Though alongside the TEM00 fundamental mode, the paraxial equation (\textcolor{red}{see appendix}) has families of solutions that exist for the aforementioned cavity configuration; these solutions best described by the Hermite-Gauss and Laguerre-Gauss bases:
+
+%%FIGURE: Nonideal interference can result in generating any one of the provided interference patterns. Laguerre-Gauss and Hermite Gauss modes are metrics of mode mismatch and misalignment respectively.
 
 \begin{equation}
 	E_\mathrm{HG} = 
