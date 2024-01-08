@@ -72,36 +72,30 @@ Assuming a 4km arm configuration with 25 Watts input power as indicated in figur
 	\label{fig:michsensitivity}
 \end{figure}
 
+Though with a sensitivity indicated by ~\cite{} [$\mathrm{sensitivity} ~ 1/G_\mathrm{MICH} \approx 10^{-18} \; [\frac{1}{\sqrt{\mathrm{Hz}}}]]$ it still does not reach the requirement to confirm a measurement from CBCs @ 100 Hz ($\approx 10^{-21} \; [\frac{1}{\sqrt{\mathrm{Hz}}}]$.)
+
 \subsubsection{Contrast (Mode Matching Pt. 1)}
-The functional behavior of the simple Michelson is optical autocoorelation of the field wavefronts in space and time; though simplified and highly idealized depictions of interferometers can suggest a false form of operation by planar phasefronts, not fully inform reality. The standard laser carrier ''mode" is represented by the Gaussian beam (TEM00 mode) with wavelength $\lambda$, and propogation axis ($z$):
+As presented, the functional behavior of the simple Michelson is to perform optical autocoorelation; though overly simplified depictions of interferometry suggest operation by periodic planar phasefronts, this doesn't inform the full reality of beam propogation. A standard laser carrier beam mode is represented by the Gaussian beam (TEM00 mode) with wavelength $\lambda$, and propogation axis ($z$):
 
 \begin{equation}\label{eq:gaussian_beam}
 E(r) = E_o \frac{\sqrt{[\lambda z_o] / \pi}}{W(z)}e^{-r^2 / W^2(z)} e^{-ikz - ik[r^2 / (2R(z))] + i \zeta}
 \end{equation}
 
-Where $E_o$ is a complex field amplitude, $r^{2}/(2(R(z))$ and defines the transverse coordinates $x^{2} + y^{2}$ on the hemisphere with the ROC of $R(z)$ defining a surface of uniform phase, $k$ is the wave number, $W(z)$ is the radius from the beam axis that contains $(1-1/e^2) \times 100 \%$ of the integrated beam power, and $\zeta$ is the Gouy phase.
+Where $E_o$ is a complex field amplitude, $r^{2}/(2(R(z))$ defines transverse coordinates $r = \sqrt{x^{2} + y^{2}}$ on a hemisphere with the ROC of $R(z)$ that defines a surface of uniform phase, $k$ is the wave number, $W(z)$ is the radius from the beam axis that contains $(1-1/e^2) \times 100 \%$ of the integrated beam power, and $\zeta$ is the Gouy phase. An important consideration for any sufficiently long arm length (like that used for LIGO), you are likely to encounter a length constraint from beam divergence if not without a sufficiently large beamsplitter and/or focusing optics. LIGO manages with curved end mirrors that match and focus the impinging wavefronts to symmetrically propogate the beam back to the BS. Though this new requirements implicitly suggest an additional symmetry requirement for the phasefronts to optimally interfere at the beamsplitter. 
 
-This revised propogation consideration implicitly contains additional symmetry requirement to be maintained between the perpendicular co-propogating beams for optimal interference.
-\\
-\textcolor{red}{Optical autocorrelation function / mode overlap function [integrated for accumulated PHASE]}
-\\
-\textcolor{red}{This autocoorelation exhibits "on" and "off" behavior for a plane wave field solution, but over the integrated phasefront of a gaussian beam (or power on a DC photodiode) the maximum interference is also a function of the phase offset.}
-
-Mode overlap $\eta$ characterizes this autocorrelation normalized by the individual field intensity (or power):
+Mode overlap $\eta$ can characterize the health and relative performance of a configured interferometer normalized by field intensity (or power):
 
 \begin{equation}\label{eq:mode_overlap}
-	\eta = \bigg|\int E_x E_y dA \bigg|^{2} \bigg/ (P_x P_y) \cross 100 \%
+	\eta = \bigg|\int E_x E_y dA \bigg|^{2} \bigg/ (P_x P_y) 
 \end{equation}
 
-For any given mode overlap configuration we can quantify an interferometer's performance by measuring and computing contrast ($\nu$), by comparing the measured two local extrema (local maxima and local minima): 
+Significant length offsets between the arms can contribute to a mismatch of the beam mode at the beamsplitter. Though a contrast ($\nu$) measurement may do just as well without beam profiling or sensor arrays at the anti-symmetric port. 
 
 \begin{equation}\label{eq:contrast}
 	\nu = \frac{P_\mathrm{max} - P_\mathrm{min}}{P_\mathrm{max} + P_\mathrm{min}}
 \end{equation}
 
-Operating on a scale from 0 to 1, $\nu \le 1$ simple Michelson can be an indication of : mode mismatch at the beam splitter and/or assymetrical optical loss. From the perspective of mode matching $\nu = 1$ represents a mode overlap of $\eta = 100 \%$ (assuming no optical loss).  Though optical aberrations are more often than not introduced asymetrically between the orthogonal beam paths that often limit interference and can be simultaneously indicated through contrast measurements.  
-
-An important consideration for any sufficiently long arm length (like that used for LIGO), you are likely to encounter constraints in length if not without a sufficiently large beamsplitter and/or focusing optics. LIGO achieves this with curved end mirrors that match and focus the impinging wavefronts, though with a sensitivity indicated by ~\cite{} [$\mathrm{sensitivity} ~ 1/G_\mathrm{MICH} \approx 10^{-18} \; [\frac{1}{\sqrt{\mathrm{Hz}}}]]$ it still does not reach the requirement to confirm a measurement from CBCs @ 100 Hz ($\approx 10^{-21} \; [\frac{1}{\sqrt{\mathrm{Hz}}}]$.)
+Operating on a scale from 0 to 1, $\nu \le 1$ can be an indication of : mode mismatch at the beam splitter and/or assymetrical optical loss. From the perspective of mode matching $\nu = 1$ represents a mode overlap of $\eta = 100 \%$ (assuming no optical loss).  Though optical losses and aberrations are more often than not asymetrically introduced between the orthogonal beam paths that often limit optimal interference and are indiscriminately accounted for in contrast measurements.  
 
 \subsection{Fabry-P\'{e}rot Michelson (FPMI)}
 At the time of the LIGO proposal, constraints (physical and financial) for terrestrial gravitational wave detectors required a compact solution for increasing length (L) of the Michelson arms so to increase the beam phasefront lifetime within the Michelson arms. Two proposed arm folding techniques were considered: the Herriot Delay Line and the Fabry-P\'{e}rot cavity, though ultimately the Fabry-P\'{e}rot cavity is currently the predominent choice.
@@ -125,7 +119,7 @@ To understand the relevance of the Fabry-P\'{e}rot, we consider an idealized coh
 	\label{fig:fp_cav}
 \end{figure}
 
-Light enters the cavity only after passing the input mirror with the incident field amplitude reduced by the mirror reflection coefficient. Though seemingly not useful, it is with an integer number of wavelengths of the incident laser light between the two mirrors that the circulating beam coherently adds with the input, achieving resonance.  A cavity of length $L$ and comprised of an input coupler ($r_1$,$t_1$) and end mirror ($r_2$, $t_2$) yield the following effective cavity reflection and transmission coefficients: 
+Light enters the cavity only after passing the input mirror with the incident field amplitude reduced by the mirror reflection coefficient. Though seemingly not useful, it is with an integer number of wavelengths of the incident laser light between the two mirrors that the circulating beam coherently adds with the input, achieving resonance.  A cavity of length $L$ is comprised of an input coupler ($r_1$,$t_1$) and end mirror ($r_2$, $t_2$) which when configured yield the following effective cavity reflection and transmission coefficients: 
 
 \iffalse that the input and circulating that the photons belonging to a particular phasefront can be experimentally tracked, and lucky for us this is is why we measure interference at the anti-symmetric port. But these benefit with a constant source at the cavity input the phasefronts entering the cavity are superimposed onto the circulating cavity field and, more often than not, add incoherently which can makes this thought experiment seem silly.\fi 
 
