@@ -14,7 +14,6 @@ In other words, there exists a wave solution with two separate transverse polari
 \begin{figure}[H]
 	\includegraphics[width=\textwidth]{INTRO/gw_particle_ring1.pdf}
 	\caption{A stop motion pictograph displaying the influence of a single gravitational wave period from the two polarizations on a ring of particles. The top row shows the influence of the `+' polarization while the bottom row demonstrates that of the `$\times$' polariztion}	
-
 	\label{fig:gw_polarizations}
 \end{figure}
 
@@ -81,21 +80,19 @@ As presented, the functional behavior of the simple Michelson is to perform opti
 E(r) = E_o \frac{\sqrt{[\lambda z_o] / \pi}}{W(z)}e^{-r^2 / W^2(z)} e^{-ikz - ik[r^2 / (2R(z))] + i \zeta}
 \end{equation}
 
-Where $E_o$ is a complex field amplitude, $r^{2}/(2(R(z))$ defines transverse coordinates $r = \sqrt{x^{2} + y^{2}}$ on a hemisphere with the ROC of $R(z)$ that defines a surface of uniform phase, $k$ is the wave number, $W(z)$ is the radius from the beam axis that contains $(1-1/e^2) \times 100 \%$ of the integrated beam power, and $\zeta$ is the Gouy phase. An important consideration for any sufficiently long arm length (like that used for LIGO), you are likely to encounter a length constraint from beam divergence if not without a sufficiently large beamsplitter and/or focusing optics. LIGO manages with curved end mirrors that match and focus the impinging wavefronts to symmetrically propogate the beam back to the BS. Though this new requirements implicitly suggest an additional symmetry requirement for the phasefronts to optimally interfere at the beamsplitter. 
-
-Mode overlap $\eta$ can characterize the health and relative performance of a configured interferometer normalized by field intensity (or power):
+Where $E_o$ is a complex field amplitude, $r^{2}/(2(R(z))$ defines transverse coordinates $r = \sqrt{x^{2} + y^{2}}$ on a hemisphere with the ROC of $R(z)$ that defines a surface of uniform phase, $k$ is the wave number, $W(z)$ is the radius from the beam axis that contains $(1-1/e^2) \times 100 \%$ of the integrated beam power, and $\zeta$ is the Gouy phase. An important consideration for any sufficiently long arm length (like that used for LIGO), you are likely to encounter a length constraint from beam divergence if not without a sufficiently large beamsplitter and/or focusing optics. LIGO and most other terrestrial GW detectors manage with curved end mirrors that match / focus impinging wavefronts; symmetrically back propogate them in each arm to maintain optimal interference at the beamsplitter. Mode overlap $\eta$ provides a useful metric of this optimization: 
 
 \begin{equation}\label{eq:mode_overlap}
 	\eta = \bigg|\int E_x E_y dA \bigg|^{2} \bigg/ (P_x P_y) 
 \end{equation}
 
-Significant length offsets between the arms can contribute to a mismatch of the beam mode at the beamsplitter. Though a contrast ($\nu$) measurement may do just as well without beam profiling or sensor arrays at the anti-symmetric port. 
+Significant length offsets between the arms can contribute to mismatching of the beam mode wavefronts interfering at the beamsplitter. Though an interferometer contrast ($\nu$) measurement may do just as well without more involved beam mode analysis:
 
 \begin{equation}\label{eq:contrast}
 	\nu = \frac{P_\mathrm{max} - P_\mathrm{min}}{P_\mathrm{max} + P_\mathrm{min}}
 \end{equation}
 
-Operating on a scale from 0 to 1, $\nu \le 1$ can be an indication of : mode mismatch at the beam splitter and/or assymetrical optical loss. From the perspective of mode matching $\nu = 1$ represents a mode overlap of $\eta = 100 \%$ (assuming no optical loss).  Though optical losses and aberrations are more often than not asymetrically introduced between the orthogonal beam paths that often limit optimal interference and are indiscriminately accounted for in contrast measurements.  
+Operating on a scale from 0 to 1, $\nu \le 1$ can be an indication of : mode mismatch at the beam splitter and/or assymetrical optical loss. From a mode matching perspective $\nu = 1$ represents a mode overlap of $\eta = 100 \%$ (assuming no optical loss).  Though optical losses and aberrations are more often than not asymetrically introduced between the orthogonal beam paths that often limit optimal interference and are indiscriminately accounted for in contrast measurements.  
 
 \subsection{Fabry-P\'{e}rot Michelson (FPMI)}
 At the time of the LIGO proposal, constraints (physical and financial) for terrestrial gravitational wave detectors required a compact solution for increasing length (L) of the Michelson arms so to increase the beam phasefront lifetime within the Michelson arms. Two proposed arm folding techniques were considered: the Herriot Delay Line and the Fabry-P\'{e}rot cavity, though ultimately the Fabry-P\'{e}rot cavity is currently the predominent choice.
