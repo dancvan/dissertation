@@ -147,24 +147,6 @@ The ratio of the circulating power to the cavity input power is set by the refle
   \label{fig:fpmi}
 \end{figure}
 
-\paragraph{Gaussian beam phasefronts}
-Imposing a Gaussian beam to our theoretical two mirror cavity and after considering \ref{eq:gaussian_beam}, a careful consideration: containing the power of a diverging phasefront between two finite sized mirrors. The resonance of a gaussian beam requires, one or both of the cavity mirrors to have a finite radius of curvature to match a resonant beam's phasefront \textcolor{red}{see stability criteria}. Though alongside the TEM00 fundamental mode, the paraxial equation (\textcolor{red}{see appendix}) has families of solutions that exist for the aforementioned cavity configuration; these solutions best described by the Hermite-Gauss and Laguerre-Gauss bases:
-
-%%FIGURE: Nonideal interference can result in generating any one of the provided interference patterns. Laguerre-Gauss and Hermite Gauss modes are metrics of mode mismatch and misalignment respectively.
-
-\begin{equation}
-	E_\mathrm{HG} =  
-\end{equation}
-
-
-\begin{equation}
-	E_\mathrm{LG} = 
-\end{equation}
-
-%%FIGURE: Various mode wavefront solutions with the following caption: ''The various wavefront geometries of the Hermite-Gauss [left] and Laguerre-Gauss modes [right]. Some of these modes are commonly used as error signals used for quantifying the presence of mirror misalignment and mode mismatch."
-
-If it wasn't clear yet, it certainly will be understood that the delicate state of cavity resonance is one that is hard to maintain and easily broken.  
-
 \paragraph{``Arm elongation''}
 
 An intuitive analogue of the Fabry-P\'{e}rot's arm elongation capabilities is drawn out when comparing against a computed Delay Line storage time~\cite{saulson2017}:
@@ -180,6 +162,24 @@ Advanced LIGO, with its 4km length and approximate finesse of 208 coorelates to 
 \end{equation}
 
 It's incredible that simply adding two mirrors can present such detector gain improvement, though in practice the enhancement is contingent upon: 1) maintaining fixed mirror positions within a fraction of the wavelength of the light used and 2) reduction in detector bandwidth. In spite of the narrow mirror displacement requirements, clever experimental techniques like the Pound-Drever-Hall technique allow experimentalists to meet them ~\cite{?}.
+
+\paragraph{Gaussian and Higher Order Mode phasefronts}
+Imposing a Gaussian beam to our theoretical two mirror cavity, containing the power of a diverging phasefront between two finite sized mirrors. As mentioned, a simple Michelson with with sufficiently long arms requires focusing a diverging beam by using curved end mirrors to match the beam wavefront. This    The resonance of a gaussian beam requires, one or both of the cavity mirrors to have a finite radius of curvature to match a resonant beam's phasefront \textcolor{red}{see stability criteria}. Though alongside the TEM00 fundamental mode, the paraxial equation (\textcolor{red}{see appendix}) has families of solutions that exist for the aforementioned cavity configuration; these solutions best described by the Hermite-Gauss and Laguerre-Gauss bases:
+
+%%FIGURE: Nonideal interference can result in generating any one of the provided interference patterns. Laguerre-Gauss and Hermite Gauss modes are metrics of mode mismatch and misalignment respectively.
+
+\begin{equation}
+	E_\mathrm{HG} =  
+\end{equation}
+
+
+\begin{equation}
+	E_\mathrm{LG} = 
+\end{equation}
+
+%%FIGURE: Various mode wavefront solutions with the following caption: ''The various wavefront geometries of the Hermite-Gauss [left] and Laguerre-Gauss modes [right]. Some of these modes are commonly used as error signals used for quantifying the presence of mirror misalignment and mode mismatch."
+
+If it hasn't been clear yet, it certainly will be that the state of cavity resonance is one that is hard to maintain due to its delicate nature.  
 
 \subsection{Dual-Recycled Fabry-Perot Michelson (DRFPMI)}
 Recycling mirrors are an extension of the FPMI that exploits otherwise wasted optical power by providing a means of enhancing the optical gain and bandwidth of the instrument. Strategic tuning of mirror coating parameters and positions at symmetric and anti-symmetric ports can incorporate power recycling and signal recycling respectively.
