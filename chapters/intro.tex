@@ -95,7 +95,7 @@ Significant length offsets between the arms can contribute to mismatching of the
 Operating on a scale from 0 to 1, $\nu \le 1$ can be an indication of : mode mismatch at the beam splitter and/or assymetrical optical loss. From a mode matching perspective $\nu = 1$ represents a mode overlap of $\eta = 100 \%$ (assuming no optical loss).  Though optical losses and aberrations are more often than not asymetrically introduced between the orthogonal beam paths that often limit optimal interference and are indiscriminately accounted for in contrast measurements.  
 
 \subsection{Fabry-P\'{e}rot Michelson (FPMI)}
-At the time of the LIGO proposal, constraints (physical and financial) for terrestrial gravitational wave detectors required a compact solution for increasing length (L) of the Michelson arms so to increase the beam phasefront lifetime within the Michelson arms. Two proposed arm folding techniques were considered: the Herriot Delay Line and the Fabry-P\'{e}rot cavity, though ultimately the Fabry-P\'{e}rot cavity is currently the predominent choice.
+At the time of the LIGO proposal, constraints (physical and financial) for terrestrial gravitational wave detectors required a compact solution for increasing length (L) of the Michelson arms so to increase the beam phasefront lifetime within the Michelson arms. Two proposed arm folding techniques were considered: the Herriot Delay Line and the Fabry-P\'{e}rot cavity, though the Fabry-P\'{e}rot cavity is currently the predominent choice.
 
 \begin{figure}[ht!]
 	\centering
@@ -103,7 +103,6 @@ At the time of the LIGO proposal, constraints (physical and financial) for terre
 	\caption{A 12 bounce Herriot Delay Line with a small mirror input / output couplers inserted into the beam path.}
 	\label{fig:hdl_cav}
 \end{figure}
-
 
 \subsubsection{The Fabry-P\'{e}rot cavity}
 \label{section:FPC}
@@ -166,19 +165,23 @@ It's incredible that simply adding two mirrors can present such detector gain im
 \paragraph{Gaussian and Higher Order Mode phasefronts}
 Imposing a Gaussian beam to our theoretical two mirror cavity, containing the power of a diverging phasefront between two finite sized mirrors. As mentioned, a simple Michelson with with sufficiently long arms requires focusing a diverging beam by using curved end mirrors to match the beam wavefront. This    The resonance of a gaussian beam requires, one or both of the cavity mirrors to have a finite radius of curvature to match a resonant beam's phasefront \textcolor{red}{see stability criteria}. Though alongside the TEM00 fundamental mode, the paraxial equation (\textcolor{red}{see appendix}) has families of solutions that exist for the aforementioned cavity configuration; these solutions best described by the Hermite-Gauss and Laguerre-Gauss bases:
 
-%%FIGURE: Nonideal interference can result in generating any one of the provided interference patterns. Laguerre-Gauss and Hermite Gauss modes are metrics of mode mismatch and misalignment respectively.
-
 \begin{equation}\label{eq:HG_beam}
-	E_\mathrm{n,m}_\mathrm{HG}(x,y,z) = E_o \frac{\sqrt{[\lambda z_o] / \pi}}{W(z)}\mathbb{H}_{\mathrm{n}}\mathbb{H}_{\mathrm{m}}e^{-(x^2+y^2) / W^2(z)} e^{-ikz - ik[(x^2 + y^2) / (2R(z))] + i (1+\mathrm{n}+\mathrm{m})\zeta(z)}
+	E_\mathrm{n,m}(x,y,z) = E_o \frac{\sqrt{[\lambda z_o] / \pi}}{W(z)}\mathbb{H}_{\mathrm{n}}\mathbb{H}_{\mathrm{m}}e^{-(x^2+y^2) / W^2(z)} e^{-ikz - ik[(x^2 + y^2) / (2R(z))] + i (1+\mathrm{n}+\mathrm{m})\zeta(z)}
 \end{equation}
-
 \begin{equation}\label{eq:LG_beam}
-	E_\mathrm{l,m}_\mathrm{LG}(r,\phi,z) = E_o \frac{\sqrt{[\lambda z_o] / \pi}}{W(z)} \big(\frac{\rho}{W(z)}\big)^\mathrm{l}\mathbb{L}^{\mathrm{l}}_{\mathrm{m}}e^{-\rho^2 / W^2(z)} e^{-ikz - ik[\rho^2 / (2R(z))] - i\mathrm{l}\phi + i (1+\mathrm{l}+2\mathrm{m})\zeta(z)}
+	E_\mathrm{l,m}(r,\phi,z) = E_o \frac{\sqrt{[\lambda z_o] / \pi}}{W(z)} \bigg(\frac{\rho}{W(z)}\bigg)^\mathrm{l}\mathbb{L}^{\mathrm{l}}_{\mathrm{m}}e^{-\rho^2 / W^2(z)} e^{-ikz - ik[\rho^2 / (2R(z))] - i\mathrm{l}\phi + i (1+\mathrm{l}+2\mathrm{m})\zeta(z)}
 \end{equation}
 
-%%FIGURE: Various mode wavefront solutions with the following caption: ''The various wavefront geometries of the Hermite-Gauss [left] and Laguerre-Gauss modes [right]. Some of these modes are commonly used as error signals used for quantifying the presence of mirror misalignment and mode mismatch."
+\begin{figure}[ht!]
+  \begin{subcaptiongroup}{\includegraphics[width=.45\textwidth,page=3]{INTRO/ifo_configs.pdf}}
+  \includegraphics[width=.575\textwidth]{INTRO/fpmi_fr.pdf}
+  \end{subcaptiongroup}
+  \hfill
+  \caption{\textcolor{red}{Various mode wavefront solutions with the following caption:} Nonideal interference can result in generating any one of the provided interference patterns, that are the Hermite-Gauss and Laguerre-Gauss modes. These beam profiles provide metrics of misalignment and mode mismatch respectively between a . The various wavefront geometries of the Hermite-Gauss [left] and Laguerre-Gauss modes [right]. Some of these modes are commonly used as error signals used for quantifying the presence of mirror misalignment and mode mismatch.}
+  \label{fig:HGLG_modes}
+\end{figure}
 
-If it hasn't been clear yet, it certainly will be that the state of cavity resonance is one that is hard to maintain due to its delicate nature.  
+If it hasn't been clear yet, it certainly will be that the state of cavity resonance is one that is hard to maintain due to its delicate nature, though the virtue of this is a cooresponding displacement sensitivity.  
 
 \subsection{Dual-Recycled Fabry-Perot Michelson (DRFPMI)}
 Recycling mirrors are an extension of the FPMI that exploits otherwise wasted optical power by providing a means of enhancing the optical gain and bandwidth of the instrument. Strategic tuning of mirror coating parameters and positions at symmetric and anti-symmetric ports can incorporate power recycling and signal recycling respectively.
@@ -241,10 +244,8 @@ As may be inferred, this technique requires a mirror installation at the anti-sy
 \subsection{Reaching ``Observing Mode"}
 The prior discussions still have yet to discuss most of the practical considerations that are required to operate a DRFPMI as a gravitational wave observatory. For the sake of narrowing down the relevance to the body of this work, we discuss more subtle features of the detector: one requires some knowledge of beam optics while the other involves the thermodynamic noise limitation of highly reflective mirror coatings. Alongside this, it is important to know that the studies take place at two very different stages of detector comissoning (One is aimed at comissioning current detectors and the other aims at informing choices to be made for next generation detectors) though both are aimed at increasing gravitational wave detector sensitivity.  The current objective at hand is to inform of these essential criteria for interferometer operations as they pertain to this dissertation. More details on setting up the simple Michelson provides on some of the initial requirements; while the second order is establishing the strict conditions of the Fabry-P\'{e}rot cavities.
 
-
 \subsubsection{Length Stabilization}
 With LIGO's coupled cavity configuration, maintaining mirror positions is imperative. Techniques such as the offset lock (using a DC photodiode to measure the transmitted, reflected, or circulating power within a linear and slightly off resonance point) \cite{} and the Pound-Drever-Hall technique (see \ref{subsubsec:pdh} ) are used to maintain cavity length stabilization. Stabilizing cavity lengths to configure the detector into a highly sensitive differential arm sensor is a process that is worthwhile understanding with more ample discussions ~\cite{Mullavey:12}.
-
 
 %So far, we've discussed light and phase fronts without addressing geometric
 %constraints when using Gaussian laser light. We consider a general complex
