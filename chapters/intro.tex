@@ -162,8 +162,10 @@ Advanced LIGO, with its 4km length and approximate finesse of 208 coorelates to 
 
 It's incredible that simply adding two mirrors can present such detector gain improvement, though in practice the enhancement is contingent upon: 1) maintaining fixed mirror positions within a fraction of the wavelength of the light used and 2) reduction in detector bandwidth. In spite of the narrow mirror displacement requirements, clever experimental techniques like the Pound-Drever-Hall technique allow experimentalists to meet them ~\cite{?}.
 
-\paragraph{Gaussian and Higher Order Mode phasefronts}
-Imposing a Gaussian beam to our theoretical two mirror cavity, containing the power of a diverging phasefront between two finite sized mirrors. As mentioned, a simple Michelson with with sufficiently long arms requires focusing a diverging beam by using curved end mirrors to match the beam wavefront. This    The resonance of a gaussian beam requires, one or both of the cavity mirrors to have a finite radius of curvature to match a resonant beam's phasefront \textcolor{red}{see stability criteria}. Though alongside the TEM00 fundamental mode, the paraxial equation (\textcolor{red}{see appendix}) has families of solutions that exist for the aforementioned cavity configuration; these solutions best described by the Hermite-Gauss and Laguerre-Gauss bases:
+\paragraph{Gaussian and Higher Order Mode phasefronts (Mode Matching pt.2)}
+Imposing a Gaussian beams to the Fabry-Perot reveal some final caveats before exploiting any potential enhancement. First is that of the beam divergence, which can quickly limit the amount of stored power between two flat finite sized mirrors. Though, as addressed for the simple Michelson, curving the mirrors focuses the Gaussian beam power which permits a robust resonance when curving one or both cavity mirrors. 
+
+Also mentioned, albeit in passing, is the importance of the overlap between mirror radius of curvature to the beam phasefront \textcolor{red}{see stability criteria}. Beam optics informs of relatively straightfoward solutions for optimal mirror placement for a given incident beam and vice versa. This exercise informs of the importance of matching the gaussian beam mode to the mode of a spherical mirror resonator given resonator, but more unintuitive are the implications if there is deviation from said solution. Alongside the TEM00 fundamental mode, the paraxial equation can also produce \cite{dana_alignment} (\textcolor{red}{see appendix}) families of solutions that exist for the two mirror cavity configuration; these solutions are the Hermite-Gauss and Laguerre-Gauss bases:
 
 \begin{equation}\label{eq:HG_beam}
 	E_\mathrm{n,m}(x,y,z) = E_o \frac{\sqrt{[\lambda z_o] / \pi}}{W(z)}\mathbb{H}_{\mathrm{n}}\mathbb{H}_{\mathrm{m}}e^{-(x^2+y^2) / W^2(z)} e^{-ikz - ik[(x^2 + y^2) / (2R(z))] + i (1+\mathrm{n}+\mathrm{m})\zeta(z)}
@@ -172,6 +174,9 @@ Imposing a Gaussian beam to our theoretical two mirror cavity, containing the po
 	E_\mathrm{l,m}(r,\phi,z) = E_o \frac{\sqrt{[\lambda z_o] / \pi}}{W(z)} \bigg(\frac{\rho}{W(z)}\bigg)^\mathrm{l}\mathbb{L}^{\mathrm{l}}_{\mathrm{m}}e^{-\rho^2 / W^2(z)} e^{-ikz - ik[\rho^2 / (2R(z))] - i\mathrm{l}\phi + i (1+\mathrm{l}+2\mathrm{m})\zeta(z)}
 \end{equation}
 
+These HG and LG field solutions arise from added perturbations in the beam-cavity alignment and mode mismatch respectively. The presence of power in these modes when sweeping a mirror along the beam axis ($\Delta FSR$) indicates optical loss but can simultaneously provide useful feedback in reducing it through the construction and maintainence of a TEM00 beam-resonator coupling. 
+
+
 \begin{figure}[ht!]
   \begin{subcaptiongroup}
 	  \includegraphics[width=.48\textwidth]{INTRO/HG00_HG22_modes.pdf}
@@ -179,11 +184,11 @@ Imposing a Gaussian beam to our theoretical two mirror cavity, containing the po
 	  \includegraphics[width=.48\textwidth]{INTRO/LG00_LG22_modes.pdf}
   \end{subcaptiongroup}
   \hfill
-  \caption{Nonideal interference can result in generating any one of the provided interference patterns, that are the Hermite-Gauss and Laguerre-Gauss modes. These beam profiles provide metrics of misalignment and mode mismatch respectively between a . The various wavefront geometries of the Hermite-Gauss [left] and Laguerre-Gauss modes [right]. Some of these modes are commonly used as error signals used for quantifying the presence of mirror misalignment and mode mismatch.}
+  \caption{Nonideal interference can result in generating any one of the provided interference patterns, that are the Hermite-Gauss and Laguerre-Gauss modes. These beam profiles provide metrics of misalignment and mode mismatch respectively between a . The various wavefront geometries of the Hermite-Gauss [left] and Laguerre-Gauss modes [right].}
   \label{fig:HGLG_modes}
 \end{figure}
 
-If it hasn't been clear yet, it certainly will be that the state of cavity resonance is one that is hard to maintain due to its delicate nature, though the virtue of this is a cooresponding displacement sensitivity.  
+
 
 \subsection{Dual-Recycled Fabry-Perot Michelson (DRFPMI)}
 Recycling mirrors are an extension of the FPMI that exploits otherwise wasted optical power by providing a means of enhancing the optical gain and bandwidth of the instrument. Strategic tuning of mirror coating parameters and positions at symmetric and anti-symmetric ports can incorporate power recycling and signal recycling respectively.
