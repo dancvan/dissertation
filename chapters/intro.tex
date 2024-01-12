@@ -169,10 +169,16 @@ Imposing a Gaussian beams to the Fabry-Perot reveal some final caveats before ex
 Also mentioned, albeit in passing, is the importance of the overlap between mirror radius of curvature to the beam phasefront \textcolor{red}{see stability criteria}. Beam optics informs of relatively straightfoward solutions for optimal mirror placement for a given incident beam and vice versa. This exercise informs of the importance of matching the gaussian beam mode to the mode of a spherical mirror resonator given resonator, but more unintuitive are the implications if there is deviation from said solution. Alongside the TEM00 fundamental mode, the paraxial equation can also produce \cite{Anderson:84} (\textcolor{red}{see appendix}) families of solutions that exist for the two mirror cavity configuration; these solutions are the Hermite-Gauss and Laguerre-Gauss bases:
 
 \begin{equation}\label{eq:HG_beam}
-	E_\mathrm{n,m}(x,y,z) = E_o \frac{\sqrt{[\lambda z_o] / \pi}}{W(z)}\mathbb{H}_{\mathrm{n}}\mathbb{H}_{\mathrm{m}}e^{-(x^2+y^2) / W^2(z)} e^{-ikz - ik[(x^2 + y^2) / (2R(z))] + i (1+\mathrm{n}+\mathrm{m})\zeta(z)}
+	\begin{split}
+		E_\mathrm{n,m}(x,y,z) = & E_o \frac{\sqrt{[\lambda z_o] / \pi}}{W(z)}\mathbb{H}_\mathrm{n}\bigg(\frac{\sqrt{2}x}{W(z)}\bigg)\mathbb{H}_\mathrm{m}\bigg(\frac{\sqrt{2}x}{W(z)}\bigg)\\
+					& \times \mathrm{exp}\bigg(\frac{-(x^2+y^2)}{W^2(z)}\bigg) \mathrm{exp}\bigg(-ikz - ik\frac{x^2 + y^2}{2R(z)} + i (1+\mathrm{n}+\mathrm{m})\zeta(z)\bigg)
+	\end{split}
 \end{equation}
 \begin{equation}\label{eq:LG_beam}
-	E_\mathrm{l,m}(r,\phi,z) = E_o \frac{\sqrt{[\lambda z_o] / \pi}}{W(z)} \bigg(\frac{\rho}{W(z)}\bigg)^\mathrm{l}\mathbb{L}^{\mathrm{l}}_{\mathrm{m}}e^{-\rho^2 / W^2(z)} e^{-ikz - ik[\rho^2 / (2R(z))] - i\mathrm{l}\phi + i (1+\mathrm{l}+2\mathrm{m})\zeta(z)}
+	\begin{split}
+	E_\mathrm{l,m}(r,\phi,z) = & E_o \frac{\sqrt{[\lambda z_o] / \pi}}{W(z)} \bigg(\frac{\rho}{W(z)}\bigg)^\mathrm{l}\mathbb{L}^{\mathrm{l}}_{\mathrm{m}}\bigg(\frac{\sqrt{2}x}{W(z)}\bigg)\\
+				   &  \times \mathrm{exp}\bigg(-\frac{\rho^2}{W^2(z)}\bigg) \mathrm{exp}\bigg(-ikz - ik\frac{\rho^2}{2R(z))} - i\mathrm{l}\phi + i (1+\mathrm{l}+2\mathrm{m})\zeta(z)\bigg)
+	\end{split}
 \end{equation}
 
 These HG and LG field solutions arise from added perturbations in the beam-cavity alignment and mode mismatch respectively. The presence of power in these modes when sweeping a mirror along the beam axis ($\Delta FSR$) indicates optical loss but can simultaneously provide useful feedback in reducing it through the construction and maintainence of a TEM00 beam-resonator coupling. 
@@ -185,7 +191,7 @@ These HG and LG field solutions arise from added perturbations in the beam-cavit
 	  \includegraphics[width=.48\textwidth]{INTRO/LG00_LG22_modes.pdf}
   \end{subcaptiongroup}
   \hfill
-  \caption{Various intensity profiles of the Hermite-Gauss ($\mathrm{HG}_\mathrm{n,m}$, [n,m$\leq 2$]) and Laguerre-Gauss ($\mathrm{LG}_\mathrm{l,m}$,  [l,m $\leq 2$]) modes.}
+  \caption{Various transverse mode intensity profiles, with Hermite-Gauss modes ($\mathrm{HG}_\mathrm{n,m}$, [n,m \hspace{.5pt} $\leq 2$]) to the left and Laguerre-Gauss modes ($\mathrm{LG}_\mathrm{l,m}$,  [l,m \hspace{.5pt} $\leq 2$]) to the right.}
   \label{fig:HGLG_modes}
 \end{figure}
 
@@ -253,7 +259,7 @@ As may be inferred, this technique requires a mirror installation at the anti-sy
 The prior discussions still have yet to discuss most of the practical considerations that are required to operate a DRFPMI as a gravitational wave observatory. For the sake of narrowing down the relevance to the body of this work, we discuss more subtle features of the detector: one requires some knowledge of beam optics while the other involves the thermodynamic noise limitation of highly reflective mirror coatings. Alongside this, it is important to know that the studies take place at two very different stages of detector comissoning (One is aimed at comissioning current detectors and the other aims at informing choices to be made for next generation detectors) though both are aimed at increasing gravitational wave detector sensitivity.  The current objective at hand is to inform of these essential criteria for interferometer operations as they pertain to this dissertation. More details on setting up the simple Michelson provides on some of the initial requirements; while the second order is establishing the strict conditions of the Fabry-P\'{e}rot cavities.
 
 \subsubsection{Length Stabilization}
-With LIGO's coupled cavity configuration, maintaining mirror positions is imperative. Techniques such as the offset lock (using a DC photodiode to measure the transmitted, reflected, or circulating power within a linear and slightly off resonance point) \cite{} and the Pound-Drever-Hall technique (see \ref{subsubsec:pdh} ) are used to maintain cavity length stabilization. Stabilizing cavity lengths to configure the detector into a highly sensitive differential arm sensor is a process that is worthwhile understanding with more ample discussions ~\cite{Mullavey:12}.
+With LIGO's coupled cavity configuration, maintaining mirror positions is imperative. Techniques such as the ''side-fringe" lock (using a DC photodiode to measure the transmitted, reflected, or circulating power within a linear and slightly off resonance point) \cite{fx2003stabilizing} and the Pound-Drever-Hall technique (see \ref{subsubsec:pdh} ) are used to maintain cavity length stabilization. Stabilizing cavity lengths to configure the detector into a highly sensitive differential arm sensor is a process that is worthwhile understanding with more ample discussions ~\cite{Mullavey:12}.
 
 %So far, we've discussed light and phase fronts without addressing geometric
 %constraints when using Gaussian laser light. We consider a general complex
@@ -281,7 +287,7 @@ Derived from the paraxial approximation of the Helmholtz equation, this field is
 \end{figure}
 
 \begin{equation}
-	E_{n,m}(x,y,z) = E_o \bigg[ \frac{W_o}{W(z)} \bigg] H_n \bigg[ \frac{\sqrt{2}x}{W(z)} \bigg] H_m \bigg[ \frac{\sqrt{2}x}{W(z)} \bigg] e^{-(x^2 + y^2)/W(z) - ikz - ik[(x^2 + y^2)/(2R(z))] + i(n + m + 1)\zeta(z)}
+	E_{n,m}(x,y,z) = E_o \bigg[ \frac{W_o}{W(z)} \bigg] H_n \bigg[  \bigg] H_m \bigg[ \bigg] e^{-(x^2 + y^2)/W(z) - ikz - ik[(x^2 + y^2)/(2R(z))] + i(n + m + 1)\zeta(z)}
 \end{equation}
 
 Even with state-of-the-art ground motion isolation for terrestrial gravitational detectors using quadruple stage pendula and high mass mirrors, current gravitational wave detectors still suffer from occasional misalignment and require sensing and feedback loops to meet mirror alignment requirements.
