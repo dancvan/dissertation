@@ -115,19 +115,19 @@ To inform of the folding mechanism, we consider coherent light encountering an o
 	\label{fig:fp_cav}
 \end{figure}
 
-Light enters the cavity only after passing the input mirror with the incident field amplitude reduced by the mirror reflection coefficient. Though seemingly not useful, it is with an integer number of wavelengths of the incident laser light between the two mirrors that the circulating beam coherently adds with the input, achieving resonance.  A cavity of length $L$ is comprised of an input coupler ($r_1$,$t_1$) and end mirror ($r_2$, $t_2$) which when configured yield the following effective cavity reflection and transmission coefficients: 
+Light enters the cavity only after passing the input mirror, and the trivial solution indicates a field amplitude reduction proportional to mirror reflection coefficient. Though by tuning the length between the input and end mirrors to an integer multiple of the beam wavelength, circulating light coherently adds with the input, achieving resonance.  A cavity of length $L$, when configured, yields the following cavity reflection and transmission coefficients: 
 
 \iffalse that the input and circulating that the photons belonging to a particular phasefront can be experimentally tracked, and lucky for us this is is why we measure interference at the anti-symmetric port. But these benefit with a constant source at the cavity input the phasefronts entering the cavity are superimposed onto the circulating cavity field and, more often than not, add incoherently which can makes this thought experiment seem silly.\fi 
 
 \begin{equation}
-	r_c = -r_1 + \frac{t^2_1r_2 e^{-i2kL}}{1-r_1 r_2 e^{-i2kl}}
+	r_c = -r_1 + \frac{t^2_1r_2 e^{-i2kL}}{1-r_1 r_2 e^{-i2kL}}
 \end{equation}
 
 \begin{equation}
 	t_c = \frac{t_1 t_2 e^{-ikL}}{1-r_1 r_2 e^{-i2kL}}	
 \end{equation}
 
-Tuning the positions of mirrors with high reflectivity coefficients and the usage of an infared laser (i.e. $\lambda$ 1064nm) requires strict length tuning and maintenance for resonance ($\leq 1\mathrm{e-}7$ [m]). 
+Maintaining resonance for highly reflective mirrors and short wavelength mirrors (i.e. $\lambda$ 1064nm) requires strict length tuning ($\leq 1\mathrm{e-}7$ [m]). 
 
 \begin{figure}[H]
 \includegraphics[width=\textwidth]{ALGAAS/REFL_cav_intensity.pdf}
@@ -135,7 +135,7 @@ Tuning the positions of mirrors with high reflectivity coefficients and the usag
 \label{fig:cav_length_response_DCpow}
 \end{figure}
 
-The ratio of the circulating power to the cavity input power is set by the reflectivity paramters of the cavity mirrors; demonstrating the coorelation to how long a given phasefront can remain stored between said mirrors at resonance. This ``cavity storage time" ($\tau_s \appropto L r_1 r_2$) translates as a length elongation with the phasefront travel history encoded in the arrival time of its photons back at the beam splitter.
+The ratio between circulating and cavity input power is set by the reflectivity paramters of the cavity mirrors, demonstrating the coorelation to how long a given phasefront can remain stored between said mirrors at resonance. This ``cavity storage time" ($\tau_s \appropto L r_1 r_2$) translates as a length elongation with the phasefront travel history encoded in the arrival time of its photons back at the beam splitter.
 
 \begin{figure}[ht!]
   \begin{subcaptiongroup}{\includegraphics[width=.45\textwidth,page=3]{INTRO/ifo_configs.pdf}}
@@ -160,7 +160,7 @@ Advanced LIGO, with its 4km length and approximate finesse of 208 coorelates to 
 	\mathrm{H_{FPMI}} = \frac{t_1 ^2 r_2}{(t_1^2 + r_1^2)r_2 - r_1} \frac{\mathrm{H_{MICH}}}{1 - r_1 r_2 e^{-2i \omega L / c}}
 \end{equation}
 
-It's incredible that simply adding two mirrors can present such detector gain improvement, though in practice the enhancement is contingent upon: 1) maintaining fixed mirror positions within a fraction of the wavelength of the light used and 2) reduction in detector bandwidth. In spite of the narrow mirror displacement requirements, clever experimental techniques like the Pound-Drever-Hall technique allow experimentalists to meet them ~\cite{black_pdh}.
+The noted gain improvements made by adding two mirrors to the optical schema are substantial, though in practice the benefits are contingent upon: 1) maintaining fixed mirror positions within a fraction of the wavelength of the light used and 2) reducing detector bandwidth. But with tools like the Pound-Drever-Hall technique and signal recycling to mitigate these burdens, it is a relatively small price to pay ~\cite{black_pdh}.
 
 \paragraph{Gaussian and Higher Order Modes (Mode Matching pt.2)}
 
