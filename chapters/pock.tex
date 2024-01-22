@@ -182,21 +182,22 @@ In general the principle dielectric axes of the new ellipsoid do \textbf{not} co
 
 \subsubsection{The photoelastic effect}
 
-When general strains $S_{kl}(r) = \frac{1}{2} \bigg[ \frac{\partial u_k (r)}{\partial x_i} + \frac{\partial u_i (r)}{\partial x_k} \bigg]$ are applied to a material, the photoelastic tensor $p_{idkl}$ relates to the indicatrix by the following relation:
+General strains $S_{kl}(r) = \frac{1}{2} \bigg[ \frac{\partial u_k (r)}{\partial x_i} + \frac{\partial u_i (r)}{\partial x_k} \bigg]$, when applied to a material, also impact the indicatrix via the photoelastic tensor $p_{idkl}$:
 
 \begin{equation}
  \bigg( \frac{1}{\Delta n^2} \bigg)_{ij} = p_{ijkl} S_{kl}
 \end{equation}
 
-For realistic coatings it may be reasonable to assume the heteroepitaxial bonds between $\gaas$/$\algaas$ layers, may produce intrinsic strain within the HR stack, leading to the existance of a static non-negligible birefringence throughout all the coating layers \cite{Cole:16}.
+For realistic mirror coatings, heteroepitaxial bonding between $\gaas$/$\algaas$ layers may produce an intrinsic strain within the HR stack and can lead to the existence of a static non-negligible birefringence throughout the coating layers \cite{Cole:16}.
 
 \subsubsection{The generalized indicatrix}
-Both forms of the induced birefringence can be incorportated into the following condensed form \cite{nye}:
+Both forms of the induced birefringence (electro-optic and photo-elastic) can be incorportated into a condensed form \cite{nye}:
+
 \begin{equation}\label{eq:indicgen}
 	\bigg( \frac{1}{\Delta n^2} \bigg)_{ij} = r_{ijk}E_k + p_{ij \alpha \beta} \epsilon_{\alpha \beta}
 \end{equation}
 
-Where $\alpha$ and $\beta$ are dummy indices that allow the connection between elasto-optic ($p$) tensor to the stress tensor ($\epsilon$) via the stress-strain / piezoelectric relations:
+Where $\alpha$ and $\beta$ are dummy indices connecting the elasto-optic ($p_{ij \alpha \beta}$) tensor to the stress tensor ($\epsilon_{\alpha \beta}$) via stress-strain / piezoelectric relations:
 
 \begin{equation}\label{eq:indicgen_stress2strain}
 	\epsilon_{ij} = r_{kij}E_{k} + s_{ijkl} \sigma_{kl}
@@ -209,19 +210,16 @@ Where $\alpha$ and $\beta$ are dummy indices that allow the connection between e
  \end{split}
 \end{equation}
 
-%%Need to fix these indices
 %%New principal dielectric axes for zincblende structures (zinblende photoelastic tensor, zincblende electro-optic tensor)
 
 \subsection{EO Modulation}\label{sec:EOM}
-A common application is to impart phase modulations onto an optical carrier field. Electro-optic modulators or Pockel cells accomplish this by sandwiching two capacitor plates around a block of crystalline material with a single electrical input port (typically coaxial) designed to take in a voltage input of frequency ($\Omega$) within a specified modulation bandwidth. When the field amplitude across the crystal is driven by a voltage controlled oscillation, the coefficients within the electro-optic tensor vary linearly (as indicated in \cite{}) The voltage amplitude of the signal input is proportional to the strength of the phase modulation on the optical carrier field of frequency ($\omega$) and is commonly quantified in terms of a modulation index ($\beta$).
+Imparting phase modulations onto an optical carrier field is a common application of the electro-optic effect. Electro-optic modulators (EOMs) or Pockel cells are sold as a standard optical components usually composed of a monolithic crystalline material sandwiched between two capacitor plates connected to a single electrical input port (typically coaxial) designed to take in a voltage input of frequency ($\Omega$) within a specified modulation amplitude and frequency bandwidth. When the field amplitude across the crystal is driven by a voltage controlled oscillation, the coefficients within the electro-optic tensor vary linearly. The voltage amplitude of the signal input is proportional to the strength of the phase modulation on the optical carrier field of frequency ($\omega$) and is commonly quantified in terms of a modulation index ($\beta$).
 
 %%Consider a specific crystal that gives us our $\beta \mathrm{sin}(\Omega t)$
 
 \begin{equation}\label{eq:inp_EOM}
 E_\mathrm{out} = E_o e^{i \omega t + \beta \mathrm{sin}( \Omega t)} \approx
 \end{equation}
-
-Bessel function approximations sufficiently demonstrate that the phase modulated carrier field imparts power to optical sideband fields separated in frequncy by an integer multiple of the modulation $n \cdot \Omega$. Typically $\Omega$ is a chosen frequency used for optical heterodyne detection; while for noise-driven modulation, the phase coupling shows strong coorelation to the relevant E-field spectra alongside the length of the beam propogation within the electro-optic media.
 
 \begin{figure}[!ht]
 \begin{center}
@@ -236,6 +234,9 @@ Bessel function approximations sufficiently demonstrate that the phase modulated
     \caption{Longitudinal and Transverse Pockels cells}
     \label{fig:lpc_and_tpc}
 \end{figure} 
+
+
+Bessel function approximations sufficiently demonstrate that the phase modulated carrier field imparts power to optical sideband fields separated in frequncy by an integer multiple of the modulation $n \cdot \Omega$. Typically $\Omega$ is a chosen frequency used for optical heterodyne detection; while for noise-driven modulation, the phase coupling shows strong coorelation to the relevant E-field spectra alongside the length of the beam propogation within the electro-optic media.
 
 \subsection{Optical anisotropy of a HR $\gaas$ / $\algaas$ stack}
 A comprehensive review of the relevant birefringent properties of a HR $\gaas$/$\algaas$ mirrorstack is due, and for this body of work includes: 1) crystal coordinate considerations when asserting an optical axis on a highly reflective crystalline stack manufactured by the Thorlabs crystalline coatings division, 2) citations of coating parameters and observed intrinsic birefringence from the highly reflective coating stack in question, 3) analysis of the differential electro-optic effect on the phase of a reflected beam, and 4) estimating the the differential phase noise in LIGO based on preliminary electric field measurements measured at LHO.
