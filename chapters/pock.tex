@@ -182,10 +182,26 @@ In general the principle dielectric axes of the new ellipsoid do \textbf{not} co
 
 \subsubsection{The photoelastic effect}
 
-General strains $S_{kl}(r) = \frac{1}{2} \bigg[ \frac{\partial u_k (r)}{\partial x_i} + \frac{\partial u_i (r)}{\partial x_k} \bigg]$, when applied to a material, also impact the indicatrix via the photoelastic tensor $p_{idkl}$:
+General stresses and strains, when applied to a material also impact the indicatrix via the 4th-rank photoelastic tensor $p_{id \alpha \beta}$:
 
 \begin{equation}
- \bigg( \frac{1}{\Delta n^2} \bigg)_{ij} = p_{ijkl} S_{kl}
+ \bigg( \frac{1}{\Delta n^2} \bigg)_{ij} = p_{ij\alpha \beta} \epsilon_{\alpha \beta}
+\end{equation}
+
+where
+
+\begin{equation}\label{eq:indicgen_stress2strain}
+	\epsilon_{ij} = r_{\alphaij}E_{\alpha} + s_{ij \alpha \beta } \sigma_{\alpha \beta}
+\end{equation}
+
+Where \alpha and \beta are dummy indices connecting the elasto-optic ($p_{ij \alpha \beta}$) tensor to the stress tensor ($\epsilon_{\alpha \beta}$) via stress-strain / piezoelectric relations:
+
+\begin{equation}\label{eq:indicgen_elasto_optical}
+ \begin{split}
+	p_{ij \alpha \beta} = \pi_{ij \gamma \theta} C_{\gamma \theta \alpha \beta}
+	\\
+	\pi_{ij\gamma \theta } = p_{ij \alpha \beta} s_{\alpha \beta \gamma \theta}
+ \end{split}
 \end{equation}
 
 For realistic mirror coatings, heteroepitaxial bonding between $\gaas$/$\algaas$ layers may produce an intrinsic strain within the HR stack and can lead to the existence of a static non-negligible birefringence throughout the coating layers \cite{Cole:16}.
@@ -197,18 +213,6 @@ Both forms of the induced birefringence (electro-optic and photo-elastic) can be
 	\bigg( \frac{1}{\Delta n^2} \bigg)_{ij} = r_{ijk}E_k + p_{ij \alpha \beta} \epsilon_{\alpha \beta}
 \end{equation}
 
-Where $\alpha$ and $\beta$ are dummy indices connecting the elasto-optic ($p_{ij \alpha \beta}$) tensor to the stress tensor ($\epsilon_{\alpha \beta}$) via stress-strain / piezoelectric relations:
-
-\begin{equation}\label{eq:indicgen_stress2strain}
-	\epsilon_{ij} = r_{kij}E_{k} + s_{ijkl} \sigma_{kl}
-\end{equation}
-\begin{equation}\label{eq:indicgen_elasto_optical}
- \begin{split}
-	p_{ij \alpha \beta} = \pi_{ijkl} C_{kl \alpha \beta}
-	\\
-	\pi_{ijkl} = p_{ij \alpha \beta} s_{ijkl}
- \end{split}
-\end{equation}
 
 %%New principal dielectric axes for zincblende structures (zinblende photoelastic tensor, zincblende electro-optic tensor)
 
