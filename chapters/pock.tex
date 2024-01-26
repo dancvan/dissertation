@@ -106,8 +106,7 @@ The space group of $\gaas$ as well as $\algaasgen$ are within the $F\bar{4}3m$ s
 \subsection{Induced anisotropy in zincblende crystals}
 Zincblende structures, like the crystalline materials in question can exhibit birefringent properties when under influence of mechanical stresses and static / low-frequency electric fields ($E_\mathrm{STLF}$); characterized by photoelastic and electro-optic effects respectively. 
 
-\subsubsection{The (linear) electro-optic (Pockel's) effect}
-
+\subsubsection{Linear electro-optic effect (Pockel's effect)}
 For non-centrosymmetric crystalline media there exists a non-zero rank 2, $6 \times 3$ tensor ($r_{ij}$) connecting a low-frequency \footnote{``low frequency'' meaning orders of magnitude smaller than an optical field it effects} electric field $\vec{E}(f) = [E_x(f), E_y(f), E_z(f)]$ directly to the \hyperref[sec:indicatrix]{indicatrix} ~\cite{yariv,nye}:
 \begin{equation}
   \left[ {\begin{array}{c}
@@ -162,7 +161,6 @@ r_{\bar{4}3m,ij} =
 \noindent Where also $r_{41} = r_{52} = r_{63}$
 
 \subsubsection{New principal (electro-optic) dielectric axis for zincblende structures}
-
 In general the principle dielectric axes of the new ellipsoid do \textbf{not} coincide with the axes of the ellipsoid of the unperturbed crystal. The form of the index ellipsoid for a zincblende crystalline material accounting for the electro-optic tensor and some generalized DC electric field $\vec{E}$ expressed in terms of the crystallographic axes is given by:
 \begin{equation}\label{eq:zindicatrix}
 \bigg(\frac{1}{n_o^2} \bigg) x^2\ + \bigg(\frac{1}{n_o^2} \bigg) y^2 + \bigg(\frac{1}{n_o^2} \bigg) z^2  + 2r_{41} E_{[100]} yz + 2r_{41} E_{[010]} xz + 2r_{41}E_{[001]} xy= 1
@@ -182,100 +180,95 @@ In general the principle dielectric axes of the new ellipsoid do \textbf{not} co
 
 \subsubsection{The photoelastic effect}
 
-General stresses and strains, when applied to a material, also impact the indicatrix and demonstrated with the 4th-rank photoelastic tensor $p_{i j \alpha \beta}$:
+General stresses and strains of a material may also cause transformations to the indicatrix through the rank 4 elasto-optical tensor $p_{i j k l}$:
 
 \begin{equation}
- \bigg( \frac{1}{\Delta n^2} \bigg)_{ij} = p_{ij\alpha \beta} \epsilon_{\alpha \beta}
+ \bigg( \frac{1}{\Delta n^2} \bigg)_{ij} = p_{ijkl} \epsilon_{kl}
 \end{equation}
 
-where
-
-\begin{equation}\label{eq:indicgen_stress2strain}
-	\epsilon_{\alpha \beta} = r_{\gamma \alpha \beta}E_{\alpha} + s_{\alpha \beta \gamma \theta } \sigma_{\gamma \theta}
-\end{equation}
-
-Where $\alpha$ and $\beta$ are dummy indices connecting the elasto-optic ($p_{ij \alpha \beta}$) tensor to the stress tensor ($\epsilon_{\alpha \beta}$) via stress-strain / piezoelectric relations:
-
-\begin{equation}\label{eq:indicgen_elasto_optical}
+\noindent Where the strain ({\boldmath$\epsilon$}) relates to stress ({\boldmath$\sigma$}) using the generalized Hooke's law: 
+%\begin{equation}\label{eq:indicgen_stress2strain}
+%	\epsilon_{\alpha \beta} = r_{\gamma \alpha \beta}E_{\alpha} + s_{\alpha \beta \gamma \theta } \sigma_{\gamma \theta}
+%\end{equation}
+% elasto-optic ($p_{ij \alpha \beta}$) tensor to the stress tensor ($\epsilon_{\alpha \beta}$) via stress-strain / piezoelectric relations:
+\begin{equation}\label{eq:gen_hookeslaw} 
  \begin{split}
-	p_{ij \alpha \beta} = \pi_{ij \gamma \theta} C_{\gamma \theta \alpha \beta}
-	\\
-	\pi_{ij\gamma \theta } = p_{ij \alpha \beta} s_{\alpha \beta \gamma \theta}
+	 \epsilon_{ij} = K_{ijkl} \sigma_{kl}
+	 \\
+	 \sigma_{ij} = C_{ijkl} \epsilon_{kl}
  \end{split}
 \end{equation}
-
+And also form a connection between the elasto-optical tensor to the piezo-optical tensor
+\begin{equation}\label{eq:indicgen_elasto_optical}
+ \begin{split}
+	p_{ijkl} = \pi_{ijkl} C_{klrs}
+	\\
+	\pi_{ijrs} = p_{ijrs} K_{rskl}
+ \end{split}
+\end{equation}
 For realistic mirror coatings, heteroepitaxial bonding between $\gaas$/$\algaas$ layers may produce an intrinsic strain within the HR stack and can lead to the existence of a static non-negligible birefringence throughout the coating layers \cite{Cole:16}.
 
 \subsubsection{The generalized indicatrix}
 Both forms of the induced birefringence (electro-optic and photo-elastic) can be incorportated into a condensed form \cite{nye}:
 
 \begin{equation}\label{eq:indicgen}
-	\bigg( \frac{1}{\Delta n^2} \bigg)_{ij} = r_{ijk}E_k + p_{ij \alpha \beta} \epsilon_{\alpha \beta}
+	\bigg( \frac{1}{\Delta n^2} \bigg)_{ij} = r_{ijk}E_k + p_{ijkl} \epsilon_{kl}
 \end{equation}
 
 
 %%New principal dielectric axes for zincblende structures (zinblende photoelastic tensor, zincblende electro-optic tensor)
 
 \subsection{EO Modulation}\label{sec:EOM}
-Imparting phase modulations onto an optical carrier field is a common application of the electro-optic effect. Electro-optic modulators (EOMs) or Pockel cells are sold as a standard optical components usually composed of a monolithic crystalline material sandwiched between two capacitor plates connected to a single electrical input port (typically coaxial) designed to take in a voltage input of frequency ($\Omega$) within a specified modulation amplitude and frequency bandwidth. When the field amplitude across the crystal is driven by a voltage controlled oscillation, the coefficients within the electro-optic tensor vary linearly. The voltage amplitude of the signal input is proportional to the strength of the phase modulation on the optical carrier field of frequency ($\omega$) and is commonly quantified in terms of a modulation index ($\beta$).
+Imparting phase modulations onto an optical carrier field is a common application of the electro-optic effect. Electro-optic modulators (EOMs) or Pockel cells are sold as a standard optical components usually composed of a monolithic crystalline material sandwiched between two capacitor plates connected to a single electrical input port (typically coaxial for RF) designed to take in a voltage input of frequency ($\Omega$) within a specified modulation amplitude and frequency bandwidth. When the field amplitude across the crystal is driven by a voltage controlled oscillation, the amplitudes of the electro-optic tensor vary linearly. The voltage amplitude of the signal input is proportional to the strength of the modulated phase on the optical carrier frequency ($\omega$); commonly quantified in terms of a modulation index ($\beta$):
 
 %%Consider a specific crystal that gives us our $\beta \mathrm{sin}(\Omega t)$
 
 \begin{equation}\label{eq:inp_EOM}
-E_\mathrm{out} = E_o e^{i \omega t + \beta \mathrm{sin}( \Omega t)} \approx
+	E_\mathrm{out} = E_o e^{i \omega t + \beta \mathrm{sin}( \Omega t)} \approx E_o [J_o(\beta)e^{i \omega t} + J_1(\beta) e^{i(\omega + \Omega)t} - J_1(\beta) e^{i(\omega - \Omega)t}]  
 \end{equation}
 
-\begin{figure}[!ht]
-\begin{center}
-	\begin{subcaptiongroup}
-	     \includegraphics[width=.6\textwidth]{figs/ALGAAS/eom_l_assembly.pdf}
-	     \phantomcaption\label{pc_longitudinal}
-	     \\
-	     \includegraphics[width=.6\textwidth]{figs/ALGAAS/eom_t_assembly.pdf}
-	     \phantomcaption\label{pc_transverse}
-	\end{subcaptiongroup}
-\end{center}
-    \caption{Longitudinal and Transverse Pockels cells}
-    \label{fig:lpc_and_tpc}
-\end{figure} 
+\noindent Where we have approximated with the Jacobi-Anger expansion utilizing Besssel functions of the first kind ($J_n(x)$):
 
+\begin{equation}\label{jacobi_anger}
+	e^{iz \mathrm{sin}(\theta)} \approx J_0(z) + 2 \sum_{n=1}^{\infty} i^n J_n(z) \mathrm{sin} (n \theta)
+\end{equation}
 
-Bessel function approximations sufficiently demonstrate that the phase modulated carrier field imparts power to optical sideband fields separated in frequncy by an integer multiple of the modulation $n \cdot \Omega$. Typically $\Omega$ is a chosen frequency used for optical heterodyne detection; while for noise-driven modulation, the phase coupling shows strong coorelation to the relevant E-field spectra alongside the length of the beam propogation within the electro-optic media.
+\ref{eq:inp_EOM} sufficiently demonstrates that, to the first order, a carrier field that is phase modulated is also, in essence, imparting power to separate optical sideband fields separated in frequency by an integer multiple of the modulation $n \cdot \Omega$. Typically $\Omega$ is a chosen frequency used for optical heterodyne detection; while for a noise-driven modulation, the phase coupling is coorelated to the local directionally relevant E-field spectra alongside the propogation length of the beam propogation within the electro-optic media.
 
 \subsection{Optical anisotropy of a HR $\gaas$ / $\algaas$ stack}
-A comprehensive review of the relevant birefringent properties of a HR $\gaas$/$\algaas$ mirrorstack is due, and for this body of work includes: 1) crystal coordinate considerations when asserting an optical axis on a highly reflective crystalline stack manufactured by the Thorlabs crystalline coatings division, 2) citations of coating parameters and observed intrinsic birefringence from the highly reflective coating stack in question, 3) analysis of the differential electro-optic effect on the phase of a reflected beam, and 4) estimating the the differential phase noise in LIGO based on preliminary electric field measurements measured at LHO.
+A comprehensive survey of relevant birefringent properties of a HR $\gaas$/$\algaas$ mirrorstack is due, and for this body of work includes: 1) crystal coordinate considerations when asserting an optical axis on a highly reflective crystalline stack manufactured by the Thorlabs crystalline coatings division, 2) citations of coating parameters and observed intrinsic birefringence from the highly reflective coating stack in question, 3) analysis of the differential electro-optic effect on the phase of a reflected beam, and 4) estimating the the differential phase noise in LIGO based on preliminary electric field measurements measured at LHO.
+\subsubsection{Miller indices for highly reflective $\gaas$/$\algaas$ coatings}
 
-\begin{figure}[!ht]
+\begin{figure}[!hb]
     \begin{subcaptiongroup}
 	    \includegraphics[width=.5\textwidth]{figs/ALGAAS/coating_orientation_normal.pdf}
 	    \phantomcaption\label{co_normal}
 	    \includegraphics[width=.5\textwidth]{figs/ALGAAS/coating_orientation_isometric.pdf}
 	    \phantomcaption\label{co_iso}
     \end{subcaptiongroup}
-\caption{The beam propogation axis ($\vec{S}$, $[-100]$) with respect to the AlGaAs/GaAs crystal axes. The axis formed by the [100] plane normal is drawn parallel with the beam axis (z-axis) and the polarizations of incident and reflected beam oscillate along vectors within the plane formed by the normal of that axis. The AlGaAs coating is grown with a flat indicating a line within the [0-11] plane; where the plane normal points towards the sample center.}
+\caption{The beam propogation axis ($\vec{S}$, $[-100]$) with respect to the $\gaas$/$\algaas$ crystal axes. The axis formed by the [100] plane normal is drawn parallel with the beam axis (z-axis) and the polarizations of incident and reflected beam oscillate along vectors within the plane formed by the normal of that axis. The coating is grown with a flat tracing a line within the [0-11] plane; where the plane normal points towards the sample center.}
 \label{fig:algaas_coords}
 \end{figure}
 
-\subsubsection{Miller indices for highly reflective coatings $\gaas$/$\algaas$ coatings}
-Up to this point three varieties of orthonormal coordinates are addressed: the crystal axis (as indicated by Miller index plane normals), the principal dielectric axis (based on diagonalization of the indicatrix), and an optical beam axis (when considering a desired (laser) light propogation). The asserted beam axis is cited \ref{fig:algaas_coords}.
+Up to this point three varieties of orthonormal coordinates are addressed: the crystal axis (as indicated by Miller index plane normals), the principal dielectric axis (based on diagonalization of the indicatrix), and an optical beam axis (when considering a desired (laser) light propogation). The asserted beam axis can be cited \hyperref[fig:algaas_coords]{here}.
 
 \subsubsection{Electro-optic coupling to the reflected phase of a HR mirror coating}
-With our chosen beam axis, the influence of an isotropic white noise field ($E_n = [E_{nx},E_{ny},E_{nz}]$) is considered:
+With our chosen beam axis, the influence of an isotropic white noise field ($E_N = [E_{Nx},E_{Ny},E_{Nz}]$) is considered:
 
 \begin{equation}
  \left[ {\begin{array}{ccc}
-   \big( \frac{1}{n_o ^2} \big)& r_{41}E_{ny} & r_{41} E_{nx}\\
-   r_{41}E_{ny} & \big( \frac{1}{n_o ^2} \big) & r_{41} E_{nz}\\
-   r_{41} E_{nx} & r_{41} E_{ny} & \big( \frac{1}{n_o ^2} \big)\\
+   \big( \frac{1}{n_o ^2} \big)& r_{41}E_{Ny} & r_{41} E_{Nx}\\
+   r_{41}E_{Ny} & \big( \frac{1}{n_o ^2} \big) & r_{41} E_{Nz}\\
+   r_{41} E_{Nx} & r_{41} E_{Ny} & \big( \frac{1}{n_o ^2} \big)\\
   \end{array}} \right]
 \end{equation}
 
-Assuming $E_n$ is small, the indicatrix change of $E_{nx}$ and $E_{ny}$ relative to $E_{nz}$ (as seen by the beam polarization) will be small ($r_{41}E_{n(x/y)} \ll r_{41}E_{nz}$). After diagonalizing with relevant terms \footnote{Note that the form of the tensor is still in the crystal coordinates but the $E_n$ terms are placed in the tensor such that their directions align with beam axis coordinates.} in the tensor, we are left with the following eigenindices:
+\noindent Assuming $E_N$ is small, the indicatrix change of $E_{Nx}$ and $E_{Ny}$ relative to $E_{Nz}$ (as seen by the beam polarization) will be small ($r_{41}E_{N(x/y)} \ll r_{41}E_{Nz}$). After diagonalizing with relevant terms \footnote{Note that the form of the tensor is still in the crystal coordinates but the $E_n$ terms are placed in the tensor such that their directions align with beam axis coordinates.} in the tensor, we are left with the following eigenindices:
 
 \begin{equation}
 \begin{aligned}
-n_x' & = n_o - r_{41}E_{nz} \\
-n_y' & = n_o + r_{41}E_{nz}
+n_x' & = n_o - r_{41}E_{Nz} \\
+n_y' & = n_o + r_{41}E_{Nz}
 \end{aligned}
 \end{equation}
 
@@ -286,7 +279,8 @@ n_y' & = n_o + r_{41}E_{nz}
 %% FIGURE: SUB1 Transformed indicatrix (Before and after $E_x$)
 %% FIGURE: SUB2 Ellipse cross section. New eigenpolarizations and corresponding indices and their influence on incident field (Marty's result)
 
-Assuming we are operating in a coordinate system suggested in \hyperref[fig:algaas_coords]{Figure 3.4}, which plane is impacted by some $E_\mathrm{noise}$? Revisiting the \hyperref[eq:zindicatrix]{indicatrix} we can see that for even non-zero z and y components that the only coupling to the input beam polarization is the index along the cross coupled zy-axis through $E_z$ is that of the $E_x$ term. This gives us the ability to easily diagonalize the indicatrix tensor by setting non-relevant field terms to zero.
+\noindent Assuming we are operating in a coordinate system suggested in \hyperref[fig:algaas_coords]{figure 3.3}, which plane is impacted by some $E_\mathrm{noise}$? Revisiting the \hyperref[eq:zindicatrix]{indicatrix} we can see that for even non-zero z and y components that the only coupling to the input beam polarization is the index along the cross coupled zy-axis through $E_z$ is that of the $E_x$ term. This gives us the ability to easily diagonalize the indicatrix tensor when setting non-relevant field terms to zero.
+\\
 Fejer and Bonilla take an analytical approximation approach when finding the impact of the electric field to the change in phase of the light through a crystalline anisotropic thin film ($\lambda/4$) stack \cite{bonillafejer}.
 
 \begin{equation}
@@ -309,7 +303,7 @@ With $\kappa$ being a scalar parameter.
 	    \includegraphics[width=.55\textwidth,page=2]{figs/ALGAAS/ALGAAS_HR_layers_1.pdf}
 	    \phantomcaption\label{HRxsection}
     \end{subcaptiongroup}
-\caption{The beam propogation axis ($\vec{S}$, $[-100]$) with respect to the AlGaAs/GaAs crystal axes. The axis formed by the [100] plane normal is drawn parallel with the beam axis (z-axis) and the polarizations of incident and reflected beam oscillate along vectors within the plane formed by the normal of that axis. The AlGaAs coating is grown with a flat indicating a line within the [0-11] plane; where the plane normal points towards the sample center.}
+\caption{The beam propogation axis ($\vec{S}$, $[-100]$) with respect to the $\gaas$/$\algaas$ crystal axes. The axis formed by the [100] plane normal is drawn parallel with the beam axis (z-axis) and the polarizations of incident and reflected beam oscillate along vectors within the plane formed by the normal of that axis. The coating is grown with a flat indicating a line within the [0-11] plane; where the plane normal points towards the sample center.}
 \label{fig:HRlayers}
 \end{figure}
 
@@ -377,7 +371,7 @@ The measured birefringence is estimated to be caused by an intrinsic strain betw
 %% Marty's document about Birefringence in Crystalline mirror coatings V.8
 
 \section{Projected DARM coupling (initial)}
-To estimate how much DARM coupling can occur, we use use a measured field spectra acquired from installed electric field meters located within LIGO Hanford Observatory ETMX and ETMY vacuum chambers. Taking the upper and the lower EFM measurements in $.3\; [\mathrm{V}/\mathrm{m}/\sqrt{\mathrm{Hz}]}$ @ 60 Hz and $4\times10^{-3}\; [\mathrm{V}/\mathrm{m}/\sqrt{\mathrm{Hz}]}$ @ 4kHz ~\cite{efmlog}.
+To estimate how much DARM coupling can occur, we use a measured field spectra acquired from installed electric field meters located within LIGO Hanford Observatory ETMX and ETMY vacuum chambers. Taking the upper and the lower EFM measurements from ~\cite{efmlog} $.3\; [\mathrm{V}/\mathrm{m}/\sqrt{\mathrm{Hz}]}$ @ 60 Hz and $4\times10^{-3}\; [\mathrm{V}/\mathrm{m}/\sqrt{\mathrm{Hz}]}$ @ 4kHz.
 %% \satoshi{I don't think these values are calibrated. According to Martynov et al. 2016, the fluctuations in the electric filed is $\sim10^{-5}\,\mathrm{[(V/m)/\sqrt{Hz}]}$.}
 This along with computed estimate allows us to create an upper limit for what this noise might be assuming incoherent fields between the end stations and a flat frequency response within LIGO's bandwidth.
 %%FIGURE: GWINC noise against calibrated electro-optic noise estimate. Full bandwidth
@@ -394,14 +388,23 @@ This along with computed estimate allows us to create an upper limit for what th
  Measurability of the electro-optic effect is contingent upon two initial design criteria: the sensitivity of the optical plant to be implemented in the PDH servo, and the maximum achievable electric field strength along the beam axis ($|E_z|_\mathrm{max}$).
 
 \subsection{PDH servo}\label{subsubsec:pdh}
-The Pound-Drever-Hall technique, originally and commonly used for laser frequency stabilization to an ultra-stable length reference, allows the tracking of the linear phase response of an input carrier field through cavity resonance. The servo fully realizes the ability of an optical cavity to act as a length / frequency discriminator. The alternative cavity offset lock provides a linear response in intensity, which is adequate for some applications but with reduced sensitivity due to the required power reduction by operating off resonance.
-The phase measurement is extracted through an optical heterodyne; the co-propogation of a separate (but phase-locked) optical field with a known frequency separation to the carrier reflected from the cavity input. The PDH servo avoids complicated phase-locked two laser configurations, by imposing a phase modulation onto the carrier field via an electro-optic modulator (aka Pockels cell) mentioned in section \ref{sec:EOM}. If the modulation depth given by \ref{eq:inp_EOM} is set such that $\beta < 1$ then the input field may be approximated in terms of the first two Bessel functions $J_0$, $J_1$:
+The Pound-Drever-Hall technique, originally and commonly used for laser frequency stabilization to an ultra-stable length reference, allows the tracking of the linear phase response of an input carrier field through cavity resonance. The servo fully realizes the ability of an optical cavity to act as a length / frequency discriminator:
 
-\begin{equation} \label{eq:EOM_trans_field}
-E_\mathrm{inp} \approx E_0 [J_0(\beta)e^{i \omega t} + J_1(\beta)e^{i (\omega + \Omega) t} - J_1(\beta)e^{i(\omega -\Omega)t}]
+\begin{equation}\label{eq:cav_l_f}
+	\frac{\Delta f}{f} = \frac{\Delta L}{L}
 \end{equation}
 
-With a high enough modulation frequency the terms given above can be far enough from the carrier frequency, so that the phase modulation onto the carrier field is mathematically and physically equivalent to imposing separate optical fields (sidebands) which in most cases do not resonate in the optical cavity of interest. Setting a photodiode of area ($A_\mathrm{PD}$) in reflection of the cavity with a coefficient of $r_\mathrm{cav}(\omega,L)$, we measure the reflected power of the input field given by \ref{eq:EOM_trans_field}:
+\noindent The alternative side-of-fringe lock provides a linear response in intensity, which is adequate for some applications but with reduced sensitivity due to the required power reduction by operating off resonance. Measurements of phase are extracted through an optical heterodyne; the co-propogation of a separate (but phase-locked) optical field with a known frequency separation to the carrier reflected from the cavity input. The PDH servo bypasses the need for a complicated phase-locked two laser configuration by imposing a phase modulation onto the carrier field via an electro-optic modulator (aka Pockels cell) mentioned in section \ref{sec:EOM}. Setting a photodiode of area ($A_\mathrm{PD}$) in reflection of the cavity with a coefficient of $r_\mathrm{cav}(\omega,L)$, we measure the reflected power of the input field given by \ref{eq:inp_EOM}\;:
+
+%If the modulation depth given by \ref{eq:inp_EOM} is set such that $\beta < 1$ then the input field may be approximated in terms of the first two Bessel functions $J_0$, $J_1$:
+
+%\begin{equation} \label{eq:EOM_trans_field}
+%E_\mathrm{inp} \approx E_0 [J_0(\beta)e^{i \omega t} + J_1(\beta)e^{i (\omega + \Omega) t} - J_1(\beta)e^{i(\omega -\Omega)t}]
+%\end{equation}
+%
+%With a high enough modulation frequency the terms given above can be far enough from the carrier frequency, so that the phase modulation onto the carrier field is mathematically and physically equivalent to imposing separate optical fields (sidebands) which in most cases do not resonate in the optical cavity of interest. 
+
+
 
 \begin{equation}
  \begin{alignedat}{3}
@@ -423,7 +426,7 @@ With this linearity and sensitivity at cavity resonance, implementation into PID
 
 
 \subsection{Servo Parameters}
-The quantity we are attempting to measure is on the order of a length change of ? m/(V/m), motivating a short cavity design as the relative differential length (phase) change scales with the sensitivity $\Delta f / f = \Delta L / L$. Considerations of the lab mirror inventory and mode matching critera lead us to two candidate plano-concave (ROC = 0.333m) HR IBS coated sample input couplers; one from CVI Melles-Griot and another from ATFilms. When paired with the plano-plano GaAs/$\mathrm{Al_{.92}Ga_{.08}As}$  mirror from the Crystalline Mirror Solutions (CMS) division of Thorlabs we create a 0.1665 m long cavity.
+The quantity we are attempting to measure is on the order of a length change of ? m/(V/m), motivating a short cavity design as the relative differential length (phase) change scales with the sensitivity \ref{eq:cav_l_f}. Considerations of the lab mirror inventory and mode matching critera lead us to two candidate plano-concave (ROC = 0.333m) HR IBS coated sample input couplers; one from CVI Melles-Griot and another from ATFilms. When paired with the plano-plano GaAs/$\mathrm{Al_{.92}Ga_{.08}As}$  mirror from the Crystalline Mirror Solutions (CMS) division of Thorlabs we create a 0.1665 m long cavity.
 
 
 \begin{figure}[H]
@@ -540,7 +543,7 @@ Where $\varepsilon$ is the dielectric
 \end{figure}
 
 \section{Results}
-Significant barriers were encountered in the form of cavity differential length noise especially when mounting the optics in accessible non-conductive materials. Most commercial optical mounts are constructed with conducting materials which proved to be a barrier when attempting to find a mounting solution while reducing non-normal field gradients within the coating volume of interest within the sample. For this reason, efforts were focused on developing a suitable mounting solution that would provide adequate isolation from any uncontrolled field magnitudes while driving a field normally incident on the surface with enough strength and uniformity across the beam area to extract a measurement of the differential length change from the Pockels effect. The mounts studied span different geometries and different material properties. The varying geometrical assembly differences created distinguishable mount solutions, and it is how this section will be divided. For reassurance, we compare displacement spectra against that of a nearly identical cavity with a flat non-crystalline mirror coating to perform a null measurement reference; ruling out the Pockels effect and providing information for noise investigations.
+Significant barriers were encountered in the form of cavity differential length noise especially when mounting the optics in accessible non-conductive materials. Firstly, most commercial optical mounts are constructed with conductive materials which proves problematic when working to isolate the coating from non-normal field gradients within the coating volume of interest. For this reason, efforts were focused on developing a suitable mounting solution that would provide adequate isolation from any uncontrolled field magnitudes while driving a field normally incident on the surface with enough strength and uniformity across the beam area to extract a measurement of the differential length change from the Pockels effect. The mounts studied span different geometries and different material properties. The varying geometrical assemblies rendered various responses and for this reason some discussions will be divided accordingly. The most stable solution revealed that ringing of the sample acoustic modes may be responsible For reassurance, we compare displacement spectra against that of a nearly identical cavity with a flat non-crystalline mirror coating to perform a null measurement reference; ruling out the Pockels effect and providing information for noise investigations.
 
 \subsection{Measurement Calibration}
 The error signal spectra probed at the FSS:
@@ -685,8 +688,8 @@ An optical mount for the sample made with MACOR, along with glass bearnings .48 
 \end{figure}
 
 \subsubsection{Opto-mechanical coupling}
-During Assembly 2 tests the drive coupling seen in the transfer function measurements for all mounts tried was hypothesized to be due to mechanical action the assembly construction when driving the voltage on electrodes plates. Tracking consistent mechanical action for assemblies prior to Assembly 3 was difficult due to inconsistent mechanical settings between some measurements. More consistent measurements were realized when mechanical settings were tracked more carefully (i.e. set screw torque) and ceramic / glass materials used for suspending sample within the assembly. 
-Sample and mount mechanical mode excitations. Seen with both AlGaAs and a HR coating from an AtFilm (IBS coating)
+During Assembly 2 tests, the drive coupling seen in the transfer function measurements appeared consistent. Varying the mechanical configuration to the slightest degree left us to discover that mechanical action via the excitations from the sample-mount acoustic modes from the construction are rung when driving the voltage on electrodes plates. Tracking consistent mechanical action for assemblies prior to Assembly 3 were difficult due to inconsistent mechanical settings between some measurements. When more consistency was realized (i.e. utilizing a MACOR mount and careful tracking of the sample set screw torque), it was more transparent that the sample-mount acoustic modes were responsible with similar features between the $\gaas$/$\algaas$ coating and the non-crystalline HR coating from ATFilms.
+
 \begin{itemize}
 \item \textbf{Vibration of plates (Leissa)} \cite{leissa} Computing frequencies and order of magnitude
 \item \textbf{Steve's COMSOL model results}
@@ -695,3 +698,4 @@ Sample and mount mechanical mode excitations. Seen with both AlGaAs and a HR coa
 \subsubsection{Dual-polarization locked configuration}
 
 \subsection{Conclusion}
+The significantly improved thermal noise performance of $\gaas$/$algaas$ HR coatings make them prime candidates for current and future gravitational wave detectors. The investigated
