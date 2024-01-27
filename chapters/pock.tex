@@ -314,16 +314,16 @@ In the appendix of \cite{ballmer2015} Ballmer constructs a coating layer transfe
 
 \begin{equation}
   \left[ {\begin{array}{c}
-   \Psi^\mathrm{R} \\
-   \Psi^\mathrm{L} \\
+   \psi^\mathrm{R} \\
+   \psi^\mathrm{L} \\
   \end{array} } \right]_{k+1}
   =
 %
 Q_k D_k
 %
  \left[{\begin{array}{c}
-   \Psi^\mathrm{R} \\
-   \Psi^\mathrm{L} \\
+   \psi^\mathrm{R} \\
+   \psi^\mathrm{L} \\
  \end{array}} \right]
 \end{equation}
 
@@ -345,9 +345,42 @@ D_k =
 \end{array} } \right]
 \end{equation}
 Defining a HR coating stack, the total transfer matrix from vaccum $Q_0$ to the $N$th coating layer is:
+
 \begin{equation}
-M = Q_N D_N ...Q_kD_k...Q_1D_1Q_0
+	M = Q_N D_N ...Q_k D_k...Q_1D_1Q_0
 \end{equation}
+
+And the partial derivative at the kth coating layer is:
+
+\begin{equation}\label{eq:partial_M}
+	\frac{\partial M}{\partial \phi_k} = Q_N D_N ...Q_{k} \begin{bmatrix} e^{-i \phi_k /2} & 0 \\ 0 & e^{i \phi_k/2} \end{bmatrix} \begin{bmatrix} -i /2 & 0 \\ 0 & i/2 \end{bmatrix} Q_{k-1} D_{k-1}...Q_1D_1Q_0
+\end{equation}
+
+The above representing that the collective differential phase will essentially manifest as a sum of these phase components once computed. This explicit perturbed phase for the electro-optic effect ($\partial n/\partial E$) is found when:
+
+\begin{equation}
+	\frac{\partial \phi_k}{\partial E} = \frac{4 \pi d_k}{\lambda} \frac{\partial n_k}{\partial E} = \pm \frac{ 2 \pi}{\lambda} n_k^3 d_k r_{41,k}
+\end{equation}
+
+
+An easier computation is found when relying on the relationship between the transmission (t) and reflectivity (r) to a general transfer matrix (in our case M):
+
+\begin{equation}
+	\begin{bmatrix} 1 \\ r \end{bmatrix} \begin{bmatrix} M_{11} & M_{12} \\ M_{21} & M_{22} \end{bmatrix} = \begin{bmatrix} t \\ 0\end{bmatrix}
+\end{equation}
+
+And using this relation, if we differentiate the reflectivity with respect to $\phi_k$:
+
+\begin{equation}
+	\frac{\partial r}{\partial \phi_k} = - \bigg( \frac{1}{M_{21}} \frac{\partial M_{21}}{\partial \phi_k} - \frac{1}{M_{22}}\frac{\partial M_{22}}{\partial \phi_k} \bigg) \frac{M_{21}}{M_{22}}
+\end{equation}
+
+and normalizing this by the total reflectivity and taking the imaginary component as indicated in \ref{eq:partial_M}: 
+
+\begin{equation}
+	\mathrm{Im} \bigg(\frac{1}{r} \frac{\partial r}{\partial \phi_k} \bigg) =  \frac{\phi_c}{\phi_k} = \bigg( \frac{1}{M_{21}} \frac{\partial M_{21}}{\partial \phi_k} - \frac{1}{M_{22}}\frac{\partial M_{22}}{\partial \phi_k} \bigg) 
+\end{equation}
+
 The impact of a differential electric noise field ($E$) on $M$ due to the electro-optic effect on the kth layer, we use the chain rule:
 
 The coating to be studied consists of 36 $\lambda$/4  thick layers of $\gaas$ interspersed with 35 layers of $\lambda$/4 thick $\algaas$. $\gaas$ forms the top and bottom layer to prevent oxygen absorption from the AlGaAs layer. The $\gaas$ layers have an index of $n_{\gaas} = 3.480$ and a thickness of $\Delta d_{\gaas} = 76.43$ nm while the low index $\algaas$ layers are $n_{\algaas} = 2.977$ with thickness $\Delta d_{\algaas} = 89.35$ nm. With the cosntructed matrices, we apply these parameters and compute a differential phase of:
