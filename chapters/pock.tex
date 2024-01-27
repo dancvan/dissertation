@@ -310,9 +310,8 @@ With $\kappa$ being a scalar parameter.
 
 \subsubsection{Numerical estimate}
 
-In the appendix of \cite{ballmer2015} Ballmer constructs a coating layer transfer function for a given coating layer k with index $n_k$, and thickness $d_k$, defining right and left propogating modes $\Psi^{R,L}$ repsectively:
-
-\begin{equation}
+In the appendix of \cite{ballmer2015} Ballmer constructs a coating layer transfer function for a given coating layer k with index $n_k$, and thickness $d_k$, defining right and left propogating modes $\psi^{R,L}$ repsectively:
+$$
   \left[ {\begin{array}{c}
    \psi^\mathrm{R} \\
    \psi^\mathrm{L} \\
@@ -325,17 +324,8 @@ Q_k D_k
    \psi^\mathrm{R} \\
    \psi^\mathrm{L} \\
  \end{array}} \right]
-\end{equation}
-
+$$
 \noindent $D_k$ applies the phase ($\phi_k = 4\pi n_k d_k /\lambda_0$) from a given coating layer, and $Q_k$ applies the transfer function between high-low/low-high index layers transition:
-
-\begin{equation}
-Q_k = \frac{1}{2n_{k+1}}
-\left[ {\begin{array}{cc}
-  n_{k+1} + n_k & n_{k+1} - n_k\\
- n_{k+1} - n_k & n_{k+1} + n_k\\
-\end{array} } \right]
-\end{equation}
 
 \begin{equation}
 D_k =
@@ -344,51 +334,64 @@ D_k =
  0 & e^{i \phi_k / 2}\\
 \end{array} } \right]
 \end{equation}
-Defining a HR coating stack, the total transfer matrix from vaccum $Q_0$ to the $N$th coating layer is:
 
+\begin{equation}
+Q_k = \frac{1}{2n_{k+1}}
+\left[ {\begin{array}{cc}
+  n_{k+1} + n_k & n_{k+1} - n_k\\
+ n_{k+1} - n_k & n_{k+1} + n_k\\
+\end{array} } \right]
+\end{equation}
+\noindent Defining a HR coating stack, the total transfer matrix from vaccum $Q_0$ to the $N$th coating layer is:
 \begin{equation}
 	M = Q_N D_N ...Q_k D_k...Q_1D_1Q_0
 \end{equation}
+\noindent And the partial derivative at the kth coating layer is:
 
-And the partial derivative at the kth coating layer is:
-
-\begin{equation}\label{eq:partial_M}
+$$\label{eq:partial_M}
 	\frac{\partial M}{\partial \phi_k} = Q_N D_N ...Q_{k} \begin{bmatrix} e^{-i \phi_k /2} & 0 \\ 0 & e^{i \phi_k/2} \end{bmatrix} \begin{bmatrix} -i /2 & 0 \\ 0 & i/2 \end{bmatrix} Q_{k-1} D_{k-1}...Q_1D_1Q_0
-\end{equation}
+$$
 
-The above representing that the collective differential phase will essentially manifest as a sum of these phase components once computed. This explicit perturbed phase for the electro-optic effect ($\partial n/\partial E$) is found when:
-
-\begin{equation}
+\noindent The above representing a collective differential phase manifesting as a sum of these phase components. This explicit perturbed phase at the kth layer for the electro-optic effect ($\partial n_k/\partial E$) is found when:
+\begin{equation}\label{EO_phasek_diff}
 	\frac{\partial \phi_k}{\partial E} = \frac{4 \pi d_k}{\lambda} \frac{\partial n_k}{\partial E} = \pm \frac{ 2 \pi}{\lambda} n_k^3 d_k r_{41,k}
 \end{equation}
-
-
-An easier computation is found when relying on the relationship between the transmission (t) and reflectivity (r) to a general transfer matrix (in our case M):
-
+\noindent Where the electro-optic coefficients $r_{41}$ for $\gaas$ and $\algaasgen$:
 \begin{equation}
+\begin{aligned}
+	& r_{41, \gaas} =  -1.33 \times 10^{-12} & [\mathrm{m} / \mathrm{V}]
+	\\ 
+	& r_{41, \algaasgen}  = - (1.33 - 0.45x) \times 10^{12} &  [\mathrm{m}/\mathrm{V}]
+\end{aligned}
+\end{equation}
+\noindent Rather than tagging on the phases individually, an easier computation is found when relying on the relationship between the transmission ($t$) and reflectivity ($r$) to a general transfer matrix (in our case $M$):
+$$
 	\begin{bmatrix} 1 \\ r \end{bmatrix} \begin{bmatrix} M_{11} & M_{12} \\ M_{21} & M_{22} \end{bmatrix} = \begin{bmatrix} t \\ 0\end{bmatrix}
-\end{equation}
-
-And using this relation, if we differentiate the reflectivity with respect to $\phi_k$:
-
-\begin{equation}
+$$
+\noindent And using this relation, differentiating the reflectivity with respect to $\phi_k$:
+$$
 	\frac{\partial r}{\partial \phi_k} = - \bigg( \frac{1}{M_{21}} \frac{\partial M_{21}}{\partial \phi_k} - \frac{1}{M_{22}}\frac{\partial M_{22}}{\partial \phi_k} \bigg) \frac{M_{21}}{M_{22}}
-\end{equation}
-
-and normalizing this by the total reflectivity and taking the imaginary component as indicated in \ref{eq:partial_M}: 
+$$
+\noindent The differential reflectivity is normalized by the total reflectivity and taking the imaginary component as indicated in \ref{eq:partial_M}: 
 
 \begin{equation}
-	\mathrm{Im} \bigg(\frac{1}{r} \frac{\partial r}{\partial \phi_k} \bigg) =  \frac{\phi_c}{\phi_k} = \bigg( \frac{1}{M_{21}} \frac{\partial M_{21}}{\partial \phi_k} - \frac{1}{M_{22}}\frac{\partial M_{22}}{\partial \phi_k} \bigg) 
+	\frac{\partial \phi_c}{\partial \phi_k}  = \mathrm{Im} \bigg(\frac{1}{r} \frac{\partial r}{\partial \phi_k} \bigg) =  \bigg( \frac{1}{M_{21}} \frac{\partial M_{21}}{\partial \phi_k} - \frac{1}{M_{22}}\frac{\partial M_{22}}{\partial \phi_k} \bigg) 
 \end{equation}
 
-The impact of a differential electric noise field ($E$) on $M$ due to the electro-optic effect on the kth layer, we use the chain rule:
+\noindent The impact of a differential electric noise field ($E$) on $M$ due to the electro-optic effect on the kth layer, we use the chain rule:
+
+\begin{equation}
+	\bigg| \frac{\partial \phi_c}{\partial  E} \bigg| =  \bigg| \frac{\partial \phi_c}{\partial \phi_k}  \frac{\partial \phi_k}{\partial E} \bigg|
+\end{equation}
 
 The coating to be studied consists of 36 $\lambda$/4  thick layers of $\gaas$ interspersed with 35 layers of $\lambda$/4 thick $\algaas$. $\gaas$ forms the top and bottom layer to prevent oxygen absorption from the AlGaAs layer. The $\gaas$ layers have an index of $n_{\gaas} = 3.480$ and a thickness of $\Delta d_{\gaas} = 76.43$ nm while the low index $\algaas$ layers are $n_{\algaas} = 2.977$ with thickness $\Delta d_{\algaas} = 89.35$ nm. With the cosntructed matrices, we apply these parameters and compute a differential phase of:
 
+\begin{equation}
+	\bigg| \frac{\partial \phi_c}{\partial  E} \bigg|  = 3.9 \times 10^{-11}\; [\mathrm{rad}/\mathrm{V}/\mathrm{m}]      
+\end{equation}
 %High Index:  GaAs, n=3.480, layer thickness is 76.43 nm
 %Low Index:  $ \mathrm{Al}_{0.92} \mathrm{Ga}_{0.08} \mathrm{As} $, n=2.977, layer thickness is 89.35 nm
 %Info from Steve. Written source
-
 
 \subsection{Measured birefringence from HR $\gaas$/$\algaas$ mirrors}
 
