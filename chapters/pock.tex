@@ -356,7 +356,7 @@ $$
 \begin{equation}\label{EO_phasek_diff}
 	\frac{\partial \phi_k}{\partial E} = \frac{4 \pi d_k}{\lambda} \frac{\partial n_k}{\partial E} = \pm \frac{ 2 \pi}{\lambda} n_k^3 d_k r_{41,k}
 \end{equation}
-\noindent Where the electro-optic coefficients $r_{41}$ for $\gaas$ and $\algaasgen$:
+\noindent Where the electro-optic coefficients $r_{41}$ for $\gaas$ and $\algaasgen$ \cite{suzuki:1984, adachi:semiconductors, adachi:algaas}:
 \begin{equation}
 \begin{aligned}
 	& r_{41, \gaas} =  -1.33 \times 10^{-12} & [\mathrm{m} / \mathrm{V}]
@@ -378,16 +378,16 @@ $$
 	\frac{\partial \phi_c}{\partial \phi_k}  = \mathrm{Im} \bigg(\frac{1}{r} \frac{\partial r}{\partial \phi_k} \bigg) =  \bigg( \frac{1}{M_{21}} \frac{\partial M_{21}}{\partial \phi_k} - \frac{1}{M_{22}}\frac{\partial M_{22}}{\partial \phi_k} \bigg) 
 \end{equation}
 
-\noindent The impact of a differential electric noise field ($E$) on $M$ due to the electro-optic effect on the kth layer, we use the chain rule:
+\noindent The impact of a differential electric noise field ($E_\mathrm{STLF}$) on $M$ due to the electro-optic effect on the kth layer, we use the chain rule:
 
 \begin{equation}
-	\bigg| \frac{\partial \phi_c}{\partial  E} \bigg| =  \bigg| \frac{\partial \phi_c}{\partial \phi_k}  \frac{\partial \phi_k}{\partial E} \bigg|
+	\bigg| \frac{\partial \phi_c}{\partial  E_\mathrm{STLF}} \bigg| =  \bigg| \frac{\partial \phi_c}{\partial \phi_k}  \frac{\partial \phi_k}{\partial E} \bigg|
 \end{equation}
 
 The coating to be studied consists of 36 $\lambda$/4  thick layers of $\gaas$ interspersed with 35 layers of $\lambda$/4 thick $\algaas$. $\gaas$ forms the top and bottom layer to prevent oxygen absorption from the AlGaAs layer. The $\gaas$ layers have an index of $n_{\gaas} = 3.480$ and a thickness of $\Delta d_{\gaas} = 76.43$ nm while the low index $\algaas$ layers are $n_{\algaas} = 2.977$ with thickness $\Delta d_{\algaas} = 89.35$ nm. With the cosntructed matrices, we apply these parameters and compute a differential phase of:
 
 \begin{equation}
-	\bigg| \frac{\partial \phi_c}{\partial  E} \bigg|  = 3.9 \times 10^{-11}\; [\mathrm{rad}/\mathrm{V}/\mathrm{m}]      
+	\bigg| \frac{\partial \phi_c}{\partial  E_\mathrm{STLF}} \bigg|  = 3.9 \times 10^{-11}\; [\mathrm{rad}/\mathrm{V}/\mathrm{m}]      
 \end{equation}
 %High Index:  GaAs, n=3.480, layer thickness is 76.43 nm
 %Low Index:  $ \mathrm{Al}_{0.92} \mathrm{Ga}_{0.08} \mathrm{As} $, n=2.977, layer thickness is 89.35 nm
@@ -395,14 +395,14 @@ The coating to be studied consists of 36 $\lambda$/4  thick layers of $\gaas$ in
 
 \subsection{Measured birefringence from HR $\gaas$/$\algaas$ mirrors}
 
-There are different accounts of a measured birefringence from HR $\gaas$ / $\algaas$ (\href{https://dcc.ligo.org/DocDB/0181/G2200386/001/G2200386.pdf}{Satoshi}, \href{https://nodus.ligo.caltech.edu:8081/CTN/1474}{CTN}, \href{https://dcc.ligo.org/DocDB/0181/G2200559/001/G2200559-v1%20-%20polarization.pdf}{Aidan})
+There are different accounts of a measured birefringence from HR $\gaas$ / $\algaas$ coatings (\href{https://dcc.ligo.org/DocDB/0181/G2200386/001/G2200386.pdf}{Satoshi}, \href{https://nodus.ligo.caltech.edu:8081/CTN/1474}{CTN}, \href{https://dcc.ligo.org/DocDB/0181/G2200559/001/G2200559-v1%20-%20polarization.pdf}{Aidan})
 
 %%Is the measured birefringence static? (Layer bonding method might introduce something?)
 %% Does it change from different mounting methods? (Photoelastic) (order of magnitude estimate)
 %% Electro-optic ruled out based on field measurements and relative coupling factor.
 %% Measurement precision of the coating birefringence? Cavity length, Polarization drifts, etc.
 
-The measured birefringence is estimated to be caused by an intrinsic strain between the epitaxial layers of $\gaas$/$\algaas$. \cite{Cole:2013}
+From coating manufacturers it's estimated that this static birefringence is estimated to be caused by an intrinsic strain between the epitaxial layers of $\gaas$/$\algaas$. \cite{Cole:2013}
 
 %% Marty's document about Birefringence in Crystalline mirror coatings V.8
 
@@ -462,18 +462,18 @@ With this linearity and sensitivity at cavity resonance, implementation into PID
 
 
 \subsection{Servo Parameters}
-The quantity we are attempting to measure is on the order of a length change of ? m/(V/m), motivating a short cavity design as the relative differential length (phase) change scales with the sensitivity \ref{eq:cav_l_f}. Considerations of the lab mirror inventory and mode matching critera lead us to two candidate plano-concave (ROC = 0.333m) HR IBS coated sample input couplers; one from CVI Melles-Griot and another from ATFilms. When paired with the plano-plano GaAs/$\mathrm{Al_{.92}Ga_{.08}As}$  mirror from the Crystalline Mirror Solutions (CMS) division of Thorlabs we create a 0.1665 m long cavity.
+The quantity we are attempting to measure is on the order of a length change of $6.518 \times 10^{-17}$ [m/(V/m)], motivating a short cavity design as the relative differential length (phase) change scales with the sensitivity \ref{eq:cav_l_f}. Considerations of the lab mirror inventory and mode matching critera lead us to two candidate plano-concave (ROC = 0.333m) HR IBS coated sample input couplers; one from CVI Melles-Griot and another from ATFilms. When paired with the plano-plano GaAs/$\mathrm{Al_{.92}Ga_{.08}As}$  mirror from the Crystalline Mirror Solutions (CMS) division of Thorlabs we create a 0.1665 m long cavity.
 
-
-\begin{figure}[H]
-\begin{center}
-\includegraphics[width=.80\textwidth]{ALGAAS/opt_layout_b.pdf}
-\end{center}
-\caption{\textcolor{red}{Final figure still pending} Detailed optical schema of the experiment. Components highlighted in magenta indicate laser back-reflection protection and output power control. All optics highlighted in PURPLE indicate their function as alignment and mode matching for locking to a triangular ALIGO PMC \textbf{Multiple citations (DCC doc / Fabian's experiment / Erik's experiment)}. Optics highlighted in YELLOW indicate function for alignment and mode matching to the experimental cavity utilizing the HR $\gaas$/$\algaas$ coated mirror sample. Beam profiling to the sample cavity is indicated. For the sake of the numerous mounting strategies tried, the longitudinal pockels cell mirror mount is kept general with the pictured mirror between two disk capacitors}
-\label{fig:detailed_optical_layout}
-\end{figure}
+%\begin{figure}[H]
+%\begin{center}
+%\includegraphics[width=.80\textwidth]{ALGAAS/opt_layout_b.pdf}
+%\end{center}
+%\caption{\textcolor{red}{Final figure still pending} Detailed optical schema of the experiment. Components highlighted in magenta indicate laser back-reflection protection and output power control. All optics highlighted in PURPLE indicate their function as alignment and mode matching for locking to a triangular ALIGO PMC \textbf{Multiple citations (DCC doc / Fabian's experiment / Erik's experiment)}. Optics highlighted in YELLOW indicate function for alignment and mode matching to the experimental cavity utilizing the HR $\gaas$/$\algaas$ coated mirror sample. Beam profiling to the sample cavity is indicated. For the sake of the numerous mounting strategies tried, the longitudinal pockels cell mirror mount is kept general with the pictured mirror between two disk capacitors}
+%\label{fig:expoptical_layout}
+%\end{figure}
 %%FIGURE: Servo diagram
 %%CAPTION: A simplified diagram of the servo used. The highlighted regions of the schematic are intended to provide a modular view; highlighting the components required for the PDH servo to operate.}
+
 The implemented servo design uses a light source from a Mephisto 2000 NE Nd:YAG (1064nm) laser with a 25 MHz phase modulation from a New Focus Model 4003 IR resonant phase modulator. As indicated in the figure above, the electronics chain can be decomposed into various filter components: $S(f)$, $A(f)$, and $A_\mathrm{thermal}(f)$
 
 \subsubsection{Sensing S(f)}
@@ -544,22 +544,22 @@ Where $\varepsilon$ is the dielectric
   %%Use relevant cross sectional figure to establish coordinates for $\gaas$/$\algaas$, as well as the fused silica substrate so the computation is transparent.} Cross sectional diagram indicating relevant axes and boundary conditions utilized in the numerical computation
   \label{fig:laplace_coords}
 \end{figure}
-
 %%Numerical recipe in appendix
-
 \begin{itemize}
-\item Potential map computation in cylindrical
-\item Computing $E_z$ from potential map
-\begin{itemize}
-\item inside coating
-\item outside coating
+    \item Potential map computation 	
+        \begin{itemize}
+	    \item Computing $E_z$ from potential map
+		\begin{itemize}
+		    \item inside coating
+		    \item outside coating
+		\end{itemize}
+	    \item Boundary conditions
+	\end{itemize}
 \end{itemize}
-\end{itemize}
-
 
 \begin{figure}[H]
   \includegraphics[width=\textwidth]{ALGAAS/assembly1_sim.pdf}
-  \caption{Poisson calculator output potential map ($V(z,r)$ in cylindrical coordinates)}
+  \caption{Numerically computed potential map estimate ($V(z,r)$ in cylindrical coordinates)}
   \label{fig:poisson_calc_output}
 \end{figure}
 
@@ -728,10 +728,14 @@ During Assembly 2 tests, the drive coupling seen in the transfer function measur
 
 \begin{itemize}
 \item \textbf{Vibration of plates (Leissa)} \cite{leissa} Computing frequencies and order of magnitude
+	\begin{itemize}
+	    \item Numerical computation (Order of magnitude result)
+	\end{itemize}
 \item \textbf{Steve's COMSOL model results}
 \end{itemize}
 
 \subsubsection{Dual-polarization locked configuration}
 
+
 \subsection{Conclusion}
-The significantly improved thermal noise performance of $\gaas$/$algaas$ HR coatings make them prime candidates for current and future gravitational wave detectors. The investigated
+The significantly improved thermal noise performance of $\gaas$/$\algaas$ HR coatings make these crystalline coatings a prime candidate for the core optics in current and future gravitational wave detectors. The measured upper threshold of the electro-optic noise is demonstrated to be $\sim 10^{-24} \; [1/\sqrt{\mathrm{Hz}}]$ two orders of magnitude below the designed noise floor $\sim 10^{-26}\; [1/\sqrt{\mathrm{Hz}}]$ of current and future gravitational wave detectors.
