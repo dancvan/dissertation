@@ -1,6 +1,6 @@
 %Electro-optic study of AlGaAs coated mirrors
 
-Once mirror coating materials are selected for DRFPMI core optics, another fundamental detector noise limit (like that discussed in \ref{sec:shot_noise} is imposed on the gravitational wave detector in the form of coating thermal noise. For aLIGO $\siotao$ coatings this is represented in \hyperref[sec:ligo_noise]. As aLIGO approaches designed sensitivity, alternative mirror coating solutions are proposed with the primary purpose of pushing down the thermal noise limit for further enhancing detector sensitivity \cite{AIGWD_Harry}. With the potential to reduce coating Brownian noise by a factor of 10, $\gaas$/$\algaas$ shows promise for next generation detectors; with a potential strain reduction by a factor of 5 \cite{Cole:2013} when compared to the current aLIGO coating thermal noise limit. Though applying crystalline mirror HR coatings to the core optics does introduce new side effects; one being linear electro-optic of $\gaas$/$\algaas$ (dn/dE), also known as the Pockels effect \cite{abernathyposter}. A differential phase noise estimate of ? [m/V], alongside measured ambient field noise of ? [V/m] presents adequate motivation for a thorough study dedicated to the electro-optical properties of $\gaas$/$\algaas$ coatings. This section details such a study: starting with a survey of distinguishing optical and material properties of crystalline materials like $\gaas$ and $\algaas$ by reviewing: light propogation through anistropic materials, and induced optical anisotropy of zincblende materials. Preliminary estimates of the differential phase of light reflected from a $\gaas$/$\algaas$ coating stack caused by electric field noise are computed while considering potential impacts to the current generation gravitational wave detectors. Also discussed is a specific study designed to acquire dn/dE estimates from a calibrated differential length PDH locked signal from a short experimental optical cavity with a primarily normal electric field driven across a HR $\gaas$/$\algaas$ coating ``witness" sample.
+Once mirror coating materials are selected for DRFPMI core optics, another fundamental detector noise limit (like that discussed in \ref{sec:shot_noise} is imposed on the gravitational wave detector in the form of coating thermal noise. For aLIGO $\siotao$ coatings this is represented in \hyperref[sec:ligo_noise]. As aLIGO approaches designed sensitivity, alternative mirror coating solutions are proposed with the primary purpose of pushing down the thermal noise limit for further enhancing detector sensitivity \cite{AIGWD:Harry}. With the potential to reduce coating Brownian noise by a factor of 10, $\gaas$/$\algaas$ shows promise for next generation detectors; with a potential strain reduction by a factor of 5 \cite{Cole:2013} when compared to the current aLIGO coating thermal noise limit. Though applying crystalline mirror HR coatings to the core optics does introduce new side effects; one being linear electro-optic of $\gaas$/$\algaas$ (dn/dE), also known as the Pockels effect \cite{abernathyposter}. A differential phase noise estimate of $\approx 10^{-11}$ [rad/m/V], alongside measured ambient field noise of ? [V/m] presents adequate motivation for a thorough study dedicated to the electro-optical properties of $\gaas$/$\algaas$ coatings. This section details such a study: starting with a survey of distinguishing optical and material properties of crystalline materials like $\gaas$ and $\algaas$ by reviewing: light propogation through anistropic materials, and induced optical anisotropy of zincblende materials. Preliminary estimates of the differential phase of light reflected from a $\gaas$/$\algaas$ coating stack caused by electric field noise are computed while considering potential impacts to the current generation gravitational wave detectors. Also discussed is a specific study designed to acquire dn/dE estimates from a calibrated differential length PDH locked signal from a short experimental optical cavity with a primarily normal electric field driven across a HR $\gaas$/$\algaas$ coating ``witness" sample.
 
 \subsection{Anisotropic media}
 Unlike isotropic media, we do not assume that the index of refraction of anisotropic media is the same for all chosen wave vectors. This is a direct consequence of the birefringence of anisotropic media; characterized by the dielectric, permittivity, and polarization tensors.
@@ -10,7 +10,7 @@ Further elaborating on the nature of a generalized dielectric tensor ($\varepsil
 \begin{equation}\label{eq:3.11}
 D_i = \varepsilon_{ij}E_j
 \end{equation}
-Where D is the displacement vector and E is the electric field vector and $\varepsilon$ is the dielectric tensor. The displacement vector for isotropic media is retrieved when $i = j$ and $\varepsilon_i = \varepsilon$. To further understand the nature of the dielectric tensor we assert Poynting's theorem providing an energy conservation requirement:
+Where D is the displacement vector, E is the electric field vector, and $\varepsilon$ is the dielectric tensor. The displacement vector for isotropic media is retrieved when $i = j$ and $\varepsilon_i = \varepsilon$. To further understand the nature of the dielectric tensor we assert Poynting's theorem providing an energy conservation requirement:
 \begin{equation}\label{eq:3.12}
 \nabla \cdot \vec{S} = \frac{dU}{dt}
 \end{equation}
@@ -20,7 +20,7 @@ Where $\vec{S} = \vec{E} \times \vec{H}$ is the poynting vector and $U = \frac{1
 \begin{equation}
 \varepsilon_{ij} = \varepsilon_{ji}
 \end{equation}
-Demonstrating that the dielectric tensor is symmetric - exhibiting only six unique terms. Diagonalizing the tensor, the presence of two unique eigenvectors and eigenvalues indicates the existance of two eigenpolarizations with paired eigenindices.
+Demonstrating that the dielectric tensor is symmetric - exhibiting only six unique terms. Diagonalizing the tensor, the presence of two unique eigenvectors and eigenvalues indicates the existence of two eigenpolarizations with paired eigenindices.
 
 %The most general form of the energy density can be geometrically represented as ellipsoid but a coordinate transformation we can diagonalize and realize the principal axes of the dielectric allowing a simpler form of the displacement, and in turn the energy density.
 
@@ -227,9 +227,9 @@ Imparting phase modulations onto an optical carrier field is a common applicatio
 	E_\mathrm{out} = E_o e^{i \omega t + \beta \mathrm{sin}( \Omega t)} \approx E_o [J_o(\beta)e^{i \omega t} + J_1(\beta) e^{i(\omega + \Omega)t} - J_1(\beta) e^{i(\omega - \Omega)t}]  
 \end{equation}
 
-\noindent Where we have approximated with the Jacobi-Anger expansion utilizing Besssel functions of the first kind ($J_n(x)$):
+\noindent Where we have approximated with the Jacobi-Anger expansion utilizing Besssel functions of the first kind ($J_n(x)$) ~\cite{jacobianger}:
 
-\begin{equation}\label{jacobi_anger}
+\begin{equation}\label{eq:jacobi_anger}
 	e^{iz \mathrm{sin}(\theta)} \approx J_0(z) + 2 \sum_{n=1}^{\infty} i^n J_n(z) \mathrm{sin} (n \theta)
 \end{equation}
 
@@ -348,12 +348,13 @@ Q_k = \frac{1}{2n_{k+1}}
 \end{equation}
 \noindent And the partial derivative at the kth coating layer is:
 
-$$\label{eq:partial_M}
+\begin{equation}
+	\label{eq:partialM}
 	\frac{\partial M}{\partial \phi_k} = Q_N D_N ...Q_{k} \begin{bmatrix} e^{-i \phi_k /2} & 0 \\ 0 & e^{i \phi_k/2} \end{bmatrix} \begin{bmatrix} -i /2 & 0 \\ 0 & i/2 \end{bmatrix} Q_{k-1} D_{k-1}...Q_1D_1Q_0
-$$
+\end{equation}
 
 \noindent The above representing a collective differential phase manifesting as a sum of these phase components. This explicit perturbed phase at the kth layer for the electro-optic effect ($\partial n_k/\partial E$) is found when:
-\begin{equation}\label{EO_phasek_diff}
+\begin{equation}\label{eq:EOphasekdiff}
 	\frac{\partial \phi_k}{\partial E} = \frac{4 \pi d_k}{\lambda} \frac{\partial n_k}{\partial E} = \pm \frac{ 2 \pi}{\lambda} n_k^3 d_k r_{41,k}
 \end{equation}
 \noindent Where the electro-optic coefficients $r_{41}$ for $\gaas$ and $\algaasgen$ \cite{suzuki:1984, adachi:semiconductors, adachi:algaas}:
@@ -361,7 +362,7 @@ $$
 \begin{aligned}
 	& r_{41, \gaas} =  -1.33 \times 10^{-12} & [\mathrm{m} / \mathrm{V}]
 	\\ 
-	& r_{41, \algaasgen}  = - (1.33 - 0.45x) \times 10^{12} &  [\mathrm{m}/\mathrm{V}]
+	& r_{41, \algaasgen}  = - (1.33 - 0.45x) \times 10^{-12} &  [\mathrm{m}/\mathrm{V}]
 \end{aligned}
 \end{equation}
 \noindent Rather than tagging on the phases individually, an easier computation is found when relying on the relationship between the transmission ($t$) and reflectivity ($r$) to a general transfer matrix (in our case $M$):
@@ -372,7 +373,7 @@ $$
 $$
 	\frac{\partial r}{\partial \phi_k} = - \bigg( \frac{1}{M_{21}} \frac{\partial M_{21}}{\partial \phi_k} - \frac{1}{M_{22}}\frac{\partial M_{22}}{\partial \phi_k} \bigg) \frac{M_{21}}{M_{22}}
 $$
-\noindent The differential reflectivity is normalized by the total reflectivity and taking the imaginary component as indicated in \ref{eq:partial_M}: 
+\noindent The differential reflectivity is normalized by the total reflectivity and taking the imaginary component as noted in~\eqref{eq:partialM}: 
 
 \begin{equation}
 	\frac{\partial \phi_c}{\partial \phi_k}  = \mathrm{Im} \bigg(\frac{1}{r} \frac{\partial r}{\partial \phi_k} \bigg) =  \bigg( \frac{1}{M_{21}} \frac{\partial M_{21}}{\partial \phi_k} - \frac{1}{M_{22}}\frac{\partial M_{22}}{\partial \phi_k} \bigg) 
@@ -384,11 +385,12 @@ $$
 	\bigg| \frac{\partial \phi_c}{\partial  E_\mathrm{STLF}} \bigg| =  \bigg| \frac{\partial \phi_c}{\partial \phi_k}  \frac{\partial \phi_k}{\partial E} \bigg|
 \end{equation}
 
-The coating to be studied consists of 36 $\lambda$/4  thick layers of $\gaas$ interspersed with 35 layers of $\lambda$/4 thick $\algaas$. $\gaas$ forms the top and bottom layer to prevent oxygen absorption from the AlGaAs layer. The $\gaas$ layers have an index of $n_{\gaas} = 3.480$ and a thickness of $\Delta d_{\gaas} = 76.43$ nm while the low index $\algaas$ layers are $n_{\algaas} = 2.977$ with thickness $\Delta d_{\algaas} = 89.35$ nm. With the cosntructed matrices, we apply these parameters and compute a differential phase of:
+The coating to be studied consists of 36 $\lambda$/4  thick layers of $\gaas$ interspersed with 35 layers of $\lambda$/4 thick $\algaas$. $\gaas$ forms the top and bottom layer to prevent oxygen absorption from the AlGaAs layer. The $\gaas$ layers have an index of $n_{\gaas} = 3.480$ and a thickness of $\Delta d_{\gaas} = 76.43$ nm while the low index $\algaas$ layers are $n_{\algaas} = 2.977$ with thickness $\Delta d_{\algaas} = 89.35$ nm. With the constructed matrices, we apply these parameters and compute a differential phase of:
 
 \begin{equation}
 	\bigg| \frac{\partial \phi_c}{\partial  E_\mathrm{STLF}} \bigg|  = 3.9 \times 10^{-11}\; [\mathrm{rad}/\mathrm{V}/\mathrm{m}]      
 \end{equation}
+
 %High Index:  GaAs, n=3.480, layer thickness is 76.43 nm
 %Low Index:  $ \mathrm{Al}_{0.92} \mathrm{Ga}_{0.08} \mathrm{As} $, n=2.977, layer thickness is 89.35 nm
 %Info from Steve. Written source
@@ -396,23 +398,25 @@ The coating to be studied consists of 36 $\lambda$/4  thick layers of $\gaas$ in
 \subsection{Measured birefringence from HR $\gaas$/$\algaas$ mirrors}
 
 There are different accounts of a measured birefringence from HR $\gaas$ / $\algaas$ coatings (\href{https://dcc.ligo.org/DocDB/0181/G2200386/001/G2200386.pdf}{Satoshi}, \href{https://nodus.ligo.caltech.edu:8081/CTN/1474}{CTN}, \href{https://dcc.ligo.org/DocDB/0181/G2200559/001/G2200559-v1%20-%20polarization.pdf}{Aidan})
-
 %%Is the measured birefringence static? (Layer bonding method might introduce something?)
 %% Does it change from different mounting methods? (Photoelastic) (order of magnitude estimate)
 %% Electro-optic ruled out based on field measurements and relative coupling factor.
 %% Measurement precision of the coating birefringence? Cavity length, Polarization drifts, etc.
-
-From coating manufacturers it's estimated that this static birefringence is estimated to be caused by an intrinsic strain between the epitaxial layers of $\gaas$/$\algaas$. \cite{Cole:2013}
-
+From coating manufacturers it's estimated that static birefringence can arise from the intrinsic strain between hetero-epitaxial layers of $\gaas$/$\algaas$. \cite{Cole:2013, adachi:algaas}
 %% Marty's document about Birefringence in Crystalline mirror coatings V.8
 
-\section{Projected DARM coupling (initial)}
-To estimate how much DARM coupling can occur, we use a measured field spectra acquired from installed electric field meters located within LIGO Hanford Observatory ETMX and ETMY vacuum chambers. Taking the upper and the lower EFM measurements from ~\cite{efmlog} $.3\; [\mathrm{V}/\mathrm{m}/\sqrt{\mathrm{Hz}]}$ @ 60 Hz and $4\times10^{-3}\; [\mathrm{V}/\mathrm{m}/\sqrt{\mathrm{Hz}]}$ @ 4kHz.
+\section{Initial projected DARM coupling}
+A. Buikema et al., Sensitivity and performance of the Ad-
+vanced LIGO detectors in the third observing run, Phys.
+Rev. D 102, 062003 (2020).
+Measured field spectra acquired from installed electric field meters located within LHO and LLO ETMX and ETMY vacuum chambers can help translate how much DARM coupling can occur from electro-optic coating noise. For O3 the EFMs were located next to the test mass mirrors and measured a consistent 3 $[\mu V / m / \sqrt{H\mathrm{Hz}}]$
+
+% Taking the upper and the lower EFM measurements from ~\cite{efmlog} $.3\; [\mathrm{V}/\mathrm{m}/\sqrt{\mathrm{Hz}]}$ @ 60 Hz and $4\times10^{-3}\; [\mathrm{V}/\mathrm{m}/\sqrt{\mathrm{Hz}]}$ @ 4kHz.
 %% \satoshi{I don't think these values are calibrated. According to Martynov et al. 2016, the fluctuations in the electric filed is $\sim10^{-5}\,\mathrm{[(V/m)/\sqrt{Hz}]}$.}
 This along with computed estimate allows us to create an upper limit for what this noise might be assuming incoherent fields between the end stations and a flat frequency response within LIGO's bandwidth.
 %%FIGURE: GWINC noise against calibrated electro-optic noise estimate. Full bandwidth
 
-\section{A Short in-air FPC test}
+\section{The Measurement}
  In seeking a calibrated estimate of the electro-optic effect for the $\gaas$/$\algaas$ mirror coating stack, we sought to measure a driven response of a mirror sample from Thorlab's crystalline mirror coatings division placed within a custom longitudinal Pockels cell mirror mount and monitored with a Pound-Drever-Hall servo. The servo was used to maintain resonance of a circulating Nd:YAG 1064nm carrier beam within an in-air two mirror Fabry-Perot cavity, with the notable mirror coating sample installed within the longitudinal Pockels cell mount and assumed the end mirror position within an in-air two mirror Fabry Perot cavity. As seen in the prior section, the size of the imparted phase noise for currently existing gravitational wave detector configurations is estimated to be small but notable. Investigation through measurement of said effect requires detection methods with sufficient sensitivity for the differential phase noise imparted by the effect. Details and specifications of the detection schema are discussed along with relevant measurements and results. 
 
 %% Driven acoustic modes of the longitudinal pockels cell mirror mounts lead to numerous mounting strategies that will be detailed below. 
@@ -462,7 +466,7 @@ With this linearity and sensitivity at cavity resonance, implementation into PID
 
 
 \subsection{Servo Parameters}
-The quantity we are attempting to measure is on the order of a length change of $6.518 \times 10^{-17}$ [m/(V/m)], motivating a short cavity design as the relative differential length (phase) change scales with the sensitivity \ref{eq:cav_l_f}. Considerations of the lab mirror inventory and mode matching critera lead us to two candidate plano-concave (ROC = 0.333m) HR IBS coated sample input couplers; one from CVI Melles-Griot and another from ATFilms. When paired with the plano-plano GaAs/$\mathrm{Al_{.92}Ga_{.08}As}$  mirror from the Crystalline Mirror Solutions (CMS) division of Thorlabs we create a 0.1665 m long cavity.
+The quantity we are attempting to measure is on the order of a length change of $3.3 \times 10^{-18}$ [m/(V/m)], motivating a short cavity design as the relative differential length (phase) change scales with the sensitivity \ref{eq:cav_l_f}. Considerations of the lab mirror inventory and mode matching critera lead us to two candidate plano-concave (ROC = 0.333m) HR IBS coated sample input couplers; one from CVI Melles-Griot and another from ATFilms. When paired with the plano-plano GaAs/$\mathrm{Al_{.92}Ga_{.08}As}$  mirror from the Crystalline Mirror Solutions (CMS) division of Thorlabs we create a 0.1665 m long cavity.
 
 %\begin{figure}[H]
 %\begin{center}
@@ -531,7 +535,7 @@ To find the Electric field screened by the coating we begin with Gauss' Law:
 \begin{equation}
 \nabla \cdot D = \rho_\mathrm{free}
 \end{equation}
-For our problem we assume no free charge, but the fused silica substrate with the AlGaAs coating presents dielectric material between the plates. Our initial boundary conditions are also expressed in terms of plate potentials so it is natural to first solve for the potential ($V$) for every point within our system. We can exploit the cylindrical symmetry with the optic and plate geometry in the $r$ coordinate so we shall express the Laplacian accordingly:
+For our problem we assume no free charge, but the fused silica substrate with the AlGaAs coating presents dielectric material between the plates. Boundary conditions are expressed in terms of plate potentials ($V$) so it is natural to first solve the potential ($V$) for all relevant points system coordinates. We exploit cylindrical symmetry with the optic and plate geometry in the radial coordinate ($r$) and use the relevant Laplacian: 
 \begin{equation}
 \bigg[\frac{1}{r}\frac{\partial}{\partial r} \bigg( r \frac{\partial}{\partial r}\bigg) + \frac{\partial^2}{\partial z^2}\bigg](\varepsilon V) = 0
 \end{equation}
