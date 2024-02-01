@@ -22,6 +22,9 @@
 \usepackage{placeins}
 \usepackage{pdfpages}
 
+\renewcommand{\sectionautorefname}{\S}
+\renewcommand{\subsectionautorefname}{\S}
+\renewcommand{\subsubsectionautorefname}{\S}
 
 \newcommand{\algaas}{\mathrm{Al_{0.92}Ga_{0.08}As}}
 \newcommand{\algaasgen}{\mathrm{Al_{1-x}Ga_{x}As}}
@@ -43,11 +46,12 @@
 \newcommand{\steve}[1]{\textcolor{green}{#1}}
 
 \makeatletter
+
 \setcounter{secnumdepth}{4}
 \renewcommand\paragraph{\@startsection{paragraph}{4}{\z@}%
                                      {-3.25ex\@plus -1ex \@minus -.2ex}%
                                      {1.5ex \@plus .2ex}%
-                                     {\normalfont\normalsize\bfseries}}
+			     {\normalfont\normalsize\bfseries}}
 
 \doublespacing
 

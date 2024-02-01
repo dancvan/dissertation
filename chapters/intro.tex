@@ -45,7 +45,7 @@ Evaluating the above as a function of frequency yields:
 
 With the wave amplitude $h_0$, angular frequency $\omega$, nominal interferometer arm length $L$, speed of light $c$, and optical angular frequency $\Omega$.
 
-The differential phase \ref{fig:michdelphi} combined with the power at the anti-symmetric port \ref{fig:pmichas} provides a function of optical gain, dependent on freqency and a differential offset phase ($\phi_0$):
+The differential phase \autoref{fig:michdelphi} combined with the power at the anti-symmetric port \autoref{fig:pmichas} provides a function of optical gain, dependent on freqency and a differential offset phase ($\phi_0$):
 
 \begin{equation}
 	\Delta P(\omega, \phi_0) = h_0 \frac{P_\mathrm{in}}{2} \Delta \phi (\omega) \cdot \mathrm{sin}(\phi_0)
@@ -62,7 +62,7 @@ The differential phase \ref{fig:michdelphi} combined with the power at the anti-
 \end{figure}
 \FloatBarrier
 
-Assuming a 4km arm configuration with 25 Watts input power as indicated in figure \ref{fig:michdelphi} the differential arm response provides a reasonable optical gain with the notches coorelating to an integer number of gravitational wave half periods ($\mathrm{n}\lambda_{gw} / 2$) to the interferometer arm length in such a way that the response is null. Though with sights set on optimizing detection bandwidth for neutron star binaries @ 100 Hz, the basic Michelson optical gain remains insufficient with enhancements required.  
+Assuming a 4km arm configuration with 25 Watts input power as indicated in figure \autoref{fig:michdelphi} the differential arm response provides a reasonable optical gain with the notches coorelating to an integer number of gravitational wave half periods ($\mathrm{n}\lambda_{gw} / 2$) to the interferometer arm length in such a way that the response is null. Though with sights set on optimizing detection bandwidth for neutron star binaries @ 100 Hz, the basic Michelson optical gain remains insufficient with enhancements required.  
 
 \begin{figure}[ht!]
 	\centering
@@ -105,7 +105,7 @@ At the time of the LIGO proposal, constraints (physical and financial) for terre
 \end{figure}
 
 \subsubsection{The Fabry-P\'{e}rot cavity}
-\label{section:FPC}
+\label{sec:FPC}
 To inform of a folding mechanism, considering coherent light encountering an optical cavity with input and output mirror transmission and reflection coefficients of $t_1$, $r_1$ and $t_2$, $r_2$ respectively (assuming lossless mirrors $L_1 + L_2=0$).
 
 \begin{figure}[h!]
@@ -154,7 +154,7 @@ An intuitive analogue of the Fabry-P\'{e}rot's arm elongation capabilities is dr
 	\tau_s = \frac{L}{c} \frac{r_1r_2}{1-r_1r_2} = \frac{1}{4 \pi \mathscr{F}}
 \end{equation}
 
-Advanced LIGO, with its 4km length and approximate finesse of 208 coorelates to a storage time of $382\mu s$, whereas the simple Michelson has an arm storage time of $26 \mu s$. The cooresponding optical gain increase is noted in \ref{fig:fpmi}. 
+Advanced LIGO, with its 4km length and approximate finesse of 208 coorelates to a storage time of $382\mu s$, whereas the simple Michelson has an arm storage time of $26 \mu s$. The cooresponding optical gain increase is noted in \autoref{fig:fpmi}. 
 
 \begin{equation}
 	\mathrm{H_{FPMI}} = \frac{t_1 ^2 r_2}{(t_1^2 + r_1^2)r_2 - r_1} \frac{\mathrm{H_{MICH}}}{1 - r_1 r_2 e^{-2i \omega L / c}}
@@ -162,11 +162,11 @@ Advanced LIGO, with its 4km length and approximate finesse of 208 coorelates to 
 
 The noted gain improvements made by adding two mirrors to the optical schema are substantial, though in practice the benefits are contingent upon: 1) maintaining fixed mirror positions within a fraction of the wavelength of the light used and 2) reducing detector bandwidth. But with tools like the Pound-Drever-Hall technique and signal recycling to mitigate these burdens, it is a relatively small price to pay ~\cite{black:pdh}.
 
-\paragraph{Gaussian and Higher Order Modes (Mode Matching pt.2)}
+\paragraph{Gaussian and Higher Order Modes (Mode Matching pt.2)}\label{subsubsubsubsec:mm2}
 
 Imposing a Gaussian beams to the Fabry-Perot reveal some final caveats before exploiting any potential enhancement. First is that of the beam divergence, which can quickly limit the amount of stored power between two flat finite sized mirrors. Though, as addressed for the simple Michelson, curving the mirrors focuses the Gaussian beam power which permits a robust resonance when curving one or both cavity mirrors. 
 
-Also mentioned, albeit in passing, is the importance of the overlap between mirror radius of curvature to the beam phasefront \textcolor{red}{see stability criteria}. Beam optics informs of relatively straightfoward solutions for optimal mirror placement for a given incident beam and vice versa. This exercise informs of the importance of matching the gaussian beam mode to the mode of a spherical mirror resonator given resonator, but more unintuitive are the implications if there is deviation from said solution. Alongside the TEM00 fundamental mode, the paraxial equation can also produce \cite{anderson:1984} (\textcolor{red}{see appendix}) families of solutions that exist for the two mirror cavity configuration; these solutions are the Hermite-Gauss and Laguerre-Gauss bases:
+Also mentioned, albeit in passing, is the importance of the overlap between mirror radius of curvature to the beam phasefront \textcolor{red}{see stability criteria}. Beam optics informs of relatively straightfoward solutions for optimal mirror placement for a given incident beam and vice versa. This exercise informs of the importance of matching the gaussian beam mode to the mode of a spherical mirror resonator given resonator, but more unintuitive are the implications if there is deviation from said solution. Alongside the TEM00 fundamental mode, the paraxial equation can also produce (\textcolor{red}{see appendix}) families of solutions that exist for the two mirror cavity configuration; these solutions are the Hermite-Gauss and Laguerre-Gauss bases ~\cite{anderson:1984}:
 
 \begin{equation}\label{eq:HG_beam}
 	\begin{split}
@@ -181,7 +181,7 @@ Also mentioned, albeit in passing, is the importance of the overlap between mirr
 	\end{split}
 \end{equation}
 
-These HG and LG field solutions arise from added perturbations in the beam-cavity alignment and mode mismatch respectively. The presence of power in these modes when sweeping a mirror along the beam axis ($\Delta FSR$) indicates optical loss but can simultaneously provide useful feedback in reducing it through the construction and maintainence of a TEM00 beam-resonator coupling. 
+These HG and LG field solutions arise from added perturbations in the beam-cavity alignment and mode mismatch respectively. The presence of power in these modes when sweeping a mirror along the beam axis ($\Delta FSR$) indicates optical loss while simultaneously provides useful feedback in reducing it through the construction and maintainence of a TEM00 beam-resonator coupling. 
 
 
 \begin{figure}[ht!]
@@ -207,7 +207,7 @@ Recycling mirrors are an extension of the FPMI that exploits otherwise wasted op
 \end{figure}
 
 \subsubsection{Power Recycling}
-When operating a FPMI at a dark fringe, a significant amount of power is reflected back to the symmetric port as mentioned in~\ref{section:FPC} leading to wasted optical power if simply dumped. Placing an additional highly reflective mirror at the symmetric port while maintaining resonance of the carrier to the arms, you can reintroduce (or ``recycle") power back to the arm cavities. A PDH loop is utilized for carrier resonance, and the macroscopic mirror positioning of the PRM is informed by the choice of optical sideband frequency required when applying PDH. 
+When operating a FPMI at a dark fringe, a significant amount of power is reflected back to the symmetric port as mentioned in~\autoref{sec:FPC} leading to wasted optical power if simply dumped. Placing an additional highly reflective mirror at the symmetric port while maintaining resonance of the carrier to the arms, you can reintroduce (or ``recycle") power back to the arm cavities. A PDH loop is utilized for carrier resonance, and the macroscopic mirror positioning of the PRM is informed by the choice of optical sideband frequency required when applying PDH. 
 
 \begin{equation}
 	\mathrm{G_{PR}} = \frac{(1-r_\mathrm{PRM}^2)}{1-r_\mathrm{PRM}[1- (\mathscr{F} \mathscr{L}_\mathrm{RT})/ \pi]}
@@ -254,10 +254,10 @@ As may be inferred, this technique requires a mirror installation at the anti-sy
 ``Core optics" (Recycling mirrors, Beam splitter, and FP arm cavity mirrors) are suspended with quadruple pendulum suspensions decoupling seismic activity from the mirror positions to as low as a frequency as possible. 
 
 \subsection{Reaching ``Observing Mode"}
-The prior discussions still have yet to discuss most of the practical considerations that are required to operate a DRFPMI as a gravitational wave observatory. For the sake of narrowing down the relevance to the body of this work, we discuss more subtle features of the detector: one requires some knowledge of beam optics while the other involves the thermodynamic noise limitation of highly reflective mirror coatings. Alongside this, it is important to know that the studies take place at two very different stages of detector comissoning (One is aimed at comissioning current detectors and the other aims at informing choices to be made for next generation detectors) though both are aimed at increasing gravitational wave detector sensitivity.  The current objective at hand is to inform of these essential criteria for interferometer operations as they pertain to this dissertation. More details on setting up the simple Michelson provides on some of the initial requirements; while the second order is establishing the strict conditions of the Fabry-P\'{e}rot cavities.
+The prior discussions still have yet to discuss most practical considerations required to operate a DRFPMI as a gravitational wave observatory. For the sake of transitioning to the niche body of this work, we provide a discussion of select detector features: one requires thermodynamics knowledge as it pertains to beam optics (a.k.a. most adaptive optics), while the other involves the thermodynamic noise limitation of highly reflective mirror coatings. It is also relevant to know that the studies take place at two very different stages of detector comissoning; one is aimed at comissioning current detectors and the other aims at informing an upgrade choice to be made for current and next generation detectors, though both are aimed at increasing gravitational wave detector sensitivity. The current objective at hand is to inform of these essential criteria for interferometer operations as they pertain to this dissertation. More details on setting up the simple Michelson provides on some of the initial requirements; while the second order is establishing the strict conditions of the Fabry-P\'{e}rot cavities.
 
 \subsubsection{Length Stabilization}
-With LIGO's coupled cavity configuration, maintaining mirror positions is imperative. Techniques such as the ''side-fringe" lock (using a DC photodiode to measure the transmitted, reflected, or circulating power within a linear and slightly off resonance point) \cite{fox:2003} and the Pound-Drever-Hall technique (see \ref{subsubsec:pdh} ) are used to maintain cavity length stabilization. Stabilizing cavity lengths to configure the detector into a highly sensitive differential arm sensor is a process that is worthwhile understanding with more ample discussions ~\cite{mullavey:2012}.
+With LIGO's coupled cavity configuration, maintaining mirror positions is imperative. Techniques such as the ''side-fringe" lock (using a DC photodiode to measure the transmitted, reflected, or circulating power within a linear and slightly off resonance point) \cite{fox:2003} and the Pound-Drever-Hall technique (see \autoref{subsubsec:pdh} ) are used to maintain cavity length stabilization. Stabilizing cavity lengths to configure the detector into a highly sensitive differential arm sensor is a process that is worthwhile understanding with more ample discussions ~\cite{mullavey:2012}.
 
 %So far, we've discussed light and phase fronts without addressing geometric
 %constraints when using Gaussian laser light. We consider a general complex
@@ -284,25 +284,17 @@ Derived from the paraxial approximation of the Helmholtz equation, this field is
     \label{fig:HGLGmodes}
 \end{figure}
 
-\begin{equation}
-	E_{n,m}(x,y,z) = E_o \bigg[ \frac{W_o}{W(z)} \bigg] H_n \bigg[  \bigg] H_m \bigg[ \bigg] e^{-(x^2 + y^2)/W(z) - ikz - ik[(x^2 + y^2)/(2R(z))] + i(n + m + 1)\zeta(z)}
-\end{equation}
+\textcolor{red}{Cavity misalignment}
 
 Even with state-of-the-art ground motion isolation for terrestrial gravitational detectors using quadruple stage pendula and high mass mirrors, current gravitational wave detectors still suffer from occasional misalignment and require sensing and feedback loops to meet mirror alignment requirements.
 
 \subsubsection{Mode Matching}
-For Gaussian beams, there are further requirements of macroscopic mirror positions and radius of curvatures to maximize resonant power in the fundamental (TEM00) mode. Failure to plan and maintain these conditions sucessfully results in a mismatch of the beam mode to the cavity mode, scattering power into higher order Laguerre-Gauss modes.  
-
-\begin{equation}
- E_{n,m}(\rho, \phi, z) =  E_o \bigg[ \frac{W_o}{W(z)} \bigg] H_n \bigg[ \frac{\rho}{W(z)} \bigg]^2 L^n_m \bigg[ \frac{\sqrt{2}\rho^2}{W^2(z)} \bigg] e^{-\rho^2/W(z) - ikz - ik[\rho^2/(2R(z))] - jn \phi + i(n + 2m + 1)\zeta(z)}
-\end{equation}
-
-Even with ultra-low absorption HR mirror coatings and fused silica substrates, circulating power is estimated to reach $\geq$ 200 kW, distorting the radius of curvatures of the arm cavity mirrors by ? m; which can introduce significant optical loss due to mode mismatch (esp. for coupled cavities). And as a DRFPMI like aLIGO approaches designed sensitivity, instances of mode mismatch can be a two-fold threat with optical loss to higher order modes also impacting the ability to produced squeezed light states. The solution implemented in aLIGO as of O3 to sense mode mismatch consists of hartmann wavefront sensors (HWS) with 800 nm and 833 nm probe beams providing real-time mirror lensing / surface distortion data while actuation comes in the form of induced thermal actuation on mirrors throughout the interferometers with particular focus on the arm cavity mirrors. The thermal actuation of the core optics comes in two varieties: a CO2 laser actuator impinging upon a pre-installed fused silica compensation plate (CP) for positive lens actuation and an annular ring heater for negative lens actuation ~\cite{brooks:aigwd2019}. 
+For Gaussian beams, there are further requirements of macroscopic mirror positions and radius of curvatures to maximize resonant power in the fundamental (TEM00) mode. Failure to plan and maintain these conditions sucessfully results in a mismatch of the beam mode to the cavity mode, scattering power into higher order Laguerre-Gauss modes as mentioned in \hyperref[subsubsubsubsec:mm2]{\S \ref*{subsubsubsubsec:mm2}} . Additionally, even with ultra-low absorption HR mirror coatings and fused silica substrates, circulating power is estimated to reach $\geq$ 500 kW, distorting the radius of curvatures of the arm cavity mirrors by ? m; which can introduce significant optical loss due to mode mismatch (esp. for coupled cavities) ~\cite{tvo}. And as a DRFPMI like aLIGO approaches designed sensitivity, instances of mode mismatch are a two-fold threat with optical loss to higher order modes also impacting the ability to produced squeezed light states ~\cite{oelker:2014}. The solution implemented in aLIGO as of O3 to sense mode mismatch consists of Hartmann wavefront sensors (HWS) with 800 nm and 833 nm probe beams providing real-time mirror lensing / surface distortion data while actuation comes in the form of induced thermal actuation on mirrors throughout the interferometers with particular focus on the arm cavity mirrors ~\cite{aasi:2015}. The thermal actuation of the core optics comes in two varieties: a CO2 laser actuator impinging upon a pre-installed fused silica compensation plate (CP) for positive lens actuation and an annular ring heater for negative lens actuation ~\cite{brooks:aigwd2019}. 
 
 %\begin{figure}[H]
 %	\includegraphics[width=\textwidth]{TCS/FP_input_coupler.pdf}
 %	\caption{Thermal compensation at a single Fabry-P\'{e}rot input mirror coupler for ALIGO.}
-%	\label{fig:meas}
+%	\label{fig:meas}:
 %\end{figure}
 
 \begin{figure}[H]
@@ -351,7 +343,7 @@ F_x^2(f) = 4 k_B T\; \Re[Z]
  \end{equation}
 
 \noindent Another useful form is the power spectrum of the fluctuating motion:
-\begin{equation}\label{fdtpsd}
+\begin{equation}\label{eq:fdtpsd}
 x^2 (f)  = \frac{4k_B T}{(2 \pi f)^2}\; \Re[Y]
 \end{equation}
 
@@ -373,22 +365,22 @@ Y(s) = \frac{\dot{x}(s)}{F(s)} = \frac{-s}{k(1+i\phi) + ms^2}
 
 \noindent Or more transparently the Fourier representation since we assume a linear time invariant system:
 
-\begin{equation}\label{admitint}
+\begin{equation}\label{eq:admitint}
 Y(\omega) = \frac{\dot{x}(\omega)}{F(\omega)} = \frac{-i\omega}{k(1+i\phi) - m\omega^2} = \frac{k \omega \phi - i \omega (k - m \omega^2)}{(k-m\omega^2)^2 +k^2 \phi^2}
 \end{equation}
 
-\noindent Plugging equation \ref{admitint} back into \ref{fdtpsd}:
+\noindent Plugging equation \autoref{eq:admitint} back into \autoref{eq:fdtpsd}:
 
 \begin{equation}
 x^2 (f)  = \frac{2k_B T}{\pi}\frac{k\phi}{(k-4\pi^2 m f^2)^2 + k^2 \phi^2}
 \end{equation}
 Computing the admittance from a Gaussian beam impinging upon a HR mirror can require expansion of all individual mechanical degrees of freedom of the test mass system across a relevant frequency range, and with that approach convergence is not guaranteed. Saulson and Gonzalez provide an alternative method to computing the admittance coined the ``direct approach" by Levin when computing the noise from a Gaussian beam on a LIGO HR test mass. The admittance can be acquired through:
 
-\begin{equation}\label{admitdirec}
+\begin{equation}\label{eq:admitdirec}
 \Re[Y] = \frac{W_\mathrm{diss}}{F_o^2}
 \end{equation}
 
-\noindent $W_\mathrm{diss}$ is the dissipated power from the system due to an oscillating force $F_o$. This form of the admittance reveals an important result of the fluctuation dissapation theorem where an undriven system with a dissapative actor, imparts motion to the degrees of freedom via a driving force by virtue of that same actor at finite temperatures. This direct approach also allows the surface pressure applied by the Gaussian beam to interrogate which mechanical modes of the test mass impose a significant energy when \ref{admitdirec} is plugged into \ref{fdtpsd}. In the case of the gaussian beam / uncoated test mass studied by Levin \cite{levin:1998}:
+\noindent $W_\mathrm{diss}$ is the dissipated power from the system due to an oscillating force $F_o$. This form of the admittance reveals an important result of the fluctuation dissapation theorem where an undriven system with a dissapative actor, imparts motion to the degrees of freedom via a driving force by virtue of that same actor at finite temperatures. This direct approach also allows the surface pressure applied by the Gaussian beam to interrogate which mechanical modes of the test mass impose a significant energy when \autoref{eq:admitdirec} is plugged into \autoref{eq:fdtpsd}. In the case of the gaussian beam / uncoated test mass studied by Levin \cite{levin:1998}:
 
 \begin{equation}
 S_x(f) = \frac{4 k_B T}{f} \frac{1-\sigma^2}{\pi^3 E_o r_o} I\phi \bigg[1- O\bigg( \frac{r_o}{R} \bigg)\bigg]
