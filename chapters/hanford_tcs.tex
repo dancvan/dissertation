@@ -12,7 +12,7 @@
 During O3a the LIGO Hanford observatory circulating arm power reached beyond 180 kW; emphasizing importance on properly tuned thermal compensation in O3 to avert arm cavity mode mismatch. Detailed in this chapter is a summary of related comissioning efforts at LHO including but not exclusive to: citations of the initial computed O3 TCS pre-load, the development and implementation of real-time digital filtering for an improved ring heater actuation response by a factor of $\approx 6$, and the impacts of high absorption points aka point absorbers discovered on arm cavity test masses along with the inital efforts to mitigate them. 
 
 \section{A priori TCS pre-load methodology for O3a}
-Preserving arm cavity resonances requires countering the positive thermal lens defocus of the nominal test mass lens induced by high circulating interferometer arm cavity power. Preparing for this central uniform test mass distortion from the carrier beam requires calibrated and well established thermal actuator settings which in turn informs how much to `pre-load' the TCS actuators using early estimates of test mass absorption. Initial order of magnitude estimates of wavefront distortion from ultra-low absorption fused silica test masses under the influence of a centered high power gaussian beam as well as annular ring heater actuation are available \cite{hellovinet, Ramette:16}; though variations of the absorption between any two test mass mirrors are accounted for through calibrated defocus measurements using the Hartmann wavefront sensors sensitive to auxilary beams imaged onto the test mass mirror surfaces. Measured wavefront distortion is then mapped in real time to Zernike polynomial coefficients used to compute a differential defocus in diopters.
+Preserving arm cavity resonances requires countering the positive thermal lens defocus of the nominal test mass lens induced by high circulating interferometer arm cavity power. Preparing for this central uniform test mass distortion from the carrier beam requires calibrated and well established thermal actuator settings which in turn informs how much to `pre-load' the TCS actuators using early estimates of test mass absorption. Initial order of magnitude estimates of wavefront distortion from ultra-low absorption fused silica test masses under the influence of a centered high power gaussian beam as well as annular ring heater actuation are available \cite{hellovinet:1990, ramette:2016}; though variations of the absorption between any two test mass mirrors are accounted for through calibrated defocus measurements using the Hartmann wavefront sensors sensitive to auxilary beams imaged onto the test mass mirror surfaces. Measured wavefront distortion is then mapped in real time to Zernike polynomial coefficients used to compute a differential defocus in diopters.
 
 \subsection{The thermo-optic response}
 \begin{figure}[!ht]
@@ -48,21 +48,19 @@ While approaching designed arm cavity power, the presence of non-uniform absorpt
 %The presence of high absorption points on the test masses (aka point absorbers) required adjustments to the TCS pre-load and various ring heater and CO2 settings were sampled. Part of this sampling lead to the development of a input ring heater filter allowing actuation to reach ? percent of the desired optical power within 2 hours compared to the 12 hour response pre-filter. Higher spatial frequency actuation in the form of a CO2 mask was also tried.
 
 \subsection{Point absorbers in O3a}
-
-
 \subsubsection{ITMY absorbers}
 \begin{figure}[H]
   \centering
   \begin{subcaptiongroup}
 	  \includegraphics[width=.495\textwidth]{TCS/PA/ITMY_absorbers.pdf}
-	  \phantomcaption\label{itmxpa_justself}
+	  \phantomcaption\label{subfig:itmypajustself}
 	  \includegraphics[width=.495\textwidth]{TCS/PA/ITMY_self.pdf}
-	  \phantomcaption\label{itmxpa_selfplusabs}
+	  \phantomcaption\label{subfig:itmypaselfplusabs}
   \end{subcaptiongroup}
   \captionsetup{subrefformat=parens}
   \hfill
   \caption{An isometric view of uniform absorption vs point absorption of LHO ITMY}
-  \label{fig:ITMY_pabs}
+  \label{fig:ITMYpabs}
 \end{figure}
 
 \subsubsection{ETMX absorbers}
@@ -70,14 +68,14 @@ While approaching designed arm cavity power, the presence of non-uniform absorpt
   \centering
   \begin{subcaptiongroup}
 	  \includegraphics[width=.49\textwidth]{TCS/PA/ETMX_absorber_short_heat.pdf}
-	  \phantomcaption\label{etmxpa_justself}
+	  \phantomcaption\label{subfig:etmxpajustself}
 	  \includegraphics[width=.49\textwidth]{TCS/PA/ETMX_absorber_full_heat.pdf}
-	  \phantomcaption\label{etmxpa_selfplusabs}
+	  \phantomcaption\label{subfig:etmxpaselfplusabs}
   \end{subcaptiongroup}
   \captionsetup{subrefformat=parens}
   \hfill
   \caption{An isometric view of uniform absorption vs point absorption of LHO ETMX. The rippling / edge effects are a consequence of the Hartmann probe beam experiencing unavoidable clipping on the baffle due to misalignment of in-vaccum optics.}
-  \label{fig:ETMX_pabs}
+  \label{fig:ETMXpabs}
 \end{figure}
 
 Impact on interferometer contrast and transmission / co-resonance of higher order modes
@@ -120,24 +118,24 @@ The extremely strict alignment requirement introduced difficulties while attempt
 
 \section{Dynamic Thermal Compensation}
 \subsection{A closer look at the ring heater / test mass thermo-optic response}
-Transient ring heater actuation from a radially symmetric thermal aberration ($\Psi(t,r)$) is realized \cite{Ramette:16}:
+Transient ring heater actuation from a radially symmetric thermal aberration ($\Psi(t,r)$) is realized ~\cite{ramette:2016}:
 \begin{equation}
 	\Psi(t,r)=2\frac{dn}{dT} \sum^{\infty}_{m,p = 1} A_{m,p} \; c^{u}_{p} \mathrm{sin}(u_m h /2a) (a/u_m)[1-e^{-\alpha t}] J_0(\zeta_p r/a)
 \end{equation}
 
 \begin{figure}[H]
- \includegraphics[width=\textwidth]{TCS/IRHF/Meas_response}
- \caption{ITMY thermo-optic response to a 3.13 [W] combined power reduction to the top and bottom ring heater elements. It's after $\approx$ 12 hours after the ring heater power control step do you start to see a small enough steady state differential defocus ($\frac{\mathrm{d} \alpha_\mathrm{sp}}{\mathrm{dt}}$) and can assume a steady state thermal lens.}
- \label{fig:RHresp}
+     \includegraphics[width=\textwidth]{TCS/IRHF/Meas_response}
+     \caption{ITMY thermo-optic response to a 3.13 [W] combined power reduction to the top and bottom ring heater elements. It's after $\approx$ 12 hours after the ring heater power control step do you start to see a small enough steady state differential defocus ($\frac{\mathrm{d} \alpha_\mathrm{sp}}{\mathrm{dt}}$) and can assume a steady state thermal lens.}
+     \label{fig:RHresp}
 \end{figure}
 
 The measured thermo-optic step response exhibits differential defocusing for $\approx$ 12 to 15 hours once the ring heater power has been changed; and with a large enough power steps, these adjustments to ring heater power can significantly stall precious detector observing/comissioning time from the differential mode matching conditions in the DRFPMI. This thermo-optic time constant can be reduced by applying a real time digital filter to the ring heater power control. The desired thermo-optic response is one that resembles a step from one defocus state to another with no intermediate overshoot. 
 
 \begin{figure}[H]
-\centering
-\includegraphics[page=1,width=.75\textwidth]{TCS/IRHF/RH_input_filter_figures.pdf}
-\caption{A feedback-style block pictograph of the plant system (test mass mirror and annular ring heater) transforming the ring heater power control step to a time-varying thermo-optic response. The example of this can be seen in Fig [\ref{fig:RHresp}]}
-\label{fig:justplant}
+    \centering
+    \includegraphics[page=1,width=.75\textwidth]{TCS/IRHF/RH_input_filter_figures.pdf}
+    \caption{A feedback-style block pictograph of the plant system (test mass mirror and annular ring heater) transforming the ring heater power control step to a time-varying thermo-optic response. The example of this can be seen in Fig [\ref{fig:RHresp}]}
+    \label{fig:justplant}
 \end{figure}
 
 The prescription for creating such a filter is realized through the inversion of the well known step response, alongside additional low passing at high frequency to avoid any control instabilities at high frequency.
@@ -150,33 +148,33 @@ The prescription for creating such a filter is realized through the inversion of
 %\end{enumerate}
 
 \begin{figure}[H]
-\includegraphics[width=\textwidth]{TCS/IRHF/RH_plant_filter_fit}
-\caption{Showing the PSD of the RH response (normalized by the input RH power) over a an $\approx$ 12.5 hour period. The zpk model of the fitted filter (H(s)) is $9.2545e-12 \frac{(s+3.14210e-5)}{(s+8.168e-5)(s+0.0003142)(s+0.0005969)}$}
-\label{fig:plant_v_fit}
+    \includegraphics[width=\textwidth]{TCS/IRHF/RH_plant_filter_fit}
+    \caption{Showing the PSD of the RH response (normalized by the input RH power) over a an $\approx$ 12.5 hour period. The zpk model of the fitted filter (H(s)) is $9.2545e-12 \frac{(s+3.14210e-5)}{(s+8.168e-5)(s+0.0003142)(s+0.0005969)}$}
+    \label{fig:plant_v_fit}
 \end{figure}
 
 \begin{figure}[H]
-\centering
-\includegraphics[page=2,width=.9\textwidth]{TCS/IRHF/RH_input_filter_figures.pdf}
-\caption{A pictograph showing the system with real time digital filtering for an improved thermo-optic response. The RH input filter is created by inverting the plant filter combine with a low pass and added poles to the zpk model to ensure stability.}
-\label{fig:rtdf_pictograph}
+    \centering
+    \includegraphics[page=2,width=.9\textwidth]{TCS/IRHF/RH_input_filter_figures.pdf}
+    \caption{A pictograph showing the system with real time digital filtering for an improved thermo-optic response. The RH input filter is created by inverting the plant filter combine with a low pass and added poles to the zpk model to ensure stability.}
+    \label{fig:rtdf_pictograph}
 \end{figure}
 
 \begin{figure}[H]
-\includegraphics[width=\textwidth]{TCS/IRHF/IRHF_compare_w_self}
-\caption{Comparison of the natural RH response and the response to the conditioned input. The above plot is simulated in Matlab by passing the RH input time series (top plot) through the $[H(s)]^{-1*}$ and $H(s)$ to acquire with the result lensing behavior on the bottom plot.}
-\label{fig:dynam_comparison}
+    \includegraphics[width=\textwidth]{TCS/IRHF/IRHF_compare_w_self}
+    \caption{Comparison of the natural RH response and the response to the conditioned input. The above plot is simulated in Matlab by passing the RH input time series (top plot) through the $[H(s)]^{-1*}$ and $H(s)$ to acquire with the result lensing behavior on the bottom plot.}
+    \label{fig:dynam_comparison}
 \end{figure}
 \newpage
 
 \subsection{Reducing Parametric Instabilities}
-Another symptom of resonant high power optical cavities are parametric instabilities (PI); induced by the opto-mechanical interaction between test mass acoustic modes and higher order optical modes. These PIs present threats to achieving designed detector sensitivity, even driving the detector to lockloss. Passive methods of mitigating PIs by way of acoustic mode dampers (AMD) demonstrate significant reductions of problematic mechanical modes though some (i.e. @ 15 kHz mode) have remained problematic. Lingering parametric instabilities required manual intervention by way of adjusting test mass / cavity geometry to disrupt these persistent PIs, and is now a much more feasible solution with DTC \cite{Hardwick_2020}.  
+Another symptom of resonant high power optical cavities are parametric instabilities (PI); induced by the opto-mechanical interaction between test mass acoustic modes and higher order optical modes. These PIs present threats to achieving designed detector sensitivity, even driving the detector to lockloss. Passive methods of mitigating PIs by way of acoustic mode dampers (AMD) demonstrate significant reductions of problematic mechanical modes though some (i.e. @ 15 kHz mode) have remained problematic. Lingering parametric instabilities required manual intervention by way of adjusting test mass / cavity geometry to disrupt these persistent PIs, and is now a much more feasible solution with DTC \cite{hardwick:2020}.  
 
 \subsubsection{Limitations}
-\begin{figure}[H]
-\includegraphics[width=\textwidth]{TCS/IRHF/IRHF_compare_filts_PI_paper}
-\caption{Comparison of the natural RH response and the response to the filtered input with RH power}
-\label{fig:RH_power}
+    \begin{figure}[H]
+    \includegraphics[width=\textwidth]{TCS/IRHF/IRHF_compare_filts_PI_paper}
+    \caption{Comparison of the natural RH response and the response to the filtered input with RH power}
+    \label{fig:RH_power}
 \end{figure}
 Limitation on RH power is set at 8W \textcolor{red}{Double check source?}
 

@@ -2,6 +2,7 @@
 \usepackage[utf8]{inputenc}
 \usepackage{standalone}
 \usepackage{graphicx}
+\usepackage{bookmark}
 \usepackage{subcaption}
 \usepackage{fancyhdr}
 \usepackage{float}
@@ -20,6 +21,7 @@
 \usepackage{amsfonts}
 \usepackage{placeins}
 \usepackage{pdfpages}
+
 
 \newcommand{\algaas}{\mathrm{Al_{0.92}Ga_{0.08}As}}
 \newcommand{\algaasgen}{\mathrm{Al_{1-x}Ga_{x}As}}
@@ -114,12 +116,11 @@ I declare that
 \chapter{Comissioning Adaptive Optics for O3a}
 \input{chapters/hanford_tcs}
 
-\chapter{Electro-optic study of a $\protect\gaas$/$\protect\algaas$ coated mirror}
+\chapter{Electro-optic study of a \texorpdfstring{$\gaas / \algaas$}{gaas/algaas} coated mirror}
 \input{chapters/pock}
 
 \chapter{Conclusion}
 \input{chapters/conclusion}
-
 
 \newpage
 \chapter{Appendix}

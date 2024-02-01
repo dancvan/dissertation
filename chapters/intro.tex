@@ -1,5 +1,5 @@
 \section{Gravitational waves}
-``Space-time tells mass how to move; mass tells space-time how to curve" can provide a concise and sufficient summarization of Einstein's theory of general relativity (GR) ~\cite{Misner1973}. While providing the most complete theory of gravity to date, GR provides tools that allow considerations of high energy astrophyical phenomena (highly massive binary coalescences, spherically assymetric compact objects, etc.) whose fractional mass/energy output generates distortions in space-time known as gravitational waves. 
+``Space-time tells mass how to move; mass tells space-time how to curve" can provide a concise and sufficient summarization of Einstein's theory of general relativity (GR) ~\cite{misner:1973}. While providing the most complete theory of gravity to date, GR provides tools that allow considerations of high energy astrophyical phenomena (highly massive binary coalescences, spherically assymetric compact objects, etc.) whose fractional mass/energy output generates distortions in space-time known as gravitational waves. 
 This is represented as a perturbation ($|h_{\mu \nu}|<<1$) in the Minkowski metric tensor defining a local linearized space-time:
 \\
 $$g_{\mu \nu} = \eta_{\mu \nu} + h_{\mu \nu}$$
@@ -14,10 +14,10 @@ In other words, there exists a wave solution with two separate transverse polari
 \begin{figure}[H]
 	\includegraphics[width=\textwidth]{INTRO/gw_particle_ring1.pdf}
 	\caption{A stop motion pictograph displaying the influence of a single gravitational wave period from the two polarizations on a ring of particles. The top row shows the influence of the `+' polarization while the bottom row demonstrates that of the `$\times$' polariztion}	
-	\label{fig:gw_polarizations}
+	\label{fig:gwpolarizations}
 \end{figure}
 
-When measured and analyzed, these waves allow astronomers to extract novel information from their progenitors through the testing of various hypotheses pertinant to the violent dynamics of these systems. On September 14th, 2015 the Laser Interferometric Gravitational Wave Observatories made the first direct gravitational wave detection from a pair of coalescing black holes 1.3 billion light years away, and since then other gravitational wave detectors (i.e. Virgo, KAGRA) have joined the search; continuing the search for novel events. This GW detector network has developed a track record with an ever increasing list and rate of detections including the first multimessenger event ~\cite{gw170817} and a suprising population of compact binary coalescences ~\cite{Nitz:2023}. The incredible perseverence of the women and men participating in this multi-decade effort dedicated to constructing and developing the large scale gravitational wave observatories used today is a testament to their resiliency and that of a curious mind. Though I may possibly bore a more experienced reader with verbose and elementary material, personal curiosity has lead me to traverse the works of those before me and I do so with the most outspoken reverence; all while attempting my best to provide context of novel contributions noted within this document.  
+When measured and analyzed, these waves allow astronomers to extract novel information from their progenitors through the testing of various hypotheses pertinant to the violent dynamics of these systems. On September 14th, 2015 the Laser Interferometric Gravitational Wave Observatories made the first direct gravitational wave detection from a pair of coalescing black holes 1.3 billion light years away, and since then other gravitational wave detectors (i.e. Virgo, KAGRA) have joined the search; continuing the search for novel events. This GW detector network has developed a track record with an ever increasing list and rate of detections including the first multimessenger event ~\cite{gw170817} and a suprising population of compact binary coalescences ~\cite{nitz:2023}. The incredible perseverence of the women and men participating in this multi-decade effort dedicated to constructing and developing the large scale gravitational wave observatories used today is a testament to their resiliency and that of a curious mind. Though I may possibly bore a more experienced reader with verbose and elementary material, personal curiosity has lead me to traverse the works of those before me and I do so with the most outspoken reverence; all while attempting my best to provide context of novel contributions noted within this document.  
 
 \section{Detector configurations}
 The current gravitational wave detector network primarily uses terrestrial bound Dual-Recycled Fabry-Perot Michelson interferometers; though to configure them into a state of observing, fundamental modes of operation are necessary to acquire first. A quick review of these modes informs some of the basic ``whats'' and ``hows'' of detector operation with the intention of developing a holistic view of the LIGO detection schema especially as it pertains to the body of this work. Most introductory detector configuration discussions start with the michelson interferometer and end at the dual-recycled Fabry-Perot Michelson interferometer; this section follows in kind. Alongside the discussion are citations which can provide exceptional alternative and more detailed explanations of topics discussed.
@@ -27,7 +27,7 @@ The Michelson interferometric detection schema (aka ``The Michelson''), used by 
 
 %% Differential changes between the two optical path lengths can be tracked at the (anti-symmetric) by means of a differential change in the power ($P_\mathrm{out}$) measured at the detection port:
 
-\begin{equation}\label{P_MICH_AS}
+\begin{equation}\label{fig:pmichas}
 	P_\mathrm{out} = \frac{P_\mathrm{in}}{2} \bigg[1+\mathrm{cos}\Big(\frac{4\pi}{\lambda} (L_x - L_y)\Big) \bigg]
 \end{equation}
 
@@ -39,13 +39,13 @@ The Michelson detects microsocopic differential length changes on the order of a
 
 Evaluating the above as a function of frequency yields:
 
-\begin{equation}\label{MICH_del_phi}
+\begin{equation}\label{fig:michdelphi}
 	\Delta \phi (\omega) = h_0\frac{2 L \Omega}{c}e^{-i L \omega / c} \frac{\mathrm{sin}(L \omega /c)}{L \omega /c} = h_0 \cdot H(\omega, \phi_0)
 \end{equation}
 
 With the wave amplitude $h_0$, angular frequency $\omega$, nominal interferometer arm length $L$, speed of light $c$, and optical angular frequency $\Omega$.
 
-The differential phase \ref{MICH_del_phi} combined with the power at the anti-symmetric port \ref{P_MICH_AS} provides a function of optical gain, dependent on freqency and a differential offset phase ($\phi_0$):
+The differential phase \ref{fig:michdelphi} combined with the power at the anti-symmetric port \ref{fig:pmichas} provides a function of optical gain, dependent on freqency and a differential offset phase ($\phi_0$):
 
 \begin{equation}
 	\Delta P(\omega, \phi_0) = h_0 \frac{P_\mathrm{in}}{2} \Delta \phi (\omega) \cdot \mathrm{sin}(\phi_0)
@@ -62,7 +62,7 @@ The differential phase \ref{MICH_del_phi} combined with the power at the anti-sy
 \end{figure}
 \FloatBarrier
 
-Assuming a 4km arm configuration with 25 Watts input power as indicated in figure \ref{MICH_del_phi} the differential arm response provides a reasonable optical gain with the notches coorelating to an integer number of gravitational wave half periods ($\mathrm{n}\lambda_{gw} / 2$) to the interferometer arm length in such a way that the response is null. Though with sights set on optimizing detection bandwidth for neutron star binaries @ 100 Hz, the basic Michelson optical gain remains insufficient with enhancements required.  
+Assuming a 4km arm configuration with 25 Watts input power as indicated in figure \ref{fig:michdelphi} the differential arm response provides a reasonable optical gain with the notches coorelating to an integer number of gravitational wave half periods ($\mathrm{n}\lambda_{gw} / 2$) to the interferometer arm length in such a way that the response is null. Though with sights set on optimizing detection bandwidth for neutron star binaries @ 100 Hz, the basic Michelson optical gain remains insufficient with enhancements required.  
 
 \begin{figure}[ht!]
 	\centering
@@ -71,18 +71,18 @@ Assuming a 4km arm configuration with 25 Watts input power as indicated in figur
 	\label{fig:michsensitivity}
 \end{figure}
 
-Though with a sensitivity indicated by ~\cite{} [$\mathrm{sensitivity} ~ 1/G_\mathrm{MICH} \approx 10^{-18} \; [\frac{1}{\sqrt{\mathrm{Hz}}}]]$ it still does not reach the requirement to confirm a measurement from CBCs @ 100 Hz ($\approx 10^{-21} \; [\frac{1}{\sqrt{\mathrm{Hz}}}]$.)
+Though with a sensitivity indicated by [$\mathrm{sensitivity} ~ 1/G_\mathrm{MICH} \approx 10^{-18} \; [\frac{1}{\sqrt{\mathrm{Hz}}}]]$ it still does not reach the requirement to confirm a measurement from CBCs @ 100 Hz ($\approx 10^{-21} \; [\frac{1}{\sqrt{\mathrm{Hz}}}]$.)
 
 \subsubsection{Contrast (Mode Matching Pt. 1)}
 As presented, the functional behavior of the simple Michelson is to perform optical autocoorelation; though overly simplified depictions of interferometry suggest operation by periodic planar phasefronts, this doesn't inform the full reality of beam propogation. A standard laser carrier beam mode is represented by the Gaussian beam (TEM00 mode) with wavelength $\lambda$, and propogation axis ($z$):
 
-\begin{equation}\label{eq:gaussian_beam}
+\begin{equation}\label{eq:gaussianbeam}
 E(r) = E_o \frac{\sqrt{[\lambda z_o] / \pi}}{W(z)}e^{-r^2 / W^2(z)} e^{-ikz - ik[r^2 / (2R(z))] + i \zeta(z)}
 \end{equation}
 
 Where $E_o$ is a complex field amplitude, $r^{2}/(2(R(z))$ defines transverse coordinates $r = \sqrt{x^{2} + y^{2}}$ on a hemisphere of uniform phase with a radius of curvature $R(z)$, $k$ is the wave number, $W(z)$ is the radius from the beam axis that contains $(1-1/e^2) \times 100 \%$ of the integrated beam power, and $\zeta$ is the Gouy phase. An important consideration for any sufficiently long arm length (like that used for LIGO), you are likely to encounter a significant power loss constraint due to beam divergence and required Michelson arm length if without a sufficiently large beamsplitter and/or focusing optics. LIGO and most other terrestrial GW detectors manage with curved end mirrors that match and focus the impinging hemispherical wavefronts; symmetrically back propogate them in each arm to maintain optimal interference at the beamsplitter. Mode overlap $\eta$ provides a useful metric of this optimization: 
 
-\begin{equation}\label{eq:mode_overlap}
+\begin{equation}\label{eq:modeoverlap}
 	\eta = \bigg|\int E_x E_y dA \bigg|^{2} \bigg/ (P_x P_y) 
 \end{equation}
 
@@ -101,7 +101,7 @@ At the time of the LIGO proposal, constraints (physical and financial) for terre
 	\centering
 	\includegraphics[width=\textwidth]{INTRO/HDL.pdf}
 	\caption{A 12 bounce Herriot Delay Line with a small mirror input / output couplers inserted into the beam path.}
-	\label{fig:hdl_cav}
+	\label{fig:hdlcav}
 \end{figure}
 
 \subsubsection{The Fabry-P\'{e}rot cavity}
@@ -112,7 +112,7 @@ To inform of a folding mechanism, considering coherent light encountering an opt
 	\centering
 	\includegraphics[width=\textwidth]{INTRO/simple_fp.pdf}
 	\caption{Figure of a Fabry Perot Cavity}
-	\label{fig:fp_cav}
+	\label{fig:fpcav}
 \end{figure}
 
 Light enters the cavity only after passing the input mirror, and the trivial solution indicates a field amplitude reduction proportional to mirror reflection coefficient. Though by tuning the length between the input and end mirrors to an integer multiple of the beam wavelength, circulating light coherently adds with the input, achieving resonance.  A cavity of length $L$, when configured, yields the following cavity reflection and transmission coefficients: 
@@ -148,7 +148,7 @@ The ratio between circulating and cavity input power is set by the reflectivity 
 
 \paragraph{``Arm elongation''}
 
-An intuitive analogue of the Fabry-P\'{e}rot's arm elongation capabilities is drawn out when comparing against a computed Delay Line storage time~\cite{saulson2017}:
+An intuitive analogue of the Fabry-P\'{e}rot's arm elongation capabilities is drawn out when comparing against a computed Delay Line storage time~\cite{saulson:2017}:
 
 \begin{equation}
 	\tau_s = \frac{L}{c} \frac{r_1r_2}{1-r_1r_2} = \frac{1}{4 \pi \mathscr{F}}
@@ -160,13 +160,13 @@ Advanced LIGO, with its 4km length and approximate finesse of 208 coorelates to 
 	\mathrm{H_{FPMI}} = \frac{t_1 ^2 r_2}{(t_1^2 + r_1^2)r_2 - r_1} \frac{\mathrm{H_{MICH}}}{1 - r_1 r_2 e^{-2i \omega L / c}}
 \end{equation}
 
-The noted gain improvements made by adding two mirrors to the optical schema are substantial, though in practice the benefits are contingent upon: 1) maintaining fixed mirror positions within a fraction of the wavelength of the light used and 2) reducing detector bandwidth. But with tools like the Pound-Drever-Hall technique and signal recycling to mitigate these burdens, it is a relatively small price to pay ~\cite{black_pdh}.
+The noted gain improvements made by adding two mirrors to the optical schema are substantial, though in practice the benefits are contingent upon: 1) maintaining fixed mirror positions within a fraction of the wavelength of the light used and 2) reducing detector bandwidth. But with tools like the Pound-Drever-Hall technique and signal recycling to mitigate these burdens, it is a relatively small price to pay ~\cite{black:pdh}.
 
 \paragraph{Gaussian and Higher Order Modes (Mode Matching pt.2)}
 
 Imposing a Gaussian beams to the Fabry-Perot reveal some final caveats before exploiting any potential enhancement. First is that of the beam divergence, which can quickly limit the amount of stored power between two flat finite sized mirrors. Though, as addressed for the simple Michelson, curving the mirrors focuses the Gaussian beam power which permits a robust resonance when curving one or both cavity mirrors. 
 
-Also mentioned, albeit in passing, is the importance of the overlap between mirror radius of curvature to the beam phasefront \textcolor{red}{see stability criteria}. Beam optics informs of relatively straightfoward solutions for optimal mirror placement for a given incident beam and vice versa. This exercise informs of the importance of matching the gaussian beam mode to the mode of a spherical mirror resonator given resonator, but more unintuitive are the implications if there is deviation from said solution. Alongside the TEM00 fundamental mode, the paraxial equation can also produce \cite{Anderson:84} (\textcolor{red}{see appendix}) families of solutions that exist for the two mirror cavity configuration; these solutions are the Hermite-Gauss and Laguerre-Gauss bases:
+Also mentioned, albeit in passing, is the importance of the overlap between mirror radius of curvature to the beam phasefront \textcolor{red}{see stability criteria}. Beam optics informs of relatively straightfoward solutions for optimal mirror placement for a given incident beam and vice versa. This exercise informs of the importance of matching the gaussian beam mode to the mode of a spherical mirror resonator given resonator, but more unintuitive are the implications if there is deviation from said solution. Alongside the TEM00 fundamental mode, the paraxial equation can also produce \cite{anderson:1984} (\textcolor{red}{see appendix}) families of solutions that exist for the two mirror cavity configuration; these solutions are the Hermite-Gauss and Laguerre-Gauss bases:
 
 \begin{equation}\label{eq:HG_beam}
 	\begin{split}
@@ -213,7 +213,7 @@ When operating a FPMI at a dark fringe, a significant amount of power is reflect
 	\mathrm{G_{PR}} = \frac{(1-r_\mathrm{PRM}^2)}{1-r_\mathrm{PRM}[1- (\mathscr{F} \mathscr{L}_\mathrm{RT})/ \pi]}
 \end{equation}
 
-With a maximum recycling gain \ref{}: 
+With a maximum recycling gain: 
 
 \begin{equation}
 	\mathrm{G_{PR}} = \frac{\pi}{2 \mathscr{F} \mathscr{L}_\mathrm{RT}} \bigg[ \frac{1}{1- \frac{ \mathscr{F} \mathscr{L}_\mathrm{RT}}{ 2 \pi}} \bigg]
@@ -257,14 +257,14 @@ As may be inferred, this technique requires a mirror installation at the anti-sy
 The prior discussions still have yet to discuss most of the practical considerations that are required to operate a DRFPMI as a gravitational wave observatory. For the sake of narrowing down the relevance to the body of this work, we discuss more subtle features of the detector: one requires some knowledge of beam optics while the other involves the thermodynamic noise limitation of highly reflective mirror coatings. Alongside this, it is important to know that the studies take place at two very different stages of detector comissoning (One is aimed at comissioning current detectors and the other aims at informing choices to be made for next generation detectors) though both are aimed at increasing gravitational wave detector sensitivity.  The current objective at hand is to inform of these essential criteria for interferometer operations as they pertain to this dissertation. More details on setting up the simple Michelson provides on some of the initial requirements; while the second order is establishing the strict conditions of the Fabry-P\'{e}rot cavities.
 
 \subsubsection{Length Stabilization}
-With LIGO's coupled cavity configuration, maintaining mirror positions is imperative. Techniques such as the ''side-fringe" lock (using a DC photodiode to measure the transmitted, reflected, or circulating power within a linear and slightly off resonance point) \cite{fx2003stabilizing} and the Pound-Drever-Hall technique (see \ref{subsubsec:pdh} ) are used to maintain cavity length stabilization. Stabilizing cavity lengths to configure the detector into a highly sensitive differential arm sensor is a process that is worthwhile understanding with more ample discussions ~\cite{Mullavey:12}.
+With LIGO's coupled cavity configuration, maintaining mirror positions is imperative. Techniques such as the ''side-fringe" lock (using a DC photodiode to measure the transmitted, reflected, or circulating power within a linear and slightly off resonance point) \cite{fox:2003} and the Pound-Drever-Hall technique (see \ref{subsubsec:pdh} ) are used to maintain cavity length stabilization. Stabilizing cavity lengths to configure the detector into a highly sensitive differential arm sensor is a process that is worthwhile understanding with more ample discussions ~\cite{mullavey:2012}.
 
 %So far, we've discussed light and phase fronts without addressing geometric
 %constraints when using Gaussian laser light. We consider a general complex
 %Gaussian beam mode propogating along the beam axis ($z$) with wavelength
 %$\lambda$.
 
-%\begin{equation}\label{eq:gaussian_beam}
+%\begin{equation}\label{eq:gaussianbeam}
 %E(r) = E_o \frac{\sqrt{[\lambda z_o] / \pi}}{W(z)}e^{-r^2 / W^2(z)} e^{-ikz - ik[r^2 / (2R(z))] + i \zeta}
 %\end{equation}
 %
@@ -297,7 +297,7 @@ For Gaussian beams, there are further requirements of macroscopic mirror positio
  E_{n,m}(\rho, \phi, z) =  E_o \bigg[ \frac{W_o}{W(z)} \bigg] H_n \bigg[ \frac{\rho}{W(z)} \bigg]^2 L^n_m \bigg[ \frac{\sqrt{2}\rho^2}{W^2(z)} \bigg] e^{-\rho^2/W(z) - ikz - ik[\rho^2/(2R(z))] - jn \phi + i(n + 2m + 1)\zeta(z)}
 \end{equation}
 
-Even with ultra-low absorption HR mirror coatings and fused silica substrates, circulating power is estimated to reach $\geq$ 200 kW, distorting the radius of curvatures of the arm cavity mirrors by ? m; which can introduce significant optical loss due to mode mismatch (esp. for coupled cavities). And as a DRFPMI like aLIGO approaches designed sensitivity, instances of mode mismatch can be a two-fold threat with optical loss to higher order modes also impacting the ability to produced squeezed light states~\cite{}. The solution implemented in aLIGO as of O3 to sense mode mismatch consists of hartmann wavefront sensors (HWS) with 800 nm and 833 nm probe beams providing real-time mirror lensing / surface distortion data while actuation comes in the form of induced thermal actuation on mirrors throughout the interferometers with particular focus on the arm cavity mirrors. The thermal actuation of the core optics comes in two varieties: a CO2 laser actuator impinging upon a pre-installed fused silica compensation plate (CP) for positive lens actuation and an annular ring heater for negative lens actuation \cite{}. 
+Even with ultra-low absorption HR mirror coatings and fused silica substrates, circulating power is estimated to reach $\geq$ 200 kW, distorting the radius of curvatures of the arm cavity mirrors by ? m; which can introduce significant optical loss due to mode mismatch (esp. for coupled cavities). And as a DRFPMI like aLIGO approaches designed sensitivity, instances of mode mismatch can be a two-fold threat with optical loss to higher order modes also impacting the ability to produced squeezed light states. The solution implemented in aLIGO as of O3 to sense mode mismatch consists of hartmann wavefront sensors (HWS) with 800 nm and 833 nm probe beams providing real-time mirror lensing / surface distortion data while actuation comes in the form of induced thermal actuation on mirrors throughout the interferometers with particular focus on the arm cavity mirrors. The thermal actuation of the core optics comes in two varieties: a CO2 laser actuator impinging upon a pre-installed fused silica compensation plate (CP) for positive lens actuation and an annular ring heater for negative lens actuation ~\cite{brooks:aigwd2019}. 
 
 %\begin{figure}[H]
 %	\includegraphics[width=\textwidth]{TCS/FP_input_coupler.pdf}
@@ -323,7 +323,8 @@ Even with ultra-low absorption HR mirror coatings and fused silica substrates, c
 \end{figure}
 
 
-\section{Detector Noise}
+\section{Detector Noise}\label{sec:ligonoise}
+\subsection{Shot Noise}\label{sec:shotnoise}
 
 \section{Coating Thermal Noise}
 Contributions of categorized noises for gravitational wave detectors are organized in a ''noise budget", comprised of a collection of technical (noise imposed by the practical operation of the detector) and fundamental (inherent physical limitations of DRFPMIs by design) noise sources that impose limitations on gravitational wave detection.
@@ -331,7 +332,7 @@ Contributions of categorized noises for gravitational wave detectors are organiz
 
 \subsection{Brownian Thermal Noise}
 %% Might move this section back to the $\algaas$ Electro-optic noise chapter
-In 1827 the Scottish botanist Robert Brown noticed a constant motion of pollen particulates on the surface of water; witnessing randomized collisions of the water molecules holding a kinetic energy proportional to the temperature ($k_BT$) \cite{Brown:1828}. It is because of his documented observations we name the phenomena Brownian motion. And although the observations were on motion of particulates in liquids, molecules and atoms within gases and solids also exhibit Brownian motion. For high precision optical experiments operating at room temperature (and higher due to high power resonant beams), understanding how much differential phase noise is imparted on the interferometer light passing through and reflecting from core optics is crucial. This requires knowledge of the mean squared displacement from each degree of freedom of the system which can be realized through the Fluctuation Dissapation theorem. Derived by H.B. Callen and T.A. Welton, the theorem states that for a randomly fluctuating linear force \cite{Callen:1951}:
+In 1827 the Scottish botanist Robert Brown noticed a constant motion of pollen particulates on the surface of water; witnessing randomized collisions of the water molecules holding a kinetic energy proportional to the temperature ($k_BT$) \cite{brown:1828}. It is because of his documented observations we name the phenomena Brownian motion. And although the observations were on motion of particulates in liquids, molecules and atoms within gases and solids also exhibit Brownian motion. For high precision optical experiments operating at room temperature (and higher due to high power resonant beams), understanding how much differential phase noise is imparted on the interferometer light passing through and reflecting from core optics is crucial. This requires knowledge of the mean squared displacement from each degree of freedom of the system which can be realized through the Fluctuation Dissapation theorem. Derived by H.B. Callen and T.A. Welton, the theorem states that for a randomly fluctuating linear force \cite{callen:1951}:
 
 %% Further insight into Brownian motion was explored by Einstein where he was able to relate the mean-square displacement of a particle of radius $r_\mathrm{sph}$ on a fluid with viscosity $\eta$.
  %%\begin{equation}
@@ -399,7 +400,7 @@ S_x(f) = \frac{4 k_B T}{f} \frac{1-\sigma^2}{\pi^3 E_o r_o} I\phi \bigg[1- O\big
 Where $\phi$ and $E_o$ are the Poisson ratio and Young's modulus respectively, and $O(\frac{r_o}{R})$ contains a correction term contribution as a function of the small beam radius ($r_o$) relative to the mirror radius ($R$).
 
 \subsubsection{Coating Brownian thermal noise}
-Further investigations into the beam/optic system utilizing this approach and elasticity theory led to a deeper understanding about Brownian thermal noise contributions from LIGO test masses (substrate, suspensions, HR coating). Levin mentions, with details from Harry, that the noise contributed by a lossy mirror coating is proven to be to be the most significant contributor of brownian thermal noise. Hong provides a power spectral density \cite{Hong:2013}:
+Further investigations into the beam/optic system utilizing this approach and elasticity theory led to a deeper understanding about Brownian thermal noise contributions from LIGO test masses (substrate, suspensions, HR coating). Levin mentions, with details from Harry, that the noise contributed by a lossy mirror coating is proven to be to be the most significant contributor of brownian thermal noise. Hong provides a power spectral density \cite{hong:2013}:
 
 \begin{equation}
 S_j^X = \frac{4k_B T \lambda \phi_x^j(1- \sigma_j - 2 \sigma_j^2)}{3 \pi^2 f Y_j (1-\sigma_j)^2 \omega_o^2}
@@ -412,19 +413,19 @@ Where X represents bulk and shear with j = odd (material 1) and j = even (materi
     \includegraphics[width=.9\textwidth]{ALGAAS/aligo_nb_plus_cbn.pdf}
     \end{center}
     \caption{ALIGO noise budget placeholder for silica-tantala, and gaas-algaas brownian noise comparison}
-\label{fig:aligo_tn_comparison}
+\label{fig:aligotncomp}
 \end{figure}
 
 \subsubsection{$\mathrm{SiO_2}/\mathrm{TiO_2:Ta_2O_5}$ coating parameters}
-Currently the LIGO interferometers deposit $\lambda$/4 stacks of silica and titania doped tantala on fused silica test mass substrates. Effective loss angle measurements \cite{Harry:06}
+Currently the LIGO interferometers deposit $\lambda$/4 stacks of silica and titania doped tantala on fused silica test mass substrates. Effective loss angle measurements \cite{harry:2006}
 
 \textbf{Current $\mathrm{SiO_2}/\mathrm{TiO_2:Ta_2O_5}$ elasticity params, power spectra, and strain spectral density (order of magnitude estimate)}
 
 \subsubsection{$\gaas$/$\algaas$ coating parameters}
 %%Specific coating parameters for most promising $\algaas$ candidates? Chat with Steve. Or just mention parameters that are listed in Cole 2013
-\cite{Cole:2013}
+\cite{cole:2013}
 
 %% Insert computed curves of the most precise and recent (effective) loss angle measurements (Nick Demos measurements?). More instructive to plot strain spectral density or displacement power spectra
 
-\noindent Currently thermal noise from the $\mathrm{SiO_2}/\mathrm{TiO_2:Ta_2O_5}$ optical coatings is the largest contributor of Brownian noise in LIGO compared to estimated substrate and suspension thermal noise \cite{Harry:06}. As of the end of O3, Brownian thermal noise is estimated to be ? orders of magnitude below the current sensitivity and it will prove to be the limiting source of noise as that sensitivity is increased with various other upgrades mitigating fundamental and technical noise. 
+\noindent Currently thermal noise from the $\mathrm{SiO_2}/\mathrm{TiO_2:Ta_2O_5}$ optical coatings is the largest contributor of Brownian noise in LIGO compared to estimated substrate and suspension thermal noise \cite{harry:2006}. As of the end of O3, Brownian thermal noise is estimated to be ? orders of magnitude below the current sensitivity and it will prove to be the limiting source of noise as that sensitivity is increased with various other upgrades mitigating fundamental and technical noise. 
 %% Already mentioned in intro prior to this thermal noise section. Need to re-iterate in more detail?
