@@ -19,7 +19,7 @@ In other words, there exists a wave solution with two separate transverse polari
 
 When measured and analyzed, these waves allow astronomers to extract novel information from their progenitors through the testing of various hypotheses pertinant to the violent dynamics of these systems. On September 14th, 2015 the Laser Interferometric Gravitational Wave Observatories made the first direct gravitational wave detection from a pair of coalescing black holes 1.3 billion light years away, and since then other gravitational wave detectors (i.e. Virgo, KAGRA) have joined the search; continuing the search for novel events. This GW detector network has developed a track record with an ever increasing list and rate of detections including the first multimessenger event ~\cite{gw170817} and a suprising population of compact binary coalescences ~\cite{nitz:2023}. The incredible perseverence of the women and men participating in this multi-decade effort dedicated to constructing and developing the large scale gravitational wave observatories used today is a testament to their resiliency and that of a curious mind. Though I may possibly bore a more experienced reader with verbose and elementary material, personal curiosity has lead me to traverse the works of those before me and I do so with the most outspoken reverence; all while attempting my best to provide context of novel contributions noted within this document.  
 
-\section{Detector configurations}
+\section{Detector configurations}\label{sec:detcon}
 The current gravitational wave detector network primarily uses terrestrial bound Dual-Recycled Fabry-Perot Michelson interferometers; though to configure them into a state of observing, fundamental modes of operation are necessary to acquire first. A quick review of these modes informs some of the basic ``whats'' and ``hows'' of detector operation with the intention of developing a holistic view of the LIGO detection schema especially as it pertains to the body of this work. Most introductory detector configuration discussions start with the michelson interferometer and end at the dual-recycled Fabry-Perot Michelson interferometer; this section follows in kind. Alongside the discussion are citations which can provide exceptional alternative and more detailed explanations of topics discussed.
 
 \subsection{Interferometry with a Michelson configuration}
@@ -228,7 +228,7 @@ As may be inferred, this technique requires a mirror installation at the anti-sy
 
 \begin{align}
 	t_\mathrm{SRC} & = \frac{t_\mathrm{SRM} t_\mathrm{ITM} e^{i\phi_\mathrm{SRC}}}{1-r_\mathrm{ITM} r_\mathrm{SRM} e^{i2\phi_\mathrm{SRC}}}, \\
-	r_\mathrm{SRC} & = \frac{r_\mathrm{ITM} - r_\mathrm{SRM} e^{i2\phi_\mathrm{SRC}}}{1-r_\mathrm{ITM} r_\mathrm{SRM} e^{i2\phi_\mathrm{SRC}}} \\
+	r_\mathrm{SRC} & = \frac{r_\mathrm{ITM} - r_\mathrm{SRM} e^{i2\phi_\mathrm{SRC}}}{1-r_\mathrm{ITM} r_\mathrm{SRM} e^{i2\phi_\mathrm{SRC}}} 
 \end{align}
 
 \begin{figure}[h!]
@@ -253,43 +253,45 @@ As may be inferred, this technique requires a mirror installation at the anti-sy
 
 ``Core optics" (Recycling mirrors, Beam splitter, and FP arm cavity mirrors) are suspended with quadruple pendulum suspensions decoupling seismic activity from the mirror positions to as low as a frequency as possible. 
 
-\subsection{Reaching ``Observing Mode"}
-The prior discussions still have yet to discuss most practical considerations required to operate a DRFPMI as a gravitational wave observatory. For the sake of transitioning to the niche body of this work, we provide a discussion of select detector features: one requires thermodynamics knowledge as it pertains to beam optics (a.k.a. most adaptive optics), while the other involves the thermodynamic noise limitation of highly reflective mirror coatings. It is also relevant to know that the studies take place at two very different stages of detector comissoning; one is aimed at comissioning current detectors and the other aims at informing an upgrade choice to be made for current and next generation detectors, though both are aimed at increasing gravitational wave detector sensitivity. The current objective at hand is to inform of these essential criteria for interferometer operations as they pertain to this dissertation. More details on setting up the simple Michelson provides on some of the initial requirements; while the second order is establishing the strict conditions of the Fabry-P\'{e}rot cavities.
+\subsection{Thermodynamic considerations}
+The prior discussions still have yet to discuss most practical considerations required to operate a DRFPMI as a gravitational wave observatory. For the sake of transitioning to the niche body of this work, we provide brief discussions of select detector features: 1) adaptive optics for high power operation, and 2) thermodynamics of highly reflective mirror coatings that impose a fundamental limit to gravitational wave interferometers. %It is also relevant to know that the studies take place at two very different stages of detector comissoning; one is aimed at comissioning current detectors while the other aims at informing an upgrade choice to be made for current and next generation detectors, though both are aimed at increasing gravitational wave detector sensitivity. The current objective at hand is to inform of these essential criteria for interferometer operations as they pertain to this dissertation. More details on setting up the simple Michelson provides on some of the initial requirements; while the second order is establishing the strict conditions of the Fabry-P\'{e}rot cavities.
 
-\subsubsection{Length Stabilization}
-With LIGO's coupled cavity configuration, maintaining mirror positions is imperative. Techniques such as the ''side-fringe" lock (using a DC photodiode to measure the transmitted, reflected, or circulating power within a linear and slightly off resonance point) \cite{fox:2003} and the Pound-Drever-Hall technique (see \autoref{subsubsec:pdh} ) are used to maintain cavity length stabilization. Stabilizing cavity lengths to configure the detector into a highly sensitive differential arm sensor is a process that is worthwhile understanding with more ample discussions ~\cite{mullavey:2012}.
+%\subsubsection{Length Stabilization}
+%With LIGO's coupled cavity configuration, maintaining mirror positions is imperative. Techniques such as the ''side-fringe" lock (using a DC photodiode to measure the transmitted, reflected, or circulating power within a linear and slightly off resonance point) \cite{fox:2003} and the Pound-Drever-Hall technique (see \autoref{subsubsec:pdh} ) are used to maintain cavity length stabilization. Stabilizing cavity lengths to configure the detector into a highly sensitive differential arm sensor is a process that is worthwhile understanding with more ample discussions ~\cite{mullavey:2012}.
 
 %So far, we've discussed light and phase fronts without addressing geometric
 %constraints when using Gaussian laser light. We consider a general complex
 %Gaussian beam mode propogating along the beam axis ($z$) with wavelength
-%$\lambda$.
-
+%$\lambda$
 %\begin{equation}\label{eq:gaussianbeam}
 %E(r) = E_o \frac{\sqrt{[\lambda z_o] / \pi}}{W(z)}e^{-r^2 / W^2(z)} e^{-ikz - ik[r^2 / (2R(z))] + i \zeta}
 %\end{equation}
 %
 %Where $E_o$ is a complex amplitude, $r = \sqrt{x^2 + y^2}$ defines the transverse beam coordinates, $k$ is the wave number, $W(z)$ is the beam width, $R(z)$ is the beam radius of curvature, and $\zeta$ is the Gouy phase.
 
-Derived from the paraxial approximation of the Helmholtz equation, this field is not the only solution for optical cavities. Alternative higher order mode (HOM) solutions are commonly present and are expressed in terms of two mathematical bases: the Hermite-Gauss and Laguerre-Gauss modes. These HOMs are more often than not power parasites when attempting to only sense displacement Fabry-P\'{e}rot cavities and are a symptom of altered cavity geometry; though a virtue of the lost power is its utility as an error signal for sensing and actuation schemes. This is what is what is accomplished with an alignment sensing and control (ASC) system and a thermal compensation system (TCS) for mode matching actuation.
+%Derived from the paraxial approximation of the Helmholtz equation, this field is not the only solution for optical cavities. Alternative higher order mode (HOM) solutions are commonly present and are expressed in terms of two mathematical bases: the Hermite-Gauss and Laguerre-Gauss modes. These HOMs are more often than not power parasites when attempting to only sense displacement Fabry-P\'{e}rot cavities and are a symptom of altered cavity geometry; though a virtue of the lost power is its utility as an error signal for sensing and actuation schemes. This is what is what is accomplished with an alignment sensing and control (ASC) system and a thermal compensation system (TCS) for mode matching actuation.
 
 %%FIGURE: ALIGO Sensor and Actuation schema
 
-\subsubsection{Alignment sensing and control}
+%\subsubsection{Alignment sensing and control}
 
-\begin{figure}[H]
-    \begin{center}
-    \includegraphics[width=.5\textwidth]{ALGAAS/aligo_nb_plus_cbn.pdf}
-    \end{center}
-    \caption{A misaligned Fabry-P\'{e}rot cavity scatters circulating light into higher order Hermite-Gauss modes.}
-    \label{fig:HGLGmodes}
-\end{figure}
+%\begin{figure}[H]
+%    \begin{center}
+%    \includegraphics[width=.5\textwidth]{ALGAAS/aligo_nb_plus_cbn.pdf}
+%    \end{center}
+%    \caption{A misaligned Fabry-P\'{e}rot cavity scatters circulating light into higher order Hermite-Gauss modes.}
+%    \label{fig:HGLGmodes}
+%\end{figure}
 
-\textcolor{red}{Cavity misalignment}
+%\textcolor{red}{Cavity misalignment}
 
-Even with state-of-the-art ground motion isolation for terrestrial gravitational detectors using quadruple stage pendula and high mass mirrors, current gravitational wave detectors still suffer from occasional misalignment and require sensing and feedback loops to meet mirror alignment requirements.
+%Even with state-of-the-art ground motion isolation for terrestrial gravitational detectors using quadruple stage pendula and high mass mirrors, current gravitational wave detectors still suffer from occasional misalignment and require sensing and feedback loops to meet mirror alignment requirements.
 
-\subsubsection{Mode Matching}
-For Gaussian beams, there are further requirements of macroscopic mirror positions and radius of curvatures to maximize resonant power in the fundamental (TEM00) mode. Failure to plan and maintain these conditions sucessfully results in a mismatch of the beam mode to the cavity mode, scattering power into higher order Laguerre-Gauss modes as mentioned in \hyperref[subsubsubsubsec:mm2]{\S \ref*{subsubsubsubsec:mm2}} . Additionally, even with ultra-low absorption HR mirror coatings and fused silica substrates, circulating power is estimated to reach $\geq$ 500 kW, distorting the radius of curvatures of the arm cavity mirrors by ? m; which can introduce significant optical loss due to mode mismatch (esp. for coupled cavities) ~\cite{tvo}. And as a DRFPMI like aLIGO approaches designed sensitivity, instances of mode mismatch are a two-fold threat with optical loss to higher order modes also impacting the ability to produced squeezed light states ~\cite{oelker:2014}. The solution implemented in aLIGO as of O3 to sense mode mismatch consists of Hartmann wavefront sensors (HWS) with 800 nm and 833 nm probe beams providing real-time mirror lensing / surface distortion data while actuation comes in the form of induced thermal actuation on mirrors throughout the interferometers with particular focus on the arm cavity mirrors ~\cite{aasi:2015}. The thermal actuation of the core optics comes in two varieties: a CO2 laser actuator impinging upon a pre-installed fused silica compensation plate (CP) for positive lens actuation and an annular ring heater for negative lens actuation ~\cite{brooks:aigwd2019}. 
+\subsubsection{Adaptive Optics}
+For Gaussian beams, there are further requirements of macroscopic mirror positions and radius of curvatures to maximize resonant power in the fundamental (TEM00) mode. Failure to plan and maintain these conditions sucessfully results in a mismatch of the beam mode to the cavity mode, scattering power into higher order Laguerre-Gauss modes as mentioned in \hyperref[subsubsubsubsec:mm2]{\S \ref*{subsubsubsubsec:mm2}} . Additionally, even with ultra-low absorption HR mirror coatings and fused silica substrates, circulating power is estimated to reach $\geq$ 500 kW, distorting the radius of curvatures of the arm cavity mirrors by ? m; which can introduce significant optical loss due to mode mismatch (esp. for coupled cavities) ~\cite{tvo}. And as a DRFPMI like aLIGO approaches designed sensitivity, instances of mode mismatch are a two-fold threat with optical loss to higher order modes also impacting the ability to produced squeezed light states ~\cite{oelker:2014}. The further motivation and the implemented solution for aLIGO during O3 is discussed in Chapter 2. 
+
+
+\subsubsection{Differential arm (DARM) noise budget}
 
 %\begin{figure}[H]
 %	\includegraphics[width=\textwidth]{TCS/FP_input_coupler.pdf}

@@ -7,11 +7,19 @@
  %% Increasing RH tuning speed
 
 
-%As shown in Chapter 1,  increasing input power leads to a direct increase to the sensitivity of a DRFPMI to make gravitational wave detections. But one implication of this is the necessity for thermal compensation. As the interferometer increases input power, you directly couple more light into the Fabry-P\'{e}rot cavity arms; and even with optics ultra-low absorption ($\approx 400 \; \mathrm{ppb} \pm 150 \; \mathrm{ppb}$ \textcolor{red}{alog ? or point absorber paper}) still induce thermo-optic effects with the projected circulating arm power of 200 kW. A symptom of this is mode mismatch throughout the interferometer, a problem that contributes to loss of usable optical power throughought the DRFPMI which can reduce sensitivity two-fold: loss of power to your readout, and reduced efficacy of the current solution to reduce the quantum noise limit (squeezing).
-
-During O3a the LIGO Hanford observatory circulating arm power reached beyond 180 kW; emphasizing importance on properly tuned thermal compensation in O3 to avert arm cavity mode mismatch. Detailed in this chapter is a summary of related comissioning efforts at LHO including but not exclusive to: citations of the initial computed O3 TCS pre-load, the development and implementation of real-time digital filtering for an improved ring heater actuation response by a factor of $\approx 6$, and the impacts of high absorption points aka point absorbers discovered on arm cavity test masses along with the inital efforts to mitigate them. 
+%As shown in Chapter 1,  
 
 \section{Motivation}
+As seen in ~\ref{sec:detcon}, increasing detector input power leads to a direct increase in sensitivity to gravitational waves. Though, with increased input power to a DRFPMI, you directly couple more light into the Fabry-P\'{e}rot cavity arms; and even with optics ultra-low absorption ($\approx 400 \; \mathrm{ppb} \pm 150 \; \mathrm{ppb}$ \textcolor{red}{alog ? or point absorber paper}) there still are induced thermo-optic effects, and with a designed circulating arm power of 750 kW there is a produced substrate lens with a relatively smaller radius of curvature. These thermal abherrations produce mode mismatch, which accumulate optical loss throughought GWDs and reduce sensitivity two-fold: loss of power to your readout, and reduced efficacy of the current solution to reduce the quantum noise limit (squeezing).
+\\
+During O3a the LIGO Hanford observatory circulating arm power reached beyond 180 kW; emphasizing importance on properly tuned thermal compensation in O3 to avert arm cavity mode mismatch. Detailed in this chapter is a summary of related comissioning efforts at LHO including but not exclusive to: citations of the initial computed O3 TCS pre-load, the development and implementation of real-time digital filtering for an improved ring heater actuation response by a factor of $\approx 6$, and the impacts of high absorption points aka point absorbers discovered on arm cavity test masses along with the inital efforts to mitigate them. 
+
+\subsection{Thermal Compensation System}
+to sense mode mismatch consists of Hartmann wavefront sensors (HWS) with 800 nm and 833 nm probe beams providing real-time mirror lensing / surface distortion data while actuation comes in the form of induced thermal actuation on mirrors throughout the interferometers with particular focus on the arm cavity mirrors ~\cite{aasi:2015}. The thermal actuation of the core optics comes in two varieties: a CO2 laser actuator impinging upon a pre-installed fused silica compensation plate (CP) for positive lens actuation and an annular ring heater for negative lens actuation ~\cite{brooks:aigwd2019}. 
+\subsubsection{Sensing Optical Path Distortion}
+
+\subsubsection{Actuation}
+
 
 
 \section{A priori TCS pre-load methodology for O3a}
