@@ -1,6 +1,32 @@
 %% appendix
 
+
 \section{The Equipartition theorem and the Fluctuation dissapation theorem}
+
+
+\section{Monochromatic plane wave propogation}
+Revisiting Maxwell's equations for a simple monochromatic plane wave solution provides further direction on how crystalline media may effect incident light. Further elaborating, the following assumptions are made:
+\begin{equation}
+\vec{E} = E_o e^{(i \omega (\frac{n}{c} \vec{r}\cdot \vec{s}-t))}
+\end{equation}
+Where $n$ is the index of refraction, $c$ is the speed of light, $\vec{r}$ is the position vector and $\vec{s}$ is the unit wave normal.
+\begin{equation}
+\nabla \times \vec{H}= \frac{\partial \vec{D}}{\partial t}
+\end{equation}
+Where $\vec{H}$ is the magnetic field assuming permeability $\mu$, and the generalized displacement vector $\vec{D}$ and electric field vector $\vec{E}$.
+\begin{equation}
+\nabla \times \vec{E} = -\mu \vec{H}
+\end{equation}
+Reducing to only the displacement and electric fields:
+\begin{equation}\label{eq:dispelec}
+\vec{D} = \frac{n^2}{\mu}[\vec{E}-\vec{s}(\vec{s}\cdot \vec{E})]
+\end{equation}
+Maxwell's equations show that the electric field is not necessarily parallel to the displacement field and in most materials with non-zero polarizability tensors and dielectric tensors, it is not. But as specified above, the displacement vector, Electric field and unit wave normal are co-planar while remaining orthogonal to $\vec{H}$. Assuming we are operating within a coordinate system aligned with the principal dielectric axes, we substitute \autoref{eq:dispfield} into \autoref{eq:dispelec}:
+\begin{equation}
+E_i = \frac{n^2 s_i (\vec{E}\cdot\vec{s})}{n^2 - \mu \varepsilon_i}
+\end{equation}
+
+From here it can be shown that for a general plane wave there exist two unique refractive index solutions within the constructed dielectric ~\cite{nye}. 
 
 \newpage
 
