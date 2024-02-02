@@ -1,6 +1,6 @@
 %Electro-optic study of AlGaAs coated mirrors
 
-Once mirror coating materials are selected for DRFPMI core optics, another fundamental detector noise limit (like that discussed in \autoref{sec:shotnoise} is imposed on the gravitational wave detector in the form of coating thermal noise. For aLIGO $\siotao$ coatings this is represented in \autoref{sec:ligonoise}. As aLIGO approaches designed sensitivity, alternative mirror coating solutions are proposed with the primary purpose of pushing down the thermal noise limit for further enhancing detector sensitivity \cite{harry:aigwd2019}. With the potential to reduce coating Brownian noise by a factor of 10, $\gaas$/$\algaas$ shows promise for next generation detectors; with a potential strain reduction by a factor of 5 ~\cite{cole:2013} when compared to the current aLIGO coating thermal noise limit. Though applying crystalline mirror HR coatings to the core optics does introduce new side effects; one being linear electro-optic of $\gaas$/$\algaas$ (dn/dE), also known as the Pockels effect ~\cite{abernathy:poster}. A differential phase noise estimate of $\approx 10^{-11}$ [rad/m/V], alongside measured ambient field noise of ? [V/m] presents adequate motivation for a thorough study dedicated to the electro-optical properties of $\gaas$/$\algaas$ coatings. This section details such a study: starting with a survey of distinguishing optical and material properties of crystalline materials like $\gaas$ and $\algaas$ by reviewing: light propogation through anistropic materials, and induced optical anisotropy of zincblende materials. Preliminary estimates of the differential phase of light reflected from a $\gaas$/$\algaas$ coating stack caused by electric field noise are computed while considering potential impacts to the current generation gravitational wave detectors. Also discussed is a specific study designed to acquire dn/dE estimates from a calibrated differential length PDH locked signal from a short experimental optical cavity with a primarily normal electric field driven across a HR $\gaas$/$\algaas$ coating ``witness" sample.
+Once mirror coating materials are selected for DRFPMI core optics, another fundamental detector noise limit (like that discussed in \autoref{sec:shotnoise} is imposed on the gravitational wave detector in the form of coating thermal noise. For aLIGO $\siotao$ coatings this is represented in \autoref{sec:noisebudget}. As aLIGO approaches designed sensitivity, alternative mirror coating solutions are proposed with the primary purpose of pushing down the thermal noise limit for further enhancing detector sensitivity \cite{harry:aigwd2019}. With the potential to reduce coating Brownian noise by a factor of 10, $\gaas$/$\algaas$ shows promise for next generation detectors; with a potential strain reduction by a factor of 5 ~\cite{cole:2013} when compared to the current aLIGO coating thermal noise limit. Though applying crystalline mirror HR coatings to the core optics does introduce new side effects; one being linear electro-optic of $\gaas$/$\algaas$ (dn/dE), also known as the Pockels effect ~\cite{abernathy:poster}. A differential phase noise estimate of $\approx 10^{-11}$ [rad/m/V], alongside measured ambient field noise of ? [V/m] presents adequate motivation for a thorough study dedicated to the electro-optical properties of $\gaas$/$\algaas$ coatings. This section details such a study: starting with a survey of distinguishing optical and material properties of crystalline materials like $\gaas$ and $\algaas$ by reviewing: light propogation through anistropic materials, and induced optical anisotropy of zincblende materials. Preliminary estimates of the differential phase of light reflected from a $\gaas$/$\algaas$ coating stack caused by electric field noise are computed while considering potential impacts to the current generation gravitational wave detectors. Also discussed is a specific study designed to acquire dn/dE estimates from a calibrated differential length PDH locked signal from a short experimental optical cavity with a primarily normal electric field driven across a HR $\gaas$/$\algaas$ coating ``witness" sample.
 
 
 \section{Motivation}
@@ -36,7 +36,7 @@ x^2 (f)  = \frac{4k_B T}{(2 \pi f)^2}\; \Re[Y]
 
 Where $Y$ is the inverse of the impedance or admittance. With this power spectra, modelling and budgeting notable LIGO fundamental noise contributions attributed to the choice of the materials used for mirror substrates, and highly reflective mirror coatings becomes less daunting. Though adequate modelling of internal force couplings for the aforementioned components is required.
 
-\subsubsubsection{Internal friction in Materials and Loss angle}
+\paragraph{Internal friction in Materials and Loss angle}
 
 Zener provides a model of the internal friction of materials incorporating anelasticity into the equations of motion \cite{zener:1948}:
 
@@ -78,7 +78,7 @@ S_x(f) = \frac{4 k_B T}{f} \frac{1-\sigma^2}{\pi^3 E_o r_o} I\phi \bigg[1- O\big
 %%Refer to Levin appendix for more on how elasticity parameters are introduced?
 Where $\phi$ and $E_o$ are the Poisson ratio and Young's modulus respectively, and $O(\frac{r_o}{R})$ contains a correction term contribution as a function of the small beam radius ($r_o$) relative to the mirror radius ($R$).
 
-\subsubsubsection{Coating Brownian thermal noise}
+\paragraph{Coating Brownian thermal noise}
 Further investigations into the beam/optic system utilizing this approach and elasticity theory led to a deeper understanding about Brownian thermal noise contributions from LIGO test masses (substrate, suspensions, HR coating). Levin mentions, with details from Harry, that the noise contributed by a lossy mirror coating is proven to be to be the most significant contributor of brownian thermal noise. Hong provides a power spectral density \cite{hong:2013}:
 
 \begin{equation}
@@ -95,12 +95,12 @@ Where X represents bulk and shear with j = odd (material 1) and j = even (materi
 \label{fig:aligotncomp}
 \end{figure}
 
-\subsubsubsection{$\siotao$ coating parameters}
+\paragraph{$\siotao$ coating parameters}
 Currently the LIGO interferometers deposit $\lambda$/4 stacks of silica and titania doped tantala on fused silica test mass substrates. Effective loss angle measurements \cite{harry:2006}
 
 \textbf{Current $\siotao$ elasticity params, power spectra, and strain spectral density (order of magnitude estimate)}
 
-\subsubsubsection{$\gaas$/$\algaas$ coating parameters}
+\paragraph{$\gaas$/$\algaas$ coating parameters}
 %%Specific coating parameters for most promising $\algaas$ candidates? Chat with Steve. Or just mention parameters that are listed in Cole 2013
 \cite{cole:2013}
 
