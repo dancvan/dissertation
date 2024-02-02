@@ -254,7 +254,9 @@ As may be inferred, this technique requires a mirror installation at the anti-sy
 ``Core optics" (Recycling mirrors, Beam splitter, and FP arm cavity mirrors) are suspended with quadruple pendulum suspensions decoupling seismic activity from the mirror positions to as low as a frequency as possible. 
 
 \subsection{Thermodynamic considerations}
-The prior discussions still have yet to discuss most practical considerations required to operate a DRFPMI as a gravitational wave observatory. For the sake of transitioning to the niche body of this work, we provide brief discussions of select detector features: 1) adaptive optics for high power operation, and 2) thermodynamics of highly reflective mirror coatings that impose a fundamental limit to gravitational wave interferometers. %It is also relevant to know that the studies take place at two very different stages of detector comissoning; one is aimed at comissioning current detectors while the other aims at informing an upgrade choice to be made for current and next generation detectors, though both are aimed at increasing gravitational wave detector sensitivity. The current objective at hand is to inform of these essential criteria for interferometer operations as they pertain to this dissertation. More details on setting up the simple Michelson provides on some of the initial requirements; while the second order is establishing the strict conditions of the Fabry-P\'{e}rot cavities.
+The prior discussions still have yet to discuss most practical considerations required to operate a DRFPMI as a gravitational wave observatory. For the sake of transitioning to the niche body of this work, we provide brief discussions of select detector features: 1) adaptive optics for high power operation, and 2) thermodynamics of highly reflective mirror coatings that impose a fundamental limit to gravitational wave interferometers. 
+
+%It is also relevant to know that the studies take place at two very different stages of detector comissoning; one is aimed at comissioning current detectors while the other aims at informing an upgrade choice to be made for current and next generation detectors, though both are aimed at increasing gravitational wave detector sensitivity. The current objective at hand is to inform of these essential criteria for interferometer operations as they pertain to this dissertation. More details on setting up the simple Michelson provides on some of the initial requirements; while the second order is establishing the strict conditions of the Fabry-P\'{e}rot cavities.
 
 %\subsubsection{Length Stabilization}
 %With LIGO's coupled cavity configuration, maintaining mirror positions is imperative. Techniques such as the ''side-fringe" lock (using a DC photodiode to measure the transmitted, reflected, or circulating power within a linear and slightly off resonance point) \cite{fox:2003} and the Pound-Drever-Hall technique (see \autoref{subsubsec:pdh} ) are used to maintain cavity length stabilization. Stabilizing cavity lengths to configure the detector into a highly sensitive differential arm sensor is a process that is worthwhile understanding with more ample discussions ~\cite{mullavey:2012}.
@@ -288,12 +290,21 @@ The prior discussions still have yet to discuss most practical considerations re
 %Even with state-of-the-art ground motion isolation for terrestrial gravitational detectors using quadruple stage pendula and high mass mirrors, current gravitational wave detectors still suffer from occasional misalignment and require sensing and feedback loops to meet mirror alignment requirements.
 
 \subsubsection{Adaptive Optics}
-For Gaussian beams, there are further requirements of macroscopic mirror positions and radius of curvatures to maximize resonant power in the fundamental (TEM00) mode. Failure to plan and maintain these conditions sucessfully results in a mismatch of the beam mode to the cavity mode, scattering power into higher order Laguerre-Gauss modes as mentioned in \hyperref[subsubsubsubsec:mm2]{\S \ref*{subsubsubsubsec:mm2}} . Additionally, even with ultra-low absorption HR mirror coatings and fused silica substrates, circulating power is estimated to reach $\geq$ 500 kW, distorting the radius of curvatures of the arm cavity mirrors by ? m; which can introduce significant optical loss due to mode mismatch (esp. for coupled cavities) ~\cite{tvo}. And as a DRFPMI like aLIGO approaches designed sensitivity, instances of mode mismatch are a two-fold threat with optical loss to higher order modes also impacting the ability to produced squeezed light states ~\cite{oelker:2014}. The further motivation and the implemented solution for aLIGO during O3 is discussed in Chapter 2. 
+As mentioned in \hyperref[subsubsubsubsec:mm2]{\S \ref*{subsubsubsubsec:mm2}}, the microscopic longitudinal control of the mirror positions is only half the story for Gaussian beams and further consideration of macroscopic mirror position and radii of curvature are needed to maximize resonant power in the fundamental (TEM00) mode. Failure to plan and maintain these conditions results in beam mode to cavity mode mismatch, scattering power into higher order Laguerre-Gauss modes. Additionally, even with ultra-low absorption HR mirror coatings and fused silica substrates, circulating power is estimated to reach $\geq$ 500 kW, distorting the radius of curvatures of the arm cavity mirrors by ? m; which can introduce significant optical loss due to mode mismatch (esp. for coupled cavities) ~\cite{tvo}. And as DRFPMIs like aLIGO approach designed sensitivity, instances of mode mismatch are a two-fold threat with optical loss to higher order modes that impact the ability to produce squeezed light states ~\cite{oelker:2014}. The further motivation and the implemented solution for aLIGO during O3 is discussed in Chapter 2. 
 
 
 \subsubsection{Differential arm (DARM) noise budget}\label{sec:ligonoise}
+Differential arm motion is more often than not produced by sources that are not gravitational waves. The sum and categorization of motion from non gravitational wave sources (both known and unknown) at a given point in time is known as a DARM noise budget. This tool aids comissioners in understanding the current limits of GWDs and additionally facilitates focused hypotheses for detector improvements / upgrades. One rapidly approaching limit is the coating thermal noise from 
 
 
-\subsection{Shot Noise}\label{sec:shotnoise}
+\begin{figure}[H]
+  \begin{center}
+	  \includegraphics[width=\textwidth]{aligo_config.pdf}
+  \end{center}
+  \caption{DRFPMI configuration used in ALIGO}
+  \label{fig:simple_michelson}
+\end{figure}
+
+\subsection{Coating Thermal noise}\label{sec:shotnoise}
 
 
