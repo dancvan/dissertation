@@ -4,7 +4,7 @@ Once mirror coating materials are selected for DRFPMI core optics, another funda
 
 \section{Motivation}
 \subsection{Coating Thermal Noise}
-Contributions of categorized noises for gravitational wave detectors are organized in a ''noise budget", comprised of a collection of technical (noise imposed by the practical operation of the detector) and fundamental (inherent physical limitations of DRFPMIs by design) noise sources that impose limitations on gravitational wave detection.
+Contributions of categorized noises for gravitational wave detectors are organized in a ``noise budget", comprised of a collection of technical (noise imposed by the practical operation of the detector) and fundamental (inherent physical limitations of DRFPMIs by design) noise sources that impose limitations on gravitational wave detection.
 %% Contributions of categorized noises for gravitational wave detectors the ''noise budget" ((LHO and LLO O3?) or just GWINC?)}
 
 \subsubsection{Brownian Thermal Noise}
@@ -32,7 +32,7 @@ F_x^2(f) = 4 k_B T\; \Re[Z]
 x^2 (f)  = \frac{4k_B T}{(2 \pi f)^2}\; \Re[Y]
 \end{equation}
 
-Where $Y$ is the inverse of the impedance or admittance. With this power spectra, modelling and budgeting notable LIGO fundamental noise contributions attributed to the choice of the materials used for mirror substrates, and highly reflective mirror coatings becomes less daunting. Though adequate modelling of internal force couplings for the aforementioned components is required.
+Where $Y$ is the inverse impedance or admittance. $$x^2(f)$$ as informed by the FDT facilitates modelling and budgeting notable LIGO fundamental noise contributions made by choice of materials used for mirror substrates and highly reflective mirror coatings. Though adequate modelling of internal force couplings for the aforementioned components provides a more complete picture.
 
 \paragraph{Internal friction in Materials and Loss angle}
 
@@ -41,7 +41,6 @@ Zener provides a model of the internal friction of materials incorporating anela
 \begin{equation}
 F = k(1+i\phi)x + m\ddot{x}
 \end{equation}
-
 
 Where $m$ is mass attached to a spring with a spring constant $k(1+ i\phi)$ incorporating the degree of anelasticity $\phi$. From equations 3.5 and 3.3 we perform a Laplace transform and acquire the following form of admittance:
 \begin{equation}
@@ -59,6 +58,7 @@ Y(\omega) = \frac{\dot{x}(\omega)}{F(\omega)} = \frac{-i\omega}{k(1+i\phi) - m\o
 \begin{equation}
 x^2 (f)  = \frac{2k_B T}{\pi}\frac{k\phi}{(k-4\pi^2 m f^2)^2 + k^2 \phi^2}
 \end{equation}
+
 Computing the admittance from a Gaussian beam impinging upon a HR mirror can require expansion of all individual mechanical degrees of freedom of the test mass system across a relevant frequency range, and with that approach convergence is not guaranteed. Saulson and Gonzalez provide an alternative method to computing the admittance coined the ``direct approach" by Levin when computing the noise from a Gaussian beam on a LIGO HR test mass. The admittance can be acquired through:
 
 \begin{equation}\label{eq:admitdirec}
