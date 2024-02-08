@@ -1,5 +1,42 @@
 %% appendix
+\section{Cavity stability criteria ($G(g_1,g_2)$)} \label{sec:cavstab}
+Using spherical mirror resonators to match the phasefront of the beam mode is a standard practice that has some additional geometric considerations to maximize reonance for a given beam. Choosing two mirrors with ROCs ($R_1$, $R_2$) and a set distance between them $d$, a implicit containment condition is set on the resonator \cite{salehteich:2007}:
 
+$$
+	0 \leq \bigg(1 + \frac{d}{R_1} \bigg) \bigg(1 + \frac{d}{R_2} \bigg) \leq 1
+$$
+
+Where we define $g_i = 1 + \frac{d}{R_i}$ so that we define a single parameter for the two mirror resonator $G$:
+
+\begin{equation}\label{eq:cavstab}
+	0 \leq G(g_1,g_2) \leq 1
+\end{equation}
+
+\begin{figure}[H]
+\includegraphics[width=\textwidth]{figs/ALGAAS/beam_scans/12_18_2020_preMMT.pdf}
+\caption{\textcolor{red}{Figure of two mirror cavity}}
+\label{fig:cav_stab}
+\end{figure}
+
+\section{Paraxial equation} \label{sec:paraxial}
+
+The general three dimensional wave equation for an E-field $E(x,y,z,t)$ is provided by Maxwell:
+
+$$ \label{eq:waveq}
+	\bigg( \nabla ^2 + \frac{1}{c^2} \frac{\partial^2}{\partial t^2} \bigg) E(x,y,z,t) = 0
+$$
+
+For a coherent beam ($k = \frac{2 \pi}{\lambda}$), we analyze the purely spatial component of the solution and select a longitudinal propogation ($\vec{z}$) direction such that our solution will look like the following (utilizing Helmholtz's equation):
+
+$$
+	E(x,y,z) = E_0(x,y,z) e^{-ikz}
+$$
+
+The above wavefunction combined with Helmoltz equation requires that complex form of $E_0$ obeys the paraxial equation:
+
+\begin{equation}\label{eq:paraxial}
+	\bigg( \frac{\partial^2}{\partial x ^2} + \frac{\partial^2}{\partial y^2} - 2ik \frac{\partial}{\partial z} \bigg) E_0(x,y,z) = 0
+\end{equation}
 
 \section{The Equipartition theorem and the Fluctuation dissapation theorem}
 

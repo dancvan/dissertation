@@ -164,9 +164,9 @@ The noted gain improvements made by adding two mirrors to the optical schema are
 
 \paragraph{Gaussian and Higher Order Modes (Mode Matching pt.2)}\label{subsubsubsubsec:mm2}
 
-Imposing a Gaussian beams to the Fabry-Perot reveal some final caveats before exploiting any potential enhancement. First is that of the beam divergence, which can quickly limit the amount of stored power between two flat finite sized mirrors. Though, as addressed for the simple Michelson, curving the mirrors focuses the Gaussian beam power which permits a robust resonance when curving one or both cavity mirrors. 
+Imposing a Gaussian beams to the Fabry-Perot reveal some final caveats before exploiting any potential enhancement. First is that of beam divergence, which can quickly limit the stored power between two flat finite sized mirrors (see \autoref{sec:cavstab}). Though, as addressed for the simple Michelson, curving the mirrors focuses the Gaussian beam power which permits a robust resonance when curving one or both cavity mirrors. 
 
-Also mentioned, albeit in passing, is the importance of the overlap between mirror radius of curvature to the beam phasefront \textcolor{red}{see stability criteria}. Beam optics informs of relatively straightfoward solutions for optimal mirror placement for a given incident beam and vice versa. This exercise informs of the importance of matching the gaussian beam mode to the mode of a spherical mirror resonator given resonator, but more unintuitive are the implications if there is deviation from said solution. Alongside the TEM00 fundamental mode, the paraxial equation can also produce (\textcolor{red}{see appendix}) families of solutions that exist for the two mirror cavity configuration; these solutions are the Hermite-Gauss and Laguerre-Gauss bases ~\cite{anderson:1984}:
+Also mentioned, albeit in passing, is the importance of the overlap between mirror radius of curvature to the beam phasefront. Beam optics informs of relatively straightfoward solutions for optimal mirror placement for a given incident beam and vice versa. This exercise informs of the importance of matching the gaussian beam mode to the mode of a spherical mirror resonator given resonator, but more unintuitive are the implications if there is deviation from said solution. Alongside the TEM00 fundamental mode, the paraxial equation \autoref{sec:paraxial} can also produce families of solutions that exist for the two mirror cavity configuration; these solutions are the Hermite-Gauss and Laguerre-Gauss bases:
 
 \begin{equation}\label{eq:HG_beam}
 	\begin{split}
@@ -181,7 +181,7 @@ Also mentioned, albeit in passing, is the importance of the overlap between mirr
 	\end{split}
 \end{equation}
 
-These HG and LG field solutions arise from added perturbations in the beam-cavity alignment and mode mismatch respectively. The presence of power in these modes when sweeping a mirror along the beam axis ($\Delta FSR$) indicates optical loss while simultaneously provides useful feedback in reducing it through the construction and maintainence of a TEM00 beam-resonator coupling. 
+These HG and LG field solutions arise from added perturbations in the beam-cavity alignment and mode mismatch respectively. The presence of power in these modes when sweeping a mirror along the beam axis ($\Delta FSR$) indicates optical loss while simultaneously providing useful feedback in reducing it through the construction and maintainence of a TEM00 beam-resonator coupling ~\cite{anderson:1984}. 
 
 
 \begin{figure}[ht!]
@@ -191,7 +191,7 @@ These HG and LG field solutions arise from added perturbations in the beam-cavit
 	  \includegraphics[width=.48\textwidth]{INTRO/LG00_LG22_modes.pdf}
   \end{subcaptiongroup}
   \hfill
-  \caption{Various transverse mode intensity profiles, with Hermite-Gauss modes ($\mathrm{HG}_\mathrm{n,m}$, [n,m \hspace{.5pt} $\leq 2$]) to the left and Laguerre-Gauss modes ($\mathrm{LG}_\mathrm{l,m}$,  [l,m \hspace{.5pt} $\leq 2$]) to the right.}
+  \caption{Various transverse mode intensity profiles, with Hermite-Gauss modes ($\mathrm{HG}_\mathrm{n,m}$, [n,m \hspace{.01pt} $\leq 2$]) to the left and Laguerre-Gauss modes ($\mathrm{LG}_\mathrm{l,m}$,  [l,m \hspace{.01pt} $\leq 2$]) to the right.}
   \label{fig:HGLG_modes}
 \end{figure}
 
@@ -254,7 +254,7 @@ As may be inferred, this technique requires a mirror installation at the anti-sy
 ``Core optics" (Recycling mirrors, Beam splitter, and FP arm cavity mirrors) are suspended with quadruple pendulum suspensions decoupling seismic activity from the mirror positions to as low as a frequency as possible. 
 
 \subsection{Thermodynamic considerations}
-The prior discussions still have yet to discuss most practical considerations required to operate a DRFPMI as a gravitational wave observatory. For the sake of transitioning to the niche body of this work, we provide brief discussions of select detector features: 1) adaptive optics for high power operation, and 2) thermodynamics of highly reflective mirror coatings that impose a fundamental limit to gravitational wave interferometers. 
+Prior discussion still has yet to discuss most practical considerations required to operate a DRFPMI as a gravitational wave observatory. For the sake of transitioning to the niche body of this work, we provide brief discussions of select detector features: 1) adaptive optics for high power operation, and 2) the thermodynamics of highly reflective mirror coatings that impose a fundamental sensitivity limit to gravitational wave interferometers. 
 
 %It is also relevant to know that the studies take place at two very different stages of detector comissoning; one is aimed at comissioning current detectors while the other aims at informing an upgrade choice to be made for current and next generation detectors, though both are aimed at increasing gravitational wave detector sensitivity. The current objective at hand is to inform of these essential criteria for interferometer operations as they pertain to this dissertation. More details on setting up the simple Michelson provides on some of the initial requirements; while the second order is establishing the strict conditions of the Fabry-P\'{e}rot cavities.
 
@@ -290,7 +290,7 @@ The prior discussions still have yet to discuss most practical considerations re
 %Even with state-of-the-art ground motion isolation for terrestrial gravitational detectors using quadruple stage pendula and high mass mirrors, current gravitational wave detectors still suffer from occasional misalignment and require sensing and feedback loops to meet mirror alignment requirements.
 
 \subsubsection{Adaptive Optics}
-As mentioned in \hyperref[subsubsubsubsec:mm2]{\S \ref*{subsubsubsubsec:mm2}}, the microscopic longitudinal control of the mirror positions is only half the story for Gaussian beams and further consideration of macroscopic mirror position and radii of curvature are needed to maximize resonant power in the fundamental (TEM00) mode. Failure to plan and maintain this ``mode matchign" condition results in beam mode to cavity mode mismatch, scattering power into higher order Laguerre-Gauss modes. Additionally, even with ultra-low absorption HR mirror coatings and fused silica substrates, circulating power is estimated to reach $\geq$ 500 kW, distorting the radius of curvatures of the arm cavity mirrors by ? m; which can introduce significant optical loss due to mode mismatch (esp. for coupled cavities) ~\cite{tvo}. And as DRFPMIs like aLIGO approach designed sensitivity, instances of mode mismatch are a two-fold threat with optical loss to higher order modes that impact the ability to produce squeezed light states ~\cite{oelker:2014}. The further motivation and the implemented solution for aLIGO during O3a is discussed in Chapter 2. 
+As mentioned in \hyperref[subsubsubsubsec:mm2]{\S \ref*{subsubsubsubsec:mm2}} , the microscopic longitudinal control of the mirror positions is only half the story for Gaussian beams and further consideration of macroscopic mirror position and radii of curvature are needed to maximize resonant power in the fundamental (TEM00) mode. Failure to plan and maintain this ``mode matching" condition results in beam mode to cavity mode mismatch, scattering power into higher order Laguerre-Gauss modes. Additionally, even with ultra-low absorption HR mirror coatings and fused silica substrates, aLIGO circulating power is estimated to reach $\geq$ 750 kW, distorting the radius of curvatures of the arm cavity mirrors by ? m; which can introduce significant optical loss due to mode mismatch (esp. for coupled cavities) ~\cite{tvo}. And as DRFPMIs like aLIGO approach designed sensitivity, instances of mode mismatch are a two-fold threat with optical loss to higher order modes that impact the ability to produce squeezed light states ~\cite{oelker:2014}. The further motivation and the implemented solution for aLIGO during O3a is discussed in Chapter 2. 
 
 
 \subsubsection{Coating Thermal Noise}\label{introCTN}
