@@ -1,4 +1,5 @@
 # Searching the current file for comments
 :vimgrep /%.* / %
 
-#
+# Deleting single character at the end of select lines of a visual block
+:'<,'>s/.$//g
