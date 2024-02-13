@@ -69,6 +69,14 @@ Transient ring heater actuation from a radially symmetric thermal aberration ($\
 \end{figure}
 
 The measured thermo-optic step response exhibits differential defocusing for $\approx$ 12 to 15 hours once the ring heater power has been changed; and with a large enough power steps, these adjustments to ring heater power can significantly stall precious detector observing/comissioning time due to differential mode matching. Thermo-optic time constants can be reduced by applying real time digital filtering to ring heater power controls. The desired thermo-optic response is one that resembles a step from one defocus state to another with no intermediate overshoot. 
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{TCS/IRHF/RH_control_diagram.pdf}
+	\caption{Comparison of the natural RH response and the response to the conditioned input. The above plot is simulated in Matlab by passing the RH input time series (top plot) through the $[H(s)]^{-1*}$ and $H(s)$ to acquire with the result lensing behavior on the bottom plot.}
+	\label{fig:RH_control}
+\end{figure}
+
 \begin{figure}[H]
     \centering
     \includegraphics[page=1,width=.75\textwidth]{TCS/IRHF/RH_input_filter_figures.pdf}
@@ -103,7 +111,6 @@ As the queried RH power resembles that of a step, inverting this step-response c
     \caption{Comparison of the natural RH response and the response to the conditioned input. The above plot is simulated in Matlab by passing the RH input time series (top plot) through the $[H(s)]^{-1*}$ and $H(s)$ to acquire with the result lensing behavior on the bottom plot.}
     \label{fig:dynam_comparison}
 \end{figure}
-\newpage
 
 \subsection{Reducing Parametric Instabilities}
 Another symptom of resonant high power optical cavities are parametric instabilities (PI); induced by the opto-mechanical interaction between test mass acoustic modes and higher order optical modes. These PIs present threats to achieving designed detector sensitivity, even driving the detector to lockloss. Passive methods of mitigating PIs by way of acoustic mode dampers (AMD) demonstrate significant reductions of problematic mechanical modes though some (i.e. @ 15 kHz mode) have remained problematic. Lingering parametric instabilities required manual intervention by way of adjusting test mass / cavity geometry to disrupt these persistent PIs, and is now a much more feasible solution with DTC \cite{hardwick:2020}.  
