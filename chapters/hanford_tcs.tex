@@ -116,7 +116,7 @@ As the queried RH power resembles that of a step, inverting this step-response c
 Another symptom of resonant high power optical cavities are parametric instabilities (PI); induced by the opto-mechanical interaction between test mass acoustic modes and higher order optical modes. These PIs present threats to achieving designed detector sensitivity, even driving the detector to lockloss. Passive methods of mitigating PIs by way of acoustic mode dampers (AMD) demonstrate significant reductions of problematic mechanical modes though some (i.e. @ 15 kHz mode) have remained problematic. Lingering parametric instabilities required manual intervention by way of adjusting test mass / cavity geometry to disrupt these persistent PIs, and is now a much more feasible solution with DTC \cite{hardwick:2020}.  
 
 \subsubsection{Limitations}
-    \begin{figure}[H]
+\begin{figure}[H]
     \includegraphics[width=\textwidth]{TCS/IRHF/IRHF_compare_filts_PI_paper}
     \caption{Comparison of the natural RH response and the response to the filtered input with RH power}
     \label{fig:RH_power}
@@ -181,18 +181,27 @@ Impact on interferometer contrast and transmission / co-resonance of higher orde
 \subsubsection{Impacts}
 A significant number of lockloss events during the comissioning period for O3A when increasing detector input power were a direct result of select optical sideband power degredation used to maintain the delicate coupled cavity configuration. And while sustaining interferometer DC readout the arm cavity would generate higher order modes sustained by Output Mode Cleaner (OMC) co-resonance; contaminating the carrier field at the output photodiode.
 
-\paragraph{Controls schema}
-\textcolor{red}{Sensor schema for interferometer control and dramatic impact to optical sidebands (higher order beat signals)}
-\paragraph{Frequency noise}
-\textcolor{red}{Figure of DARM noise during O3a. Beneficial features of interferometry, i.e. common mode noise rejection require adequate mode overlap at the beam splitter. Destruction of such symmetry as mode overlap proportionally destroys such benefits and demonstrate a presence in DARM} \cite{buikema:2020}
-\paragraph{Parasitic higher order modes}
-Visible higher order modes at the anti-symmetric port \\
+\paragraph{Control signals}
 A significant amount of optical loss as a result of losing sideband power is reported \\
 	* Lockloss caused by reduced sideband power with interferometer thermalization \\
+\textcolor{red}{Sensor schema for interferometer control and dramatic impact to optical sidebands (higher order beat signals)}
+
+\paragraph{Frequency noise}
+One of the beneficial features of interferometry is the ability to filter common mode noise (i.e. laser intensity and frequency noise). Though these benefits are contingent upon the ability to preserve the arm symmetries. Destruction of such symmetry as mode overlap proportionally destroys such benefits and presents itself in DARM.
+
+\begin{figure}[H]
+    \includegraphics[width=\textwidth]{TCS/NB_1235813418}
+    \caption{Figure of DARM noise during O3a. Beneficial features of interferometry, i.e. common mode noise rejection require adequate mode overlap at the beam splitter. Destruction of such symmetry as mode overlap proportionally destroys such benefits and demonstrate a presence in DARM}    
+    \label{fig:high_freqnoise}
+\end{figure}
+
+Thorough investigation of the LIGO frequency noise determined the proportional increase of the LIGO frequency and intensity noise with increased power \cite{buikema:2020}.
+
+\paragraph{Higher order mode at DCPD}
+Visible higher order modes at the anti-symmetric port obscure the single element photodiode from measuring a pure TEM00 mode. 
 
 \subsubsection{Attempted symptom reduction}
 The trivial solution of reducing the test mass non-uniformity was tried but exhibited noticable limitations with the available degrees of freedom. To restore the uniformity of the test mass surface, a custom mask was constructed with the intention of imaging a negative of the optical path distortion high absorption points onto the surface with the CO2 laser combined with a static ring heater offset. 
-
 The installation location of the mask and size was established using the relevant propogation and imaging tensors applied to the CO2 actuation field while mitigation of the aforementioned impacts provided comissioners with the notable metrics of success.
 
 \textcolor{red}{Results}
