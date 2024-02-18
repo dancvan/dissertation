@@ -146,8 +146,7 @@ While approaching designed arm cavity power, the presence of non-uniform absorpt
 %The presence of high absorption points on the test masses (aka point absorbers) required adjustments to the TCS pre-load and various ring heater and CO2 settings were sampled. Part of this sampling lead to the development of a input ring heater filter allowing actuation to reach ? percent of the desired optical power within 2 hours compared to the 12 hour response pre-filter. Higher spatial frequency actuation in the form of a CO2 mask was also tried.
 
 \subsection{Point absorption in O3a}
-A significant number of lockloss events during the O3a comissioning period were a direct result of select optical sideband power degredation used to maintain the delicate coupled cavity configuration while increasing interferometer input power. This was quicky realized to be caused by high absorption points discovered on ITMY.  Also, while sustaining interferometer DC readout the recycling cavities would generate higher order modes sustained by Output Mode Cleaner (OMC) co-resonance and contaminating the carrier field at the output photodiode.
-
+A significant number of lockloss events during the O3a comissioning period were a direct result of select optical sideband power degredation used to maintain the delicate coupled cavity configuration during interferometer thermalization at input power > 100 kW circulating in the FP arms. This was quicky realized to be caused by high absorption points discovered on ITMY.  
 \begin{figure}[H]
   \centering
   \begin{subcaptiongroup}
@@ -162,6 +161,10 @@ A significant number of lockloss events during the O3a comissioning period were 
   \label{fig:ITMYpabs}
 \end{figure}
 
+Also, while sustaining interferometer DC readout the recycling cavities would generate higher order modes sustained by Output Mode Cleaner (OMC) co-resonance and contaminating the carrier field at the output photodiode.
+
+With continued observation and comissioning at high power (>180 kW) point absorbers were also discovered on ETMX, though was difficult to profile with unavoidable noise on that wavefront sensor.
+
 \begin{figure}[H]
   \centering
   \begin{subcaptiongroup}
@@ -172,14 +175,13 @@ A significant number of lockloss events during the O3a comissioning period were 
   \end{subcaptiongroup}
   \captionsetup{subrefformat=parens}
   \hfill
-  \caption{An isometric view of uniform absorption vs point absorption of LHO ETMX. The rippling / edge effects are a consequence of the Hartmann probe beam experiencing unavoidable clipping on the baffle due to misalignment of in-vaccum optics.}
+  \caption{An isometric view of uniform absorption vs point absorption of LHO ETMX. The rippling / edge effects are a consequence of the Hartmann probe beam clipping on the baffle due to misalignment of in-vaccum optics.}
   \label{fig:ETMXpabs}
 \end{figure}
 
 \subsubsection{Impacts}
 \paragraph{Control signals}
-A significant amount of optical loss as a result of losing sideband power is reported \\
-	* Lockloss caused by reduced sideband power with interferometer thermalization \\
+* Lockloss caused by reduced sideband power with interferometer thermalization \\
 \textcolor{red}{Sensor schema for interferometer control and dramatic impact to optical sidebands (higher order beat signals)}
 
 \paragraph{Frequency noise}
@@ -194,7 +196,7 @@ One of the beneficial features of interferometry is the ability to filter common
 Thorough investigation of the LIGO frequency noise determined the proportional increase of the LIGO frequency and intensity noise with increased power \cite{buikema:2020}.
 
 \paragraph{Higher order mode at DCPD}
-Visible higher order modes at the anti-symmetric port obscure the single element photodiode from measuring a pure TEM00 mode. 
+Higher order modes power at the anti-symmetric port obscure the single element photodiode from measuring a pure TEM00 mode. 
 
 \subsubsection{Attempted symptom reduction}
 The trivial solution of reducing the test mass non-uniformity was tried but exhibited noticable limitations with the available degrees of freedom. To restore the uniformity of the test mass surface, a custom mask was constructed with the intention of imaging a negative of the optical path distortion high absorption points onto the surface with the CO2 laser combined with a static ring heater offset. 
