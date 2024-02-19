@@ -85,6 +85,19 @@ From here it can be shown that for a general plane wave there exist two unique r
 \label{fig:co2_zpk_fit}
 \end{figure}
 
+\subsection{Transient RH thermo-optic response}
+
+\begin{equation}
+	\Psi(t,r)=2\frac{dn}{dT} \sum^{\infty}_{m,p = 1} A_{m,p} \; c^{u}_{p} \mathrm{sin}(u_m h /2a) (a/u_m)[1-e^{-\alpha t}] J_0(\zeta_p r/a)
+\end{equation}
+
+\subsection{Conditioned RH input filter}
+\begin{enumerate}	
+	\item Fit step response to a zpk filter $H(s)$ 
+	\item Invert fitted filter ($H(s) \rightarrow H^{-1}(s)$) 
+	\item Apply correction filter $G(s)$ for stability and speed tuning ($H^{-1}(s)*G(s)$)
+\end{enumerate}
+
 \section{Mode matching data for Electro-optic sample cavity}
 
 \subsection{Pre MMT beam scan}

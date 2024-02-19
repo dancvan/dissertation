@@ -18,12 +18,14 @@ During O3a the LIGO Hanford observatory increased circulating arm power beyond 1
 High power beams, even propogated by ultra low absorption mirror substrates and coatings, can impart a surface pressure that imposes non-negligible thermo-optic distortions via thermo-refractive and thermo-elastic effects~\cite{hellovinet:1990}. The ALIGO adaptive optic system is intended to address the problem of dynamic mode mismatch in high power interferometry; as high power operation is a requirement in reaching designed sensitivity. Comprised of a feedback control system that uses four Hartmann wavefront sensors (HWS) combined with thermal actuators of two varieties: annular ring heaters and CO2 lasers. 
 
 \subsubsection{Actuation}
-Both ITMs and ETMs (Fabry-P\'{e}rot arm cavity mirrors) are strategically monitored for differential lensing, but both are not prescribed equal actuation treatment. All arm cavity mirrors do posses negative lens ring heater actuation in the form of a wound nichrome wire annulus that outlines the outer barrel of the mirror substrate; while CO2 lasers, though not imaged onto the ITMs directly \footnote{Decouples CO2 laser noise from the highly sensitive FP input test mass position}, are instead imaged onto a compensation plate (CP) placed promptly before the FP arm input coupling mirror ~\cite{brooks:aigwd2019}.
+Both ITMs and ETMs (Fabry-P\'{e}rot arm cavity mirrors) are strategically monitored for differential lensing, but both are not prescribed equal actuation treatment. All arm cavity mirrors do posses negative lens ring heater actuation in the form of a wound nichrome wire annulus that outlines the outer barrel of the mirror substrate; while CO2 lasers, though not imaged onto the ITMs directly \footnote{Decouples CO2 laser noise from the highly sensitive FP input test mass position}, are instead imaged onto a fused silica compensation plate (CP) placed promptly before the FP arm input coupling mirror ~\cite{brooks:aigwd2019}.
 
 \subsubsection{Sensing Optical Path Distortion}
-Quantifying thermal distortion from both carrier as well as thermal actuators is performed with a set of four Hartmann wavefront sensors; each one measuring differential optical path distortion at each FP cavity test masses. The sensor probe beams \footnote{Differing wavelengths of 800 nm and 833 nm are chosen for the X and Y arms in order to mitigate crosstalk between HWS chains and other auxilary systems} make a double pass through the test mass mirror substrate for all arm cavity mirrors and map the HR mirror surface; while the two input test mass sensors at the interferometer vertex make an additional double pass through the compensation plate (CP) ~\cite{aasi:2015}.
+Quantifying thermal distortion from both carrier as well as thermal actuators is performed with a set of four Hartmann wavefront sensors; each one measuring differential optical path distortion at each FP cavity test mass. The sensor probe beams \footnote{Differing wavelengths of 800 nm and 833 nm are chosen for the X and Y arms in order to mitigate crosstalk between HWS chains and other auxilary systems} make a double pass through the test mass mirror substrate for all arm cavity mirrors and map the HR mirror surface; while the two input test mass sensors at the interferometer vertex make an additional double pass through the compensation plate (CP) ~\cite{aasi:2015}.
+
 
 \subsection{Transient thermo-optic response}
+Thermo-optic transfer functions from high power carrier beams and implemented thermo-optic actuators suggest that transient are worthy of consideration to avoid long periods of mode mismatch while actuating.
 \begin{figure}[H]
   \centering
   \begin{subcaptiongroup}
@@ -56,42 +58,31 @@ The thermo-optic time constant of central carrier beam self-heating is similar t
 
 \section{Dynamic Thermal Compensation}
 \subsection{Ring heater / test mass thermo-optic response}
-Transient ring heater actuation from a radially symmetric thermal aberration ($\Psi(t,r)$) is realized ~\cite{ramette:2016}:
-
-\begin{equation}
-	\Psi(t,r)=2\frac{dn}{dT} \sum^{\infty}_{m,p = 1} A_{m,p} \; c^{u}_{p} \mathrm{sin}(u_m h /2a) (a/u_m)[1-e^{-\alpha t}] J_0(\zeta_p r/a)
-\end{equation}
+Transient ring heater actuation from a radially symmetric thermal aberration ($\Psi(t,r)$) is realized in ~\cite{ramette:2016} and measured here:
 
 \begin{figure}[H]
      \includegraphics[width=\textwidth]{TCS/IRHF/Meas_response}
-     \caption{ITMY thermo-optic response to a 3.13 [W] combined power reduction to the top and bottom ring heater elements. It's after $\approx$ 12 hours after the ring heater power control step do you start to see a small enough steady state differential defocus ($\frac{\mathrm{d} \alpha_\mathrm{sp}}{\mathrm{dt}}$) and can assume a steady state thermal lens. \textcolor{red}{Adding dotted line comparing analytical $\Psi(t,r)$ to measurement.} }
+     \caption{ITMY thermo-optic response to a 3.13 [W] combined power reduction to the top and bottom ring heater elements. It's after $\approx$ 12 hours after the ring heater power control step do you start to see a small enough steady state differential defocus ($\frac{\mathrm{d} \alpha_\mathrm{sp}}{\mathrm{dt}}$) and can assume a steady state thermal lens. }
      \label{fig:RHresp}
 \end{figure}
 
-The measured thermo-optic step response exhibits differential defocusing for $\approx$ 12 to 15 hours once the ring heater power has been changed; and with a large enough power steps, these adjustments to ring heater power can significantly stall precious detector observing/comissioning time due to differential mode matching. Thermo-optic time constants can be reduced by applying real time digital filtering to ring heater power controls. The desired thermo-optic response is one that resembles a step from one defocus state to another with no intermediate overshoot. 
+The measured transient thermo-optic response exhibits differential defocusing for $\approx$ 12 to 15 hours once the ring heater power has been changed; and with a large enough power steps, these adjustments to ring heater power can significantly stall precious detector observing/comissioning time due to differential mode matching. Thermo-optic time constants are reduced by applying real time digital filtering to ring heater power controls. The desired thermo-optic response is one that resembles a step from one defocus state to another with no intermediate overshoot. 
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=.6\textwidth]{TCS/IRHF/RH_control_diagram.pdf}
-	\caption{A simple controls diagram depicting the concept of a RH control pre-filter (\textbf{G(s)}) taking a step input (\textbf{u(t)}) and transforming it before reaching the thermo-optic plant (\textbf{H(s)}).}
+	\caption{A simple controls diagram depicting the concept of a RH control pre-filter (\textbf{G(s)}) taking a step input (\textbf{u(t)}) and transforming it before reaching the thermo-optic plant (\textbf{H(s)}) with output can also be generalized to an adaptive optics control loop.}
 	\label{fig:RH_control}
 \end{figure}
 
 \begin{figure}[H]
     \centering
     \includegraphics[page=1,width=.75\textwidth]{TCS/IRHF/RH_input_filter_figures.pdf}
-    \caption{A feedback-style block pictograph of the plant system (test mass mirror and annular ring heater) transforming the ring heater power control step to a time-varying thermo-optic response. The example of this can be seen in Fig [\ref{fig:RHresp}]}
+    \caption{A pictograph of the plant system (test mass mirror and annular ring heater) transforming the ring heater power control step to a time-varying thermo-optic response. The example of this can be seen in Fig [\ref{fig:RHresp}]}
     \label{fig:justplant}
 \end{figure}
 
-As the queried RH power resembles that of a step, inverting this step-response can provide a feasible first order filter. Therefore, the prescription for creating such a filter is realized through inversion of the well known RH step response alongside additional low passing at high frequency to avoid any control instability at high frequency. 
-
-\textcolor{red}{see appendix for more detail}
-%\begin{enumerate}[label=\arabic*),leftmargin=75pt,nosep]
-%	\item Fit step response to a zpk filter $H(s)$ 
-%	\item Invert fitted filter ($H(s) \rightarrow H^{-1}(s)$) 
-%	\item Apply correction filter $G(s)$ for stability and speed tuning ($H^{-1}(s)*G(s)$)
-%\end{enumerate}
+As the queried RH power resembles that of a step, inverting this step-response can provide a feasible first order filter. Therefore, the prescription for creating such a filter is realized through inversion of the well known RH step response alongside additional low passing at high frequency to avoid any control instability at high frequency \footnote{see appendix for more detail}
 
 \begin{figure}[H]
     \includegraphics[width=\textwidth]{TCS/IRHF/RH_plant_filter_fit}
@@ -180,40 +171,53 @@ With continued observation and comissioning at high power (>180 kW) point absorb
 \end{figure}
 
 \subsubsection{Impacts}
-\paragraph{Control signals}
-* Lockloss caused by reduced sideband power with interferometer thermalization \\
-\textcolor{red}{Sensor schema for interferometer control and dramatic impact to optical sidebands (higher order beat signals)}
-
 \paragraph{Frequency noise}
 One of the beneficial features of interferometry is the ability to filter common mode noise (i.e. laser intensity and frequency noise). Though these benefits are contingent upon the ability to preserve the arm symmetries. Destruction of such symmetry as mode overlap proportionally destroys such benefits and presents itself in DARM.
 
 \begin{figure}[H]
-    \includegraphics[width=\textwidth]{TCS/NB_1235813418}
-    \caption{Figure of DARM noise during O3a. Beneficial features of interferometry, i.e. common mode noise rejection require adequate mode overlap at the beam splitter. Destruction of such symmetry as mode overlap proportionally destroys such benefits and demonstrate a presence in DARM}    
+    \includegraphics[width=\textwidth]{TCS/NB_1235813418.pdf}
+    \caption{DARM noise during O3a. Beneficial features of interferometry, i.e. common mode noise rejection require adequate mode overlap at the beam splitter. Destruction of such symmetry as mode overlap proportionally destroys such benefits and demonstrate a presence in DARM}    
     \label{fig:high_freqnoise}
 \end{figure}
 
 Thorough investigation of the LIGO frequency noise determined the proportional increase of the LIGO frequency and intensity noise with increased power \cite{buikema:2020}.
 
+\paragraph{Control signals}
+Holding delicate resonance conditions throughout the coupled cavity configuration necessitates resonable optical sideband relative carrier gain (dBc) for the PDH loops to function. And it is with careful planning that the macroscopic recycling cavity geometry is planned so that sideband resonance boosts the signal. The point absorber on an ITM directly impacts this buildup, frequently inducing a lockloss. 
+
+\begin{figure}[H]
+    \includegraphics[width=\textwidth]{TCS/pa_PRCL_lockloss.pdf}
+    \caption{The transient response of the ITMY point absorbers on the Power Recycling Cavity length sideband feedback signal(PRCL) leading to a lockloss as the interferometer reaches thermal equilibrium.}
+    \label{fig:pa_PRCL_lockloss}
+\end{figure}
+
+%\textcolor{red}{Sensor schema for interferometer control and dramatic impact to optical sidebands (higher order beat signals)}
+
+
 \paragraph{Higher order mode at DCPD}
-Higher order modes power at the anti-symmetric port obscure the single element photodiode from measuring a pure TEM00 mode. 
+Power of higher order modes at the anti-symmetric port obscure the single element photodiode from measuring a pure TEM00 mode with the increased shot noise. 
 
 \subsubsection{Attempted symptom reduction}
 The trivial solution of reducing the test mass non-uniformity was tried but exhibited noticable limitations with the available degrees of freedom. To restore the uniformity of the test mass surface, a custom mask was constructed with the intention of imaging a negative of the optical path distortion high absorption points onto the surface with the CO2 laser combined with a static ring heater offset. 
 The installation location of the mask and size was established using the relevant propogation and imaging tensors applied to the CO2 actuation field while mitigation of the aforementioned impacts provided comissioners with the notable metrics of success.
 
-\textcolor{red}{Results}
-\\
-The extremely strict alignment requirement introduced difficulties while attempting to fulfill the promise of restoring uniform absorption. And although the presence of the absorber symptoms show coorelation with their prominence at high power, their collective reduction proved not to be as straightfoward~\cite{brooks:aigwd2019, buikema:2020}.
-	
-	* CO2 with enhanced focus on absorbers and ring heater actuation
-		* Very narrow alignment requirement
-		* Improvement metrics
-			* Restoring sideband power	
-	* Adjusting interferometer to OMC mode matching
-		* Improvement metrics:
-			* Reduced HOM content at detector output
-			* Tracking dither line amplitudes
+\section{Results}
+The extremely strict alignment requirement introduced difficulties while attempting to fulfill the promise of restoring uniform absorption. And although the presence of the absorber symptoms show coorelation with their prominence at high power, their collective reduction proved to be not straightfoward~\cite{brooks:aigwd2019, buikema:2020}. 
+
+\subsection{Custom CO2 mask}
+A mask was installed in front of the CO2 laser actuator combined with a RH offset to attempt restoring uniform thermo-optic absorption, with inconclusive results on account of the narrow alignment requirement while attempting to improve sideband (PRCL) power buildup. 
+
+\subsection{Interferometer to OMC mode matching}
+High absorption points also lead to significant offsets in RH and CO2 actuation for offending test masses leading tothermal offsets for observatory operation. This lead to further interferometer mode matching considerations requiring more subtle actuation solutions than anticipated. Improvement metrics included the measurement of higher order mode content at the detector output as well as inserting dither lines in the feedback loops to track the movement of sideband buildups
+
+\subsubsection{Common mode actuation}
+
+\subsubsection{Differential mode actuation}
+
+\subsubsection{SR3 RH}
+
+\subsection{TM position offset}
+
 
 %\begin{figure}[H]
 %\includegraphics[width=\textwidth]{figs/TCS/PA/48349_20190409201649_inital_install_CO2Ymask2_150seconds_900mW.png}
