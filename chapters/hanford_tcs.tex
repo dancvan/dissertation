@@ -172,7 +172,7 @@ With continued observation and comissioning at high power (>180 kW) point absorb
 
 \subsubsection{Impacts}
 \paragraph{Frequency noise}
-One of the beneficial features of interferometry is the ability to filter common mode noise (i.e. laser intensity and frequency noise). Though these benefits are contingent upon the ability to preserve the arm symmetries. Destruction of such symmetry as mode overlap proportionally destroys such benefits and presents itself in DARM.
+One of the beneficial features of interferometry is common mode noise filtering (i.e. laser intensity and frequency noise). Though these benefits are contingent upon the ability to preserve arm symmetry. Intentional asymmetries like the Schnupp asymmetry, a macroscopic differential length offset introduced in order to pass optical sidebands for normal interferometer functionality and stability, is well known and designed to keep common mode noise low. Meanwhile, common arm cancellation can is exacerbated proportionally with the amount of mode mismatch.
 
 \begin{figure}[H]
     \includegraphics[width=\textwidth]{TCS/NB_1235813418.pdf}
@@ -183,15 +183,13 @@ One of the beneficial features of interferometry is the ability to filter common
 Thorough investigation of the LIGO frequency noise determined the proportional increase of the LIGO frequency and intensity noise with increased power \cite{buikema:2020}.
 
 \paragraph{Control signals}
-Holding delicate resonance conditions throughout the coupled cavity configuration necessitates resonable optical sideband relative carrier gain (dBc) for the PDH loops to function. And it is with careful planning that the macroscopic recycling cavity geometry is planned so that sideband resonance boosts the signal. The point absorber on an ITM directly impacts this buildup, frequently inducing a lockloss. 
+Holding delicate resonance conditions throughout the coupled cavity configuration necessitates a resonable optical sideband relative carrier gain (dBc) for the PDH loops to function. And it is with careful planning that the macroscopic recycling cavity geometry is planned so that sideband resonance boosts the signal. The point absorber on an ITM directly impacts this buildup, frequently inducing a lockloss. 
 
-\begin{figure}[H]
-    \includegraphics[width=\textwidth]{TCS/pa_PRCL_lockloss.pdf}
-    \caption{The transient response of the ITMY point absorbers on the Power Recycling Cavity length sideband feedback signal(PRCL) leading to a lockloss as the interferometer reaches thermal equilibrium.}
-    \label{fig:pa_PRCL_lockloss}
-\end{figure}
-
-%\textcolor{red}{Sensor schema for interferometer control and dramatic impact to optical sidebands (higher order beat signals)}
+%\begin{figure}[H]
+%    \includegraphics[width=\textwidth]{TCS/pa_PRCL_lockloss.pdf}
+%    \caption{The transient response of the ITMY point absorbers on the Power Recycling Cavity length sideband feedback signal(PRCL) leading to a lockloss as the interferometer reaches thermal equilibrium.}
+%    \label{fig:pa_PRCL_lockloss}
+%\end{figure}
 
 
 \paragraph{Higher order mode at DCPD}
@@ -205,7 +203,7 @@ The installation location of the mask and size was established using the relevan
 The extremely strict alignment requirement introduced difficulties while attempting to fulfill the promise of restoring uniform absorption. And although the presence of the absorber symptoms show coorelation with their prominence at high power, their collective reduction proved to be not straightfoward~\cite{brooks:aigwd2019, buikema:2020}. 
 
 \subsection{Custom CO2 mask}
-A mask was installed in front of the CO2 laser actuator combined with a RH offset to attempt restoring uniform thermo-optic absorption, with inconclusive results on account of the narrow alignment requirement while attempting to improve sideband (PRCL) power buildup. 
+A mask was installed in front of the CO2 laser actuator combined with a RH offset to attempt restoring uniform thermo-optic absorption, with inconclusive results on account of the nature of narrow alignment requirements while attempting to improve sideband (PRCL) power buildup. 
 
 \subsection{Interferometer to OMC mode matching}
 High absorption points also lead to significant offsets in RH and CO2 actuation for offending test masses leading tothermal offsets for observatory operation. This lead to further interferometer mode matching considerations requiring more subtle actuation solutions than anticipated. Improvement metrics included the measurement of higher order mode content at the detector output as well as inserting dither lines in the feedback loops to track the movement of sideband buildups
@@ -216,7 +214,7 @@ High absorption points also lead to significant offsets in RH and CO2 actuation 
 
 \subsubsection{SR3 RH}
 
-\subsection{TM position offset}
+\subsection{Beam position offset}
 
 
 %\begin{figure}[H]

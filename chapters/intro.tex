@@ -86,6 +86,8 @@ Where $E_o$ is a complex field amplitude, $r^{2}/(2(R(z))$ defines transverse co
 	\eta = \bigg|\int E_x E_y dA \bigg|^{2} \bigg/ (P_x P_y) 
 \end{equation}
 
+\begin
+
 Significant length offsets between the arms can contribute to mismatching of the beam mode wavefronts interfering at the beamsplitter. Though an interferometer contrast ($\nu$) measurement may do just as well without more involved beam mode analysis:
 
 \begin{equation}\label{eq:contrast}
@@ -170,14 +172,14 @@ Also mentioned, albeit in passing, is the importance of the overlap between mirr
 
 \begin{equation}\label{eq:HG_beam}
 	\begin{split}
-		E_\mathrm{n,m}(x,y,z) = & E_o \frac{\sqrt{[\lambda z_o] / \pi}}{W(z)}\mathbb{H}_\mathrm{n}\bigg(\frac{\sqrt{2}x}{W(z)}\bigg)\mathbb{H}_\mathrm{m}\bigg(\frac{\sqrt{2}x}{W(z)}\bigg)\\
+		TEM_\mathrm{n,m}(x,y,z) = & E_o \frac{\sqrt{[\lambda z_o] / \pi}}{W(z)}\mathbb{H}_\mathrm{n}\bigg(\frac{\sqrt{2}x}{W(z)}\bigg)\mathbb{H}_\mathrm{m}\bigg(\frac{\sqrt{2}x}{W(z)}\bigg)\\
 					& \times \mathrm{exp}\bigg(\frac{-(x^2+y^2)}{W^2(z)}\bigg) \mathrm{exp}\bigg(-ikz - ik\frac{x^2 + y^2}{2R(z)} + i (1+\mathrm{n}+\mathrm{m})\zeta(z)\bigg)
 	\end{split}
 \end{equation}
 \begin{equation}\label{eq:LG_beam}
 	\begin{split}
-	E_\mathrm{l,m}(r,\phi,z) = & E_o \frac{\sqrt{[\lambda z_o] / \pi}}{W(z)} \bigg(\frac{\rho}{W(z)}\bigg)^\mathrm{l}\mathbb{L}^{\mathrm{l}}_{\mathrm{m}}\bigg(\frac{\sqrt{2}x}{W(z)}\bigg)\\
-				   &  \times \mathrm{exp}\bigg(-\frac{\rho^2}{W^2(z)}\bigg) \mathrm{exp}\bigg(-ikz - ik\frac{\rho^2}{2R(z))} - i\mathrm{l}\phi + i (1+\mathrm{l}+2\mathrm{m})\zeta(z)\bigg)
+	TEM_\mathrm{p,l}(r,\phi,z) = & E_o \frac{\sqrt{[\lambda z_o] / \pi}}{W(z)} \bigg(\frac{\rho}{W(z)}\bigg)^\mathrm{p}\mathbb{L}^{\mathrm{p}}_{\mathrm{l}}\bigg(\frac{\sqrt{2}x}{W(z)}\bigg)\\
+				   &  \times \mathrm{exp}\bigg(-\frac{\rho^2}{W^2(z)}\bigg) \mathrm{exp}\bigg(-ikz - ik\frac{\rho^2}{2R(z))} - i\mathrm{p}\phi + i (1+\mathrm{p}+2\mathrm{l})\zeta(z)\bigg)
 	\end{split}
 \end{equation}
 
