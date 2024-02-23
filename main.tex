@@ -22,9 +22,18 @@
 \usepackage{placeins}
 \usepackage{listings}
 
-\lstset{backgroundcolor=\color{magenta}}
-\lstset{frameround=fttt}
-\lstset{columns=fullflexible}
+\definecolor{pybackcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{dcvstyle}{
+	backgroundcolor=\color{pybackcolour}, 
+	frameround=fttt,
+	columns=fullflexible,
+	showspaces=false, 
+	showstringspaces=false,
+	numbers=left
+}
+
+\lstset{style=dcvstyle}
 
 \renewcommand{\sectionautorefname}{\S}
 \renewcommand{\subsectionautorefname}{\S}
@@ -120,20 +129,23 @@ I declare that
 
 
 \pagenumbering{arabic}
+
 \chapter{Introduction}
 \input{chapters/intro}
 \newpage
 
 \chapter{Comissioning Adaptive Optics for O3a}
 \input{chapters/hanford_tcs}
+\newpage
 
 \chapter{Electro-optic study of a \texorpdfstring{$\gaas / \algaas$}{gaas/algaas} coated mirror}
 \input{chapters/pock}
+\newpage 
 
 \chapter{Conclusion}
 \input{chapters/conclusion}
-
 \newpage
+
 \chapter{Appendix}
 \input{chapters/appendix}
 

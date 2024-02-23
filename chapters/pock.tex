@@ -497,12 +497,6 @@ In seeking a calibrated estimate of the electro-optic effect for the $\gaas$/$\a
 %% Driven acoustic modes of the longitudinal pockels cell mirror mounts lead to numerous mounting strategies that will be detailed below. 
 
 
-\begin{figure}[!ht]
-	\includegraphics[width=\textwidth]{figs/ALGAAS/pock_control_diagram.pdf}
-	\caption{A controls diagram of the designed servo.}
-	\label{fig:pock_control_servo}
-\end{figure}
-
 \begin{figure}[H]
 	\includegraphics[width=\textwidth]{figs/ALGAAS/algaas_pockels_effect_measurement_schematic.pdf}
 	\caption{A simplified and modular schematic of the PDH servo used along with an electrostatic drive mount design comprised of a disk capacitor sandwiching the HR AlGaAs sample, a high voltage amplifier, and a signal / network analyzer.}
@@ -599,7 +593,6 @@ How the measurement is taken (important to take between installations to account
 \label{fig:OLGcompare}
 \end{figure}
 
-
 \subsection{Longitudinal Pockels Cell mirror mount assembly}
 Maximizing a controlled and well defined electric field ($|E_z|$) within the coating while requiring a through beam to and through the HR coating lead us to a design very similar to that of a longitudinal pockels cell. The most common assembly in for this study is comprised of two electrodes with a 3mm central aperture which is chosen to be at least 5 times larger than the beam size at the plate locations; to avoid significant beam clipping while maximizing field strength at the coating region of interest. There is also a required separation of at least 1/4" accounting for the thickness of the optical sample. Considering these constraints, modelling the system and computing the estimated field strength screened by the coating is the next step to the construction of the assembly.
 
@@ -611,10 +604,8 @@ Maximizing a controlled and well defined electric field ($|E_z|$) within the coa
 \label{fig:pckcellconcept}
 \end{figure}
 
-\subsubsection{Modelling}
-
+\subsubsection{Modeling}
 To find the Electric field screened by the coating we begin with Gauss' Law:
-
 \begin{equation}
 \nabla \cdot D = \rho_\mathrm{free}
 \end{equation}
@@ -651,7 +642,6 @@ Where $\varepsilon$ is the dielectric
 \end{figure}
 
 \subsubsection{Voltage drive electronics}
-
 \begin{figure}[H]
     \includegraphics[width=\textwidth]{ALGAAS/13-Sep-2021_e_field_inside_outside_normal.pdf}
     \caption{The availablility of required voltage amplifiers during the course of this study was limited and lead to the use of multiple high voltage amplifiers with all transfer functions listed.}
@@ -665,20 +655,84 @@ Where $\varepsilon$ is the dielectric
     \label{fig:hvacompare}
 \end{figure}
 
+\subsection{Servo Overview}
+\begin{figure}[!ht]
+	\includegraphics[width=\textwidth]{figs/ALGAAS/pock_control_diagram.pdf}
+	\caption{A controls diagram of the designed servo.}
+	\label{fig:pock_control_servo}
+\end{figure}
+
+\subsection{Calibration}
+The calibration math for this measurement explicitly starts with what I
+call \(\alpha(f)\) which is a vector of complex numbers that represents
+the transfer function \(\mathrm{CH2}(f)/\mathrm{CH1}(f)\) where:
+
+\[\mathrm{CH1}(f) = \mathrm{Source}(f)\] and
+\[\mathrm{CH2}(f) = \frac{\mathrm{S}(f)* signal(f)}{1-\mathrm{OLG}(f)}\]
+
+Where \[\mathrm{OLG}(f) = \mathrm{A}(f)* \mathrm{S}(f)\]
+
+and \(signal(f)\) is the demodulated output from
+\(\mathrm{RFPD}_\mathrm{refl}\) and \(\mathrm{S}(f)\) is the transfer
+function of the frequency stabilization servo.
+
+From here we solve for signal(f):
+
+\[signal(f) = \mathrm{CH2}(f) * \mathrm{A}_{1}(f) * \mathrm{A}_2* \frac{(1-\mathrm{OLG}(f))}{\mathrm{OLG}(f)}\]
+
+Where \(\mathrm{A}_{1}(f)\) informs the frequency dependent drive sent
+to the laser PZT to keep the cavity locked and \(\mathrm{A}_2\) is the
+laser frequency detuning factor {[}Hz/V{]} (can be estimated from
+measuring PDH).
+
+Currently \(signal(f)\) provides a frequency noise spectra which then
+can be converted into a displacement spectra with the following
+relation:
+
+\[\frac{\Delta f}{f_\mathrm{laser}} = \frac{\Delta L}{L_\mathrm{cav}}\]
+
+This allows us to imagine the frequency noise spectra as a length noise
+spectra due to the drive on the electrodes:
+
+\[signal(f) = \alpha(f)* \mathrm{Source}(f) * \mathrm{A}_{1}(f) * \mathrm{A}_2* \frac{(1-\mathrm{OLG}(f))}{\mathrm{OLG}(f)} * \frac{L_\mathrm{cav}}{f_\mathrm{laser}}\hspace{35pt} [m_\mathrm{pk}]\]
+
+And for the measurement normalized by the drive voltage on the
+electrodes:
+
+\[\frac{signal(f)}{\mathrm{Source}(f) * \mathrm{G}(f)} = \frac{\alpha(f)}{\mathrm{G}(f)} * \mathrm{A}_{1}(f) * \mathrm{A}_2* \frac{(1-\mathrm{OLG}(f))}{\mathrm{OLG}(f)} * \frac{L_\mathrm{cav}}{f_\mathrm{laser}}\hspace{35pt} \bigg[\frac{m_\mathrm{pk}}{V_\mathrm{pk}}\bigg]\]
+\#\# Noise or single frequency drive measurement : \(n(f)\) The
+calibration math for this measurement is essentially equivalent to the
+transfer function measurement above. The only difference is:
+
+\[\mathrm{CH1}(f) = \frac{\mathrm{S}(f)* signal(f)}{1-\mathrm{OLG}(f)}\]
+
+and
+
+\[signal(f) = \mathrm{CH1}(f) * \mathrm{A}_{1}(f) * \mathrm{A}_2* \frac{(1-\mathrm{OLG}(f))}{\mathrm{OLG}(f)} * \frac{L_\mathrm{cav}}{f_\mathrm{laser}}\]
+
+Where \(signal(f)\) in this measurement represents the free running
+cavity displacement noise with the exception of a single frequency if it
+is not a noise measurement.
+
+If \(\mathrm{CH1}(f)\) is in \(\frac{V_\mathrm{rms}}{\sqrt{Hz}}\) then
+signal(f) will be in \(\frac{m_\mathrm{rms}}{\sqrt{Hz}}\)
+
+or
+
+If \(\mathrm{CH1}(f)\) is in \(V_\mathrm{pk}\) then signal(f) will be in
+\(m_\mathrm{pk}\) 
+
+%\#\# Calibration code
+%The error signal spectra probed at the FSS:
+%\begin{equation}
+%\mathrm{VFSSOUT}_\mathrm{rms}/\sqrt{Hz} \rightarrow m_\mathrm{rms}/\sqrt{\mathrm{Hz}}
+%\end{equation}
+%With the known frequency response of the servo electronics, we \autoref{sec:calibration} the measurement into differential length:
+%\begin{equation}
+%	\Delta \mathrm{L} = \mathrm{source}*\alpha(f) \mathrm{A}(f)*\frac{1+\mathrm{OLG}(f)}{\mathrm{OLG}(f)}*\frac{\mathrm{L_{cav}}}{f_\mathrm{laser}} \quad \big[ m_\mathrm{pk} / \sqrt{Hz} \big]
+%\end{equation}
 \section{Results}
 Significant barriers were encountered in the form of cavity differential length noise especially when mounting the optics in accessible non-conductive materials. Firstly, most commercial optical mounts are constructed with conductive materials which proves problematic when working to isolate the coating from non-normal field gradients within the coating volume of interest. For this reason, efforts were focused on developing a suitable mounting solution that would provide adequate isolation from any uncontrolled field magnitudes while driving a field normally incident on the surface with enough strength and uniformity across the beam area to extract a measurement of the differential length change from the Pockels effect. The mounts studied span different geometries and different material properties. The varying geometrical assemblies rendered various responses and for this reason some discussions will be divided accordingly. The most stable solution revealed that ringing of the sample acoustic modes may be responsible For reassurance, we compare displacement spectra against that of a nearly identical cavity with a flat non-crystalline mirror coating to perform a null measurement reference; ruling out the Pockels effect and providing information for noise investigations.
-
-\subsection{Measurement Calibration}
-The error signal spectra probed at the FSS:
-
-\begin{equation}
-\mathrm{VFSSOUT}_\mathrm{rms}/\sqrt{Hz} \rightarrow m_\mathrm{rms}/\sqrt{\mathrm{Hz}}
-\end{equation}
-
-With the known frequency response of the servo electronics, we \autoref{sec:calibration} the measurement into differential length:
-\begin{equation}
-	\Delta \mathrm{L} = \mathrm{source}*\alpha(f) \mathrm{A}(f)*\frac{1+\mathrm{OLG}(f)}{\mathrm{OLG}(f)}*\frac{\mathrm{L_{cav}}}{f_\mathrm{laser}} \quad \big[ m_\mathrm{pk} / \sqrt{Hz} \big]
-\end{equation}
 
 \subsection{Mounting Strategies}
 The following section details measurements performed with various longitudinal pockel cell mounts. Further details (assembly parameters, blueprints, and visual aids) can be found in the appendix.
@@ -789,7 +843,7 @@ With considerations after Assembly 1, a more monolithic optical mount design wit
 \subsubsection{Assembly 3 (MACOR mount)}
 With most of the same characteristics from Assembly 3, an optical mount made of MACOR, a machinable ceramic, was constructed and installed. With the material's high Young's modulus (66.9 GPa), and a moderate Poisson ratio (.29) \cite{macor} making it by far the most durable / non-conductive mounting solution tried.
 
-An optical mount for the sample made with MACOR, along with glass bearnings .48 $\pm$ .01 cm $\diameter$  and a McMaster-Carr 8-32, 1/2" ceramic screw were used to clamp and suspend the optical sample. A 1.24" $\diameter$ hole was bored into the MACOR with a (\textcolor{red}{depth?}) depth so that there is a .351 $\pm$ mm clearance between the front and back surface of the sample to the electrode plates.
+An optical mount for the sample made with MACOR, along with spherical glass bearnings with a .48 $\pm$ .01 cm $\diameter$, and a McMaster-Carr 8-32, 1/2" ceramic screw were used to clamp the optical sample within a bored 25.74 $\pm$ .5 mm $\diameter$ barrel. Two 1.24" $\diameter$ holes were also bored at a 9 mm depth about the front and back side of the optical mount to accomodate for a flush fit of copper electrodes. The construction suggests a 1 $\pm$ .5 mm clearance between the front and back surface of the sample to the electrode plates.
 
 %%FIGURE: sample in-situ
 \begin{figure}[!ht]
@@ -806,7 +860,7 @@ An optical mount for the sample made with MACOR, along with glass bearnings .48 
 
 \begin{figure}[H]
     \includegraphics[width=\textwidth]{figs/ALGAAS/results_figs/assembly3/petgmsvv64.pdf}
-    \caption{A polarization depdendent test using the MACOR mont}
+    \caption{A polarization depdendent test using the MACOR mount}
     \label{fig:measurementsum}
 \end{figure}
 
