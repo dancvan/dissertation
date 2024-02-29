@@ -1,43 +1,4 @@
 %% appendix
-\section{Cavity Misalignment}
-\begin{figure}[H]
-\centering
-\includegraphics[width=\textwidth]{figs/INTRO/FP_misalignment.pdf}
-\caption{Figure depicting cavity-beam alignment (above) vs cavity-beam misalignment (below) with a angle $\alpha$ between the beam and cavity axes.}
-\label{fig:fp_misalignment}
-\end{figure}
-
-\section{Cavity Mode Mismatch}
-\begin{figure}[H]
-\begin{subcaptiongroup}
-	\includegraphics[width=.48\textwidth]{INTRO/FP_modematching.pdf}
-	\hspace{3.5mm}
-	\includegraphics[width=.48\textwidth]{INTRO/FP_modemismatch.pdf}
-\end{subcaptiongroup}
-\hfill
-\caption{Figure depicting cavity-beam mode matching (left) vs. cavity-beam mode mismatch (right). In this particular case, the mode mismatch is a result of changing the macroscopic DC cavity length via a shift of the ETM position towards the ITM (assuming constant mirror ROC and input beam mode).}
-\label{fig:fp_modemismatch}
-\end{figure}
-
-
-\section{Cavity stability criteria ($G(g_1,g_2)$)} \label{sec:cavstab}
-Using spherical mirror resonators to match the phasefront of the beam mode is a standard practice that has some additional geometric considerations to maximize reonance for a given beam. Choosing two mirrors with ROCs ($R_1$, $R_2$) and a set distance between them $d$, a implicit containment condition is set on the resonator \cite{salehteich:2007}:
-
-$$
-	0 \leq \bigg(1 + \frac{d}{R_1} \bigg) \bigg(1 + \frac{d}{R_2} \bigg) \leq 1
-$$
-
-Where we define $g_i = 1 + \frac{d}{R_i}$ so that we define a single parameter for the two mirror resonator $G$:
-
-\begin{equation}\label{eq:cavstab}
-	0 \leq G(g_1,g_2) \leq 1
-\end{equation}
-
-\begin{figure}[H]
-\includegraphics[width=\textwidth]{figs/ALGAAS/beam_scans/12_18_2020_preMMT.pdf}
-\caption{\textcolor{red}{Figure of two mirror cavity}}
-\label{fig:cav_stab}
-\end{figure}
 
 \section{Paraxial equation} \label{sec:paraxial}
 
@@ -58,6 +19,50 @@ The above wavefunction combined with Helmoltz equation requires that complex for
 \begin{equation}\label{eq:paraxial}
 	\bigg( \frac{\partial^2}{\partial x ^2} + \frac{\partial^2}{\partial y^2} - 2ik \frac{\partial}{\partial z} \bigg) E_0(x,y,z) = 0
 \end{equation}
+
+
+\section{Cavity Misalignment}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{figs/INTRO/FP_misalignment.pdf}
+\caption{Figure depicting cavity-beam alignment (above) vs cavity-beam misalignment (below) with a angle $\alpha$ between the beam and cavity axes.}
+\label{fig:fp_misalignment}
+\end{figure}
+
+\section{Macroscopic Longitudinal considerations}
+
+\section{Cavity stability criteria ($G(g_1,g_2)$)} \label{sec:cavstab}
+Using spherical mirror resonators to match the phasefront of the beam mode is a standard practice that has some additional geometric considerations to maximize reonance for a given beam. Choosing two mirrors with ROCs ($R_1$, $R_2$) and a set distance between them $d$, a implicit containment condition is set on the resonator \cite{salehteich:2007}:
+
+$$
+	0 \leq \bigg(1 + \frac{d}{R_1} \bigg) \bigg(1 + \frac{d}{R_2} \bigg) \leq 1
+$$
+
+Where we define $g_i = 1 + \frac{d}{R_i}$ so that we define a single parameter for the two mirror resonator $G$:
+
+\begin{equation}\label{eq:cavstab}
+	0 \leq G(g_1,g_2) \leq 1
+\end{equation}
+
+\begin{figure}[H]
+\includegraphics[width=\textwidth]{figs/ALGAAS/beam_scans/12_18_2020_preMMT.pdf}
+\caption{\textcolor{red}{Figure of two mirror cavity}}
+\label{fig:cav_stab}
+\end{figure}
+
+
+\subsection{Mode Mismatch}
+\begin{figure}[H]
+\begin{subcaptiongroup}
+	\includegraphics[width=.48\textwidth]{INTRO/FP_modematching.pdf}
+	\hspace{3.5mm}
+	\includegraphics[width=.48\textwidth]{INTRO/FP_modemismatch.pdf}
+\end{subcaptiongroup}
+\hfill
+\caption{Figure depicting cavity-beam mode matching (left) vs. cavity-beam mode mismatch (right). In this particular case, the mode mismatch is a result of changing the macroscopic DC cavity length via a shift of the ETM position towards the ITM (assuming constant mirror ROC and input beam mode). Given that the mirror ROC alongside the beam wavelength remains the same, it is helpful to notice that for the new cavity configuration, arriving at the same mirror ROC within the shorter length requires a smaller characteristic beam waist which also shor}
+\label{fig:fp_modemismatch}
+\end{figure}
 
 \section{The Equipartition theorem and the Fluctuation dissapation theorem}
 
