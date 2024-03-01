@@ -3,6 +3,7 @@
 Once mirror coating materials are selected for DRFPMI core optics, another fundamental detector noise limit (like that discussed in \autoref{sec:shotnoise} is imposed on the gravitational wave detector in the form of coating thermal noise. For aLIGO $\siotao$ coatings this is represented in \autoref{sec:noisebudget}. As aLIGO approaches designed sensitivity, alternative mirror coating solutions are proposed with the primary purpose of pushing down the thermal noise limit for further enhancing detector sensitivity \cite{harry:aigwd2019}. With the potential to reduce coating Brownian noise by a factor of 10, $\gaas$/$\algaas$ shows promise for next generation detectors; with a potential strain reduction by a factor of 5 ~\cite{cole:2013} when compared to the current aLIGO coating thermal noise limit. Though applying crystalline mirror HR coatings to the core optics does introduce new side effects; one being linear electro-optic of $\gaas$/$\algaas$ (dn/dE), also known as the Pockels effect ~\cite{abernathy:poster}. A differential phase noise estimate of $\approx 10^{-11}$ [rad/m/V], alongside measured ambient field noise of ? [V/m] presents adequate motivation for a thorough study dedicated to the electro-optical properties of $\gaas$/$\algaas$ coatings. This section details such a study: starting with a survey of distinguishing optical and material properties of crystalline materials like $\gaas$ and $\algaas$ by reviewing: light propogation through anistropic materials, and induced optical anisotropy of zincblende materials. Preliminary estimates of the differential phase of light reflected from a $\gaas$/$\algaas$ coating stack caused by electric field noise are computed while considering potential impacts to the current generation gravitational wave detectors. Also discussed is a specific study designed to acquire dn/dE estimates from a calibrated differential length PDH locked signal from a short experimental optical cavity with a primarily normal electric field driven across a HR $\gaas$/$\algaas$ coating ``witness" sample.
 
 \section{Motivation}
+
 \subsection{Coating Thermal Noise}
 Contributions of categorized noises for gravitational wave detectors are organized in a ``noise budget", comprised of a collection of technical (noise imposed by the practical operation of the detector) and fundamental (inherent physical limitations of DRFPMIs by design) noise sources that impose limitations on gravitational wave detection.
 %% Contributions of categorized noises for gravitational wave detectors the ''noise budget" ((LHO and LLO O3?) or just GWINC?)}
@@ -663,6 +664,25 @@ Where $\varepsilon$ is the dielectric
 \end{figure}
 
 \subsection{Calibration}
+
+The Electric field coupling can be expressed as a measured voltage:
+$$\mathrm{V} = \frac{1}{1 + \mathrm{G}} \nu_\mathrm{laser} - \frac{\mathrm{G}}{1 + \mathrm{G}} \mathrm{C} \mathrm{E} \mathrm{A}_{2} \mathrm{V}_\mathrm{in} - \frac{\mathrm{F} \mathrm{A}_1}{1 + \mathrm{G}} \nu_\mathrm{S} - \frac{A_1}{1 + \mathrm{G}} \nu_\mathrm{F}$$
+With G representing the open loop gain ($\mathrm{G} = \mathrm{A}_1 \mathrm{F} \mathrm{S} \mathrm{L}$ ) 
+
+The feedback signal transforms into:
+
+$$ \mathrm{V}_\mathrm{out} = \mathrm{F} \mathrm{S} \mathrm{L} (\mathrm{V} + \mathrm{C} \mathrm{E} \mathrm{A}_{2} \mathrm{V}_\mathrm{in}) + \mathrm{F} \nu_\mathrm{S} + \nu_\mathrm{F} = \frac{\mathrm{F} \mathrm{S} \mathrm{L}}{1 + } \mathrm{C} \mathrm{E} \mathrm{A}_{2} \mathrm{V}_\mathrm{in}
+$$
+
+$$ \mathrm{V}_\mathrm{out} = \mathrm{F} \mathrm{S} \mathrm{L} (\mathrm{V} + \mathrm{C} \mathrm{E} \mathrm{A}_{2} \mathrm{V}_\mathrm{in}) + \mathrm{F} \nu_\mathrm{S} + \nu_\mathrm{F} = \frac{\mathrm{F} \mathrm{S} \mathrm{L}}{ 1 + \mathrm{G}} \mathrm{C} \mathrm{E} \mathrm{A}_{2} \mathrm{V}_\mathrm{in} + \frac{\mathrm{F} \mathrm{S} \mathrm{L}}{ 1 + \mathrm{G}} \nu_\mathrm{laser} + \frac{\mathrm{F} }{ 1 + \mathrm{G}} \nu_\mathrm{S} +  \frac{1}{ 1 + \mathrm{G}} \nu_\mathrm{F}$$ 
+Therefore, the transfer function ($\frac{\mathrm{V}_\mathrm{out}}{\mathrm{V}_\mathrm{in}}$) : 
+$$ \frac{\mathrm{V}_\mathrm{out}}{\mathrm{V}_\mathrm{in}} = \frac{\mathrm{F} \mathrm{S} \mathrm{L}}{1 + \mathrm{G}}\mathrm{C} \mathrm{E} \mathrm{A}_{2}  + \frac{\mathrm{F} \mathrm{S} \mathrm{L}}{ 1 + \mathrm{G}} \frac{\nu_\mathrm{laser}}{\mathrm{V}_\mathrm{in}}+ \frac{\mathrm{F} }{ 1 + \mathrm{G}} \frac{\nu_\mathrm{S}}{\mathrm{V}_\mathrm{in}} +  \frac{1}{ 1 + \mathrm{G}} \frac{\nu_\mathrm{F}}{\mathrm{V}_\mathrm{in}}$$
+If the induced excitation is larger than the noise we can approximate the last equation:
+
+$$ \frac{\mathrm{V}_\mathrm{out}}{\mathrm{V_{in}}} \approx \frac{\mathrm{F} \mathrm{S}\mathrm{L}}{1 + \mathrm{G}} \mathrm{C} \mathrm{E} \mathrm{A}_{2} = \frac{\mathrm{G}}{1 + \mathrm{G}} \mathrm{C} \mathrm{E} \frac{\mathrm{A}_{2}}{\mathrm{A}_{1}} $$
+ 
+
+\iffalse
 The calibration math for this measurement explicitly starts with what I
 call \(\alpha(f)\) which is a vector of complex numbers that represents
 the transfer function \(\mathrm{CH2}(f)/\mathrm{CH1}(f)\) where:
@@ -721,6 +741,7 @@ or
 
 If \(\mathrm{CH1}(f)\) is in \(V_\mathrm{pk}\) then signal(f) will be in
 \(m_\mathrm{pk}\) 
+\fi
 
 %\#\# Calibration code
 %The error signal spectra probed at the FSS:
@@ -865,15 +886,15 @@ An optical mount for the sample made with MACOR, along with spherical glass bear
 \end{figure}
 
 \subsubsection{Acousto-optical coupling}
-During Assembly 2 tests, the drive coupling seen in the transfer function measurements appeared consistent. Varying the mechanical configurations (i.e. differential electrode and / or optic set screw settings) to the slightest degree left us to discover that mechanical action via the excitations from the sample-mount acoustic modes from the construction are rung when driving the voltage on electrodes plates. Tracking consistent mechanical action for assemblies prior to Assembly 3 were difficult due to inconsistencies in mechanical settings between some measuremen. When more consistency was realized (i.e. utilizing a MACOR mount and careful tracking of the sample set screw torque), it was more transparent that the sample-mount acoustic modes were responsible with similar features between the $\gaas$/$\algaas$ coating and the non-crystalline HR coating from ATFilms.
+Drive coupling seen in the transfer function measurements with the MACOR mounts appeared consistent. Varying the mechanical configurations (i.e. differential electrode and / or optic set screw settings) to the slightest degree left us to discover a mechanical action via the excitations from the sample-mount acoustic modes from the construction are rung when driving the voltage on electrodes plates. Tracking consistent mechanical action for assemblies prior to Assembly 3 were difficult due to inconsistencies in mechanical settings between some measuremen. When more consistency was realized (i.e. utilizing a MACOR mount and careful tracking of the sample set screw torque), it was more transparent that the sample-mount acoustic modes were responsible with similar features between the $\gaas$/$\algaas$ coating and the non-crystalline HR coating from ATFilms.
 
-\begin{itemize}
-\item \textbf{Vibration of plates (Leissa)} \cite{leissa:1969} Computing frequencies and order of magnitude
-	\begin{itemize}
-	    \item Numerical computation (Order of magnitude result)
-	\end{itemize}
-\item \textbf{Steve's COMSOL model results}
-\end{itemize}
+%\begin{itemize}
+%\item \textbf{Vibration of plates (Leissa)} \cite{leissa:1969} Computing frequencies and order of magnitude
+%	\begin{itemize}
+%	    \item Numerical computation (Order of magnitude result)
+%	\end{itemize}
+%\item \textbf{Steve's COMSOL model results}
+%\end{itemize}
 
 \subsection{Conclusion}
 The significantly improved thermal noise performance of $\gaas$/$\algaas$ HR coatings make these crystalline coatings a prime candidate for the core optics in current and future gravitational wave detectors. The measured upper threshold of the electro-optic noise is demonstrated to be $\sim 10^{-24} \; [1/\sqrt{\mathrm{Hz}}]$ two orders of magnitude below the designed noise floor $\sim 10^{-26}\; [1/\sqrt{\mathrm{Hz}}]$ of current and future gravitational wave detectors.
