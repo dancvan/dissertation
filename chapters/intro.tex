@@ -1,5 +1,5 @@
 \section{Gravitational waves}
-``Space-time tells mass how to move; mass tells space-time how to curve" can provide a concise and sufficient summarization of Einstein's theory of general relativity (GR) ~\cite{misner:1973}. While providing the most complete theory of gravity to date, GR provides tools that allow considerations of high energy astrophyical phenomena (highly massive binary coalescences, spherically assymetric compact objects, etc.) whose fractional mass/energy output generates distortions in space-time known as gravitational waves.
+``Space-time tells mass how to move; mass tells space-time how to curve" can provide a concise and sufficient summarization of Einstein's theory of general relativity (GR) ~\cite{misner:1973}. While providing the most complete theory of gravity to date, GR provides tools that allow considerations of high energy astrophyical phenomena (highly massive binary coalescences, spherically assymetric compact objects, etc.) whose fractional mass/energy output generate distortions in space-time known as gravitational waves.
 This is represented as a perturbation ($|h_{\mu \nu}|<<1$) in the Minkowski metric tensor defining a local linearized space-time:
 \\
 $$g_{\mu \nu} = \eta_{\mu \nu} + h_{\mu \nu}$$
@@ -17,10 +17,10 @@ In other words, there exists a wave solution with two separate transverse polari
 	\label{fig:gwpolarizations}
 \end{figure}
 
-When measured and analyzed, these waves allow astronomers to extract novel information from their progenitors through the testing of various hypotheses pertinant to the violent dynamics of these systems. On September 14th, 2015 the Laser Interferometric Gravitational Wave Observatories made the first direct gravitational wave detection from a pair of coalescing black holes 1.3 billion light years away, and since then other gravitational wave detectors (i.e. Virgo, KAGRA) have joined the search; continuing the search for novel events. This GW detector network has developed a track record with an ever increasing list and rate of detections including the first multimessenger event ~\cite{gw170817} and a suprising population of compact binary coalescences ~\cite{nitz:2023}. The incredible perseverence of the women and men participating in this multi-decade effort dedicated to constructing and developing the large scale gravitational wave observatories used today is a testament to their resiliency and that of a curious mind. Though I may possibly bore a more experienced reader with verbose and elementary material, personal curiosity has lead me to traverse the works of those before me and I do so with the most outspoken reverence; all while attempting my best to provide context of novel contributions noted within this document.  
+When measured and analyzed, these waves allow astronomers to extract novel information from their progenitors through the testing of various hypotheses pertinant to the violent dynamics of these systems. On September 14th, 2015 the Laser Interferometric Gravitational Wave Observatories made the first direct gravitational wave detection from a pair of coalescing black holes 1.3 billion light years away, and since then other gravitational wave detectors (i.e. Virgo, KAGRA) have joined the search; continuing the search for novel events. The current GW detector network has developed a track record with an ever increasing list and rate of detections including the first multimessenger event ~\cite{gw170817} and a suprising population of compact binary coalescences ~\cite{nitz:2023}. The incredible perseverence of the women and men participating in this multi-decade effort dedicated to constructing and developing the large scale gravitational wave observatories used today is a testament to their resiliency and that of a curious mind. Though I may possibly bore a more experienced reader with verbose and elementary material, personal curiosity has lead me to traverse the works of those before me and do so with outspoken reverence; all while attempting my best to provide context of novel contributions noted within this document.  
 
 \section{Detector configurations}\label{sec:detcon}
-The current gravitational wave detector network primarily uses terrestrial bound Dual-Recycled Fabry-Perot Michelson interferometers; though to configure them into a state of observing, fundamental modes of operation are necessary to acquire first. A quick review of these modes provides some of the basic ``whats'' and ``hows'' of detector operation with the intention of developing a holistic view of the LIGO detection schema especially as it pertains to the body of this work. Most introductory detector configuration discussions start with the Michelson interferometer and end at the dual-recycled Fabry-Perot Michelson interferometer; this section follows in kind. Alongside the discussion are citations which can provide exceptional alternative and more detailed explanations of topics discussed.
+The current gravitational wave detector network primarily uses terrestrial bound Dual-Recycled Fabry-Perot Michelson interferometers; though to configure them into a state of observing, fundamental modes of operation are necessary to acquire first. A quick review of these modes provides some of the basic ``whats'' and ``hows'' of detector operation with the intention of developing a holistic view of the LIGO detection schema especially as it pertains to the body of this work. Most introductory detector configuration discussions start with the Michelson interferometer and end at the dual-recycled Fabry-Perot Michelson interferometer; this section follows in kind. Alongside the discussion are citations providing exceptional alternative and more detailed explanations of topics discussed.
 
 \subsection{Interferometry with a Michelson configuration}
 The Michelson interferometric detection schema (aka ``The Michelson''), used by Michelson and Morley to test the existence of luminiferous aether, demonstrates inherent potential for measuring gravitational wave amplitudes generated by time varying quadrapole moments with high energy astrophysical progenitors; making it a prime candidate as a gravitational wave detector / observatory. The interferometry begins with a beam of coherent laser light split at a 50/50 beamsplitter along two perpendicular beam paths with respective lengths $L_x$ and $L_y$ that are set by highly reflective end mirrors. Upon arrival at the length terminating mirrors, the respective beams are back-reflected towards the beam splitter where they are made to interfere. The fringe power from this interference is measured at the anti-symmetric port 
@@ -164,7 +164,7 @@ The noted gain improvements made by adding two mirrors to the optical schema are
 
 \paragraph{Gaussian and Higher Order Modes (Mode Matching pt.2)}\label{subsubsubsubsec:mm2}
 
-Imposing a Gaussian beams to the Fabry-Perot reveal some final caveats before exploiting any potential enhancement. First is that of beam divergence, which can quickly limit the stored power between two flat finite sized mirrors (see \autoref{sec:cavstab}). Though, as addressed for the simple Michelson, curving the mirrors focuses the Gaussian beam power which permits a robust resonance when curving one or both cavity mirrors. 
+Imposing a gaussian beam to the Fabry-Perot reveals some final caveats before exploiting any potential enhancement. First is that of beam divergence, which can quickly limit the stored power between two flat finite sized mirrors (see \autoref{sec:cavstab}). Though, as addressed for the simple Michelson, curving the mirrors focuses the Gaussian beam power which permits a robust resonance when curving one or both cavity mirrors. 
 
 Also mentioned, albeit in passing, is the importance of the overlap between mirror radius of curvature to the beam phasefront. Beam optics informs of relatively straightfoward solutions for optimal mirror placement for a given incident beam and vice versa. This exercise informs of the importance of matching the gaussian beam mode to the mode of a spherical mirror resonator given resonator, but more unintuitive are the implications if there is deviation from said solution. Alongside the TEM00 fundamental mode, the paraxial equation \autoref{sec:paraxial} can also produce families of solutions that exist for the two mirror cavity configuration; these solutions are the Hermite-Gauss and Laguerre-Gauss bases:
 
@@ -181,10 +181,7 @@ Also mentioned, albeit in passing, is the importance of the overlap between mirr
 	\end{split}
 \end{equation}
 
-These HG and LG field solutions arise from added perturbations in the beam-cavity alignment and mode mismatch respectively. The presence of power in these modes when sweeping a mirror along the beam axis ($\Delta FSR$) indicates optical loss while simultaneously providing useful feedback in reducing it through the construction and maintainence of a TEM00 beam-resonator coupling ~\cite{anderson:1984}. 
-
-
-\begin{figure}[ht!]
+\begin{figure}[h!]
   \begin{subcaptiongroup}
 	  \includegraphics[width=.48\textwidth]{INTRO/HG00_HG22_modes.pdf}
 	  \hspace{3.5mm}
@@ -194,6 +191,8 @@ These HG and LG field solutions arise from added perturbations in the beam-cavit
   \caption{Various transverse mode intensity profiles, with Hermite-Gauss modes ($\mathrm{HG}_\mathrm{n,m}$, [n,m \hspace{.01pt} $\leq 2$]) to the left and Laguerre-Gauss modes ($\mathrm{LG}_\mathrm{l,m}$,  [l,m \hspace{.01pt} $\leq 2$]) to the right.}
   \label{fig:HGLG_modes}
 \end{figure}
+
+These HG and LG field solutions arise from added perturbations in the beam-cavity alignment and mode mismatch respectively. The presence of power in these modes when sweeping a mirror along the beam axis ($\Delta FSR$) indicates optical loss while simultaneously providing useful feedback in reducing it through the construction and maintainence of a TEM00 beam-resonator coupling ~\cite{anderson:1984}. 
 
 \subsection{Dual-Recycled Fabry-Perot Michelson (DRFPMI)}
 Recycling mirrors are an extension of the FPMI that exploits otherwise wasted optical power by providing a means of enhancing the optical gain and bandwidth of the instrument. Strategic tuning of mirror coating parameters and positions at symmetric and anti-symmetric ports can incorporate power recycling and signal recycling respectively.
@@ -213,7 +212,7 @@ When operating a FPMI at a dark fringe, a significant amount of power is reflect
 	\mathrm{G_{PR}} = \frac{(1-r_\mathrm{PRM}^2)}{1-r_\mathrm{PRM}[1- (\mathscr{F} \mathscr{L}_\mathrm{RT})/ \pi]}
 \end{equation}
 
-With a maximum recycling gain: 
+\noindent With maximum recycling gain: 
 
 \begin{equation}
 	\mathrm{G_{PR}} = \frac{\pi}{2 \mathscr{F} \mathscr{L}_\mathrm{RT}} \bigg[ \frac{1}{1- \frac{ \mathscr{F} \mathscr{L}_\mathrm{RT}}{ 2 \pi}} \bigg]
