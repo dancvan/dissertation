@@ -168,12 +168,34 @@ Imposing a gaussian beam to the Fabry-Perot reveals some final caveats before ex
 
 Also mentioned, albeit in passing, is the importance of the overlap between mirror radius of curvature to the beam phasefront. Beam optics informs of relatively straightfoward solutions for optimal mirror placement for a given incident beam and vice versa. This exercise informs of the importance of matching the gaussian beam mode to the mode of a spherical mirror resonator given resonator, but more unintuitive are the implications if there is deviation from said solution. Alongside the TEM00 fundamental mode, the paraxial equation \autoref{sec:paraxial} can also produce families of solutions that exist for the two mirror cavity configuration; these solutions are the Hermite-Gauss and Laguerre-Gauss bases:
 
+\paragraph*{Hermite-Gauss modes}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=.7\textwidth]{figs/INTRO/FP_misalignment.pdf}
+	\caption{Figure depicting cavity-beam alignment (above) vs cavity-beam misalignment (below) with a angle $\alpha$ between the beam and cavity axes. }
+	\label{fig:fp_misalignment}
+\end{figure}
+
 \begin{equation}\label{eq:HG_beam}
 	\begin{split}
 		TEM_\mathrm{n,m}(x,y,z) = & E_o \frac{\sqrt{[\lambda z_o] / \pi}}{W(z)}\mathbb{H}_\mathrm{n}\bigg(\frac{\sqrt{2}x}{W(z)}\bigg)\mathbb{H}_\mathrm{m}\bigg(\frac{\sqrt{2}x}{W(z)}\bigg)\\
 					& \times \mathrm{exp}\bigg(\frac{-(x^2+y^2)}{W^2(z)}\bigg) \mathrm{exp}\bigg(-ikz - ik\frac{x^2 + y^2}{2R(z)} + i (1+\mathrm{n}+\mathrm{m})\zeta(z)\bigg)
 	\end{split}
 \end{equation}
+
+\paragraph*{Laguerre-Gauss modes}
+\begin{figure}[H]
+\begin{subcaptiongroup}
+	\includegraphics[width=.48\textwidth]{INTRO/FP_modematching.pdf}
+	\hspace{3.5mm}
+	\includegraphics[width=.48\textwidth]{INTRO/FP_modemismatch.pdf}
+\end{subcaptiongroup}
+\hfill
+\caption{Figure depicting cavity-beam mode matching (left) vs. cavity-beam mode mismatch (right). In this particular case, the mode mismatch is a result of changing the macroscopic DC cavity length via a shift of the ETM position towards the ITM (assuming constant mirror ROC and input beam mode). Given that the mirror ROC alongside the beam wavelength remains the same, it is helpful to notice that for the new cavity configuration, arriving at the same mirror ROC within the shorter length requires a larger characteristic beam waist (shortening the rayleigh length)}
+\label{fig:fp_modemismatch}
+\end{figure}
+
 \begin{equation}\label{eq:LG_beam}
 	\begin{split}
 	TEM_\mathrm{p,l}(r,\phi,z) = & E_o \frac{\sqrt{[\lambda z_o] / \pi}}{W(z)} \bigg(\frac{\rho}{W(z)}\bigg)^\mathrm{p}\mathbb{L}^{\mathrm{p}}_{\mathrm{l}}\bigg(\frac{\sqrt{2}x}{W(z)}\bigg)\\
@@ -192,6 +214,7 @@ Also mentioned, albeit in passing, is the importance of the overlap between mirr
   \label{fig:HGLG_modes}
 \end{figure}
 
+\newpage 
 These HG and LG field solutions arise from added perturbations in the beam-cavity alignment and mode mismatch respectively. The presence of power in these modes when sweeping a mirror along the beam axis ($\Delta FSR$) indicates optical loss while simultaneously providing useful feedback in reducing it through the construction and maintainence of a TEM00 beam-resonator coupling ~\cite{anderson:1984}. 
 
 \subsection{Dual-Recycled Fabry-Perot Michelson (DRFPMI)}
