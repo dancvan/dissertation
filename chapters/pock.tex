@@ -611,19 +611,21 @@ To find the Electric field screened by the coating we begin with Gauss' Law:
 \nabla \cdot D = \rho_\mathrm{free}
 \end{equation}
 For our problem we assume no free charge, but the fused silica substrate with the AlGaAs coating presents dielectric material between the plates. Boundary conditions are expressed in terms of plate potentials ($V$) so it is natural to first solve the potential ($V$) for all relevant points system coordinates. We exploit cylindrical symmetry with the optic and plate geometry in the radial coordinate ($r$) and use the relevant Laplacian: 
-\begin{equation}
+\begin{equation}\label{eq:cyllap}
 \bigg[\frac{1}{r}\frac{\partial}{\partial r} \bigg( r \frac{\partial}{\partial r}\bigg) + \frac{\partial^2}{\partial z^2}\bigg](\varepsilon V) = 0
 \end{equation}
 Where $\varepsilon$ is the dielectric
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=.65\textwidth]{figs/ALGAAS/laplace_coord_test.pdf}
-  \caption{\textcolor{red}{PENDING}}
+  \includegraphics[width=\textwidth]{figs/ALGAAS/longitudinal_pockels_cell_bc.pdf}
+  \caption{Side view of the longitudinal pockels cell mount. The figure is annotated with parameters as they pertain to solving \; \autoref{eq:cyllap}}
   %%Use relevant cross sectional figure to establish coordinates for $\gaas$/$\algaas$, as well as the fused silica substrate so the computation is transparent.} Cross sectional diagram indicating relevant axes and boundary conditions utilized in the numerical computation
   \label{fig:laplacecoords}
 \end{figure}
 %%Numerical recipe in appendix
+
+
 \begin{itemize}
     \item Potential map computation 	
         \begin{itemize}
