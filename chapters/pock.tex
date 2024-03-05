@@ -627,22 +627,49 @@ Where $\varepsilon$ is the dielectric
 
 \noindent Inspired by the second-order elliptic equation, operators are modified to accomodate for polar coordinate symmetry that is offered by using \autoref{eq:cyllap}.
 
-\[
-	\begin{bmatrix*}
-       -6      & 4      & 0      & 0      & \cdots & 1 & 0 & 0 & \cdots & \cdots & 0      \\
-	1      & -4     & 1      & 0      & \cdots & 0 & 1 & 0 & \cdots & \cdots & \vdots \\
-	0      & 1      & 4      & 1      & \cdots & 0 & 0 & 1 & \cdots & \cdots & \vdots \\
-	0      & 0      & \ddots & \ddots & \ddots & 0 & 0 & 0 & 0      & 0      & 0      \\
-	\vdots & \vdots & \vdots & \ddots & -6     & 4 & 0 & 0 & 0      & 0      & 0      \\
-	\vdots & \vdots & \vdots & 0      & 1      & -4& 1 & 0 & 0      & 0      & 0      \\
-	\vdots & \vdots & \vdots & 0      & 0      & 1 & 4 & 0 & 0      & 0      & 0      \\
-	\vdots & \vdots & \vdots & 0      & 0      & 0 & 0 & 0 & 0      & 0      & 0      \\
-	\vdots & \vdots & \vdots & 0      & 0      & 0 & 0 & 0 & 0      & 0      & 0      \\
-	\vdots & \vdots & \vdots & 0      & 0      & 0 & 0 & 0 & 0      & 0      & 0      \\
-	\vdots & \vdots & \vdots & 0      & 0      & 0 & 0 & 0 & 0      & 0      & 0              
-	\end{bmatrix*}
+\[ 
+\mathcal{L}_{cyl} = 
+\begin{bmatrix} \,
+\mathcal{K}_{n} & \mathcal{I}_{n} & O_{n} & O_{n} & O_{n} & \cdots & \cdots & \cdots & \cdots & \cdots & O_{n}\\
+\mathcal{I}_{n} & \mathcal{K}_{n} & \mathcal{I}_{n} & O_{n} & O_{n} & O_{n} & O_{n} & O_{n} & O_{n} & O_{n} & \vdots\\
+O_{n} & \mathcal{I}_{n} & \mathcal{K}_{n} & \mathcal{I}_{n} & O_{n} & O_{n} & O_{n} & O_{n} & O_{n} & O_{n} & \vdots\\
+O_{n} & O_{n}  & \mathcal{I}_{n} & \mathcal{K}_{n} & \ddots & O_{n} & O_{n} & O_{n} & O_{n} & O_{n} & \vdots\\
+\vdots & O_{n}  & O_{n}  & \ddots & \ddots & \ddots & O_{n} & O_{n} & O_{n} & O_{n}  & \vdots \\
+\vdots & O_{n}  & O_{n}  & O_{n}  & \ddots & \ddots & \ddots & O_{n} & O_{n} & O_{n} & \vdots \\
+\vdots & O_{n}  & O_{n}  & O_{n} & O_{n} & \ddots & \ddots & \ddots & O_{n} & O_{n}  & \vdots \\
+\vdots & O_{n}  & O_{n}  & O_{n} & O_{n} & O_{n} & \ddots & \mathcal{K}_{n} & \mathcal{I}_{n} & O_{n}  & \vdots\\
+\vdots & O_{n}  & O_{n}  & O_{n} & O_{n} & O_{n} & O_{n} & \mathcal{I}_{n} & \mathcal{K}_{n}  & \mathcal{I}_{n} & O_{n}\\
+\vdots & O_{n} & O_{n} & O_{n} & O_{n} & O_{n} & O_{n} & O_{n} & \mathcal{I}_{n} & \mathcal{K}_{n} & \mathcal{I}_{n}\\
+O_{n}      & \cdots & \cdots & \cdots & \cdots & \cdots & O_{n} & O_{n} & O_{n} & \mathcal{I}_{n} & \mathcal{K}_{n}
+\end{bmatrix} 
 \]
 
+\[
+	\mathcal{K}_n  = 
+\begin{bmatrix} \,
+-6      & 4      & 0      & 0      & 0 & \cdots & \cdots & \cdots & \cdots & \cdots & 0      \\
+1      & -4     & 1      & 0      & 0 & 0 & 0 & 0 & 0 & 0 & \vdots \\
+0      & 1      & -4      & 1      & 0 & 0 & 0 & 0 & 0 & 0 & \vdots \\
+0      & 0      & \ddots & \ddots & \ddots & 0 & 0 & 0 & 0      & 0      & 0      \\
+\vdots & 0  & 0  & \ddots & \ddots & \ddots & 0 & 0 & 0 & 0  & \vdots \\
+\vdots & 0  & 0  & 0  & \ddots & \ddots & \ddots & 0 & 0 & 0 & \vdots \\
+\vdots & 0  & 0  & 0 & 0 & \ddots & \ddots & \ddots & 0 & 0  & \vdots \\
+\vdots & 0  & 0  & 0 & 0 & 0 & \ddots & -4 & 1 & 0  & \vdots\\
+\vdots & 0  & 0  & 0 & 0 & 0 & 0 & 1 & -4  & 1 & 0\\
+\vdots & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & -4 & 1\\
+0      & \cdots & \cdots & \cdots & \cdots & \cdots & 0 & 0 & 0 & 1 & -4     
+\end{bmatrix}
+\]
+
+
+\[
+	\mathcal{I}_n = \mathrm{eye}(n) 
+\]
+
+\[ 
+	O_{n} = \mathrm{zeros}(n)
+\]	
+Where the above matrix is a tri-diagonal block sparse matrix with square embedded diagonal identity ($\mathcal{I}_n$) matrices with n non-zero diagonal elements, and sparse tridiagonal kernel ($\mathcal{K}_n$) matrices. $O_n$ presents zero matrices with $n\times n$ sharing the dimensions of $\mathcal{K}_n$ and $\mathcal{I}_n$.
 
 \begin{itemize}
     \item Potential map computation 	
