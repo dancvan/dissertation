@@ -619,11 +619,29 @@ Where $\varepsilon$ is the dielectric
 \begin{figure}[H]
   \centering
   \includegraphics[width=\textwidth]{figs/ALGAAS/longitudinal_pockels_cell_bc.pdf}
-  \caption{Side view of the longitudinal pockels cell mount. The figure is annotated with parameters as they pertain to solving \; \autoref{eq:cyllap}}
+  \caption{Side view of the longitudinal pockels cell mount. The figure is annotated with relevant parameters to build the numerical model}
   %%Use relevant cross sectional figure to establish coordinates for $\gaas$/$\algaas$, as well as the fused silica substrate so the computation is transparent.} Cross sectional diagram indicating relevant axes and boundary conditions utilized in the numerical computation
   \label{fig:laplacecoords}
 \end{figure}
 %%Numerical recipe in appendix
+
+\noindent Inspired by the second-order elliptic equation, operators are modified to accomodate for polar coordinate symmetry that is offered by using \autoref{eq:cyllap}.
+
+\[
+	\begin{bmatrix*}
+       -6      & 4      & 0      & 0      & \cdots & 1 & 0 & 0 & \cdots & \cdots & 0      \\
+	1      & -4     & 1      & 0      & \cdots & 0 & 1 & 0 & \cdots & \cdots & \vdots \\
+	0      & 1      & 4      & 1      & \cdots & 0 & 0 & 1 & \cdots & \cdots & \vdots \\
+	0      & 0      & \ddots & \ddots & \ddots & 0 & 0 & 0 & 0      & 0      & 0      \\
+	\vdots & \vdots & \vdots & \ddots & -6     & 4 & 0 & 0 & 0      & 0      & 0      \\
+	\vdots & \vdots & \vdots & 0      & 1      & -4& 1 & 0 & 0      & 0      & 0      \\
+	\vdots & \vdots & \vdots & 0      & 0      & 1 & 4 & 0 & 0      & 0      & 0      \\
+	\vdots & \vdots & \vdots & 0      & 0      & 0 & 0 & 0 & 0      & 0      & 0      \\
+	\vdots & \vdots & \vdots & 0      & 0      & 0 & 0 & 0 & 0      & 0      & 0      \\
+	\vdots & \vdots & \vdots & 0      & 0      & 0 & 0 & 0 & 0      & 0      & 0      \\
+	\vdots & \vdots & \vdots & 0      & 0      & 0 & 0 & 0 & 0      & 0      & 0              
+	\end{bmatrix*}
+\]
 
 
 \begin{itemize}
@@ -637,6 +655,7 @@ Where $\varepsilon$ is the dielectric
 	    \item Boundary conditions
 	\end{itemize}
 \end{itemize}
+
 
 \begin{figure}[H]
   \includegraphics[width=\textwidth]{ALGAAS/assembly1_sim.pdf}
