@@ -610,7 +610,9 @@ To find the Electric field screened by the coating we begin with Gauss' Law:
 \begin{equation}
 \nabla \cdot D = \rho_\mathrm{free}
 \end{equation}
+
 For our problem we assume no free charge, but the fused silica substrate with the AlGaAs coating presents dielectric material between the plates. Boundary conditions are expressed in terms of the differential plate potential $V = V_{+} - V_{-}$ plate potentials so it is natural to first solve for potential ($V$) for all relevant system coordinate points. We exploit cylindrical symmetry with the optic and plate geometry in the radial coordinate ($r$) and use the appropriate Laplacian: 
+
 \begin{equation}\label{eq:cyllap}
 \bigg[\frac{1}{r}\frac{\partial}{\partial r} \bigg( r \frac{\partial}{\partial r}\bigg) + \frac{\partial^2}{\partial z^2}\bigg](\varepsilon V) = 0
 \end{equation}
@@ -625,6 +627,7 @@ Where $\varepsilon$ is the dielectric
 \end{figure}
 %%Numerical recipe in appendix
 
+\paragraph*{Numerical Recipe (Finite Differencing)}
 \noindent Inspired by the second-order elliptic equation, operators are modified to accomodate for polar coordinate symmetry that is offered by using \autoref{eq:cyllap}.
 
 \[ 
@@ -669,7 +672,11 @@ O_{n}      & \cdots & \cdots & \cdots & \cdots & \cdots & O_{n} & O_{n} & O_{n} 
 \[ 
 	O_{n} = \mathrm{zeros}(n)
 \]	
-Where the above matrix is a tri-diagonal block sparse matrix with square embedded diagonal identity ($\mathcal{I}_n$) matrices with n non-zero diagonal elements, and sparse tridiagonal kernel ($\mathcal{K}_n$) matrices. $O_n$ presents zero matrices with $n\times n$ sharing the dimensions of $\mathcal{K}_n$ and $\mathcal{I}_n$.
+Where the above matrix is a tri-diagonal block sparse matrix with square embedded diagonal identity ($\mathcal{I}_n$) matrices with n non-zero diagonal elements, and sparse tridiagonal kernel ($\mathcal{K}_n$) matrices. $O_n$ presents zero matrices with $n\times n$ sharing the dimensions of $\mathcal{K}_n$ and $\mathcal{I}_n$. \footnote{Not completely clear to the author at first, the motivation behind the structural choice of sparse block diagonals is a result of vectorizing the computation. Some standard computing libraries may be proactive about this vectorization and apply it when recognized in for-loops. Even so, the explicit structuring of the boundary conditions listed here is intended to inform of the reasoning behind the modified numerical recipe to establish a compartmentalization between the scientific motivation alongside computing tools and methods.}
+
+Explicit parameters:
+
+
 
 \begin{itemize}
     \item Potential map computation 	
