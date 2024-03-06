@@ -650,23 +650,23 @@ O_{n}      & \cdots & \cdots & \cdots & \cdots & \cdots & O_{n} & O_{n} & O_{n} 
 \[
 	\mathcal{K}_n  = 
 \begin{bmatrix} \,
--6      & 4      & 0      & 0      & 0 & \cdots & \cdots & \cdots & \cdots & \cdots & 0      \\
-1      & -4     & 1      & 0      & 0 & 0 & 0 & 0 & 0 & 0 & \vdots \\
-0      & 1      & -4      & 1      & 0 & 0 & 0 & 0 & 0 & 0 & \vdots \\
-0      & 0      & \ddots & \ddots & \ddots & 0 & 0 & 0 & 0      & 0      & 0      \\
+-6 & 4 & 0 & 0& 0 & \cdots & \cdots & \cdots & \cdots & \cdots & 0 \\
+1 & -4 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & \vdots \\
+0 & 1 & -4 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & \vdots \\
+0 & 0 & \ddots & \ddots & \ddots & 0 & 0 & 0 & 0 & 0 & 0 \\
 \vdots & 0  & 0  & \ddots & \ddots & \ddots & 0 & 0 & 0 & 0  & \vdots \\
 \vdots & 0  & 0  & 0  & \ddots & \ddots & \ddots & 0 & 0 & 0 & \vdots \\
 \vdots & 0  & 0  & 0 & 0 & \ddots & \ddots & \ddots & 0 & 0  & \vdots \\
 \vdots & 0  & 0  & 0 & 0 & 0 & \ddots & -4 & 1 & 0  & \vdots\\
 \vdots & 0  & 0  & 0 & 0 & 0 & 0 & 1 & -4  & 1 & 0\\
 \vdots & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & -4 & 1\\
-0      & \cdots & \cdots & \cdots & \cdots & \cdots & 0 & 0 & 0 & 1 & -4     
+0      & \cdots & \cdots & \cdots & \cdots & \cdots & 0 & 0 & 0 & 0 & 0 
 \end{bmatrix}
 \]
 
 
 \[
-	\mathcal{I}_n = \mathrm{eye}(n) 
+	\mathcal{I}_n = \mathrm{eye}(n) - (\mathrm{zeros}(n)[n,n] + 1)  
 \]
 
 \[ 
