@@ -606,12 +606,12 @@ Maximizing a controlled and well defined electric field ($|E_z|$) within the coa
 \end{figure}
 
 \subsubsection{Modeling}
-To find the Electric field screened by the coating we begin with Gauss' Law:
+The field screened by the coating can be computed from Gauss' Law:
 \begin{equation}
 \nabla \cdot D = \rho_\mathrm{free}
 \end{equation}
 
-For our problem we assume no free charge, but the fused silica substrate with the AlGaAs coating presents dielectric material between the plates. Boundary conditions are expressed in terms of the differential plate potential $V = V_{+} - V_{-}$ plate potentials so it is natural to first solve for potential ($V$) for all relevant system coordinate points. We exploit cylindrical symmetry with the optic and plate geometry in the radial coordinate ($r$) and use the appropriate Laplacian: 
+\noindent There is no free charge within the region of interest ($\rho_\mathrm{free}=0$), though the optic sample fused silica substrate with the AlGaAs coating imposes dielectric material between the plates. Boundary conditions are expressed in terms of the differential plate potential $V$, so it is natural to first solve the potential ($V$) for all relevant system coordinate points. We exploit the chosen optic / disk symmetry about the polar angle ($\partial^{2} V / \partial \theta^{2}$) and compute for the longitudinal ($z$) and radial ($r$) coordinates with the use of the appropriate Laplacian: 
 
 \begin{equation}\label{eq:cyllap}
 \bigg[\frac{1}{r}\frac{\partial}{\partial r} \bigg( r \frac{\partial}{\partial r}\bigg) + \frac{\partial^2}{\partial z^2}\bigg](\varepsilon V) = 0
@@ -628,22 +628,27 @@ Where $\varepsilon$ is the dielectric
 %%Numerical recipe in appendix
 
 \paragraph*{Numerical Recipe (Finite Differencing)}
-\noindent Inspired by the second-order elliptic equation, operators are modified to accomodate for polar coordinate symmetry that is offered by using \autoref{eq:cyllap}.
+\noindent Inspired by the second-order elliptic equation, operators are modified to incorporate the following boundary conditions:
+
+\subparagraph*{Dirichlet}
+
+
+\subparagraph*{Neumann}
 
 \[ 
 \mathcal{L}_{cyl} = 
 \begin{bmatrix} \,
-\mathcal{K}_{n} & \mathcal{I}_{n} & O_{n} & O_{n} & O_{n} & \cdots & \cdots & \cdots & \cdots & \cdots & O_{n}\\
+O_{n} & O_{n} & O_{n} & O_{n} & O_{n} & \cdots & \cdots & \cdots & \cdots & \cdots & O_{n}\\
 \mathcal{I}_{n} & \mathcal{K}_{n} & \mathcal{I}_{n} & O_{n} & O_{n} & O_{n} & O_{n} & O_{n} & O_{n} & O_{n} & \vdots\\
 O_{n} & \mathcal{I}_{n} & \mathcal{K}_{n} & \mathcal{I}_{n} & O_{n} & O_{n} & O_{n} & O_{n} & O_{n} & O_{n} & \vdots\\
-O_{n} & O_{n}  & \mathcal{I}_{n} & \mathcal{K}_{n} & \ddots & O_{n} & O_{n} & O_{n} & O_{n} & O_{n} & \vdots\\
+O_{n} & O_{n}  & \mathcal{I}_{n} & \mathcal{K}_{n} & \mathcal{I}_{n} & O_{n} & O_{n} & O_{n} & O_{n} & O_{n} & \vdots\\
 \vdots & O_{n}  & O_{n}  & \ddots & \ddots & \ddots & O_{n} & O_{n} & O_{n} & O_{n}  & \vdots \\
 \vdots & O_{n}  & O_{n}  & O_{n}  & \ddots & \ddots & \ddots & O_{n} & O_{n} & O_{n} & \vdots \\
 \vdots & O_{n}  & O_{n}  & O_{n} & O_{n} & \ddots & \ddots & \ddots & O_{n} & O_{n}  & \vdots \\
-\vdots & O_{n}  & O_{n}  & O_{n} & O_{n} & O_{n} & \ddots & \mathcal{K}_{n} & \mathcal{I}_{n} & O_{n}  & \vdots\\
+\vdots & O_{n}  & O_{n}  & O_{n} & O_{n} & O_{n} & \mathcal{I}_{n} & \mathcal{K}_{n} & \mathcal{I}_{n} & O_{n}  & \vdots\\
 \vdots & O_{n}  & O_{n}  & O_{n} & O_{n} & O_{n} & O_{n} & \mathcal{I}_{n} & \mathcal{K}_{n}  & \mathcal{I}_{n} & O_{n}\\
 \vdots & O_{n} & O_{n} & O_{n} & O_{n} & O_{n} & O_{n} & O_{n} & \mathcal{I}_{n} & \mathcal{K}_{n} & \mathcal{I}_{n}\\
-O_{n}      & \cdots & \cdots & \cdots & \cdots & \cdots & O_{n} & O_{n} & O_{n} & \mathcal{I}_{n} & \mathcal{K}_{n}
+O_{n}      & \cdots & \cdots & \cdots & \cdots & \cdots & O_{n} & O_{n} & O_{n} & O_{n} & {O}_{n}
 \end{bmatrix} 
 \]
 
@@ -663,7 +668,6 @@ O_{n}      & \cdots & \cdots & \cdots & \cdots & \cdots & O_{n} & O_{n} & O_{n} 
 0      & \cdots & \cdots & \cdots & \cdots & \cdots & 0 & 0 & 0 & 0 & 0 
 \end{bmatrix}
 \]
-
 
 \[
 	\mathcal{I}_n = \mathrm{eye}(n) - (\mathrm{zeros}(n)[n,n] + 1)  
@@ -697,6 +701,7 @@ Explicit parameters:
   \label{fig:poissoncalcoutput}
 \end{figure}
 
+The computed $E_z$ screened by the coating at $r = 0$ for $V = 1$ is estimated to be 42 $[\mathrm{V}/\mathrm{m}]$ and will be included in the calibration as a pockels cell field conversion factor $42 [(\mathrm{V} / \mathrm{m}) / \mathrm{V}]$  
 \subsubsection{Voltage drive electronics}
 \begin{figure}[H]
     \includegraphics[width=\textwidth]{ALGAAS/13-Sep-2021_e_field_inside_outside_normal.pdf}
@@ -941,7 +946,7 @@ An optical mount for the sample made with MACOR, along with spherical glass bear
 \end{figure}
 
 \subsubsection{Acousto-optical coupling}
-Drive coupling seen in the transfer function measurements with the MACOR mounts appeared consistent. Varying the mechanical configurations (i.e. differential electrode and / or optic set screw settings) to the slightest degree left us to discover a mechanical action via the excitations from the sample-mount acoustic modes from the construction are rung when driving the voltage on electrodes plates. Tracking consistent mechanical action for assemblies prior to Assembly 3 were difficult due to inconsistencies in mechanical settings between some measuremen. When more consistency was realized (i.e. utilizing a MACOR mount and careful tracking of the sample set screw torque), it was more transparent that the sample-mount acoustic modes were responsible with similar features between the $\gaas$/$\algaas$ coating and the non-crystalline HR coating from ATFilms.
+Drive coupling seec in the transfer function measurements with the MACOR mounts appeared consistent. Varying the mechanical configurations (i.e. differential electrode and / or optic set screw settings) to the slightest degree left us to discover a mechanical action via the excitations from the sample-mount acoustic modes from the construction are rung when driving the voltage on electrodes plates. Tracking consistent mechanical action for assemblies prior to Assembly 3 were difficult due to inconsistencies in mechanical settings between some measurements. When more consistency was realized (i.e. utilizing a MACOR mount and careful tracking of the sample set screw torque), it was more transparent that the sample-mount acoustic modes were responsible with similar features between the $\gaas$/$\algaas$ coating and the non-crystalline HR coating from ATFilms. The cleanest versions of these measurements with coorespondence of FEA suggest the acousto-optical modes with highest contributions of cavity length noise at regions below 10 kHz and 40 kHz - 80 kHz. 
 
 %\begin{itemize}
 %\item \textbf{Vibration of plates (Leissa)} \cite{leissa:1969} Computing frequencies and order of magnitude
