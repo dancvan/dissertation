@@ -721,7 +721,10 @@ O_{n}      & \cdots & \cdots & \cdots & \cdots & \cdots & O_{n} & O_{n} & O_{n} 
 \]	
 Where the above matrix is a tri-diagonal block sparse matrix with square embedded diagonal identity ($\mathcal{I}_n$) matrices with n non-zero diagonal elements, and sparse tridiagonal kernel ($\mathcal{K}_n$) matrices. $O_n$ presents zero matrices with $n\times n$ sharing the dimensions of $\mathcal{K}_n$ and $\mathcal{I}_n$. \footnote{Not completely clear to the author at first, the motivation behind the structural choice of sparse block diagonals is a result of vectorizing the computation. Some standard computing libraries may be proactive about this vectorization and apply it when recognized in for-loops. Even so, the explicit structuring of the boundary conditions listed here is intended to inform of the reasoning behind the modified numerical recipe to establish a compartmentalization between the scientific motivation alongside computing tools and methods.}
 
-Explicit parameters:
+\subparagraph*{Robin}
+
+
+\subparagraph*{Explicit parameters}
 
 \begin{itemize}
     \item Potential map computation 	
@@ -731,7 +734,6 @@ Explicit parameters:
 		    \item inside coating
 		    \item outside coating
 		\end{itemize}
-	    \item Boundary conditions
 	\end{itemize}
 \end{itemize}
 
