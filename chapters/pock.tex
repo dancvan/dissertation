@@ -43,7 +43,7 @@
 
 % Conclusion
 
-As mentioned in \autoref{subsubsec:introctn}, once mirror coating materials are selected for DRFPMI core optics, another fundamental detector noise limit is simultaneously imposed. For aLIGO $\siotao$ coatings this is represented in \autoref{fig:noisebudget}. As aLIGO approaches designed sensitivity, there are efforts proposing the usage of alternative mirror coating solutions, with the primary purpose of pushing down the thermal noise limit and further enhancing detector sensitivity \cite{harry:aigwd2019}. $\gaas$/$\algaas$ shows promise for next generation detectors with reduced coating Brownian noise by a factor of 10, cooresponding to a potential strain reduction by a factor of 5 ~\cite{cole:2013} when compared to the current aLIGO coating thermal noise limit. Though applying crystalline HR mirror coatings to the core optics does introduce notable side effects; one being linear electro-optic of $\gaas$/$\algaas$ (dn/dE), also known as the Pockels effect ~\cite{abernathy:poster}. A differential phase noise estimate of $\approx 10^{-11}$ [rad/m/V], alongside measured ambient field noise of $3\times 10^{-6}$ [V/m/$\sqrt{\mathrm{Hz}}$] presents adequate motivation for a thorough study dedicated to the electro-optical properties of $\gaas$/$\algaas$ coatings~\cite{buikema:2020}. This section details such a study that starts with a brief survey of the optical and material properties of crystalline materials like $\gaas$ and $\algaas$ by reviewing: light propogation through anistropic materials, and induced optical anisotropy of zincblende materials. The second item of discussion are preliminary estimates of the differential phase of light reflected from a $\gaas$/$\algaas$ coating stack caused by electric field noise are computed while considering potential impacts to the current generation gravitational wave detectors. The third and final item of discussion is a study designed to acquire dn/dE estimates from a calibrated differential length PDH locked signal from a short experimental optical cavity with a primarily normal electric field driven across a HR $\gaas$/$\algaas$ coating ``witness" sample.
+As mentioned in \autoref{subsubsec:introctn}, once mirror coating materials are selected for DRFPMI core optics, another fundamental detector noise limit is simultaneously imposed. As aLIGO approaches designed sensitivity, there are efforts proposing the usage of alternative mirror coating solutions, with the primary purpose of pushing down the thermal noise limit and further enhancing detector sensitivity \cite{harry:aigwd2019}. $\gaas$/$\algaas$ shows promise for next generation detectors with reduced coating Brownian noise by a factor of 10, cooresponding to a potential strain reduction by a factor of 5 ~\cite{cole:2013} when compared to the current aLIGO coating thermal noise limit. Though applying crystalline HR mirror coatings to the core optics does introduce notable side effects; one being linear electro-optic of $\gaas$/$\algaas$ (dn/dE), also known as the Pockels effect ~\cite{abernathy:poster}. A differential phase noise estimate of $\approx 10^{-11}$ [rad/m/V], alongside measured ambient field noise of $3\times 10^{-6}$ [V/m/$\sqrt{\mathrm{Hz}}$] presents adequate motivation for a thorough study dedicated to the electro-optical properties of $\gaas$/$\algaas$ coatings~\cite{buikema:2020}. This section details such a study that starts with a brief survey of the optical and material properties of crystalline materials like $\gaas$ and $\algaas$ by reviewing: light propogation through anistropic materials, and induced optical anisotropy of zincblende materials. The second item of discussion are preliminary estimates of the differential phase of light reflected from a $\gaas$/$\algaas$ coating stack caused by electric field noise are computed while considering potential impacts to the current generation gravitational wave detectors. The third and final item of discussion is a study designed to acquire dn/dE estimates from a calibrated differential length PDH locked signal from a short experimental optical cavity with a primarily normal electric field driven across a HR $\gaas$/$\algaas$ coating ``witness" sample.
 
 \section{Motivation}
 
@@ -347,7 +347,19 @@ Both forms of the induced birefringence (electro-optic and photo-elastic) can be
 %%New principal dielectric axes for zincblende structures (zinblende photoelastic tensor, zincblende electro-optic tensor)
 
 \subsection{EO Modulation}\label{sec:EOM}
-Imparting phase modulations onto an optical carrier field is a common application of the electro-optic effect. Electro-optic modulators (EOMs) or Pockel cells are sold as a standard optical components usually composed of a monolithic crystalline material sandwiched between two capacitor plates connected to a single electrical input port (typically coaxial for RF) designed to take in a voltage input of frequency ($\Omega$) within a specified modulation amplitude and frequency bandwidth. When the field amplitude across the crystal is driven by a voltage controlled oscillation, the amplitudes of the electro-optic tensor vary linearly. The voltage amplitude of the signal input is proportional to the strength of the modulated phase on the optical carrier frequency ($\omega$); commonly quantified in terms of a modulation index ($\beta$):
+Imparting phase modulations onto an optical carrier field is a common application of the electro-optic effect. Electro-optic modulators (EOMs) or Pockel cells are sold as a standard optical components usually composed of a monolithic crystalline material sandwiched between two capacitor plates connected to a single electrical input port (typically coaxial for RF) designed to take in a voltage input of frequency ($\Omega$) within a specified modulation amplitude and frequency bandwidth. When the field amplitude across the crystal is driven by a voltage controlled oscillation, the amplitudes of the electro-optic tensor vary linearly. 
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=.5\textwidth]{figs/ALGAAS/eom_l_assembly.pdf}
+    \\
+    \vspace{-9mm}
+    \includegraphics[width=.5\textwidth]{figs/ALGAAS/eom_t_assembly.pdf}
+\caption{Longitudinal and transverse electro-optic modulators}
+\label{fig:EOM_types}
+\end{figure}
+
+The voltage amplitude of the signal input is proportional to the strength of the modulated phase on the optical carrier frequency ($\omega$); commonly quantified in terms of a modulation index ($\beta$):
 
 %%Consider a specific crystal that gives us our $\beta \mathrm{sin}(\Omega t)$
 
@@ -671,7 +683,7 @@ Where $\varepsilon$ is the dielectric
 %%Numerical recipe in appendix
 
 \paragraph*{Numerical Recipe (Finite Differencing)}
-\noindent Inspired by the second-order elliptic equation, operators are modified to incorporate the following boundary conditions:
+\noindent Inspired by the second-order elliptic equation, operators are modified to incorporate the following boundary conditions~\cite{Press:2007}:
 
 \subparagraph*{Dirichlet}
 
