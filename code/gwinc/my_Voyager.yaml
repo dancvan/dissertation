@@ -1,0 +1,246 @@
+Infrastructure:
+  Length: 3995.0
+  ResidualGas:
+    H2:
+      BeamtubePressure: 2.7e-07
+      ChamberPressure: 2.7e-07
+      mass: 3.35e-27
+      polarizability: 7.8e-31
+    H2O:
+      BeamtubePressure: 1.33e-08
+      ChamberPressure: 1.33e-08
+      mass: 2.99e-26
+      polarizability: 1.5e-30
+    N2:
+      BeamtubePressure: 1.33e-08
+      ChamberPressure: 1.33e-08
+      mass: 4.65e-26
+      polarizability: 1.71e-30
+    O2:
+      BeamtubePressure: 1.0e-09
+      ChamberPressure: 1.0e-09
+      mass: 5.31e-26
+      polarizability: 1.56e-30
+  Temp: 295.0
+Laser:
+  Power: 151.5919
+  Wavelength: 2.0e-06
+Materials:
+  Coating:
+    Alphahighn: 1.0e-09
+    Alphalown: 5.1e-07
+    Betahighn: 0.00014
+    Betalown: 8.0e-06
+    CVhighn: 1050000.0
+    CVlown: 1641200.0
+    Indexhighn: 3.5
+    Indexlown: 1.436
+    Phihighn: 1.0e-05
+    Philown: 0.0001
+    Sigmahighn: 0.22
+    Sigmalown: 0.17
+    ThermalDiffusivityhighn: 1.03
+    ThermalDiffusivitylown: 1.05
+    Yhighn: 60000000000.0
+    Ylown: 72000000000.0
+  MassRadius: 0.225
+  MassThickness: 0.55
+  Substrate:
+    Alphas: 5.2e-12
+    MassAlpha: 1.0e-09
+    MassCM: 300.0
+    MassDensity: 2329.0
+    MassKappa: 700.0
+    MechanicalLossExponent: 1.0
+    MirrorSigma: 0.27
+    MirrorY: 155800000000.0
+    RefractiveIndex: 3.5
+    Temp: 123.0
+    c2: 3.0e-13
+    dndT: 0.0001
+Optics:
+  BSLoss: 0.0005
+  Curvature:
+    ETM: 2500.0
+    ITM: 1800.0
+  ETM:
+    CoatLayerOpticalThickness:
+    - 0.010002413172599
+    - 0.271214331066003
+    - 0.164174846618198
+    - 0.335989914883352
+    - 0.161231951101195
+    - 0.335876828755542
+    - 0.161500120481736
+    - 0.336207246174627
+    - 0.163812752345812
+    - 0.333822310779772
+    - 0.160417119090227
+    - 0.335440166104688
+    - 0.166431402148518
+    - 0.333247215316394
+    - 0.163197340499259
+    - 0.334971108967147
+    - 0.158386886176904
+    Transmittance: 5.0e-06
+  ITM:
+    CoatLayerOpticalThickness:
+    - 0.010547147008907
+    - 0.287871950886634
+    - 0.102859957426864
+    - 0.400169140711108
+    - 0.098761965585538
+    - 0.394635060435437
+    - 0.10546129843011
+    - 0.37612136298319
+    - 0.121814822178758
+    - 0.358839306265721
+    - 0.135707673300901
+    - 0.386738199718736
+    - 0.08814236596907
+    CoatingAbsorption: 1.0e-06
+    SubstrateAbsorption: 0.001
+    Transmittance: 0.002
+  Loss: 1.0e-05
+  PRM:
+    Transmittance: 0.049
+  PhotoDetectorEfficiency: 0.95
+  Quadrature:
+    dc: 1.5832
+  SRM:
+    CavityLength: 55.0
+    Transmittance: 0.0458
+    Tunephase: 0.0
+  SubstrateAbsorption: 3.0e-05
+  Type: SignalRecycled
+  coupling: 1.0
+  pcrit: 10.0
+Seismic:
+  Beta: 0.8
+  Gamma: 0.8
+  KneeFrequency: 10.0
+  LowFrequencyLevel: 1.0e-09
+  Omicron: 10.0
+  PlatformMotion: 6D
+  RayleighWaveSpeed: 250.0
+  Rho: 1800.0
+  Site: LHO
+  TestMassHeight: 1.5
+Squeezer:
+  AmplitudedB: 10.0
+  FilterCavity:
+    L: 300.0
+    Lrt: 1.0e-05
+    Rot: 0.0
+    Te: 0.0
+    Ti: 0.000688
+    fdetune: -27.3
+  InjectionLoss: 0.05
+  OutputFilter:
+    FilterCavity:
+      L: 4000.0
+      Lrt: 0.0001
+      Rot: 0.0
+      Te: 0.0
+      Ti: 0.01
+      fdetune: -30.0
+    Type: None
+  SQZAngle: 0.0
+  Type: Freq Dependent
+Suspension:
+  C70Steel:
+    Alpha: 1.2e-05
+    C: 486.0
+    K: 49.0
+    Phi: 0.0002
+    Rho: 7800.0
+    Y: 212000000000.0
+    dlnEdT: -0.00025
+  C70Steel_123K:
+    Alpha: 8.0e-06
+    C: 250.0
+    K: 15.0
+    Phi: 0.0002
+    Rho: 7800.0
+    Y: 212000000000.0
+    dlnEdT: -0.00025
+  FiberType: Ribbon
+  MaragingSteel:
+    Alpha: 1.1e-05
+    C: 460.0
+    K: 20.0
+    Phi: 0.0001
+    Rho: 7800.0
+    Y: 187000000000.0
+    dlnEdT: 0.0
+  Ribbon:
+    Thickness: 0.0005
+    Width: 0.01
+  Silica:
+    Alpha: 3.9e-07
+    C: 772.0
+    Dissdepth: 0.015
+    K: 1.38
+    Phi: 4.1e-10
+    Rho: 2200.0
+    Y: 72000000000.0
+    dlnEdT: 0.000152
+  Silicon_123K:
+    Alpha: 1.0e-10
+    C: 300.0
+    Dissdepth: 0.00025
+    K: 700.0
+    Phi: 2.0e-09
+    Rho: 2329.0
+    Y: 155800000000.0
+    dlnEdT: -2.0e-05
+  Stage:
+  - Blade: 0.012
+    BladeMaterial: Silicon_123K
+    Dilution: .nan
+    K: 260000.0
+    Length: 0.7824
+    Mass: 200.0
+    NWires: 4.0
+    Temp: 123.0
+    WireMaterial: Silicon_123K
+    WireRadius: .nan
+  - Blade: 0.00721
+    BladeMaterial: MaragingSteel
+    Dilution: .nan
+    K: 26300.0
+    Length: 0.5592
+    Mass: 200.0
+    NWires: 4.0
+    Temp: 123.0
+    WireMaterialLower: C70Steel_123K
+    WireMaterialUpper: C70Steel
+    WireRadius: 0.000668
+  - Blade: 0.0077
+    BladeMaterial: MaragingSteel
+    Dilution: .nan
+    K: 18200.0
+    Length: 0.15
+    Mass: 70.0
+    NWires: 4.0
+    Temp: 295.0
+    WireMaterial: C70Steel
+    WireRadius: 0.000724
+  - Blade: 0.0139
+    BladeMaterial: MaragingSteel
+    Dilution: .nan
+    K: 114000.0
+    Length: 0.15
+    Mass: 50.0
+    NWires: 2.0
+    Temp: 295.0
+    WireMaterial: C70Steel
+    WireRadius: 0.00108
+  Type: Quad
+  VHCoupling:
+    theta: 0.001
+TCS:
+  SRCloss: 0.0
+  s_cc: 7.024
+  s_cs: 7.321
+  s_ss: 7.631
