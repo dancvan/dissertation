@@ -164,10 +164,14 @@ The ratio between circulating and cavity input power is set by the reflectivity 
 
 \paragraph{``Arm elongation''}
 
-An intuitive analogue of the Fabry-P\'{e}rot's arm elongation capabilities is better illustrated when comparing against a computed Delay Line storage time~\cite{saulson:2017}:
+An intuitive analogue of the Fabry-P\'{e}rot's arm elongation capabilities is better illustrated when comparing against a computed Delay Line storage time (with $\mathscr{N}$ number of bounces and length L)~\cite{saulson:2017}:
 
 \begin{equation}
-	\tau_s = \frac{L}{c} \frac{r_1r_2}{1-r_1r_2} = \frac{1}{4 \pi \mathscr{F}}
+    \tau^\mathrm{DL}_s = \frac{2 \mathscr{N} L}{c}
+\end{equation}
+
+\begin{equation}
+    \tau^\mathrm{FP}_s = \frac{L}{c} \frac{r_1r_2}{1-r_1r_2} = \frac{1}{4 \pi \mathscr{F}}
 \end{equation}
 
 Advanced LIGO, with its 4km length and approximate finesse of 208 coorelates to a storage time of $382\mu s$, whereas the simple Michelson has an arm storage time of $26 \mu s$. The cooresponding optical gain increase is noted in \autoref{fig:fpmi}. 
@@ -266,7 +270,7 @@ When operating a FPMI at a dark fringe, a significant amount of power is reflect
 \end{equation}
 
 \subsubsection{Signal Recycling}
-As may be inferred, this technique requires a mirror installation at the anti-symmetric port, though with a more nuianced approach than that of power recycling. Placing a partially reflective mirror at the output port it is understood that light leakage coming from the PRFPMI at the anti-symmetric port (caused by differential arm motion) is re-introduced to the arms, but the reflectivity of the new mirror cannot be set too high to prevent attenuating the PRFPMI output. And even then, detector enhancement only comes after exacting a cost dependent on signal recycling cavity tuning. This cost resides between a trade off of detector bandwidth for increased detector gain or vice versa, with the operating point between the maxima of these two detector characteristics set as a function of the microscopic signal recycling cavity length (phase) tuning:
+As may be inferred, this technique requires a mirror installation at the anti-symmetric port, though with a more nuianced approach than that of power recycling. Placing a partially reflective mirror at the output port it is understood that light leakage coming from the PRFPMI at the anti-symmetric port (caused by differential arm motion) is re-introduced to the arms, but the reflectivity of the new mirror cannot be set too high to prevent attenuating the PRFPMI output. And even then, detector enhancement only comes after exacting a cost dependent on signal recycling cavity tuning. This cost resides between a trade off of detector bandwidth for increased detector gain or vice versa, with the operating point between the maxima of these two detector characteristics set as a function of the microscopic signal recycling cavity length (phase) tuning ~\cite{Vajente:2018_unpub}:
 
 \begin{equation}
 	\mathrm{H}_\mathrm{DRFPMI} = \mathrm{G}_\mathrm{PR} \mathrm{P}_\mathrm{in} L \Omega \bigg[ \frac{ t_\mathrm{ITM}^2 r_\mathrm{ETM}}{(t_\mathrm{ITM}^2 + r_\mathrm{ITM}^2)r_\mathrm{ETM} - r_\mathrm{ITM}}  t_\mathrm{SRC} \frac{e^{-i 2 \pi L f / c} \mathrm{sin}( 2 \pi f / c)}{ 2 \pi L f } \frac{\mathrm{sin}(\phi_0)}{1- r_\mathrm{SRC}r_\mathrm{ETM} e^{-i 4 \pi L f / c}} \bigg]
@@ -336,7 +340,7 @@ Discussions prior to now still have yet to discuss most practical considerations
 %Even with state-of-the-art ground motion isolation for terrestrial gravitational detectors using quadruple stage pendula and high mass mirrors, current gravitational wave detectors still suffer from occasional misalignment and require sensing and feedback loops to meet mirror alignment requirements.
 
 \subsubsection{Adaptive Optics}
-As mentioned in \hyperref[subsubsubsubsec:mm2]{\S \ref*{subsubsubsubsec:mm2}} , the microscopic longitudinal control of the mirror positions is only half the story for Gaussian beams and further consideration of macroscopic mirror position and radii of curvature are needed to maximize resonant power in the fundamental (TEM00) mode. Failure to plan and maintain this ``mode matching" condition results in beam mode to cavity mode mismatch, scattering power into higher order Laguerre-Gauss modes. Additionally, even with ultra-low absorption HR mirror coatings and fused silica substrates, aLIGO circulating power is estimated to reach $\geq$ 750 kW, introducing a differential defocus to the arm cavities by [$\mathrm{m}^{-1}$]; which can introduce significant optical loss due to mode mismatch (esp. for coupled cavities) ~\cite{tvo}. As DRFPMIs like aLIGO approach designed sensitivity, instances of mode mismatch are a two-fold threat with optical loss to higher order modes that impact the ability to produce squeezed light states ~\cite{oelker:2014}. The further motivation and the implemented solution for aLIGO during O3a is discussed in Chapter 2. 
+As mentioned in \hyperref[subsubsubsubsec:mm2]{\S \ref*{subsubsubsubsec:mm2}} , the microscopic longitudinal control of the mirror positions is only half the story for Gaussian beams and further consideration of macroscopic mirror position and radii of curvature are needed to maximize resonant power in the fundamental (TEM00) mode. Failure to plan and maintain this ``mode matching" condition results in beam mode to cavity mode mismatch, scattering power into higher order Laguerre-Gauss modes. Additionally, even with ultra-low absorption HR mirror coatings and fused silica substrates, aLIGO circulating power is estimated to reach $\geq$ 750 kW, introducing a differential defocus to the arm cavities by [$\mathrm{m}^{-1}$]; which can introduce significant optical loss due to mode mismatch (esp. for a coupled cavity configuration) ~\cite{tvo}. As DRFPMIs like aLIGO approach designed sensitivity, instances of mode mismatch are a two-fold threat with optical loss to higher order modes that impact the ability to produce squeezed light states ~\cite{oelker:2014}. The further motivation and the implemented solution for aLIGO during O3a is discussed in Chapter 2. 
 
 \subsubsection{Coating Thermal Noise}\label{subsubsec:introctn}
 Generally speaking, sensed differential arm motion is more often than not produced by sources that are not gravitational waves. The sum and categorization of motion from non gravitational wave sources (both known and unknown) at a given point in time form what is known as a DARM noise budget. This tool aids comissioners in understanding the current limits of GWDs and additionally facilitates focused hypotheses for detector improvements / upgrades. One rapidly approaching limit is the coating thermal noise from the $\siotao$ Fabry-Perot cavity mirrors which arises from the mirror surface position observable influenced by energy dissipated by the coating by way of its acoustic degrees of freedom and causing uncoorelated phase fluctuations between the two arm cavities. Part of the upgrade discussions for current and future GWDs are HR coating materials with different material composition solely for the purpose of lowering this coating thermal noise. A promising candidate with 5 times lower thermal noise properties is the HR crystalline $\gaas/\algaas$ stack. This alone motivates thorough inquiry into more of its properties, some of which are discussed in Chapter 3.   
@@ -349,7 +353,7 @@ Generally speaking, sensed differential arm motion is more often than not produc
 		\includegraphics[width=.7\textwidth]{INTRO/Asharp_nb.pdf}
     \end{subcaptiongroup}
     \hfill
-    \caption{[Top] Noise budget for the next generation A+ interferometer using $\siotao$ coatings [Bottom] Noise budget for a parallel next generation A\# interferometer using $\gaas$/$\algaas$ coatings~\cite{dcc:asharp}.}
+    \caption{[Top] Noise budget for the next generation A+ interferometer using $\siotao$ coatings [Bottom] Noise budget for a parallel next generation A$^\sharp$ interferometer using $\gaas$/$\algaas$ coatings~\cite{dcc:asharp}.}
 \label{fig:aplusasharp}
 \end{figure}
 
