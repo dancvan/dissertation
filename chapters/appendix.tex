@@ -12,6 +12,8 @@
 	%%% Conditioned RH input filter
     %% CO2 filters
 
+% CO2 mask
+
 % Mode matching data for Electro-optic sample cavity
     %% Pre MMT beam scan
     %% ``Just another mode matching tool" (JAMMT) solution
@@ -118,7 +120,7 @@ From here it can be shown that for a general plane wave there exist two unique r
 
 \newpage
 
-\section{Thermo-optic filters}\label{sec:TO_filt}
+\section{Transient thermo-optic responses (Pt.2)}\label{sec:TO_filt}
 
 \subsection{COMSOL self heating filter}
 \begin{figure}[H]
@@ -128,6 +130,13 @@ From here it can be shown that for a general plane wave there exist two unique r
 \end{figure}
 
 \subsection{Ring Heater actuation}
+
+\begin{equation}
+	\Psi(t,r)=2\frac{dn}{dT} \sum^{\infty}_{m,p = 1} A_{m,p} \; c^{u}_{p} \mathrm{sin}(u_m h /2a) (a/u_m)[1-e^{-\alpha t}] J_0(\zeta_p r/a)
+\end{equation}
+
+~\cite{ramette:2016}
+
 
 \subsection{Conditioned RH input filter}
 \begin{enumerate}	
@@ -151,16 +160,6 @@ From here it can be shown that for a general plane wave there exist two unique r
 \label{fig:co2mask1}
 \end{figure}
 
-
-
-
-\section{Transient RH thermo-optic response}
-
-\begin{equation}
-	\Psi(t,r)=2\frac{dn}{dT} \sum^{\infty}_{m,p = 1} A_{m,p} \; c^{u}_{p} \mathrm{sin}(u_m h /2a) (a/u_m)[1-e^{-\alpha t}] J_0(\zeta_p r/a)
-\end{equation}
-
-~\cite{ramette:2016}
 
 \section{Mode matching data for Electro-optic sample cavity}
 
