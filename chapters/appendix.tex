@@ -74,7 +74,7 @@ The above wavefunction combined with the Helmoltz equation requires the complex 
 	\bigg( \frac{\partial^2}{\partial x ^2} + \frac{\partial^2}{\partial y^2} - 2ik \frac{\partial}{\partial z} \bigg) E_0(x,y,z) = 0
 \end{equation}
 
-\section{Cavitc stability criteria ($G(g_1,g_2)$)} \label{sec:cavstab}
+\section{Cavity stability criteria ($G(g_1,g_2)$)} \label{sec:cavstab}
 Using spherical mirror resonators to match the phasefront of the beam mode is standard practice that has some additional geometric considerations to maximize reonance for a given beam. Choosing two mirrors with ROCs ($R_1$, $R_2$) and a set distance between them $d$, a implicit containment condition is set on the resonator \cite{salehteich:2007}:
 
 $$
@@ -94,7 +94,7 @@ Where we define $g_i = 1 + \frac{d}{R_i}$ so that we define a single parameter f
 \end{figure}
 
 \section{The Equipartition theorem and the Fluctuation dissipation theorem}
-
+The connection between fluctuations on a microscopic level and their contributions to macroscopic observables allows one to bypass having to venture into the involved microscopic processes; a profound finding for experiments that are or will become thermal noise limited. Though the FDT by no means is a modification of our understanding of the equipartition theorem but rather enriches our understanding of the microscopic phenomenon when measuring power spectral density.         
 
 \section{Monochromatic plane wave propogation}
 Revisiting Maxwell's equations for a simple monochromatic plane wave solution provides further direction on how crystalline media may effect incident light. Further elaborating, the following assumptions are made:
@@ -129,10 +129,23 @@ From here it can be shown that for a general plane wave there exist two unique r
 \caption{Fitted zpk filter to transient response of self heating COMSOL model.}
 \label{fig:self_zpk_fit}
 \end{figure}
-\section{Analytical transient thermo-optic responses (Pt.2)}
 
-\subsection{Thermo-optic Path Distortion (analytical)}
-\subsubsection{Thermorefractive aberration}
+\subsection{Conditioned RH input filter}
+\begin{enumerate}	
+	\item Fit step response to a zpk filter $H(s)$ 
+	\item Invert fitted filter ($H(s) \rightarrow H^{-1}(s)$) 
+	\item Apply correction filter $G(s)$ for stability and speed tuning ($H^{-1}(s)*G(s)$)
+\end{enumerate}
+
+\subsection{CO2 filter}
+\begin{figure}[H]
+\includegraphics[width=\textwidth]{figs/TCS/CO2_zpk.pdf}
+\caption{Fitted zpk filter to transient CO2 actuation response.}
+\label{fig:co2_zpk_fit}
+\end{figure}
+
+\section{Thermo-optic Path Distortion (analytical)}
+\subsection{Thermorefractive aberration}
 Consider an aberration of a substrate with an uninfluenced index of $n_0$ and a thermo-refractive term ($\frac{dn}{dT}$):
 \begin{equation}
 n(x,y,z) = n_0 + \frac{dn}{dT} [T(x,y,z) - T_0]
@@ -143,7 +156,7 @@ The above coorelates the material index ($n$) to a path distortion ($\Psi$) (to 
     \Psi(r) = \frac{dn}{dt} \int^{h/2}_{-h/2} [T(r,z) - T_0] \;dz
 \end{equation}
 
-\subsubsection{Thermoelastic aberration}
+\subsection{Thermoelastic aberration}
 A much more involved derivation with a significantly larger result than above is computed in \cite{hellovinet_te:1990}, though best computed for oneself especially for coatings and substrates alternative to $\siotao$ and fused silica respectively. It is worth mentioning that the effect for an approximate 1W absorbed power yields a 10 times smaller optical path distortion than that mentioned for the thermal lens~\cite{hellovinet:1990}. 
 
 \subsection{Ring Heater actuation}
@@ -151,21 +164,6 @@ A much more involved derivation with a significantly larger result than above is
 	\Psi(t,r)=2\frac{dn}{dT} \sum^{\infty}_{m,p = 1} A_{m,p} \; c^{u}_{p} \mathrm{sin}(u_m h /2a) (a/u_m)[1-e^{-\alpha t}] J_0(\zeta_p r/a)
 \end{equation}
 ~\cite{ramette:2016}
-
-\subsection{Conditioned RH input filter}
-\begin{enumerate}	
-	\item Fit step response to a zpk filter $H(s)$ 
-	\item Invert fitted filter ($H(s) \rightarrow H^{-1}(s)$) 
-	\item Apply correction filter $G(s)$ for stability and speed tuning ($H^{-1}(s)*G(s)$)
-\end{enumerate}
-
-
-\subsection{CO2 filter}
-\begin{figure}[H]
-\includegraphics[width=\textwidth]{figs/TCS/CO2_zpk.pdf}
-\caption{Fitted zpk filter to transient CO2 actuation response.}
-\label{fig:co2_zpk_fit}
-\end{figure}
 
 \section{CO2 mask}\label{sec:CO2mask}
 \begin{figure}[H]
