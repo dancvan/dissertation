@@ -11,7 +11,6 @@
 \pagestyle{fancy}
 \graphicspath{{figs/}}
 \usepackage[letterpaper,
-            bindingoffset=0.5in,
             left=1in,
             right=1in,
             top=1in,
@@ -58,15 +57,10 @@
 	\texttt{=}
 }
 
-\fancyhead{}
+\fancyhf{}
+\fancyhead[R]{\makebox[0pt][l]{\makebox[2cm][r]{\thepage}}}
 \fancyhead[L]{\MakeUppercase{\leftmark}}
-
 \setlength{\headheight}{27.85004pt}
-
-
-\newcommand{\satoshi}[1]{\textcolor{purple}{#1}}
-\newcommand{\stefan}[1]{\textcolor{orange}{#1}}
-\newcommand{\steve}[1]{\textcolor{green}{#1}}
 
 \makeatletter
 
@@ -84,8 +78,7 @@
 \begin{center}
        \vspace*{1cm}
 
-       \textbf{\LARGE Studies towards the enhancement of gravitational wave detector thermodynamics}
-%       \textbf{\LARGE Adaptive optics comissioning in O3a and a Pockels effect noise study of a GaAs/Al$_{0.92}$Ga$_{0.08}$As mirror coating}
+       \textbf{\LARGE Studies towards enhancing gravitational wave detector thermodynamics}
 
        \vspace{0.5cm}
        {\large by}
@@ -138,7 +131,6 @@ I declare that
 \tableofcontents
 
 \newpage
-
 
 \pagenumbering{arabic}
 
