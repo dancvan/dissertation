@@ -6,9 +6,11 @@
 
 % Monochromatic plane wave propogation
 
-% Thermo-optic filters
+% Transient thermo-optic responses
+    %% Thermal Lens Optical Path Distortion (Hello-Vinet)
     %% COMSOL self heating filter
-    %% RH filters
+    %% RH actuation
+	%%% Analytical solution
 	%%% Conditioned RH input filter
     %% CO2 filters
 
@@ -121,7 +123,11 @@ From here it can be shown that for a general plane wave there exist two unique r
 \newpage
 
 \section{Transient thermo-optic responses (Pt.2)}\label{sec:TO_filt}
-
+\subsection{Thermal Noise Optical Path Distortion}
+Optical path distortions due to thermal aberrations on a fused silica substrate \cite{hellovinet:1990}:
+\begin{equation}
+    \Psi(r) = \frac{dn}{dt} \int^{h/2}_{-h/2} [T(r,z) - T_0] \;dz
+\end{equation}
 \subsection{COMSOL self heating filter}
 \begin{figure}[H]
 \includegraphics[width=\textwidth]{figs/TCS/self_heating_zpk.pdf}
