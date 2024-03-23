@@ -257,7 +257,7 @@ Recycling mirrors are an extension of the FPMI that exploits otherwise wasted op
 \end{figure}
 
 \subsubsection{Power Recycling}
-When operating a FPMI at a dark fringe, a significant amount of power is reflected back to the symmetric port as mentioned in~\autoref{sec:FPC} leading to wasted optical power if simply dumped. Placing an additional highly reflective mirror at the symmetric port while maintaining resonance of the carrier to the arms, you can reintroduce (or ``recycle") power back to the arm cavities. A PDH loop is utilized for carrier resonance, while macroscopic mirror positioning of the PRM is informed by the choice of optical sideband frequency required when applying PDH. 
+When operating a FPMI at a dark fringe, a significant amount of power is reflected back to the symmetric port as mentioned in~\autoref{sec:FPC} leading to wasted optical power if simply dumped. Placing an additional highly reflective mirror at the symmetric port while maintaining resonance of the carrier to the arms, you can reintroduce (or ``recycle") power back to the arm cavities. A PDH loop is utilized for carrier resonance, while macroscopic mirror positioning of the PRM is informed by the choice of optical sideband frequency required when applying PDH. This recycling gain is also sensitive to cavity arm Finesse $\mathscr{F}$ and round trip loss $\mathscr{L}_\mathrm{RT}$: 
 
 \begin{equation}
 	\mathrm{G_{PR}} = \frac{(1-r_\mathrm{PRM}^2)}{1-r_\mathrm{PRM}[1- (\mathscr{F} \mathscr{L}_\mathrm{RT})/ \pi]}
@@ -266,11 +266,11 @@ When operating a FPMI at a dark fringe, a significant amount of power is reflect
 \noindent With maximum recycling gain: 
 
 \begin{equation}
-	\mathrm{G_{PR}} = \frac{\pi}{2 \mathscr{F} \mathscr{L}_\mathrm{RT}} \bigg[ \frac{1}{1- \frac{ \mathscr{F} \mathscr{L}_\mathrm{RT}}{ 2 \pi}} \bigg]
+    \mathrm{G_{PR}}^{*} = \frac{\pi}{2 \mathscr{F} \mathscr{L}_\mathrm{RT}} \bigg[ \frac{1}{1- \frac{ \mathscr{F} \mathscr{L}_\mathrm{RT}}{ 2 \pi}} \bigg]
 \end{equation}
 
 \subsubsection{Signal Recycling}
-As may be inferred, this technique requires a mirror installation at the anti-symmetric port, though with a more nuianced approach than that of power recycling. Placing a partially reflective mirror at the output port it is understood that light leakage coming from the PRFPMI at the anti-symmetric port (caused by differential arm motion) is re-introduced to the arms, but the reflectivity of the new mirror cannot be set too high to prevent attenuating the PRFPMI output. And even then, detector enhancement only comes after exacting a cost dependent on signal recycling cavity tuning. This cost resides between a trade off of detector bandwidth for increased detector gain or vice versa, with the operating point between the maxima of these two detector characteristics set as a function of the microscopic signal recycling cavity length (phase) tuning ~\cite{Vajente:2018_unpub}:
+As may be inferred, this technique requires a mirror installation at the anti-symmetric port, though with a more nuianced approach than that of power recycling. Placing a partially reflective mirror at the output port, it is understood that light leakage coming from the PRFPMI at the anti-symmetric port (caused by differential arm motion) is re-introduced to the arms, but the reflectivity of the new mirror cannot be set too high to prevent attenuating the PRFPMI output. And even then detector enhancement only comes after exacting a cost dependent on signal recycling cavity tuning. This cost resides between a trade off of detector bandwidth for increased detector gain or vice versa, with the operating point between the maxima of these two detector characteristics set as a function of the microscopic signal recycling cavity length (phase) tuning ~\cite{Vajente:2018_unpub}:
 
 \begin{equation}
 	\mathrm{H}_\mathrm{DRFPMI} = \mathrm{G}_\mathrm{PR} \mathrm{P}_\mathrm{in} L \Omega \bigg[ \frac{ t_\mathrm{ITM}^2 r_\mathrm{ETM}}{(t_\mathrm{ITM}^2 + r_\mathrm{ITM}^2)r_\mathrm{ETM} - r_\mathrm{ITM}}  t_\mathrm{SRC} \frac{e^{-i 2 \pi L f / c} \mathrm{sin}( 2 \pi f / c)}{ 2 \pi L f } \frac{\mathrm{sin}(\phi_0)}{1- r_\mathrm{SRC}r_\mathrm{ETM} e^{-i 4 \pi L f / c}} \bigg]
