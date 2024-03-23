@@ -6,6 +6,7 @@
 
 % Monochromatic plane wave propogation
 
+% Thermo-optic Path Distortion (analytical)
 % Transient thermo-optic responses
     %% Thermal Lens Optical Path Distortion (Hello-Vinet)
     %% COMSOL self heating filter
@@ -87,14 +88,19 @@ Where we define $g_i = 1 + \frac{d}{R_i}$ so that we define a single parameter f
 	0 \leq G(g_1,g_2) \leq 1
 \end{equation}
 
-\begin{figure}[H]
-\includegraphics[width=\textwidth]{figs/ALGAAS/beam_scans/12_18_2020_preMMT.pdf}
-\caption{\textcolor{red}{Figure of two mirror cavity}}
-\label{fig:cav_stab}
-\end{figure}
 
 \section{The Equipartition theorem and the Fluctuation dissipation theorem}
-The connection between fluctuations on a microscopic level and their contributions to macroscopic observables allows one to bypass having to venture into the involved microscopic processes; a profound finding for experiments that are or will become thermal noise limited. Though the FDT by no means is a modification of our understanding of the equipartition theorem but rather enriches our understanding of the microscopic phenomenon when measuring power spectral density.         
+The Fluctuation Dissipation Theorem connects fluctuations on a microscopic level to fluctuations of macroscopic observables, and allows one to bypass having to venture into overly involved microscopic processes; a profound finding for experiments that are or will become thermal noise limited. Though after revisiting the equipartition theorem, there might still be some confusion how the two statements might contradict each other. We quickly revisit the 1D harmonic oscillator to provide some clarity:
+
+\begin{equation}
+    1/2 (k\bar{x^2}) = 1/2 (k_{B} T)
+\end{equation}
+
+$\bar{x^2}$ indicates an average position which the theorem indicates when root square mean motion is assumed. This is to say that FDT by no means is a modification of our understanding of the equipartition theorem but rather enriches providing insight on the the microscopic fluctuating phenomenon when measuring the power spectral density of the fluctuations:
+
+\begin{equation}
+    x^{2} = \frac{k_{B} T}{pi^2 f^2} \Re(Y)
+\end{equation}
 
 \section{Monochromatic plane wave propogation}
 Revisiting Maxwell's equations for a simple monochromatic plane wave solution provides further direction on how crystalline media may effect incident light. Further elaborating, the following assumptions are made:
@@ -120,22 +126,31 @@ E_i = \frac{n^2 s_i (\vec{E}\cdot\vec{s})}{n^2 - \mu \varepsilon_i}
 
 From here it can be shown that for a general plane wave there exist two unique refractive index solutions within the constructed dielectric ~\cite{nye}. 
 
-\newpage
+\section{RH input filter}
+The following is a brief recipe to build a filter that can better optimize the RH thermo-optic response:
+\begin{enumerate}	
+	\item Fit step response to a zpk filter $H(s)$ (see ~\autoref{fig:plant_v_fit})
+	\item Invert fitted filter ($H(s) \rightarrow H^{-1}(s)$)
+            \begin{figure}[H]
+		\includegraphics[width=\textwidth]{figs/TCS/IRHF/RH_inv_filt.pdf}
+		\caption{Fitted zpk filter, inverted.}
+	        \label{fig:rh_inv_filt}
+    	    \end{figure}
+	\item Apply correction filter $G(s)$ for stability and speed tuning ($H^{-1}(s)*G(s)$)
+	    \begin{figure}[H]
+		\includegraphics[width=\textwidth]{figs/TCS/IRHF/RH_input_filt_G1_G2.pdf}
+		\caption{Fitted zpk filter to transient response of self heating COMSOL model.}
+	        \label{fig:rh_input_filt}
+    	    \end{figure}
+\end{enumerate}
 
-\section{Thermo-optic filters}\label{sec:TO_filt}
+\section{Misc. thermo-optic filters}\label{sec:TO_filt}
 \subsection{COMSOL self heating filter}
 \begin{figure}[H]
 \includegraphics[width=\textwidth]{figs/TCS/self_heating_zpk.pdf}
 \caption{Fitted zpk filter to transient response of self heating COMSOL model.}
 \label{fig:self_zpk_fit}
 \end{figure}
-
-\subsection{Conditioned RH input filter}
-\begin{enumerate}	
-	\item Fit step response to a zpk filter $H(s)$ 
-	\item Invert fitted filter ($H(s) \rightarrow H^{-1}(s)$) 
-	\item Apply correction filter $G(s)$ for stability and speed tuning ($H^{-1}(s)*G(s)$)
-\end{enumerate}
 
 \subsection{CO2 filter}
 \begin{figure}[H]
