@@ -666,12 +666,11 @@ The field screened by the coating can be computed from Gauss' Law:
 \nabla \cdot D = \rho_\mathrm{free}
 \end{equation}
 
-\noindent There is no free charge within the region of interest ($\rho_\mathrm{free}=0$), though the optic sample fused silica substrate with the AlGaAs coating imposes dielectric material between the plates. Boundary conditions are expressed in terms of the differential plate potential $V$, so it is natural to first solve the potential ($V$) for all relevant system coordinate points. We exploit the chosen optic / disk symmetry about the polar angle ($\partial^{2} V / \partial \theta^{2}$) and compute for the longitudinal ($z$) and radial ($r$) coordinates with the use of the appropriate Laplacian: 
+\noindent There is no free charge within the region of interest ($\rho_\mathrm{free}=0$), though the optic sample fused silica substrate with the AlGaAs coating imposes dielectric material between the plates. Boundary conditions are expressed in terms of the differential plate potential $V$, so it is natural to first solve the potential ($V$) for all relevant system coordinate points.  
 
-\begin{equation}\label{eq:cyllap}
-\bigg[\frac{1}{r}\frac{\partial}{\partial r} \bigg( r \frac{\partial}{\partial r}\bigg) + \frac{\partial^2}{\partial z^2}\bigg](\varepsilon V) = 0
-\end{equation}
-Where $\varepsilon$ is the dielectric
+%%Numerical recipe in appendix
+
+\paragraph*{Boundary Conditions}
 
 \begin{figure}[H]
   \centering
@@ -680,15 +679,97 @@ Where $\varepsilon$ is the dielectric
   %%Use relevant cross sectional figure to establish coordinates for $\gaas$/$\algaas$, as well as the fused silica substrate so the computation is transparent.} Cross sectional diagram indicating relevant axes and boundary conditions utilized in the numerical computation
   \label{fig:laplacecoords}
 \end{figure}
-%%Numerical recipe in appendix
+
+\begin{equation}\label{eq:cyllap}
+\bigg[\frac{1}{r}\frac{\partial}{\partial r} \bigg( r \frac{\partial}{\partial r}\bigg) + \frac{\partial^2}{\partial z^2}\bigg](\varepsilon V) = 0
+\end{equation}
+
+Where $\varepsilon$ is the dielectric
+
+
+We exploit the chosen optic / disk symmetry about the polar angle ($\partial^{2} V / \partial \theta^{2}$) and compute for the longitudinal ($z$) and radial ($r$) coordinates with the use of the appropriate Laplacian:
+\\
+$$ \partial V / \partial \theta = 0 $$
+
+\subparagraph*{Substrate:}
+$ -t_{opt} \; \textless \; z \; \textless \;\mathrm{t}_{opt} $ and $\mathrm{r} \; \textless \;\mathrm{r}_{opt}$
+\subparagraph*{Coating}
+$\mathrm{t}_{opt} \; \textless \; z \; \textless \;\mathrm{t}_{opt} +\mathrm{t}_{coat} $ and $\mathrm{r} \; \textless \;\mathrm{r}_{opt} $
+
+\subparagraph*{Driven Electrode (V):}
+$\mathrm{t}_{cap} \; \textless \; z \; \textless \;\mathrm{t}_{cap} + 2t_{el} $ and $\mathrm{r}_{ap} \; \textless \;\mathrm{r} \; \textless \;\mathrm{r}_{d} $
+
+\subparagraph*{Grounded Electrode (GND):}
+$ -t_{cap} -2t_{el} \; \textless \; z \; \textless \; -t_{cap} $ and $\mathrm{r}_{ap} \; \textless \;\mathrm{r} \; \textless \;\mathrm{r}_{d} $
 
 \paragraph*{Numerical Recipe (Finite Differencing)}
+
+Observing equation \autoref{eq:cyllap} we parse the non-zero expression into it's individual parts:
+
+\begin{equation} \label{eq:cyllap_xpand}
+    \bigg[\underbrace{\frac{\partial^2}{\partial z^2}}_\text{(c)} + \underbrace{\frac{\partial^2}{\partial r^2}}_\text{(b)}  + \underbrace{\frac{1}{r} \frac{\partial}{\partial r}}_\text{(a)}\bigg] (\varepsilon V) = 0
+\end{equation}
+
+\subparagraph*{Term (a)}
+Starting with the first derivative, we use the central difference approximation:
+
+\begin{equation}
+    \frac{\partial}{\partial r} \rightarrow \frac{f(r + h, z) - f(r - h, z )}{2h}
+\end{equation}
+
+Stencil:
+\\
+$$ \frac{1}{r} \bigg[-\frac{1}{2} \quad  0  \quad \frac{1}{2} \bigg] $$
+
+\subparagraph*{Term (b)}
+Second derivative approximation, we use the standard 2d laplace stencil
+
+\begin{equation}
+    \frac{\partial}{\partial r^2} \rightarrow \frac{f(r+h, z) - 2 f(r, z) + f(r-h, z)}{h^2}
+\end{equation}
+
+Stencil: 
+\\
+$$ \big[ 1 \quad -2 \quad 1 \big] $$
+
+\subparagraph*{Term (c)}
+Equivalent to the second derivative approximation used above:
+
+\begin{equation}
+    \frac{\partial}{\partial z^2} \rightarrow  \frac{f(r, z+h) - 2 f(r, z) + f(r, z-h)}{h^2}
+\end{equation}
+
+Stencil: 
+\\
+$$ \big[ 1\quad -2 \quad 1 \big] $$ 
+
+To build the stencil terms at the boundaries, we look at the specialized finite difference condition @ $ r = 0 $:
+
+$$ \frac{\partial V}{\partial r} \rightarrow  [ \quad 0 \quad 0 \quad ] $$
+
+$$ \frac{\partial^2 V}{\partial r^2} = \frac{V(r+h,z) - 2 V(r, z)}{h}
+
+we taylor expand our function:
+
+$$ V \approx V_0  + C_1 r +  C_2 r^{2} + \mathcal{O}(r^4) $$
+
+Symmetry about the origin imposes an even functional form of $V$, and $C_1 = 0$:
+
+$$ \frac{\partial V}{\partial r} \approx  2 C_2 r  + \mathcal{O}(r^3) $$
+
+$$ \frac{1}{r} \frac{\partial V}{\partial r} \approx  2 C_2  + \mathcal{O}(r^2) $$
+
+$$ \frac{\partial^2 V}{\partial r^2} \approx 2 C_2 + \mathcal{O}(r^2) $$
+
+Substituting back into equation \autoref{eq:cyllap_xpand} :
+\begin{equation}
+    \frac{\partial^2}{\partial z^2} + 4 C_2 = 
+\end{equation}
+
+
+
+\newpage
 \noindent Inspired by the second-order elliptic equation, operators are modified to incorporate the following boundary conditions~\cite{Press:2007}:
-
-\subparagraph*{Dirichlet}
-
-
-\subparagraph*{Neumann}
 
 \[ 
 \mathcal{L}_{cyl} = 
@@ -866,6 +947,7 @@ If \(\mathrm{CH1}(f)\) is in \(V_\mathrm{pk}\) then signal(f) will be in
 %\end{equation}
 \section{Results}
 Significant barriers were encountered in the form of cavity differential length noise especially when mounting the optics in accessible non-conductive materials. Firstly, most commercial optical mounts are constructed with conductive materials which proves problematic when working to isolate the coating from non-normal field gradients within the coating volume of interest. For this reason, efforts were focused on developing a suitable mounting solution that would provide adequate isolation from any uncontrolled field magnitudes while driving a field normally incident on the surface with enough strength and uniformity across the beam area to extract a measurement of the differential length change from the Pockels effect. The mounts studied span different geometries and different material properties. The varying geometrical assemblies rendered various responses and for this reason some discussions will be divided accordingly. The most stable solution revealed that ringing of the sample acoustic modes may be responsible For reassurance, we compare displacement spectra against that of a nearly identical cavity with a flat non-crystalline mirror coating to perform a null measurement reference; ruling out the Pockels effect and providing information for noise investigations.
+
 
 \subsection{Mounting Strategies}
 The following section details measurements performed with various longitudinal pockel cell mounts. Further details (assembly parameters, blueprints, and visual aids) can be found in the appendix.
