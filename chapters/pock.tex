@@ -689,7 +689,7 @@ Where $\varepsilon$ is the dielectric
 
 We exploit the chosen optic / disk symmetry about the polar angle ($\partial^{2} V / \partial \theta^{2}$) and compute for the longitudinal ($z$) and radial ($r$) coordinates with the use of the appropriate Laplacian:
 \\
-$$ \partial V / \partial \theta = 0 $$
+$$ \frac{\partial V}{\partial \theta} = 0 $$
 
 \subparagraph*{Substrate:}
 $ -t_{opt} \; \textless \; z \; \textless \;\mathrm{t}_{opt} $ and $\mathrm{r} \; \textless \;\mathrm{r}_{opt}$
@@ -714,59 +714,79 @@ Observing equation \autoref{eq:cyllap} we parse the non-zero expression into it'
 Starting with the first derivative, we use the central difference approximation:
 
 \begin{equation}
-    \frac{\partial}{\partial r} \rightarrow \frac{f(r + h, z) - f(r - h, z )}{2h}
+    \frac{\partial}{\partial r} \rightarrow \frac{f(r + h, z) - f(r - h, z )}{2h} \rightarrow \bigg[-\frac{1}{2} \quad  0  \quad \frac{1}{2} \bigg]
 \end{equation}
-
-Stencil:
-\\
-$$ \frac{1}{r} \bigg[-\frac{1}{2} \quad  0  \quad \frac{1}{2} \bigg] $$
 
 \subparagraph*{Term (b)}
 Second derivative approximation, we use the standard 2d laplace stencil
 
 \begin{equation}
-    \frac{\partial}{\partial r^2} \rightarrow \frac{f(r+h, z) - 2 f(r, z) + f(r-h, z)}{h^2}
+    \frac{\partial}{\partial r^2} \rightarrow \frac{f(r+h, z) - 2 f(r, z) + f(r-h, z)}{h^2} \rightarrow \big[ 1 \quad -2 \quad 1 \big]
 \end{equation}
-
-Stencil: 
-\\
-$$ \big[ 1 \quad -2 \quad 1 \big] $$
 
 \subparagraph*{Term (c)}
 Equivalent to the second derivative approximation used above:
 
 \begin{equation}
-    \frac{\partial}{\partial z^2} \rightarrow  \frac{f(r, z+h) - 2 f(r, z) + f(r, z-h)}{h^2}
+    \frac{\partial}{\partial z^2} \rightarrow  \frac{f(r, z+h) - 2 f(r, z) + f(r, z-h)}{h^2} \rightarrow \big[ 1\quad -2 \quad 1 \big]
 \end{equation}
 
-Stencil: 
-\\
-$$ \big[ 1\quad -2 \quad 1 \big] $$ 
+To build the stencil terms at the boundaries, we look at the specialized finite difference condition @ $ r = 0 $, with the symmetry about $r=0$ allowing to set ghost point V(-h,z) as V(h,z) :
 
-To build the stencil terms at the boundaries, we look at the specialized finite difference condition @ $ r = 0 $:
+\begin{equation}\label{eq:first_deriv_V}
+	\frac{\partial V}{\partial r} = 0 \rightarrow V(h, z) = V(-h,z)
+\end{equation}
 
-$$ \frac{\partial V}{\partial r} \rightarrow  [ \quad 0 \quad 0 \quad ] $$
+\begin{equation}\label{eq:second_deriv_V}
+	\frac{\partial^2 V}{\partial r^2} = \frac{2}{h}\bigg(\frac{V(h,z) -  V(0, z) }{h}\bigg) 
+\end{equation}
 
-$$ \frac{\partial^2 V}{\partial r^2} = \frac{V(r+h,z) - 2 V(r, z)}{h}
+\autoref{eq:first_deriv_V} alone does not define V(0,z), to establish the form of this point, we proceed to (Taylor) expand the function about it:
 
-we taylor expand our function:
+\begin{equation}\label{eq:taylor_V}
+ V \approx V_0  + C_1 r +  C_2 r^{2} + \mathcal{O}(r^4) 
+\end{equation}
 
-$$ V \approx V_0  + C_1 r +  C_2 r^{2} + \mathcal{O}(r^4) $$
-
-Symmetry about the origin imposes an even functional form of $V$, and $C_1 = 0$:
+Symmetry about the origin imposes an even function of $V$, and $C_1 = 0$ to avoid a singular point:
 
 $$ \frac{\partial V}{\partial r} \approx  2 C_2 r  + \mathcal{O}(r^3) $$
 
-$$ \frac{1}{r} \frac{\partial V}{\partial r} \approx  2 C_2  + \mathcal{O}(r^2) $$
+\begin{equation}
+	\frac{1}{r} \frac{\partial V}{\partial r} \approx  2 C_2  + \mathcal{O}(r^2)
+\end{equation}
 
-$$ \frac{\partial^2 V}{\partial r^2} \approx 2 C_2 + \mathcal{O}(r^2) $$
+\begin{equation}
+	\frac{\partial^2 V}{\partial r^2} \approx 2 C_2 + \mathcal{O}(r^2) 
+\end{equation}
 
 Substituting back into equation \autoref{eq:cyllap_xpand} :
 \begin{equation}
-    \frac{\partial^2}{\partial z^2} + 4 C_2 = 
+    \nabla^2 (\varepsilon V)= \frac{\partial^2}{\partial z^2} + 4 C_2 
 \end{equation}
 
+The radial portion of the operator $\nabla^2 V$ given \autoref{eq:taylor_V} and \autoref{eq:second_deriv_V}:
 
+\begin{equation}
+\bigg(\frac{r_0}{h} - \frac{2}{h^2} \bigg) C_1 + \bigg(\frac{r_h}{h} + \frac{2}{h^2} \bigg) C_2 h^2 = 4 C_2
+\end{equation}
+
+$$
+(r_h * h + 2) C_2 = 4 C_2
+$$
+
+\begin{equation}
+	r_h = 2 / h
+\end{equation}
+
+\begin{equation}
+	r_0 = -2 / h
+\end{equation}
+
+Now meshgrid coordinates are set:
+
+\textcolor{red}{r meshgrid}
+
+\textcolor{red}{z meshgrid}
 
 \newpage
 \noindent Inspired by the second-order elliptic equation, operators are modified to incorporate the following boundary conditions~\cite{Press:2007}:
