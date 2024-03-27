@@ -668,7 +668,6 @@ The field screened by the coating can be computed from Gauss' Law:
 
 \noindent There is no free charge within the region of interest ($\rho_\mathrm{free}=0$), though the optic sample fused silica substrate with the AlGaAs coating imposes dielectric material between the plates. Boundary conditions are expressed in terms of the differential plate potential $V$, so it is natural to first solve the potential ($V$) for all relevant system coordinate points.  
 
-%%Numerical recipe in appendix
 
 \paragraph*{Boundary Conditions}
 
@@ -681,15 +680,8 @@ The field screened by the coating can be computed from Gauss' Law:
 \end{figure}
 
 \begin{equation}\label{eq:cyllap}
-\bigg[\frac{1}{r}\frac{\partial}{\partial r} \bigg( r \frac{\partial}{\partial r}\bigg) + \frac{\partial^2}{\partial z^2}\bigg](\varepsilon V) = 0
+\nabla^2 V = 0
 \end{equation}
-
-Where $\varepsilon$ is the dielectric
-
-
-We exploit the chosen optic / disk symmetry about the polar angle ($\partial^{2} V / \partial \theta^{2}$) and compute for the longitudinal ($z$) and radial ($r$) coordinates with the use of the appropriate Laplacian:
-\\
-$$ \frac{\partial V}{\partial \theta} = 0 $$
 
 \subparagraph*{Substrate:}
 $ -t_{opt} \; \textless \; z \; \textless \;\mathrm{t}_{opt} $ and $\mathrm{r} \; \textless \;\mathrm{r}_{opt}$
@@ -704,6 +696,14 @@ $ -t_{cap} -2t_{el} \; \textless \; z \; \textless \; -t_{cap} $ and $\mathrm{r}
 
 \paragraph*{Numerical Recipe (Finite Differencing)}
 
+We exploit the chosen optic / disk symmetry about the polar angle ($\partial V / \partial \theta = 0$) and compute for the longitudinal ($z$) and radial ($r$) coordinates with the use of the appropriate Laplacian:
+
+\begin{equation} 
+\bigg[\frac{1}{r}\frac{\partial}{\partial r} \bigg( r \frac{\partial}{\partial r}\bigg) + \frac{\partial^2}{\partial z^2} \bigg](\varepsilon V) = 0
+\end{equation}
+
+Where $\varepsilon$ is the dielectric
+
 Observing equation \autoref{eq:cyllap} we parse the non-zero expression into it's individual parts:
 
 \begin{equation} \label{eq:cyllap_xpand}
@@ -711,6 +711,7 @@ Observing equation \autoref{eq:cyllap} we parse the non-zero expression into it'
 \end{equation}
 
 \subparagraph*{Term (a)}
+
 Starting with the first derivative, we use the central difference approximation:
 
 \begin{equation}
@@ -718,6 +719,7 @@ Starting with the first derivative, we use the central difference approximation:
 \end{equation}
 
 \subparagraph*{Term (b)}
+
 Second derivative approximation, we use the standard 2d laplace stencil
 
 \begin{equation}
@@ -747,19 +749,20 @@ To build the stencil terms at the boundaries, we look at the specialized finite 
  V \approx V_0  + C_1 r +  C_2 r^{2} + \mathcal{O}(r^4) 
 \end{equation}
 
-Symmetry about the origin imposes an even function of $V$, and $C_1 = 0$ to avoid a singular point:
+Symmetry about the origin imposes an even function of $V$:  
+$$ \frac{\partial V}{\partial r} \approx C_1 +  2 C_2 r  + \mathcal{O}(r^3) $$
 
-$$ \frac{\partial V}{\partial r} \approx  2 C_2 r  + \mathcal{O}(r^3) $$
-
-\begin{equation}
+\begin{equation}\label{eq:taylor_terma}
 	\frac{1}{r} \frac{\partial V}{\partial r} \approx  2 C_2  + \mathcal{O}(r^2)
 \end{equation}
 
-\begin{equation}
+Where $C_1 = 0$ to avoid a singular point.
+
+\begin{equation}\label{eq:taylor_termb}
 	\frac{\partial^2 V}{\partial r^2} \approx 2 C_2 + \mathcal{O}(r^2) 
 \end{equation}
 
-Substituting back into equation \autoref{eq:cyllap_xpand} :
+Substituting \autoref{eq:taylor_terma} and \autoref{eq:taylor_termb} back into equation \autoref{eq:cyllap_xpand} :
 \begin{equation}
     \nabla^2 (\varepsilon V)= \frac{\partial^2}{\partial z^2} + 4 C_2 
 \end{equation}
@@ -769,6 +772,8 @@ The radial portion of the operator $\nabla^2 V$ given \autoref{eq:taylor_V} and 
 \begin{equation}
 \bigg(\frac{r_0}{h} - \frac{2}{h^2} \bigg) C_1 + \bigg(\frac{r_h}{h} + \frac{2}{h^2} \bigg) C_2 h^2 = 4 C_2
 \end{equation}
+
+Where again, we found $C_1 = 0$:
 
 $$
 (r_h * h + 2) C_2 = 4 C_2
@@ -782,11 +787,42 @@ $$
 	r_0 = -2 / h
 \end{equation}
 
+\newpage
 Now meshgrid coordinates are set:
 
-\textcolor{red}{r meshgrid}
+\input{notes/LaplacE_operators.tex}
 
-\textcolor{red}{z meshgrid}
+\newpage
+
+Parallel computation of the potential over the entire meshgrid is done by vectorizing the potential:
+
+\[ 
+ \begin{aligned}
+    V &= \begin{bmatrix}
+           V(\rho_0, z_0) \\
+           V(\rho_1, z_0) \\
+           \vdots \\
+	   V(\rho_n, z_0) \\
+	   ---------- \\
+	   V(\rho_0, z_1) \\
+           V(\rho_1, z_1) \\
+           \vdots \\
+	   V(\rho_n, z_1) \\
+	   ---------- \\
+	   \vdots \\
+	   ---------- \\
+	   V(\rho_0, z_{n-1}) \\
+           V(\rho_1, z_{n-1}) \\
+           \vdots \\
+           V(\rho_n, z_{n-1}) \\
+           ---------- \\
+           V(\rho_0, z_n) \\
+	   V(\rho_1, z_n) \\
+	   \vdots \\
+	   V(\rho_n, z_n) 
+         \end{bmatrix}
+  \end{aligned}
+\]
 
 \newpage
 \noindent Inspired by the second-order elliptic equation, operators are modified to incorporate the following boundary conditions~\cite{Press:2007}:
@@ -795,21 +831,40 @@ Now meshgrid coordinates are set:
 \mathcal{L}_{cyl} = 
 \begin{bmatrix} \,
 O_{n} & O_{n} & O_{n} & O_{n} & O_{n} & \cdots & \cdots & \cdots & \cdots & \cdots & O_{n}\\
-\mathcal{I}_{n} & \mathcal{K}_{n} & \mathcal{I}_{n} & O_{n} & O_{n} & O_{n} & O_{n} & O_{n} & O_{n} & O_{n} & \vdots\\
-O_{n} & \mathcal{I}_{n} & \mathcal{K}_{n} & \mathcal{I}_{n} & O_{n} & O_{n} & O_{n} & O_{n} & O_{n} & O_{n} & \vdots\\
-O_{n} & O_{n}  & \mathcal{I}_{n} & \mathcal{K}_{n} & \mathcal{I}_{n} & O_{n} & O_{n} & O_{n} & O_{n} & O_{n} & \vdots\\
+\mathcal{I}_{n} & \mathcal{K}_{n}^{*} & \mathcal{I}_{n} & O_{n} & O_{n} & O_{n} & O_{n} & O_{n} & O_{n} & O_{n} & \vdots\\
+O_{n} & \mathcal{I}_{n} & \mathcal{K}_{n}^{*} & \mathcal{I}_{n} & O_{n} & O_{n} & O_{n} & O_{n} & O_{n} & O_{n} & \vdots\\
+O_{n} & O_{n}  & \mathcal{I}_{n} & \mathcal{K}_{n}^{*} & \mathcal{I}_{n} & O_{n} & O_{n} & O_{n} & O_{n} & O_{n} & \vdots\\
 \vdots & O_{n}  & O_{n}  & \ddots & \ddots & \ddots & O_{n} & O_{n} & O_{n} & O_{n}  & \vdots \\
 \vdots & O_{n}  & O_{n}  & O_{n}  & \ddots & \ddots & \ddots & O_{n} & O_{n} & O_{n} & \vdots \\
 \vdots & O_{n}  & O_{n}  & O_{n} & O_{n} & \ddots & \ddots & \ddots & O_{n} & O_{n}  & \vdots \\
-\vdots & O_{n}  & O_{n}  & O_{n} & O_{n} & O_{n} & \mathcal{I}_{n} & \mathcal{K}_{n} & \mathcal{I}_{n} & O_{n}  & \vdots\\
-\vdots & O_{n}  & O_{n}  & O_{n} & O_{n} & O_{n} & O_{n} & \mathcal{I}_{n} & \mathcal{K}_{n}  & \mathcal{I}_{n} & O_{n}\\
-\vdots & O_{n} & O_{n} & O_{n} & O_{n} & O_{n} & O_{n} & O_{n} & \mathcal{I}_{n} & \mathcal{K}_{n} & \mathcal{I}_{n}\\
+\vdots & O_{n}  & O_{n}  & O_{n} & O_{n} & O_{n} & \mathcal{I}_{n} & \mathcal{K}_{n}^{*} & \mathcal{I}_{n} & O_{n}  & \vdots\\
+\vdots & O_{n}  & O_{n}  & O_{n} & O_{n} & O_{n} & O_{n} & \mathcal{I}_{n} & \mathcal{K}_{n}^{*}  & \mathcal{I}_{n} & O_{n}\\
+\vdots & O_{n} & O_{n} & O_{n} & O_{n} & O_{n} & O_{n} & O_{n} & \mathcal{I}_{n} & \mathcal{K}_{n}^{*} & \mathcal{I}_{n}\\
 O_{n}      & \cdots & \cdots & \cdots & \cdots & \cdots & O_{n} & O_{n} & O_{n} & O_{n} & {O}_{n}
 \end{bmatrix} 
 \]
 
 \[
-	\mathcal{K}_n  = 
+    \mathcal{K}_n^{(1)} = 
+\frac{1}{h}
+\begin{bmatrix*}[c] \,
+0 & 0 & 0 & 0& 0 & \cdots & \cdots & \cdots & \cdots & \cdots & 0 \\
+\frac{1}{2} & 0 & \frac{1}{2} & 0 & 0 & 0 & 0 & 0 & 0 & 0 & \vdots \\
+0 & \frac{1}{4} & 0 & \frac{1}{4} & 0 & 0 & 0 & 0 & 0 & 0 & \vdots \\
+0 & 0 & \frac{1}{6} & 0 & \frac{1}{6} & 0 & 0 & 0 & 0 & 0 & 0 \\
+\vdots & 0  & 0  & \ddots & \ddots & \ddots & 0 & 0 & 0 & 0  & \vdots \\
+\vdots & 0  & 0  & 0  & \ddots & \ddots & \ddots & 0 & 0 & 0 & \vdots \\
+\vdots & 0  & 0  & 0 & 0 & \ddots & \ddots & \ddots & 0 & 0  & \vdots \\
+\vdots & 0  & 0  & 0 & 0 & 0 & \ddots & 0 & \frac{1}{2^{n-4}} & 0  & \vdots\\
+\vdots & 0  & 0  & 0 & 0 & 0 & 0 & \frac{1}{2^{n-3}} & 0  & \frac{1}{2^{n-3}} & 0\\
+\vdots & 0 & 0 & 0 & 0 & 0 & 0 & 0 & \frac{1}{2^{n-2}} & 0 & \frac{1}{2^{n-2}}\\
+0      & \cdots & \cdots & \cdots & \cdots & \cdots & 0 & 0 & 0 & 0 & 0 
+\end{bmatrix*}
+\]
+
+\[
+    \mathcal{K}_n^{(2)}  = 
+\frac{1}{h^2}
 \begin{bmatrix} \,
 -6 & 4 & 0 & 0& 0 & \cdots & \cdots & \cdots & \cdots & \cdots & 0 \\
 1 & -4 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & \vdots \\
@@ -826,7 +881,11 @@ O_{n}      & \cdots & \cdots & \cdots & \cdots & \cdots & O_{n} & O_{n} & O_{n} 
 \]
 
 \[
-	\mathcal{I}_n = \mathrm{eye}(n) - (\mathrm{zeros}(n)[n,n] + 1)  
+	\mathcal{K}_n^{*} = \mathcal{K}_n^{(1)} + \mathcal{K}_n^{(2)} 
+\]
+
+\[
+    \mathcal{I}_n = \frac{1}{h^2} \bigg( \mathrm{eye}(n) - (\mathrm{zeros}(n)[n,n] + 1) \bigg)
 \]
 
 \[ 
@@ -834,21 +893,13 @@ O_{n}      & \cdots & \cdots & \cdots & \cdots & \cdots & O_{n} & O_{n} & O_{n} 
 \]	
 Where the above matrix is a tri-diagonal block sparse matrix with square embedded diagonal identity ($\mathcal{I}_n$) matrices with n non-zero diagonal elements, and sparse tridiagonal kernel ($\mathcal{K}_n$) matrices. $O_n$ presents zero matrices with $n\times n$ sharing the dimensions of $\mathcal{K}_n$ and $\mathcal{I}_n$. \footnote{Not completely clear to the author at first, the motivation behind the structural choice of sparse block diagonals is a result of vectorizing the computation. Some standard computing libraries may be proactive about this vectorization and apply it when recognized in for-loops. Even so, the explicit structuring of the boundary conditions listed here is intended to inform of the reasoning behind the modified numerical recipe to establish a compartmentalization between the scientific motivation alongside computing tools and methods.}
 
-\subparagraph*{Robin}
+\newpage
 
+\noindent Computing Potential:
 
-\subparagraph*{Explicit parameters}
-
-\begin{itemize}
-    \item Potential map computation 	
-        \begin{itemize}
-	    \item Computing $E_z$ from potential map
-		\begin{itemize}
-		    \item inside coating
-		    \item outside coating
-		\end{itemize}
-	\end{itemize}
-\end{itemize}
+\begin{equation}
+    V_{n + 1} = (\mathcal{I}_{N^2}  + \mathcal{L}_{cyl}) V_{n}
+\end{equation}
 
 \begin{figure}[H]
   \includegraphics[width=\textwidth]{ALGAAS/assembly1_sim.pdf}
@@ -858,13 +909,14 @@ Where the above matrix is a tri-diagonal block sparse matrix with square embedde
 
 The computed $E_z$ screened by the coating at $r = 0$ for $V = 1$ is estimated to be 42 $[\mathrm{V}/\mathrm{m}]$ and will be included in the calibration as a pockels cell field conversion factor $42 [(\mathrm{V} / \mathrm{m}) / \mathrm{V}]$  
 
-\subsubsection{Voltage drive electronics}
 \begin{figure}[H]
     \includegraphics[width=\textwidth]{ALGAAS/13-Sep-2021_e_field_inside_outside_normal.pdf}
     \caption{The availablility of required voltage amplifiers during the course of this study was limited and lead to the use of multiple high voltage amplifiers with all transfer functions listed.}
 \label{fig:Ez}
 \end{figure}
 
+
+\subsubsection{Voltage drive electronics}
 
 \begin{figure}[H]
     \includegraphics[width=\textwidth]{ALGAAS/tfs/hva_compare.pdf}
