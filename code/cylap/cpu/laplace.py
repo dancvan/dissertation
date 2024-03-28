@@ -214,6 +214,8 @@ def build_grad(pdict, LAMBD):
             GRADrho = init_sparmat(op_shape, pdict['bitres'])
             GRADrho[LAMBD[1:-1,:], LAMBD[:-2,:]] = -1/2
             GRADrho[LAMBD[1:-1,:], LAMBD[2:,:]]= 1/2
+            GRADrho[LAMBD[0,0],LAMBD[0,0]]=-2/pdict['res'][0]
+            GRADrho[LAMBD[0,0],LAMBD[1,0]]= 2/pdict['res'][0]
             GRADrho = GRADrho/pdict['res'][0]
 
             GRADrhopos = init_sparmat(op_shape, pdict['bitres'])

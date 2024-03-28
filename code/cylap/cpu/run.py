@@ -8,16 +8,16 @@ from matplotlib import cm
 from matplotlib import rcParams
 import time
 
----
+###
 
 pdict = set_params.pdict
 pdict
 
----
+###
 
 pdict['res_exp']
 
----
+###
 
 # initialize coordinates
 coord_dict = laplace.init_coords(pdict) 
@@ -34,20 +34,20 @@ inv_rho = coord_dict['coords']['invrho']
 irho = coord_dict['indices']['rho']
 iz = coord_dict['indices']['z']
 
----
+###
 
 fV = laplace.anal_sol(pdict)
 fV['V_anal'](coord_dict['indices']['z']*1e-4)
 
----
+###
 
 plt.plot(coord_dict['indices']['z']*1e-4,fV['V_anal'](coord_dict['indices']['z']*1e-4))
 
---- 
+### 
 
 coord_dict['indices']['z']*1e-4
 
----
+###
 
 # intialize potential map, electric susceptibility, and LAMBD operator
 V = laplace.init_V(N)
@@ -56,15 +56,15 @@ chi_e_sub = pdict['optic']['sub_eps']-1
 chi_e_coat = pdict['optic']['coat_eps']-1
 LAMBD = laplace.build_lambd(irho, iz, N)
 
----
+###
 
 LAMBD
 
----
+###
 
 rho
 
----
+###
 
 # Translating (Dirichlet) boundary conditions to sim 
 
@@ -100,7 +100,7 @@ loc_sub = np.logical_and(np.abs(z - pdict['optic']['z_com']) < np.round((pdict['
 loc_coat1 = np.logical_and((z==np.round(pdict['loc_params']['front of optic']['z'],pdict['res_exp'][1])), (rho < np.round((pdict['optic']['diam']/2), pdict['res_exp'][0])))
 loc_coat2 = np.logical_and((z==np.round((pdict['loc_params']['front of optic']['z']-pdict['res'][1]),pdict['res_exp'][1])), (rho < (np.round(pdict['optic']['diam']/2, pdict['res_exp'][0]))))
 
----
+###
 
 ## Initialize BCs
 
@@ -134,7 +134,7 @@ V[z_min] = V_exp(V_char, R_char, V[exp_z0], pdict['res'][1])
 #z=z_max
 V[z_max] = V_exp(V_char, R_char, V[exp_zend], pdict['res'][1])
 
----
+###
 
 #### Build operators
 lap = laplace.build_lap(pdict, LAMBD, irho)
@@ -142,7 +142,7 @@ grad = laplace.build_grad(pdict, LAMBD)
 disp = laplace.build_disp(pdict, LAMBD)
 LAP = laplace.build_LAP(pdict, coord_dict, lap, grad, disp, chi_e)
 
----
+###
 
 t = time.time() 
 #### run sim
@@ -164,7 +164,7 @@ for itr in range(0, pdict['iters']):
 elapsed = time.time() - t
 print(elapsed)
 
----
+###
 
 fig = plt.figure(figsize = (18.5,21))
 ax = plt.axes(projection='3d') 
@@ -188,7 +188,7 @@ fig.subplots_adjust(top=top,bottom=bottom)
 fig.set_size_inches((fig.get_size_inches()[0],axes_height/(top-bottom)))
 #fig.savefig(fig_exp_dir + 'assembly1_sim.pdf', dpi=300, format='pdf')
 
----
+###
 
 # Plotting potential and field profiles
 laplace.pltxsect(pdict['loc_params']['halfway out on optic'], coord_dict, V)
