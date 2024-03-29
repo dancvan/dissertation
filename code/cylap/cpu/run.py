@@ -164,34 +164,38 @@ for itr in range(0, pdict['iters']):
 elapsed = time.time() - t
 print(elapsed)
 
+z_halfway , V_opt_half = laplace.grabxsect(pdict['loc_params']['halfway out on optic'], coord_dict, V)
+plt.plot(coord_dict['indices']['z']*1e-4, fV['V_anal'](coord_dict['indices']['z']*1e-4), z_halfway, V_opt_half) 
+
 ###
 
-fig = plt.figure(figsize = (18.5,21))
+fig1 = plt.figure(figsize = (18.5,21))
 ax = plt.axes(projection='3d') 
 surf = ax.plot_surface(rho.reshape(N,N), z.reshape(N,N),V.reshape(N,N),rstride=1,cstride=1,cmap=cm.inferno,alpha=1,linewidth=10,rasterized=True)
-fig.tight_layout()
+fig1.tight_layout()
 ax.view_init(20,210)
 ax.set_xlabel('r [m]')
 ax.set_ylabel('z [m]')
 ax.set_zlabel('[V]')
-fig.colorbar(surf, shrink=0.4, aspect=20, pad=-0.025)
-axes_width = fig.get_size_inches()[1]*(fig.subplotpars.right-fig.subplotpars.left)
+fig1.colorbar(surf, shrink=0.4, aspect=20, pad=-0.025)
+axes_width = fig1.get_size_inches()[1]*(fig1.subplotpars.right-fig1.subplotpars.left)
 right =1.095
 left =-.15
-fig.subplots_adjust(left=left,right=right) 
-fig.set_size_inches((fig.get_size_inches()[0],axes_width/(right-left)))
+fig1.subplots_adjust(left=left,right=right) 
+fig1.set_size_inches((fig1.get_size_inches()[0],axes_width/(right-left)))
 ax.tick_params(axis='both', pad=15)
-axes_height = fig.get_size_inches()[1]*(fig.subplotpars.top-fig.subplotpars.bottom)
+axes_height = fig1.get_size_inches()[1]*(fig1.subplotpars.top-fig1.subplotpars.bottom)
 top = 1.15
 bottom=-.09
-fig.subplots_adjust(top=top,bottom=bottom)             
-fig.set_size_inches((fig.get_size_inches()[0],axes_height/(top-bottom)))
-#fig.savefig(fig_exp_dir + 'assembly1_sim.pdf', dpi=300, format='pdf')
+fig1.subplots_adjust(top=top,bottom=bottom)             
+fig1.set_size_inches((fig1.get_size_inches()[0],axes_height/(top-bottom)))
+#fig1.savefig(fig_exp_dir + 'assembly1_sim.pdf', dpi=300, format='pdf')
 
 ###
-
 # Plotting potential and field profiles
-laplace.pltxsect(pdict['loc_params']['halfway out on optic'], coord_dict, V)
-plt.plot(coord_dict['indices']['z']*1e-4,fV['V_anal'](coord_dict['indices']['z']*1e-4))
+
+
+
+pdict['loc_params']['halfway_out_on_optic']
 
 ## Comparison to analytical solution

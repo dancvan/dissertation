@@ -214,8 +214,8 @@ def build_grad(pdict, LAMBD):
             GRADrho = init_sparmat(op_shape, pdict['bitres'])
             GRADrho[LAMBD[1:-1,:], LAMBD[:-2,:]] = -1/2
             GRADrho[LAMBD[1:-1,:], LAMBD[2:,:]]= 1/2
-            GRADrho[LAMBD[0,0],LAMBD[0,0]]=-2/pdict['res'][0]
-            GRADrho[LAMBD[0,0],LAMBD[1,0]]= 2/pdict['res'][0]
+            GRADrho[LAMBD[0,1:-1],LAMBD[0,1:-1]]=-2/pdict['res'][0]
+            GRADrho[LAMBD[0,1:-1],LAMBD[1,1:-1]]= 2/pdict['res'][0]
             GRADrho = GRADrho/pdict['res'][0]
 
             GRADrhopos = init_sparmat(op_shape, pdict['bitres'])
@@ -349,5 +349,16 @@ def pltxsect(loc_params, coord_dict, V):
         rho_ = np.logical_and(coord_dict['coords']['rho']<=loc_params['rho2_bound'], coord_dict['coords']['rho']>=loc_params['rho1_bound'])
         plt.plot(coord_dict['coords']['rho'][np.logical_and(rho_,z_)],V[np.logical_and(rho_, z_)])
 
-
+def grabxsect(loc_params, coord_dict, V): 
+    if loc_params['cross_section_coord'] == 'z':
+        rho_ = coord_dict['coords']['rho'] == np.around(loc_params['rho'], int(abs(np.log10(coord_dict['coords']['rho'][1]))))
+        z_ = np.logical_and(coord_dict['coords']['z']<=loc_params['z1_bound'], coord_dict['coords']['z']>=loc_params['z2_bound'])
+        xcoord = coord_dict['coords']['z'][np.logical_and(rho_,z_)]
+        V_xsec = V[np.logical_and(rho_, z_)]
+    if loc_params['cross_section_coord'] == 'rho':
+        z_ = coord_dict['coords']['z'] == np.around(loc_params['z'], int(abs(np.log10(coord_dict['coords']['z'][1]))))
+        rho_ = np.logical_and(coord_dict['coords']['rho']<=loc_params['rho2_bound'], coord_dict['coords']['rho']>=loc_params['rho1_bound'])
+        xcoord = coord_dict['coords']['rho'][np.logical_and(rho_,z_)]
+        V_xsec = V[np.logical_and(rho_, z_)]
+    return xcoord, V_xsec
 
