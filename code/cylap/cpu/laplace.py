@@ -5,7 +5,6 @@ from scipy.sparse import lil_matrix
 from scipy.sparse import spdiags
 
 
-
 # Computes Laplace's equation in cartesian and cylindrical coordinates
 # For some related detailed documentation: Numerical recipies (3rd edition) (Chapter 20 [Partial Differential Equations])
 
@@ -74,7 +73,6 @@ def build_lambd(i1, i2, N):
     Preallocates memory so that the indx function doesn't need to be used twice (reducing computations).
     """
     LAMBD = np.array([indx(i, i2, N) for i in i1])
-    
     return LAMBD
         
     
@@ -122,47 +120,52 @@ def build_lap(pdict, LAMBD, i_rho):
     constructs first order structure of the laplace operator
     """
     if pdict['coords'] == 'cylindrical':
-        
         op_shape = (pdict['N'][0]**2, pdict['N'][1]**2)
-        
-        if pdict['torch'] == True:
-            idx_1 = LAMBD[0,1:-1]
-            idx_2 = LAMBD[1,1:-1]
-            idx_3 = LAMBD[0,:-2]
-            idx_4 = LAMBD[0,2:]
-            size_ = (pdict['N'][0]-2)**2
-            idx_5 = LAMBD[1:-1,1:-1].reshape(size_)
-            idx_6 = LAMBD[1:-1,:-2].reshape(size_)
-            idx_7 = LAMBD[1:-1,2:].reshape(size_)
-            idx_8 = LAMBD[:-2,1:-1].reshape(size_)
-            idx_9 = LAMBD[2:,1:-1].reshape(size_)
-            ones_1 = np.ones(idx_1.shape)
-            ones_2 = np.ones(idx_5.shape)
-            const_ = (np.ones((1,i_rho[1:-1].shape[0])).T*(((1/2)/(i_rho[1:-1])))).reshape(size_)
-            lap1 = torch.sparse_coo_tensor(np.array([idx_1, idx_1]), -6*ones_1, op_shape, dtype=torch.float32)
-            lap2 = torch.sparse_coo_tensor(np.array([idx_1, idx_2]), 4*ones_1, op_shape, dtype=torch.float32)
-            lap3 = torch.sparse_coo_tensor(np.array([idx_1, idx_3]), ones_1, op_shape, dtype=torch.float32)
-            lap4 = torch.sparse_coo_tensor(np.array([idx_1, idx_4]), ones_1, op_shape, dtype=torch.float32)
-            lap5 = torch.sparse_coo_tensor(np.array([idx_5, idx_5]), -4*ones_2, op_shape, dtype=torch.float32)
-            lap6 = torch.sparse_coo_tensor(np.array([idx_5, idx_6]), ones_2, op_shape, dtype=torch.float32)
-            lap7 = torch.sparse_coo_tensor(np.array([idx_5, idx_7]), ones_2, op_shape, dtype=torch.float32)
-            lap8 = torch.sparse_coo_tensor(np.array([idx_5, idx_8]), 1 - const_, op_shape, dtype=torch.float32)
-            lap9 = torch.sparse_coo_tensor(np.array([idx_5, idx_9]), 1 + const_, op_shape, dtype=torch.float32)
-            lap_ = lap1 + lap2 + lap3 + lap4 + lap5 + lap6 + lap7 + lap8 + lap9
-            lap = lap_/(pdict['res'][0]**2)  
-        else:
-            lap = lil_matrix(op_shape,dtype=pdict['bitres'])
-            lap[LAMBD[0,1:-1], LAMBD[0,1:-1]] = -6
-            lap[LAMBD[0,1:-1], LAMBD[1,1:-1]] = 4
-            lap[LAMBD[0,1:-1], LAMBD[0,:-2]] = 1
-            lap[LAMBD[0,1:-1], LAMBD[0,2:]] = 1
-            lap[LAMBD[1:-1,1:-1], LAMBD[1:-1,1:-1]] = -4
-            lap[LAMBD[1:-1,1:-1], LAMBD[1:-1,:-2]] = 1
-            lap[LAMBD[1:-1,1:-1], LAMBD[1:-1,2:]] = 1
-            lap[LAMBD[1:-1,1:-1], LAMBD[:-2,1:-1]]= 1 - ((1/2)/(i_rho[1:-1]))
-            lap[LAMBD[1:-1,1:-1], LAMBD[2:,1:-1]]= 1 + ((1/2)/(i_rho[1:-1]))
-            lap = lap/(pdict['res'][0]**2)
-        
+        lap = lil_matrix(op_shape,dtype=pdict['bitres'])
+        lap[LAMBD[0,1:-1], LAMBD[0,1:-1]] = -6
+        lap[LAMBD[0,1:-1], LAMBD[1,1:-1]] = 4
+        lap[LAMBD[0,1:-1], LAMBD[0,:-2]] = 1
+        lap[LAMBD[0,1:-1], LAMBD[0,2:]] = 1
+        lap[LAMBD[1:-1,1:-1], LAMBD[1:-1,1:-1]] = -4
+        lap[LAMBD[1:-1,1:-1], LAMBD[1:-1,:-2]] = 1
+        lap[LAMBD[1:-1,1:-1], LAMBD[1:-1,2:]] = 1
+        lap[LAMBD[1:-1,1:-1], LAMBD[:-2,1:-1]]= 1 - ((1/2)/(i_rho[1:-1]))
+        lap[LAMBD[1:-1,1:-1], LAMBD[2:,1:-1]]= 1 + ((1/2)/(i_rho[1:-1]))
+        lap = lap/(pdict['res'][0]**2)
+   # if block_bool == True:
+   #     lap[LAMBD[0,0], LAMBD[0,0]] = -6
+   #     lap[LAMBD[0,0], LAMBD[1,0]] = 4
+   #     lap[LAMBD[1:-1,0], LAMBD[1:-1,0]]=-4
+   #     lap[LAMBD[1:-1,0], LAMBD[1:-1,1]] = 
+        #if pdict['torch'] == True:
+        #lap.
+        #lap.to_sparse(layout=torch.sparse_coo)
+            
+           ## idx_1 = LAMBD[0,1:-1]
+           ## idx_2 = LAMBD[1,1:-1]
+           ## idx_3 = LAMBD[0,:-2]
+           ## idx_4 = LAMBD[0,2:]
+           ## size_ = (pdict['N'][0]-2)**2
+           ## idx_5 = LAMBD[1:-1,1:-1].reshape(size_)
+           ## idx_6 = LAMBD[1:-1,:-2].reshape(size_)
+           ## idx_7 = LAMBD[1:-1,2:].reshape(size_)
+           ## idx_8 = LAMBD[:-2,1:-1].reshape(size_)
+           ## idx_9 = LAMBD[2:,1:-1].reshape(size_)
+           ## ones_1 = np.ones(idx_1.shape)
+           ## ones_2 = np.ones(idx_5.shape)
+           ## const_ = (np.ones((1,i_rho[1:-1].shape[0])).T*(((1/2)/(i_rho[1:-1])))).reshape(size_)
+           ## lap1 = torch.sparse_coo_tensor(np.array([idx_1, idx_1]), -6*ones_1, op_shape, dtype=torch.float32)
+           ## lap2 = torch.sparse_coo_tensor(np.array([idx_1, idx_2]), 4*ones_1, op_shape, dtype=torch.float32)
+           ## lap3 = torch.sparse_coo_tensor(np.array([idx_1, idx_3]), ones_1, op_shape, dtype=torch.float32)
+           ## lap4 = torch.sparse_coo_tensor(np.array([idx_1, idx_4]), ones_1, op_shape, dtype=torch.float32)
+           ## lap5 = torch.sparse_coo_tensor(np.array([idx_5, idx_5]), -4*ones_2, op_shape, dtype=torch.float32)
+           ## lap6 = torch.sparse_coo_tensor(np.array([idx_5, idx_6]), ones_2, op_shape, dtype=torch.float32)
+           ## lap7 = torch.sparse_coo_tensor(np.array([idx_5, idx_7]), ones_2, op_shape, dtype=torch.float32)
+           ## lap8 = torch.sparse_coo_tensor(np.array([idx_5, idx_8]), 1 - const_, op_shape, dtype=torch.float32)
+           ## lap9 = torch.sparse_coo_tensor(np.array([idx_5, idx_9]), 1 + const_, op_shape, dtype=torch.float32)
+           ## lap_ = lap1 + lap2 + lap3 + lap4 + lap5 + lap6 + lap7 + lap8 + lap9
+           ## lap = lap_/(pdict['res'][0]**2)
+
     #elif pdict['coords'] == 'cartesian':
         
     return lap
