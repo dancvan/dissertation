@@ -13,7 +13,6 @@ import time
 pdict = set_params.pdict
 pdict
 
-pdict['res']*pdict['res']
 ###
 
 pdict['res_exp']
@@ -59,11 +58,6 @@ LAMBD = laplace.build_lambd(irho, iz, N)
 
 ###
 
-LAMBD
-rho
-
-###
-
 # Translating (Dirichlet) boundary conditions to sim 
 
 # Initial value 
@@ -81,8 +75,13 @@ z_min = (z == min(z))
 ## Plate potentials
 fp = 'front_plate'
 bp = 'back_plate'
-loc_fp = np.logical_and(np.logical_and(rho>=pdict[fp]['hole_diam']/2,rho<=pdict[fp]['diam']/2),z == pdict[fp]['zpos'])
-loc_bp = np.logical_and(np.logical_and(rho>=pdict[bp]['hole_diam']/2,rho<=pdict[bp]['diam']/2),z == pdict[bp]['zpos'])
+
+fp_thick_bool = np.logical_and(z>=pdict[fp]['zpos'], z<=pdict[fp]['zpos'] + pdict[fp]['thickness'])
+
+bp_thick_bool = np.logical_and(z<=pdict[bp]['zpos'], z>=pdict[bp]['zpos'] - pdict[bp]['thickness'])
+
+loc_fp = np.logical_and(np.logical_and(rho>=pdict[fp]['hole_diam']/2,rho<=pdict[fp]['diam']/2),fp_thick_bool)
+loc_bp = np.logical_and(np.logical_and(rho>=pdict[bp]['hole_diam']/2,rho<=pdict[bp]['diam']/2),bp_thick_bool)
 #bc_fp = laplace.BC_dict([[pdict[fp]['hole_diam']/2, pdict[fp]['diam']/2], pdict[fp]['zpos']],pdict[fp]['voltage'],fp, LAMBD)
 #bc_bp = laplace.BC_dict([[pdict[bp]['hole_diam']/2, pdict[bp]['diam']/2], pdict[bp]['zpos']],pdict[fp]['voltage'],bp, LAMBD)
 
@@ -190,7 +189,8 @@ fig1 = plt.figure(figsize = (18.5,21))
 ax = plt.axes(projection='3d') 
 surf = ax.plot_surface(rho.reshape(N,N), z.reshape(N,N),V.reshape(N,N),rstride=1,cstride=1,cmap=cm.inferno,alpha=1,linewidth=10,rasterized=True)
 fig1.tight_layout()
-ax.view_init(20,210)
+#ax.view_init(20,210)
+ax.view_init(20,180)
 ax.set_xlabel('r [m]')
 ax.set_ylabel('z [m]')
 ax.set_zlabel('[V]')
@@ -206,6 +206,7 @@ top = 1.15
 bottom=-.09
 fig1.subplots_adjust(top=top,bottom=bottom)             
 fig1.set_size_inches((fig1.get_size_inches()[0],axes_height/(top-bottom)))
+ax.set_box_aspect(None, zoom=0.91)
 
 ###
 
@@ -213,12 +214,14 @@ fig1.set_size_inches((fig1.get_size_inches()[0],axes_height/(top-bottom)))
 Erho = grad[0]*V
 Ez = grad[3]*V
 
+z_rho0 , E_rho0 = laplace.grabxsect(pdict['loc_params']['center of optic'], coord_dict, Ez)
+
 z_halfway , E_halfway = laplace.grabxsect(pdict['loc_params']['halfway out on optic'], coord_dict, Ez)
 
 z_halfway
 
 #fig1.pt5 = 
-plt.plot(z_halfway, E_halfway) 
+plt.plot(z_halfway, E_halfway, z_rho0, E_rho0) 
 
 E_halfway.min()
 
