@@ -780,17 +780,16 @@ $$
 $$
 
 \begin{equation}
-	r_h = 2 / h
-\end{equation}
-
-\begin{equation}
+    \begin{aligned}
+	r_h = 2 / h  \; , \\
 	r_0 = -2 / h
+    \end{aligned}
 \end{equation}
 
 \newpage
 Now meshgrid coordinates are set:
 
-\input{notes/LaplacE_operators.tex}
+\input{notes/LaplacE_meshgrid.tex}
 
 \newpage
 
@@ -855,9 +854,9 @@ O_{n}      & \cdots & \cdots & \cdots & \cdots & \cdots & O_{n} & O_{n} & O_{n} 
 \vdots & 0  & 0  & \ddots & \ddots & \ddots & 0 & 0 & 0 & 0  & \vdots \\
 \vdots & 0  & 0  & 0  & \ddots & \ddots & \ddots & 0 & 0 & 0 & \vdots \\
 \vdots & 0  & 0  & 0 & 0 & \ddots & \ddots & \ddots & 0 & 0  & \vdots \\
-\vdots & 0  & 0  & 0 & 0 & 0 & \ddots & 0 & \frac{1}{2^{n-4}} & 0  & \vdots\\
-\vdots & 0  & 0  & 0 & 0 & 0 & 0 & \frac{1}{2^{n-3}} & 0  & \frac{1}{2^{n-3}} & 0\\
-\vdots & 0 & 0 & 0 & 0 & 0 & 0 & 0 & \frac{1}{2^{n-2}} & 0 & \frac{1}{2^{n-2}}\\
+\vdots & 0  & 0  & 0 & 0 & 0 & \ddots & 0 & \frac{1}{2^{(n-4)}} & 0  & \vdots\\
+\vdots & 0  & 0  & 0 & 0 & 0 & 0 & \frac{1}{2^{(n-3)}} & 0  & \frac{1}{2^{(n-3)}} & 0\\
+\vdots & 0 & 0 & 0 & 0 & 0 & 0 & 0 & \frac{1}{2^{(n-2)}} & 0 & \frac{1}{2^{(n-2)}}\\
 0      & \cdots & \cdots & \cdots & \cdots & \cdots & 0 & 0 & 0 & 0 & 0 
 \end{bmatrix*}
 \]
@@ -902,12 +901,12 @@ Where the above matrix is a tri-diagonal block sparse matrix with square embedde
 \end{equation}
 
 \begin{figure}[H]
-  \includegraphics[width=\textwidth]{ALGAAS/assembly1_sim.pdf}
+  \includegraphics[width=\textwidth]{ALGAAS/assembly4_sim.pdf}
   \caption{Numerically computed potential map estimate ($V(z,r)$ in cylindrical coordinates)}
   \label{fig:poissoncalcoutput}
 \end{figure}
 
-The computed $E_z$ screened by the coating at $r = 0$ for $V = 1$ is estimated to be 42 $[\mathrm{V}/\mathrm{m}]$ and will be included in the calibration as a pockels cell field conversion factor $42 [(\mathrm{V} / \mathrm{m}) / \mathrm{V}]$  
+The computed $E_z$ screened by the coating at $r = 0$ for $V = 1$ is estimated to be 33 $[\mathrm{V}/\mathrm{m}]$ and will be included in the calibration as a pockels cell field conversion factor $42 [(\mathrm{V} / \mathrm{m}) / \mathrm{V}]$  
 
 \begin{figure}[H]
     \includegraphics[width=\textwidth]{ALGAAS/13-Sep-2021_e_field_inside_outside_normal.pdf}

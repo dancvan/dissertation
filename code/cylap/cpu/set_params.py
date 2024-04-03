@@ -12,12 +12,12 @@ pdict ={
     'bitres' : 'float32'            ,                        # matrix element data type ('float32' vs 'float64')
     'in2m' : .0254                  ,                        # frequently used conversion
     'torch': False                  ,                        # utilize pytorch to leverage M1 gpu acceleration
-    'figsave_bool'  : False         ,                        # boolean tag to run or omit figure saves
-    'figpt5_bool'   : True          ,                        # additional boolean save tag for figpt5
-    'fig1_bool'     : True          ,                        # additional boolean save tag for fig1
-    'fig1pt5_bool'  : True          ,                        # additional boolean save tag for fig1pt5
-    'fig2_bool'     : True          ,                        # additional boolean save tag for figpt2
-    'potsave_bool'  : True
+    'figsave_bool'  : True          ,                        # boolean tag to run or omit figure saves
+    'figpt5_bool'   : False          ,                        # additional boolean save tag for figpt5 (V cross section at rho=0)
+    'fig1_bool'     : False         ,                        # additional boolean save tag for fig1 ()
+    'fig1pt5_bool'  : True          ,                        # additional boolean save tag for fig1pt5(E_z cross section)
+    'fig2_bool'     : False          ,                        # additional boolean save tag for figpt2
+    'potsave_bool'  : False
 }
     
 pdict['res_exp'] = np.abs(np.log10(pdict['res'])).astype('int')
