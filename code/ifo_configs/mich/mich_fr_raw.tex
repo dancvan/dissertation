@@ -82,7 +82,8 @@ ax1.loglog(bode_amp(H),linewidth=7.5, color='C0')
 #plt.ylim([10e-6, 10e0])
 ax2 = ax1.twinx()
 #ax2.plot(w/(FSR), (180/np.pi)*np.arctan(F_w_cc.imag/F_w_cc.real), '--')
-ax2.semilogx(nu,(180/np.pi)*np.arctan(np.imag(H)/np.real(H)), '--', linewidth=7.5,color='C1')
+ax2.semilogx(nu,(180/np.pi)*np.arctan(np.imag(H)/np.real(H)), '--', linewidth=7.5,
+	     color='C1')
 #plt.xlabel('frequency [FSR]')
 plt.xlim([1,1e5])
 plt.ylabel('phase [deg]',color='C1')
@@ -91,17 +92,24 @@ fig.savefig(fig_exp_dir + 'INTRO/mich_fr.pdf', dpi=300, bbox_inches='tight')
 
 Though with the provided frequency depdenence and optical gain, we still
 need to understand a starting noise floor spectra and compare to our
-anticipated * The noise floor is established\#\# Interferometer noise
-and sensitivity\#\#\# Shot noise * A fundamental limit imposed by the
-statistical nature of photon counting * The photon counting follows
-Poisson statistics * Photon counting variance (variance is equal to the
-mean) \[ < (n-\bar{n})^2 >  = \frac{P \Delta t}{ \hbar \Omega} \] *
-Power variance:
-\[ < (P - \bar{P})^2 >  = \hbar \Omega  \bar{P} \Delta t \] * PSD of the
-measured power between two uncoorelated moments in time:
+anticipated limiting noise 
+
+\textbf{Shot noise} 
+\\
+* A fundamental limit imposed by the statistical nature of photon counting 
+\\
+* The photon counting follows Poisson statistics 
+\\
+\indent    * Photon counting variance (variance is equal to the
+mean) 
+\[ < (n-\bar{n})^2 >  = \frac{P \Delta t}{ \hbar \Omega} \] 
+\indent * Power variance:
+\[ < (P - \bar{P})^2 >  = \hbar \Omega  \bar{P} \Delta t \] 
+\indent * PSD of the measured power between two uncoorelated moments in time:
 \[ S_\mathrm{P} (\omega) = \lim_{T \to \infty} \frac{2}{T} \Big< \big| \int_{-T}^{T} (P(t) - \bar{P}) e^{-i\omega t} dt \big|^2 \Big> \]
 \[ =  \lim_{T \to \infty} \frac{2}{T} \int_{-T}^{T} \hbar \Omega \bar{P} dt  \]
-\[ = 2 \hbar \Omega \bar{P} \] * Where the ASD is:
+\[ = 2 \hbar \Omega \bar{P} \] 
+\indent * Where the ASD is:
 \[ [S_P (\omega)]^{1/2} = [2 \hbar \Omega \bar{P}]^{1/2}\]The signal to
 noise is established by dividing the frequency dependent optical gain
 times the gravitational wave ASD
@@ -124,19 +132,17 @@ S_h = N_shot(OMEG, P_IN)
 print(S_h)
 \end{lstlisting}
 
-\begin{lstlisting}
-6.831801787605637e-09
-\end{lstlisting}
-
 \begin{lstlisting}[frame=single, language=Python]
 #ax1.plot(w/(FSR), F_w_cc_modsq*100)
 plt.loglog(nu, S_h/bode_amp(H), linewidth=7.5, color='C0')
 plt.ylim([1e-21, .5e-14])
 plt.xlabel('frequency [Hz]')
-plt.ylabel('$\mathdefault{S}_\mathdefault{h} \;  \mathdefault{[ 1 / \sqrt{\mathdefault{Hz}}]} $')
+plt.ylabel('$\mathdefault{S}_\mathdefault{h} \;  
+	    \mathdefault{[ 1 / \sqrt{\mathdefault{Hz}}]} $')
 #ax2_ = ax1_.twinx()
 #ax2.plot(w/(FSR), (180/np.pi)*np.arctan(F_w_cc.imag/F_w_cc.real), '--')
-#ax2_.semilogx(nu,(180/np.pi)*np.arctan(np.imag(S_h)/np.real(S_h)), '--', linewidth=7.5,color='C1')
+#ax2_.semilogx(nu,(180/np.pi)*np.arctan(np.imag(S_h)/np.real(S_h)), '--', 
+	       linewidth=7.5,color='C1')
 #plt.xlabel('frequency [FSR]')
 plt.xlim([1,1e5])
 plt.grid(visible=True)

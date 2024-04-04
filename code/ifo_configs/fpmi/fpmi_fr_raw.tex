@@ -175,12 +175,14 @@ ax1.set_ylabel('H$_\mathdefault{FPMI} \; \mathdefault{ [W / m] } $ ', color='C0'
 #ax1.plot(w/(FSR), F_w_cc_modsq*100)
 ax1.loglog(bode_amp(H_FPMI), label='FPMI', linewidth=line_width,color='C0')
 #ax1.loglog(w,H_MI_modsq, label= 'MICH', linewidth= 5)
-#ax1.loglog(w,H_FPMI_LP_modsq*H_FPMI_modsq[0], label='FPMI LP', linewidth = 20.0, alpha=0.25,color='C2')
+#ax1.loglog(w,H_FPMI_LP_modsq*H_FPMI_modsq[0], label='FPMI LP', 
+	    linewidth = 20.0, alpha=0.25,color='C2')
 #ax1.axvline (x=f_pole,ymin=1e-13, color='red', linestyle='dotted', linewidth=3)
 ax2 = ax1.twinx()
 ax2.semilogx(nu,bode_ph(H_FPMI),'--', linewidth=line_width, color='C1')
 #ax2.semilogx(w,(180/np.pi)*np.arctan(np.imag(H_MI)/np.real(H_MI)), '--')
-#ax2.semilogx(w,(180/np.pi)*np.arctan(np.imag(H_FPMI_LP)/np.real(H_FPMI_LP)),linestyle='--', linewidth=20.0,dashes=(4,10),alpha=.25, color='C2')
+#ax2.semilogx(w,(180/np.pi)*np.arctan(np.imag(H_FPMI_LP)/np.real(H_FPMI_LP)),
+	      linestyle='--', linewidth=20.0,dashes=(4,10),alpha=.25, color='C2')
 plt.xlim([1,1e5])
 plt.ylabel('phase [deg]', color='C1')
 #fig.savefig('../figs/INTRO/fpmi_fr.pdf', dpi=300, bbox_inches='tight')
@@ -193,7 +195,8 @@ Text(0, 0.5, 'phase [deg]')
 \begin{lstlisting}[frame=single, language=Python]
 plt.loglog(nu,bode_amp(H_MICH), label= 'MICH', linewidth= line_width, alpha=.5)
 plt.loglog(nu,bode_amp(H_FPMI), label='FPMI', linewidth=line_width)
-#plt.loglog(nu,bode_amp(H_FPMI_LP)*bode_amp(H_FPMI)[0], label='FPMI LP', linewidth = 20.0, alpha=0.25)
+#plt.loglog(nu,bode_amp(H_FPMI_LP)*bode_amp(H_FPMI)[0], label='FPMI LP', 
+	    linewidth = 20.0, alpha=0.25)
 plt.axvline (x=f_pole,ymin=1e-11, color='red', linestyle='dotted', linewidth=3.0)
 plt.ylim([5e7, 5e14])
 plt.xlim([1e0, 1e5])
@@ -223,9 +226,11 @@ Sh_noise = N_shot(OMEG, P_IN)
 \end{lstlisting}
 
 \begin{lstlisting}[frame=single, language=Python]
-plt.loglog(nu,Sh_noise/bode_amp(H_MICH), label= 'MICH', linewidth= line_width, alpha=.5)
+plt.loglog(nu,Sh_noise/bode_amp(H_MICH), label= 'MICH', 
+	   linewidth= line_width, alpha=.5)
 plt.loglog(nu,Sh_noise/bode_amp(H_FPMI), label='FPMI', linewidth=line_width)
-#plt.loglog(nu,Sh_noise/(bode_amp(H_FPMI_LP)*bode_amp(H_FPMI)[0]), label='FPMI LP', linewidth = 20.0, alpha=0.25)
+#plt.loglog(nu,Sh_noise/(bode_amp(H_FPMI_LP)*bode_amp(H_FPMI)[0]), 
+	    label='FPMI LP', linewidth = 20.0, alpha=0.25)
 #plt.axvline (x=f_pole,ymin=1e-11, color='red', linestyle='dotted', linewidth=3)
 plt.ylim([1e-23, 1e-16])
 plt.xlim([1e0, 1e5])
