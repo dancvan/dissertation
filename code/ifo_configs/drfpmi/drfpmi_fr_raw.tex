@@ -158,7 +158,8 @@ G_PRC_actual = ifco.PRG(L_rt, Finn, r_PRM, max=1)
 
 \begin{lstlisting}[frame=single, language=Python]
 H_FPMI = ifco.fpmi_freq_resp(nu, r_1, t_1, r_2, L, PHI_0, P_IN, OMEG)
-H_FPMI_LP = ifco.fpmi_freq_resp(nu, r_1, t_1, r_2, L, PHI_0, P_IN, OMEG, low_pass='True')
+H_FPMI_LP = ifco.fpmi_freq_resp(nu, r_1, t_1, r_2, L, PHI_0, P_IN, OMEG, 
+				low_pass='True')
 \end{lstlisting}
 
 \begin{lstlisting}[frame=single, language=Python]
@@ -191,9 +192,12 @@ plt.savefig('../figs/INTRO/prfpmi_fr.pdf', dpi=300, bbox_inches='tight')
 \end{lstlisting}
 
 \begin{lstlisting}[frame=single, language=Python]
-plt.semilogx(nu,(180/np.pi)*np.arctan(np.imag(H_FPMI)/np.real(H_FPMI)),'--', linewidth=line_width)
-plt.semilogx(nu,(180/np.pi)*np.arctan(np.imag(H_MI)/np.real(H_MI)), '--', linewidth=line_width)
-plt.semilogx(nu,(180/np.pi)*np.arctan(np.imag(H_PRFPMI)/np.real(H_PRFPMI)),linestyle='--', linewidth=line_width,dashes=(3,10))
+plt.semilogx(nu,(180/np.pi)*np.arctan(np.imag(H_FPMI)/np.real(H_FPMI)), '--', 
+	     linewidth=line_width)
+plt.semilogx(nu,(180/np.pi)*np.arctan(np.imag(H_MI)/np.real(H_MI)), '--', 
+	     linewidth=line_width)
+plt.semilogx(nu,(180/np.pi)*np.arctan(np.imag(H_PRFPMI)/np.real(H_PRFPMI)),
+	     linestyle='--', linewidth=line_width,dashes=(3,10))
 plt.xlim([1,100000])
 plt.ylabel('phase [deg]')
 plt.xlabel('Frequency [Hz]')
@@ -235,11 +239,17 @@ microscopic length tuning:
 \[ t_\mathrm{SRC} = \frac{t_\mathrm{ITM}t_\mathrm{SRM} e^{i k \mathscr{l}_\mathrm{SRC}}}{1- r_\mathrm{ITM}r_\mathrm{SRM} e^{2i k \mathscr{l}_\mathrm{SRC}}}\]
 
 \[ r_\mathrm{SRC} = \frac{r_\mathrm{ITM} - r_\mathrm{SRM} e^{2i k l_\mathrm{SRC}}}{1- r_\mathrm{ITM}r_\mathrm{SRM} e^{2i k \mathscr{l}_\mathrm{SRC}}}\]We
-now observe the tuning extrema: - On resonance
+now observe the tuning extrema: 
+- On resonance
 \(2ik \mathscr{l}_\mathrm{SRC} = 2i\phi_\mathrm{SRC} = 0\):
 \[ r_\mathrm{SRC \; , \; \phi_{SRC} = 0} = \frac{r_\mathrm{ITM} - r_\mathrm{SRM}}{1- r_\mathrm{ITM}r_\mathrm{SRM}}\]
 - On resonance $2ik \mathscr{l}_\mathrm{SRC} = 2i\phi_\mathrm{SRC}= \frac{\pi}{2} $:
-\[ r_\mathrm{SRC \; , \; \phi_{SRC} = \pi} = \frac{r_\mathrm{ITM} + r_\mathrm{SRM}}{1+ r_\mathrm{ITM}r_\mathrm{SRM}}\]\[\mathrm{H}_\mathrm{DRFPMI} = \mathrm{G}_\mathrm{PR} \mathrm{P}_\mathrm{in} L \Omega \bigg[ \frac{ t_\mathrm{ITM}^2 r_\mathrm{ETM}}{(t_\mathrm{ITM}^2 + r_\mathrm{ITM}^2)r_\mathrm{ETM} - r_\mathrm{ITM}} \frac{t_\mathrm{SRM} t_\mathrm{ITM} e^{i\phi_\mathrm{SRC}}}{1-r_\mathrm{ITM} r_\mathrm{SRM} e^{i2\phi_\mathrm{SRC}}} \frac{e^{-i 2 \pi L f / c} \mathrm{sin}( 2 \pi f / c)}{ 2 \pi L f } \frac{\mathrm{sin}(\phi_0)}{1- [(r_\mathrm{ITM} - r_\mathrm{SRM} e^{i2\phi_\mathrm{SRC}})/(1-r_\mathrm{ITM} r_\mathrm{SRM} e^{i2\phi_\mathrm{SRC}})] r_\mathrm{ETM} e^{-i 4 \pi L f / c}} \bigg]\]
+\[ r_\mathrm{SRC \; , \; \phi_{SRC} = \pi} = \frac{r_\mathrm{ITM} + r_\mathrm{SRM}}{1+ r_\mathrm{ITM}r_\mathrm{SRM}}\]
+\begin{multline*}
+	\mathrm{H}_\mathrm{DRFPMI} =  \mathrm{G}_\mathrm{PR} \mathrm{P}_\mathrm{in} L \Omega \bigg[ \frac{ t_\mathrm{ITM}^2 r_\mathrm{ETM}}{(t_\mathrm{ITM}^2 + r_\mathrm{ITM}^2)r_\mathrm{ETM} - r_\mathrm{ITM}} \frac{t_\mathrm{SRM} t_\mathrm{ITM} e^{i\phi_\mathrm{SRC}}}{1-r_\mathrm{ITM} r_\mathrm{SRM} e^{i2\phi_\mathrm{SRC}}} \times \\
+				      \frac{e^{-i 2 \pi L f / c} \mathrm{sin}( 2 \pi f / c)}{ 2 \pi L f } \times \\
+				      \frac{\mathrm{sin}(\phi_0)}{1- [(r_\mathrm{ITM} - r_\mathrm{SRM} e^{i2\phi_\mathrm{SRC}})/(1-r_\mathrm{ITM} r_\mathrm{SRM} e^{i2\phi_\mathrm{SRC}})] r_\mathrm{ETM} e^{-i 4 \pi L f / c}} \bigg] 
+\end{multline*}
 
 \begin{lstlisting}[frame=single, language=Python]
 l_SRC = 56  #[m]
@@ -251,7 +261,8 @@ phi_SRC = np.pi
 \end{lstlisting}
 
 \begin{lstlisting}[frame=single, language=Python]
-H_DRFPMI = ifco.drfpmi_freq_resp(nu, G_PRC_opt, r_1, t_1, r_2, r_SRM, t_SRM, phi_SRC, L, PHI_0, P_IN, OMEG)
+H_DRFPMI = ifco.drfpmi_freq_resp(nu, G_PRC_opt, r_1, t_1, r_2, r_SRM, t_SRM, 
+				 phi_SRC, L, PHI_0, P_IN, OMEG)
 \end{lstlisting}
 
 \begin{lstlisting}[frame=single, language=Python]
@@ -261,19 +272,24 @@ if bode_test:
     ax1.set_xlabel('frequency [Hz]')
     ax1.set_ylabel('H$_\mathdefault{FPMI}$  [$\mathdefault{W/m}$]  ', color='C0')
     #ax1.plot(w/(FSR), F_w_cc_modsq*100)
-    ax1.loglog(nu, ifco.bode_amp(H_FPMI), label='FPMI', linewidth=line_width, linestyle=':',color='C0')
-    ax1.loglog(nu, ifco.bode_amp(H_PRFPMI), label='PRFPMI',  linewidth=line_width, color='C0')
-    ax1.loglog(nu, ifco.bode_amp(H_DRFPMI), label='DRFPMI',  linewidth=line_width, color='C1')
+    ax1.loglog(nu, ifco.bode_amp(H_FPMI), label='FPMI', linewidth=line_width, 
+	       linestyle=':',color='C0')
+    ax1.loglog(nu, ifco.bode_amp(H_PRFPMI), label='PRFPMI',  
+	       linewidth=line_width, color='C0')
+    ax1.loglog(nu, ifco.bode_amp(H_DRFPMI), label='DRFPMI',  
+	       linewidth=line_width, color='C1')
     ax1.legend()
     #ax1.loglog(w,H_MI_modsq, label= 'MICH', linewidth= 5)
-    #ax1.loglog(w,H_FPMI_LP_modsq*H_FPMI_modsq[0], label='FPMI LP', linewidth = 20.0, alpha=0.25,color='C2')
+    #ax1.loglog(w,H_FPMI_LP_modsq*H_FPMI_modsq[0], label='FPMI LP', 
+		linewidth = 20.0, alpha=0.25,color='C2')
     #ax1.axvline (x=f_pole,ymin=1e-13, color='red', linestyle='dotted', linewidth=3)
     ax2 = ax1.twinx()
     ax2.semilogx(nu, ifco.bode_ph(H_FPMI),'--', linewidth=7.5, color='C0', alpha=.3)
     ax2.semilogx(nu, ifco.bode_ph(H_DRFPMI),'--', linewidth=7.5, color='C1', alpha=.3)
     ax2.grid(b=False, which='both', axis='y')
     #ax2.semilogx(w,(180/np.pi)*np.arctan(np.imag(H_MI)/np.real(H_MI)), '--')
-    #ax2.semilogx(w,(180/np.pi)*np.arctan(np.imag(H_FPMI_LP)/np.real(H_FPMI_LP)),linestyle='--', linewidth=20.0,dashes=(4,10),alpha=.25, color='C2')
+    #ax2.semilogx(w,(180/np.pi)*np.arctan(np.imag(H_FPMI_LP)/np.real(H_FPMI_LP)),
+		  linestyle='--', linewidth=20.0,dashes=(4,10),alpha=.25, color='C2')
     plt.xlim([1,1e5])
     plt.ylabel('phase [deg]', color='C1', alpha=.5)
 \end{lstlisting}
@@ -281,7 +297,8 @@ if bode_test:
 \begin{lstlisting}[frame=single, language=Python]
 plt.loglog(nu, ifco.bode_amp(H_MI), label= 'MICH', linewidth= line_width, alpha=.4)
 plt.loglog(nu, ifco.bode_amp(H_FPMI), label='FPMI', linewidth=line_width, alpha=.4)
-plt.loglog(nu, ifco.bode_amp(H_PRFPMI), label='PRFPMI', linewidth = line_width, alpha=.4)
+plt.loglog(nu, ifco.bode_amp(H_PRFPMI), label='PRFPMI', linewidth = line_width, 
+	   alpha=.4)
 plt.loglog(nu, ifco.bode_amp(H_DRFPMI), label='DRFPMI', linewidth = line_width)
 #plt.axvline (x=f_pole,ymin=1e-11, color='red', linestyle='dotted', linewidth=3)
 plt.xlim([1e0, 1e5])
@@ -293,9 +310,12 @@ plt.savefig('../figs/INTRO/drfpmi_fr.pdf', dpi=300, bbox_inches='tight')
 \end{lstlisting}
 
 \begin{lstlisting}[frame=single, language=Python]
-plt.semilogx(nu,ifco.bode_ph(H_MI), '--', linewidth=line_width, alpha=.4, label='MICH')
-plt.semilogx(nu,ifco.bode_ph(H_FPMI),'--', linewidth=line_width, alpha=.4, label='FPMI')
-plt.semilogx(nu,ifco.bode_ph(H_PRFPMI),linestyle='--', linewidth=line_width,dashes=(3,10), alpha=.4, label='PRFPMI')
+plt.semilogx(nu,ifco.bode_ph(H_MI), '--', linewidth=line_width, 
+	     alpha=.4, label='MICH')
+plt.semilogx(nu,ifco.bode_ph(H_FPMI),'--', linewidth=line_width, 
+	     alpha=.4, label='FPMI')
+plt.semilogx(nu,ifco.bode_ph(H_PRFPMI),linestyle='--', 
+	     linewidth=line_width,dashes=(3,10), alpha=.4, label='PRFPMI')
 plt.semilogx(nu,ifco.bode_ph(H_DRFPMI),'--', linewidth=line_width, label='DRFPMI')
 plt.xlim([1,100000])
 plt.ylim([-91,91])
