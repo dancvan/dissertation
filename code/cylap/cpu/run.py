@@ -179,9 +179,11 @@ print(elapsed)
 
 ### 
 
-z_halfway , V_opt_half = laplace.grabxsect(pdict['loc_params']['halfway out on optic'], coord_dict, V)
+#z_halfway , V_opt_half = laplace.grabxsect(pdict['loc_params']['halfway out on optic'], coord_dict, V)
+z_halfway , V_opt_half = laplace.grabxsect(pdict['loc_params']['center of optic'], coord_dict,pdict['res_exp'], V)
 #figpt5 = 
 plt.plot(coord_dict['indices']['z']*1e-4, fV['V_anal'](coord_dict['indices']['z']*1e-4), z_halfway, V_opt_half)
+plt.plot(z_halfway, V_opt_half)
 
 ###
 
@@ -189,8 +191,7 @@ fig1 = plt.figure(figsize = (18.5,21))
 ax = plt.axes(projection='3d') 
 surf = ax.plot_surface(rho.reshape(N,N), z.reshape(N,N),V.reshape(N,N),rstride=1,cstride=1,cmap=cm.inferno,alpha=1,linewidth=10,rasterized=True)
 fig1.tight_layout()
-#ax.view_init(20,210)
-ax.view_init(20,180)
+ax.view_init(20,210)
 ax.set_xlabel('r [m]')
 ax.set_ylabel('z [m]')
 ax.set_zlabel('[V]')
@@ -206,7 +207,7 @@ top = 1.15
 bottom=-.09
 fig1.subplots_adjust(top=top,bottom=bottom)             
 fig1.set_size_inches((fig1.get_size_inches()[0],axes_height/(top-bottom)))
-ax.set_box_aspect(None, zoom=0.91)
+#ax.set_box_aspect(None, zoom=0.91)
 
 ###
 
@@ -214,9 +215,11 @@ ax.set_box_aspect(None, zoom=0.91)
 Erho = grad[0]*V
 Ez = grad[3]*V
 
-z_rho0 , E_rho0 = laplace.grabxsect(pdict['loc_params']['center of optic'], coord_dict, Ez)
+z_rho0 , E_rho0 = laplace.grabxsect(pdict['loc_params']['center of optic'], coord_dict, pdict['res_exp'], Ez)
 
-z_halfway , E_halfway = laplace.grabxsect(pdict['loc_params']['halfway out on optic'], coord_dict, Ez)
+z_halfway , E_halfway = laplace.grabxsect(pdict['loc_params']['halfway out on optic'], coord_dict, pdict['res_exp'], Ez)
+
+rho_front , E_front = laplace.grabxsect(pdict['loc_params']['front of optic'], coord_dict, pdict['res_exp'], Ez)
 
 z_halfway
 
@@ -248,11 +251,16 @@ fig2.set_size_inches((fig2.get_size_inches()[0],axes_height/(top-bottom)))
 
 ## figure save
 
+coord_dict
+
+
+pdict['fig1_bool'] = True
+
 if pdict['figsave_bool']:
     if pdict['figpt5_bool']:
         figpt5.savefig(fig_exp_dir + 'potxsec_compare.pdf', dpi=300, format='pdf')  ## Comparison to analytical solution
     if pdict['fig1_bool']:
-        fig1.savefig(fig_exp_dir + 'potmap_sim.pdf', dpi=300, format='pdf')
+        fig1.savefig(fig_exp_dir + 'assembly4_sim.pdf', dpi=300, format='pdf')
     if pdict['fig1pt5_bool']:
         fig1pt5.savefig(fig_exp_dir + 'fieldxsec_sim.pdf', dpi=300, format='pdf')
     if pdict['fig2_bool']:

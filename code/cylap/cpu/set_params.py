@@ -13,10 +13,10 @@ pdict ={
     'in2m' : .0254                  ,                        # frequently used conversion
     'torch': False                  ,                        # utilize pytorch to leverage M1 gpu acceleration
     'figsave_bool'  : True          ,                        # boolean tag to run or omit figure saves
-    'figpt5_bool'   : False          ,                        # additional boolean save tag for figpt5 (V cross section at rho=0)
-    'fig1_bool'     : False         ,                        # additional boolean save tag for fig1 ()
-    'fig1pt5_bool'  : True          ,                        # additional boolean save tag for fig1pt5(E_z cross section)
-    'fig2_bool'     : False          ,                        # additional boolean save tag for figpt2
+    'figpt5_bool'   : False         ,                        # additional boolean save tag for figpt5 (V cross section at rho=0)
+    'fig1_bool'     : True          ,                        # additional boolean save tag for fig1 ()
+    'fig1pt5_bool'  : False         ,                        # additional boolean save tag for fig1pt5(E_z cross section)
+    'fig2_bool'     : False         ,                        # additional boolean save tag for figpt2
     'potsave_bool'  : False
 }
     
