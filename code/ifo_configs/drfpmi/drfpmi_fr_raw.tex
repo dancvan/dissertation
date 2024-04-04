@@ -1,4 +1,5 @@
-\begin{lstlisting}[frame=single, language=Python]
+\begin{spacing}{1}
+\begin{spacing}{1}\begin{lstlisting}[frame=single, language=Python]
 import numpy as np 
 import matplotlib.pyplot as plt
 import scipy.signal as sig
@@ -13,12 +14,13 @@ if os.path.isdir(plt_style_dir) == True:
 plt.rcParams["font.family"] = "serif"
 plt.rcParams["font.serif"] = ["Times New Roman"] + plt.rcParams["font.serif"]
 line_width=7.5
-\end{lstlisting}
+\end{lstlisting}\end{spacing}
+\end{spacing}
 
 Up to this point we can understand how the FPMI repsonse function works:
-\[ H_{FPMI}(\omega_g) = \frac{2 \Delta \phi_r(\omega_g)}{h(\omega_g)} =  \frac{t_1^2r_2}{(t_1^2 + r_1^2)r_2 -r_1} \frac{H_{\mathrm{MI}}(\omega_g, L)}{1-r_1r_2e^{-2i \omega_g L /c }}  \]
+\begin{equation} H_{FPMI}(\omega_g) = \frac{2 \Delta \phi_r(\omega_g)}{h(\omega_g)} =  \frac{t_1^2r_2}{(t_1^2 + r_1^2)r_2 -r_1} \frac{H_{\mathrm{MI}}(\omega_g, L)}{1-r_1r_2e^{-2i \omega_g L /c }}  \end{equation}
 
-\begin{lstlisting}[frame=single, language=Python]
+\begin{spacing}{1}\begin{lstlisting}[frame=single, language=Python]
 # Some parameters
 cee = np.float64(299792458)
 OMEG = np.float64(2*np.pi*cee/(1064.0*1e-9))
@@ -39,7 +41,7 @@ r_2 = R_2**.5
 
 PHI_0 = np.pi/2 
 P_IN = 25
-\end{lstlisting}
+\end{lstlisting}\end{spacing}
 
 \subsection{POWER RECYCLING}
 
@@ -53,33 +55,33 @@ reflectivity, transmission, and loss coefficients.
 
 But first, the field at the symmetric port:
 
-\[E_\mathrm{SYM} = \frac{E_i}{2}e^{2ikl}(r_\mathrm{FP,X} + r_\mathrm{FP,Y}) \]
+\begin{equation}E_\mathrm{SYM} = \frac{E_i}{2}e^{2ikl}(r_\mathrm{FP,X} + r_\mathrm{FP,Y}) \end{equation}
 
 This is realized through observing the circulating power between the PRM
 and the short Michelson:
 
-\[ E_\mathrm{PRC} = \frac{t_\mathrm{PRM}}{1- r_\mathrm{PRM} r_\mathrm{FPMI} e^{2ik (L_\mathrm{PRC2BS} + L_\mathrm{SMICH})}}E_\mathrm{in} \]
+\begin{equation} E_\mathrm{PRC} = \frac{t_\mathrm{PRM}}{1- r_\mathrm{PRM} r_\mathrm{FPMI} e^{2ik (L_\mathrm{PRC2BS} + L_\mathrm{SMICH})}}E_\mathrm{in} \end{equation}
 
 Where:
 
-\[ L_\mathrm{SMICH} = l_x + l_y \]
+\begin{equation} L_\mathrm{SMICH} = l_x + l_y \end{equation}
 
 Now let's observe the cavity reflection parameter:
 
-\[ r_\mathrm{FP} = -r_1 + \frac{t_1^2 r_2 e^{i2kL}}{1-r_1 r_2 e^{i2kL}} = -\frac{\mathcal{F}}{\pi} \Big[-\Big(\frac{r_1}{r_2} \Big)^{1/2} + \Big(\frac{r_2}{r_1}\Big)^{1/2} (r_1^2 + t_1^2) \Big]\]
+\begin{equation} r_\mathrm{FP} = -r_1 + \frac{t_1^2 r_2 e^{i2kL}}{1-r_1 r_2 e^{i2kL}} = -\frac{\mathcal{F}}{\pi} \Big[-\Big(\frac{r_1}{r_2} \Big)^{1/2} + \Big(\frac{r_2}{r_1}\Big)^{1/2} (r_1^2 + t_1^2) \Big]\end{equation}
 But with loss considerations:
 
-\[ r_\mathrm{FP} = -r_1 + \frac{t_1^2 r_2 e^{- t_\mathrm{RT}/\tau_\mathrm{loss}}  e^{i2kL}}{1-r_1 r_2 e^{- t_\mathrm{RT}/\tau_\mathrm{loss}} e^{i2kL}} \approx -\frac{\mathcal{F}}{\pi} \Big[\frac{-r_1 +  r_2(r_1^2 + t_1^2)(1-\mathscr{L}_\mathrm{RT})}{\sqrt{r_1 r_2}} \Big]\]
+\begin{equation} r_\mathrm{FP} = -r_1 + \frac{t_1^2 r_2 e^{- t_\mathrm{RT}/\tau_\mathrm{loss}}  e^{i2kL}}{1-r_1 r_2 e^{- t_\mathrm{RT}/\tau_\mathrm{loss}} e^{i2kL}} \approx -\frac{\mathcal{F}}{\pi} \Big[\frac{-r_1 +  r_2(r_1^2 + t_1^2)(1-\mathscr{L}_\mathrm{RT})}{\sqrt{r_1 r_2}} \Big]\end{equation}
 we know that \(t_1^2 << r_1^2\):
 
-\[r_\mathrm{FP} \approx -\frac{\mathcal{F}}{\pi} \Big[ \frac{r_1(-1 + (1 - \pi/\mathcal{F}) (1- \mathscr{L}_\mathrm{RT}))}{\sqrt{r_1 r_2}} \Big] \approx  -\Big(\frac{r_1}{r_2}\Big)^{1/2} \frac{\mathcal{F}}{\pi} \Big[- \pi/\mathcal{F} - \mathscr{L}_\mathrm{RT} + (\mathscr{L}_\mathrm{RT}\pi)/\mathcal{F}) \Big] \]And
+\begin{equation}r_\mathrm{FP} \approx -\frac{\mathcal{F}}{\pi} \Big[ \frac{r_1(-1 + (1 - \pi/\mathcal{F}) (1- \mathscr{L}_\mathrm{RT}))}{\sqrt{r_1 r_2}} \Big] \approx  -\Big(\frac{r_1}{r_2}\Big)^{1/2} \frac{\mathcal{F}}{\pi} \Big[- \pi/\mathcal{F} - \mathscr{L}_\mathrm{RT} + (\mathscr{L}_\mathrm{RT}\pi)/\mathcal{F}) \Big] \end{equation}And
 \(\mathscr{L}_\mathrm{RT} <<1\) with \(r_1 /r_2 \approx 1\) we get:
 
-\[r_\mathrm{FP} \approx -1 + \frac{\mathcal{F}}{\pi} \mathscr{L}_\mathrm{RT}\]If
+\begin{equation}r_\mathrm{FP} \approx -1 + \frac{\mathcal{F}}{\pi} \mathscr{L}_\mathrm{RT}\end{equation}If
 we're operating at a dark fringe, at the symmetric port we see
 superimposed fields:
 
-\[ E_\mathrm{SYM}  = \frac{E_i}{2} \Big[ r_\mathrm{FPX}e^{2ik\mathscr{l}_x} + r_\mathrm{FPY}e^{2ik\mathscr{l}_y} \Big] \]
+\begin{equation} E_\mathrm{SYM}  = \frac{E_i}{2} \Big[ r_\mathrm{FPX}e^{2ik\mathscr{l}_x} + r_\mathrm{FPY}e^{2ik\mathscr{l}_y} \Big] \end{equation}
 
 Where we assume that the short Michelson arms and reflection
 coefficients are roughly equal (\(\mathscr{l}_x = \mathscr{l}_y\),
@@ -92,93 +94,93 @@ coefficient is:
 this we create the following expression for the circulating power within
 the cavity:
 
-\[ P_\mathrm{PRC} = \frac{|t_\mathrm{PRM}| ^2}{|1-r_\mathrm{PRM} r_\mathrm{FPMI} e^{2ik(L_\mathrm{PRC2BS} + L_\mathrm{SMICH})}| ^2} P_\mathrm{in}\] where
+\begin{equation} P_\mathrm{PRC} = \frac{|t_\mathrm{PRM}| ^2}{|1-r_\mathrm{PRM} r_\mathrm{FPMI} e^{2ik(L_\mathrm{PRC2BS} + L_\mathrm{SMICH})}| ^2} P_\mathrm{in}\end{equation} where
 $ | t\_\mathrm{PRM} | ^2 = 1 - | r\_\mathrm{PRM} | ^ 2 $ and given a carrier resonance
 condition we want to maximize the power with a variable PRM
 reflectivity:
 
-\[\frac{\partial P_\mathrm{PRC}}{\partial r_\mathrm{PRM}} = \frac{2r_\mathrm{PRM}^2(r_\mathrm{FPMI} - r_\mathrm{PRM})}{(1 - r_\mathrm{PRM} r_\mathrm{FPMI})^3} = 0\]
+\begin{equation}\frac{\partial P_\mathrm{PRC}}{\partial r_\mathrm{PRM}} = \frac{2r_\mathrm{PRM}^2(r_\mathrm{FPMI} - r_\mathrm{PRM})}{(1 - r_\mathrm{PRM} r_\mathrm{FPMI})^3} = 0\end{equation}
 
 which sets $ r\_\mathrm{PRM} = r\_\mathrm{FPMI} $ On resonance, the
 power recyling gain
 (\(G_\mathrm{PR} = \frac{P_\mathrm{PRC}}{P_\mathrm{in}}\)):
 
-\[ G_\mathrm{PR} = \frac{\pi}{2 \mathcal{F} \mathscr{L}_\mathrm{RT}} \Bigg[ \frac{1}{1- \frac{\mathcal{F}\mathscr{L}_\mathrm{RT}}{2 \pi}} \Bigg] \]
+\begin{equation} G_\mathrm{PR} = \frac{\pi}{2 \mathcal{F} \mathscr{L}_\mathrm{RT}} \Bigg[ \frac{1}{1- \frac{\mathcal{F}\mathscr{L}_\mathrm{RT}}{2 \pi}} \Bigg] \end{equation}
 
-\begin{lstlisting}[frame=single, language=Python]
+\begin{spacing}{1}\begin{lstlisting}[frame=single, language=Python]
 r_FPMI = -r_1 + (T_1*r_2)/(1-r_1*r_2)
 T_PRM = .03
 R_PRM = 1-T_PRM
 t_PRM = (T_PRM)**.5
 r_PRM = (R_PRM)**.5
 G_PRC = 1/(1-r_PRM*(r_FPMI))
-\end{lstlisting}
+\end{lstlisting}\end{spacing}
 
-\begin{lstlisting}[frame=single, language=Python]
+\begin{spacing}{1}\begin{lstlisting}[frame=single, language=Python]
 L_rt = 75e-6
 Finn = (np.pi*np.sqrt(r_1*r_2))/(1-r_1*r_2)
 print(Finn)
-\end{lstlisting}
+\end{lstlisting}\end{spacing}
 
-\begin{lstlisting}
+\begin{spacing}{1}\begin{lstlisting}
 444.0741558169753
-\end{lstlisting}
+\end{lstlisting}\end{spacing}
 
-\begin{lstlisting}[frame=single, language=Python]
+\begin{spacing}{1}\begin{lstlisting}[frame=single, language=Python]
 r_FPMI_approx = (1 - Finn*L_rt/np.pi)
-\end{lstlisting}
+\end{lstlisting}\end{spacing}
 
-\begin{lstlisting}[frame=single, language=Python]
+\begin{spacing}{1}\begin{lstlisting}[frame=single, language=Python]
 r_range = np.arange(.9,1,1/(2**16))
-\end{lstlisting}
+\end{lstlisting}\end{spacing}
 
-\begin{lstlisting}[frame=single, language=Python]
+\begin{spacing}{1}\begin{lstlisting}[frame=single, language=Python]
 G_PRC_ = ifco.PRG(L_rt, Finn, r_range, max=0) 
-\end{lstlisting}
+\end{lstlisting}\end{spacing}
 
-\begin{lstlisting}[frame=single, language=Python]
+\begin{spacing}{1}\begin{lstlisting}[frame=single, language=Python]
 G_PRC_opt =  ifco.PRG(L_rt, Finn, r_FPMI, max=1)
-\end{lstlisting}
+\end{lstlisting}\end{spacing}
 
-\begin{lstlisting}[frame=single, language=Python]
+\begin{spacing}{1}\begin{lstlisting}[frame=single, language=Python]
 plt.plot(r_range, G_PRC_, linewidth=line_width)
 plt.axhline(G_PRC_opt, linestyle='--',linewidth=line_width, color='r')
 plt.xlim(r_range[0], r_range[-1])
 plt.xlabel('$\mathdefault{r_{PRM}}$ [arb]')
 plt.ylabel('$\mathdefault{G_{PRC}}$ [arb]')
-\end{lstlisting}
+\end{lstlisting}\end{spacing}
 
-\begin{lstlisting}
+\begin{spacing}{1}\begin{lstlisting}
 Text(0, 0.5, '$\\mathdefault{G_{PRC}}$ [arb]')
-\end{lstlisting}
+\end{lstlisting}\end{spacing}
 
-\begin{lstlisting}[frame=single, language=Python]
+\begin{spacing}{1}\begin{lstlisting}[frame=single, language=Python]
 G_PRC_actual = ifco.PRG(L_rt, Finn, r_PRM, max=1)
-\end{lstlisting}
+\end{lstlisting}\end{spacing}
 
-\begin{lstlisting}[frame=single, language=Python]
+\begin{spacing}{1}\begin{lstlisting}[frame=single, language=Python]
 H_FPMI = ifco.fpmi_freq_resp(nu, r_1, t_1, r_2, L, PHI_0, P_IN, OMEG)
 H_FPMI_LP = ifco.fpmi_freq_resp(nu, r_1, t_1, r_2, L, PHI_0, P_IN, OMEG, 
 				low_pass='True')
-\end{lstlisting}
+\end{lstlisting}\end{spacing}
 
-\begin{lstlisting}[frame=single, language=Python]
+\begin{spacing}{1}\begin{lstlisting}[frame=single, language=Python]
 H_PRFPMI = ((G_PRC_actual)**.5)*H_FPMI
-\end{lstlisting}
+\end{lstlisting}\end{spacing}
 
 We estimate the FP's pole frequency
-\[  1 - r_1 r_2 e^{-2i \omega_g L / c} = 0 \] therefore when:
-\[ e^{-i \omega_g L / c} = \frac{1}{\sqrt{r_1 r_2}} \] we acquire the
+\begin{equation}  1 - r_1 r_2 e^{-2i \omega_g L / c} = 0 \end{equation} therefore when:
+\begin{equation} e^{-i \omega_g L / c} = \frac{1}{\sqrt{r_1 r_2}} \end{equation} we acquire the
 pole frequency \(\omega_\mathrm{pole}\) as indicated in the low pass
-\[ f_\mathrm{pole} = \frac{1}{4\pi \tau_{s}} =  \frac{c}{4 \pi L} \frac{1- r_1 r_2}{\sqrt{r_1 r_2}} = \frac{\nu_\mathrm{FSR}}{2 \pi} \frac{1- r_1 r_2}{\sqrt{r_1 r_2}} = \frac{\nu_\mathrm{FSR}}{\mathcal{F}} \]Might
+\begin{equation} f_\mathrm{pole} = \frac{1}{4\pi \tau_{s}} =  \frac{c}{4 \pi L} \frac{1- r_1 r_2}{\sqrt{r_1 r_2}} = \frac{\nu_\mathrm{FSR}}{2 \pi} \frac{1- r_1 r_2}{\sqrt{r_1 r_2}} = \frac{\nu_\mathrm{FSR}}{\mathcal{F}} \end{equation}Might
 as well compare it to our Michelson response:
-\[ H_{\mathrm{MI}}(\omega_g) = \frac{2 L \Omega}{c}e^{-i L \omega / c} \frac{\mathrm{sin}(L \omega /c)}{L \omega /c} \]
+\begin{equation} H_{\mathrm{MI}}(\omega_g) = \frac{2 L \Omega}{c}e^{-i L \omega / c} \frac{\mathrm{sin}(L \omega /c)}{L \omega /c} \end{equation}
 
-\begin{lstlisting}[frame=single, language=Python]
+\begin{spacing}{1}\begin{lstlisting}[frame=single, language=Python]
 H_MI = ifco.mich_freq_resp(nu, L, PHI_0, P_IN, OMEG)
-\end{lstlisting}
+\end{lstlisting}\end{spacing}
 
-\begin{lstlisting}[frame=single, language=Python]
+\begin{spacing}{1}\begin{lstlisting}[frame=single, language=Python]
 plt.loglog(nu, ifco.bode_amp(H_MI), label= 'MICH', linewidth= line_width, alpha=.3)
 plt.loglog(nu, ifco.bode_amp(H_FPMI), label='FPMI', linewidth=line_width, alpha=.3)
 plt.loglog(nu, ifco.bode_amp(H_PRFPMI), label='PRFPMI', linewidth = line_width)
@@ -189,9 +191,9 @@ plt.xlabel('frequency [Hz]')
 plt.ylabel('H(f) [$\mathdefault{W/m}$]')
 lgd=plt.legend()
 plt.savefig('../figs/INTRO/prfpmi_fr.pdf', dpi=300, bbox_inches='tight')
-\end{lstlisting}
+\end{lstlisting}\end{spacing}
 
-\begin{lstlisting}[frame=single, language=Python]
+\begin{spacing}{1}\begin{lstlisting}[frame=single, language=Python]
 plt.semilogx(nu,(180/np.pi)*np.arctan(np.imag(H_FPMI)/np.real(H_FPMI)), '--', 
 	     linewidth=line_width)
 plt.semilogx(nu,(180/np.pi)*np.arctan(np.imag(H_MI)/np.real(H_MI)), '--', 
@@ -201,11 +203,11 @@ plt.semilogx(nu,(180/np.pi)*np.arctan(np.imag(H_PRFPMI)/np.real(H_PRFPMI)),
 plt.xlim([1,100000])
 plt.ylabel('phase [deg]')
 plt.xlabel('Frequency [Hz]')
-\end{lstlisting}
+\end{lstlisting}\end{spacing}
 
-\begin{lstlisting}
+\begin{spacing}{1}\begin{lstlisting}
 Text(0.5, 0, 'Frequency [Hz]')
-\end{lstlisting}
+\end{lstlisting}\end{spacing}
 
 \hypertarget{signal-recyclinginitially-not-used-in-early-iterations-of-ligo-intial-ligo-and-enhanced-ligo-signal-recycling-imagines-using-a-partially-reflective-mirror-at-the-anti-symmetric-port.-and-at-first-glance-it-seems-to-not-very-much-make-sense-to-have-a-mirror-at-detector-output-as-you-would-potentially-attenuate-gravitational-wave-signals-by-said-mirror-reflection-coefficient.}{%
 \section{SIGNAL RECYCLING}
@@ -225,9 +227,9 @@ power recycling discussion. The relationship of the differential signal
 output of the PRFPMI with respect to the newly placed mirror at the
 anti-symmetric port is represented by the following:
 
-\[ t_\mathrm{SRC} = \frac{t_\mathrm{ITM}t_\mathrm{SRM} e^{i  (k + \Omega/c) \mathscr{l}_\mathrm{SRC}}}{1- r_\mathrm{ITM}r_\mathrm{SRM} e^{2i  (k + \Omega/c) \mathscr{l}_\mathrm{SRC}}}\]
+\begin{equation} t_\mathrm{SRC} = \frac{t_\mathrm{ITM}t_\mathrm{SRM} e^{i  (k + \Omega/c) \mathscr{l}_\mathrm{SRC}}}{1- r_\mathrm{ITM}r_\mathrm{SRM} e^{2i  (k + \Omega/c) \mathscr{l}_\mathrm{SRC}}}\end{equation}
 
-\[ r_\mathrm{SRC} = \frac{r_\mathrm{ITM} - r_\mathrm{SRM} e^{2i  (k + \Omega/c) l_\mathrm{SRC}}}{1- r_\mathrm{ITM}r_\mathrm{SRM} e^{2i  (k + \Omega/c) \mathscr{l}_\mathrm{SRC}}}\]
+\begin{equation} r_\mathrm{SRC} = \frac{r_\mathrm{ITM} - r_\mathrm{SRM} e^{2i  (k + \Omega/c) l_\mathrm{SRC}}}{1- r_\mathrm{ITM}r_\mathrm{SRM} e^{2i  (k + \Omega/c) \mathscr{l}_\mathrm{SRC}}}\end{equation}
 
 as \(k \textgreater \textgreater \Omega_\mathrm{gw}/c\) for $ 1 \textless \Omega_\mathrm{gw} \textless 5 \cdot 10^3 $
 
@@ -236,36 +238,36 @@ Therefore with a pre-defined
 cavity pole AND gain is a function of the SRM reflectivity and
 microscopic length tuning:
 
-\[ t_\mathrm{SRC} = \frac{t_\mathrm{ITM}t_\mathrm{SRM} e^{i k \mathscr{l}_\mathrm{SRC}}}{1- r_\mathrm{ITM}r_\mathrm{SRM} e^{2i k \mathscr{l}_\mathrm{SRC}}}\]
+\begin{equation} t_\mathrm{SRC} = \frac{t_\mathrm{ITM}t_\mathrm{SRM} e^{i k \mathscr{l}_\mathrm{SRC}}}{1- r_\mathrm{ITM}r_\mathrm{SRM} e^{2i k \mathscr{l}_\mathrm{SRC}}}\end{equation}
 
-\[ r_\mathrm{SRC} = \frac{r_\mathrm{ITM} - r_\mathrm{SRM} e^{2i k l_\mathrm{SRC}}}{1- r_\mathrm{ITM}r_\mathrm{SRM} e^{2i k \mathscr{l}_\mathrm{SRC}}}\]We
+\begin{equation} r_\mathrm{SRC} = \frac{r_\mathrm{ITM} - r_\mathrm{SRM} e^{2i k l_\mathrm{SRC}}}{1- r_\mathrm{ITM}r_\mathrm{SRM} e^{2i k \mathscr{l}_\mathrm{SRC}}}\end{equation}We
 now observe the tuning extrema: 
 - On resonance
 \(2ik \mathscr{l}_\mathrm{SRC} = 2i\phi_\mathrm{SRC} = 0\):
-\[ r_\mathrm{SRC \; , \; \phi_{SRC} = 0} = \frac{r_\mathrm{ITM} - r_\mathrm{SRM}}{1- r_\mathrm{ITM}r_\mathrm{SRM}}\]
+\begin{equation} r_\mathrm{SRC \; , \; \phi_{SRC} = 0} = \frac{r_\mathrm{ITM} - r_\mathrm{SRM}}{1- r_\mathrm{ITM}r_\mathrm{SRM}}\end{equation}
 - On resonance $2ik \mathscr{l}_\mathrm{SRC} = 2i\phi_\mathrm{SRC}= \frac{\pi}{2} $:
-\[ r_\mathrm{SRC \; , \; \phi_{SRC} = \pi} = \frac{r_\mathrm{ITM} + r_\mathrm{SRM}}{1+ r_\mathrm{ITM}r_\mathrm{SRM}}\]
+\begin{equation} r_\mathrm{SRC \; , \; \phi_{SRC} = \pi} = \frac{r_\mathrm{ITM} + r_\mathrm{SRM}}{1+ r_\mathrm{ITM}r_\mathrm{SRM}}\end{equation}
 \begin{multline*}
 	\mathrm{H}_\mathrm{DRFPMI} =  \mathrm{G}_\mathrm{PR} \mathrm{P}_\mathrm{in} L \Omega \bigg[ \frac{ t_\mathrm{ITM}^2 r_\mathrm{ETM}}{(t_\mathrm{ITM}^2 + r_\mathrm{ITM}^2)r_\mathrm{ETM} - r_\mathrm{ITM}} \frac{t_\mathrm{SRM} t_\mathrm{ITM} e^{i\phi_\mathrm{SRC}}}{1-r_\mathrm{ITM} r_\mathrm{SRM} e^{i2\phi_\mathrm{SRC}}} \times \\
 				      \frac{e^{-i 2 \pi L f / c} \mathrm{sin}( 2 \pi f / c)}{ 2 \pi L f } \times \\
 				      \frac{\mathrm{sin}(\phi_0)}{1- [(r_\mathrm{ITM} - r_\mathrm{SRM} e^{i2\phi_\mathrm{SRC}})/(1-r_\mathrm{ITM} r_\mathrm{SRM} e^{i2\phi_\mathrm{SRC}})] r_\mathrm{ETM} e^{-i 4 \pi L f / c}} \bigg] 
 \end{multline*}
 
-\begin{lstlisting}[frame=single, language=Python]
+\begin{spacing}{1}\begin{lstlisting}[frame=single, language=Python]
 l_SRC = 56  #[m]
 T_SRM = .30
 R_SRM = 1-T_SRM
 t_SRM = T_SRM**.5
 r_SRM = R_SRM**.5
 phi_SRC = np.pi
-\end{lstlisting}
+\end{lstlisting}\end{spacing}
 
-\begin{lstlisting}[frame=single, language=Python]
+\begin{spacing}{1}\begin{lstlisting}[frame=single, language=Python]
 H_DRFPMI = ifco.drfpmi_freq_resp(nu, G_PRC_opt, r_1, t_1, r_2, r_SRM, t_SRM, 
 				 phi_SRC, L, PHI_0, P_IN, OMEG)
-\end{lstlisting}
+\end{lstlisting}\end{spacing}
 
-\begin{lstlisting}[frame=single, language=Python]
+\begin{spacing}{1}\begin{lstlisting}[frame=single, language=Python]
 bode_test=False
 if bode_test:
     fig, ax1 = plt.subplots()
@@ -292,9 +294,9 @@ if bode_test:
 		  linestyle='--', linewidth=20.0,dashes=(4,10),alpha=.25, color='C2')
     plt.xlim([1,1e5])
     plt.ylabel('phase [deg]', color='C1', alpha=.5)
-\end{lstlisting}
+\end{lstlisting}\end{spacing}
 
-\begin{lstlisting}[frame=single, language=Python]
+\begin{spacing}{1}\begin{lstlisting}[frame=single, language=Python]
 plt.loglog(nu, ifco.bode_amp(H_MI), label= 'MICH', linewidth= line_width, alpha=.4)
 plt.loglog(nu, ifco.bode_amp(H_FPMI), label='FPMI', linewidth=line_width, alpha=.4)
 plt.loglog(nu, ifco.bode_amp(H_PRFPMI), label='PRFPMI', linewidth = line_width, 
@@ -307,9 +309,9 @@ plt.xlabel('frequency [Hz]')
 plt.ylabel('H(f) [$\mathdefault{W/m}$]')
 lgd=plt.legend()
 plt.savefig('../figs/INTRO/drfpmi_fr.pdf', dpi=300, bbox_inches='tight')
-\end{lstlisting}
+\end{lstlisting}\end{spacing}
 
-\begin{lstlisting}[frame=single, language=Python]
+\begin{spacing}{1}\begin{lstlisting}[frame=single, language=Python]
 plt.semilogx(nu,ifco.bode_ph(H_MI), '--', linewidth=line_width, 
 	     alpha=.4, label='MICH')
 plt.semilogx(nu,ifco.bode_ph(H_FPMI),'--', linewidth=line_width, 
@@ -322,13 +324,13 @@ plt.ylim([-91,91])
 plt.ylabel('phase [deg]')
 plt.xlabel('Frequency [Hz]')
 plt.legend()
-\end{lstlisting}
+\end{lstlisting}\end{spacing}
 
-\begin{lstlisting}[frame=single, language=Python]
+\begin{spacing}{1}\begin{lstlisting}[frame=single, language=Python]
 Sn = ifco.N_shot(OMEG, P_IN)
-\end{lstlisting}
+\end{lstlisting}\end{spacing}
 
-\begin{lstlisting}[frame=single, language=Python]
+\begin{spacing}{1}\begin{lstlisting}[frame=single, language=Python]
 plt.loglog(nu, Sn/ifco.bode_amp(H_MI), label= 'MICH', linewidth=line_width)
 plt.loglog(nu, Sn/ifco.bode_amp(H_FPMI), label='FPMI', linewidth=line_width)
 plt.loglog(nu, Sn/ifco.bode_amp(H_PRFPMI), label='PRFPMI', linewidth=line_width)
@@ -340,5 +342,5 @@ plt.xlabel('frequency [Hz]')
 plt.ylabel('$\mathdefault{[ 1 / \sqrt{\mathdefault{Hz}}]}$')
 lgd=plt.legend()
 plt.savefig('../figs/INTRO/strain_compare.pdf', dpi=300, bbox_inches='tight')
-\end{lstlisting}
+\end{lstlisting}\end{spacing}
 

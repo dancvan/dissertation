@@ -1,4 +1,4 @@
-\begin{lstlisting}[frame=single, language=Python]
+\begin{spacing}{1} \begin{lstlisting}[frame=single, language=Python]
 import numpy as np 
 import matplotlib.pyplot as plt
 import scipy.signal as sig
@@ -14,32 +14,32 @@ if os.path.isdir(plt_style_dir) == True:
     plt.style.use(plt_style_dir + 'ppt2latexsubfig.mplstyle')
 plt.rcParams["font.family"] = "Times New Roman"
 line_width=7.5
-\end{lstlisting}
+\end{lstlisting} \end{spacing}
 
 Let's start with the simple Fabry Perót cavity. The following are
 equations that characterize the circulating and reflected fields (both
 critical to measuring the phase response of the FP cavity to GWs):
 
-\[
+\begin{equation}
 E(t) = t_1 E_{in} + r_1 r_2 E(t - 2T) e^{-i \Delta \phi(t)} 
-\]
+\end{equation}
 
-\[
+\begin{equation}
 E_r(t) = -r_1 E_{in} + t_1 r_2 E(t - 2T) e^{-i \Delta \phi(t)}
-\]
+\end{equation}
 
 \(T = L/c\) is the time it takes light to reach the end of the cavity
 and \(\Delta \phi(t)\) is the phase rotation.
 
 We can define the static phase rotation (no GW passing through) as :
-\[\Delta \phi = 2kL = 4 \pi L /\lambda_{opt}  \]
+\begin{equation}\Delta \phi = 2kL = 4 \pi L /\lambda_{opt}  \end{equation}
 
 And if L is tuned just right \(2kL = 2 \pi n\) so the cavity is just
 tuned for resonance
 
 If we put a gravitational wave in the mix we redefine this phase
 rotation as such that:
-\[\Delta \phi =  \frac{\omega_0}{2} \int_{t-\frac{2L}{c}}^{t} h(t')dt' \]
+\begin{equation}\Delta \phi =  \frac{\omega_0}{2} \int_{t-\frac{2L}{c}}^{t} h(t')dt' \end{equation}
 
 This assumes that the static phase rotation satisfies
 \(2\omega_0L/c = 2 \pi n\). Which is the same thing that we said above
@@ -52,27 +52,27 @@ what we hope for. ANYWAY\ldots{}
 If the \(\Delta \phi\) becomes such that the cavity is thrown off
 resonance we get a time dependent intra-cavity field:
 
-\[ E(t) = \bar{E} + \delta E(t) \]
+\begin{equation} E(t) = \bar{E} + \delta E(t) \end{equation}
 
 and if the phase rotation (\(\Delta \phi\)) is super small\ldots{} which
 is pretty much guaranteed with gravy waves, we can say:
 
-\[ e^{i\Delta \phi} = 1- i \Delta \phi \]
+\begin{equation} e^{i\Delta \phi} = 1- i \Delta \phi \end{equation}
 
 Using equations \ref{eq7} and \ref{eq8} in \ref{eq3} we get:
 
-\[ \bar{E} + \delta E(t) = t_1 E_{in} -r_1r_2\bar{E} + r_1r_2 \delta E(t-2T) - ir_1r_2\bar{E}\Delta \phi(t)) \]
+\begin{equation} \bar{E} + \delta E(t) = t_1 E_{in} -r_1r_2\bar{E} + r_1r_2 \delta E(t-2T) - ir_1r_2\bar{E}\Delta \phi(t)) \end{equation}
 
 We can parse this into time dependent and time independent terms:
 
-\[ \bar{E} = t_1 E_{in} -r_1r_2\bar{E} \]
+\begin{equation} \bar{E} = t_1 E_{in} -r_1r_2\bar{E} \end{equation}
 
-\[ \delta E(t) = r_1r_2 \delta E(t-2T) - ir_1r_2\bar{E}\Delta \phi(t) \]
+\begin{equation} \delta E(t) = r_1r_2 \delta E(t-2T) - ir_1r_2\bar{E}\Delta \phi(t) \end{equation}
 
 Since the time dependent phase information is encoded in \ref{eq11} we
 will take the laplace transform of this equation to yield:
 
-\[\delta E(s) = -i \frac{r_1r_2 \bar{E}}{1-r_1r_2e^{-2sT}} \Delta \phi(s)\]
+\begin{equation}\delta E(s) = -i \frac{r_1r_2 \bar{E}}{1-r_1r_2e^{-2sT}} \Delta \phi(s)\end{equation}
 
 \textbf{YAS!} we are now one step closer to getting a useful expression
 for the phase response. But again.. what does this last equation mean?
@@ -87,22 +87,22 @@ differential with the \textbf{reflected} electric field.
 To do this.. we have to combine equations \ref{eq3} and \ref{eq4}. (an
 easy way to do this is to get rid of the $ r_2 E(t - 2T) e^{-i \Delta \phi(t)} $ ) :
 
-\[ E_r(t) = \frac{t_1}{r_1}E(t) - \frac{t_1^2 + r_2^2}{r_1} E_{in}\]
+\begin{equation} E_r(t) = \frac{t_1}{r_1}E(t) - \frac{t_1^2 + r_2^2}{r_1} E_{in}\end{equation}
 
 if the cavity is unperturbed:
 
-\[ \bar{E}_r = \bigg(\frac{r_2(r_1^2 + t_1^2) - r_1}{t_1} \bigg) \bar{E} \]
+\begin{equation} \bar{E}_r = \bigg(\frac{r_2(r_1^2 + t_1^2) - r_1}{t_1} \bigg) \bar{E} \end{equation}
 
 and if we perturb the cavity we see that the change in the intra-cavity
 field is directly related to the change in the reflected field:
 
-\[ \Delta \phi_r(s) \equiv \frac{\delta E(s)}{\bar{E}} = \frac{t_1^2r_2}{(t_1^2 + r_1^2)r_2 -r_1} \frac{\Delta \phi(s)}{1-r_1r_2e^{-2sT}}\]
+\begin{equation} \Delta \phi_r(s) \equiv \frac{\delta E(s)}{\bar{E}} = \frac{t_1^2r_2}{(t_1^2 + r_1^2)r_2 -r_1} \frac{\Delta \phi(s)}{1-r_1r_2e^{-2sT}}\end{equation}
 
 This implies that there is an additional frequency dependent factor in
 your phase shift and this translates into your FPMI transfer function
 as:
 
-\[ H_{FPMI}(\omega_g) = \frac{2 \Delta \phi_r(\omega_g)}{h(\omega_g)} =  \frac{t_1^2r_2}{(t_1^2 + r_1^2)r_2 -r_1} \frac{H_{\mathrm{MI}}(\omega_g, L)}{1-r_1r_2e^{-2i \omega_g L /c }}  \]
+\begin{equation} H_{FPMI}(\omega_g) = \frac{2 \Delta \phi_r(\omega_g)}{h(\omega_g)} =  \frac{t_1^2r_2}{(t_1^2 + r_1^2)r_2 -r_1} \frac{H_{\mathrm{MI}}(\omega_g, L)}{1-r_1r_2e^{-2i \omega_g L /c }}  \end{equation}
 
 Whew\ldots. that was a lot\ldots. now let's code it up Since we can
 seperate the calculation into two.. I'm going to parse out the
@@ -110,7 +110,7 @@ calculation between the constant Fabry Perót term and the term with the
 frequency dependence. But first, lets set up our parameters for our
 FPMI:
 
-\begin{lstlisting}[frame=single, language=Python]
+\begin{spacing}{1} \begin{lstlisting}[frame=single, language=Python]
 # Some parameters
 cee = np.float64(299792458)
 OMEG = np.float64(2*np.pi*cee/(1064.0*1e-9))
@@ -131,44 +131,44 @@ R_2 = 1-T_2
 t_1 = T_1**.5
 r_1 = R_1**.5
 r_2 = R_2**.5
-\end{lstlisting}
+\end{lstlisting} \end{spacing}
 
 Now we can compute:
-\[ H_{FPMI}(\omega_g) =  \frac{t_1^2r_2}{(t_1^2 + r_1^2)r_2 -r_1}\cdot \frac{H_{\mathrm{MI}}(\omega_g, L)}{1-r_1r_2e^{-2i \omega_g L /c }}  \]
+\begin{equation} H_{FPMI}(\omega_g) =  \frac{t_1^2r_2}{(t_1^2 + r_1^2)r_2 -r_1}\cdot \frac{H_{\mathrm{MI}}(\omega_g, L)}{1-r_1r_2e^{-2i \omega_g L /c }}  \end{equation}
 
-\begin{lstlisting}[frame=single, language=Python]
+\begin{spacing}{1} \begin{lstlisting}[frame=single, language=Python]
 H_FPMI = FPMI(nu, r_1, t_1, r_2, L, PHI_0, P_IN, OMEG)
-\end{lstlisting}
+\end{lstlisting} \end{spacing}
 
 We estimate the FP's pole frequency
-\[  1 - r_1 r_2 e^{-2i \omega_g L / c} = 0 \] therefore when:
-\[ e^{-i \omega_g L / c} = \frac{1}{\sqrt{r_1 r_2}} \] we acquire the
+\begin{equation}  1 - r_1 r_2 e^{-2i \omega_g L / c} = 0 \end{equation} therefore when:
+\begin{equation} e^{-i \omega_g L / c} = \frac{1}{\sqrt{r_1 r_2}} \end{equation} we acquire the
 pole frequency \(\omega_\mathrm{pole}\) as indicated in the low pass
-\[ f_\mathrm{pole} = \frac{1}{4\pi \tau_{s}} =  \frac{c}{4 \pi L} \frac{1- r_1 r_2}{\sqrt{r_1 r_2}} = \frac{\nu_\mathrm{FSR}}{2 \pi} \frac{1- r_1 r_2}{\sqrt{r_1 r_2}} = \frac{\nu_\mathrm{FSR}}{\mathcal{F}} \]
+\begin{equation} f_\mathrm{pole} = \frac{1}{4\pi \tau_{s}} =  \frac{c}{4 \pi L} \frac{1- r_1 r_2}{\sqrt{r_1 r_2}} = \frac{\nu_\mathrm{FSR}}{2 \pi} \frac{1- r_1 r_2}{\sqrt{r_1 r_2}} = \frac{\nu_\mathrm{FSR}}{\mathcal{F}} \end{equation}
 
 ALso, understanding that the cavity Finesse can be defined as
 
-\[ \mathcal{F} = \frac{\pi \sqrt{r_i r_e}}{1- r_i r_e} \]
+\begin{equation} \mathcal{F} = \frac{\pi \sqrt{r_i r_e}}{1- r_i r_e} \end{equation}
 
 we also can invert for a high value of finesse $ \mathcal{F} \textgreater\textgreater{} \pi $:
 
-\[ r_i r_e \approx 1 - \frac{\pi}{\mathcal{F}} \]
+\begin{equation} r_i r_e \approx 1 - \frac{\pi}{\mathcal{F}} \end{equation}
 
-\begin{lstlisting}[frame=single, language=Python]
+\begin{spacing}{1} \begin{lstlisting}[frame=single, language=Python]
 f_pole = 1/(((4*np.pi*L)*np.sqrt(r_1*r_2))/(cee*(1-r_1*r_2)))
 def fpmi_lp(freq, cav_pole):
     return 1/(1 + 1j*(freq/cav_pole))#*np.exp(1j*freq/cav_pole))
 H_FPMI_LP = fpmi_lp(nu, f_pole)
-\end{lstlisting}
+\end{lstlisting} \end{spacing}
 
 Might as well compare it to our Michelson response:
-\[ H_{\mathrm{MI}}(\omega_g) = \frac{2 L \Omega}{c}e^{-i L \omega / c} \frac{\mathrm{sin}(L \omega /c)}{L \omega /c} \]
+\begin{equation} H_{\mathrm{MI}}(\omega_g) = \frac{2 L \Omega}{c}e^{-i L \omega / c} \frac{\mathrm{sin}(L \omega /c)}{L \omega /c} \end{equation}
 
-\begin{lstlisting}[frame=single, language=Python]
+\begin{spacing}{1} \begin{lstlisting}[frame=single, language=Python]
 H_MICH = MICH(nu, L, PHI_0, P_IN, OMEG)
-\end{lstlisting}
+\end{lstlisting} \end{spacing}
 
-\begin{lstlisting}[frame=single, language=Python]
+\begin{spacing}{1} \begin{lstlisting}[frame=single, language=Python]
 fig, ax1 = plt.subplots()
 ax1.set_xlabel('frequency [Hz]')
 ax1.set_ylabel('H$_\mathdefault{FPMI} \; \mathdefault{ [W / m] } $ ', color='C0')
@@ -186,13 +186,13 @@ ax2.semilogx(nu,bode_ph(H_FPMI),'--', linewidth=line_width, color='C1')
 plt.xlim([1,1e5])
 plt.ylabel('phase [deg]', color='C1')
 #fig.savefig('../figs/INTRO/fpmi_fr.pdf', dpi=300, bbox_inches='tight')
-\end{lstlisting}
+\end{lstlisting} \end{spacing}
 
-\begin{lstlisting}
+\begin{spacing}{1} \begin{lstlisting}
 Text(0, 0.5, 'phase [deg]')
-\end{lstlisting}
+\end{lstlisting} \end{spacing}
 
-\begin{lstlisting}[frame=single, language=Python]
+\begin{spacing}{1} \begin{lstlisting}[frame=single, language=Python]
 plt.loglog(nu,bode_amp(H_MICH), label= 'MICH', linewidth= line_width, alpha=.5)
 plt.loglog(nu,bode_amp(H_FPMI), label='FPMI', linewidth=line_width)
 #plt.loglog(nu,bode_amp(H_FPMI_LP)*bode_amp(H_FPMI)[0], label='FPMI LP', 
@@ -205,13 +205,13 @@ plt.xlabel('frequency [Hz]')
 plt.ylabel('H(f) $\mathdefault{[W/m]}$')
 lgd=plt.legend()
 plt.savefig('../figs/INTRO/fpmi_fr.pdf', dpi=300, bbox_inches='tight')
-\end{lstlisting}
+\end{lstlisting} \end{spacing}
 
 You can clearly see that there is a clear increase in gain at lower
 frequencies (below 5000 kHz) Doesn't exactly look like Kiwamu's but
 close enough?
 
-\begin{lstlisting}[frame=single, language=Python]
+\begin{spacing}{1} \begin{lstlisting}[frame=single, language=Python]
 plt.semilogx(nu,bode_ph(H_MICH), '--', label='MICH', linewidth= line_width, alpha=.5)
 plt.semilogx(nu,bode_ph(H_FPMI),'--', label='FPMI', linewidth= line_width)
 #plt.semilogx(nu,bode_ph(H_FPMI_LP),linestyle='--', linewidth=3.0,dashes=(3,10))
@@ -219,13 +219,13 @@ plt.xlim([1,100000])
 plt.ylabel('phase [deg]')
 plt.xlabel('Frequency [Hz]' )
 lgd=plt.legend()
-\end{lstlisting}
+\end{lstlisting} \end{spacing}
 
-\begin{lstlisting}[frame=single, language=Python]
+\begin{spacing}{1} \begin{lstlisting}[frame=single, language=Python]
 Sh_noise = N_shot(OMEG, P_IN)
-\end{lstlisting}
+\end{lstlisting} \end{spacing}
 
-\begin{lstlisting}[frame=single, language=Python]
+\begin{spacing}{1} \begin{lstlisting}[frame=single, language=Python]
 plt.loglog(nu,Sh_noise/bode_amp(H_MICH), label= 'MICH', 
 	   linewidth= line_width, alpha=.5)
 plt.loglog(nu,Sh_noise/bode_amp(H_FPMI), label='FPMI', linewidth=line_width)
@@ -238,5 +238,5 @@ plt.xlabel('frequency [Hz]')
 plt.ylabel('H(f) $\mathdefault{[1/\sqrt{\mathdefault{Hz}}]}$')
 lgd=plt.legend()
 fig.savefig('../figs/INTRO/fpmi_sensi.pdf', dpi=300, bbox_inches='tight')
-\end{lstlisting}
+\end{lstlisting} \end{spacing}
 

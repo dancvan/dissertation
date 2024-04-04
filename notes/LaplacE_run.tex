@@ -1,4 +1,4 @@
-\begin{lstlisting}[frame=single, language=Python]
+\begin{spacing}{1} \begin{lstlisting}[frame=single, language=Python]
 import set_params
 import laplace
 import matplotlib.pyplot as plt
@@ -9,17 +9,17 @@ from matplotlib import cm
 from matplotlib import rcParams
 import time
 import torch
-\end{lstlisting}
+\end{lstlisting} \end{spacing}
 
 \hypertarget{params-import}{%
 \subsection{Params Import}\label{params-import}}
 
-\begin{lstlisting}[frame=single, language=Python]
+\begin{spacing}{1} \begin{lstlisting}[frame=single, language=Python]
 pdict = set_params.pdict
 pdict
-\end{lstlisting}
+\end{lstlisting} \end{spacing}
 
-\begin{lstlisting}[frame=single, language=Python]
+\begin{spacing}{1} \begin{lstlisting}[frame=single, language=Python]
 {'coords': 'cylindrical',
  'assembly': 1,
  'origin': array([0, 0]),
@@ -100,13 +100,13 @@ pdict
    'rho1_bound': 0,
    'rho2_bound': array([0.04, 0.04]),
    'z': 0.0155}}}
-\end{lstlisting}
+\end{lstlisting} \end{spacing}
 
 \hypertarget{initializing-coordinates-simulation-space}{%
 \subsection{Initializing coordinates / simulation
 space}\label{initializing-coordinates-simulation-space}}
 
-\begin{lstlisting}[frame=single, language=Python]
+\begin{spacing}{1} \begin{lstlisting}[frame=single, language=Python]
 # initialize coordinates
 coord_dict = laplace.init_coords(pdict) 
 
@@ -121,36 +121,36 @@ inv_rho = coord_dict['coords']['invrho']
 #indices 
 irho = coord_dict['indices']['rho']
 iz = coord_dict['indices']['z']
-\end{lstlisting}
+\end{lstlisting} \end{spacing}
 
-\begin{lstlisting}[frame=single, language=Python]
+\begin{spacing}{1} \begin{lstlisting}[frame=single, language=Python]
 /Users/dancvan/Documents/git/cylaplace/laplace.py:27: RuntimeWarning: divide by zero encountered in true_divide
   invrho = 1/rho
-\end{lstlisting}
+\end{lstlisting} \end{spacing}
 
 \hypertarget{potential-map-initialization-v-with-dielectric-tensor-initialization-chi_e}{%
 \section{Potential map initialization (V) with Dielectric tensor
 initialization
 (chi\_e)}\label{potential-map-initialization-v-with-dielectric-tensor-initialization-chi_e}}
 
-\begin{lstlisting}[frame=single, language=Python]
+\begin{spacing}{1} \begin{lstlisting}[frame=single, language=Python]
 fV = laplace.anal_sol(pdict)
-\end{lstlisting}
+\end{lstlisting} \end{spacing}
 
-\begin{lstlisting}[frame=single, language=Python]
+\begin{spacing}{1} \begin{lstlisting}[frame=single, language=Python]
 plt.plot(coord_dict['indices']['z']*1e-4,fV['V_anal'](coord_dict['indices']['z']*1e-4))
-\end{lstlisting}
+\end{lstlisting} \end{spacing}
 
-\begin{lstlisting}[frame=single, language=Python]
+\begin{spacing}{1} \begin{lstlisting}[frame=single, language=Python]
 # intialize potential map, electric susceptibility, and LAMBD operator
 V = laplace.init_V(N)
 chi_e = laplace.init_V(N)
 chi_e_sub = pdict['optic']['sub_eps']-1
 chi_e_coat = pdict['optic']['coat_eps']-1
 LAMBD = laplace.build_lambd(irho, iz, N)
-\end{lstlisting}
+\end{lstlisting} \end{spacing}
 
-\begin{lstlisting}[frame=single, language=Python]
+\begin{spacing}{1} \begin{lstlisting}[frame=single, language=Python]
 # Translating (Dirichlet) boundary conditions to sim 
 
 # Initial value 
@@ -184,9 +184,9 @@ exp_zend = z==(max(z)-pdict['res'][1])
 loc_sub = np.logical_and(np.abs(z - pdict['optic']['z_com']) < np.round((pdict['optic']['thickness']/2),pdict['res_exp'][1]), (rho<np.round((pdict['optic']['diam']/2),pdict['res_exp'][0])))
 loc_coat1 = np.logical_and((z==np.round(pdict['loc_params']['front of optic']['z'],pdict['res_exp'][1])), (rho < np.round((pdict['optic']['diam']/2), pdict['res_exp'][0])))
 loc_coat2 = np.logical_and((z==np.round((pdict['loc_params']['front of optic']['z']-pdict['res'][1]),pdict['res_exp'][1])), (rho < (np.round(pdict['optic']['diam']/2, pdict['res_exp'][0]))))
-\end{lstlisting}
+\end{lstlisting} \end{spacing}
 
-\begin{lstlisting}[frame=single, language=Python]
+\begin{spacing}{1} \begin{lstlisting}[frame=single, language=Python]
 ## Initialize BCs
 
 #### Set susceptibility
@@ -218,17 +218,17 @@ V[r_max] = V_exp(V_char, R_char, V[exp_rend], pdict['res'][0])
 V[z_min] = V_exp(V_char, R_char, V[exp_z0], pdict['res'][1])
 #z=z_max
 V[z_max] = V_exp(V_char, R_char, V[exp_zend], pdict['res'][1])
-\end{lstlisting}
+\end{lstlisting} \end{spacing}
 
-\begin{lstlisting}[frame=single, language=Python]
+\begin{spacing}{1} \begin{lstlisting}[frame=single, language=Python]
 #### Build operators
 lap = laplace.build_lap(pdict, LAMBD, irho)
 grad = laplace.build_grad(pdict, LAMBD)
 disp = laplace.build_disp(pdict, LAMBD)
 LAP = laplace.build_LAP(pdict, coord_dict, lap, grad, disp, chi_e)
-\end{lstlisting}
+\end{lstlisting} \end{spacing}
 
-\begin{lstlisting}[frame=single, language=Python]
+\begin{spacing}{1} \begin{lstlisting}[frame=single, language=Python]
 t = time.time() 
 #### run sim
 for itr in range(0, pdict['iters']):
@@ -248,13 +248,13 @@ for itr in range(0, pdict['iters']):
     V[loc_bp] = pdict[bp]['voltage']
 elapsed = time.time() - t
 print(elapsed)
-\end{lstlisting}
+\end{lstlisting} \end{spacing}
 
-\begin{lstlisting}
+\begin{spacing}{1} \begin{lstlisting}
 84.81229615211487
-\end{lstlisting}
+\end{lstlisting} \end{spacing}
 
-\begin{lstlisting}[frame=single, language=Python]
+\begin{spacing}{1} \begin{lstlisting}[frame=single, language=Python]
 fig = plt.figure(figsize = (18.5,21))
 ax = plt.axes(projection='3d') 
 surf = ax.plot_surface(rho.reshape(N,N), z.reshape(N,N),V.reshape(N,N),rstride=1,cstride=1,cmap=cm.inferno,alpha=1,linewidth=10,rasterized=True)
@@ -276,14 +276,14 @@ bottom=-.09
 fig.subplots_adjust(top=top,bottom=bottom)             
 fig.set_size_inches((fig.get_size_inches()[0],axes_height/(top-bottom)))
 #fig.savefig(fig_exp_dir + 'assembly1_sim.pdf', dpi=300, format='pdf')
-\end{lstlisting}
+\end{lstlisting} \end{spacing}
 
-\begin{lstlisting}[frame=single, language=Python]
+\begin{spacing}{1} \begin{lstlisting}[frame=single, language=Python]
 # Plotting potential and field profiles
 laplace.pltxsect(pdict['loc_params']['halfway out on optic'], coord_dict, V)
 plt.plot(coord_dict['indices']['z']*1e-4,fV['V_anal'](coord_dict['indices']['z']*1e-4))
 
 ## Comparison to analytical solutions
-\end{lstlisting}
+\end{lstlisting} \end{spacing}
 
 

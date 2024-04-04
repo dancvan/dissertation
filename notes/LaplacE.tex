@@ -1,3 +1,4 @@
+\begin{spacing}{1}
 \begin{lstlisting}[frame=single, language=Python]
 import numpy as np
 import matplotlib.pyplot as plt
@@ -8,7 +9,8 @@ import torch
 
 
 # Computes Laplace's equation in cartesian and cylindrical coordinates
-# For some related detailed documentation: Numerical recipies (3rd edition) (Chapter 20 [Partial Differential Equations])
+# For some related detailed documentation: Numerical recipies (3rd edition) 
+  (Chapter 20 [Partial Differential Equations])
 
 
 ## Initialize fields
@@ -358,3 +360,4 @@ def pltxsect(loc_params, coord_dict, V):
         rho_ = np.logical_and(coord_dict['coords']['rho']<=loc_params['rho2_bound'], coord_dict['coords']['rho']>=loc_params['rho1_bound'])
         plt.plot(coord_dict['coords']['rho'][np.logical_and(rho_,z_)],V[np.logical_and(rho_, z_)])
 \end{lstlisting}
+\end{spacing}

@@ -1,4 +1,4 @@
-\begin{lstlisting}[frame=single, language=Python]
+\begin{spacing}{1} \begin{lstlisting}[frame=single, language=Python]
 import numpy as np
 import matplotlib.pyplot as plt
 import os
@@ -13,9 +13,9 @@ from ifo_configs import bode_amp, bode_ph
 if os.path.isdir(plt_style_dir) == True:
     plt.style.use(plt_style_dir + 'ppt2latexsubfig.mplstyle')
 plt.rcParams["font.family"] = "Times New Roman"
-\end{lstlisting}
+\end{lstlisting} \end{spacing}
 
-\begin{lstlisting}[frame=single, language=Python]
+\begin{spacing}{1} \begin{lstlisting}[frame=single, language=Python]
 # Some parameters
 cee = np.float64(299792458)
 h_bar = (6.626e-34)/(2*np.pi)
@@ -24,7 +24,7 @@ L = np.float64(4000.0)
 nu = np.arange(1, 1000000, 1)
 PHI_0 = np.pi/2 #[rad]
 P_IN = 125 #[W]
-\end{lstlisting}
+\end{lstlisting} \end{spacing}
 
 \hypertarget{derivation}{%
 \subsubsection{Derivation}\label{derivation}}
@@ -35,45 +35,45 @@ corresponds to a difference in phase of the light that impinges upon the
 BS For a gravitational wave we can quantify the phase difference in this
 following way:
 
-\[
-\phi_A - \phi_B = \int_{t-2L/c}^{t} \Omega \bigg[1 + \frac{1}{2}h(t)\bigg]dt - \int_{t-2L/c}^{t} \Omega \bigg[1 - \frac{1}{2}h(t)\bigg]dt \label{eq1}\tag{1}
-\] The phase difference can then be quantified by: \[
-\phi_A - \phi_B = \int_{t-2L/c}^{t} \Omega h(t)dt \label{eq2}\tag{2}
-\] where \[ 
-h(t) = h_0 e^{i \omega t} \label{eq3}\tag{3}
-\]
+\begin{equation}
+\phi_A - \phi_B = \int_{t-2L/c}^{t} \Omega \bigg[1 + \frac{1}{2}h(t)\bigg]dt - \int_{t-2L/c}^{t} \Omega \bigg[1 - \frac{1}{2}h(t)\bigg]dt 
+\end{equation} The phase difference can then be quantified by: \begin{equation}
+\phi_A - \phi_B = \int_{t-2L/c}^{t} \Omega h(t)dt 
+\end{equation} where \begin{equation} 
+h(t) = h_0 e^{i \omega t} 
+\end{equation}
 
 \emph{\(\Omega\)} is the \textbf{optical angular frequency}
 
-After evaluating this integral we get: \[
+After evaluating this integral we get: \begin{equation}
 \Delta \phi=\phi_A - \phi_B = \frac{2 L \Omega}{c}e^{-i L \omega / c} \frac{\mathrm{sin}(L \omega /c)}{L \omega /c} \cdot h_0 e^{i \omega t}
-\]
+\end{equation}
 
 Where the first term in the phase difference carries all the time
 independent frequency information. This is what we are calculating
 below.
 
-For the sake of being explicit, we are going to plot: \[
+For the sake of being explicit, we are going to plot: \begin{equation}
 \Delta \phi (\omega) = h_0\frac{2 L \Omega}{c}e^{-i L \omega / c} \frac{\mathrm{sin}(L \omega /c)}{L \omega /c}
-\]This accounts for the differential phase as a function of
+\end{equation}This accounts for the differential phase as a function of
 gravitational wave frequency, though we have not established the amount
 of optical gain the Michelson offers. This can be understood through a
 first order taylor approximation about a selected Michelson offset angle
 \(\phi_0\):
 
-\[P(\omega, \phi_0) =  \frac{P_\mathrm{in}}{4} [r_x^2 + r_y^2 -  2r_x r_y\mathrm{cos}(\phi_0 + \Delta \phi (\omega)] \]
+\begin{equation}P(\omega, \phi_0) =  \frac{P_\mathrm{in}}{4} [r_x^2 + r_y^2 -  2r_x r_y\mathrm{cos}(\phi_0 + \Delta \phi (\omega)] \end{equation}
 
-\[P(\omega, \phi_0) \approx  \frac{P_\mathrm{in}}{4} \Big[ r_x^2 + r_y^2 -  2r_x r_y \big(\mathrm{cos}(\phi_0) - \Delta \phi(\omega) \cdot \mathrm{sin}(\phi_0) \big) \Big] =  \frac{P_\mathrm{in}}{2} \Big[1 - \big(\mathrm{cos}(\phi_0) - \Delta \phi(\omega) \cdot \mathrm{sin}(\phi_0) \big) \Big]\]
+\begin{equation}P(\omega, \phi_0) \approx  \frac{P_\mathrm{in}}{4} \Big[ r_x^2 + r_y^2 -  2r_x r_y \big(\mathrm{cos}(\phi_0) - \Delta \phi(\omega) \cdot \mathrm{sin}(\phi_0) \big) \Big] =  \frac{P_\mathrm{in}}{2} \Big[1 - \big(\mathrm{cos}(\phi_0) - \Delta \phi(\omega) \cdot \mathrm{sin}(\phi_0) \big) \Big]\end{equation}
 
 Where we define a response gain function \(H_\mathrm{MICH}\):
 
-\[\mathrm{H}_\mathrm{MICH}(\omega, \phi_0) =   \frac{P_\mathrm{in}}{2} \cdot \Delta \phi(\omega) \cdot \mathrm{sin}(\phi_0)\]
+\begin{equation}\mathrm{H}_\mathrm{MICH}(\omega, \phi_0) =   \frac{P_\mathrm{in}}{2} \cdot \Delta \phi(\omega) \cdot \mathrm{sin}(\phi_0)\end{equation}
 
-\begin{lstlisting}[frame=single, language=Python]
+\begin{spacing}{1} \begin{lstlisting}[frame=single, language=Python]
 H = MICH(nu, L, PHI_0, P_IN, OMEG)
-\end{lstlisting}
+\end{lstlisting} \end{spacing}
 
-\begin{lstlisting}[frame=single, language=Python]
+\begin{spacing}{1} \begin{lstlisting}[frame=single, language=Python]
 fig, ax1 = plt.subplots()
 ax1.set_xlabel('frequency [Hz]')
 ax1.set_ylabel('H$_{\mathdefault{MICH}}$ [$\mathdefault{W/m}$]',color='C0')
@@ -88,7 +88,7 @@ ax2.semilogx(nu,(180/np.pi)*np.arctan(np.imag(H)/np.real(H)), '--', linewidth=7.
 plt.xlim([1,1e5])
 plt.ylabel('phase [deg]',color='C1')
 fig.savefig(fig_exp_dir + 'INTRO/mich_fr.pdf', dpi=300, bbox_inches='tight')
-\end{lstlisting}
+\end{lstlisting} \end{spacing}
 
 Though with the provided frequency depdenence and optical gain, we still
 need to understand a starting noise floor spectra and compare to our
@@ -102,37 +102,37 @@ anticipated limiting noise
 \\
 \indent    * Photon counting variance (variance is equal to the
 mean) 
-\[ < (n-\bar{n})^2 >  = \frac{P \Delta t}{ \hbar \Omega} \] 
+\begin{equation} < (n-\bar{n})^2 >  = \frac{P \Delta t}{ \hbar \Omega} \end{equation} 
 \indent * Power variance:
-\[ < (P - \bar{P})^2 >  = \hbar \Omega  \bar{P} \Delta t \] 
+\begin{equation} < (P - \bar{P})^2 >  = \hbar \Omega  \bar{P} \Delta t \end{equation} 
 \indent * PSD of the measured power between two uncoorelated moments in time:
-\[ S_\mathrm{P} (\omega) = \lim_{T \to \infty} \frac{2}{T} \Big< \big| \int_{-T}^{T} (P(t) - \bar{P}) e^{-i\omega t} dt \big|^2 \Big> \]
-\[ =  \lim_{T \to \infty} \frac{2}{T} \int_{-T}^{T} \hbar \Omega \bar{P} dt  \]
-\[ = 2 \hbar \Omega \bar{P} \] 
+\begin{equation} S_\mathrm{P} (\omega) = \lim_{T \to \infty} \frac{2}{T} \Big< \big| \int_{-T}^{T} (P(t) - \bar{P}) e^{-i\omega t} dt \big|^2 \Big> \end{equation}
+\begin{equation} =  \lim_{T \to \infty} \frac{2}{T} \int_{-T}^{T} \hbar \Omega \bar{P} dt  \end{equation}
+\begin{equation} = 2 \hbar \Omega \bar{P} \end{equation} 
 \indent * Where the ASD is:
-\[ [S_P (\omega)]^{1/2} = [2 \hbar \Omega \bar{P}]^{1/2}\]The signal to
+\begin{equation} [S_P (\omega)]^{1/2} = [2 \hbar \Omega \bar{P}]^{1/2}\end{equation}The signal to
 noise is established by dividing the frequency dependent optical gain
 times the gravitational wave ASD
 \(\big( [\mathrm{S}_{\mathrm{h}}(\Omega)]^{1/2} \big)\) by the noise
 ASD:
 
-\[\mathrm{SNR} = \mathrm{G_{opt}(\omega)} [\mathrm{S}_{\mathrm{h}}(\omega)]^{1/2} / S_\mathrm{N}(\omega) = \mathrm{H}_\mathrm{MICH} / [S_P]^{1/2} = \bigg( \frac{\Delta \phi(\omega)}{h_0} \frac{P_\mathrm{in}}{2}\mathrm{sin}(\phi_0) \bigg) \bigg/ [2 \hbar \Omega \bar{P}]^{1/2}\]
+\begin{equation}\mathrm{SNR} = \mathrm{G_{opt}(\omega)} [\mathrm{S}_{\mathrm{h}}(\omega)]^{1/2} / S_\mathrm{N}(\omega) = \mathrm{H}_\mathrm{MICH} / [S_P]^{1/2} = \bigg( \frac{\Delta \phi(\omega)}{h_0} \frac{P_\mathrm{in}}{2}\mathrm{sin}(\phi_0) \bigg) \bigg/ [2 \hbar \Omega \bar{P}]^{1/2}\end{equation}
 
 This is to say that for the stated gravitational wave ASD, and for an
 SNR of 1, we establish the following threshold for detector:
 
-\[\big[ \mathrm{S}_{\mathrm{h}}(\omega) \big]^{1/2} \; \{\mathrm{SNR}\geq1\} \geq \frac{ [S_\mathrm{N}(\omega)]^{1/2}}{\mathrm{H}_\mathrm{MICH}(\omega)}\]
+\begin{equation}\big[ \mathrm{S}_{\mathrm{h}}(\omega) \big]^{1/2} \; \{\mathrm{SNR}\geq1\} \geq \frac{ [S_\mathrm{N}(\omega)]^{1/2}}{\mathrm{H}_\mathrm{MICH}(\omega)}\end{equation}
 
 Where
 
-\[\frac{ [S_\mathrm{N}(\omega)]^{1/2}}{\mathrm{H}_\mathrm{MICH}(\omega)} = \frac{[2 \hbar \omega \bar{P}]^{1/2}}{ \Delta \phi(\omega) [P_\mathrm{in} / 2]  \mathrm{sin}(\phi_0)} = \bigg( \frac{\hbar \Omega }{\omega P_\mathrm{in}} \bigg)^{1/2} \frac{[r_x^2 + r_y^2 -  2r_x r_y\mathrm{cos}(\phi_0)]^{1/2}}{\mathrm{sin}(L \omega / c)} e^{iL \omega / c}\]
+\begin{equation}\frac{ [S_\mathrm{N}(\omega)]^{1/2}}{\mathrm{H}_\mathrm{MICH}(\omega)} = \frac{[2 \hbar \omega \bar{P}]^{1/2}}{ \Delta \phi(\omega) [P_\mathrm{in} / 2]  \mathrm{sin}(\phi_0)} = \bigg( \frac{\hbar \Omega }{\omega P_\mathrm{in}} \bigg)^{1/2} \frac{[r_x^2 + r_y^2 -  2r_x r_y\mathrm{cos}(\phi_0)]^{1/2}}{\mathrm{sin}(L \omega / c)} e^{iL \omega / c}\end{equation}
 
-\begin{lstlisting}[frame=single, language=Python]
+\begin{spacing}{1} \begin{lstlisting}[frame=single, language=Python]
 S_h = N_shot(OMEG, P_IN) 
 print(S_h)
-\end{lstlisting}
+\end{lstlisting} \end{spacing}
 
-\begin{lstlisting}[frame=single, language=Python]
+\begin{spacing}{1} \begin{lstlisting}[frame=single, language=Python]
 #ax1.plot(w/(FSR), F_w_cc_modsq*100)
 plt.loglog(nu, S_h/bode_amp(H), linewidth=7.5, color='C0')
 plt.ylim([1e-21, .5e-14])
@@ -152,5 +152,5 @@ plt.grid(visible=True)
 #plt.title('')
 #plt.subplots_adjust(bottom=.1, top=.85) #, right=.8, left=.1)
 plt.savefig(fig_exp_dir + 'INTRO/mich_sensi.pdf', dpi=300, bbox_inches='tight')
-\end{lstlisting}
+\end{lstlisting} \end{spacing}
 
