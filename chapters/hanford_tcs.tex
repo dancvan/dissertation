@@ -31,13 +31,14 @@ As seen in ~\autoref{sec:detcon}, increasing detector input power leads to a dir
 During O3a the LIGO Hanford observatory increased circulating arm power beyond 180 kW; emphasizing importance on properly tuned thermal compensation in O3 to avert arm-cavity/carrier-beam mode mismatch. Detailed in this chapter is a summary of related comissioning efforts at LHO to prepare and preserve interferometer mode matching including but not exclusive to: a primer on the ALIGO adaptive optics schema (TCS), citations on the initial computed O3a TCS pre-load, the development and implementation of real-time digital filtering for an improved ring heater actuation response by a factor of $\approx 6$, and the impacts of high absorption points aka point absorbers discovered on arm cavity test masses along with efforts to mitigate them.
 
 \subsection{Thermal Compensation System}
-High power beams, even propogated by ultra low absorption mirror substrates and coatings, can impart a surface pressure that imposes non-negligible thermo-optic distortions via thermo-refractive and thermo-elastic effects~\cite{hellovinet:1990}. The ALIGO adaptive optic system is intended to address the problem of dynamic mode mismatch in high power interferometry; as high power operation is a requirement in reaching designed sensitivity. The system is comprised of a feedback control system that uses four Hartmann wavefront sensors (HWS) combined with thermal actuators of two varieties: annular ring heaters and CO2 lasers. 
+High power beams, even propogated by ultra low absorption mirror substrates and coatings, can impart a surface pressure that imposes non-negligible thermo-optic distortions via thermo-refractive and thermo-elastic effects~\cite{hellovinet:1990}. The ALIGO adaptive optic system is intended to address the problem of dynamic mode mismatch in high power interferometry; as high power operation is a requirement in reaching designed sensitivity. The system is comprised of a feedback control system that uses four Hartmann wavefront sensors (HWS) combined with thermal actuators of two varieties: annular ring heaters and CO2 lasers heating.  
 
 \subsubsection{Actuation}
 Both ITMs and ETMs (Fabry-P\'{e}rot arm cavity mirrors) are strategically monitored for differential lensing, but both are not prescribed equal actuation treatment. All arm cavity mirrors do posses negative lens ring heater actuation in the form of a wound nichrome wire annulus that outlines the outer barrel of the mirror substrate; while CO2 lasers, though not imaged onto the ITMs directly, are instead imaged onto a fused silica compensation plate (CP) \footnote{Decouples CO2 laser noise from the highly sensitive FP input test mass position} placed promptly before the FP arm input coupling mirror ~\cite{brooks:aigwd2019}.
 
 \subsubsection{Sensing Optical Path Distortion}
-Quantifying thermal distortion from both carrier as well as thermal actuators is performed with a set of four Hartmann wavefront sensors; each one measuring differential optical path distortion at each FP cavity test mass. The sensor probe beams \footnote{Differing wavelengths of 800 nm and 833 nm are chosen for the X and Y arms in order to mitigate crosstalk between HWS chains and other auxilary systems} make a double pass through the test mass mirror substrate for all arm cavity mirrors and map the HR mirror surface; while the two input test mass sensors at the interferometer vertex make an additional double pass through the compensation plate (CP) ~\cite{aasi:2015}.
+Quantifying thermal distortion from both carrier as well as thermal actuators is performed with a set of four Hartmann wavefront sensors; each one measuring differential optical path distortion at each FP cavity test mass. The sensor probe beams \footnote{Differing wavelengths of 800 nm and 833 nm are chosen for the X and Y arms in order to mitigate crosstalk between HWS chains and other auxilary systems} make a double pass through the test mass mirror substrate for all arm cavity mirrors and map the HR mirror surface; while the two input test mass sensors at the interferometer vertex make an additional double pass through the compensation plate (CP). Wavefront distortion maps are then used to compute relevant Zernike polynomial coefficients (i.e. $Z^{l \shorteq 0}_{n \shorteq 2}$) in real time to inform of differential defocus in diopters ~\cite{aasi:2015}.
+
 
 
 \subsection{Thermo-optic transients}
@@ -45,7 +46,7 @@ Thermo-optic transfer functions from high power carrier beams and implemented th
 \begin{figure}[H]
   \centering
   \begin{subcaptiongroup}
-	  \includegraphics[width=\textwidth]{TCS/TCS_resp_sim.pdf}
+	  \includegraphics[width=.9\textwidth]{TCS/TCS_resp_sim.pdf}
 	  \phantomcaption\label{TO_response}
   \end{subcaptiongroup}
   \captionsetup{subrefformat=parens}
@@ -64,7 +65,7 @@ Thermo-optic transfer functions from high power carrier beams and implemented th
 		\caption{Arm cavity resonance, with reduced CO2 central actuation power and increased arm cavity input power. The uniform thermo-optic distortion from the high power circulating carrier imposes a differential thermo-refractive lens and thermo-elastic HR surface change to the ITM, placing a low upper to the circulating power limit without annular ring heater actuation.}\label{subfig:TCSinp_intcirc}
 %		\caption{Arm cavity resonance, with reduced CO2 central actuation power and increased arm cavity input power. The uniform thermo-optic distortion from the high power circulating carrier imposes a differential thermorefractive and thermoelastic HR surface change to the ITM, placing a low upper to the circulating power limit without annular ring heater actuation.}\label{TCSinp_intcirc}
 		\includegraphics[width=.6\textwidth]{TCS/ITMYarminp/annotated/max/ITMYinp_highcirc.pdf}
-		\caption{Maximum circulating arm power, with annular heating and no central CO2 actuation. The careful timing and calibration of the CO2 / RH actuators allow designed power / GW detector sensitivity to be reached.}\label{subfig:TCSinp_highcirc}
+		\caption{Maximum circulating arm power, with annular heating and no central CO2 actuation. The careful timing and calibration of the CO2 / RH actuators can allow designed power / GW detector sensitivity to be reached.}\label{subfig:TCSinp_highcirc}
 %		\caption{Maximum circulating arm power, with annular heating and no central CO2 actuation. The careful timing and calibration of the CO2 / RH actuators allow designed power / GW detector sensitivity to be reached.}\label{TCSinp_highcirc}
 	\end{subcaptiongroup}
 	\caption{ALIGO thermal compensation design at the input of a single Fabry-P\'{e}rot arm cavity. Though not the only location of thermal mode matching actuators, a careful look here demonstrates their capabilities and motivates carefully building a thermal pre-load before and tuning while comissioning the current generation of gravitational wave detectors at high power.}
@@ -92,7 +93,7 @@ The measured transient thermo-optic response exhibits differential defocusing fo
 	\label{fig:RH_control}
 \end{figure}
 
-The transient in the RH power ($\mathrm{u}(t)$) resembles that of a Heaviside function ($\Theta(t)$), motivating an inversion of the response function which provides a reasonable first order filter correction. Therefore, the prescription for creating an input filter is realized through inverting the known RH step response with additional low passing at high frequency to avoid any high frequency control instability \footnote{see \autoref{ch:appendix} for more detail}.
+The RH power control transient ($\mathrm{u}(t)$) resembles that of a Heaviside function ($\Theta(t)$), motivating an inversion of the response function which provides a reasonable first order filter correction. Therefore, the prescription for creating an input filter is realized through inverting the known RH step response with additional low passing at high frequency to avoid any high frequency control instability \footnote{see \autoref{ch:appendix} for more detail}.
 
 \begin{figure}[H]
     \centering
@@ -111,19 +112,36 @@ The transient in the RH power ($\mathrm{u}(t)$) resembles that of a Heaviside fu
 \begin{figure}[H]
     \centering
     \includegraphics[page=1,width=\textwidth]{TCS/IRHF/rh_pictograph.pdf}
-    \caption{A pictograph showing the system with real time digital filtering for an improved thermo-optic response. The RH input filter is created by inverting the plant filter combine with a low pass and added poles to the zpk model to ensure stability.}
+    \caption{A pictograph showing the system with real time digital filtering for an improved thermo-optic response. The RH input filter (G(s)) is created by inverting the plant filter combine with a low pass and added poles to the zpk model to ensure stability. The time series $\Theta^*(t)$ illustrates the modified RH control input for an improved defocus resonse (D(t)).}
     \label{fig:rtdf_pictograph}
 \end{figure}
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=.90\textwidth]{TCS/IRHF/IRHF_compare_w_self}
-    \caption{Comparison of the natural RH response and the response to the conditioned input. The above plot is simulated in Matlab by passing the RH input time series (top plot) through the $[H(s)]^{-1*}$ and $H(s)$ to acquire with the result lensing behavior on the bottom plot.}
+    \includegraphics[width=\textwidth]{TCS/IRHF/RH_input_filt_G1_G2}
+    \caption{Two of the constructed RH pre-filter options: 
+	}
+    \label{fig:prefilter_g1g2}
+\end{figure}
+
+The zpk models of the two RH pre-filters plotted in \autoref{fig:prefilter_g1g2}:
+
+\begin{equation}
+   \begin{aligned}
+       \mathrm{G}_1(\mathrm{s}) = \frac{(s+8.16814090\mathrm{e}\text{-}5) (s+3.14159265\mathrm{e}\text{-}4) (s+5.96902604\mathrm{e}\text{-}4)}{(s+3.14159265\mathrm{e}\text{-}5)(s+6.99400000\mathrm{e}\text{-}4)(s+6.99400000\mathrm{e}\text{-}4)} \\
+       \mathrm{G}_2(\mathrm{s}) = \frac{(s+8.16814090\mathrm{e}\text{-}5) (s+3.14159265\mathrm{e}\text{-}4) (s+5.96902604\mathrm{e}\text{-}4)}{(s+3.14159265\mathrm{e}\text{-}5)(s+2.09820000\mathrm{e}\text{-}3)(s+2.09820000\mathrm{e}\text{-}4)}
+    \end{aligned}
+\end{equation}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{TCS/IRHF/IRHF_compare_w_self}
+    \caption{Comparison of the natural RH response and the response with the pre-filtered input against the transient carrier absorption response.``self heating" indicates a dataset generated by a COMSOL simulation computing the transient thermo-optic response from 1 [W] of absorbed carrier beam and scaled down. ``self heating + RH unfiltered input" demonstrates the simulatneous transient response when changing the ring heater power alongside the carrier thermo-optic transient.The dotted curves indicate the elimination of long defocus period when changing RH power alongside the carrier transient using the two RH pre-filters provided \autoref{fig:prefilter_g1g2}.}
     \label{fig:dynam_comparison}
 \end{figure}
 
 \subsection{Reducing Parametric Instabilities}
-Another symptom of resonant high power optical cavities are parametric instabilities (PI); induced by the opto-mechanical interaction between test mass acoustic modes and higher order optical modes. PIs present threats to achieving designed detector sensitivity, even driving the detector to lockloss. Passive methods of mitigating PIs by way of acoustic mode dampers (AMD) demonstrate significant reductions of problematic mechanical modes though some (i.e. @ 15 kHz) have remained problematic. Lingering parametric instabilities required manual intervention by way of adjusting test mass / cavity geometry to disrupt these persistent PIs, and is now a much more feasible solution with DTC \cite{hardwick:2020}.  
+Another symptom of resonant high power optical cavities are parametric instabilities (PI); induced by the opto-mechanical interaction between test mass acoustic modes and higher order optical modes. PIs present a threat to achieving designed detector sensitivity, even driving the detector to lockloss. Passive methods of mitigating PIs by way of acoustic mode dampers (AMD) demonstrate significant reductions of problematic mechanical modes though some (i.e. @ 15 kHz) remained problematic during O3a. Lingering PIs required manual intervention by way of adjusting test mass / cavity geometry to disrupt persistent modes and is now a much more feasible solution with DTC \cite{hardwick:2020}.  
 
 \subsection{Limitations}
 \begin{figure}[H]
@@ -132,13 +150,12 @@ Another symptom of resonant high power optical cavities are parametric instabili
     \caption{Comparison of the natural RH response and the response to the filtered input with RH power}
     \label{fig:RH_power}
 \end{figure}
-The 10 W limit set on RH power control is worth considering when attempting to preserve the power swing generated from the pre-filter and avoid railing \cite{dcc:rhspec}.
+When constructing the control pre-filter important considerations the physical limits of the thermal actuators need to be considered. For the ALIGO RHs, a 10 W limit is set on RH power control and sets a threshold on the high frequency gain of the pre-filter \cite{dcc:rhspec}. Failure to consider this limit may cause the actuator output to rail the inital power swing from your actuator response.
 \\ 
-There must also be considerations when we cannot assume the scaling of this function is not linear and time-invariant (i.e. concurrent RH changes). With enough modeling, independent measurements spanning an actuation space, and techniques like Kalman Filtering, there is room to develop a more robust Dynamic Thermal Compensation strategy.
+There must also be considerations when we cannot assume the scaling of this function is not linear and time-invariant. Concurrent RH changes an example of this as the filter is designed with inital thermal equilibrium in mind. There is room to develop a more rubust Dynamic Thermal Compensation strategy, with enough modeling, independent measurements spanning an actuation space, and integration of Kalman Filtering.
 
-\section{A priori TCS pre-load methodology for O3a}
+\section{A priori TCS pre-load methodology for O3a}\label{sec:tvopreload}
 Preserving arm cavity resonance requires countering the positive thermal lens defocus of the nominal test mass lens induced by high circulating interferometer arm cavity power. Preparing for uniform test mass distortion from the carrier beam requires calibrated and well established thermal actuator settings; informing a `pre-load' of the TCS actuators using test mass absorption measurements. Initial order of magnitude estimates of wavefront distortion from ultra-low absorption fused silica test masses under the influence of a centered high power gaussian beam as well as annular ring heater actuation are available \cite{hellovinet:1990, ramette:2016}; though variations of the absorption between any two test mass mirrors are accounted for through calibrated defocus measurements using the Hartmann wavefront sensors sensitive to auxilary beams imaged onto the test mass mirror surfaces. 
-Wavefront distortion is mapped in real time to relevant Zernike polynomial coefficients (i.e. $Z^{l \shorteq 0}_{n \shorteq 2}$) to compute a differential defocus in diopters.
 
 \begin{figure}[h]
   \centering
@@ -193,19 +210,22 @@ Also, while sustaining interferometer DC readout the recycling cavities would ge
   \label{fig:ETMXpabs}
 \end{figure}
 
+\subsubsection{Reduced Power Reycling Gain}
+As informed by \autoref{eq:PRG} the PRG can provide a reasonable metric for the arm losses in the FPMI and in fact suffered notable reductions with interferometer thermalization. At LHO there are reported PRG losses of $\approx 13\%$ increasing IFO input power from 2W to 30W, while LLO notes a $\approx 18\%$ change while increasing input power from 2W to 40 W ~\cite{elog:2019_01_21:cahillane}.
+
 \subsubsection{Frequency noise}
-A beneficial feature of interferometry is the ability to filter common mode noise (i.e. laser intensity and frequency noise), though these benefits are contingent upon the ability to preserve arm symmetry. Intentional asymmetries, for example the Schnupp asymmetry \footnote{A macroscopic differential length offset introduced in order to pass optical sidebands for normal interferometer functionality and stability} is well known and designed such that common mode noise remains low. Meanwhile, common arm mode interference is exacerbated proportionally to the amount of mode mismatch.
+A beneficial feature of interferometry is the ability to filter common mode noise (i.e. laser intensity and frequency noise), though these benefits are contingent upon the ability to preserve arm symmetry. Intentional asymmetries, for example the Schnupp asymmetry \footnote{A macroscopic differential length offset introduced in order to pass optical sidebands for normal interferometer functionality and stability} are well known and designed such that common mode noise remains low. Meanwhile, common arm mode interference is exacerbated proportionally to the amount of mode mismatch.
 
 \begin{figure}[H]
     \includegraphics[width=\textwidth]{TCS/NB_1235813418.pdf}
-    \caption{DARM noise during O3a~\cite{elog:2018:dwyer}. Beneficial features of interferometry, i.e. common mode noise rejection require adequate mode overlap at the beam splitter. Destruction of such symmetry as mode overlap proportionally destroys such benefits and demonstrate a presence in DARM.}    
+    \caption{A DARM noise budget during O3a~\cite{elog:2018:dwyer}. Beneficial features of interferometry, i.e. common mode noise rejection requires adequate mode overlap at the beam splitter. Destruction of such symmetry as mode overlap proportionally destroys such benefits and demonstrate a presence in DARM. Here in this noise budget both Frequency and Intensity noise are about 2 times above the anticipated noise level.}  
     \label{fig:high_freqnoise}
 \end{figure}
 
 Thorough investigation of the LIGO frequency noise determined the proportional increase of the LIGO frequency and intensity noise with increased power~\cite{buikema:2020}.
 
 \subsubsection{Control signals}
-Holding delicate resonance conditions throughout the coupled cavity configuration necessitates a resonable optical sideband relative carrier gain (dBc) for the PDH loops to function. And it is with careful planning that the macroscopic recycling cavity geometry is planned so that sideband resonance boosts the signal. The point absorber on an ITM directly impacts this buildup, frequently inducing a lockloss. 
+Holding delicate resonance conditions throughout the coupled cavity configuration necessitates a resonable optical sideband relative carrier gain (dBc) for the PDH loops to function. And it is with careful planning that the macroscopic recycling cavity geometry is planned so that sideband resonance boosts the signal. The point absorber on an ITM directly impacted these sideband buildups and frequently lead to a lockloss. 
 
 %\begin{figure}[H]
 %    \includegraphics[width=\textwidth]{TCS/pa_PRCL_lockloss.pdf}
@@ -215,27 +235,40 @@ Holding delicate resonance conditions throughout the coupled cavity configuratio
 
 
 \subsubsection{Higher order modes at DCPD}
-For the detectors' DC readout configuration, power from higher order modes at the anti-symmetric port obscure the single element photodiode from measuring a pure TEM00 mode with the increased shot noise~\cite{fricke:2012}. 
+For the detectors' DC readout configuration, power from higher order modes at the anti-symmetric port obscure the single element photodiode from measuring a pure TEM00 mode with the increased shot noise~\cite{fricke:2012}. Among other higher order modes, the point absorber allowed resonance of a notable higher order mode (9th order Hermite-Gauss) from the 9MHz sideband which was co-resonant with the Output Mode Cleaner and in turn imparted intensity noise to the DCPD \cite{elog:2019_03_03:brown}.
+
 
 \section{Results}
-With these high absorption points dramatically impacting interferometer high power operations, a variety of efforts to mitigate their effects were sampled.
+With these high absorption points dramatically impacting interferometer high power operations, a variety of efforts to mitigate their effects were sampled. Using DTC the amount of sampling possible (for varied RH states specifically) increased though the TCS modes of actuation proved to be too few and/or mixed to use TCS alone with a static beam position on ITMY.    
 
 \subsection{Custom CO2 mask}
-Reducing the test mass non-uniformity with a machine CO2 mask \autoref{sec:CO2mask} was tried but exhibited limitations with the available degrees of freedom. The intention was to image a negative of the optical path distortion from the high absorption points onto the surface with the CO2 laser combined with a static ring heater offset. The installation location of the mask and size was established using the relevant propogation and imaging techniques applied to the CO2 actuation field while mitigation of the aforementioned impacts provided comissioners with mixed metrics of success.
+Increasing test mass uniform distortion with a machined CO2 mask \autoref{sec:CO2mask} was tried but exhibited limitations with the available degrees of freedom (modified CO2 actuation and uniform RH actuation). The intention was to actuate by imaging a negative of the optical path distortion from the high absorption points onto the surface with the CO2 laser combined with a static ring heater offset \cite{elog:2019_02_17:brooks}. The installation location of the mask and size was established using the relevant propogation and imaging techniques applied to the CO2 actuation field while mitigation of the aforementioned impacts provided comissioners with mixed metrics of success \cite{elog:2019_03_28:mansell, elog:2019_02_22:brown}. With varying interferometer conditions, involved parameter space, and the slow nature of thermal actuation introduced difficulties while attempting to fulfill the promise of restoring uniform absorption. And although the presence of the absorber symptoms show coorelation with their prominence at high power, their collective reduction proved to be not straightfoward~\cite{brooks:aigwd2019, buikema:2020}. 
 
-A mask was installed in front of the CO2 laser actuator combined with a RH offset to attempt restoring uniform thermo-optic absorption, with inconclusive results on account of the nature of narrow alignment requirements while attempting to improve sideband (PRCL) power buildup. 
+%\begin{figure}[H]
+%  \centering
+%  \begin{subcaptiongroup
+%	  \includegraphics[width=.495\textwidth]{TCS/PA/ITMY_absorbers.pdf}
+%	  \phantomcaption\label{subfig:itmypajustself}
+%	  \includegraphics[width=.495\textwidth]{TCS/PA/ITMY_self.pdf}
+%	  \phantomcaption\label{subfig:itmypaselfplusabs}
+%  \end{subcaptiongroup}
+%  \captionsetup{subrefformat=parens}
+%  \vspace{-19mm}
+%  \caption{An isometric view of uniform absorption vs point absorption of LHO ITMY}
+%  \label{fig:ITMYpabs}
+%\end{figure}
 
-The extremely strict alignment requirement introduced difficulties while attempting to fulfill the promise of restoring uniform absorption. And although the presence of the absorber symptoms show coorelation with their prominence at high power, their collective reduction proved to be not straightfoward~\cite{brooks:aigwd2019, buikema:2020}. 
 
+\subsection{Beam position offset}
+Comissioners found that the simplest and most accessible solution to reducing point absorber symptoms (i.e. decreasing power recycling gain, control sideband buildup, and reduced 9MHz intensity noise) was to shift the beam spot position on the offending test masses \cite{elog:2019_02_23:driggers} though this was not without having to change the entire interferometer alignment along with the loops that control it \cite{elog:2019_02_25:driggers}. Utilizing this solution also simplifies and reduces the TCS solution back to what was detailed in \autoref{sec:tvopreload}.
+%\subsection{Interferometer to OMC mode matching}
+%High absorption points also lead to significant offsets in RH and CO2 actuation for offending test masses leading to thermal offsets for observatory operation. This lead to further interferometer mode matching considerations and required more subtle actuation solutions than anticipated. Improvement metrics included the measurement of higher order mode content at the detector output as well as inserting dither lines in the feedback loops to track the movement of sideband buildups
 
-\subsection{Interferometer to OMC mode matching}
-High absorption points also lead to significant offsets in RH and CO2 actuation for offending test masses leading to thermal offsets for observatory operation. This lead to further interferometer mode matching considerations and required more subtle actuation solutions than anticipated. Improvement metrics included the measurement of higher order mode content at the detector output as well as inserting dither lines in the feedback loops to track the movement of sideband buildups
+%\subsubsection{Common mode actuation}
 
-\subsubsection{Common mode actuation}
+%\subsubsection{Differential mode actuation}
 
-\subsubsection{Differential mode actuation}
-
-\subsubsection{SR3 RH}
+%\subsubsection{SR3 RH}
 
 
 
