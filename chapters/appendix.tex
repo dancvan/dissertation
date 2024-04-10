@@ -182,8 +182,10 @@ A much more involved derivation with a significantly larger result than above is
 \label{fig:co2mask1}
 \end{figure}
 
+\section{Anisotropic media}
+Unlike isotropic media, we do not assume that the index of refraction of anisotropic media is the same for all chosen wave vectors. This is a direct consequence of the birefringence of anisotropic media; characterized by the dielectric, permittivity, and polarization tensors.
 
-\section{Monochromatic plane wave propogation}
+\subsection{Monochromatic plane wave propogation}
 Revisiting Maxwell's equations for a simple monochromatic plane wave solution provides further direction on how crystalline media may effect incident light. Further elaborating, the following assumptions are made:
 \begin{equation}
 \vec{E} = E_o e^{(i \omega (\frac{n}{c} \vec{r}\cdot \vec{s}-t))}
@@ -206,6 +208,34 @@ E_i = \frac{n^2 s_i (\vec{E}\cdot\vec{s})}{n^2 - \mu \varepsilon_i}
 \end{equation}
 
 From here it can be shown that for a general plane wave there exist two unique refractive index solutions within the constructed dielectric ~\cite{nye}. 
+
+\subsection{The Dielectric tensor}
+Further elaborating on the nature of a generalized dielectric tensor ($\varepsilon$) for any wavevector is required to proceed:
+\begin{equation}\label{eq:dispfield}
+D_i = \varepsilon_{ij}E_j
+\end{equation}
+Where D is the displacement vector, E is the electric field vector, and $\varepsilon$ is the dielectric tensor. The displacement vector for isotropic media is retrieved when $i = j$ and $\varepsilon_i = \varepsilon$. To further understand the nature of the dielectric tensor we assert Poynting's theorem providing an energy conservation requirement:
+\begin{equation}\label{eq:poynting}
+\nabla \cdot \vec{S} = \frac{dU}{dt}
+\end{equation}
+Where $\vec{S} = \vec{E} \times \vec{H}$ is the poynting vector and $U = \frac{1}{8 \pi} \big( \vec{E} \cdot \vec{D} + \vec{B} \cdot \vec{H} \big)$ is the electromagnetic field density. The reader is left to perform the exercise and show that in order for \autoref{eq:poynting} to hold true given \autoref{eq:dispfield}
+
+
+\begin{equation}
+\varepsilon_{ij} = \varepsilon_{ji}
+\end{equation}
+Demonstrating that the dielectric tensor is symmetric - exhibiting only six unique terms. Diagonalizing the tensor, the presence of two unique eigenvectors and eigenvalues indicates the existence of two eigenpolarizations with paired eigenindices.
+
+\begin{equation}\label{eq:modelec}
+E_i = \frac{n^2 s_i (\vec{E}\cdot\vec{s})}{n^2 - \mu \varepsilon_i}
+\end{equation}
+
+Though this result requires revisiting geometrical conditions that are best visualized using a method introduced in the next section \cite{nye}. 
+
+%The most general form of the energy density can be geometrically represented as ellipsoid but a coordinate transformation we can diagonalize and realize the principal axes of the dielectric allowing a simpler form of the displacement, and in turn the energy density.
+
+
+
 
 \section{Mode matching data for Electro-optic sample cavity}
 
