@@ -46,14 +46,14 @@
 As aLIGO approaches designed sensitivity, the thermal noise limit set by $\siotao$ HR coatings becomes an immediate limit to further improvements. Though there are proposals for the usage of alternative mirror coating solutions to push down this thermal noise limit for increased detector sensitivity \cite{harry:aigwd2019}. $\gaas$/$\algaas$ shows promise for next generation detectors with reduced coating Brownian noise by a factor of 10, cooresponding to a potential strain reduction by a factor of 5 ~\cite{cole:2013} when compared to the current aLIGO coating thermal noise limit. Though applying crystalline HR mirror coatings to the core optics indiscriminately may introduce notable side effects; one being linear electro-optic of $\gaas$/$\algaas$ (dn/dE), also known as the Pockels effect ~\cite{abernathy:poster}. An initial differential phase noise estimate of $\approx 4.5\times 10^{-10}$ [rad/m/V], alongside measured LHO ambient field noise measured during O3 $3\times 10^{-6}$ [V/m/$\sqrt{\mathrm{Hz}}$] we compute an initial strain noise estimate ~\cite{fejer_estimate, buikema:2020}:
 
 \begin{equation*}
-    \frac{\partial L}{\partial E} = \frac{\lambda}{4 \pi} | \frac{\partial \theta_c}{\partial E} | = 3.81 \times 10^{-17} \; \frac{\mathrm{m}}{(\mathrm{V/m})}
+    \frac{\partial L}{\partial E} = \frac{\lambda}{4 \pi} \bigg| \frac{\partial \theta_c}{\partial E} \bigg| = 3.81 \times 10^{-17} \; \frac{\mathrm{m}}{(\mathrm{V/m})}
 \end{equation*}
 
 \begin{equation}
 h_\mathrm{EO\; noise} = 2\frac{\Delta L_\mathrm{EO \; noise}}{L} = 2\frac{\partial L}{\partial E} \times \bigg| \frac{E_\mathrm{noise}}{L_\mathrm{arm}} \bigg| = 5.715 \times 10^{-26} \; \mathrm{Hz}
 \end{equation}
 
-Although nearly two orders of magnitude below the estimated strain noise floor, a direct measurement is still merited and adequately motivates a thorough study dedicated to the electro-optical properties of $\gaas$/$\algaas$ coatings~\cite{buikema:2020}. This section details such a study that starts with a brief survey of the optical and material properties of crystalline materials like $\gaas$ and $\algaas$ by reviewing: light propogation through anistropic materials, and induced optical anisotropy of zincblende materials. The second item of discussion are preliminary estimates of the differential phase of light reflected from a $\gaas$/$\algaas$ coating stack caused by electric field noise are computed while considering potential impacts to the current generation gravitational wave detectors. The third and final item of discussion is a study designed to acquire dn/dE estimates from a calibrated differential length PDH locked signal from a short experimental optical cavity with a primarily normal electric field driven across a HR $\gaas$/$\algaas$ coating ``witness" sample.
+Although nearly two orders of magnitude below the estimated strain noise floor, direct measurement is still merited and adequately motivates a thorough study dedicated to the electro-optical properties of $\gaas$/$\algaas$ coatings. This section details such a study that starts with a brief survey of the optical and material properties of crystalline materials like $\gaas$ and $\algaas$ by reviewing: light propogation through anistropic materials, and induced optical anisotropy of zincblende materials. The second item of discussion are preliminary estimates of the differential phase of light reflected from a $\gaas$/$\algaas$ coating stack caused by electric field noise are computed while considering potential impacts to the current generation gravitational wave detectors. The third and final item of discussion is a study designed to acquire dn/dE estimates from a calibrated differential length PDH locked signal from a short experimental optical cavity with a primarily normal electric field driven across a HR $\gaas$/$\algaas$ coating ``witness" sample.
 
 \section{Coating Thermal Noise}
 Contributions of categorized noises for gravitational wave detectors are organized in a ``noise budget": comprised of a collection of technical (noise imposed by the practical operation of the detector) and fundamental (inherent physical limitations of DRFPMIs by design) noise sources that impose limitations on gravitational wave detection. Understanding how much differential phase noise is imparted on the interferometer light passing through and reflecting from core optics is crucial.
@@ -145,7 +145,8 @@ Where X represents bulk and shear with j = odd (material 1) and j = even (materi
 \label{fig:aligotncomp}
 \end{figure}
 
-%\paragraph{$\siotao$ coating parameters}
+%% Coating params table?
+%\paragraph{$\siotao$ coating parameters} 
 %Currently the LIGO interferometers deposit $\lambda$/4 stacks of silica and titania doped tantala on fused silica test mass substrates. Effective loss angle measurements \cite{harry:2006}
 %
 %\textbf{Current $\siotao$ elasticity params, power spectra, and strain spectral density (order of magnitude estimate)}
@@ -159,7 +160,7 @@ Where X represents bulk and shear with j = odd (material 1) and j = even (materi
 %\noindent Currently thermal noise from the $\siotao$ optical coatings is the largest contributor of Brownian noise in LIGO compared to estimated substrate and suspension thermal noise \cite{harry:2006}. As of the end of O3, Brownian thermal noise is estimated to be ? orders of magnitude below the current sensitivity and it will prove to be the limiting source of noise as that sensitivity is increased with various other upgrades mitigating fundamental and technical noise. 
 %%% Already mentioned in intro prior to this thermal noise section. Need to re-iterate in more detail?
 \section{Static and Induced Birefringence}
-\subsection{Indicatrix}\label{sec:indicatrix}
+\subsection{The Indicatrix}\label{sec:indicatrix}
 The two index solutions for a uniaxial crystal given a general plane wave with unit wave vector $\vec{k}$ can be found via a conveniant geometrical construction known as the ``index ellipsoid". 
 
 \begin{figure}[ht!]
@@ -201,7 +202,7 @@ i \bigg(1-\frac{r^2}{\varepsilon_{i}} \bigg) + s_{i} \bigg(\frac{x s_x}{\varepsi
 The result is verified when substituting $r \rightarrow \frac{\vec{D}}{\sqrt{\vec{E} \cdot \vec{D} \varepsilon_o}}$ back which recovers \autoref{eq:modelec}.
 \\
 \subsection{\texorpdfstring{$\gaas$}{gaas} and \texorpdfstring{$\algaas$}{algaas} crystal classification}
-The space group of $\gaas$ as well as $\algaasgen$ are within the $F\bar{4}3m$ space group. Crystals of this space group are commonly known as zincblende crystals; a common crystal configuration named after zinc sulfide (ZnS). Also categorized as a cubic crystal, their crystallographic structure displays linear optical isotropic characteristics when stress free and no DC and/or slowly varying electric fields are present~\cite{boyd:2008}. 
+$\gaas$ as well as $\algaasgen$ are both within the $F\bar{4}3m$ space group. Crystals of this space group are commonly known as zincblende crystals; a common crystal configuration named after zinc sulfide (ZnS). Also categorized as a cubic crystal, their crystallographic structure displays linear optical isotropy haracteristics when stress free and no DC and/or slowly varying electric fields are present~\cite{boyd:2008}. 
 
 \begin{figure}[!ht]
 \begin{center}
@@ -612,7 +613,7 @@ With this linearity and sensitivity at cavity resonance, implementation into PID
 
 
 \subsection{Servo Parameters}
-The quantity we are attempting to measure is on the order of a length change of $3.3 \times 10^{-18}$ [m/(V/m)], motivating a short cavity design as the relative differential length (phase) change scales with the sensitivity \autoref{eq:cavlf}. Considerations of the lab mirror inventory and mode matching critera lead us to two candidate plano-concave (ROC = 0.333m) HR IBS coated sample input couplers; one from CVI Melles-Griot and another from ATFilms. When paired with the plano-plano $\gaas$/$\algaas$  mirror from the Crystalline Mirror Solutions (CMS) division of Thorlabs we create a 0.1665 m long cavity.
+The quantity we are attempting to measure is a differential length on the order of $3.3 \times 10^{-18}$ [m/(V/m)], motivating a short cavity design as the relative differential length (phase) change scales with the sensitivity \autoref{eq:cavlf}. Considerations of the lab mirror inventory and mode matching critera lead us to two candidate plano-concave (ROC = 0.333m) HR IBS coated sample input couplers; one from CVI Melles-Griot and another from ATFilms. When paired with the plano-plano $\gaas$/$\algaas$  mirror from the Crystalline Mirror Solutions (CMS) division of Thorlabs we create a 0.1665 m long cavity.
 
 %\begin{figure}[H]
 %\begin{center}
