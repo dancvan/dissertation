@@ -43,20 +43,26 @@
 
 % Conclusion
 \section{Motivation}
-As aLIGO approaches designed sensitivity, the thermal noise limit set by $\siotao$ HR coatings becomes an immediate limit to further improvements. Though there are proposals for the usage of alternative mirror coating solutions to push down this thermal noise limit for increased detector sensitivity \cite{harry:aigwd2019}. $\gaas$/$\algaas$ shows promise for next generation detectors with reduced coating Brownian noise by a factor of 10, cooresponding to a potential strain reduction by a factor of 5 ~\cite{cole:2013} when compared to the current aLIGO coating thermal noise limit. Though applying crystalline HR mirror coatings to the core optics indiscriminately may introduce notable side effects; one being linear electro-optic of $\gaas$/$\algaas$ (dn/dE), also known as the Pockels effect ~\cite{abernathy:poster}. An initial differential phase noise estimate of $\approx 4.5\times 10^{-10}$ [rad/m/V], alongside measured LHO ambient field noise measured duringO3 $3\times 10^{-6}$ [V/m/$\sqrt{\mathrm{Hz}}$] we compute an initial strain noise estimate\cite{fejer_estimate, buikema}:
+As aLIGO approaches designed sensitivity, the thermal noise limit set by $\siotao$ HR coatings becomes an immediate limit to further improvements. Though there are proposals for the usage of alternative mirror coating solutions to push down this thermal noise limit for increased detector sensitivity \cite{harry:aigwd2019}. $\gaas$/$\algaas$ shows promise for next generation detectors with reduced coating Brownian noise by a factor of 10, cooresponding to a potential strain reduction by a factor of 5 ~\cite{cole:2013} when compared to the current aLIGO coating thermal noise limit. Though applying crystalline HR mirror coatings to the core optics indiscriminately may introduce notable side effects; one being linear electro-optic of $\gaas$/$\algaas$ (dn/dE), also known as the Pockels effect ~\cite{abernathy:poster}. An initial differential phase noise estimate of $\approx 4.5\times 10^{-10}$ [rad/m/V], alongside measured LHO ambient field noise measured during O3 $3\times 10^{-6}$ [V/m/$\sqrt{\mathrm{Hz}}$] we compute an initial strain noise estimate ~\cite{fejer_estimate, buikema:2020}:
+
+\begin{equation*}
+    \frac{\partial L}{\partial E} = \frac{\lambda}{4 \pi} | \frac{\partial \theta_c}{\partial E} | = 3.81 \times 10^{-17} \; \frac{\mathrm{m}}{(\mathrm{V/m})}
+\end{equation*}
 
 \begin{equation}
-    
+h_\mathrm{EO\; noise} = 2\frac{\Delta L_\mathrm{EO \; noise}}{L} = 2\frac{\partial L}{\partial E} \times \bigg| \frac{E_\mathrm{noise}}{L_\mathrm{arm}} \bigg| = 5.715 \times 10^{-26} \; \mathrm{Hz}
 \end{equation}
-Which although is nearly two orders of magnitude below the estimated presents adequate motivation for a thorough study dedicated to the electro-optical properties of $\gaas$/$\algaas$ coatings~\cite{buikema:2020}. This section details such a study that starts with a brief survey of the optical and material properties of crystalline materials like $\gaas$ and $\algaas$ by reviewing: light propogation through anistropic materials, and induced optical anisotropy of zincblende materials. The second item of discussion are preliminary estimates of the differential phase of light reflected from a $\gaas$/$\algaas$ coating stack caused by electric field noise are computed while considering potential impacts to the current generation gravitational wave detectors. The third and final item of discussion is a study designed to acquire dn/dE estimates from a calibrated differential length PDH locked signal from a short experimental optical cavity with a primarily normal electric field driven across a HR $\gaas$/$\algaas$ coating ``witness" sample.
+
+Although nearly two orders of magnitude below the estimated strain noise floor, a direct measurement is still merited and adequately motivates a thorough study dedicated to the electro-optical properties of $\gaas$/$\algaas$ coatings~\cite{buikema:2020}. This section details such a study that starts with a brief survey of the optical and material properties of crystalline materials like $\gaas$ and $\algaas$ by reviewing: light propogation through anistropic materials, and induced optical anisotropy of zincblende materials. The second item of discussion are preliminary estimates of the differential phase of light reflected from a $\gaas$/$\algaas$ coating stack caused by electric field noise are computed while considering potential impacts to the current generation gravitational wave detectors. The third and final item of discussion is a study designed to acquire dn/dE estimates from a calibrated differential length PDH locked signal from a short experimental optical cavity with a primarily normal electric field driven across a HR $\gaas$/$\algaas$ coating ``witness" sample.
 
 \section{Coating Thermal Noise}
-Contributions of categorized noises for gravitational wave detectors are organized in a ``noise budget", comprised of a collection of technical (noise imposed by the practical operation of the detector) and fundamental (inherent physical limitations of DRFPMIs by design) noise sources that impose limitations on gravitational wave detection.
+Contributions of categorized noises for gravitational wave detectors are organized in a ``noise budget": comprised of a collection of technical (noise imposed by the practical operation of the detector) and fundamental (inherent physical limitations of DRFPMIs by design) noise sources that impose limitations on gravitational wave detection. Understanding how much differential phase noise is imparted on the interferometer light passing through and reflecting from core optics is crucial.
 %% Contributions of categorized noises for gravitational wave detectors the ''noise budget" ((LHO and LLO O3?) or just GWINC?)}
+One source of noise in high precision optical experiments operating at room temperature (and higher due to high power resonant beams), can be realized through the Brownian Thermal noise and the Fluctutaion dissapation theorem. 
 
 \subsection{Brownian Thermal Noise}
 %% Might move this section back to the $\algaas$ Electro-optic noise chapter
-In 1827 the Scottish botanist Robert Brown noticed a constant motion of pollen particulates on the surface of water; witnessing randomized collisions of the water molecules holding a kinetic energy proportional to the temperature ($k_BT$) \cite{brown:1828}. It is because of his documented observations we name the phenomena Brownian motion. And although the observations were on motion of particulates in liquids, molecules and atoms within gases and solids also exhibit Brownian motion. For high precision optical experiments operating at room temperature (and higher due to high power resonant beams), understanding how much differential phase noise is imparted on the interferometer light passing through and reflecting from core optics is crucial. This requires knowledge of the mean squared displacement from each degree of freedom of the system which can be realized through the Fluctuation Dissapation theorem. Derived by H.B. Callen and T.A. Welton, the theorem states that for a randomly fluctuating linear force \cite{callen:1951}:
+In 1827 the Scottish botanist Robert Brown observed a constant motion of pollen particulates on the surface of water; witnessing randomized collisions of the water molecules holding a kinetic energy proportional to the temperature ($k_BT$) \cite{brown:1828}. It is because of these documented observations we name the phenomena Brownian motion. And although the observations were on motion of particulates in liquids, molecules within gases and solids also exhibit Brownian motion. The connection for solids is especially important for GWDs and becomes more clear when reviewing the fluctuation dissipation theorem (FDT). Derived by H.B. Callen and T.A. Welton, the theorem states that for a randomly fluctuating linear force ($F_x^2(f)$) \cite{callen:1951}:
 
 %% Further insight into Brownian motion was explored by Einstein where he was able to relate the mean-square displacement of a particle of radius $r_\mathrm{sph}$ on a fluid with viscosity $\eta$.
  %%\begin{equation}
@@ -68,23 +74,22 @@ In 1827 the Scottish botanist Robert Brown noticed a constant motion of pollen p
 F_x^2(f) = 4 k_B T\; \Re[Z]
 \end{equation}
 
- \noindent Where $\Re[Z]$ is the real part of the impedance of the system. This impedance directly relates to equations of motion:
+\noindent Where $\Re[Z]$ is the real part of the impedance of the system. This impedance directly relates to equations of motion:
 
  \begin{equation}
  Z = \frac{F}{\dot{x}}
  \end{equation}
 
-\noindent Another useful form is the power spectrum of the fluctuating motion:
+ \noindent Another useful form is the power spectrum of the fluctuating motion:
+
 \begin{equation}\label{eq:fdtpsd}
 x^2 (f)  = \frac{4k_B T}{(2 \pi f)^2}\; \Re[Y]
 \end{equation}
 
-Where $Y$ is the inverse impedance or admittance. $x^2(f)$ as informed by the FDT facilitates modelling and budgeting notable LIGO fundamental noise contributions made by choice of materials used for mirror substrates and highly reflective mirror coatings. Though adequate modelling of internal force couplings for the aforementioned components provides a more complete picture.
+Where $Y$ is the inverse impedance or admittance. The root mean square (RMS) displacement ($x^2(f)$) as informed by the FDT facilitates modelling and budgeting notable Brownian noise sources that fundamentally limit LIGO (i.e. by choice of materials used for highly reflective mirror coatings). Though adequate modelling of internal force couplings for the aforementioned components provides a more complete picture.
 
 \subsubsection{Internal friction in Materials and Loss angle}
-
 Zener provides a model of the internal friction of materials incorporating anelasticity into the equations of motion \cite{zener:1948}:
-
 \begin{equation}
 F = k(1+i\phi)x + m\ddot{x}
 \end{equation}
@@ -124,7 +129,7 @@ S_x(f) = \frac{4 k_B T}{f} \frac{1-\sigma^2}{\pi^3 E_o r_o} I\phi \bigg[1- O\big
 Where $\phi$ and $E_o$ are the Poisson ratio and Young's modulus respectively, and $O(\frac{r_o}{R})$ contains a correction term contribution as a function of the small beam radius ($r_o$) relative to the mirror radius ($R$).
 
 \subsubsection{Coating Brownian thermal noise}
-Further investigations into the beam/optic system utilizing this approach and elasticity theory led to a deeper understanding about Brownian thermal noise contributions from LIGO test masses (substrate, suspensions, HR coating). Levin mentions, with details from Harry, that the noise contributed by a lossy mirror coating is proven to be to be the most significant contributor of brownian thermal noise. Hong provides a power spectral density \cite{hong:2013}:
+Further investigations into the beam/optic system utilizing this approach and elasticity theory led to a deeper understanding about Brownian thermal noise contributions from LIGO test masses (substrate, suspensions, HR coating). Levin mentions, with details from Harry, that the noise contributed by a lossy mirror coating is proven to be to be the most significant contributor of brownian thermal noise ~\cite{harry:2006}. Hong provides a power spectral density \cite{hong:2013}:
 
 \begin{equation}
 S_j^X = \frac{4k_B T \lambda \phi_x^j(1- \sigma_j - 2 \sigma_j^2)}{3 \pi^2 f Y_j (1-\sigma_j)^2 \omega_o^2}
@@ -153,7 +158,7 @@ Where X represents bulk and shear with j = odd (material 1) and j = even (materi
 %
 %\noindent Currently thermal noise from the $\siotao$ optical coatings is the largest contributor of Brownian noise in LIGO compared to estimated substrate and suspension thermal noise \cite{harry:2006}. As of the end of O3, Brownian thermal noise is estimated to be ? orders of magnitude below the current sensitivity and it will prove to be the limiting source of noise as that sensitivity is increased with various other upgrades mitigating fundamental and technical noise. 
 %%% Already mentioned in intro prior to this thermal noise section. Need to re-iterate in more detail?
-
+\section{Static and Induced Birefringence}
 \subsection{Indicatrix}\label{sec:indicatrix}
 The two index solutions for a uniaxial crystal given a general plane wave with unit wave vector $\vec{k}$ can be found via a conveniant geometrical construction known as the ``index ellipsoid". 
 
@@ -175,7 +180,7 @@ With redefined coordinates $(\vec{D}/\sqrt{2 U_e \varepsilon_o}) \rightarrow \ve
 \frac{x^2}{n_x^2} + \frac{y^2}{n_y^2} + \frac{z^2}{n_z^2} = 1
 \end{equation}
 
-This equation for the ellipsoid is known as the indicatrix. Given the co-planar solution demonstrated in the last section, we can impose the normal of the plane $\vec{r} \cdot \vec{s} = 0$:
+This equation for the ellipsoid is known as the indicatrix. Given the co-planar solution demonstrated in \autoref{appendix:Diel_tensor}, we can impose the normal of the plane $\vec{r} \cdot \vec{s} = 0$:
 
 \begin{equation}\label{eq:lagr2}
 \vec{r} \cdot \vec{s} = x s_x + y s_y + z s_z = 0
@@ -186,7 +191,7 @@ r^2 = x^2 + y^2 + z^2
 \end{equation}
 The Lagrangian ($\mathcal{L}$) with the introduced multiplers ($\lambda_1$, $\lambda_2$) then becomes:
 \begin{equation}
-\mathcal{L}(\textcolor{red}{\vec{r},\vec{s}},\lambda_1, \lambda_2) =
+\mathcal{L}(\vec{r},\vec{s},\lambda_1, \lambda_2) =
 x^2 + y^2 + z^2 + \lambda_1 (xs_x + ys_y + zs_z) + \lambda_2 \bigg( \frac{x^2}{\varepsilon_x} + \frac{y^2}{\varepsilon_y} + \frac{z^2}{\varepsilon_z} - 1 \bigg)
 \end{equation}
 With the generated system of equations from the Lagrange multipler method ($\partial F_i/ \partial x_i = 0$, and $\partial F_j/ \partial \lambda_j$) where index $i =x,y,z$ and $j = 1,2$ we obtain a system of 3 equations:
@@ -206,10 +211,10 @@ The space group of $\gaas$ as well as $\algaasgen$ are within the $F\bar{4}3m$ s
 \label{fig:gaasuc}
 \end{figure}
 
-Zincblende structures, like the crystalline materials in question can exhibit birefringent properties when under influence of mechanical stresses and static / low-frequency electric fields ($E_\mathrm{STLF}$); characterized by photoelastic and electro-optic effects respectively. Birefringence witnessed from HR $\gaas$ coatings is said to be due to an ``intrinsic stress" in the high and low index layers (Due to heteroepitaxial bonds between them from a noticiable difference in lattice cell constant between $\gaas$ and $\algaas$)~\cite{adachi:1985}.
+Zincblende structures, like the crystalline materials in question can exhibit birefringent properties when under influence of mechanical stresses and static / low-frequency electric fields ($E_\mathrm{STLF}$); characterized by photoelastic and electro-optic effects respectively. Static birefringence witnessed from HR $\gaas$ coatings is said to be due to an ``intrinsic stress" in the high and low index layers (Due to heteroepitaxial bonds between them from a noticiable difference in lattice cell constant between $\gaas$ and $\algaas$)~\cite{adachi:1985}.
 
 \subsection{Linear electro-optic effect (Pockel's effect)}
-For non-centrosymmetric crystalline media there exists a non-zero rank 2, $6 \times 3$ tensor ($r_{ij}$) connecting a low-frequency \footnote{``low frequency'' meaning orders of magnitude smaller than an optical field it effects} electric field $\vec{E}(f) = [E_x(f), E_y(f), E_z(f)]$ directly to the \hyperref[sec:indicatrix]{indicatrix} ~\cite{yariv,nye}:
+For non-centrosymmetric crystalline media there exists a non-zero rank 2, $6 \times 3$ tensor ($r_{ij}$) connecting a low-frequency \footnote{``low frequency'' meaning orders of magnitude smaller relative to an optical field} electric field $\vec{E}(f) = [E_x(f), E_y(f), E_z(f)]$ directly to the \hyperref[sec:indicatrix]{indicatrix} ~\cite{yariv,nye}:
 \begin{equation}
   \left[ {\begin{array}{c}
    \big( \frac{1}{\Delta n ^2 } \big)_1 \\
@@ -268,17 +273,60 @@ In general the principle dielectric axes of the new ellipsoid do \textbf{not} co
 \bigg(\frac{1}{n_o^2} \bigg) x^2\ + \bigg(\frac{1}{n_o^2} \bigg) y^2 + \bigg(\frac{1}{n_o^2} \bigg) z^2  + 2r_{41} E_{[100]} yz + 2r_{41} E_{[010]} xz + 2r_{41}E_{[001]} xy= 1
 \end{equation}
 
-\noindent Where we have set $n_x = n_y = n_z = n_o$ for zincblende structures.
-
-\noindent Eigenvectors of the above tensor equation, produce the two principal axes:	
+\noindent Where we have set $n_x = n_y = n_z = n_o$ for zincblende structures. Visualizing the above as a tensor:
 
 \begin{equation}
- \left[ {\begin{array}{ccc}
+\left[ {\begin{array}{ccc}
    \big( \frac{1}{n_o ^2} \big)& r_{41}E_{[001]} & r_{41} E_{[010]}\\
-   r_{41}E_{[001]} & \big( \frac{1}{n_o ^2} \big) &  E_{[100]}\\
+   r_{41}E_{[001]} & \big( \frac{1}{n_o ^2} \big) & r_{41} E_{[100]}\\
    r_{41} E_{[010]} & r_{41} E_{[100]} & \big( \frac{1}{n_o ^2} \big)\\
-  \end{array}} \right]
+\end{array}} \right]
 \end{equation}
+
+\noindent For a z-wavevector $E_{[100]} = E_{[010]} = 0$ \& $E_{[001]} \neq 0$, computing the eigenvalues and eigenaxes help us find the fast and slow axes / indices:
+
+\begin{equation}
+    \begin{aligned}
+	\lambda_{[110]} & = \big( \frac{1}{n_o ^2} - r_{41} E_z \big) \\
+        \lambda_{[-110]} & = \big( \frac{1}{n_o ^2} + r_{41} E_z \big) \\
+	\lambda_{[001]} &  = \frac{1}{n_o ^2}
+    \end{aligned}
+\end{equation}
+
+\noindent And the principal axes are found when solving for the eigenvectors:
+
+\begin{equation}
+    \begin{aligned}
+	\vec{x'} & = \frac{1}{\sqrt{2}}\;(1, 1, 0) \\
+	\vec{y'} & = \frac{1}{\sqrt{2}}\;(-1, 1, 0) \\ 
+	\vec{z'} & = (0, 0, 1)
+    \end{aligned}
+\end{equation}
+
+\begin{equation}
+    \lambda_{[110]}\; x'^2 + \lambda_{[-110]}\; y'^2 + \lambda_{[001]}\; z'^2 =1
+\end{equation}
+
+
+\noindent The fast and slow indices are therefore:
+
+\begin{equation}
+    \begin{aligned}
+	n_{[110]} & = \sqrt{\lambda_{[110]}} & = \sqrt{\frac{1}{n_o ^2} - r_{41} E_z} \\
+	n_{[-110]} & = \sqrt{\lambda_{[-110]}} & =  \sqrt{\frac{1}{n_o ^2} + r_{41} E_z}
+    \end{aligned}
+\end{equation}
+
+\noindent And with $n_o r_{41} E_z << 1$:
+
+\begin{equation}
+    \begin{aligned}
+	n_{[110]} & \approx  n_o + \frac{1}{2} n_o^3 r_{41} E_z \\
+	n_{[-110]} & \approx n_o - \frac{1}{2} n_o^3 r_{41} E_z    
+    \end{aligned}
+\end{equation}
+
+
 
 \subsection{The photoelastic effect}
 
@@ -1041,15 +1089,11 @@ To identify the fast and slow axes, the crystalline HR mirror is temporarily pai
 \end{figure}
 
 %There are different accounts of a measured birefringence from HR $\gaas$ / $\algaas$ coatings (\href{https://dcc.ligo.org/DocDB/0181/G2200386/001/G2200386.pdf}{Satoshi}, \href{https://nodus.ligo.caltech.edu:8081/CTN/1474}{CTN}, \href{https://dcc.ligo.org/DocDB/0181/G2200559/001/G2200559-v1\%20-\%20polarization.pdf}{Aidan})
-
-
 %%Is the measured birefringence static? (Layer bonding method might introduce something?)
 %% Does it change from different mounting methods? (Photoelastic) (order of magnitude estimate)
 %% Electro-optic ruled out based on field measurements and relative coupling factor.
 %% Measurement precision of the coating birefringence? Cavity length, Polarization drifts, etc.
 From coating manufacturers it's estimated that static birefringence can arise from the intrinsic strain between hetero-epitaxial layers of $\gaas$/$\algaas$. \cite{cole:2013, adachi:1985}
-
-
 
 \section{Results}
 
