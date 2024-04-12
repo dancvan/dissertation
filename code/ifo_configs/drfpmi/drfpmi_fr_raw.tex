@@ -1,5 +1,4 @@
-\begin{spacing}{1}
-\begin{spacing}{1}\begin{lstlisting}[frame=single, language=Python]
+\begin{spacing}{1.2}\begin{lstlisting}[frame=single, language=Python]
 import numpy as np 
 import matplotlib.pyplot as plt
 import scipy.signal as sig
@@ -15,12 +14,11 @@ plt.rcParams["font.family"] = "serif"
 plt.rcParams["font.serif"] = ["Times New Roman"] + plt.rcParams["font.serif"]
 line_width=7.5
 \end{lstlisting}\end{spacing}
-\end{spacing}
 
 Up to this point we can understand how the FPMI repsonse function works:
 \begin{equation} H_{FPMI}(\omega_g) = \frac{2 \Delta \phi_r(\omega_g)}{h(\omega_g)} =  \frac{t_1^2r_2}{(t_1^2 + r_1^2)r_2 -r_1} \frac{H_{\mathrm{MI}}(\omega_g, L)}{1-r_1r_2e^{-2i \omega_g L /c }}  \end{equation}
 
-\begin{spacing}{1}\begin{lstlisting}[frame=single, language=Python]
+\begin{spacing}{1.2}\begin{lstlisting}[frame=single, language=Python]
 # Some parameters
 cee = np.float64(299792458)
 OMEG = np.float64(2*np.pi*cee/(1064.0*1e-9))
@@ -43,7 +41,7 @@ PHI_0 = np.pi/2
 P_IN = 25
 \end{lstlisting}\end{spacing}
 
-\subsection{POWER RECYCLING}
+\subsubsection*{POWER RECYCLING}
 
 With all the power going to the symmetric port, the nominal operating
 state of the FPMI involves a significant amount of dumped / wasted
@@ -107,7 +105,7 @@ power recyling gain
 
 \begin{equation} G_\mathrm{PR} = \frac{\pi}{2 \mathcal{F} \mathscr{L}_\mathrm{RT}} \Bigg[ \frac{1}{1- \frac{\mathcal{F}\mathscr{L}_\mathrm{RT}}{2 \pi}} \Bigg] \end{equation}
 
-\begin{spacing}{1}\begin{lstlisting}[frame=single, language=Python]
+\begin{spacing}{1.2}\begin{lstlisting}[frame=single, language=Python]
 r_FPMI = -r_1 + (T_1*r_2)/(1-r_1*r_2)
 T_PRM = .03
 R_PRM = 1-T_PRM
@@ -116,33 +114,33 @@ r_PRM = (R_PRM)**.5
 G_PRC = 1/(1-r_PRM*(r_FPMI))
 \end{lstlisting}\end{spacing}
 
-\begin{spacing}{1}\begin{lstlisting}[frame=single, language=Python]
+\begin{spacing}{1.2}\begin{lstlisting}[frame=single, language=Python]
 L_rt = 75e-6
 Finn = (np.pi*np.sqrt(r_1*r_2))/(1-r_1*r_2)
 print(Finn)
 \end{lstlisting}\end{spacing}
 
-\begin{spacing}{1}\begin{lstlisting}
+\begin{spacing}{1.2}\begin{lstlisting}
 444.0741558169753
 \end{lstlisting}\end{spacing}
 
-\begin{spacing}{1}\begin{lstlisting}[frame=single, language=Python]
+\begin{spacing}{1.2}\begin{lstlisting}[frame=single, language=Python]
 r_FPMI_approx = (1 - Finn*L_rt/np.pi)
 \end{lstlisting}\end{spacing}
 
-\begin{spacing}{1}\begin{lstlisting}[frame=single, language=Python]
+\begin{spacing}{1.2}\begin{lstlisting}[frame=single, language=Python]
 r_range = np.arange(.9,1,1/(2**16))
 \end{lstlisting}\end{spacing}
 
-\begin{spacing}{1}\begin{lstlisting}[frame=single, language=Python]
+\begin{spacing}{1.2}\begin{lstlisting}[frame=single, language=Python]
 G_PRC_ = ifco.PRG(L_rt, Finn, r_range, max=0) 
 \end{lstlisting}\end{spacing}
 
-\begin{spacing}{1}\begin{lstlisting}[frame=single, language=Python]
+\begin{spacing}{1.2}\begin{lstlisting}[frame=single, language=Python]
 G_PRC_opt =  ifco.PRG(L_rt, Finn, r_FPMI, max=1)
 \end{lstlisting}\end{spacing}
 
-\begin{spacing}{1}\begin{lstlisting}[frame=single, language=Python]
+\begin{spacing}{1.2}\begin{lstlisting}[frame=single, language=Python]
 plt.plot(r_range, G_PRC_, linewidth=line_width)
 plt.axhline(G_PRC_opt, linestyle='--',linewidth=line_width, color='r')
 plt.xlim(r_range[0], r_range[-1])
@@ -150,21 +148,21 @@ plt.xlabel('$\mathdefault{r_{PRM}}$ [arb]')
 plt.ylabel('$\mathdefault{G_{PRC}}$ [arb]')
 \end{lstlisting}\end{spacing}
 
-\begin{spacing}{1}\begin{lstlisting}
+\begin{spacing}{1.2}\begin{lstlisting}
 Text(0, 0.5, '$\\mathdefault{G_{PRC}}$ [arb]')
 \end{lstlisting}\end{spacing}
 
-\begin{spacing}{1}\begin{lstlisting}[frame=single, language=Python]
+\begin{spacing}{1.2}\begin{lstlisting}[frame=single, language=Python]
 G_PRC_actual = ifco.PRG(L_rt, Finn, r_PRM, max=1)
 \end{lstlisting}\end{spacing}
 
-\begin{spacing}{1}\begin{lstlisting}[frame=single, language=Python]
+\begin{spacing}{1.2}\begin{lstlisting}[frame=single, language=Python]
 H_FPMI = ifco.fpmi_freq_resp(nu, r_1, t_1, r_2, L, PHI_0, P_IN, OMEG)
 H_FPMI_LP = ifco.fpmi_freq_resp(nu, r_1, t_1, r_2, L, PHI_0, P_IN, OMEG, 
 				low_pass='True')
 \end{lstlisting}\end{spacing}
 
-\begin{spacing}{1}\begin{lstlisting}[frame=single, language=Python]
+\begin{spacing}{1.2}\begin{lstlisting}[frame=single, language=Python]
 H_PRFPMI = ((G_PRC_actual)**.5)*H_FPMI
 \end{lstlisting}\end{spacing}
 
@@ -176,11 +174,11 @@ pole frequency \(\omega_\mathrm{pole}\) as indicated in the low pass
 as well compare it to our Michelson response:
 \begin{equation} H_{\mathrm{MI}}(\omega_g) = \frac{2 L \Omega}{c}e^{-i L \omega / c} \frac{\mathrm{sin}(L \omega /c)}{L \omega /c} \end{equation}
 
-\begin{spacing}{1}\begin{lstlisting}[frame=single, language=Python]
+\begin{spacing}{1.2}\begin{lstlisting}[frame=single, language=Python]
 H_MI = ifco.mich_freq_resp(nu, L, PHI_0, P_IN, OMEG)
 \end{lstlisting}\end{spacing}
 
-\begin{spacing}{1}\begin{lstlisting}[frame=single, language=Python]
+\begin{spacing}{1.2}\begin{lstlisting}[frame=single, language=Python]
 plt.loglog(nu, ifco.bode_amp(H_MI), label= 'MICH', linewidth= line_width, alpha=.3)
 plt.loglog(nu, ifco.bode_amp(H_FPMI), label='FPMI', linewidth=line_width, alpha=.3)
 plt.loglog(nu, ifco.bode_amp(H_PRFPMI), label='PRFPMI', linewidth = line_width)
@@ -193,7 +191,7 @@ lgd=plt.legend()
 plt.savefig('../figs/INTRO/prfpmi_fr.pdf', dpi=300, bbox_inches='tight')
 \end{lstlisting}\end{spacing}
 
-\begin{spacing}{1}\begin{lstlisting}[frame=single, language=Python]
+\begin{spacing}{1.2}\begin{lstlisting}[frame=single, language=Python]
 plt.semilogx(nu,(180/np.pi)*np.arctan(np.imag(H_FPMI)/np.real(H_FPMI)), '--', 
 	     linewidth=line_width)
 plt.semilogx(nu,(180/np.pi)*np.arctan(np.imag(H_MI)/np.real(H_MI)), '--', 
@@ -205,12 +203,12 @@ plt.ylabel('phase [deg]')
 plt.xlabel('Frequency [Hz]')
 \end{lstlisting}\end{spacing}
 
-\begin{spacing}{1}\begin{lstlisting}
+\begin{spacing}{1.2}\begin{lstlisting}
 Text(0.5, 0, 'Frequency [Hz]')
 \end{lstlisting}\end{spacing}
 
 \hypertarget{signal-recyclinginitially-not-used-in-early-iterations-of-ligo-intial-ligo-and-enhanced-ligo-signal-recycling-imagines-using-a-partially-reflective-mirror-at-the-anti-symmetric-port.-and-at-first-glance-it-seems-to-not-very-much-make-sense-to-have-a-mirror-at-detector-output-as-you-would-potentially-attenuate-gravitational-wave-signals-by-said-mirror-reflection-coefficient.}{%
-\section{SIGNAL RECYCLING}
+\subsubsection*{SIGNAL RECYCLING}
 Initially not used in early iterations of LIGO
 (intial LIGO and enhanced LIGO) signal recycling imagines using a
 partially reflective mirror at the anti-symmetric port. And at first
@@ -253,7 +251,7 @@ now observe the tuning extrema:
 				      \frac{\mathrm{sin}(\phi_0)}{1- [(r_\mathrm{ITM} - r_\mathrm{SRM} e^{i2\phi_\mathrm{SRC}})/(1-r_\mathrm{ITM} r_\mathrm{SRM} e^{i2\phi_\mathrm{SRC}})] r_\mathrm{ETM} e^{-i 4 \pi L f / c}} \bigg] 
 \end{multline*}
 
-\begin{spacing}{1}\begin{lstlisting}[frame=single, language=Python]
+\begin{spacing}{1.2}\begin{lstlisting}[frame=single, language=Python]
 l_SRC = 56  #[m]
 T_SRM = .30
 R_SRM = 1-T_SRM
@@ -262,12 +260,12 @@ r_SRM = R_SRM**.5
 phi_SRC = np.pi
 \end{lstlisting}\end{spacing}
 
-\begin{spacing}{1}\begin{lstlisting}[frame=single, language=Python]
+\begin{spacing}{1.2}\begin{lstlisting}[frame=single, language=Python]
 H_DRFPMI = ifco.drfpmi_freq_resp(nu, G_PRC_opt, r_1, t_1, r_2, r_SRM, t_SRM, 
 				 phi_SRC, L, PHI_0, P_IN, OMEG)
 \end{lstlisting}\end{spacing}
 
-\begin{spacing}{1}\begin{lstlisting}[frame=single, language=Python]
+\begin{spacing}{1.2}\begin{lstlisting}[frame=single, language=Python]
 bode_test=False
 if bode_test:
     fig, ax1 = plt.subplots()
@@ -296,7 +294,7 @@ if bode_test:
     plt.ylabel('phase [deg]', color='C1', alpha=.5)
 \end{lstlisting}\end{spacing}
 
-\begin{spacing}{1}\begin{lstlisting}[frame=single, language=Python]
+\begin{spacing}{1.2}\begin{lstlisting}[frame=single, language=Python]
 plt.loglog(nu, ifco.bode_amp(H_MI), label= 'MICH', linewidth= line_width, alpha=.4)
 plt.loglog(nu, ifco.bode_amp(H_FPMI), label='FPMI', linewidth=line_width, alpha=.4)
 plt.loglog(nu, ifco.bode_amp(H_PRFPMI), label='PRFPMI', linewidth = line_width, 
@@ -311,7 +309,7 @@ lgd=plt.legend()
 plt.savefig('../figs/INTRO/drfpmi_fr.pdf', dpi=300, bbox_inches='tight')
 \end{lstlisting}\end{spacing}
 
-\begin{spacing}{1}\begin{lstlisting}[frame=single, language=Python]
+\begin{spacing}{1.2}\begin{lstlisting}[frame=single, language=Python]
 plt.semilogx(nu,ifco.bode_ph(H_MI), '--', linewidth=line_width, 
 	     alpha=.4, label='MICH')
 plt.semilogx(nu,ifco.bode_ph(H_FPMI),'--', linewidth=line_width, 
@@ -326,11 +324,11 @@ plt.xlabel('Frequency [Hz]')
 plt.legend()
 \end{lstlisting}\end{spacing}
 
-\begin{spacing}{1}\begin{lstlisting}[frame=single, language=Python]
+\begin{spacing}{1.2}\begin{lstlisting}[frame=single, language=Python]
 Sn = ifco.N_shot(OMEG, P_IN)
 \end{lstlisting}\end{spacing}
 
-\begin{spacing}{1}\begin{lstlisting}[frame=single, language=Python]
+\begin{spacing}{1.2}\begin{lstlisting}[frame=single, language=Python]
 plt.loglog(nu, Sn/ifco.bode_amp(H_MI), label= 'MICH', linewidth=line_width)
 plt.loglog(nu, Sn/ifco.bode_amp(H_FPMI), label='FPMI', linewidth=line_width)
 plt.loglog(nu, Sn/ifco.bode_amp(H_PRFPMI), label='PRFPMI', linewidth=line_width)

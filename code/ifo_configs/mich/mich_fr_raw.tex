@@ -1,4 +1,4 @@
-\begin{spacing}{1} \begin{lstlisting}[frame=single, language=Python]
+\begin{spacing}{1.2} \begin{lstlisting}[frame=single, language=Python]
 import numpy as np
 import matplotlib.pyplot as plt
 import os
@@ -15,7 +15,7 @@ if os.path.isdir(plt_style_dir) == True:
 plt.rcParams["font.family"] = "Times New Roman"
 \end{lstlisting} \end{spacing}
 
-\begin{spacing}{1} \begin{lstlisting}[frame=single, language=Python]
+\begin{spacing}{1.2} \begin{lstlisting}[frame=single, language=Python]
 # Some parameters
 cee = np.float64(299792458)
 h_bar = (6.626e-34)/(2*np.pi)
@@ -43,17 +43,19 @@ following way:
 h(t) = h_0 e^{i \omega t} 
 \end{equation}
 
-\emph{\(\Omega\)} is the \textbf{optical angular frequency}
+\noindent \emph{\(\Omega\)} is the \textbf{optical angular frequency}
 
-After evaluating this integral we get: \begin{equation}
+\noindent After evaluating this integral we get: 
+\begin{equation}
 \Delta \phi=\phi_A - \phi_B = \frac{2 L \Omega}{c}e^{-i L \omega / c} \frac{\mathrm{sin}(L \omega /c)}{L \omega /c} \cdot h_0 e^{i \omega t}
 \end{equation}
 
-Where the first term in the phase difference carries all the time
+\noindent Where the first term in the phase difference carries all the time
 independent frequency information. This is what we are calculating
 below.
 
-For the sake of being explicit, we are going to plot: \begin{equation}
+\noindent For the sake of being explicit, we are going to plot: 
+\begin{equation}
 \Delta \phi (\omega) = h_0\frac{2 L \Omega}{c}e^{-i L \omega / c} \frac{\mathrm{sin}(L \omega /c)}{L \omega /c}
 \end{equation}This accounts for the differential phase as a function of
 gravitational wave frequency, though we have not established the amount
@@ -65,15 +67,15 @@ first order taylor approximation about a selected Michelson offset angle
 
 \begin{equation}P(\omega, \phi_0) \approx  \frac{P_\mathrm{in}}{4} \Big[ r_x^2 + r_y^2 -  2r_x r_y \big(\mathrm{cos}(\phi_0) - \Delta \phi(\omega) \cdot \mathrm{sin}(\phi_0) \big) \Big] =  \frac{P_\mathrm{in}}{2} \Big[1 - \big(\mathrm{cos}(\phi_0) - \Delta \phi(\omega) \cdot \mathrm{sin}(\phi_0) \big) \Big]\end{equation}
 
-Where we define a response gain function \(H_\mathrm{MICH}\):
+\noindent Where we define a response gain function \(H_\mathrm{MICH}\):
 
 \begin{equation}\mathrm{H}_\mathrm{MICH}(\omega, \phi_0) =   \frac{P_\mathrm{in}}{2} \cdot \Delta \phi(\omega) \cdot \mathrm{sin}(\phi_0)\end{equation}
 
-\begin{spacing}{1} \begin{lstlisting}[frame=single, language=Python]
+\begin{spacing}{1.2} \begin{lstlisting}[frame=single, language=Python]
 H = MICH(nu, L, PHI_0, P_IN, OMEG)
 \end{lstlisting} \end{spacing}
 
-\begin{spacing}{1} \begin{lstlisting}[frame=single, language=Python]
+\begin{spacing}{1.2} \begin{lstlisting}[frame=single, language=Python]
 fig, ax1 = plt.subplots()
 ax1.set_xlabel('frequency [Hz]')
 ax1.set_ylabel('H$_{\mathdefault{MICH}}$ [$\mathdefault{W/m}$]',color='C0')
@@ -118,21 +120,21 @@ ASD:
 
 \begin{equation}\mathrm{SNR} = \mathrm{G_{opt}(\omega)} [\mathrm{S}_{\mathrm{h}}(\omega)]^{1/2} / S_\mathrm{N}(\omega) = \mathrm{H}_\mathrm{MICH} / [S_P]^{1/2} = \bigg( \frac{\Delta \phi(\omega)}{h_0} \frac{P_\mathrm{in}}{2}\mathrm{sin}(\phi_0) \bigg) \bigg/ [2 \hbar \Omega \bar{P}]^{1/2}\end{equation}
 
-This is to say that for the stated gravitational wave ASD, and for an
+\noindent This is to say that for the stated gravitational wave ASD, and for an
 SNR of 1, we establish the following threshold for detector:
 
 \begin{equation}\big[ \mathrm{S}_{\mathrm{h}}(\omega) \big]^{1/2} \; \{\mathrm{SNR}\geq1\} \geq \frac{ [S_\mathrm{N}(\omega)]^{1/2}}{\mathrm{H}_\mathrm{MICH}(\omega)}\end{equation}
 
-Where
+\noindent Where
 
 \begin{equation}\frac{ [S_\mathrm{N}(\omega)]^{1/2}}{\mathrm{H}_\mathrm{MICH}(\omega)} = \frac{[2 \hbar \omega \bar{P}]^{1/2}}{ \Delta \phi(\omega) [P_\mathrm{in} / 2]  \mathrm{sin}(\phi_0)} = \bigg( \frac{\hbar \Omega }{\omega P_\mathrm{in}} \bigg)^{1/2} \frac{[r_x^2 + r_y^2 -  2r_x r_y\mathrm{cos}(\phi_0)]^{1/2}}{\mathrm{sin}(L \omega / c)} e^{iL \omega / c}\end{equation}
 
-\begin{spacing}{1} \begin{lstlisting}[frame=single, language=Python]
+\begin{spacing}{1.2} \begin{lstlisting}[frame=single, language=Python]
 S_h = N_shot(OMEG, P_IN) 
 print(S_h)
 \end{lstlisting} \end{spacing}
 
-\begin{spacing}{1} \begin{lstlisting}[frame=single, language=Python]
+\begin{spacing}{1.2} \begin{lstlisting}[frame=single, language=Python]
 #ax1.plot(w/(FSR), F_w_cc_modsq*100)
 plt.loglog(nu, S_h/bode_amp(H), linewidth=7.5, color='C0')
 plt.ylim([1e-21, .5e-14])
