@@ -1,4 +1,4 @@
-\begin{spacing}{1}
+\begin{spacing}{1.2}
 \begin{lstlisting}[frame=single, language=Python]
 import numpy as np
 import matplotlib.pyplot as plt
@@ -7,11 +7,9 @@ from scipy.sparse import lil_matrix
 from scipy.sparse import spdiags
 import torch
 
-
 # Computes Laplace's equation in cartesian and cylindrical coordinates
 # For some related detailed documentation: Numerical recipies (3rd edition) 
   (Chapter 20 [Partial Differential Equations])
-
 
 ## Initialize fields
 
@@ -55,7 +53,6 @@ def init_coords(pdict):
     #elif pdict['coords'] == 'cartesian': 
     
     return coord_dict
-    
 
 def indx(icoord1, icoord2, N):
     """
@@ -64,7 +61,6 @@ def indx(icoord1, icoord2, N):
     """
     return np.int32(icoord1 + icoord2*N)
 
-
 def idx_match(vec,N,step):
     """
     Acquire nearest matching ind(ex/ices) for queried location(s) in potential map
@@ -72,7 +68,6 @@ def idx_match(vec,N,step):
     idx = np.int32(np.round(vec/step, decimals=0))
     idx = 1 if idx<1 else N if idx>N else idx
     return idx
-
 
 def init_V(N):
     """
@@ -83,14 +78,14 @@ def init_V(N):
 
 def build_lambd(i1, i2, N):
     """
-    Constructs a matrix for a lambda function, which operates on all available indices in the simulation.
-    Preallocates memory so that the indx function doesn't need to be used twice (reducing computations).
+    Constructs a matrix for a lambda function, 
+	which operates on all available indices in the simulation.
+    Preallocates memory so that the indx function 
+	doesn't need to be used twice (reducing computations).
     """
     LAMBD = np.array([indx(i, i2, N) for i in i1])
     
     return LAMBD
-        
-    
 
 def bc_set(pdict, BC, N, V):
     """
@@ -104,13 +99,14 @@ def bc_set(pdict, BC, N, V):
         #Setting up the edge boundaries (for faster convergence)  
         if not bc0set:
             rho0 = False
-            rhoend = np.interp(np.arange(0,N), np.array([0,N-1]),np.array([pdict['back_plate']['voltage'],pdict['front_plate']['voltage']])).reshape(N,1)
+            rhoend = np.interp(np.arange(0,N), np.array([0,N-1]),
+		np.array([pdict['back_plate']['voltage'],
+		pdict['front_plate']['voltage']])).reshape(N,1)
             z0 = pdict['back_plate']['voltage']
             zend = pdict['front_plate']['voltage']
             edge_vals =np.array(rho0, rhoend, z0, zend)
             V = bc_edge(pdict, edge_vals, V)
             bc0set = True
-            
             
         #Set potentials
         for i in range(BC['cont']):
@@ -119,14 +115,14 @@ def bc_set(pdict, BC, N, V):
         # exponential boundary conditions
         V0 = 0
         R0 = 1
-        V[idx(np.arange(0,N),N-1)] = V0  + np.exp(-step/R0)*(V[idx(np.arange(0,N), N-2)]-V0)
-        V[idx(np.arange(0,N),0)] = V0 + np.exp(-step/R0)*(V[idx(np.arange(0,N),1)]-V0)
-        V[idx(N-1,np.arange(0,N))]= V0 + np.exp(-step/R0)*(V[idx(N-2, np.arange(0,N))]-V0) 
+        V[idx(np.arange(0,N),N-1)] = V0 + 
+	    np.exp(-step/R0)*(V[idx(np.arange(0,N), N-2)]-V0)
+        V[idx(np.arange(0,N),0)] = V0 + 
+	    np.exp(-step/R0)*(V[idx(np.arange(0,N),1)]-V0)
+        V[idx(N-1,np.arange(0,N))]= V0 + 
+	    np.exp(-step/R0)*(V[idx(N-2, np.arange(0,N))]-V0) 
                  
     return V
-                 
-
-                 
 
 # Constructing the operator(s)
     
@@ -151,16 +147,26 @@ def build_lap(pdict, LAMBD, i_rho):
             idx_9 = LAMBD[2:,1:-1].reshape(size_)
             ones_1 = np.ones(idx_1.shape)
             ones_2 = np.ones(idx_5.shape)
-            const_ = (np.ones((1,i_rho[1:-1].shape[0])).T*(((1/2)/(i_rho[1:-1])))).reshape(size_)
-            lap1 = torch.sparse_coo_tensor(np.array([idx_1, idx_1]), -6*ones_1, op_shape, dtype=torch.float32)
-            lap2 = torch.sparse_coo_tensor(np.array([idx_1, idx_2]), 4*ones_1, op_shape, dtype=torch.float32)
-            lap3 = torch.sparse_coo_tensor(np.array([idx_1, idx_3]), ones_1, op_shape, dtype=torch.float32)
-            lap4 = torch.sparse_coo_tensor(np.array([idx_1, idx_4]), ones_1, op_shape, dtype=torch.float32)
-            lap5 = torch.sparse_coo_tensor(np.array([idx_5, idx_5]), -4*ones_2, op_shape, dtype=torch.float32)
-            lap6 = torch.sparse_coo_tensor(np.array([idx_5, idx_6]), ones_2, op_shape, dtype=torch.float32)
-            lap7 = torch.sparse_coo_tensor(np.array([idx_5, idx_7]), ones_2, op_shape, dtype=torch.float32)
-            lap8 = torch.sparse_coo_tensor(np.array([idx_5, idx_8]), 1 - const_, op_shape, dtype=torch.float32)
-            lap9 = torch.sparse_coo_tensor(np.array([idx_5, idx_9]), 1 + const_, op_shape, dtype=torch.float32)
+            const_ = (np.ones((1,i_rho[1:-1].shape[0])).T
+		    *(((1/2)/(i_rho[1:-1])))).reshape(size_)
+            lap1 = torch.sparse_coo_tensor(np.array([idx_1, idx_1]), 
+					   -6*ones_1, op_shape, dtype=torch.float32)
+            lap2 = torch.sparse_coo_tensor(np.array([idx_1, idx_2]), 
+			         	   4*ones_1, op_shape, dtype=torch.float32)
+            lap3 = torch.sparse_coo_tensor(np.array([idx_1, idx_3]), 
+					   ones_1, op_shape, dtype=torch.float32)
+            lap4 = torch.sparse_coo_tensor(np.array([idx_1, idx_4]), 
+					   ones_1, op_shape, dtype=torch.float32)
+            lap5 = torch.sparse_coo_tensor(np.array([idx_5, idx_5]), 
+					   -4*ones_2, op_shape, dtype=torch.float32)
+            lap6 = torch.sparse_coo_tensor(np.array([idx_5, idx_6]), 
+					   ones_2, op_shape, dtype=torch.float32)
+            lap7 = torch.sparse_coo_tensor(np.array([idx_5, idx_7]), 
+					   ones_2, op_shape, dtype=torch.float32)
+            lap8 = torch.sparse_coo_tensor(np.array([idx_5, idx_8]), 
+					   1 - const_, op_shape, dtype=torch.float32)
+            lap9 = torch.sparse_coo_tensor(np.array([idx_5, idx_9]), 
+					   1 + const_, op_shape, dtype=torch.float32)
             lap_ = lap1 + lap2 + lap3 + lap4 + lap5 + lap6 + lap7 + lap8 + lap9
             lap = lap_/(pdict['res'][0]**2)  
         else:
@@ -194,28 +200,40 @@ def build_grad(pdict, LAMBD):
             idx5 = LAMBD[:,:-2]
             idx6 = LAMBD[:,2:]
             
-            gradrho1 = torch.sparse_coo_tensor(np.array([idx1, idx2]), -1/2, op_shape, dtype=pdict['bitres'])
-            gradrho2 = torch.sparse_coo_tensor(np.array([idx1, idx3]), -1/2, op_shape, dtype=pdict['bitres'])
+            gradrho1 = torch.sparse_coo_tensor(np.array([idx1, idx2]), 
+			-1/2, op_shape, dtype=pdict['bitres'])
+            gradrho2 = torch.sparse_coo_tensor(np.array([idx1, idx3]), 
+			-1/2, op_shape, dtype=pdict['bitres'])
             GRADrho = (gradrho1+gradrho2)/pdict['res'][0]
             
-            gradrhopos1 = torch.sparse_coo_tensor(np.array([idx1, idx1]), -1, op_shape, dtype=pdict['bitres'])
-            gradrhopos2 = torch.sparse_coo_tensor(np.array([idx1, idx3]), -1, op_shape, dtype=pdict['bitres'])
+            gradrhopos1 = torch.sparse_coo_tensor(np.array([idx1, idx1]), 
+			-1, op_shape, dtype=pdict['bitres'])
+            gradrhopos2 = torch.sparse_coo_tensor(np.array([idx1, idx3]), 
+			-1, op_shape, dtype=pdict['bitres'])
             GRADrhopos = (gradrhopos1+gradrhopos2)/pdict['res'][0]
             
-            gradrhoneg1 = torch.sparse_coo_tensor(np.array([idx1, idx2]), -1, op_shape, dtype=pdict['bitres'])
-            gradrhoneg2 = torch.sparse_coo_tensor(np.array([idx1, idx1]), -1, op_shape, dtype=pdict['bitres'])
+            gradrhoneg1 = torch.sparse_coo_tensor(np.array([idx1, idx2]), 
+			-1, op_shape, dtype=pdict['bitres'])
+            gradrhoneg2 = torch.sparse_coo_tensor(np.array([idx1, idx1]), 
+			-1, op_shape, dtype=pdict['bitres'])
             GRADrhoneg = (gradrhoneg1+gradrhoneg2)/pdict['res'][0]
             
-            gradz1 = torch.sparse_coo_tensor(np.array([idx4, idx5]), -1/2, op_shape, dtype=pdict['bitres'])
-            gradz2 = torch.sparse_coo_tensor(np.array([idx4, idx6]), -1/2, op_shape, dtype=pdict['bitres'])
+            gradz1 = torch.sparse_coo_tensor(np.array([idx4, idx5]), 
+			-1/2, op_shape, dtype=pdict['bitres'])
+            gradz2 = torch.sparse_coo_tensor(np.array([idx4, idx6]), 
+			-1/2, op_shape, dtype=pdict['bitres'])
             GRADz = (gradz1+gradz2)/pdict['res'][1]
             
-            gradzpos1 = torch.sparse_coo_tensor(np.array([idx4, idx4]), -1, op_shape, dtype=pdict['bitres'])
-            gradzpos2 = torch.sparse_coo_tensor(np.array([idx4, idx6]), 1, op_shape, dtype=pdict['bitres'])
+            gradzpos1 = torch.sparse_coo_tensor(np.array([idx4, idx4]), 
+			-1, op_shape, dtype=pdict['bitres'])
+            gradzpos2 = torch.sparse_coo_tensor(np.array([idx4, idx6]), 
+			1, op_shape, dtype=pdict['bitres'])
             GRADzpos = (gradzpos1 + gradzpos2)/pdict['res'][1]
             
-            gradzpos1 = torch.sparse_coo_tensor(np.array([idx4, idx5]), -1, op_shape, dtype=pdict['bitres'])
-            gradzpos2 = torch.sparse_coo_tensor(np.array([idx4, idx4]), 1, op_shape, dtype=pdict['bitres'])
+            gradzpos1 = torch.sparse_coo_tensor(np.array([idx4, idx5]), 
+			-1, op_shape, dtype=pdict['bitres'])
+            gradzpos2 = torch.sparse_coo_tensor(np.array([idx4, idx4]), 
+			1, op_shape, dtype=pdict['bitres'])
             GRADzneg = (gradzpos1 + gradzpos2)/pdict['res'][1]
             
         else:
@@ -257,7 +275,6 @@ def build_grad(pdict, LAMBD):
         
     return GRADrho, GRADrhopos, GRADrhoneg, GRADz, GRADzpos, GRADzneg
 
-
 def build_disp(pdict, LAMBD):
     """
     Displacement operators
@@ -297,19 +314,25 @@ def build_LAP(pdict, coord_dict, lap, grad, disp, chi_e):
     
         chi_e_half = chi_e/2
 
-        CHI1 = spdiags((1/(1+chi_e_half)).T,0, pdict['N'][0]*pdict['N'][1], pdict['N'][0]*pdict['N'][1], format='lil')
-        CHI2 = spdiags((chi_e_half*coord_dict['coords']['invrho']).T,0, pdict['N'][0]*pdict['N'][1], pdict['N'][0]*pdict['N'][1], format='lil')
-        DNEG = spdiags(DISPrhoneg.dot(chi_e_half).T,0, pdict['N'][0]*pdict['N'][1], pdict['N'][0]*pdict['N'][1], format='lil')
-        DPOS = spdiags(DISPrhopos.dot(chi_e_half).T,0, pdict['N'][0]*pdict['N'][1], pdict['N'][0]*pdict['N'][1], format='lil')
-        ZNEG = spdiags(DISPzneg.dot(chi_e_half).T,0, pdict['N'][0]*pdict['N'][1], pdict['N'][0]*pdict['N'][1], format='lil')
-        ZPOS = spdiags(DISPzpos.dot(chi_e_half).T,0, pdict['N'][0]*pdict['N'][1], pdict['N'][0]*pdict['N'][1], format='lil')
-        LAP = lap + CHI1.dot(CHI2.dot(GRADrho) + (DNEG.dot(GRADrhopos) - DPOS.dot(GRADrhoneg))/pdict['res'][0] + (ZNEG.dot(GRADzpos) - ZPOS.dot(GRADzneg))/pdict['res'][1]) 
+        CHI1 = spdiags((1/(1+chi_e_half)).T,0, pdict['N'][0]*pdict['N'][1], 
+	    pdict['N'][0]*pdict['N'][1], format='lil')
+        CHI2 = spdiags((chi_e_half*coord_dict['coords']['invrho']).T,0, 
+	    pdict['N'][0]*pdict['N'][1], pdict['N'][0]*pdict['N'][1], format='lil')
+        DNEG = spdiags(DISPrhoneg.dot(chi_e_half).T,0, pdict['N'][0]*pdict['N'][1], 
+	    pdict['N'][0]*pdict['N'][1], format='lil')
+        DPOS = spdiags(DISPrhopos.dot(chi_e_half).T,0, pdict['N'][0]*pdict['N'][1], 
+	    pdict['N'][0]*pdict['N'][1], format='lil')
+        ZNEG = spdiags(DISPzneg.dot(chi_e_half).T,0, pdict['N'][0]*pdict['N'][1], 
+	    pdict['N'][0]*pdict['N'][1], format='lil')
+        ZPOS = spdiags(DISPzpos.dot(chi_e_half).T,0, pdict['N'][0]*pdict['N'][1], 
+	    pdict['N'][0]*pdict['N'][1], format='lil')
+        LAP = lap + CHI1.dot(CHI2.dot(GRADrho) + (DNEG.dot(GRADrhopos) - 
+	    DPOS.dot(GRADrhoneg))/pdict['res'][0] + (ZNEG.dot(GRADzpos) - 
+	    ZPOS.dot(GRADzneg))/pdict['res'][1]) 
         
     #elif pdict['coords'] == 'cartesian':
         
     return LAP
-
-
 
 def anal_sol(pdict):
     z_p1 = pdict['front_plate']['zpos']
@@ -336,28 +359,35 @@ def anal_sol(pdict):
     V_air = cap_ratio*air_ratio*V_diff
     V_coat = cap_ratio*coat_ratio*V_diff
     V_sub = cap_ratio*sub_ratio*V_diff
-    
 
     #E_front = V_diff/(p1_2_opt + opt_2_p2 + (d_opt-d_coat)/eps_sub + d_coat/eps_coat)
     #E_sub = V_diff/((p1_2_opt + opt_2_p2 + d_coat/eps_coat)*eps_sub + (d_opt-d_coat))
-    #E_coat = V_diff/( (p1_2_opt + opt_2_p2 + (d_opt-(d_coat))/eps_sub)*eps_coat + d_coat)
+    #E_coat = V_diff/( (p1_2_opt + opt_2_p2 + (d_opt-(d_coat))/eps_sub)*eps_coat + 
+	d_coat)
     #E_back = E_front
-    z_anal = z_p2+np.array([0, opt_2_p2, (opt_2_p2 + d_sub), (opt_2_p2 + d_sub + d_coat), (opt_2_p2 + d_sub + d_coat + opt_2_p2)])
-    V_anal = np.array([V_p2, V_p2 + V_air, V_p2 + V_air + V_sub, V_p2 + V_air + V_sub + V_coat, V_p1])
+    z_anal = z_p2+np.array([0, opt_2_p2, (opt_2_p2 + d_sub), (opt_2_p2 + d_sub + d_coat),
+	(opt_2_p2 + d_sub + d_coat + opt_2_p2)])
+    V_anal = np.array([V_p2, V_p2 + V_air, V_p2 + V_air + V_sub, V_p2 + V_air + 
+	V_sub + V_coat, V_p1])
     anal_dict = {
         'V_anal' : lambda z: np.interp(z, z_anal, V_anal)
         }
     return anal_dict
 
-
 def pltxsect(loc_params, coord_dict, V): 
     if loc_params['cross_section_coord'] == 'z':
-        rho_ = coord_dict['coords']['rho'] == np.around(loc_params['rho'], int(abs(np.log10(coord_dict['coords']['rho'][1]))))
-        z_ = np.logical_and(coord_dict['coords']['z']<=loc_params['z1_bound'], coord_dict['coords']['z']>=loc_params['z2_bound'])
-        plt.plot(coord_dict['coords']['z'][np.logical_and(rho_,z_)],V[np.logical_and(rho_, z_)])
+        rho_ = coord_dict['coords']['rho'] == np.around(loc_params['rho'], 
+	    int(abs(np.log10(coord_dict['coords']['rho'][1]))))
+        z_ = np.logical_and(coord_dict['coords']['z']<=loc_params['z1_bound'], 
+	    coord_dict['coords']['z']>=loc_params['z2_bound'])
+        plt.plot(coord_dict['coords']['z'][np.logical_and(rho_,z_)],
+	    V[np.logical_and(rho_, z_)])
     if loc_params['cross_section_coord'] == 'rho':
-        z_ = coord_dict['coords']['z'] == np.around(loc_params['z'], int(abs(np.log10(coord_dict['coords']['z'][1]))))
-        rho_ = np.logical_and(coord_dict['coords']['rho']<=loc_params['rho2_bound'], coord_dict['coords']['rho']>=loc_params['rho1_bound'])
-        plt.plot(coord_dict['coords']['rho'][np.logical_and(rho_,z_)],V[np.logical_and(rho_, z_)])
+        z_ = coord_dict['coords']['z'] == np.around(loc_params['z'], 
+	    int(abs(np.log10(coord_dict['coords']['z'][1]))))
+        rho_ = np.logical_and(coord_dict['coords']['rho']<=loc_params['rho2_bound'], 
+	    coord_dict['coords']['rho']>=loc_params['rho1_bound'])
+        plt.plot(coord_dict['coords']['rho'][np.logical_and(rho_,z_)],
+	    V[np.logical_and(rho_, z_)])
 \end{lstlisting}
 \end{spacing}

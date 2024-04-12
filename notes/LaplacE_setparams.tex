@@ -1,4 +1,4 @@
-\begin{spacing}{1}
+\begin{spacing}{1.2}
 \begin{lstlisting}[frame=single, language=Python]
 import numpy as np
 ## Setting parameters
@@ -18,7 +18,8 @@ pdict ={
     
 pdict['res_exp'] = np.abs(np.log10(pdict['res'])).astype('int')
 pdict['aspect'] = pdict['size'][0] == pdict['size'][1]
-pdict['N'] = (pdict['size']*(1/pdict['res']) + 1).astype('int')   # number of points sampled 1 dimension of simulation box
+pdict['N'] = (pdict['size']*(1/pdict['res']) + 1).astype('int')   
+    # number of points sampled 1 dimension of simulation box
 
 # Sample parameters
 pdict['optic'] =  {
@@ -47,7 +48,8 @@ maxhva_settings = {
 } 
 
 if pdict['assembly'] == 0 or pdict['assembly'] == 1:
-    # Setting front and back plate params (including spacing between them and voltage on respective plates)
+    # Setting front and back plate params (including spacing between
+    # 	them and voltage on respective plates)
     # This assembly has an assortment of 3d printed spacer components
     pdict['HVA'] = "SVR350"
     pdict['mount_zdims'] = {
@@ -60,7 +62,8 @@ if pdict['assembly'] == 0 or pdict['assembly'] == 1:
         "diam" : 3* pdict['in2m'],                             # diameter of plate [m]
         "hole_diam" : 3e-3,                                    # aperture diameter [m]
         "thickness" : 1.5e-3,
-        "zpos" : pdict['size'][1]/2 + pdict['mount_zdims']["sample_holder"]/2,         # location of plate surface (com) [m]
+        "zpos" : pdict['size'][1]/2 + pdict['mount_zdims']["sample_holder"]/2,
+	    # location of plate surface (com) [m]
         "voltage" : maxhva_settings[pdict['HVA']]                       # Voltage on front plate [V]
     }
     pdict['back_plate'] = {
@@ -71,9 +74,13 @@ if pdict['assembly'] == 0 or pdict['assembly'] == 1:
         "voltage" : - maxhva_settings[pdict['HVA']]
     } 
 elif pdict['assembly'] == 2 : 
-    # Overall thickness was approximately .5 inches with a .125 inch lip on one end and .125 gap on the other end of sample.
-    # Once the sample was dropped into the mount with the surface hugging the PVC lip, it was held down with a nylon set screw (with a rubberized tip)
-    # This plate used is an aluminum rectangular plate (will incorporate cartesian coordinates into program soon)
+    # Overall thickness was approximately .5 inches with a 
+    #	.125 inch lip on one end and .125 gap on the other end of sample.
+    # Once the sample was dropped into the mount with the 
+    #	surface hugging the PVC lip, it was held down with a nylon set screw 
+	(with a rubberized tip.)
+    # This plate used is an aluminum rectangular plate 
+    #	(will incorporate cartesian coordinates into program soon.)
     pdict['HVA'] = "SVR350"
     pdict['mount_zdims'] = {
         "sample_holder" : .5*pdict['in2m']
@@ -83,8 +90,10 @@ elif pdict['assembly'] == 2 :
             "diam" : 0.02794,                                 # diameter of plate [m]
             "hole_diam" : 3e-3,                               # aperture diameter [m]
             "thickness" : 1.27e-3, 
-            "zpos" : pdict['size'][1]/2 + pdict['mount_zdims']["sample_holder"]/2,    # location of plate surface (com) [m]
-            "voltage" : maxhva_settings[pdict['HVA']]/2                               # Voltage on front plate [V] (MAX value for associated HVA)
+            "zpos" : pdict['size'][1]/2 + pdict['mount_zdims']["sample_holder"]/2,    
+		# location of plate surface (com) [m]
+            "voltage" : maxhva_settings[pdict['HVA']]/2
+		# Voltage on front plate [V] (MAX value for associated HVA)
         }
         pdict['back_plate'] = {
             "diam" : 0.02794,
@@ -98,7 +107,8 @@ elif pdict['assembly'] == 2 :
             "diam" : 0.02794,                                 # diameter of plate [m]
             "hole_diam" : 3e-3,                               # aperture diameter [m]
             "thickness" : 1.27e-3, 
-            "zpos" : pdict['size'][1]/2 + pdict['mount_zdims']["sample_holder"]/2,    # location of plate surface (com) [m]
+            "zpos" : pdict['size'][1]/2 + pdict['mount_zdims']["sample_holder"]/2,    
+		# location of plate surface (com) [m]
             "voltage" : maxhva_settings[pdict['HVA']]/2                                  # Voltage on front plate [V]
         }
         pdict['back_plate'] = {
@@ -120,8 +130,10 @@ elif pdict['assembly'] == 3 :
         "diam" : 31.5e-3,                                       # diameter of plate [m]
         "hole_diam" : 3e-3,                                  # aperture diameter [m]
         "thickness" : 9.66e-3, 
-        "zpos" : pdict['size'][1]/2 + (pdict['mount_zdims']["sample_holder"]/2),      # location of plate surface (com) [m]
-        "voltage" : maxhva_settings[pdict['HVA']]/2                                     # Voltage on front plate [V]
+        "zpos" : pdict['size'][1]/2 + (pdict['mount_zdims']["sample_holder"]/2),      
+	    # location of plate surface (com) [m]
+        "voltage" : maxhva_settings[pdict['HVA']]/2                                     
+	    # Voltage on front plate [V]
     }
     pdict['back_plate'] = {
         "diam" : 31.5e-3,
@@ -141,7 +153,8 @@ elif pdict['assembly'] == 4 :
         "diam" : 31.5e-3,                                       # diameter of plate [m]
         "hole_diam" : 3e-3,                                  # aperture diameter [m]
         "thickness" : 9.66e-3, 
-        "zpos" : pdict['size'][1]/2 + (pdict['mount_zdims']["sample_holder"]/2),      # location of plate surface (com) [m]
+        "zpos" : pdict['size'][1]/2 + (pdict['mount_zdims']["sample_holder"]/2),      
+	    # location of plate surface (com) [m]
         "voltage" :  maxhva_settings[pdict['HVA']]/2                                      # Voltage on front plate [V]
     }
     pdict['back_plate'] = {
@@ -158,8 +171,13 @@ pdict['cap_params'] = {
         "air_eps" : 1.0006
     }
 
-pdict['cap_params']['cap_div_area'] = (pdict['optic']['sub_eps']*pdict['optic']['coat_eps']*pdict['cap_params']['air_eps'])/((2.0*pdict['optic']['sub_eps']*pdict['optic']['coat_eps']*pdict['cap_params']['d_air']) + (pdict['optic']['sub_eps']*pdict['cap_params']['air_eps']*pdict['optic']['coat_thickness']) + (pdict['optic']['coat_eps']*pdict['cap_params']['air_eps']*(pdict ['optic']['sub_thickness'])))
-pdict['cap_params']['capacitance'] = pdict['cap_params']['cap_div_area']*pdict['cap_params']['area']
+pdict['cap_params']['cap_div_area'] = (pdict['optic']['sub_eps']*pdict['optic']['coat_eps']*
+    pdict['cap_params']['air_eps'])/((2.0*pdict['optic']['sub_eps']*pdict['optic']['coat_eps']*
+    pdict['cap_params']['d_air']) + (pdict['optic']['sub_eps']*pdict['cap_params']['air_eps']*
+    pdict['optic']['coat_thickness']) + (pdict['optic']['coat_eps']*
+    pdict['cap_params']['air_eps']*(pdict ['optic']['sub_thickness'])))
+pdict['cap_params']['capacitance'] = pdict['cap_params']['cap_div_area']*
+    pdict['cap_params']['area']
 
 # system location params / metadata
 pdict['loc_params'] = {

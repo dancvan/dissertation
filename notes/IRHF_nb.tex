@@ -1,4 +1,4 @@
-\begin{spacing}{1} \begin{lstlisting}[language=Python]
+\begin{spacing}{1.2} \begin{lstlisting}[frame=single,language=Python]
 import matplotlib
 import matplotlib.pyplot as plt
 import numpy as np
@@ -12,27 +12,22 @@ if os.path.isdir(plt_style_dir) == True:
 plt.rcParams["font.family"] = "Times New Roman"
 \end{lstlisting} \end{spacing}
 
-\begin{spacing}{1} \begin{lstlisting}[language=Python]
+\begin{spacing}{1.2} \begin{lstlisting}[frame=single,language=Python]
 # Establish default color array
 prop_cycle = plt.rcParams['axes.prop_cycle']
 colors = prop_cycle.by_key()['color']
 lin_thickness=4
 \end{lstlisting} \end{spacing}
 
-\begin{spacing}{1} \begin{lstlisting}[language=Python]
+\begin{spacing}{1.2} \begin{lstlisting}[frame=single,language=Python]
 ## Set figure saving directory
 thesis_dir = '../doc/figures/python/'
 thesis_dir='../../dissertation/figs/TCS/IRHF/'
 \end{lstlisting} \end{spacing}
 
-\hypertarget{rh-filter}{%
-\section{RH FILTER}\label{rh-filter}}
+Generating / plotting plant filter
 
-\hypertarget{generating-plotting-plant-filter}{%
-\subsection{Generating / plotting plant
-filter}\label{generating-plotting-plant-filter}}
-
-\begin{spacing}{1} \begin{lstlisting}[language=Python]
+\begin{spacing}{1.2} \begin{lstlisting}[frame=single,language=Python]
 ITMYRH_data = np.loadtxt('../data/ITMY_trend_10min_int_longer.dat')
 t = np.arange(0,len(ITMYRH_data[:,0][2:]))*60.0*10.0
 normalize = 3.13
@@ -66,10 +61,6 @@ plt.show()
 print(max(ir_new))
 \end{lstlisting} \end{spacing}
 
-\begin{spacing}{1} \begin{lstlisting}
-83
-\end{lstlisting} \end{spacing}
-
 %\begin{figure}
 %\centering
 %\includegraphics{IRHF_w_self_heating_files/IRHF_w_self_heating_5_2.png}
@@ -82,27 +73,14 @@ print(max(ir_new))
 %\caption{png}
 %\end{figure}
 
-\begin{spacing}{1} \begin{lstlisting}
-4.993706070287539e-06
-\end{lstlisting} \end{spacing}
-
-\begin{spacing}{1} \begin{lstlisting}[language=Python]
-F
-\end{lstlisting} \end{spacing}
-
-\begin{spacing}{1} \begin{lstlisting}
-array([0.00000000e+00, 1.04719755e-03, 2.09439510e-03, ...,
-       3.13845106e+00, 3.13949826e+00, 3.14054546e+00])
-\end{lstlisting} \end{spacing}
-
-\begin{spacing}{1} \begin{lstlisting}[language=Python]
+\begin{spacing}{1.2} \begin{lstlisting}[frame=single,language=Python]
 adj_data = data_new + abs(min(data_new))
 mod_data = np.concatenate([np.zeros((10,)), adj_data])
 mod_t = np.arange(0,len(mod_data))*60.0*10.0/(3600)
 mod_rh_inp = np.concatenate([np.ones((10,))*3.13, np.zeros(adj_data.shape)])
 \end{lstlisting} \end{spacing}
 
-\begin{spacing}{1} \begin{lstlisting}[language=Python]
+\begin{spacing}{1.2} \begin{lstlisting}[frame=single,language=Python]
 fig, ax1 = plt.subplots() 
 
 ax1.set_xlabel('time [hr]') 
@@ -137,15 +115,15 @@ fig.savefig(thesis_dir + 'Meas_response.pdf', dpi=300, format='pdf', bbox_inches
 %\caption{png}
 %\end{figure}
 
-\begin{spacing}{1} \begin{lstlisting}[language=Python]
+\begin{spacing}{1.2} \begin{lstlisting}[frame=single,language=Python]
 print('Only plots up to the nyqist frequency: {} Hz'.format(F[-1]*Fs/(2*np.pi)))
 \end{lstlisting} \end{spacing}
 
-\begin{spacing}{1} \begin{lstlisting}
+\begin{spacing}{1.2} \begin{lstlisting}
 Only plots up to the nyqist frequency: 0.0008330555555555556 Hz
 \end{lstlisting} \end{spacing}
 
-\begin{spacing}{1} \begin{lstlisting}[language=Python]
+\begin{spacing}{1.2} \begin{lstlisting}[frame=single,language=Python]
 zeros = 5.0e-6
 fit_zeros = -2.0*np.pi*zeros
 poles = np.array([1.3e-5, 5.0e-5 ,9.5e-5])
@@ -176,26 +154,17 @@ model_zpk = signal.ZerosPolesGain(fit_zeros, fit_poles,k_new)
 plt.savefig(thesis_dir+'RH_plant_filter_fit.pdf',bbox_inches = 'tight')
 \end{lstlisting} \end{spacing}
 
-\begin{spacing}{1} \begin{lstlisting}
-/var/folders/7r/5_lt1_453rxbdqfqjyb0kx500000gn/T/ipykernel_20903/2209851138.py:20: UserWarning: Attempted to set non-positive left xlim on a log-scaled axis.
-Invalid limit will be ignored.
-  plt.xlim([0,(F[-1]/(2*np.pi)*Fs)])
-
-
-9.729529652779821e-12
-\end{lstlisting} \end{spacing}
-
 %\begin{figure}
 %\centering
 %\includegraphics{IRHF_w_self_heating_files/IRHF_w_self_heating_10_2.png}
 %\caption{png}
 %\end{figure}
 
-\begin{spacing}{1} \begin{lstlisting}[language=Python]
+\begin{spacing}{1.2} \begin{lstlisting}[frame=single,language=Python]
 model_zpk
 \end{lstlisting} \end{spacing}
 
-\begin{spacing}{1} \begin{lstlisting}
+\begin{spacing}{1.2} \begin{lstlisting}[frame=single]
 ZerosPolesGainContinuous(
 array([-3.14159265e-05]),
 array([-8.16814090e-05, -3.14159265e-04, -5.96902604e-04]),
@@ -204,12 +173,10 @@ dt: None
 )
 \end{lstlisting} \end{spacing}
 
-\hypertarget{now-to-invert-the-plant-filter-just-swapping-the-poles-and-the-zeros-and-inverting-gain-h-1s}{%
-\subsection{\texorpdfstring{Now to invert the plant filter (just
-swapping the poles and the zeros and inverting gain)
-(H\(^{-1}\)(s))}{Now to invert the plant filter (just swapping the poles and the zeros and inverting gain) (H\^{}\{-1\}(s))}}\label{now-to-invert-the-plant-filter-just-swapping-the-poles-and-the-zeros-and-inverting-gain-h-1s}}
+\noindent Now to invert the plant filter (just swapping the poles and the zeros and inverting gain)
+(H\(^{-1}\)(s))
 
-\begin{spacing}{1} \begin{lstlisting}[language=Python]
+\begin{spacing}{1.2} \begin{lstlisting}[frame=single,language=Python]
 inv_model = signal.ZerosPolesGain(fit_poles, fit_zeros,1/k_new)
 F_3, H_3 = signal.freqresp(inv_model, F*(Fs/2.0))
 fig4 = plt.figure()
@@ -224,26 +191,17 @@ plt.xlim([0, F_3[-1]/(2*np.pi)])
 plt.savefig(thesis_dir+'RH_inv_filt.pdf',bbox_inches = 'tight')
 \end{lstlisting} \end{spacing}
 
-\begin{spacing}{1} \begin{lstlisting}
-/var/folders/7r/5_lt1_453rxbdqfqjyb0kx500000gn/T/ipykernel_20903/1155100985.py:8: UserWarning: Attempted to set non-positive left xlim on a log-scaled axis.
-Invalid limit will be ignored.
-  plt.xlim([0, F_3[-1]/(2*np.pi)])
-\end{lstlisting} \end{spacing}
-
 %\begin{figure}
 %\centering
 %\includegraphics{IRHF_w_self_heating_files/IRHF_w_self_heating_13_1.png}
 %\caption{png}
 %\end{figure}
 
-\hypertarget{stabilize-the-high-frequencies-to-dc-generating-h-1-s-g_ns}{%
-\subsection{\texorpdfstring{Stabilize the high frequencies to DC
-(Generating H\(^{-1}\) (s) *
-G\(_{n}\)(s))}{Stabilize the high frequencies to DC (Generating H\^{}\{-1\} (s) * G\_\{n\}(s))}}\label{stabilize-the-high-frequencies-to-dc-generating-h-1-s-g_ns}}
+\noindent Stabilize the high frequencies to DC (Generating H\(^{-1}\) (s) * G\(_{n}\)(s))
 
-Will also attempt to reduce the time constant
+\noindent Will also attempt to reduce the time constant
 
-\begin{spacing}{1} \begin{lstlisting}[language=Python]
+\begin{spacing}{1.2} \begin{lstlisting}[frame=single,language=Python]
 #pole_test = .0001113 + 1e-4
 Hinv_G_1_filt = signal.ZerosPolesGain(fit_poles, [fit_zeros,-2.0*np.pi*.0001113129672, -2.0*np.pi*.0001113129672],1)
 pole_shift = 3
@@ -275,11 +233,11 @@ plt.savefig(thesis_dir+'RH_input_filt.pdf',bbox_inches='tight')
 %\caption{png}
 %\end{figure}
 
-\begin{spacing}{1} \begin{lstlisting}[language=Python]
+\begin{spacing}{1.2} \begin{lstlisting}[frame=single,language=Python]
 Hinv_G_1_filt
 \end{lstlisting} \end{spacing}
 
-\begin{spacing}{1} \begin{lstlisting}
+\begin{spacing}{1.2} \begin{lstlisting}[frame=single]
 ZerosPolesGainContinuous(
 array([-8.16814090e-05, -3.14159265e-04, -5.96902604e-04]),
 array([-3.14159265e-05, -6.99400000e-04, -6.99400000e-04]),
@@ -288,11 +246,11 @@ dt: None
 )
 \end{lstlisting} \end{spacing}
 
-\begin{spacing}{1} \begin{lstlisting}[language=Python]
+\begin{spacing}{1.2} \begin{lstlisting}[frame=single,language=Python]
 Hinv_G_2_filt
 \end{lstlisting} \end{spacing}
 
-\begin{spacing}{1} \begin{lstlisting}
+\begin{spacing}{1.2} \begin{lstlisting}[frame=single]
 ZerosPolesGainContinuous(
 array([-8.16814090e-05, -3.14159265e-04, -5.96902604e-04]),
 array([-3.14159265e-05, -2.09820000e-03, -2.09820000e-03]),
@@ -301,7 +259,7 @@ dt: None
 )
 \end{lstlisting} \end{spacing}
 
-\begin{spacing}{1} \begin{lstlisting}[language=Python]
+\begin{spacing}{1.2} \begin{lstlisting}[frame=single,language=Python]
 fig79= plt.figure()
 plt.loglog(F_4/(2*np.pi), abs(H_4), label='G$_1$(s) input filter',linewidth=lin_thickness)
 plt.loglog(F_5/(2*np.pi), abs(H_5), label='G$_2$(s) input filter',linewidth=lin_thickness)
@@ -323,20 +281,17 @@ plt.savefig(thesis_dir+'RH_input_filt_G1_G2.pdf',bbox_inches='tight')
 %\caption{png}
 %\end{figure}
 
-\hypertarget{comsol-self-heating-filter}{%
-\section{COMSOL self heating filter}\label{comsol-self-heating-filter}}
+\noindent COMSOL self heating filter
 
-\hypertarget{import-comsol-self-heating-data}{%
-\subsection{Import COMSOL self heating
-data}\label{import-comsol-self-heating-data}}
+\noindent Import COMSOL self heating data
 
-\begin{spacing}{1} \begin{lstlisting}[language=Python]
+\begin{spacing}{1.2} \begin{lstlisting}[frame=single,language=Python]
 COM_data = np.loadtxt('../data/1W_self_heating_defocus_doublepass.txt')
 t_com = COM_data[:,0]*3600
 defocus = COM_data[:,1]/max(COM_data[:,1])
 \end{lstlisting} \end{spacing}
 
-\begin{spacing}{1} \begin{lstlisting}[language=Python]
+\begin{spacing}{1.2} \begin{lstlisting}[frame=single,language=Python]
 fig6 = plt.figure()
 plt.plot(t_com/3600,defocus,linewidth=lin_thickness)
 plt.title('COMSOL self heating time series')
@@ -345,27 +300,23 @@ plt.ylabel('defocus [arb]')
 max(defocus)
 \end{lstlisting} \end{spacing}
 
-\begin{spacing}{1} \begin{lstlisting}
-1.0
-\end{lstlisting} \end{spacing}
-
 %\begin{figure}
 %\centering
 %\includegraphics{IRHF_w_self_heating_files/IRHF_w_self_heating_22_1.png}
 %\caption{png}
 %\end{figure}
 
-\begin{spacing}{1} \begin{lstlisting}[language=Python]
+\begin{spacing}{1.2} \begin{lstlisting}[frame=single,language=Python]
 ir_com  = (defocus[1:] - defocus[:-1])
 t_ir = t_com[:((len(t_com)-1))]
 \end{lstlisting} \end{spacing}
 
-\begin{spacing}{1} \begin{lstlisting}[language=Python]
+\begin{spacing}{1.2} \begin{lstlisting}[frame=single,language=Python]
 [F_ir,H_ir]=signal.freqz(ir_com, 1, worN=3000,whole=False) 
 Fs_com =1/(t_com[1]-t_com[0])
 \end{lstlisting} \end{spacing}
 
-\begin{spacing}{1} \begin{lstlisting}[language=Python]
+\begin{spacing}{1.2} \begin{lstlisting}[frame=single,language=Python]
 zeros_com = np.array([.9e-3,.3e-3])
 fit_zeros_com = -2.0*np.pi*zeros_com
 poles_com = np.array([.25e-3,.25e-3,1.6e-3])
@@ -385,33 +336,25 @@ plt.xlabel('Frequency [Hz]')
 plt.title('Self Heating filter')
 \end{lstlisting} \end{spacing}
 
-\begin{spacing}{1} \begin{lstlisting}
-Text(0.5, 1.0, 'Self Heating filter (G$_{2}$(s))')
-\end{lstlisting} \end{spacing}
-
 %\begin{figure}
 %\centering
 %\includegraphics{IRHF_w_self_heating_files/IRHF_w_self_heating_25_1.png}
 %\caption{png}
 %\end{figure}
 
-\begin{spacing}{1} \begin{lstlisting}[language=Python]
+\begin{spacing}{1.2} \begin{lstlisting}[frame=single,language=Python]
 G_2 = signal.ZerosPolesGain(fit_zeros_com, fit_poles_com, k_new_com)
 unit_step_testing = np.zeros(np.shape(t_com))
 unit_step_testing[t_com>0] = 1
 [ _ ,y_self_test, _] = signal.lsim(G_2, unit_step_testing, t_com)
 \end{lstlisting} \end{spacing}
 
-\begin{spacing}{1} \begin{lstlisting}[language=Python]
+\begin{spacing}{1.2} \begin{lstlisting}[frame=single,language=Python]
 fig7= plt.figure()
 plt.plot(t_com/3600,defocus,label='measured',linewidth=lin_thickness)
 plt.plot(t_com/3600,y_self_test,label='fit',linewidth=lin_thickness)
 plt.title('Self heating time series (fit vs measured)')
 plt.legend()
-\end{lstlisting} \end{spacing}
-
-\begin{spacing}{1} \begin{lstlisting}
-<matplotlib.legend.Legend at 0x7fd94977a400>
 \end{lstlisting} \end{spacing}
 
 %\begin{figure}
@@ -420,13 +363,11 @@ plt.legend()
 %\caption{png}
 %\end{figure}
 
-\hypertarget{generating-time-series}{%
-\section{Generating time series}\label{generating-time-series}}
+\subsubsection*{Generating time series}
 
-\hypertarget{step-input-time-series}{%
-\paragraph{Step input time series}\label{step-input-time-series}}
+\noindent Step input time series
 
-\begin{spacing}{1} \begin{lstlisting}[language=Python]
+\begin{spacing}{1.2} \begin{lstlisting}[frame=single,language=Python]
 unit_step = np.zeros((t.shape[0]*30))
 t_new = np.arange(0,len(unit_step))*60.0*1.0
 ## Generating simulated response
@@ -434,11 +375,10 @@ unit_step[t_new>9000] = 1
 [t_mod_new,y_mod_sim,xout] = signal.lsim(model_zpk, unit_step, t_new)
 \end{lstlisting} \end{spacing}
 
-\hypertarget{conditioned-input-time-series}{%
-\paragraph{Conditioned input time
-series}\label{conditioned-input-time-series}}
 
-\begin{spacing}{1} \begin{lstlisting}[language=Python]
+\noindent Conditioned input time series
+
+\begin{spacing}{1.2} \begin{lstlisting}[frame=single,language=Python]
 unit_step2 = np.zeros((t.shape[0]*30))
 unit_step2[t_new>(9000)] = pole_shift**2
 
@@ -448,23 +388,22 @@ unit_step2[t_new>(9000)] = pole_shift**2
 [ _ ,y_mod_sim_inv_H, _] = signal.lsim(model_zpk, y_inp_inv_H, t_new)
 \end{lstlisting} \end{spacing}
 
-\hypertarget{self-heating-time-series}{%
-\paragraph{Self heating time series}\label{self-heating-time-series}}
 
-\begin{spacing}{1} \begin{lstlisting}[language=Python]
+\noindent Self heating time series
+
+\begin{spacing}{1.2} \begin{lstlisting}[frame=single,language=Python]
 unit_step3 = np.zeros((t.shape[0]*30))
 t_offset =0
 unit_step3[t_new>(9000+t_offset)] = 1
 \end{lstlisting} \end{spacing}
 
-\begin{spacing}{1} \begin{lstlisting}[language=Python]
+\begin{spacing}{1.2} \begin{lstlisting}[frame=single,language=Python]
 [ _ ,y_sh_resp, _] = signal.lsim(G_2, unit_step3, t_new)
 \end{lstlisting} \end{spacing}
 
-\hypertarget{basic-performance}{%
-\paragraph{Basic Performance}\label{basic-performance}}
+\noindent Basic Performance
 
-\begin{spacing}{1} \begin{lstlisting}[language=Python]
+\begin{spacing}{1.2} \begin{lstlisting}[frame=single,language=Python]
 fig = plt.figure()
 plt.subplot(211)
 plt.plot(t_new/3600, unit_step,linewidth = lin_thickness,label='RH step input')
@@ -496,10 +435,10 @@ fig.savefig(thesis_dir+'IRHF_step_vs_filt_step.pdf',bbox_inches='tight')
 %\caption{png}
 %\end{figure}
 
-\hypertarget{all-curves-together}{%
-\paragraph{All curves together}\label{all-curves-together}}
 
-\begin{spacing}{1} \begin{lstlisting}[language=Python]
+\noindent All curves together
+
+\begin{spacing}{1.2} \begin{lstlisting}[frame=single,language=Python]
 fig = plt.figure()
 plt.subplot(211)
 plt.plot(t_new/3600, unit_step,linewidth = lin_thickness,label='RH unfiltered step input')
@@ -529,7 +468,7 @@ fig.savefig(thesis_dir+'IRHF_compare_self_w_filter_compare.pdf',bbox_inches='tig
 %\caption{png}
 %\end{figure}
 
-\begin{spacing}{1} \begin{lstlisting}[language=Python]
+\begin{spacing}{1.2} \begin{lstlisting}[frame=single,language=Python]
 fig8 = plt.figure()
 plt.rc('font', size=25)
 plt.plot(t_new/3600,y_sh_resp*20e-6, linewidth = lin_thickness,color='orange',label ='self heating with no RH')
@@ -550,14 +489,13 @@ fig8.savefig(thesis_dir+'IRHF_compare_w_self.pdf',bbox_inches='tight')
 %\caption{png}
 %\end{figure}
 
-\hypertarget{set-rh-upper-limit}{%
-\subsection{Set RH upper limit}\label{set-rh-upper-limit}}
+\noindent Set RH upper limit
 
-\begin{spacing}{1} \begin{lstlisting}[language=Python]
+\begin{spacing}{1.2} \begin{lstlisting}[frame=single,language=Python]
 upper_lim = np.ones(np.shape(t_new))*40
 \end{lstlisting} \end{spacing}
 
-\begin{spacing}{1} \begin{lstlisting}[language=Python]
+\begin{spacing}{1.2} \begin{lstlisting}[frame=single,language=Python]
 fig9= plt.figure(figsize=(25,20))
 plt.rc('font', size=30)
 plt.subplot(211)
@@ -597,7 +535,7 @@ fig9.savefig(thesis_dir+'IRHF_compare_filts_PI_paper.pdf',bbox_inches='tight')
 %\caption{png}
 %\end{figure}
 
-\begin{spacing}{1} \begin{lstlisting}[language=Python]
+\begin{spacing}{1.2} \begin{lstlisting}[frame=single,language=Python]
 fig9= plt.figure(figsize=(25,20))
 plt.rc('font', size=30)
 plt.subplot(211)
@@ -638,7 +576,7 @@ fig9.savefig(thesis_dir+'IRHF_compare_filts.pdf',bbox_inches='tight')
 %\caption{png}
 %\end{figure}
 
-\begin{spacing}{1} \begin{lstlisting}[language=Python]
+\begin{spacing}{1.2} \begin{lstlisting}[frame=single,language=Python]
 fig9= plt.figure(figsize=(17,15))
 plt.rc('font', size=25)
 plt.subplot(211)
@@ -679,7 +617,7 @@ fig9.savefig(thesis_dir+'IRHF_compare_filts.pdf',bbox_inches='tight')
 %\caption{png}
 %\end{figure}
 
-\begin{spacing}{1} \begin{lstlisting}[language=Python]
+\begin{spacing}{1.2} \begin{lstlisting}[frame=single,language=Python]
 fig = plt.figure(figsize=(17,15))
 plt.subplot(311)
 plt.plot(t_new/3600, unit_step,linewidth = lin_thickness,label='Unfiltered step input')
@@ -711,32 +649,23 @@ fig.savefig(thesis_dir+'IRHF_compare_all.pdf')
 %\caption{png}
 %\end{figure}
 
-\hypertarget{g_1s---the-response-functionfor-the-above-scenario-we-have-the-following-g_s-a-double-pole-low-pass-at-1.113e-4}{%
-\section{\texorpdfstring{G\(_{1}\)(s) -\textgreater{} The ``response
-function''\#For the above scenario we have the following G\_s (a double
-pole low pass at
-1.113e-4)}{G\_\{1\}(s) -\textgreater{} The ``response function''\#For the above scenario we have the following G\_s (a double pole low pass at 1.113e-4)}}\label{g_1s---the-response-functionfor-the-above-scenario-we-have-the-following-g_s-a-double-pole-low-pass-at-1.113e-4}}
+\subsubsection*{\texorpdfstring{$G_{1}(s) \rightarrow$}{G1s} The ``response function''}
 
-G\_1 = signal.ZerosPolesGain({[}{]}, {[}-2.0\emph{np.pi}.0001113129672,
--2.0\emph{np.pi}.0001113129672{]},1) F\_5, H\_5 =
-signal.freqresp(G\_1,F\emph{(Fs/2.0)) k\_upd = 1/abs(H\_5{[}0{]}) G\_1 =
-signal.ZerosPolesGain({[}{]}, {[}-2.0\emph{np.pi}.0001113129672,
--2.0\emph{np.pi}.0001113129672{]},k\_upd) plt.loglog(F\_5/(2}np.pi),
-abs(H\_5)*k\_upd, label=`Fitted zpk Filter') plt.ylabel(`Magnitude
-{[}arb{]}') plt.xlabel(`Frequency {[}Hz{]}')\#\#\#\# Deriving the above
-filter is achieved by assuming a double pole solution. We are using
-poles in order to reduce the gain at relatively high frequency (to avoid
-implementing a unstable and unphysical filter. The reason we need two is
-to balance out the number of poles and zeros. The value of the chosen
-pole frequency is achieved by setting the ratio of the poles to zeros
-equal to 1.\# Alternative response function (G\(_{2}\)(s) w/ self
-heating?)\#\# To preface this discussion, the 2nd order low pass filter
-appears to be one of two solutions: \#\# At Hanford we use the 2nd order
-low pass (G\(_{1}\)(s) but as of this moment is not used to perform
-dynamic thermal compensation. \#\# At Livinston they use the self
-heating response to inform the final form of their filter
+\noindent For the above scenario we have the following G\_s (a double pole low pass at 1.113e-4)
 
-\begin{spacing}{1} \begin{lstlisting}[language=Python]
+\noindent G\_1 = signal.ZerosPolesGain({[}{]}, {[}-2.0\emph{np.pi}.0001113129672, -2.0\emph{np.pi}.0001113129672{]},1) 
+
+%\noindent F\_5, H\_5 = signal.freqresp(G\_1,F\emph{(Fs/2.0)) k\_upd = 1/abs(H\_5{[}0{]}) 
+
+%G\_1 = signal.ZerosPolesGain({[}{]}, {[}-2.0\emph{np.pi}.0001113129672, -2.0\emph{np.pi}.0001113129672{]},k\_upd) 
+
+%Deriving the above filter is achieved by assuming a double pole solution. We are using poles in order to reduce the gain at relatively high frequency (to avoid implementing a unstable and unphysical filter. The reason we need two is to balance out the number of poles and zeros. The value of the chosen pole frequency is achieved by setting the ratio of the poles to zeros equal to 1.
+%\# Alternative response function (G\(_{2}\)(s) w/ self heating?)
+%\#\# To preface this discussion, the 2nd order low pass filter appears to be one of two solutions: 
+%\#\# At Hanford we use the 2nd order low pass (G\(_{1}\)(s) but as of this moment is not used to perform dynamic thermal compensation. 
+%\#\# At Livinston they use the self heating response to inform the final form of their filter
+
+\begin{spacing}{1.2} \begin{lstlisting}[frame=single,language=Python]
 fig2 = plt.figure(figsize=(15,8))
 plt.loglog(F_5/(2*np.pi), abs(H_5)*k_upd, label='G$_{1}(s)$')
 plt.loglog(F_com/(2*np.pi), abs(H_com)*k_new_com, label='G$_{2}(s)$')
@@ -746,32 +675,21 @@ plt.title('G$_{1}$ vs. G$_{2}$')
 plt.legend()
 \end{lstlisting} \end{spacing}
 
-\begin{spacing}{1} \begin{lstlisting}
-<matplotlib.legend.Legend at 0x1601c7470>
-\end{lstlisting} \end{spacing}
-
 %\begin{figure}
 %\centering
 %\includegraphics{IRHF_w_self_heating_files/IRHF_w_self_heating_52_1.png}
 %\caption{png}
 %\end{figure}
 
-\hypertarget{the-livingston-filter-is-what-we-will-construct-here.-to-do-that-we-will-first-attempt-multiplying-g_2s-the-self-heating-response-to-h-1s}{%
-\subsection{\texorpdfstring{The Livingston filter is what we will
-construct here. To do that, we will first attempt multiplying
-G\(_{2}\)(s) (the self heating response) to
-H\(^{-1}\)(s)}{The Livingston filter is what we will construct here. To do that, we will first attempt multiplying G\_\{2\}(s) (the self heating response) to H\^{}\{-1\}(s)}}\label{the-livingston-filter-is-what-we-will-construct-here.-to-do-that-we-will-first-attempt-multiplying-g_2s-the-self-heating-response-to-h-1s}}
 
-\begin{spacing}{1} \begin{lstlisting}[language=Python]
+The Livingston filter is what we will construct here. To do that, we will first attempt multiplying G\(_{2}\)(s) (the self heating response) to H\(^{-1}\)(s)
+
+\begin{spacing}{1.2} \begin{lstlisting}[frame=single,language=Python]
 FILT_LIV_zeros= np.append(fit_zeros_com,fit_poles)
 FILT_LIV_poles= np.append(fit_poles_com,fit_zeros)
 FILT_LIV = signal.ZerosPolesGain(FILT_LIV_zeros, FILT_LIV_poles, 1)
 _ , H_G2 = signal.freqresp(FILT_LIV,np.arange(10e-7,10e-3,1e-7))
 plt.loglog(np.arange(10e-7,10e-3,1e-7)/(2*np.pi), abs(H_G2)/abs(H_G2[0]))
-\end{lstlisting} \end{spacing}
-
-\begin{spacing}{1} \begin{lstlisting}
-[<matplotlib.lines.Line2D at 0x16043d3c8>]
 \end{lstlisting} \end{spacing}
 
 %\begin{figure}
@@ -780,23 +698,16 @@ plt.loglog(np.arange(10e-7,10e-3,1e-7)/(2*np.pi), abs(H_G2)/abs(H_G2[0]))
 %\caption{png}
 %\end{figure}
 
-\hypertarget{not-enough-zeros-to-set-high-frequency-to-unity-gain-would-be-an-unphysical-without-one-more-pole}{%
-\subsection{Not enough zeros to set high frequency to unity gain (would
-be an unphysical without one more
-pole)}\label{not-enough-zeros-to-set-high-frequency-to-unity-gain-would-be-an-unphysical-without-one-more-pole}}
+Not enough zeros to set high frequency to unity gain (would be an unphysical without one more pole)
 
-\begin{spacing}{1} \begin{lstlisting}[language=Python]
+\begin{spacing}{1.2} \begin{lstlisting}[frame=single,language=Python]
 FILT_LIV_poles_2= np.append(FILT_LIV_poles,-0.00020951281288038756)
 \end{lstlisting} \end{spacing}
 
-\begin{spacing}{1} \begin{lstlisting}[language=Python]
+\begin{spacing}{1.2} \begin{lstlisting}[frame=single,language=Python]
 FILT_LIV = signal.ZerosPolesGain(FILT_LIV_zeros, FILT_LIV_poles_2, 1)
 _ , H_G2 = signal.freqresp(FILT_LIV,freq)
 plt.loglog(freq/(2*np.pi), abs(H_G2)/abs(H_G2[0]))
-\end{lstlisting} \end{spacing}
-
-\begin{spacing}{1} \begin{lstlisting}
-[<matplotlib.lines.Line2D at 0x16828c9e8>]
 \end{lstlisting} \end{spacing}
 
 %\begin{figure}
@@ -805,15 +716,15 @@ plt.loglog(freq/(2*np.pi), abs(H_G2)/abs(H_G2[0]))
 %\caption{png}
 %\end{figure}
 
-\begin{spacing}{1} \begin{lstlisting}[language=Python]
+\begin{spacing}{1.2} \begin{lstlisting}[frame=single,language=Python]
 [ _ ,y_G2, _] = signal.lsim(FILT_LIV, unit_step, t_new)
 \end{lstlisting} \end{spacing}
 
-\begin{spacing}{1} \begin{lstlisting}[language=Python]
+\begin{spacing}{1.2} \begin{lstlisting}[frame=single,language=Python]
 [ _ ,y_G2_time, _] = signal.lsim(model_zpk, y_G2, t_new)
 \end{lstlisting} \end{spacing}
 
-\begin{spacing}{1} \begin{lstlisting}[language=Python]
+\begin{spacing}{1.2} \begin{lstlisting}[frame=single,language=Python]
 fig = plt.figure(figsize=(17,10))
 plt.subplot(211)
 plt.plot(t_new/3600, unit_step,linewidth = lin_thickness,label='RH step input')
