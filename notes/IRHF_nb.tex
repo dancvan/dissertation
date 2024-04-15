@@ -138,7 +138,8 @@ F_2, H_2 = signal.freqresp(s1, F*(Fs/2.0))
 k_new = abs(H[0])/abs(H_2[0])
 
 plt.loglog(F_2/(2*np.pi), abs(H_2)*k_new, label='Fitted zpk filter',linewidth=lin_thickness)
-plt.loglog(F/(2*np.pi)*Fs, abs(H), label='Measured (step response) filter',linewidth=lin_thickness)
+plt.loglog(F/(2*np.pi)*Fs, abs(H), label='Measured (step response) filter',
+    linewidth=lin_thickness)
 plt.ylabel('Magnitude [W/m$^{-1}$]')
 plt.xlabel('Frequency [Hz]')
 plt.legend()
@@ -203,9 +204,11 @@ plt.savefig(thesis_dir+'RH_inv_filt.pdf',bbox_inches = 'tight')
 
 \begin{spacing}{1.2} \begin{lstlisting}[frame=single,language=Python]
 #pole_test = .0001113 + 1e-4
-Hinv_G_1_filt = signal.ZerosPolesGain(fit_poles, [fit_zeros,-2.0*np.pi*.0001113129672, -2.0*np.pi*.0001113129672],1)
+Hinv_G_1_filt = signal.ZerosPolesGain(fit_poles, [fit_zeros,-2.0*np.pi*.0001113129672, -2.0*np.pi*.
+    0001113129672],1)
 pole_shift = 3
-Hinv_G_2_filt = signal.ZerosPolesGain(fit_poles, [fit_zeros,-2.0*np.pi*.0001113129672*pole_shift, -2.0*np.pi*.0001113129672*pole_shift],1)
+Hinv_G_2_filt = signal.ZerosPolesGain(fit_poles, [fit_zeros,-2.0*np.pi*.0001113129672*pole_shift, 
+    -2.0*np.pi*.0001113129672*pole_shift],1)
 
 ## Plotting
 freq = np.arange(10e-7,10e-2,1e-7)
@@ -329,8 +332,10 @@ F_com, H_com = signal.freqresp(zpk_com, F_ir*(Fs_com/2.0))
 k_new_com = abs(H_ir[0])/abs(H_ir[0]*H_com[0])
 
 fig6 = plt.figure()
-plt.loglog(F_com/(2*np.pi), abs(H_com)*k_new_com, label='Fitted zpk Filter',linewidth=lin_thickness)
-plt.loglog(F_ir*Fs_com/(2*np.pi), abs(H_ir)/abs(H_ir[0]), label='Plant filter',linewidth=lin_thickness)
+plt.loglog(F_com/(2*np.pi), abs(H_com)*k_new_com, label='Fitted zpk Filter', 
+    linewidth=lin_thickness)
+plt.loglog(F_ir*Fs_com/(2*np.pi), abs(H_ir)/abs(H_ir[0]), label='Plant filter', 
+    linewidth=lin_thickness)
 plt.ylabel('Magnitude [arb]')
 plt.xlabel('Frequency [Hz]')
 plt.title('Self Heating filter')
@@ -407,7 +412,8 @@ unit_step3[t_new>(9000+t_offset)] = 1
 fig = plt.figure()
 plt.subplot(211)
 plt.plot(t_new/3600, unit_step,linewidth = lin_thickness,label='RH step input')
-plt.plot(t_new/3600, y_inp_inv_H,'--', linewidth = lin_thickness,color = 'red', label='RH filtered input')
+plt.plot(t_new/3600, y_inp_inv_H,'--', linewidth = lin_thickness,
+    color = 'red', label='RH filtered input')
 plt.ylabel('RH power [W]')
 #plt.title('RH step input vs. Filtered input')
 plt.legend()
@@ -417,7 +423,8 @@ plt.xlim([0, t_new[-1]/3600])
 #plt.minorticks_on()
 plt.subplot(212)
 plt.plot(t_new/3600,-y_mod_sim, linewidth = lin_thickness,label = 'RH step input')
-plt.plot(t_new/3600,-y_mod_sim_inv_H,'--', linewidth = lin_thickness,color='red',label ='RH filtered input')
+plt.plot(t_new/3600,-y_mod_sim_inv_H,'--', linewidth = lin_thickness,
+    color='red',label ='RH filtered input')
 plt.ylabel('Defocus [m$^{-1}$]')
 plt.xlabel('time [hr]')
 #plt.legend()
@@ -442,19 +449,26 @@ fig.savefig(thesis_dir+'IRHF_step_vs_filt_step.pdf',bbox_inches='tight')
 fig = plt.figure()
 plt.subplot(211)
 plt.plot(t_new/3600, unit_step,linewidth = lin_thickness,label='RH unfiltered step input')
-plt.plot(t_new/3600, y_inp_inv_L,'--', linewidth = lin_thickness, color = 'green',label='RH conditioned input (G$_{1}$(s))')
-plt.plot(t_new/3600, y_inp_inv_H,'--', linewidth = lin_thickness,color = 'red', label='RH conditioned input (G$_{2}$(s)')
+plt.plot(t_new/3600, y_inp_inv_L,'--', linewidth = lin_thickness, color = 'green',
+    label='RH conditioned input (G$_{1}$(s))')
+plt.plot(t_new/3600, y_inp_inv_H,'--', linewidth = lin_thickness,color = 'red', 
+    label='RH conditioned input (G$_{2}$(s)')
 plt.ylabel('RH power [W]')
 plt.title('RH filtered response w/ self-heating')
 plt.legend(fontsize='medium')
 plt.xlim([0,20])
 plt.subplot(212)
 plt.plot(t_new/3600,-y_mod_sim, linewidth = lin_thickness,label = 'RH unfiltered step input')
-plt.plot(t_new/3600,y_sh_resp*20e-6, linewidth = lin_thickness,color='orange',label ='self heating')
-plt.plot(t_new/3600,-y_mod_sim_inv_L,'--', linewidth = lin_thickness,color='green',label ='RH conditioned input (G$_{1}$(s))')
-plt.plot(t_new/3600,-y_mod_sim_inv_H,'--', linewidth = lin_thickness,color='red',label ='RH conditioned input (G$_{2}$(s)')
-plt.plot(t_new/3600,y_sh_resp*20e-6 -y_mod_sim_inv_L,linewidth = lin_thickness,label='self heating + RH conditioned input (G$_{1}$(s)',color='purple')
-plt.plot(t_new/3600,y_sh_resp*20e-6 -y_mod_sim_inv_H,linewidth = lin_thickness,label='self heating + RH conditioned input (G$_{2}$(s))',color='magenta')
+plt.plot(t_new/3600,y_sh_resp*20e-6, linewidth = lin_thickness, color='orange',
+    label ='self heating')
+plt.plot(t_new/3600,-y_mod_sim_inv_L,'--', linewidth = lin_thickness,color='green',
+    label ='RH conditioned input (G$_{1}$(s))')
+plt.plot(t_new/3600,-y_mod_sim_inv_H,'--', linewidth = lin_thickness,color='red',
+    label ='RH conditioned input (G$_{2}$(s)')
+plt.plot(t_new/3600,y_sh_resp*20e-6 -y_mod_sim_inv_L,linewidth = lin_thickness, 
+    label='self heating + RH conditioned input (G$_{1}$(s)',color='purple')
+plt.plot(t_new/3600,y_sh_resp*20e-6 -y_mod_sim_inv_H,linewidth = lin_thickness,
+    label='self heating + RH conditioned input (G$_{2}$(s))',color='magenta')
 plt.ylabel('Defocus [m$^{-1}$]')
 plt.xlabel('time [hr]')
 plt.legend(fontsize='medium')
@@ -471,10 +485,14 @@ fig.savefig(thesis_dir+'IRHF_compare_self_w_filter_compare.pdf',bbox_inches='tig
 \begin{spacing}{1.2} \begin{lstlisting}[frame=single,language=Python]
 fig8 = plt.figure()
 plt.rc('font', size=25)
-plt.plot(t_new/3600,y_sh_resp*20e-6, linewidth = lin_thickness,color='orange',label ='self heating with no RH')
-plt.plot(t_new/3600,y_sh_resp*20e-6 -y_mod_sim,linewidth = lin_thickness,label='self heating + RH unfiltered input',color='purple')
-plt.plot(t_new/3600,y_sh_resp*20e-6 -y_mod_sim_inv_H,'--',linewidth = lin_thickness,label='self heating + RH filtered input (H$^{-1}$(s)*G$_{1}$(s))',color='red')
-plt.plot(t_new/3600,y_sh_resp*20e-6 -y_mod_sim_inv_L,'--',linewidth = lin_thickness,label='self heating + RH filtered input (H$^{-1}$(s)*G$_{2}$(s))',color='green')
+plt.plot(t_new/3600,y_sh_resp*20e-6, linewidth = lin_thickness,color='orange',
+    label ='self heating with no RH')
+plt.plot(t_new/3600,y_sh_resp*20e-6 -y_mod_sim,linewidth = lin_thickness,
+    label='self heating + RH unfiltered input',color='purple')
+plt.plot(t_new/3600,y_sh_resp*20e-6 -y_mod_sim_inv_H,'--',linewidth = lin_thickness,
+    label='self heating + RH filtered input (H$^{-1}$(s)*G$_{1}$(s))',color='red')
+plt.plot(t_new/3600,y_sh_resp*20e-6 -y_mod_sim_inv_L,'--',linewidth = lin_thickness,
+    label='self heating + RH filtered input (H$^{-1}$(s)*G$_{2}$(s))',color='green')
 plt.ylabel('Defocus [m$^{-1}$]')
 plt.xlabel('time [hr]')
 plt.ticklabel_format(style='sci', axis='y',scilimits=(0,-5))
@@ -499,10 +517,14 @@ upper_lim = np.ones(np.shape(t_new))*40
 fig9= plt.figure(figsize=(25,20))
 plt.rc('font', size=30)
 plt.subplot(211)
-plt.plot(t_new/3600, unit_step,linewidth = lin_thickness,label='Step input', color= 'purple')
-plt.plot(t_new/3600, y_inp_inv_L,'--', linewidth = lin_thickness, color = 'green',label='Filtered input')
-#plt.plot(t_new/3600, upper_lim,':',linewidth = lin_thickness, color='magenta', label='RH upper limit')
-#plt.plot(t_new/3600, y_inp_inv_H,'--', linewidth = lin_thickness,color = 'red', label='Filtered input (H$^{-1}$(s)G$_{1}$(s))')
+plt.plot(t_new/3600, unit_step,linewidth = lin_thickness,
+    label='Step input', color= 'purple')
+plt.plot(t_new/3600, y_inp_inv_L,'--', linewidth = lin_thickness, color = 'green',
+    label='Filtered input')
+#plt.plot(t_new/3600, upper_lim,':',linewidth = lin_thickness, color='magenta', 
+    label='RH upper limit')
+#plt.plot(t_new/3600, y_inp_inv_H,'--', linewidth = lin_thickness,color = 'red', 
+    label='Filtered input (H$^{-1}$(s)G$_{1}$(s))')
 #plt.minorticks_on()
 #plt.grid(b=True,which='minor',linestyle='--')
 #plt.grid(b=True,which='major',linestyle='--')
@@ -512,12 +534,18 @@ plt.xlim([0,20])
 plt.legend(fontsize='large')
 plt.subplot(212)
 plt.ylabel('Defocus [m$^{-1}$]')
-plt.plot(t_new/3600,y_sh_resp*20e-6, linewidth = lin_thickness,color='orange',label ='central heating with no RH')
-plt.plot(t_new/3600,(y_sh_resp*20e-6 -y_mod_sim),linewidth = lin_thickness,label='central heating + RH w/ step input',color='purple')
-plt.plot(t_new/3600,(y_sh_resp*20e-6 -y_mod_sim_inv_L),'--',linewidth = lin_thickness,label='central heating + RH w/ filtered input',color='green')
-#plt.plot(t_new/3600,-y_mod_sim, linewidth = lin_thickness,label = 'Unfiltered step input',color='purple')
-#plt.plot(t_new/3600,y_sh_resp*20e-6-y_mod_sim_inv_L,'--', linewidth = lin_thickness,color='green',label ='Filtered input (H$^{-1}$(s)G$_{2}$(s))')
-#plt.plot(t_new/3600,-y_mod_sim_inv_H,'--', linewidth = lin_thickness,color='red',label ='Filtered input (H$^{-1}$(s)G$_{1}$(s))')
+plt.plot(t_new/3600,y_sh_resp*20e-6, linewidth = lin_thickness,color='orange',
+    label ='central heating with no RH')
+plt.plot(t_new/3600,(y_sh_resp*20e-6 -y_mod_sim),linewidth = lin_thickness,
+    label='central heating + RH w/ step input',color='purple')
+plt.plot(t_new/3600,(y_sh_resp*20e-6 -y_mod_sim_inv_L),'--',linewidth = lin_thickness,
+    label='central heating + RH w/ filtered input',color='green')
+#plt.plot(t_new/3600,-y_mod_sim, linewidth = lin_thickness,
+#    label = 'Unfiltered step input',color='purple')
+#plt.plot(t_new/3600,y_sh_resp*20e-6-y_mod_sim_inv_L,'--', linewidth = lin_thickness,
+#    color='green',label ='Filtered input (H$^{-1}$(s)G$_{2}$(s))')
+#plt.plot(t_new/3600,-y_mod_sim_inv_H,'--', linewidth = lin_thickness,color='red',
+#    label ='Filtered input (H$^{-1}$(s)G$_{1}$(s))')
 #plt.minorticks_on()
 #plt.grid(b=True,which='minor',linestyle='--')
 #plt.grid(b=True,which='major',linestyle='--')
@@ -539,10 +567,14 @@ fig9.savefig(thesis_dir+'IRHF_compare_filts_PI_paper.pdf',bbox_inches='tight')
 fig9= plt.figure(figsize=(25,20))
 plt.rc('font', size=30)
 plt.subplot(211)
-plt.plot(t_new/3600, unit_step,linewidth = lin_thickness,label='Step input', color= 'purple')
-#plt.plot(t_new/3600, upper_lim,':',linewidth = lin_thickness, color='magenta', label='RH upper limit')
-plt.plot(t_new/3600, y_inp_inv_L,'--', linewidth = lin_thickness, color = 'green',label='Filtered input(H$^{-1}$(s)G$_{2}$(s))')
-plt.plot(t_new/3600, y_inp_inv_H,'--', linewidth = lin_thickness,color = 'red', label='Filtered input (H$^{-1}$(s)G$_{1}$(s))')
+plt.plot(t_new/3600, unit_step,linewidth = lin_thickness,
+    label='Step input', color= 'purple')
+#plt.plot(t_new/3600, upper_lim,':',linewidth = lin_thickness, color='magenta', 
+#    label='RH upper limit')
+plt.plot(t_new/3600, y_inp_inv_L,'--', linewidth = lin_thickness, color = 'green',
+#    label='Filtered input(H$^{-1}$(s)G$_{2}$(s))')
+plt.plot(t_new/3600, y_inp_inv_H,'--', linewidth = lin_thickness,color = 'red', 
+#    label='Filtered input (H$^{-1}$(s)G$_{1}$(s))')
 #plt.minorticks_on()
 #plt.grid(b=True,which='minor',linestyle='--')
 #plt.grid(b=True,which='major',linestyle='--')
@@ -552,12 +584,18 @@ plt.xlim([0,20])
 plt.legend(fontsize='large')
 plt.subplot(212)
 plt.ylabel('Defocus [m$^{-1}$]')
-plt.plot(t_new/3600,y_sh_resp*20e-6, linewidth = lin_thickness,color='orange',label ='self heating with no RH')
-plt.plot(t_new/3600,(y_sh_resp*20e-6 -y_mod_sim),linewidth = lin_thickness,label='self heating + RH w/ step input',color='purple')
-#plt.plot(t_new/3600,(y_sh_resp*20e-6 -y_mod_sim_inv_L),'--',linewidth = lin_thickness,label='self heating + RH w/ filtered input',color='green')
-#plt.plot(t_new/3600,-y_mod_sim, linewidth = lin_thickness,label = 'Unfiltered step input',color='purple')
-plt.plot(t_new/3600,(y_sh_resp*20e-6-y_mod_sim_inv_L),'--', linewidth = lin_thickness,color='green',label ='Filtered input (H$^{-1}$(s)G$_{2}$(s))')
-plt.plot(t_new/3600,(y_sh_resp*20e-6-y_mod_sim_inv_H),'--', linewidth = lin_thickness,color='red',label ='Filtered input (H$^{-1}$(s)G$_{1}$(s))')
+plt.plot(t_new/3600,y_sh_resp*20e-6, linewidth = lin_thickness,color='orange',
+    label ='self heating with no RH')
+plt.plot(t_new/3600,(y_sh_resp*20e-6 -y_mod_sim),linewidth = lin_thickness,
+    label='self heating + RH w/ step input',color='purple')
+#plt.plot(t_new/3600,(y_sh_resp*20e-6 -y_mod_sim_inv_L),'--',linewidth = lin_thickness,
+#    label='self heating + RH w/ filtered input',color='green')
+#plt.plot(t_new/3600,-y_mod_sim, linewidth = lin_thickness,
+#    label = 'Unfiltered step input',color='purple')
+plt.plot(t_new/3600,(y_sh_resp*20e-6-y_mod_sim_inv_L),'--', linewidth = lin_thickness,
+    color='green',label ='Filtered input (H$^{-1}$(s)G$_{2}$(s))')
+plt.plot(t_new/3600,(y_sh_resp*20e-6-y_mod_sim_inv_H),'--', linewidth = lin_thickness,
+    color='red',label ='Filtered input (H$^{-1}$(s)G$_{1}$(s))')
 #plt.minorticks_on()
 #plt.grid(b=True,which='minor',linestyle='--')
 #plt.grid(b=True,which='major',linestyle='--')
@@ -580,10 +618,14 @@ fig9.savefig(thesis_dir+'IRHF_compare_filts.pdf',bbox_inches='tight')
 fig9= plt.figure(figsize=(17,15))
 plt.rc('font', size=25)
 plt.subplot(211)
-plt.plot(t_new/3600, unit_step,linewidth = lin_thickness,label='Step input', color= 'purple')
-plt.plot(t_new/3600, y_inp_inv_L,'--', linewidth = lin_thickness, color = 'green',label='Filtered input (H$^{-1}$(s)G$_{1}$(s))')
-#plt.plot(t_new/3600, upper_lim,':',linewidth = lin_thickness, color='magenta', label='RH upper limit')
-plt.plot(t_new/3600, y_inp_inv_H,'--', linewidth = lin_thickness,color = 'red', label='Filtered input (H$^{-1}$(s)G$_{2}$(s))')
+plt.plot(t_new/3600, unit_step,linewidth = lin_thickness, color= 'purple', 
+    label='Step input')
+plt.plot(t_new/3600, y_inp_inv_L,'--', linewidth = lin_thickness, color = 'green',
+    label='Filtered input (H$^{-1}$(s)G$_{1}$(s))')
+#plt.plot(t_new/3600, upper_lim,':',linewidth = lin_thickness, color='magenta', 
+#    label='RH upper limit')
+plt.plot(t_new/3600, y_inp_inv_H,'--', linewidth = lin_thickness,color = 'red', 
+#    label='Filtered input (H$^{-1}$(s)G$_{2}$(s))')
 #plt.minorticks_on()
 #plt.grid(b=True,which='minor',linestyle='--')
 #plt.grid(b=True,which='major',linestyle='--')
@@ -593,13 +635,20 @@ plt.xlim([0,t_new[-1]/3600])
 plt.legend(fontsize='medium')
 plt.subplot(212)
 plt.ylabel('Defocus [m$^{-1}$]')
-plt.plot(t_new/3600,y_sh_resp*20e-6, linewidth = lin_thickness,color='orange',label ='self heating w/ no RH')
-plt.plot(t_new/3600,y_sh_resp*20e-6 -y_mod_sim,linewidth = lin_thickness,label='self heating + step input',color='purple')
-plt.plot(t_new/3600,y_sh_resp*20e-6 -y_mod_sim_inv_L,'--',linewidth = lin_thickness,label='self heating + filtered input (H$^{-1}$(s)G$_{1}$(s))',color='green')
-plt.plot(t_new/3600,y_sh_resp*20e-6 -y_mod_sim_inv_H,'--',linewidth = lin_thickness,label='self heating + filtered input (H$^{-1}$(s)G$_{2}$(s))',color='red')
-#plt.plot(t_new/3600,-y_mod_sim, linewidth = lin_thickness,label = 'Unfiltered step input',color='purple')
-#plt.plot(t_new/3600,-y_mod_sim_inv_L,'--', linewidth = lin_thickness,color='green',label ='Filtered input (H$^{-1}$(s)G$_{2}$(s))')
-#plt.plot(t_new/3600,-y_mod_sim_inv_H,'--', linewidth = lin_thickness,color='red',label ='Filtered input (H$^{-1}$(s)G$_{1}$(s))')
+plt.plot(t_new/3600,y_sh_resp*20e-6, linewidth = lin_thickness,color='orange',
+    label ='self heating w/ no RH')
+plt.plot(t_new/3600,y_sh_resp*20e-6 -y_mod_sim,linewidth = lin_thickness,
+    label='self heating + step input',color='purple')
+plt.plot(t_new/3600,y_sh_resp*20e-6 -y_mod_sim_inv_L,'--',linewidth = lin_thickness,
+    label='self heating + filtered input (H$^{-1}$(s)G$_{1}$(s))',color='green')
+plt.plot(t_new/3600,y_sh_resp*20e-6 -y_mod_sim_inv_H,'--',linewidth = lin_thickness,
+    label='self heating + filtered input (H$^{-1}$(s)G$_{2}$(s))',color='red')
+#plt.plot(t_new/3600,-y_mod_sim, linewidth = lin_thickness,
+#    label = 'Unfiltered step input',color='purple')
+#plt.plot(t_new/3600,-y_mod_sim_inv_L,'--', linewidth = lin_thickness,color='green',
+#    label ='Filtered input (H$^{-1}$(s)G$_{2}$(s))')
+#plt.plot(t_new/3600,-y_mod_sim_inv_H,'--', linewidth = lin_thickness,color='red',
+#    label ='Filtered input (H$^{-1}$(s)G$_{1}$(s))')
 #plt.minorticks_on()
 #plt.grid(b=True,which='minor',linestyle='--')
 #plt.grid(b=True,which='major',linestyle='--')
@@ -620,23 +669,33 @@ fig9.savefig(thesis_dir+'IRHF_compare_filts.pdf',bbox_inches='tight')
 \begin{spacing}{1.2} \begin{lstlisting}[frame=single,language=Python]
 fig = plt.figure(figsize=(17,15))
 plt.subplot(311)
-plt.plot(t_new/3600, unit_step,linewidth = lin_thickness,label='Unfiltered step input')
-plt.plot(t_new/3600, y_inp_inv_L,'--', linewidth = lin_thickness, color = 'green',label='Conditioned input (G$_{1}$(s))')
-plt.plot(t_new/3600, y_inp_inv_H,'--', linewidth = lin_thickness,color = 'red', label='Conditioned input (G$_{1}$(s))')
+plt.plot(t_new/3600, unit_step,linewidth = lin_thickness,
+    label='Unfiltered step input')
+plt.plot(t_new/3600, y_inp_inv_L,'--', linewidth = lin_thickness, color = 'green',
+    label='Conditioned input (G$_{1}$(s))')
+plt.plot(t_new/3600, y_inp_inv_H,'--', linewidth = lin_thickness,color = 'red', 
+    label='Conditioned input (G$_{1}$(s))')
 plt.ylabel('RH power [W]')
 #plt.title('RH responses')
 plt.legend(fontsize='small')
 plt.subplot(312)
 plt.ylabel('RH Defocus [m$^{-1}$]')
-plt.plot(t_new/3600,-y_mod_sim, linewidth = lin_thickness,label = 'Unfiltered step input')
-plt.plot(t_new/3600,-y_mod_sim_inv_L,'--', linewidth = lin_thickness,color='green',label ='Conditioned input (G$_{2}$(s))')
-plt.plot(t_new/3600,-y_mod_sim_inv_H,'--', linewidth = lin_thickness,color='red',label ='Conditioned input (G$_{1}$(s))')
+plt.plot(t_new/3600,-y_mod_sim, linewidth = lin_thickness,
+    label = 'Unfiltered step input')
+plt.plot(t_new/3600,-y_mod_sim_inv_L,'--', linewidth = lin_thickness, color='green',
+    label ='Conditioned input (G$_{2}$(s))')
+plt.plot(t_new/3600,-y_mod_sim_inv_H,'--', linewidth = lin_thickness, color='red',
+    label ='Conditioned input (G$_{1}$(s))')
 plt.legend(fontsize='x-small',loc='upper right')
 plt.subplot(313)
-plt.plot(t_new/3600,y_sh_resp*20e-6, linewidth = lin_thickness,color='orange',label ='Self heating')
-plt.plot(t_new/3600,y_sh_resp*20e-6 -y_mod_sim,linewidth = lin_thickness,label='Self heating + RH unfiltered input',color='C0')
-plt.plot(t_new/3600,y_sh_resp*20e-6 -y_mod_sim_inv_H,'--',linewidth = lin_thickness,label='Self heating + RH conditioned input (G$_{1}$(s))',color='red')
-plt.plot(t_new/3600,y_sh_resp*20e-6 -y_mod_sim_inv_L,'--',linewidth = lin_thickness,label='Self heating + RH conditioned input (G$_{2}$(s))',color='green')
+plt.plot(t_new/3600,y_sh_resp*20e-6, linewidth = lin_thickness,color='orange',
+    label ='Self heating')
+plt.plot(t_new/3600,y_sh_resp*20e-6 -y_mod_sim,linewidth = lin_thickness,
+    label='Self heating + RH unfiltered input',color='C0')
+plt.plot(t_new/3600,y_sh_resp*20e-6 -y_mod_sim_inv_H,'--',linewidth = lin_thickness,
+    label='Self heating + RH conditioned input (G$_{1}$(s))',color='red')
+plt.plot(t_new/3600,y_sh_resp*20e-6 -y_mod_sim_inv_L,'--',linewidth = lin_thickness,
+    label='Self heating + RH conditioned input (G$_{2}$(s))',color='green')
 plt.ylabel('Total Defocus [m$^{-1}$]')
 plt.xlabel('time [hr]')
 plt.legend(fontsize='xx-small')
@@ -682,7 +741,7 @@ plt.legend()
 %\end{figure}
 
 
-The Livingston filter is what we will construct here. To do that, we will first attempt multiplying G\(_{2}\)(s) (the self heating response) to H\(^{-1}\)(s)
+\noindent The Livingston filter is what we will construct here. To do that, we will first attempt multiplying G\(_{2}\)(s) (the self heating response) to H\(^{-1}\)(s)
 
 \begin{spacing}{1.2} \begin{lstlisting}[frame=single,language=Python]
 FILT_LIV_zeros= np.append(fit_zeros_com,fit_poles)
@@ -698,7 +757,7 @@ plt.loglog(np.arange(10e-7,10e-3,1e-7)/(2*np.pi), abs(H_G2)/abs(H_G2[0]))
 %\caption{png}
 %\end{figure}
 
-Not enough zeros to set high frequency to unity gain (would be an unphysical without one more pole)
+\noindent Not enough zeros to set high frequency to unity gain (would be an unphysical without one more pole)
 
 \begin{spacing}{1.2} \begin{lstlisting}[frame=single,language=Python]
 FILT_LIV_poles_2= np.append(FILT_LIV_poles,-0.00020951281288038756)
@@ -727,18 +786,26 @@ plt.loglog(freq/(2*np.pi), abs(H_G2)/abs(H_G2[0]))
 \begin{spacing}{1.2} \begin{lstlisting}[frame=single,language=Python]
 fig = plt.figure(figsize=(17,10))
 plt.subplot(211)
-plt.plot(t_new/3600, unit_step,linewidth = lin_thickness,label='RH step input')
-plt.plot(t_new/3600, y_inp_inv,'--', linewidth = lin_thickness,label='G$_{1}$')
-plt.plot(t_new/3600,y_G2,'--', linewidth = lin_thickness,color='purple',label ='G$_{2}$')
+plt.plot(t_new/3600, unit_step,linewidth = lin_thickness,
+    label='RH step input')
+plt.plot(t_new/3600, y_inp_inv,'--', linewidth = lin_thickness,
+    label='G$_{1}$')
+plt.plot(t_new/3600,y_G2,'--', linewidth = lin_thickness,color='purple',
+    label ='G$_{2}$')
 plt.ylabel('RH power [W]')
 plt.title('Comparison between RH inverted response with self heating')
 plt.legend(fontsize='xx-large')
 plt.subplot(212)
-plt.plot(t_new/3600,-y_mod_sim, linewidth = lin_thickness,label = 'RH step input')
-plt.plot(t_new/3600,-y_sh_resp*20e-6, linewidth = lin_thickness,color='magenta',label ='self heating (negative)')
-plt.plot(t_new/3600,-y_mod_sim_inv,'--', linewidth = lin_thickness,color='orange',label ='G$_{1}$')
-#plt.plot(t_new/3600,y_sh_resp*20e-6 -y_mod_sim_inv,linewidth = lin_thickness,label='diff (orange - green)',color='red')
-plt.plot(t_new/3600,-y_G2_time,'--', linewidth = lin_thickness,color='purple',label ='G$_{2}$')
+plt.plot(t_new/3600,-y_mod_sim, linewidth = lin_thickness,
+    label = 'RH step input')
+plt.plot(t_new/3600,-y_sh_resp*20e-6, linewidth = lin_thickness,color='magenta',
+    label ='self heating (negative)')
+plt.plot(t_new/3600,-y_mod_sim_inv,'--', linewidth = lin_thickness,color='orange',
+    label ='G$_{1}$')
+#plt.plot(t_new/3600,y_sh_resp*20e-6 -y_mod_sim_inv,linewidth = lin_thickness,
+#    label='diff (orange - green)',color='red')
+plt.plot(t_new/3600,-y_G2_time,'--', linewidth = lin_thickness,color='purple',
+    label ='G$_{2}$')
 plt.ylabel('Defocus [m$^{-1}$]')
 plt.xlabel('time [hr]')
 plt.legend(fontsize='xx-large')
