@@ -43,7 +43,7 @@
 
 % Conclusion
 \section{Motivation}
-Contributions of categorized noises for gravitational wave detectors are organized in a ``noise budget" (i.e. \autoref{fig:aplusasharp} and \autoref{fig:high_freqnoise}): comprised of a collection of technical (noise imposed by the practical operation of the detector) and fundamental (inherent physical limitations of DRFPMIs by design) noise that limit gravitational wave detection. Understanding how much differential phase noise is imparted on the interferometer carrier light passing through and reflecting from core optics is crucial.
+Contributions of categorized noises for gravitational wave detectors are organized in a ``noise budget" (i.e. \autoref{fig:aplusasharp} and \autoref{fig:high_freqnoise}): comprised of a collection of technical (noise imposed by the practical operation of the detector) and fundamental (inherent physical limitations of the DRFPMI design) noise that limit gravitational wave detection. Understanding how much differential phase noise is imparted on the interferometer carrier light passing through and reflecting from core optics is crucial.
 
 \subsection{Coating Thermal Noise}
 %% Contributions of categorized noises for gravitational wave detectors the ''noise budget" ((LHO and LLO O3?) or just GWINC?)}
@@ -117,7 +117,7 @@ S_x(f) = \frac{4 k_B T}{f} \frac{1-\sigma^2}{\pi^3 E_o r_o} I\phi \bigg[1- O\big
 %this requires that the driving force used in a lab mimics that of a force from a centered Gaussian beam.
 
 %%Refer to Levin appendix for more on how elasticity parameters are introduced?
-\noindent Where $\phi$ and $E_o$ are the Poisson ratio and Young's modulus respectively, and $O(\frac{r_o}{R})$ is a correction term as a function of the small beam radius ($r_o$) relative to the mirror radius ($R$).
+\noindent Where $\sigma$ and $E_o$ are the Poisson ratio and Young's modulus respectively, and $O(\frac{r_o}{R})$ is a correction term as a function of the small beam radius ($r_o$) relative to the mirror radius ($R$).
 
 \subsubsection*{Thermal noise of HR mirror coatings}
 Further investigations into the beam/optic system utilizing this approach and elasticity theory led to a deeper understanding about Brownian thermal noise contributions from LIGO test masses (substrate, suspensions, HR coating). Levin mentions, with further detail from Harry, that the noise contributed by a lossy mirror coating is proven to be to be the most significant contributor of brownian thermal noise ~\cite{harry:2006}. Hong provides a power spectral density \cite{hong:2013}:
@@ -156,7 +156,7 @@ S_j^X = \frac{4k_B T \lambda \phi_x^j(1- \sigma_j - 2 \sigma_j^2)}{3 \pi^2 f Y_j
 As aLIGO approaches designed sensitivity, the thermal noise limit set by $\siotao$ HR coatings becomes an immediate limit to further improvements. Though there are proposals for the usage of alternative mirror coating solutions to push down this thermal noise limit for increased detector sensitivity \cite{harry:aigwd2019}. $\gaas$/$\algaas$ is a crystalline coating candidate showing promise for next generation detectors with reduced coating Brownian noise by a factor of 10, cooresponding to a potential strain reduction by a factor of 5 ~\cite{cole:2013} when compared to the current aLIGO coating thermal noise limit. 
 
 \subsection{Coating Electro-optic Noise}
-Applying crystalline HR mirror coatings to the core optics indiscriminately may introduce notable side effects; one being linear electro-optic noise of $\gaas$/$\algaas$ (dn/dE), also known as the Pockels effect ~\cite{abernathy:poster}. Although estimated to be nearly two orders of magnitude below the A$^\sharp$ strain noise floor ($\approx 10^{-26}$), direct measurement is still merited and adequately motivates a thorough study of electro-optical properties of $\gaas$/$\algaas$ coatings. The rest of this chapter details such a study by detailing: 1) birefringence in zincblende materials, 2) a preliminary estimation of differential phase noise of light reflected from a $\gaas$/$\algaas$ coating stack caused by electric field noise are computed while considering potential impacts to the current generation gravitational wave detectors, and 3) a short experimental optical cavity designed to interrogate an estimate of dn/dE from a calibrated differential length PDH locked signal with a normal electric field driven across a HR $\gaas$/$\algaas$ coating ``witness" sample.
+Applying crystalline HR mirror coatings to the core optics indiscriminately may introduce notable side effects; one being linear electro-optic noise of $\gaas$/$\algaas$ (dn/dE), also known as the Pockels effect ~\cite{abernathy:poster}. Although estimated to be nearly two orders of magnitude below the A$^\sharp$ strain noise floor ($\approx 10^{-26}$), direct measurement is still merited and adequately motivates a thorough study of electro-optical properties of $\gaas$/$\algaas$ coatings. The rest of this chapter discusses such a study by detailing: 1) birefringence in zincblende materials, 2) a preliminary estimation of differential phase noise of light reflected from a $\gaas$/$\algaas$ coating stack caused by electric field noise are computed while considering potential impacts to the current generation gravitational wave detectors, and 3) a short experimental optical cavity designed to interrogate an estimate of dn/dE from a calibrated differential length PDH locked signal with a normal electric field driven across a HR $\gaas$/$\algaas$ coating ``witness" sample.
 
 \section{Birefringence in zincblende materials}
 \subsection{The Indicatrix}\label{sec:indicatrix}
@@ -305,7 +305,7 @@ In general the principle dielectric axes of the new ellipsoid do \textbf{not} co
 
 \begin{equation}
     \lambda_{[110]}\; x'^2 + \lambda_{[-110]}\; y'^2 + \lambda_{[001]}\; z'^2 =1
-\end{equationappendix:ifo_configs_code}}
+\end{equation}
 
 \noindent The eigenindices ($n_\alpha = n_{[110]}$, $n_\beta = n_{[-110]}$) are therefore:
 
@@ -442,12 +442,19 @@ Up to this point three varieties of orthonormal coordinates are addressed: the c
 \noindent Assuming we are operating in a coordinate system suggested in \autoref{fig:algaascoords}, which plane is impacted by some isotropic $E_\mathrm{noise}$? Revisiting the \autoref{eq:zindicatrix} we can see that non-zero x, y, and z components would only couple to the input beam polarization oscillating in the x-y plane on account of $E_z$ and as demonstrated gives us the ability to diagonalize the indicatrix tensor when realizing the case $E_x << E_z$ and $E_y << E_z$.
 
 \subsubsection*{Analytic estimate}
-Fejer and Bonilla take on an analytical approximation when finding the impact of the electric field to the change in phase of the light through a crystalline anisotropic thin film ($\lambda/4$) stack \cite{bonillafejer, fejer_estimate}:
+Fejer and Bonilla takes on an analytical approach to finding the impact of the electric field to the change in phase of the light through a crystalline anisotropic thin film ($\lambda/4$) stack. The construction builds off of a pre-defined defivation of thermo-optic noise calculations for the HR stack and assuming a large enough number of high-low index coating pairs~\cite{bonillafejer, fejer_estimate}:
 
 \begin{equation}
     \bigg| \frac{\partial \phi}{\partial E} \bigg| = \pi \frac{r_{41}}{2}(n_\mathrm{high} n_\mathrm{low} ^2 + n_\mathrm{low} n_\mathrm{high} ^2) \frac{n_\mathrm{high}}{n_\mathrm{low}}
 \end{equation}
 
+With $n_\mathrm{low} = n_\algaas = 2.9369$, $n_\mathrm{high} = n_\gaas = 3.4786$, and $r_{41} = -1.33 \times 10^{-12}$
+
+The estimated differential phase from the electro-optic effect with a 1064nm E-field propogating along the [110] axis of the HR $\gaas / \algaas$ stack:
+
+$$
+\bigg| \frac{\partial \phi}{\partial E} \bigg| = 4.0253 \times 10^{-12} \; [\mathrm{rad}]/[\mathrm{V}/\mathrm{m}]
+$$
 %\begin{equation}
 %\hat{\phi}' = \frac{\pi n_1 z}{1-z^2}(z^{2N} -1) \frac{z^{2N} \frac{(n_f)^2}{n_2 n_3}(n_2 \kappa_{\gamma 2} + n_3\kappa_{\gamma 3}) - (n_2 \kappa_{\gamma 3} + n_3\kappa_{\gamma 3})}{(n_1)^2 -(n_f)^2 z^{4N}}
 %\end{equation}
@@ -548,7 +555,7 @@ $$
 The coating to be studied consists of 36 $\lambda$/4  thick layers of $\gaas$ interspersed with 35 layers of $\lambda$/4 thick $\algaas$. $\gaas$ forms the top and bottom layer to prevent oxygen absorption from the AlGaAs layer. The $\gaas$ layers have an index of $n_{\gaas} = 3.480$ and a thickness of $\Delta d_{\gaas} = 76.43$ nm while the low index $\algaas$ layers are $n_{\algaas} = 2.977$ with thickness $\Delta d_{\algaas} = 89.35$ nm. With the constructed matrices, we apply these parameters and compute a differential phase of:
 
 \begin{equation}
-	\bigg| \frac{\partial \phi_c}{\partial  E_\mathrm{STLF}} \bigg|  = 3.9 \times 10^{-11}\; [\mathrm{rad}/\mathrm{V}/\mathrm{m}]      
+    \bigg| \frac{\partial \phi_c}{\partial  E_\mathrm{STLF}} \bigg|  = 3.9 \times 10^{-11}\; [\mathrm{rad}]/[\mathrm{V}/\mathrm{m}]      
 \end{equation}
 
 %High Index:  GaAs, n=3.480, layer thickness is 76.43 nm
@@ -916,7 +923,7 @@ O_{n}      & \cdots & \cdots & \cdots & \cdots & \cdots & O_{n} & O_{n} & O_{n} 
 \[ 
 	O_{n} = \mathrm{zeros}(n)
 \]	
-Where the above matrix is a tri-diagonal block sparse matrix with square embedded diagonal identity ($\mathcal{I}_n$) matrices with n non-zero diagonal elements, and sparse tridiagonal kernel ($\mathcal{K}_n$) matrices. $O_n$ presents zero matrices with $n\times n$ sharing the dimensions of $\mathcal{K}_n$ and $\mathcal{I}_n$. \footnote{Not completely clear to the author at first, the motivation behind the structural choice of sparse block diagonals is a result of vectorizing the computation. Some standard computing libraries may be proactive about this vectorization and apply it when recognized in for-loops. Even so, the explicit structuring of the boundary conditions listed here is intended to inform of the reasoning behind the modified numerical recipe to establish a compartmentalization between the scientific motivation alongside computing tools and methods.}
+Where the above matrix is a tri-diagonal block sparse matrix with square embedded diagonal identity ($\mathcal{I}_n$) matrices with n non-zero diagonal elements, and sparse tridiagonal kernel ($\mathcal{K}_n$) matrices. $O_n$ presents zero matrices with $n\times n$ sharing the dimensions of $\mathcal{K}_n$ and $\mathcal{I}_n$. \footnote{Not completely clear to the author at first, the motivation behind the structural choice of sparse block diagonals is a symptom of continuously vectorizing the computation. Some standard computing libraries may be proactive about this vectorization and apply it when recognized in for-loops. Even so, the explicit structuring of the boundary conditions listed here is intended to inform of the reasoning behind the modified numerical recipe to establish a compartmentalization between the scientific motivation alongside computing tools and methods.}
 
 \newpage
 
@@ -1043,11 +1050,10 @@ If \(\mathrm{CH1}(f)\) is in \(V_\mathrm{pk}\) then signal(f) will be in
 %	\Delta \mathrm{L} = \mathrm{source}*\alpha(f) \mathrm{A}(f)*\frac{1+\mathrm{OLG}(f)}{\mathrm{OLG}(f)}*\frac{\mathrm{L_{cav}}}{f_\mathrm{laser}} \quad \big[ m_\mathrm{pk} / \sqrt{Hz} \big]
 %\end{equation}
 
-\subsection{Mounting Solution}
+\subsection{Assembly Mount Solution}
 %The following section details measurements performed with various longitudinal pockel cell mounts. Further details (assembly parameters, blueprints, and visual aids) can be found in the appendix.
-
-\subsubsection{Assembly 3 (MACOR mount)}
-With most of the same characteristics from Assembly 3, an optical mount made of MACOR, a machinable ceramic, was constructed and installed. With the material's high Young's modulus (66.9 GPa), and a moderate Poisson ratio (.29) \cite{macor} making it by far the most durable / non-conductive mounting solution tried.
+%\subsubsection{Assembly 3 (MACOR mount)}
+To maintain the aforementioned boundary conditions in situ, an optical mount made of MACOR, a machinable ceramic, was constructed and installed. With the material's high Young's modulus (66.9 GPa), and a moderate Poisson ratio (.29) \cite{macor} making it by far the most durable / non-conductive mounting solution tried.
 
 An optical mount for the sample made with MACOR, along with spherical glass bearnings with a .48 $\pm$ .01 cm $\diameter$, and a McMaster-Carr 8-32, 1/2" ceramic screw were used to clamp the optical sample within a bored 25.74 $\pm$ .5 mm $\diameter$ barrel. Two 1.24" $\diameter$ holes were also bored at a 9 mm depth about the front and back side of the optical mount to accomodate for a flush fit of copper electrodes. The construction suggests a 1 $\pm$ .5 mm clearance between the front and back surface of the sample to the electrode plates.
 
