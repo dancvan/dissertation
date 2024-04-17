@@ -21,6 +21,8 @@
 
 % CO2 mask
 
+% Miller indices for highly reflective \texorpdfstring{$\gaas$ / $\algaas$} coatings
+
 % Mode matching data for Electro-optic sample cavity
     %% Pre MMT beam scan
     %% ``Just another mode matching tool" (JAMMT) solution
@@ -236,6 +238,19 @@ Though this result requires revisiting geometrical conditions that are best visu
 
 %The most general form of the energy density can be geometrically represented as ellipsoid but a coordinate transformation we can diagonalize and realize the principal axes of the dielectric allowing a simpler form of the displacement, and in turn the energy density.
 
+\subsection{Miller indices for highly reflective $\gaas$/$\algaas$ coatings}
+\begin{figure}[!hb]
+    \begin{subcaptiongroup}
+	    \includegraphics[width=.5\textwidth]{figs/ALGAAS/coating_orientation_normal.pdf}
+	    \phantomcaption\label{conormal}
+	    \includegraphics[width=.5\textwidth]{figs/ALGAAS/coating_orientation_isometric.pdf}
+	    \phantomcaption\label{coiso}
+    \end{subcaptiongroup}
+\caption{The beam propogation axis ($\vec{S}$, $[-100]$) with respect to the $\gaas$/$\algaas$ crystal axes. The axis formed by the [100] plane normal is drawn parallel with the beam axis (z-axis) and the polarizations of incident and reflected beam oscillate along vectors within the plane formed by the normal of that axis. The coating is grown with a flat tracing a line within the [0-11] plane; where the plane normal points towards the sample center.}
+\label{fig:algaascoords}
+\end{figure}
+
+Up to this point three varieties of orthonormal coordinates are addressed: the crystal axis (as indicated by Miller index plane normals), the principal dielectric axis (based on diagonalization of the indicatrix), and an optical beam axis (when considering a desired (laser) light propogation). The asserted beam axis can be cited \autoref{fig:algaascoords}.
 
 
 
@@ -265,6 +280,15 @@ Though this result requires revisiting geometrical conditions that are best visu
 	\caption{Ramping voltage sent to the laser PZT while probing the mixer output. The sweep was performed for sample cavity of length notes}
 \label{fig:pdhmeasured}
 \end{figure}
+
+\section{Voltage drive electronics}
+
+\begin{figure}[H]
+    \includegraphics[width=\textwidth]{ALGAAS/tfs/hva_compare.pdf}
+    \caption{Different high voltage amplifier transfer functions used for the study}
+    \label{fig:hvacompare}
+\end{figure}
+
 
 \newpage
 

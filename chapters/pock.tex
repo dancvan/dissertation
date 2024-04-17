@@ -270,59 +270,17 @@ r_{\bar{4}3m,ij} =
 \subsection{New principal (electro-optic) dielectric axis for zincblende structures}
 In general the principle dielectric axes of the new ellipsoid do \textbf{not} coincide with the axes of the ellipsoid of the unperturbed crystal. The form of the index ellipsoid for a zincblende crystalline material accounting for the electro-optic tensor and some generalized DC electric field $\vec{E}$ expressed in terms of the crystallographic axes is given by:
 \begin{equation}\label{eq:zindicatrix}
-\bigg(\frac{1}{n_o^2} \bigg) x^2\ + \bigg(\frac{1}{n_o^2} \bigg) y^2 + \bigg(\frac{1}{n_o^2} \bigg) z^2  + 2r_{41} E_{[100]} yz + 2r_{41} E_{[010]} xz + 2r_{41}E_{[001]} xy= 1
+\bigg(\frac{1}{n_o^2} \bigg) x^2\ + \bigg(\frac{1}{n_o^2} \bigg) y^2 + \bigg(\frac{1}{n_o^2} \bigg) z^2  + 2r_{41} E_{x} yz + 2r_{41} E_{y} xz + 2r_{41}E_{z} xy= 1
 \end{equation}
 
 \noindent Where we have set $n_x = n_y = n_z = n_o$ for zincblende structures. Visualizing the above as a tensor:
 
 \begin{equation}
 \left[ {\begin{array}{ccc}
-   \big( \frac{1}{n_o ^2} \big)& r_{41}E_{[001]} & r_{41} E_{[010]}\\
-   r_{41}E_{[001]} & \big( \frac{1}{n_o ^2} \big) & r_{41} E_{[100]}\\
-   r_{41} E_{[010]} & r_{41} E_{[100]} & \big( \frac{1}{n_o ^2} \big)\\
+   \big( \frac{1}{n_o ^2} \big)& r_{41}E_{x} & r_{41} E_{y}\\
+   r_{41}E_{x} & \big( \frac{1}{n_o ^2} \big) & r_{41} E_{z}\\
+   r_{41} E_{y} & r_{41} E_{z} & \big( \frac{1}{n_o ^2} \big)\\
 \end{array}} \right]
-\end{equation}
-
-\noindent For a z-wavevector $E_{[100]} = E_{[010]} = 0$ and $E_{[001]} \neq 0$, computing the eigenvalues and eigenpolarizations will lead us to the coorelated eigenindices:
-
-\begin{equation}
-    \begin{aligned}
-	\lambda_{[110]} & = \big( \frac{1}{n_o ^2} - r_{41} E_z \big) \\
-        \lambda_{[-110]} & = \big( \frac{1}{n_o ^2} + r_{41} E_z \big) \\
-	\lambda_{[001]} &  = \frac{1}{n_o ^2}
-    \end{aligned}
-\end{equation}
-
-\noindent And the principal axes / eigenpolarizations are found when solving for the eigenvectors:
-
-\begin{equation}
-    \begin{aligned}
-	\vec{x'} & = \frac{1}{\sqrt{2}}\;(1, 1, 0) \\
-	\vec{y'} & = \frac{1}{\sqrt{2}}\;(-1, 1, 0) \\ 
-	\vec{z'} & = (0, 0, 1)
-    \end{aligned}
-\end{equation}
-
-\begin{equation}
-    \lambda_{[110]}\; x'^2 + \lambda_{[-110]}\; y'^2 + \lambda_{[001]}\; z'^2 =1
-\end{equation}
-
-\noindent The eigenindices ($n_\alpha = n_{[110]}$, $n_\beta = n_{[-110]}$) are therefore:
-
-\begin{equation}
-    \begin{aligned}
-	n_{[110]} & = \sqrt{\lambda_{[110]}} & = \sqrt{\frac{1}{n_o ^2} - r_{41} E_z} \\
-	n_{[-110]} & = \sqrt{\lambda_{[-110]}} & =  \sqrt{\frac{1}{n_o ^2} + r_{41} E_z}
-    \end{aligned}
-\end{equation}
-
-\noindent And with $n_o r_{41} E_z << 1$:
-
-\begin{equation}
-    \begin{aligned}
-	n_{[110]} & \approx  n_o + \frac{1}{2} n_o^3 r_{41} E_z \\
-	n_{[-110]} & \approx n_o - \frac{1}{2} n_o^3 r_{41} E_z    
-    \end{aligned}
 \end{equation}
 
 
@@ -398,19 +356,60 @@ The voltage amplitude of the signal input is proportional to the strength of the
 \section{Electro-optic noise of a \texorpdfstring{$\gaas$}{gaas} / \texorpdfstring{$\algaas$}{algaas} stack}
 A comprehensive survey of relevant birefringent properties of a HR $\gaas$/$\algaas$ mirrorstack is due, and for this body of work includes: 1) crystal coordinate considerations when asserting an optical axis on a highly reflective crystalline stack manufactured by the Thorlabs crystalline coatings division, 2) citations of coating parameters and observed intrinsic birefringence from the highly reflective coating stack in question, 3) analysis of the differential electro-optic effect on the phase of a reflected beam, and 4) estimating the the differential phase noise in LIGO based on preliminary electric field measurements measured at LHO.
 
-\subsection{Miller indices for highly reflective $\gaas$/$\algaas$ coatings}
-\begin{figure}[!hb]
-    \begin{subcaptiongroup}
-	    \includegraphics[width=.5\textwidth]{figs/ALGAAS/coating_orientation_normal.pdf}
-	    \phantomcaption\label{conormal}
-	    \includegraphics[width=.5\textwidth]{figs/ALGAAS/coating_orientation_isometric.pdf}
-	    \phantomcaption\label{coiso}
-    \end{subcaptiongroup}
-\caption{The beam propogation axis ($\vec{S}$, $[-100]$) with respect to the $\gaas$/$\algaas$ crystal axes. The axis formed by the [100] plane normal is drawn parallel with the beam axis (z-axis) and the polarizations of incident and reflected beam oscillate along vectors within the plane formed by the normal of that axis. The coating is grown with a flat tracing a line within the [0-11] plane; where the plane normal points towards the sample center.}
-\label{fig:algaascoords}
+\subsection{Static Birefringence / Miller indices from a HR \texorpdfstring{$\gaas$}{gaas} / \texorpdfstring{$\algaas$}{algaas} coating}
+
+\begin{figure}[!ht]
+    \centering
+	\includegraphics[width=.6\textwidth]{figs/ALGAAS/laser_mirror_algaas_coat_defect_coords.pdf}
+	\caption{The beam propogation axis with respect to the $\gaas$/$\algaas$ crystal axis. The axis formed by the [100] plane normal is drawn parallel with the beam axis (z-axis) and the polarizations of incident and reflected beam oscillate along vectors within the plane formed by the normal of that axis. The topmost coordinate axis triad is drawn to depict world vectors that can help visualize the plane of computed eigenvectors. Depicted here are also defects at the top and bottom right of the coating due to overhandling but do not effect the results of this study.}
+\label{fig:algaas_coord_defect}
 \end{figure}
 
-Up to this point three varieties of orthonormal coordinates are addressed: the crystal axis (as indicated by Miller index plane normals), the principal dielectric axis (based on diagonalization of the indicatrix), and an optical beam axis (when considering a desired (laser) light propogation). The asserted beam axis can be cited \autoref{fig:algaascoords}.
+
+
+\noindent Thorlab's crystalline coatings division grows their HR crystalline optical coating such that the coating surface is drawn out in the $[100]$ plane, meaning that beam with a wavevector along the optical (z) axis draws a parallel line to the normal of said plane. Therefore since the beam's polarized E-field oscillates only within that plane, any differential splitting of the beam polarization occurs solely between rotated $[010]$ and $[001]$ axes. This allows us to restrict our interest to a field where $E_{z} \neq 0$ and $E_x = E_y =0$ and compute the eigenvalues ($\lambda^{*}_{x',y',z'}$ / eigenpolarizations ($\vec{x'}, \vec{y'}, \vec{z'}$) which lead us to the relevant eigenindices ($n_{x',y'})$ \footnote{There may appear to be an inconsistency between the miller indices and optical axes, but because of the isotropy of zincblende crystals prior to the field perturbation coordination of these axes is not quite relevant}:
+
+\begin{equation}
+    \begin{aligned}
+    	\lambda_{x'} & = \big( \frac{1}{n_o ^2} - r_{41} E_z \big) \\
+	\lambda_{y'} & = \big( \frac{1}{n_o ^2} + r_{41} E_z \big) \\
+	\lambda_{z'} &  = \frac{1}{n_o ^2}
+    \end{aligned}
+\end{equation}
+
+\noindent And the principal axes / eigenpolarizations are found when solving for the eigenvectors:
+
+\begin{equation}
+    \begin{aligned}
+	\vec{x'} & = \frac{1}{\sqrt{2}}\;(0, -1, 1) \\ 
+	\vec{y'} & = \frac{1}{\sqrt{2}}\;(0, 1, 1) \\
+	\vec{z'} & = (1, 0, 0) \\
+    \end{aligned}
+\end{equation}
+
+\begin{equation}
+    \lambda_{x'}\; x'^2 + \lambda_{y'}\; y'^2 + \lambda_{z'}\; z'^2 =1
+\end{equation}
+
+\noindent The eigenindices ($n_\alpha = n_{x'}$, $n_\beta = n_{y'}$) are therefore:
+
+\begin{equation}
+    \begin{aligned}
+	n_{x'} & = \sqrt{\lambda_{x'}} & = \sqrt{\frac{1}{n_o ^2} - r_{41} E_z} \\
+	n_{y'} & = \sqrt{\lambda_{y'}} & =  \sqrt{\frac{1}{n_o ^2} + r_{41} E_z}
+    \end{aligned}
+\end{equation}
+
+
+
+\noindent And with $n_o r_{41} E_z << 1$:
+
+\begin{equation}
+    \begin{aligned}
+	n_{x'} & \approx  n_o + \frac{1}{2} n_o^3 r_{41} E_z \\
+	n_{y'} & \approx n_o - \frac{1}{2} n_o^3 r_{41} E_z    
+    \end{aligned}
+\end{equation}
 
 \subsection{Electro-optic coupling to the reflected phase of a HR mirror coating}
 %With our chosen beam axis, the influence of an isotropic white noise field ($E_N = [E_{Nx},E_{Ny},E_{Nz}]$) is considered:
@@ -439,13 +438,11 @@ Up to this point three varieties of orthonormal coordinates are addressed: the c
 %% FIGURE: SUB1 Transformed indicatrix (Before and after $E_x$)
 %% FIGURE: SUB2 Ellipse cross section. New eigenpolarizations and corresponding indices and their influence on incident field (Marty's result)
 
-\noindent Assuming we are operating in a coordinate system suggested in \autoref{fig:algaascoords}, which plane is impacted by some isotropic $E_\mathrm{noise}$? Revisiting the \autoref{eq:zindicatrix} we can see that non-zero x, y, and z components would only couple to the input beam polarization oscillating in the x-y plane on account of $E_z$ and as demonstrated gives us the ability to diagonalize the indicatrix tensor when realizing the case $E_x << E_z$ and $E_y << E_z$.
-
 \subsubsection*{Analytic estimate}
 Fejer and Bonilla takes on an analytical approach to finding the impact of the electric field to the change in phase of the light through a crystalline anisotropic thin film ($\lambda/4$) stack. The construction builds off of a pre-defined defivation of thermo-optic noise calculations for the HR stack and assuming a large enough number of high-low index coating pairs~\cite{bonillafejer, fejer_estimate}:
 
 \begin{equation}
-    \bigg| \frac{\partial \phi}{\partial E} \bigg| = \pi \frac{r_{41}}{2}(n_\mathrm{high} n_\mathrm{low} ^2 + n_\mathrm{low} n_\mathrm{high} ^2) \frac{n_\mathrm{high}}{n_\mathrm{low}}
+    \bigg| \frac{\partial \phi}{\partial E} \bigg| = - \pi \frac{r_{41}}{2}(n_\mathrm{high} n_\mathrm{low} ^2 + n_\mathrm{low} n_\mathrm{high} ^2) \frac{n_\mathrm{high}}{n_\mathrm{low}}
 \end{equation}
 
 With $n_\mathrm{low} = n_\algaas = 2.9369$, $n_\mathrm{high} = n_\gaas = 3.4786$, and $r_{41} = -1.33 \times 10^{-12}$
@@ -453,7 +450,7 @@ With $n_\mathrm{low} = n_\algaas = 2.9369$, $n_\mathrm{high} = n_\gaas = 3.4786$
 The estimated differential phase from the electro-optic effect with a 1064nm E-field propogating along the [110] axis of the HR $\gaas / \algaas$ stack:
 
 $$
-\bigg| \frac{\partial \phi}{\partial E} \bigg| = 4.0253 \times 10^{-12} \; [\mathrm{rad}]/[\mathrm{V}/\mathrm{m}]
+\bigg| \frac{\partial \phi}{\partial E} \bigg| = 4.0253 \times 10^{-12} \; \frac{[\mathrm{rad}]}{[\mathrm{V}/\mathrm{m}]}
 $$
 %\begin{equation}
 %\hat{\phi}' = \frac{\pi n_1 z}{1-z^2}(z^{2N} -1) \frac{z^{2N} \frac{(n_f)^2}{n_2 n_3}(n_2 \kappa_{\gamma 2} + n_3\kappa_{\gamma 3}) - (n_2 \kappa_{\gamma 3} + n_3\kappa_{\gamma 3})}{(n_1)^2 -(n_f)^2 z^{4N}}
@@ -555,7 +552,7 @@ $$
 The coating to be studied consists of 36 $\lambda$/4  thick layers of $\gaas$ interspersed with 35 layers of $\lambda$/4 thick $\algaas$. $\gaas$ forms the top and bottom layer to prevent oxygen absorption from the AlGaAs layer. The $\gaas$ layers have an index of $n_{\gaas} = 3.480$ and a thickness of $\Delta d_{\gaas} = 76.43$ nm while the low index $\algaas$ layers are $n_{\algaas} = 2.977$ with thickness $\Delta d_{\algaas} = 89.35$ nm. With the constructed matrices, we apply these parameters and compute a differential phase of:
 
 \begin{equation}
-    \bigg| \frac{\partial \phi_c}{\partial  E_\mathrm{STLF}} \bigg|  = 3.9 \times 10^{-11}\; [\mathrm{rad}]/[\mathrm{V}/\mathrm{m}]      
+    \bigg| \frac{\partial \phi_c}{\partial  E_\mathrm{STLF}} \bigg|  = 3.9 \times 10^{-11}\; \frac{[\mathrm{rad}]}{[\mathrm{V}/\mathrm{m}]}     
 \end{equation}
 
 %High Index:  GaAs, n=3.480, layer thickness is 76.43 nm
@@ -568,11 +565,11 @@ The coating to be studied consists of 36 $\lambda$/4  thick layers of $\gaas$ in
 Measured field spectra acquired from installed electric field meters located within LHO and LLO ETMX and ETMY vacuum chambers can help translate how much DARM coupling can occur from electro-optic coating noise. For O3 the EFMs were located next to the test mass mirrors and measured a consistent 3 $[\mu \mathrm{V} / \mathrm{m} / \sqrt{\mathrm{Hz}}]$ @ 100 Hz~\cite{buikema:2020}. This along with computed estimate allows us to create an upper limit for what this noise might be assuming incoherent fields between the end stations and a flat frequency response within LIGO's bandwidth. An initial differential phase noise estimate of $\approx 4.5\times 10^{-10}$ [rad/m/V], alongside measured LHO ambient field noise measured during O3 we compute an initial strain noise estimate ~\cite{fejer_estimate, buikema:2020}:
 
 \begin{equation*}
-    \frac{\partial L}{\partial E} = \frac{\lambda}{4 \pi} \bigg| \frac{\partial \theta_c}{\partial E} \bigg| = 3.81 \times 10^{-17} \; \frac{\mathrm{m}}{(\mathrm{V/m})}
+    \frac{\partial L}{\partial E} = \frac{\lambda}{4 \pi} \bigg| \frac{\partial \theta_c}{\partial E} \bigg| = 3.81 \times 10^{-17} \; \frac{[\mathrm{m}]}{[\mathrm{V/m}]}
 \end{equation*}
 
 \begin{equation}
-h_\mathrm{EO\; noise} = 2\frac{\Delta L_\mathrm{EO \; noise}}{L} = 2\frac{\partial L}{\partial E} \times \bigg| \frac{E_\mathrm{noise}}{L_\mathrm{arm}} \bigg| = 5.715 \times 10^{-26} \; \mathrm{Hz}
+    h_\mathrm{EO\; noise} = 2\frac{\Delta L_\mathrm{EO \; noise}}{L} = 2\frac{\partial L}{\partial E} \times \bigg| \frac{E_\mathrm{noise}}{L_\mathrm{arm}} \bigg| = 5.715 \times 10^{-26} \; \mathrm{[Hz]}
 \end{equation}
 
 
@@ -647,7 +644,7 @@ The quantity we are attempting to measure is a differential length on the order 
 The implemented servo design uses a light source from a Mephisto 2000 NE Nd:YAG (1064nm) laser with a 25 MHz phase modulation from a New Focus Model 4003 IR resonant phase modulator. As indicated in the figure above, the electronics chain can be decomposed into various filter components: $S(f)$, $A(f)$, and $A_\mathrm{thermal}(f)$
 
 \subsubsection{Sensing S(f)}
-Sensing electronics are composed of a single element photodiode mounted to a tranimpedance amplifier PCB that redirects photocurrent to DC and RF outputs. The RF path is constructed so the RF signal is boosted before being passed to the FSS mixer where it is demodulated by mixing the 25 MHz oscillator phased 180 degrees (with variable cable length). Once demodulated, the measured beat signal while sweeping through resonance generates the PDH error signal profile \autoref{fig:pdherr}.
+Sensing electronics are composed of a single element photodiode mounted to a tranimpedance amplifier PCB that redirects photocurrent to DC and RF outputs. The RF path is constructed so the RF signal is boosted before being passed to the FSS mixer where it is demodulated by mixing the 25 MHz oscillator phased with variable cable length. Once demodulated, the measured beat signal while sweeping through resonance generates the PDH error signal profile \autoref{fig:pdherr}.
 \begin{itemize}
 \item 25 MHz RFPD
 \begin{itemize}
@@ -701,20 +698,20 @@ The field screened by the coating can be computed from Gauss' Law:
 
 \noindent There is no free charge within the region of interest ($\rho_\mathrm{free}=0$), though the optic sample fused silica substrate with the AlGaAs coating imposes dielectric material between the plates. Boundary conditions are expressed in terms of the differential plate potential $V$, so it is natural to first solve the potential ($V$) for all relevant system coordinate points.  
 
+\begin{equation}\label{eq:cyllap}
+\nabla^2 V = 0
+\end{equation}
 
 \paragraph*{Boundary Conditions}
 
 \begin{figure}[H]
   \centering
   \includegraphics[width=\textwidth]{ALGAAS/longitudinal_pockels_cell_bc.pdf}
-  \caption{Side view of the longitudinal pockels cell mount. The figure is annotated with relevant parameters to build the numerical model}
+\caption{Side view of the longitudinal pockels cell mount. The figure is annotated with relevant parameters to build the numerical model: the finite thicknesses of the electrode plates ($t_{el}$) , radius of the aperture at the center of the disk ($r_{ap}$), radius of the disk ($r_d$),thickness of the optic ($t_{opt}$),and radius of the optic substrate ($r_{opt}$)}
   %%Use relevant cross sectional figure to establish coordinates for $\gaas$/$\algaas$, as well as the fused silica substrate so the computation is transparent.} Cross sectional diagram indicating relevant axes and boundary conditions utilized in the numerical computation
   \label{fig:laplacecoords}
 \end{figure}
 
-\begin{equation}\label{eq:cyllap}
-\nabla^2 V = 0
-\end{equation}
 
 \subparagraph*{Substrate:}
 $ -t_{opt} \; \textless \; z \; \textless \;\mathrm{t}_{opt} $ and $\mathrm{r} \; \textless \;\mathrm{r}_{opt}$
@@ -819,7 +816,6 @@ $$
     \end{aligned}
 \end{equation}
 
-\newpage
 Now meshgrid coordinates are set:
 
 \input{notes/LaplacE_meshgrid.tex}
@@ -868,8 +864,7 @@ O_{n} & \mathcal{I}_{n} & \mathcal{K}_{n}^{*} & \mathcal{I}_{n} & O_{n} & O_{n} 
 O_{n} & O_{n}  & \mathcal{I}_{n} & \mathcal{K}_{n}^{*} & \mathcal{I}_{n} & O_{n} & O_{n} & O_{n} & O_{n} & O_{n} & \vdots\\
 \vdots & O_{n}  & O_{n}  & \ddots & \ddots & \ddots & O_{n} & O_{n} & O_{n} & O_{n}  & \vdots \\
 \vdots & O_{n}  & O_{n}  & O_{n}  & \ddots & \ddots & \ddots & O_{n} & O_{n} & O_{n} & \vdots \\
-\vdots & O_{n}  & O_{n}  & O_{n} & O_{n} & \ddots & \ddots & \ddots & O_{n} & O_{n}  & \vdots \\
-\vdots & O_{n}  & O_{n}  & O_{n} & O_{n} & O_{n} & \mathcal{I}_{n} & \mathcal{K}_{n}^{*} & \mathcal{I}_{n} & O_{n}  & \vdots\\
+\vdots & O_{n}  & O_{n}  & O_{n} & O_{n} & \ddots & \ddots & \ddots & O_{n} & O_{n}  & \vvdots & O_{n}  & O_{n}  & O_{n} & O_{n} & O_{n} & \mathcal{I}_{n} & \mathcal{K}_{n}^{*} & \mathcal{I}_{n} & O_{n}  & \vdots\\
 \vdots & O_{n}  & O_{n}  & O_{n} & O_{n} & O_{n} & O_{n} & \mathcal{I}_{n} & \mathcal{K}_{n}^{*}  & \mathcal{I}_{n} & O_{n}\\
 \vdots & O_{n} & O_{n} & O_{n} & O_{n} & O_{n} & O_{n} & O_{n} & \mathcal{I}_{n} & \mathcal{K}_{n}^{*} & \mathcal{I}_{n}\\
 O_{n}      & \cdots & \cdots & \cdots & \cdots & \cdots & O_{n} & O_{n} & O_{n} & O_{n} & {O}_{n}
@@ -945,15 +940,6 @@ The computed $E_z$ screened by the coating at $r = 0$ for $V = 1$ is estimated t
     \includegraphics[width=\textwidth]{ALGAAS/13-Sep-2021_e_field_inside_outside_normal.pdf}
     \caption{The availablility of required voltage amplifiers during the course of this study was limited and lead to the use of multiple high voltage amplifiers with all transfer functions listed.}
 \label{fig:Ez}
-\end{figure}
-
-
-\subsubsection{Voltage drive electronics}
-
-\begin{figure}[H]
-    \includegraphics[width=\textwidth]{ALGAAS/tfs/hva_compare.pdf}
-    \caption{Different high voltage amplifier transfer functions used for the study}
-    \label{fig:hvacompare}
 \end{figure}
 
 \subsection{Servo Overview}
@@ -1076,20 +1062,6 @@ An optical mount for the sample made with MACOR, along with spherical glass bear
     \label{fig:measurementsum}
 \end{figure}
 
-\subsubsection{Acousto-optical coupling}
-A significant barrier to a low cavity differential length noise was encountered when mounting the optics in accessible non-conductive materials. Firstly, most commercial optical mounts are constructed with conductive materials which proves problematic when working to isolate the coating from non-normal field gradients within the coating volume of interest. For this reason, efforts were focused on developing a suitable mounting solution that would provide adequate isolation from any uncontrolled field magnitudes while driving a field normally incident on the surface with enough strength and uniformity across the beam area to extract a measurement of the differential length change from the Pockels effect. The mounts studied span different geometries and different material properties. The varying geometrical assemblies rendered various responses and for this reason some discussions are divided accordingly. A hard lesson learned (while the answer being readily available in collaboration literature) was to select a material that tend towards narrow acoustic resonances while achieving low noise off resonance and at a bandwidth of interest. The most stable solution revealed that ringing of the sample acoustic modes may be responsible For reassurance, we compare displacement spectra against that of a nearly identical cavity with a flat non-crystalline mirror coating to perform a null measurement reference; ruling out the Pockels effect and providing information for noise investigations.
-
-
-Drive coupling seec in the transfer function measurements with the MACOR mounts appeared consistent. Varying the mechanical configurations (i.e. differential electrode and / or optic set screw settings) to the slightest degree left us to discover a mechanical action via the excitations from the sample-mount acoustic modes from the construction are rung when driving the voltage on electrodes plates. Tracking consistent mechanical action for assemblies prior to Assembly 3 were difficult due to inconsistencies in mechanical settings between some measurements. When more consistency was realized (i.e. utilizing a MACOR mount and careful tracking of the sample set screw torque), it was more transparent that the sample-mount acoustic modes were responsible with similar features between the $\gaas$/$\algaas$ coating and the non-crystalline HR coating from ATFilms. The cleanest versions of these measurements with coorespondence of FEA suggest the acousto-optical modes with highest contributions of cavity length noise at regions below 10 kHz and 40 kHz - 80 kHz. 
-
-%\begin{itemize}
-%\item \textbf{Vibration of plates (Leissa)} \cite{leissa:1969} Computing frequencies and order of magnitude
-%	\begin{itemize}
-%	    \item Numerical computation (Order of magnitude result)
-%	\end{itemize}
-%\item \textbf{Steve's COMSOL model results}
-%\end{itemize}
-
 
 
 \subsection{Measured birefringence from HR \texorpdfstring{$\gaas$}{gaas}/\texorpdfstring{$\algaas$}{algaas} mirror}
@@ -1107,6 +1079,18 @@ To identify the fast and slow axes, the crystalline HR mirror is temporarily pai
     \label{fig:split_cav_resonance}
 \end{figure}
 
+\begin{figure}[!h]
+    \centering
+    \begin{subcaptiongroup}
+	    \includegraphics[page=2,width=.325\textwidth]{ALGAAS/laser_mirror_algaas_coat_defect.pdf}
+	    \phantomcaption\label{conormaldefect}
+	    \includegraphics[page=1,width=.5\textwidth]{ALGAAS/laser_mirror_algaas_coat_defect.pdf}
+	    \phantomcaption\label{coisodefect}
+    \end{subcaptiongroup}
+    \caption{Input beam orientation with respect to the coating miller indices / fast and slow axes, with a [Left] Normal view and [Right] isometric view.}
+\end{figure}
+
+
 %There are different accounts of a measured birefringence from HR $\gaas$ / $\algaas$ coatings (\href{https://dcc.ligo.org/DocDB/0181/G2200386/001/G2200386.pdf}{Satoshi}, \href{https://nodus.ligo.caltech.edu:8081/CTN/1474}{CTN}, \href{https://dcc.ligo.org/DocDB/0181/G2200559/001/G2200559-v1\%20-\%20polarization.pdf}{Aidan})
 %%Is the measured birefringence static? (Layer bonding method might introduce something?)
 %% Does it change from different mounting methods? (Photoelastic) (order of magnitude estimate)
@@ -1119,4 +1103,19 @@ From coating manufacturers it's estimated that static birefringence can arise fr
 From this experiment an upper threshold estimate between 20 kHz - 40 kHz is $\approx \; 1.1 \times 10^{-17} \; [\mathrm{m}]/[\mathrm{V}/\mathrm{m}]$ though at higher frequency, frequency dispersion of the electro-optic coefficients may explain the increase.  The uniform flat response is extended to frequencies at which LIGO operates 10 Hz - 1 kHz as prior work has demonstrated such a trend from 10 Hz to several 10s of kHz.
 
 The significantly improved thermal noise performance of $\gaas$/$\algaas$ HR coatings make these crystalline coatings a prime candidate for the core optics in current and future gravitational wave detectors. The measured upper threshold of the electro-optic noise is demonstrated to be $\sim 10^{-26} \; [1/\sqrt{\mathrm{Hz}}]$ two orders of magnitude below the designed noise floor $\sim 10^{-24}\; [1/\sqrt{\mathrm{Hz}}]$ of current and future gravitational wave detectors.
+
+\subsection{Acousto-optical coupling}
+A significant barrier to a low cavity differential length noise was encountered when mounting the optics in accessible non-conductive materials. Firstly, most commercial optical mounts are constructed with conductive materials which proves problematic when working to isolate the coating from non-normal field gradients within the coating volume of interest. For this reason, efforts were focused on developing a suitable mounting solution that would provide adequate isolation from any uncontrolled field magnitudes while driving a field normally incident on the surface with enough strength and uniformity across the beam area to extract a measurement of the differential length change from the Pockels effect. The mounts studied span different geometries and different material properties. The varying geometrical assemblies rendered various responses and for this reason some discussions are divided accordingly. A hard lesson learned (while the answer being readily available in collaboration literature) was to select a material that tend towards narrow acoustic resonances while achieving low noise off resonance and at a bandwidth of interest. The most stable solution revealed that ringing of the sample acoustic modes may be responsible For reassurance, we compare displacement spectra against that of a nearly identical cavity with a flat non-crystalline mirror coating to perform a null measurement reference; ruling out the Pockels effect and providing information for noise investigations.
+
+
+Drive coupling seec in the transfer function measurements with the MACOR mounts appeared consistent. Varying the mechanical configurations (i.e. differential electrode and / or optic set screw settings) to the slightest degree left us to discover a mechanical action via the excitations from the sample-mount acoustic modes from the construction are rung when driving the voltage on electrodes plates. Tracking consistent mechanical action for assemblies prior to Assembly 3 were difficult due to inconsistencies in mechanical settings between some measurements. When more consistency was realized (i.e. utilizing a MACOR mount and careful tracking of the sample set screw torque), it was more transparent that the sample-mount acoustic modes were responsible with similar features between the $\gaas$/$\algaas$ coating and the non-crystalline HR coating from ATFilms. The cleanest versions of these measurements with coorespondence of FEA suggest the acousto-optical modes with highest contributions of cavity length noise at regions below 10 kHz and 40 kHz - 80 kHz. 
+
+%\begin{itemize}
+%\item \textbf{Vibration of plates (Leissa)} \cite{leissa:1969} Computing frequencies and order of magnitude
+%	\begin{itemize}
+%	    \item Numerical computation (Order of magnitude result)
+%	\end{itemize}
+%\item \textbf{Steve's COMSOL model results}
+%\end{itemize}
+
 
