@@ -6,40 +6,15 @@ import matplotlib
 import pockels_cal as pc
 
 #measpath = '../measurements/swept/algaas/10_18_2021/'
+expdir = '../../../figs/ALGAAS/'
 
-slow_data_path = 'measurements/TF/slow/'
-fast_data_path = 'measurements/TF/fast/'
+slow_data_path = 'slow/'
+fast_data_path = 'fast/'
 
 plt.style.available
 
 plt.style.use('ppt2latex')
 plt.rcParams["font.family"] = "Times New Roman"
-
-
-def bode_plt(tf_tuple, save_path, lbl, title, ylbl='dB'):
-    ff = tf_tuple[0]
-    db = tf_tuple[1]
-    deg = tf_tuple[2]
-    bode_fig = plt.figure()
-    plt.subplot(211)
-    if not ylbl=='dB':
-        plt.loglog(ff, db, label=lbl)
-    else:
-        plt.semilogx(ff,db, label = lbl)
-    plt.xlim(ff[0], ff[-1])
-    plt.ylabel(ylbl)
-    plt.legend()
-    plt.title(title.replace('_', '\_'))
-    plt.subplot(212)
-    plt.semilogx(ff,deg, label = lbl)
-    plt.xlim(ff[0], ff[-1])
-    plt.legend()
-    plt.xlabel('Frequency [Hz]')
-    plt.ylabel('phase [deg]')
-    plt.savefig(save_path + '/' + title + '.png', dpi=300,bbox_inches='tight')
-    plt.close()
-    return bode_fig
-
 
 sdata = pc.tf_import(slow_data_path)
 fdata = pc.tf_import(fast_data_path)
@@ -49,20 +24,19 @@ db_slow = sdata[1]
 db_fast = fdata[1]
 deg_slow = sdata[2]
 deg_fast = fdata[2]
-plt.subplot(211)
-plt.semilogx(f_slow,db_slow, label = 'slow\_axis')
-plt.semilogx(f_fast,db_fast, label = 'fast\_axis')
-plt.xlim(f_slow[0], f_slow[-1])
-plt.ylabel('Magnitude [dB]')
-plt.legend()
-plt.subplot(212)
-plt.semilogx(f_slow,deg_slow, label = 'slow\_axis')
-plt.semilogx(f_fast,deg_fast, label = 'fast\_axis')
-plt.xlim(f_slow[0], f_slow[-1])
-plt.legend()
-plt.xlabel('Frequency [Hz]')
-plt.ylabel('phase [deg]')
-plt.show()
+fig, (ax1, ax2) = plt.subplots(nrows=2, sharex=True)
+ax1.semilogx(f_slow,db_slow, label = 'slow\_axis')
+ax1.semilogx(f_fast,db_fast, label = 'fast\_axis')
+ax1.set_ylabel('Magnitude [dB]')
+ax1.legend()
+ax2.semilogx(f_slow,deg_slow, label = 'slow\_axis')
+ax2.semilogx(f_fast,deg_fast, label = 'fast\_axis')
+ax2.set_xlim(f_slow[0], f_slow[-1])
+ax2.legend()
+ax2.set_xlabel('Frequency [Hz]')
+ax2.set_ylabel('Phase [deg]')
+#plt.show()
+fig.savefig(expdir + 'rawtf_fast_slow.pdf', dpi=300, bbox_inches='tight')
 
 import agilent4395a as ag
 
