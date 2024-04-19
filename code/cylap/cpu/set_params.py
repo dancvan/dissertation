@@ -6,7 +6,7 @@ pdict ={
     'origin' : np.array([0,0])      ,                        # Origin of the simulation space / map
     'size' : np.array([.04, .04])   ,                        # Size of simulation box [m] 
     'res' : np.array([1,1])*1e-4    ,                        # relative resolution [coord1, coord2]
-    'iters' : 100000                ,                        # total number of time iterations
+    'iters' : 300000                ,                        # total number of time iterations
     'iter_step' : 0.1               ,                        # time step
     'expbc' : False                 ,                        # Exponential boundary conditions?
     'bitres' : 'float32'            ,                        # matrix element data type ('float32' vs 'float64')
@@ -201,31 +201,31 @@ pdict['loc_params'] = {
     'front of plate' : {
         'cross_section_coord' : 'rho',
         'rho1_bound' : 0,
-        'rho2_bound' : pdict['size'],
+        'rho2_bound' : pdict['size'][1],
         'z' : pdict['back_plate']['zpos']
     },
     'front of optic' : {
         'cross_section_coord' : 'rho',
         'rho1_bound' : 0,
-        'rho2_bound' : pdict['size'],
+        'rho2_bound' : pdict['size'][1],
         'z' : pdict['optic']['z_com'] + pdict['optic']['thickness']/2
     },
     'middle of optic' : {
         'cross_section_coord' : 'rho',
         'rho1_bound' : 0,
-        'rho2_bound' : pdict['size'],
+        'rho2_bound' : pdict['size'][1],
         'z' : pdict['optic']['z_com']
     },
     'back of optic' : {
         'cross_section_coord' : 'rho',
         'rho1_bound' : 0,
-        'rho2_bound' : pdict['size'],
+        'rho2_bound' : pdict['size'][1],
         'z' : pdict['optic']['z_com'] - pdict['optic']['thickness']/2
     },
     'back plate' : {
         'cross_section_coord' : 'rho',
         'rho1_bound' : 0,
-        'rho2_bound' : pdict['size'],
+        'rho2_bound' : pdict['size'][1],
         'z' : pdict['back_plate']['zpos']
     }
 }

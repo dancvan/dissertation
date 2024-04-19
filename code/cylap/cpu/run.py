@@ -6,7 +6,11 @@ plt.style.use('stylelib/surftex')
 fig_exp_dir = "../../../../dissertation/figs/ALGAAS/"
 from matplotlib import cm
 from matplotlib import rcParams
+from matplotlib import rc
 import time
+
+rc('font', **{'family':'Times New Roman'})
+rc('text', usetex=True)
 
 ###
 
@@ -221,11 +225,10 @@ z_halfway , E_halfway = laplace.grabxsect(pdict['loc_params']['halfway out on op
 
 rho_front , E_front = laplace.grabxsect(pdict['loc_params']['front of optic'], coord_dict, pdict['res_exp'], Ez)
 
-z_halfway
-
-#fig1.pt5 = 
+plt.plot(rho_front, E_front)
 plt.plot(z_halfway, E_halfway, z_rho0, E_rho0) 
 
+E_front[1] 
 E_halfway.min()
 
 fig2 = plt.figure(figsize = (18.5,21))
@@ -249,10 +252,17 @@ bottom=-.09
 fig2.subplots_adjust(top=top,bottom=bottom)             
 fig2.set_size_inches((fig2.get_size_inches()[0],axes_height/(top-bottom)))
 
+
+fig3 = plt.figure(figsize=(20,10))
+plt.plot(rho_front,E_front)
+plt.xlim(rho_front[0],rho_front[-1])
+plt.xlabel('r[m]')
+plt.ylabel('$|\mathrm{E}_\mathrm{z}|$\,[m]', fontfamily='Times New Roman')
+fig3.savefig(fig_exp_dir + 'fieldxsec_sim.pdf', dpi=300, format='pdf', bbox_inches='tight')
+
 ## figure save
 
 coord_dict
-
 
 pdict['fig1_bool'] = True
 
