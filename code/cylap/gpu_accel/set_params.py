@@ -138,36 +138,36 @@ elif pdict['assembly'] == 3 :
         "diam" : 31.5e-3,                                       # diameter of plate [m]
         "hole_diam" : 3e-3,                                  # aperture diameter [m]
         "thickness" : 9.66e-3, 
-        "zpos" : pdict['size'][1]/2 + (pdict['mount_zdims']["sample_holder"]/2),      # location of plate surface (com) [m]
-        "voltage" : maxhva_settings[pdict['HVA']]/2                                     # Voltage on front plate [V]
+        "zpos" : pdict['size'][1]/2.0 + (pdict['mount_zdims']["sample_holder"]/2.0),      # location of plate surface (com) [m]
+        "voltage" : maxhva_settings[pdict['HVA']]/2.0                                     # Voltage on front plate [V]
     }
     pdict['back_plate'] = {
         "diam" : 31.5e-3,
         "hole_diam" : 3e-3,
         "thickness" : 9.66e-3, 
-        "zpos" : pdict['size'][1]/2 - (pdict['mount_zdims']["sample_holder"]/2),
-        "voltage" : -maxhva_settings[pdict['HVA']]/2
+        "zpos" : pdict['size'][1]/2.0 - (pdict['mount_zdims']["sample_holder"]/2.0),
+        "voltage" : -maxhva_settings[pdict['HVA']]/2.0
     }
     
 elif pdict['assembly'] == 4 :
     #Set front and back plate params
     pdict['mount_zdims'] = {
-        "total_zthickness" : 25.94e-3 ,                         # holds both sample and both electrodes [m]
+        "total_zthickness" : 2.05.94e-3 ,                         # holds both sample and both electrodes [m]
         "sample_holder" : 6.94e-3                              # width of lip that separates sample from electrodes [m] 
     }
     pdict['front_plate'] = {
         "diam" : 31.5e-3,                                       # diameter of plate [m]
         "hole_diam" : 3e-3,                                  # aperture diameter [m]
         "thickness" : 9.66e-3, 
-        "zpos" : pdict['size'][1]/2 + (pdict['mount_zdims']["sample_holder"]/2),      # location of plate surface (com) [m]
-        "voltage" :  maxhva_settings[pdict['HVA']]/2                                      # Voltage on front plate [V]
+        "zpos" : pdict['size'][1]/2.0 + (pdict['mount_zdims']["sample_holder"]/2.0),      # location of plate surface (com) [m]
+        "voltage" :  maxhva_settings[pdict['HVA']]/2.0                                      # Voltage on front plate [V]
     }
     pdict['back_plate'] = {
         "diam" : 31.5e-3,
         "hole_diam" : 3e-3,
         "thickness" : 9.66e-3, 
-        "zpos" : pdict['size'][1]/2 - (pdict['mount_zdims']["sample_holder"]/2),
-        "voltage" : - maxhva_settings[pdict['HVA']]/2 
+        "zpos" : pdict['size'][1]/2.0 - (pdict['mount_zdims']["sample_holder"]/2.0),
+        "voltage" : - maxhva_settings[pdict['HVA']]/2.0 
     }
     
 pdict['cap_params'] = {
