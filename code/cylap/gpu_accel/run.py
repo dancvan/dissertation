@@ -73,15 +73,19 @@ bp = 'back_plate'
 
 roi_mult_exp = int(abs(np.log10(pdict['roi_mult'])))
 
+fp_thick_bool = np.logical_and(z>=pdict[fp]['zpos'], z<=pdict[fp]['zpos'] + pdict[fp]['thickness'])
+
+bp_thick_bool = np.logical_and(z<=pdict[bp]['zpos'], z>=pdict[bp]['zpos'] - pdict[bp]['thickness'])
+
 # Some lazy functions
 maxval = lambda mag : (mag == mag.max()).reshape(pdict['vec_shape'])
 minval = lambda mig : (mig == mig.min()).reshape(pdict['vec_shape'])
 maxval_min1 = lambda mag, ax : np.roll(mag==mag.max(), -1, axis = ax).reshape(pdict['vec_shape'])
 minval_plus1 = lambda mig, ax : np.roll(mig==mig.min(), 1, axis = ax).reshape(pdict['vec_shape'])
-plate_geom = lambda _rho : (_rho >= pdict[fp]['hole_diam']/2) & (_rho<=pdict[fp]['diam']/2)
+plate_geom = lambda _rho : (_rho >= pdict[fp]['hole_diam']/2.0) & (_rho<=pdict[fp]['diam']/2.0)
 #foo = np.round(pdict['loc_params']['front of optic']['z'], pdict['res_exp'][1])
-foo = np.round((pdict['optic']['thickness']/2), pdict['res_exp'][1]+roi_mult_exp)
-ctb = np.round((pdict['optic']['diam']/2), pdict['res_exp'][0]+roi_mult_exp)
+foo = np.round((pdict['optic']['thickness']/2.0), pdict['res_exp'][1]+roi_mult_exp)
+ctb = np.round((pdict['optic']['diam']/2.0), pdict['res_exp'][0]+roi_mult_exp)
 sub = lambda _rho, _z : (((_z>pdict['optic']['z_com']-foo)&(_z<(np.abs(pdict['optic']['z_com'])+foo))) & (_rho <= ctb)).reshape(pdict['vec_shape'])
 coat = lambda _rho, _z : ((_z >= foo+pdict['optic']['z_com']) & (_z <= foo + pdict['optic']['z_com'] + pdict['optic']['coat_thickness']) & (_rho <= ctb)).reshape(pdict['vec_shape'])
 
@@ -96,8 +100,8 @@ bc_mask ={'edge' :
             'c2_end' : maxval_min1(z, 1),
             'c2_0' : minval_plus1(z, 1)},
           'electrodes':    # capacitor plates
-           { fp : (plate_geom(rho) & (z == pdict[fp]['zpos'])).reshape(pdict['vec_shape']),
-             bp : (plate_geom(rho) & (z == pdict[bp]['zpos'])).reshape(pdict['vec_shape'])},
+           { fp : (plate_geom(rho) & fp_thick_bool).reshape(pdict['vec_shape']),
+             bp : (plate_geom(rho) & bp_thick_bool).reshape(pdict['vec_shape'])},
           'optic':        # substrate
            {'sub' : sub(rho, z),
             'coat1' : ((z==np.round(pdict['loc_params']['front of optic']['z'],pdict['res_exp'][1])) & (rho <= np.round((pdict['optic']['diam']/2), pdict['res_exp'][0]))).reshape(pdict['vec_shape']),
