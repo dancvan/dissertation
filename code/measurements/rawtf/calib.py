@@ -5,6 +5,9 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
+plt.style.use('ppt2latexsubfig')
+plt.rcParams["font.family"] = "Times New Roman"
+
 def transfer_function(amplitude, phase,load_corr=False,anal_tag='sr785',\
 zload=50):
     """
@@ -24,8 +27,12 @@ zload=50):
     return 10**(amplitude/20)* np.exp(1j*(phase/180)*np.pi)/corr
 
 # Constants
-ef_eff  = 42                 # [[V/m]/V]
-v2hz    = 1.7e6            # [Hz / V]
+ef_eff      = 13.3                  # [[V/m]/V]
+#ef_eff      = 42                    # [[V/m]/V]
+v2hz        = 1.7e6                 # [Hz/V]
+c           = 299792458             # [m/s]
+L_cav       = .105                  # [m]
+nu_laser    = c/(1064e-9)           # [m]
 
 # Relevant data imports
 
@@ -52,8 +59,8 @@ A1_dir = home_dir + 'HVA_3ch/'
 A1_mag_data = np.loadtxt(A1_dir + 'SCRN0494.TXT').transpose()
 A1_phase_data = np.loadtxt(A1_dir + 'SCRN0495.TXT').transpose()
 A1 = transfer_function(A1_mag_data[1], A1_phase_data[1])
-
 A1
+
 ## A2 (HVA trek) -> electrodes
 A2_dir = home_dir + 'HVA_trek/'
 A2_mag_data = np.loadtxt(A2_dir + 'trek_mag.TXT').transpose()
@@ -61,7 +68,17 @@ A2_phase_data = np.loadtxt(A2_dir + 'trek_phase.TXT').transpose()
 A2 = transfer_function(A2_mag_data[1], A2_phase_data[1])
 
 # Compute coupling efficiency (C)
-C = lambda tf, E : tf*(1+G)*A1/(G*A2*E)
+C = lambda tf, E : (L_cav/nu_laser)*(tf*(1+G)*A1*v2hz)/(G*A2*E)
+
+C_fast = C(tf_fast, ef_eff)
+C_slow = C(tf_slow, ef_eff)
+
+## Compute differential (between fast and slow axes)
+
+plt.loglog(tffastmag_data[0], np.abs(C_fast))
+plt.loglog(tffastmag_data[0], np.abs(C_slow))
+plt.loglog(tffastmag_data[0], np.abs(np.abs(C_slow)-np.abs(C_fast)), alpha=.5)
+plt.xlim([tffastmag_data[0][0], tffastmag_data[0][-1]])
+plt.savefig('../../../figs/ALGAAS/coupling_tf.pdf', dpi=300, format='pdf', bbox_inches='tight')
 
 
-C(tf_fast, ef_eff)
