@@ -763,7 +763,7 @@ Equivalent to the second derivative approximation used above:
     \frac{\partial}{\partial z^2} \rightarrow  \frac{f(r, z+h) - 2 f(r, z) + f(r, z-h)}{h^2} \rightarrow \big[ 1\quad -2 \quad 1 \big]
 \end{equation}
 
-To build the stencil terms at the boundaries, we look at the specialized finite difference condition @ $ r = 0 $, with the symmetry about $r=0$ allowing to set ghost point V(-h,z) as V(h,z) :
+To build the stencil terms at the boundaries, we look at the specialized finite difference condition @ $ r = 0 $, with the symmetry about $r=0$ allowing the application of a ghost point V(-h,z) as V(h,z) :
 
 \begin{equation}\label{eq:first_deriv_V}
 	\frac{\partial V}{\partial r} = 0 \rightarrow V(h, z) = V(-h,z)
@@ -935,11 +935,11 @@ Where the above matrix is a tri-diagonal block sparse matrix with square embedde
   \label{fig:poissoncalcoutput}
 \end{figure}
 
-The computed $E_z$ screened by the coating at $r = 0$ for $V = 1$ is estimated to be 13 $[\mathrm{V}/\mathrm{m}]$ and will be included in the calibration as a pockels cell conversion efficiency of 13 $[(\mathrm{V} / \mathrm{m}) / \mathrm{V}]$  
+The computed $E_z$ screened by the coating at $r = 0$ for $V = 1$ is estimated to be 13.3 $[\mathrm{V}/\mathrm{m}]$ and will be included in the calibration as a pockels cell conversion efficiency of 13.3 $[(\mathrm{V} / \mathrm{m}) / \mathrm{V}]$  
 
 \begin{figure}[H]
     \includegraphics[width=\textwidth]{ALGAAS/fieldxsec_sim.pdf}
-    \caption{Plot of the $| \mathrm{E}_\mathrm{z} |$ field crosc section sampled about the optic HR coating surface.}
+    \caption{Plot of the $| \mathrm{E}_\mathrm{z} |$ field cross section sampled about the optic HR coating surface.}
 \label{fig:Ez}
 \end{figure}
 
@@ -1100,6 +1100,12 @@ To identify the fast and slow axes, the crystalline HR mirror is temporarily pai
 From coating manufacturers it's estimated that static birefringence can arise from the intrinsic strain between hetero-epitaxial layers of $\gaas$/$\algaas$. \cite{cole:2013, adachi:1985}
 
 \section{Results}
+
+\begin{figure}[H]
+    \includegraphics[width=\textwidth]{figs/ALGAAS/coupling_tf.pdf}
+    \caption{Calibrated measurement of the conversion factor of field strength [V/m] to length [m] when the beam input polarization is aligned along the slow and fast $\gaas$ / $\algaas$ coating axes.}
+    \label{fig:final_tf_conversion}
+\end{figure}
 
 From this experiment an upper threshold estimate between 20 kHz - 40 kHz is $\approx \; 1.1 \times 10^{-17} \; [\mathrm{m}]/[\mathrm{V}/\mathrm{m}]$ though at higher frequency, frequency dispersion of the electro-optic coefficients may explain the increase.  The uniform flat response is extended to frequencies at which LIGO operates 10 Hz - 1 kHz as prior work has demonstrated such a trend from 10 Hz to several 10s of kHz.
 
