@@ -281,7 +281,7 @@ Up to this point three varieties of orthonormal coordinates are addressed: the c
 \label{fig:pdhmeasured}
 \end{figure}
 
-\section{Voltage drive electronics}
+\section{High Voltage Amplifier (HVA) transfer functions [V$_\mathrm{out}$ / V$_\mathrm{in}$]}
 
 \begin{figure}[H]
     \includegraphics[width=\textwidth]{ALGAAS/tfs/hva_compare.pdf}
@@ -289,11 +289,51 @@ Up to this point three varieties of orthonormal coordinates are addressed: the c
     \label{fig:hvacompare}
 \end{figure}
 
+\section{FSS transfer function (compared with LTSPICE)}
+
+\section{Measuring OLG [H]}
+
+\begin{figure}[H]
+  \begin{center}
+    \includegraphics[width=.5\textwidth]{figs/ALGAAS/Loop_gain_measurement_drawn_diagram.pdf}
+    \caption{Open loop gain measurement \textcolor{red}{drawn diagram}}
+  \end{center}
+  \label{fig:OLGmath}
+\end{figure}
+
+\textcolor{red}{x2 is the PSD taken immediately after the excitation point}
+\begin{equation}
+x_2 = e + He + H^2 e + \mathrm{H.O.T.s} = \frac{e + n}{1-H}
+\end{equation}
+
+\textcolor{red}{x1 is the PSD taken immediately prior to the excitation point}
+\begin{equation}
+x_1 = He + H^2e + H^3e + \mathrm{H.O.T.s}  = \frac{He}{1-H}
+\end{equation}
+
+We take the transfer function measurement $\zeta$:
+
+\begin{equation}
+\zeta = \frac{x_1}{x_2} = \frac{He/(1-H)}{(e+n)/(1-H)}
+\end{equation}
+
+Assuming the excitation is significantly larger than the noise ($e>>n$):
+
+\begin{equation}
+\zeta \approx H
+\end{equation}
+
+\begin{figure}[H]
+  \begin{center}
+    \includegraphics[width=\textwidth]{figs/ALGAAS/tfs/spice_FSS_tf.pdf}
+    \caption{The FSS frequency response simulated in LTspice}
+  \end{center}
+  \label{fig:spiceFSS}
+\end{figure}
 
 \newpage
 
-\section{Alternate Mounting Solutions (Assemblies \texorpdfstring{$1 \rightarrow 3$}{1to3})}
-
+\section{Alternate Mounting Solutions (Assemblies \texorpdfstring{$1 \rightarrow 3$}{1to3})}\label{appendix:mount_assemblies}
 \subsection{Assembly 1}
 
 \begin{figure}[!ht]
@@ -401,11 +441,20 @@ With considerations after Assembly 1, a more monolithic optical mount design wit
 
 \subsection{Assembly 1}
 
-\subsubsection{Cross section}
+\subsubsection{Model params}
+\begin{center}
+\begin{tabular}{ |c|c|c|c|c|c| } 
+\hline
+$r_\mathrm{ap}$ &  $t_\mathrm{cap}$ & $r_\mathrm{d}$ & $t_\mathrm{el}$ & $r_\mathrm{opt}$ & $t_\mathrm{opt} $\\
+\hline
+cell 1 & cell2 & cell3 & cell4 & cell5 & cell6 \\ 
+\hline
+\end{tabular}
+\end{center}
 
 \subsubsection{Electrodes}
 
-\subsubsection{Iteration 1.1}
+\subsubsection{Mount 1.1}
 
 \begin{figure}[!ht]
 	\begin{subcaptiongroup}
@@ -414,12 +463,12 @@ With considerations after Assembly 1, a more monolithic optical mount design wit
 		\includegraphics[width=.5\textwidth]{figs/ALGAAS/assemblies/assembly0/assembly0_incident_power.pdf}
  		\phantomcaption\label{A0inc}
 	\end{subcaptiongroup}
-  \caption{Assembly 0 was constructed to meet the criteria of providing a non-conductive housing for the electrode / sample assembly while maintaining a fixed length spacing using parts 3d printed with polylactic acid (PLA).}
+  \caption{Assembly 0 was constructed to meet the criteria of providing a non-conductive housing for the electrode / sample assembly while maintaining a fixed length spacing using parts 3d printed with polylactic acid filament (PLA).}
   \label{fig:assembly0bp}
 \end{figure}
 \FloatBarrier
 
-\subsubsection{Iteration 1.2}
+\subsubsection{Mount 1.2}
 \begin{figure}[!ht]
 	\begin{subcaptiongroup}
 		\includegraphics[width=.5\textwidth]{figs/ALGAAS/assemblies/assembly1/assembly1_dissassembled.pdf}
@@ -432,7 +481,7 @@ With considerations after Assembly 1, a more monolithic optical mount design wit
 \end{figure}
 \FloatBarrier
 
-\subsubsection{Iteration 1.3}
+\subsubsection{Mount 1.3}
 \begin{figure}[!ht]
 	\begin{subcaptiongroup}
 		\includegraphics[width=.5\textwidth]{figs/ALGAAS/assemblies/assembly1/assembly1_mod_front.pdf}
@@ -447,9 +496,18 @@ With considerations after Assembly 1, a more monolithic optical mount design wit
 \newpage
 
 \subsection{Assembly 2}
-\subsubsection{Cross section}
+\subsubsection*{Model Params}
+\begin{center}
+\begin{tabular}{ |c|c|c|c|c|c| } 
+\hline
+$r_\mathrm{ap}$ &  $t_\mathrm{cap}$ & $r_\mathrm{d}$ & $t_\mathrm{el}$ & $r_\mathrm{opt}$ & $t_\mathrm{opt} $\\
+\hline
+cell 1 & cell2 & cell3 & cell4 & cell5 & cell6 \\ 
+\hline
+\end{tabular}
+\end{center}
 
-\subsubsection{Electrodes}
+\subsubsection*{Electrodes}
 
 \begin{figure}[H]
   \centering
@@ -458,7 +516,7 @@ With considerations after Assembly 1, a more monolithic optical mount design wit
 \end{figure}
 
 \newpage
-\subsubsection{Iteration 2.1}
+\subsubsection*{Mount 2.1}
 \begin{figure}[!ht]
 	\centering
 	\begin{subcaptiongroup}
@@ -472,28 +530,39 @@ With considerations after Assembly 1, a more monolithic optical mount design wit
 \end{figure}
 \FloatBarrier
 
-\subsubsection{Iteration 2.2}
+\subsubsection*{Mount 2.2}
 
-\subsubsection{3D printed w/ MACOR spacers}
+\subsubsection*{3D printed w/ MACOR spacers}
 
 \textcolor{red}{Insert blueprints}
 
 \textcolor{red}{Insert printed results}
-
 \newpage
 
 \subsection{Assembly 3 [MACOR] (blueprint)}
-\subsubsection{Cross section}
-\subsubsection{Electrodes}
+\subsubsection*{Model Params}
+\begin{center}
+\begin{tabular}{ |c|c|c|c|c|c| } 
+\hline
+$r_\mathrm{ap}$ &  $t_\mathrm{cap}$ & $r_\mathrm{d}$ & $t_\mathrm{el}$ & $r_\mathrm{opt}$ & $t_\mathrm{opt} $\\
+\hline
+cell 1 & cell2 & cell3 & cell4 & cell5 & cell6 \\ 
+\hline
+\end{tabular}
+\end{center}
 
-\subsubsection{Iteration 3.0}
+\subsubsection*{Electrodes}
+
+\subsubsection{Mount 3.0}
+
 \begin{figure}[H]
 \includegraphics[width=\textwidth]{figs/ALGAAS/assemblies/assembly3/MACOR_mount.pdf}
 \caption{MACOR mount design constucted in Shapr3D}
 \label{fig:macormountdesign}
 \end{figure}
-\mbox{}
-\vfill
+
+%\mbox{}
+%\vfil
 
 \section{LaplacE code}
 
@@ -507,49 +576,10 @@ With considerations after Assembly 1, a more monolithic optical mount design wit
 The numerical recipe is written up fabulously in Chapter 20  of \cite{Press:2007} for any inquiring minds.
 \input{notes/LaplacE_run.tex}
 
+\iffalse
 \section{Calibration code}\label{sec:calibrationcode}
 \input{notes/pock_cal.tex}
+\fi
 
-\section{HVA}
 
-\section{FSS}
 
-\begin{figure}[H]
-  \begin{center}
-    \includegraphics[width=\textwidth]{figs/ALGAAS/tfs/spice_FSS_tf.pdf}
-    \caption{The FSS frequency response simulated in LTspice}
-  \end{center}
-  \label{fig:spiceFSS}
-\end{figure}
-
-\section{Measuring OLG [H]}
-
-\begin{figure}[H]
-  \begin{center}
-    \includegraphics[width=.5\textwidth]{figs/ALGAAS/Loop_gain_measurement_drawn_diagram.pdf}
-    \caption{Open loop gain measurement \textcolor{red}{drawn diagram}}
-  \end{center}
-  \label{fig:OLGmath}
-\end{figure}
-
-\textcolor{red}{x2 is the PSD taken immediately after the excitation point}
-\begin{equation}
-x_2 = e + He + H^2 e + \mathrm{H.O.T.s} = \frac{e + n}{1-H}
-\end{equation}
-
-\textcolor{red}{x1 is the PSD taken immediately prior to the excitation point}
-\begin{equation}
-x_1 = He + H^2e + H^3e + \mathrm{H.O.T.s}  = \frac{He}{1-H}
-\end{equation}
-
-We take the transfer function measurement $\zeta$:
-
-\begin{equation}
-\zeta = \frac{x_1}{x_2} = \frac{He/(1-H)}{(e+n)/(1-H)}
-\end{equation}
-
-Assuming the excitation is significantly larger than the noise ($e>>n$):
-
-\begin{equation}
-\zeta \approx H
-\end{equation}
