@@ -53,7 +53,7 @@ One source of noise in high precision optical experiments operating at room temp
 In 1827 the Scottish botanist Robert Brown observed a constant motion of pollen particulates on the surface of water; witnessing randomized collisions of the water molecules holding a kinetic energy proportional to the temperature ($k_BT$) \cite{brown:1828}. It is because of these documented observations we name the phenomena Brownian motion. And although the observations were on motion of particulates in liquids and gases, solids also exhibit similar fluctuations through their modes of dissipation. 
 
 \subsubsection*{Fluctuation Dissipation Theorem}
-Any movement / fluctuations at finite temperatures of the core optic components is especially important for GWDs and becomes more clear when reviewing the fluctuation dissipation theorem (FDT). Derived by H.B. Callen and T.A. Welton, the theorem states that for a randomly fluctuating linear force ($F_x^2(f)$) \cite{callen:1951}:
+Any movement / fluctuations at finite temperatures of the core optic components is especially important for GWDs, which becomes more clear when reviewing the fluctuation dissipation theorem (FDT). Derived by H.B. Callen and T.A. Welton, the theorem states that for a randomly fluctuating linear force ($F_x^2(f)$) \cite{callen:1951}:
 
 %% Further insight into Brownian motion was explored by Einstein where he was able to relate the mean-square displacement of a particle of radius $r_\mathrm{sph}$ on a fluid with viscosity $\eta$.
  %%\begin{equation}
@@ -642,16 +642,16 @@ The quantity we are attempting to measure is a differential length coupling on t
 The implemented servo design uses a light source from a Mephisto 2000 NE Nd:YAG (1064nm) laser with a 25 MHz phase modulation from a New Focus Model 4003 IR resonant phase modulator. As indicated in the figure above, the electronics chain can be decomposed into two primary filter components: $S(f)$ and $A(f)$.
 
 \subsubsection{Sensing S(f)}
-Sensing electronics are composed of a single element photodiode mounted to a tranimpedance amplifier PCB that redirects photocurrent to DC and RF filter chains. The RF path is constructed to boost the RF signal prior to being passed to a mixer within a frequency stabilization servo (FSS) where it is demodulated by mixing the 25 MHz oscillator phased with variable cable length. Once demodulated, the measured beat signal while sweeping through resonance generates the PDH error signal profile \autoref{fig:pdherr}.
+Sensing electronics are composed of a single element photodiode mounted to a tranimpedance amplifier PCB that redirects photocurrent to DC and RF filter chains. The RF path is constructed to boost the RF signal prior to being passed to a mixer within a frequency stabilization servo (FSS) \footnote{FSS schema and transfer function \autoref{appendix:fss_tf}} where it is demodulated by mixing the 25 MHz oscillator phased with variable cable length. Once demodulated, the measured beat signal while sweeping through resonance generates the PDH error signal profile \footnote{As seen in \autoref{fig:pdherr}, and \autoref{appendix:laser_sweep}}.
 
 \subsubsection{Actuation A(f)}
-The actuation portion of the loop amplifies the FSS output with a single I/O channel of the SVR 350-3 BIP High Voltage Amplifier from Piezomechanik GmbH with a custom pomona box (elog 412) feeding back the output to the input to attentuate ringing. The Mephisto 2220 laser cavity PZT actuator follows immediately after with a measured actuation factor of 1.7 [MHz] / [V].
+The actuation portion of the loop amplifies the FSS output with a single I/O channel of the SVR 350-3 BIP High Voltage Amplifier \footnote{HVA transfer function \autoref{appendix:hva_tfs}} from Piezomechanik GmbH with a custom pomona box (elog 412) feeding back the output to the input to attentuate ringing. The Mephisto 2220 laser cavity PZT actuator follows immediately after with a measured actuation factor of 1.7 [MHz] / [V].
 
 \subsubsection{OLG(f)}
 \begin{figure}[H]
   \begin{center}
     \includegraphics[width=\textwidth]{figs/ALGAAS/tfs/OLG.pdf}
-    \caption{Open loop gain measurement}
+    \caption{Measurement of the OLG taken as noted in \autoref{appendix:OLG_meas}}
   \end{center}
   \label{fig:OLGmeas}
 \end{figure}
@@ -1079,7 +1079,9 @@ To identify the fast and slow axes, the crystalline HR mirror is temporarily pai
 From coating manufacturers it's estimated that static birefringence can arise from the intrinsic strain between hetero-epitaxial layers of $\gaas$/$\algaas$. \cite{cole:2013, adachi:1985}
 
 \section{Results}
-A significant barrier to sensing a low cavity differential length noise was encountered when mounting the optics in accessible non-conductive materials. Most commercial optical mounts are constructed with conductive materials which proves problematic when seeking to isolate the coating from non-normal field gradients within the coating volume of interest. For this reason, efforts were focused on developing a suitable mounting solution that would provide adequate isolation from any uncontrolled field magnitudes while driving a field normally incident on the surface with enough strength and uniformity across the beam area to extract a measurement of the differential length change from the Pockels effect. Varying the mechanical configurations (i.e. differential electrode and / or optic set screw settings) to the slightest degree left us to discover a mechanical action via the excitations from the sample-mount acoustic modes from the construction are rung when driving the voltage on electrodes plates. Tracking consistent mechanical action for assemblies prior to Assembly 3 was a difficult process due to inconsistencies in mechanical settings between some measurements and span different geometries / material properties \footnote{\autoref{appendix:mount_assemblies}}. A hard lesson learned was to select a material and geometry that would generate narrow acoustic resonances while achieving an adequately low noise at a bandwidth of interest. The most stable configuration \footnote{\autoref{fig:assembly3}} revealed such a solution and acoustic modes (\textless 10 kHz \& 40kHz - 80kHz) were confirmed when comparing the cavity response between $\gaas$/$\algaas$ coating and the non-crystalline HR coating from ATFilms \footnote{A null measurement reference} with additional confirmation from FEA analysis.  With this knowledge, an upper threshold noise estimate of the electro-optic coupling is extracted by taking the difference between fast and slow axes:
+\subsection{Acousto-optical noise}
+A significant barrier to low differential length noise sensitivity for this experiment is the lack of low-noise optical mounts in accessible non-conductive materials. Most commercial optical mounts are constructed with conductive materials which proves problematic when seeking to isolate the coating from non-normal field gradients within the coating volume of interest. For this reason, there were multiple efforts were focused on developing a suitable mounting solution that would provide adequate isolation from any uncontrolled field magnitudes while driving a field normally incident on the surface with enough strength and uniformity across the beam area to extract a measurement of the differential length change from the Pockels effect. Varying the mechanical configurations (i.e. differential electrode and / or optic set screw settings) to the slightest degree left us to discover a variety of drive couplings via excitations from the assembly sample-mount acoustic modes driving the voltage on electrodes plates. Tracking consistent mechanical response for assemblies prior to Assembly 3 proved challenging due to inconsistent mechanical settings between some measurements and span different geometries / material properties \footnote{For more details see \autoref{appendix:mount_assemblies}}. An adequate solution was dependent on selecting a material and geometry that would generate narrow acoustic resonances while simultaneously achieving adequately low noise within a bandwidth of interest (a not so uncommon experimental principle that is heavily used and mentioned within collaboration literature). The associated configuration \footnote{Assembly 3 : \autoref{fig:assembly3}} provided such a solution and the driven acoustic modes (\textless 10 kHz \& 40kHz - 80kHz) were confirmed when comparing the cavity response between $\gaas$/$\algaas$ coating and the non-crystalline HR coating from ATFilms \footnote{A null measurement reference} with additional confirmation from finite element analysis.  From here, an upper threshold noise estimate of the electro-optic coupling is extracted by taking the difference between fast and slow axes:
+
 
 \[ 
     \begin{aligned}
@@ -1089,12 +1091,15 @@ A significant barrier to sensing a low cavity differential length noise was enco
     \end{aligned}
 \]
 
+\subsection{EO coupling estimate}
+
 \begin{figure}[H]
     \centering
     \includegraphics[width=.91\textwidth]{figs/ALGAAS/coupling_tf.pdf}
     \caption{Calibrated measurement of the conversion factor of field strength [V/m] to length [m] when the beam input polarization is aligned along the slow and fast $\gaas$ / $\algaas$ coating axes.}
     \label{fig:final_tf_conversion}
 \end{figure}
+
 
 From this experiment an upper threshold estimate between 20 kHz - 40 kHz is $\approx \; 6.5 \times 10^{-17} \; [\mathrm{m}]/[\mathrm{V}/\mathrm{m}]$ \iffalse $\approx \; 1.1 \times 10^{-17} \; [\mathrm{m}]/[\mathrm{V}/\mathrm{m}]$ \fi though at higher frequency, frequency dispersion of the electro-optic coefficients may explain the increase.  The uniform flat response is extended to frequencies at which LIGO operates 10 Hz - 1 kHz as prior work has demonstrated such a trend from 10 Hz to several 10s of kHz ~\cite{salvestrini:2003}.
 
