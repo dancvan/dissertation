@@ -238,7 +238,7 @@ Though this result requires revisiting geometrical conditions that are best visu
 
 %The most general form of the energy density can be geometrically represented as ellipsoid but a coordinate transformation we can diagonalize and realize the principal axes of the dielectric allowing a simpler form of the displacement, and in turn the energy density.
 
-\subsection{Miller indices for highly reflective $\gaas$/$\algaas$ coatings}
+\section{Miller indices for highly reflective $\gaas$/$\algaas$ coatings}
 \begin{figure}[!hb]
     \begin{subcaptiongroup}
 	    \includegraphics[width=.5\textwidth]{figs/ALGAAS/coating_orientation_normal.pdf}
@@ -282,53 +282,62 @@ Up to this point three varieties of orthonormal coordinates are addressed: the c
 \end{figure}
 
 \section{High Voltage Amplifier (HVA) transfer functions [V$_\mathrm{out}$ / V$_\mathrm{in}$]}
-
 \begin{figure}[H]
     \includegraphics[width=\textwidth]{ALGAAS/tfs/hva_compare.pdf}
     \caption{Different high voltage amplifier transfer functions used for the study}
     \label{fig:hvacompare}
 \end{figure}
 
-\section{FSS transfer function (compared with LTSPICE)}
+\begin{landscape}
+\section{FSS transfer function (LTSPICE)}
+\begin{figure}[H]
+  \begin{center}
+    \includegraphics[width=1.33\textwidth]{figs/ALGAAS/tfs/spice_FSS_tf.pdf}
+    \caption{The FSS frequency response simulated in LTspice}
+  \end{center}
+  \label{fig:spiceFSS}
+\end{figure}
+\end{landscape}
 
 \section{Measuring OLG [H]}
 
 \begin{figure}[H]
   \begin{center}
-    \includegraphics[width=.5\textwidth]{figs/ALGAAS/Loop_gain_measurement_drawn_diagram.pdf}
-    \caption{Open loop gain measurement \textcolor{red}{drawn diagram}}
+    \includegraphics[width=\textwidth]{figs/ALGAAS/olg_meas_diagram.pdf}
+    \caption{Open loop gain measurement diagram}
   \end{center}
   \label{fig:OLGmath}
 \end{figure}
 
-\textcolor{red}{x2 is the PSD taken immediately after the excitation point}
 \begin{equation}
-x_2 = e + He + H^2 e + \mathrm{H.O.T.s} = \frac{e + n}{1-H}
+    \mathrm{V}_\mathrm{b} = (\mathrm{V}_\mathrm{exc}+n) + H(\mathrm{V}_\mathrm{exc}+n) + H^2 (\mathrm{V}_\mathrm{exc}+n) + \mathrm{H.O.T.s} = \frac{\mathrm{V}_\mathrm{exc} + n}{1-H}
 \end{equation}
 
-\textcolor{red}{x1 is the PSD taken immediately prior to the excitation point}
 \begin{equation}
-x_1 = He + H^2e + H^3e + \mathrm{H.O.T.s}  = \frac{He}{1-H}
+    \mathrm{V}_\mathrm{a} = H\cdot \mathrm{V}_\mathrm{exc} + H^2\mathrm{V}_\mathrm{exc} + H^3\mathrm{V}_\mathrm{exc} + \mathrm{H.O.T.s}  = \frac{H\mathrm{V}_\mathrm{exc}}{1-H}
 \end{equation}
 
 We take the transfer function measurement $\zeta$:
 
 \begin{equation}
-\zeta = \frac{x_1}{x_2} = \frac{He/(1-H)}{(e+n)/(1-H)}
+    \zeta = \frac{\mathrm{V}_\mathrm{a}}{\mathrm{V}_\mathrm{b}} = \frac{H \cdot \mathrm{V}_\mathrm{exc}/(1-H)}{(\mathrm{V}_\mathrm{exc}+n)/(1-H)}
 \end{equation}
 
-Assuming the excitation is significantly larger than the noise ($e>>n$):
+Assuming the excitation is appreciably larger than the noise ($e>>n$):
 
 \begin{equation}
 \zeta \approx H
 \end{equation}
 
+Isn't quite $\mathrm{A}(f)*\mathrm{S}(f)$ as stated. Doesn't entirely account for the optical plant.
+How the measurement is taken (important to take between installations to account for the changes in the optical plant) (elog 831)
+
 \begin{figure}[H]
-  \begin{center}
-    \includegraphics[width=\textwidth]{figs/ALGAAS/tfs/spice_FSS_tf.pdf}
-    \caption{The FSS frequency response simulated in LTspice}
-  \end{center}
-  \label{fig:spiceFSS}
+\begin{center}
+\includegraphics[width=\textwidth]{ALGAAS/olg_compare.pdf}
+\end{center}
+\caption{Comparison of the open loop gain measurement against the multiplied servo electronics measurements. The maximum gain difference is about a factor of 2.8 which is low passed to a difference of 2.0.}
+\label{fig:OLGcompare}
 \end{figure}
 
 \newpage

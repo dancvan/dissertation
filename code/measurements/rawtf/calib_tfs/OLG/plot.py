@@ -15,13 +15,13 @@ phmeas2 =  np.loadtxt('SCRN0535.TXT').transpose()
 plt.style.use('ppt2latex')
 plt.rcParams["font.family"] = "Times New Roman"
 
-def bode_plt(tf_tuple, save_path, lbl, ylbl='dB'):
+def bode_plt(tf_tuple, save_path, lbl, ylbl='[dB]'):
     ff = tf_tuple[0]
     db = tf_tuple[1]
     deg = tf_tuple[2]
     bode_fig = plt.figure()
     plt.subplot(211)
-    if not ylbl=='dB':
+    if not ylbl=='[dB]':
         plt.loglog(ff, db, label=lbl)
     else:
         plt.semilogx(ff,db, label = lbl)
@@ -48,8 +48,10 @@ meastr1 = [magmeas1[0], magmeas1[1], phmeas1[1]]
 meastr2 = [magmeas2[0], magmeas2[1], phmeas2[1]]
 
 ## put both on single bode plt
+alt_savedir = '../../../../../figs/ALGAAS/tfs'
 
-bode_plt(meastr1, save_path='.', lbl='tf1')
+bode_plt(meastr1, save_path=alt_savedir, lbl='OLG')
+#bode_plt(meastr1, save_path='.', lbl='tf1')
 bode_plt(meastr2, save_path='.', lbl='tf2')
 
 
