@@ -80,7 +80,8 @@ A2_phase_data = np.loadtxt(A2_dir + 'trek_phase.TXT').transpose()
 A2 = transfer_function(A2_mag_data[1], A2_phase_data[1])
 
 # Compute coupling efficiency (C)
-C = lambda tf, G_, E : (L_cav/nu_laser)*(tf*(1-G_)*A1*(v2hz*SR560_tf1))/(G_*A2*E)
+C = lambda tf, G_, E : (L_cav/nu_laser)*
+(tf*(1-G_)*A1*(v2hz*SR560_tf1))/(G_*A2*E)
 
 C_fast = C(tf_fast, Gf, ef_eff)
 C_slow = C(tf_slow, Gs, ef_eff)
@@ -94,21 +95,30 @@ diff_mag = np.sqrt(diff*np.conj(diff))
 fig, (ax1, ax2) = plt.subplots(nrows=2, sharex=True)
 ax1.loglog(tffastmag_data[0], C_slow_mag, label = 'slow\_axis')
 ax1.loglog(tffastmag_data[0], C_fast_mag, label = 'fast\_axis')
-ax1.loglog(tffastmag_data[0], diff_mag, alpha=.5, label='differential')
-ax1.hlines(y=7e-17, xmin=20e3, xmax=40e3, linestyle='--', linewidth=5.0, color='m')
+ax1.loglog(tffastmag_data[0], diff_mag, ...
+           alpha=.5, label='differential')
+ax1.hlines(y=7e-17, xmin=20e3, xmax=40e3, ...
+           linestyle='--', linewidth=5.0, color='m')
 ax1.tick_params(axis='y', which='minor')
 ax1.set_xlim(tffastmag_data[0][0], tffastmag_data[0][-1])
 ax1.set_ylabel('Coupling [[m]/[V/m]]')
 ax1.legend()
-ax2.semilogx(tffastmag_data[0], (np.arctan2(np.imag(C_slow), np.real(C_slow)))*(180/np.pi), label = 'slow\_axis')
-ax2.semilogx(tffastmag_data[0], (np.arctan2(np.imag(C_fast), np.real(C_fast)))*(180/np.pi), label = 'fast\_axis')
-ax2.semilogx(tffastmag_data[0], (np.arctan2(np.imag(diff), np.real(diff)))*(180/np.pi) , alpha=.5, label = 'differential')
+ax2.semilogx(tffastmag_data[0], ...
+             (np.arctan2(np.imag(C_slow), np.real(C_slow)))...
+             *(180/np.pi), label = 'slow\_axis')
+ax2.semilogx(tffastmag_data[0], ...
+             (np.arctan2(np.imag(C_fast), np.real(C_fast)))...
+             *(180/np.pi), label = 'fast\_axis')
+ax2.semilogx(tffastmag_data[0], ...
+             (np.arctan2(np.imag(diff), np.real(diff)))*...
+             (180/np.pi) , alpha=.5, label = 'differential')
 ax2.set_xlim(tffastmag_data[0][0], tffastmag_data[0][-1])
 ax2.set_ylim(-180.0, 180.0)
 ax2.legend()
 ax2.set_xlabel('Frequency [Hz]')
 ax2.set_ylabel('Phase [deg]')
 #plt.show()
-plt.savefig('../../../figs/ALGAAS/coupling_tf.pdf', dpi=300, format='pdf', bbox_inches='tight')
+plt.savefig('../../../figs/ALGAAS/coupling_tf.pdf', ...
+            dpi=300, format='pdf', bbox_inches='tight')
 
 
