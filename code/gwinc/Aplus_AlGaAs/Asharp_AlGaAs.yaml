@@ -1,0 +1,17 @@
++inherit: 'Asharp.yaml'
+
+Materials:
+  Coating:
+    # High index: GaAs
+    Phihighn: 6.2e-6
+    Phihighn_slope: 0
+
+    # Low index: AlGaAs
+    Philown: 6.2e-6
+    Philown_slope: 0
+
+# set curvatures for 5.5 cm ETM, 4.55 cm ITM spot sizes
+Optics:
+  Curvature:
+    ITM: 1981
+    ETM: 2356
