@@ -4,6 +4,8 @@ import matplotlib.pyplot as plt
 
 plt.style.use('ppt2latexsubfig')
 plt.rcParams["font.family"] = "Times New Roman"
+plt.rcParams['mathtext.fontset'] = 'custom'
+plt.rcParams['mathtext.rm'] = 'Times New Roman'
 
 # Open the HDF5 file in read mode
 file_path1 = 'Aplus_mod_algaas.hdf5'
@@ -51,12 +53,13 @@ aplus_mod_algaas['A+_mod']['budget']
 
 
 lw=8
-plt.loglog(freq,sqrt_budgAL, label ='A sharp (Total noise)', color='C0', linewidth= lw)
-plt.loglog(freq,sqrt_budgST, label = 'A plus (Total noise)', color ='C1', linewidth= lw)
-plt.loglog(freq, sqrt_CBAL, label = 'A sharp (Coating Brownian noise)', alpha=.5, linestyle=':', color='C0', linewidth=lw)
-plt.loglog(freq, sqrt_CBST, label = 'A plus (Coating Brownian noise)', alpha=.5, linestyle=':', color='C1', linewidth=lw)
+plt.loglog(freq,sqrt_budgAL, label ='A$^\sharp$ (Total noise)', color='C0', linewidth= lw)
+plt.loglog(freq,sqrt_budgST, label = 'A+ (Total noise)', color ='C1', linewidth= lw)
+plt.loglog(freq, sqrt_CBAL, label = 'A$^\sharp$ (Coating Brownian noise)', alpha=.5, linestyle=':', color='C0', linewidth=lw)
+plt.loglog(freq, sqrt_CBST, label = 'A+ (Coating Brownian noise)', alpha=.5, linestyle=':', color='C1', linewidth=lw)
+plt.xlim(freq[0], freq[-1])
 plt.legend(prop={'size': 50})
-plt.ylabel('[1/sqrt{Hz}]')
+plt.ylabel('$ [ 1 / \sqrt{\mathrm{Hz}} ]$')
 plt.xlabel('frequency [Hz]')
 
 plt.savefig('aplus_CTN_compare.pdf',dpi=300, format='pdf', bbox_inches='tight')
