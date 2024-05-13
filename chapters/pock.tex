@@ -570,7 +570,10 @@ Measured field spectra acquired from installed electric field meters located wit
     h_\mathrm{EO\; noise} = 2\frac{\Delta L_\mathrm{EO \; noise}}{L} = 2\frac{\partial L}{\partial E} \times \bigg| \frac{E_\mathrm{noise}}{L_\mathrm{arm}} \bigg| = 5.715 \times 10^{-26} \; \mathrm{[Hz]}
 \end{equation}
 
-
+\swb{Check this equation - something went wrong here. Refer to equation 28 of \href{https://arxiv.org/abs/2210.08381}{https://arxiv.org/abs/2210.08381}.
+The overleaf link is here:
+\href{https://www.overleaf.com/read/jjxjjwhktfyh#3cf8d4}{https://www.overleaf.com/read/jjxjjwhktfyh#3cf8d4}
+Also, when you convert it to noise make sure you use the right unit, i.e. 3e-6 (V/m)/sqrt(Hz). This way the unit of strain noise will be 1/sqrt(Hz). }
 
 % Taking the upper and the lower EFM measurements from ~\cite{efmlog} $.3\; [\mathrm{V}/\mathrm{m}/\sqrt{\mathrm{Hz}]}$ @ 60 Hz and $4\times10^{-3}\; [\mathrm{V}/\mathrm{m}/\sqrt{\mathrm{Hz}]}$ @ 4kHz.
 %% \satoshi{I don't think these values are calibrated. According to Martynov et al. 2016, the fluctuations in the electric filed is $\sim10^{-5}\,\mathrm{[(V/m)/\sqrt{Hz}]}$.}
@@ -655,6 +658,8 @@ The actuation portion of the loop amplifies the FSS output with a single I/O cha
   \end{center}
   \label{fig:OLGmeas}
 \end{figure}
+
+\swb{You need some context for this. What is this the OLG of?}
 
 \subsection{Longitudinal Pockels Cell mirror mount assembly}
 Maximizing a controlled and well defined electric field ($|E_z|$) within the coating while requiring a through beam to and through the HR coating lead us to a design very similar to that of a longitudinal pockels cell. The most common assembly in for this study is comprised of two electrodes with a 3mm central aperture which is chosen to be at least 5 times larger than the beam size at the plate locations; to avoid significant beam clipping while maximizing field strength at the coating region of interest. There is also a required separation of at least 1/4" accounting for the thickness of the optical sample. Considering these constraints, modelling the system and computing the estimated field strength screened by the coating is the next step to the construction of the assembly.
@@ -792,6 +797,8 @@ $$
 	r_0 = -2 / h
     \end{aligned}
 \end{equation}
+
+\swb{The following is a bit hard to follow, and I think there is a bug in the $K_n^{(1)}$. Might be better not to show the full matrices. Instead be a little more explicit on how you extract the calibration number from that simulation. Touch on the fact that the answer is somewhat boundary condition-dependent, as we don't specify the B.C outside the hole.}
 
 Now meshgrid coordinates are set:
 
@@ -938,10 +945,11 @@ With G representing the open loop gain ($\mathrm{G} = \mathrm{A}_1 \cdot \mathrm
 	\begin{align*} \mathrm{V}_\mathrm{out} & = \mathrm{F} \cdot \mathrm{S} \cdot \mathrm{L} \cdot (\mathrm{V} + \mathrm{C} \cdot \mathrm{E} \cdot \mathrm{A}_{2} \cdot \mathrm{V}_\mathrm{in}) + \mathrm{F} \cdot \mathrm{n}_\mathrm{S} + \mathrm{n}_\mathrm{F} \\ & = \frac{\mathrm{F} \cdot \mathrm{S} \cdot \mathrm{L}}{ 1 + \mathrm{G}} \cdot \mathrm{C} \cdot \mathrm{E} \cdot \mathrm{A}_{2} \cdot \mathrm{V}_\mathrm{in} + \frac{\mathrm{F} \cdot \mathrm{S} \cdot \mathrm{L}}{ 1 + \mathrm{G}} \cdot \mathrm{n}_\mathrm{laser} + \frac{\mathrm{F} }{ 1 + \mathrm{G}}\cdot \mathrm{n}_\mathrm{S} +  \frac{1}{ 1 + \mathrm{G}} \cdot \mathrm{n}_\mathrm{F} \end{align*}
 Therefore, the transfer function ($\frac{\mathrm{V}_\mathrm{out}}{\mathrm{V}_\mathrm{in}}$) : 
 $$ \frac{\mathrm{V}_\mathrm{out}}{\mathrm{V}_\mathrm{in}} = \frac{\mathrm{F} \cdot \mathrm{S} \cdot \mathrm{L}}{1 + \mathrm{G}} \cdot \mathrm{C} \cdot \mathrm{E} \cdot \mathrm{A}_{2}  + \frac{\mathrm{F} \cdot \mathrm{S} \cdot \mathrm{L}}{ 1 + \mathrm{G}} \cdot \frac{\mathrm{n}_\mathrm{laser}}{\mathrm{V}_\mathrm{in}}+ \frac{\mathrm{F} }{ 1 + \mathrm{G}} \cdot \frac{\mathrm{n}_\mathrm{S}}{\mathrm{V}_\mathrm{in}} +  \frac{1}{ 1 + \mathrm{G}} \cdot \frac{\mathrm{n}_\mathrm{F}}{\mathrm{V}_\mathrm{in}}$$
+\swb{The above is not a transfer function. Either express $V_{in}$ as function of all inputs, or, if you want a true transfer function, set all  inputs except $V_{in}$ to 0, so only keet the first term in the above equation.}
 If the induced excitation is larger than the noise  we approximate the last equation:
 
 $$ \frac{\mathrm{V}_\mathrm{out}}{\mathrm{V_{in}}} \approx \frac{\mathrm{F} \cdot \mathrm{S} \cdot \mathrm{L}}{1 + \mathrm{G}} \cdot \mathrm{C} \cdot \mathrm{E} \cdot \mathrm{A}_{2} = \frac{\mathrm{G}}{1 + \mathrm{G}} \cdot \mathrm{C} \cdot \mathrm{E} \cdot \frac{\mathrm{A}_{2}}{\mathrm{A}_{1}} $$
- 
+ \swb{The second piece is not correct, singe G = A1*F*S*L.}
 
 \iffalse
 The calibration math for this measurement explicitly starts with what I
