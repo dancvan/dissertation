@@ -682,7 +682,7 @@ Maximizing a controlled and well defined electric field ($|E_z|$) within the coa
 \label{fig:pckcellconcept}
 \end{figure}
 
-\subsubsection{Modeling}
+\subsubsection*{Modeling}
 The field screened by the coating can be computed from Gauss' Law:
 \begin{equation}
 \nabla \cdot D = \rho_\mathrm{free}
@@ -919,7 +919,7 @@ Where the above matrix is a tri-diagonal block sparse matrix with square embedde
 
 \newpage
 
-\noindent Computing Potential:
+\subsubsection*{Computing V(r,z)}
 
 \begin{equation}
     V_{n + 1} = (\mathcal{I}_{N^2}  + \mathcal{L}_{cyl}) V_{n}
@@ -931,7 +931,11 @@ Where the above matrix is a tri-diagonal block sparse matrix with square embedde
   \label{fig:poissoncalcoutput}
 \end{figure}
 
-The computed $E_z$ screened by the coating at $r = 0$ for $V = 1$ is estimated to be 13.3 $[\mathrm{V}/\mathrm{m}]$ and will be included in the calibration as a pockels cell conversion efficiency of 13.3 $[(\mathrm{V} / \mathrm{m}) / \mathrm{V}]$  
+A characteristic distance of 1 [m] from the origin is set to 
+
+\subsubsection*{Computing $|\mathrm{E}_z|$(r,z)}
+
+The computed $|\mathrm{E}_z|$ is screened by the coating at $r = 0$ for $V = 1$ and is estimated to be 13.3 $[\mathrm{V}/\mathrm{m}]$ and will be included in the calibration as a pockels cell conversion efficiency of 13.3 $[(\mathrm{V} / \mathrm{m}) / \mathrm{V}]$  
 
 \begin{figure}[H]
     \includegraphics[width=\textwidth]{ALGAAS/fieldxsec_sim.pdf}
