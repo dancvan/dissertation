@@ -470,7 +470,7 @@ With $\kappa$ being a scalar parameter.
 \end{figure}
 
 
-\subsubsection*{Numerical estimate}
+\subsubsection*{Numerical estimate}\label{algaas_numericalestimate}
 
 In the appendix of \cite{ballmer:2015} Ballmer constructs a coating layer transfer function for a given coating layer k with index $n_k$, and thickness $d_k$, defining right and left propogating modes $\psi^{R,L}$ repsectively:
 $$
@@ -566,46 +566,42 @@ Measured field spectra acquired from installed electric field meters located wit
     \frac{\partial L}{\partial E} = \frac{\lambda}{4 \pi} \bigg| \frac{\partial \theta_c}{\partial E} \bigg| = 3.3 \times 10^{-18} \; \frac{[\mathrm{m}]}{[\mathrm{V/m}]}
 \end{equation*}
 
-\textcolor{green}{Self computed}
 \begin{equation}
     h_\mathrm{EO\; noise} = 2\frac{\Delta L_\mathrm{EO \; noise}}{L} = 2\frac{\partial L}{\partial E} \times \bigg| \frac{E_\mathrm{noise}}{L_\mathrm{arm}} \bigg| = 4.95 \times 10^{-27} \; [1/ \sqrt{\mathrm{Hz}}]
 \end{equation}
 
-\textcolor{green}{Published}
-\begin{equation}
-    h_\mathrm{EO\; noise} = 2\frac{\Delta L_\mathrm{EO \; noise}}{L} = 2\frac{\partial L}{\partial E} \times \bigg| \frac{E_\mathrm{noise}}{L_\mathrm{arm}} \bigg| = 4.95 \times 10^{-26} \; [1/ \sqrt{\mathrm{Hz}}]
-\end{equation}
+%\textcolor{green}{Published}
+%\begin{equation}
+%    h_\mathrm{EO\; noise} = 2\frac{\Delta L_\mathrm{EO \; noise}}{L} = 2\frac{\partial L}{\partial E} \times \bigg| \frac{E_\mathrm{noise}}{L_\mathrm{arm}} \bigg| = 4.95 \times 10^{-26} \; [1/ \sqrt{\mathrm{Hz}}]
+%\end{equation}
 
 \swb{Check this equation - something went wrong here. Refer to equation 28 of \href{https://arxiv.org/abs/2210.08381}{https://arxiv.org/abs/2210.08381}.
 The overleaf link is here:
-\href{https://www.overleaf.com/read/jjxjjwhktfyh#3cf8d4}{https://www.overleaf.com/read/jjxjjwhktfyh#3cf8d4}
+\href{https://www.overleaf.com/read/jjxjjwhktfyh\#3cf8d4}{https://www.overleaf.com/read/jjxjjwhktfyh\#3cf8d4}
 Also, when you convert it to noise make sure you use the right unit, i.e. 3e-6 (V/m)/sqrt(Hz). This way the unit of strain noise will be 1/sqrt(Hz). }
 
 % Taking the upper and the lower EFM measurements from ~\cite{efmlog} $.3\; [\mathrm{V}/\mathrm{m}/\sqrt{\mathrm{Hz}]}$ @ 60 Hz and $4\times10^{-3}\; [\mathrm{V}/\mathrm{m}/\sqrt{\mathrm{Hz}]}$ @ 4kHz.
 %% \satoshi{I don't think these values are calibrated. According to Martynov et al. 2016, the fluctuations in the electric filed is $\sim10^{-5}\,\mathrm{[(V/m)/\sqrt{Hz}]}$.}
 
-\section{Tanioka2022}
 
-%\input{chapters/apssamp.tex}
+\section{Electro-optic measurement apparatus}\label{tanioka2022}
+%In seeking a calibrated estimate of the electro-optic effect for the $\gaas$/$\algaas$ mirror coating stack, we sought to drive an electro-optic response of a mirror sample from Thorlab's crystalline mirror coatings division placed within a custom longitudinal Pockels cell mirror mount. The assembly, with the installed sample, assumed the end mirror position within a two mirror Fabry-P\'erot cavity, while resonance of a circulating Nd:YAG 1064nm carrier beam was held by a Pound-Drever-Hall servo. As seen in the prior section, the size of the imparted phase noise for currently existing gravitational wave detector configurations is estimated to be small but notable. Investigation through measurement of said effect requires detection methods with sufficient sensitivity for the differential phase noise imparted by the effect. Details and specifications of the detection schema are discussed along with relevant measurements and results. 
 
-\section{Electro-optic measurement apparatus}
-In seeking a calibrated estimate of the electro-optic effect for the $\gaas$/$\algaas$ mirror coating stack, we sought to drive an electro-optic response of a mirror sample from Thorlab's crystalline mirror coatings division placed within a custom longitudinal Pockels cell mirror mount. The assembly, with the installed sample, assumed the end mirror position within a two mirror Fabry-Perot cavity, while resonance of a circulating Nd:YAG 1064nm carrier beam was held by a Pound-Drever-Hall servo. As seen in the prior section, the size of the imparted phase noise for currently existing gravitational wave detector configurations is estimated to be small but notable. Investigation through measurement of said effect requires detection methods with sufficient sensitivity for the differential phase noise imparted by the effect. Details and specifications of the detection schema are discussed along with relevant measurements and results. 
-
-%% Driven acoustic modes of the longitudinal pockels cell mirror mounts lead to numerous mounting strategies that will be detailed below. 
-
+In order to experimetnally investigate the EO effect in $\gaas$ / $\algaas$ coatings, we developed an optical setup using a Fabry-P\'erot cavity. \autoref{fig:simpschema} shows the schematic of the experimental setup. Parameters of this setup are listed in TABLE. The Fabry-P\'erot cavity is composed of two high-reflectivity mirrors -- an amorphous coating front mirror and $\gaas$/$\algaas$ coating with the same composition used in \autoref{algaas_numericalestimate}, transferred to a planar super-polished fused silica substrate. 
 
 \begin{figure}[H]
-	\includegraphics[width=\textwidth]{figs/ALGAAS/algaas_pockels_effect_measurement_schematic.pdf}
+    \centering
+	\includegraphics[width=\textwidth]{tanioka_2022/setup.png}
 	\caption{A simplified and modular schematic of the PDH servo used along with an electrostatic drive mount design comprised of a disk capacitor sandwiching the HR AlGaAs sample, a high voltage amplifier, and a signal / network analyzer.}
 \label{fig:simpschema}
 \end{figure}
- Measurability of the electro-optic effect is contingent upon two initial design criteria: the sensitivity of the optical plant to be implemented in the PDH servo, and the maximum achievable electric field strength along the beam axis ($|E_z|_\mathrm{max}$).
+ Measurability of the electro-optic effect is contingent upon two initial design criteria: the sensitivity of the optical plant to be implemented in the PDH servo, and the maximum achievable electric field strength along the beam axis ($|E_z|_\mathrm{max}$). Both are discussed in more detail in the following sections. 
 
 \subsection{PDH servo}\label{subsubsec:pdh}
 The Pound-Drever-Hall technique, originally and commonly used for laser frequency stabilization to an ultra-stable length reference, allows the tracking of the linear phase response of an input carrier field through cavity resonance. The servo fully realizes the ability of an optical cavity to act as a length / frequency discriminator:
 
 \begin{equation}\label{eq:cavlf}
-	\frac{\Delta f}{f} = \frac{\Delta L}{L}
+	\frac{\Delta f}{f} = -\frac{\Delta L}{L}
 \end{equation}
 
 \noindent The alternative side-of-fringe lock provides a linear response in intensity, which is adequate for some applications but with reduced sensitivity due to the required power reduction by operating off resonance. Measurements of phase are extracted through an optical heterodyne; the co-propogation of a separate (but phase-locked) optical field with a known frequency separation to the carrier reflected from the cavity input. The PDH servo bypasses the need for a complicated phase-locked two laser configuration by imposing a phase modulation onto the carrier field via an electro-optic modulator (aka Pockels cell) mentioned in section \autoref{sec:EOM}. Setting a photodiode of area ($A_\mathrm{PD}$) in reflection of the cavity with a coefficient of $r_\mathrm{cav}(\omega,L)$, we measure the reflected power of the input field given by \autoref{eq:inpEOM}\;:
@@ -640,7 +636,7 @@ With this linearity and sensitivity at cavity resonance, implementation into PID
 
 
 \subsection{Servo Parameters}
-The quantity we are attempting to measure is a differential length coupling on the order of $3.3 \times 10^{-18}$ [m/(V/m)], motivating a short cavity design as the relative differential length (phase) change scales with the sensitivity \autoref{eq:cavlf}. Considerations of the lab mirror inventory and mode matching critera lead us to two candidate plano-concave (ROC = 0.333m) HR IBS coated sample input couplers; one from CVI Melles-Griot and another from ATFilms. When paired with the plano-plano $\gaas$/$\algaas$  mirror from the Crystalline Mirror Solutions (CMS) division of Thorlabs, initial designed cavity length was 0.1665 m.
+The quantity we are attempting to measure is a differential length coupling on the order of $3.3 \times 10^{-18}$ [m/(V/m)], motivating a short cavity design as the relative differential length (phase) change scales with the sensitivity \autoref{eq:cavlf}. Considerations of the lab mirror inventory and mode matching critera lead us to two candidate plano-concave (ROC = 0.333m) HR IBS coated sample input couplers; one from CVI Melles-Griot and another from ATFilms. When paired with the plano-plano $\gaas$/$\algaas$  mirror from the Crystalline Mirror Solutions (CMS) division of Thorlabs, designed cavity length was 0.105 m.
 
 %\begin{figure}[H]
 %\begin{center}
@@ -652,7 +648,30 @@ The quantity we are attempting to measure is a differential length coupling on t
 %%FIGURE: Servo diagram
 %%CAPTION: A simplified diagram of the servo used. The highlighted regions of the schematic are intended to provide a modular view; highlighting the components required for the PDH servo to operate.}
 
-The implemented servo design uses a light source from a Mephisto 2000 NE Nd:YAG (1064nm) laser with a 25 MHz phase modulation from a New Focus Model 4003 IR resonant phase modulator. As indicated in the figure above, the electronics chain can be decomposed into two primary filter components: $S(f)$ and $A(f)$.
+The implemented servo design uses a light source from a Mephisto 2000 NE Nd:YAG laser with a 25 MHz phase modulation from a New Focus Model 4003 IR resonant phase modulator. As indicated in the figure above, the electronics chain can be decomposed into two primary filter components: $S(f)$ and $A(f)$. The following table provides a summary with relevant experiment parameters:
+
+\begin{table}[h!]
+\caption{Parameters of experimental setup.}
+\centering 
+\begin{tabular}{lcc}
+    \hline \hline
+    Symbol & Description & Value \\
+    \hline
+    $\lambda$ & Laser wavelength & $1064 \, \mathrm{nm}$ \\
+    $L$ & Cavity length & $0.105\, \mathrm{m}$ \\
+    $T_i$ & Power transmissivity of input mirror & $\sim0.5\%$ \\
+    $T_e$ & Power transmissivity of output mirror & $\sim10\, \mathrm{ppm}$ \\
+    $f_c$ & Cavity pole frequency & $\sim600\, \mathrm{kHz}$ \\
+    $x$ & Aluminum alloying fraction & 0.92 \\
+    $d_{\mathrm{H}}$ & Thickness of $\mathrm{GaAs}$ & $76.43\, \mathrm{nm}$ \\
+    $n_{\mathrm{H}}$ & Refractive index of $\mathrm{GaAs}$ & $3.48$ \\
+    $d_{\mathrm{L}}$ & Thickness of $\mathrm{Al_{0.92}Ga_{0.08}As}$ & $89.35\, \mathrm{nm}$ \\
+    $n_{\mathrm{L}}$ & Refractive index of $\mathrm{Al_{0.92}Ga_{0.08}As}$ & $2.98$ \\
+    \hline \hline
+\end{tabular}
+\end{table}
+
+The laser frequency is locked to the cavity length using the aformentioned Pound-Derver-Hall technique. The extracted error signal is then filtered by the Sensing chain (S(f)) before being passed to the Actuation chain (A(f)). When the laser is locked to the in-air cavity, the fluctuations of the laser frequency, $\Delta f$ obey \autoref{eq:cavlf}. 
 
 \subsubsection{Sensing S(f)}
 Sensing electronics are composed of a single element photodiode mounted to a tranimpedance amplifier PCB that redirects photocurrent to DC and RF filter chains. The RF path is constructed to boost the RF signal prior to being passed to a mixer within a frequency stabilization servo (FSS) \footnote{FSS schema and transfer function \autoref{appendix:fss_tf}} where it is demodulated by mixing the 25 MHz oscillator phased with variable cable length. Once demodulated, the measured beat signal while sweeping through resonance generates the PDH error signal profile \footnote{As seen in \autoref{fig:pdherr}, and \autoref{appendix:laser_sweep}}.
@@ -816,6 +835,11 @@ Now meshgrid coordinates are set:
 
 \newpage
 
+\subsubsection*{Computing V(r,z)}
+
+Inspired by the second-order elliptic equation, operators are modified to incorporate the aforementioned boundary conditions~\cite{Press:2007}.
+
+
 Parallel computation of the potential over the entire meshgrid is done by vectorizing the potential:
 
 \[ 
@@ -847,7 +871,7 @@ Parallel computation of the potential over the entire meshgrid is done by vector
 \]
 
 \newpage
-\noindent Inspired by the second-order elliptic equation, operators are modified to incorporate the aforementioned boundary conditions~\cite{Press:2007}:
+\iffalse
 
 \[ 
 \mathcal{L}_{cyl} = 
@@ -915,15 +939,16 @@ Where $\mathrm{eye}(\mathrm{n})$ and $\mathrm{zeros}({n})$ represent (nxn) ident
 \[ 
 	O_{n} = \mathrm{zeros}(n)
 \]	
-Where the above matrix is a tri-diagonal block sparse matrix with square embedded diagonal identity ($\mathcal{I}_n$) matrices with n non-zero diagonal elements, and sparse tridiagonal kernel ($\mathcal{K}_n$) matrices. $O_n$ presents zero matrices with $n\times n$ sharing the dimensions of $\mathcal{K}_n$ and $\mathcal{I}_n$. \footnote{Not completely clear to the author at first, the motivation behind the structural choice of sparse block diagonals is a symptom of continuously vectorizing the computation. Some standard computing libraries may be proactive about this vectorization and apply it when recognized in for-loops. Even so, the explicit structuring of the boundary conditions listed here is intended to inform of the reasoning behind the modified numerical recipe to establish a compartmentalization between the scientific motivation alongside computing tools and methods.}
-
+\fi
 \newpage
-
-\subsubsection*{Computing V(r,z)}
 
 \begin{equation}
     V_{n + 1} = (\mathcal{I}_{N^2}  + \mathcal{L}_{cyl}) V_{n}
 \end{equation}
+
+Where the above matrix is a tri-diagonal block sparse matrix with square embedded diagonal identity ($\mathcal{I}_n$) matrices with n non-zero diagonal elements, and sparse tridiagonal kernel ($\mathcal{K}_n$) matrices. $O_n$ presents zero matrices with $n\times n$ sharing the dimensions of $\mathcal{K}_n$ and $\mathcal{I}_n$. \footnote{Not completely clear to the author at first, the motivation behind the structural choice of sparse block diagonals is a symptom of continuously vectorizing the computation. Some standard computing libraries may be proactive about this vectorization and apply it when recognized in for-loops. Even so, the explicit structuring of the boundary conditions listed here is intended to inform of the reasoning behind the modified numerical recipe to establish a compartmentalization between the scientific motivation alongside computing tools and methods.}
+
+
 
 \begin{figure}[H]
   \includegraphics[width=\textwidth]{ALGAAS/assembly4_sim.pdf}
