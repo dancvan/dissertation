@@ -1,6 +1,9 @@
-\section{Motivation}
+\section{Foreword}
+The following section is comprised of a paper titled ``Study on electro-optic noise in crystalline coatings toward future gravitational wave detectors", was published in Physical Review D January 4th, 2022, and co-authored with Satoshi Tanioka, Garrett D. Cole, Steven D. Penn, and Stefan W. Ballmer~\cite{tanioka:2022}.
+
+\section{Introduction}
 Direct detection of gravitational waves (GWs) by ground-based laser interferometric gravitational wave detectors (GWDs) has provided unique insight into the Universe~\cite{Abbott2016, gw170817, Abbott2021}.
-In the current laser interferometric GWDs, km-scale Fabry-Perot arm cavities are used which employ test mass mirrors coated with high-reflectivity amorphous coatings~\cite{Degallaix2019, Granata2020}.
+In the current laser interferometric GWDs, km-scale Fabry-P\'erot arm cavities are used which employ test mass mirrors coated with high-reflectivity amorphous coatings~\cite{Degallaix2019, Granata2020}.
 
 The sensitivity of current GWD such as advanced LIGO (aLIGO) is partially limited by thermal noise arising from amorphous silica and titania-doped tantala coatings at their most sensitive frequency band~\cite{harry:2006, Gras2018}.
 Future GWDs are planned to employ low thermal noise coatings so that one can explore further into the Universe with improved sensitivity~\cite{Punturo_2010, Adhikari2020, CEHS, Srivastava2022}.
@@ -15,7 +18,7 @@ While crystalline AlGaAs coatings can reduce thermal noise, they may also be sus
 Refractive indices of AlGaAs coatings vary in proportion to the electric field via the electro-optic (EO) effect~\cite{Namba1961, yariv}.
 Fluctuations in the electric field couples to the cavity length fluctuations through the change in refractive indices of coatings, and can show up as noise in a GWD~\cite{Abernathy, bonillafejer}.
 
-In order to investigate the impact of the noise induced by the EO effect in AlGaAs coatings, we have developed an experimental setup using a Fabry-Perot cavity.
+In order to investigate the impact of the noise induced by the EO effect in AlGaAs coatings, we have developed an experimental setup using a Fabry-P\'erot cavity.
 In this study, we focused on the coupling between the electric field normal to the mirror surface and the cavity length.
 From this experiment, we estimated the noise level of the EO effect, which was well below the strain sensitivity of current and future proposed GWDs.
 We conclude that the EO noise in AlGaAs coating will not be a limiting noise source in these systems.
@@ -136,10 +139,10 @@ Polarization of the input beam is adjusted by a $\lambda/2$ plate.
 \end{tabular}
 \end{table}
 
-In order to experimentally investigate the EO effect in AlGaAs coatings, we developed an optical setup using a Fabry-Perot cavity.
+In order to experimentally investigate the EO effect in AlGaAs coatings, we developed an optical setup using a Fabry-P\'erot cavity.
 Fig.~\ref{fig.setup} shows the schematic of the experimental setup.
 Parameters of this setup are listed on Table~\ref{tab.param}.
-The Fabry-Perot cavity is composed of two high-reflectivity mirrors --- an amorphous coating front mirror and AlGaAs coating end mirror.
+The Fabry-P\'erot cavity is composed of two high-reflectivity mirrors --- an amorphous coating front mirror and AlGaAs coating end mirror.
 The AlGaAs coating is composed of 35.5 periods (71 layers) of alternating $\gaas$ and $\algaas$, that have been transferred to a planar super-polished fused silica substrate.
 The front mirror is curved mirror, and the end AlGaAs coating mirror has flat surface.
 The finesse of the cavity is about $10^3$.
@@ -156,7 +159,7 @@ The phase perturbation in AlGaAs coatings induced by the electric field is impri
 By probing the PDH feedback signal, the displacement due to the EO effect can be measured.
 
 
-The input beam is linearly polarized, and its polarization can be aligned to the crystal axes of AlGaAs coatings by rotating a $\lambda/2$ plate in front of the Fabry-Perot cavity.
+The input beam is linearly polarized, and its polarization can be aligned to the crystal axes of AlGaAs coatings by rotating a $\lambda/2$ plate in front of the Fabry-P\'erot cavity.
 %Our AlGaAs coating has an orientation flat paralleling the $[110]$ axis.
 %The AlGaAs sample mirror is installed as shown in Fig.~\ref{fig.mount} so that the AlGaAs $[110]$ and $[1\bar{1}0]$ axes are aligned to S- and P-polarizations, respectively.
 The AlGaAs sample mirror is installed as shown in Fig.~\ref{fig.mount}.
@@ -193,7 +196,7 @@ On the other hand, the back electrode is grounded, which introduces an electric 
 
 \subsection{Axis identification}
 
-\begin{figure}[htbp]
+\begin{figure}[H]
     \centering
 \includegraphics[width=.75\textwidth]{tanioka_2022/cavityscan_split_freq.png}
 \caption{
@@ -293,7 +296,8 @@ Measured open-loop gain of PDH loop, $G$, for fast and slow axes. The unity gain
 \subsubsection{Electric field}
 
 \begin{figure}[htbp]
-\includegraphics[width=\textwidth]{tanioka_2022/efield.png}
+    \centering
+\includegraphics[width=.7\textwidth]{tanioka_2022/efield.png}
 \caption{
 Calculated electric field normal to the AlGaAs coatings.
 The horizontal axis is the distance from mirror center, and the vertical axis is the electric field $\mathrm{[V/m]}$ when the unit voltage is applied to the front electrode, i.e, the conversion efficiency, $E\, \mathrm{[(V/m)/V]}$.
@@ -322,7 +326,7 @@ Therefore, we measured the actuation efficiency with $1\, \mathrm{kHz}$ triangle
 
 \begin{figure}[htbp]
     \centering
-\includegraphics[width=\textwidth]{tanioka_2022/cavityscan_fit.eps}
+\includegraphics[width=.7\textwidth]{tanioka_2022/cavityscan_fit.eps}
 \caption{
 Error signal obtained by scanning the laser frequency with $1\, \mathrm{kHz}$ triangle wave.
 Red and green solid lines correspond to the monitored voltage sent to NPRO's PZT and measured error signal, respectively.
@@ -396,7 +400,7 @@ Therefore, the coupling level of the EO effect is estimated as $|C_{\mathrm{EO}}
 \subsection{Comparison to theoretical estimation}
 
 The level of EO effect can be numerically computed by using a transfer matrix calculation of the coating multilayer.
-The perturbation of the reflected field phase induced by $k$-th coating layer can be described as \cite{Evans2008, Ballmer2015}
+The perturbation of the reflected field phase induced by $k$-th coating layer can be described as \cite{Evans2008, ballmer:2015}
 \begin{align}
     \frac{\partial\phi_{\mathrm{c}}}{\partial\phi_k} = \Im \left(\frac{1}{M_{21}}\frac{\partial M_{21}}{\partial\phi_k} - \frac{1}{M_{22}}\frac{\partial M_{22}}{\partial\phi_k}\right),
 \end{align}
@@ -443,13 +447,13 @@ By using the chain rule, the phase perturbation induced by the electro-optic eff
 \begin{align}
     \frac{\partial\phi_{\mathrm{c}}}{\partial E} = \frac{\partial\phi_{\mathrm{c}}}{\partial\phi_k}\frac{\partial\phi_k}{\partial E}.
 \end{align}
-Here we assume the EO coefficients of $\mathrm{GaAs}$ and $\mathrm{Al}_{x}\mathrm{Ga}_{1-x}\mathrm{As}$ as $r_{41,\mathrm{GaAs}}=-1.33\times10^{-12}\, \mathrm{m/V}$, and $r_{41,\mathrm{AlGaAs}}=-(1.33-0.45x)\times10^{-12}\, \mathrm{m/V}$, respectively~\cite{Adachi1985, Abernathy2014}.
+Here we assume the EO coefficients of $\mathrm{GaAs}$ and $\mathrm{Al}_{x}\mathrm{Ga}_{1-x}\mathrm{As}$ as $r_{41,\mathrm{GaAs}}=-1.33\times10^{-12}\, \mathrm{m/V}$, and $r_{41,\mathrm{AlGaAs}}=-(1.33-0.45x)\times10^{-12}\, \mathrm{m/V}$, respectively~\cite{adachi:1985, Abernathy2014}.
 As a result, one can compute the phase perturbation induced by the electro-optic effect as
 \begin{align}
     \left|\frac{\partial\phi_{\mathrm{c}}}{\partial E}\right| = \left|\frac{\partial\phi_{\mathrm{c}}}{\partial\phi_k}\frac{\partial\phi_k}{\partial E}\right| = 3.9 \times 10^{-11}\, \mathrm{rad/(V/m)}.
 \end{align}
-This phase perturbation can be converted to the Fabry-Perot cavity displacement, $\partial L/\partial E$.
-Round trip phase of a Fabry-Perot cavity, $\phi$, satisfies the relationship as
+This phase perturbation can be converted to the Fabry-P\'erot cavity displacement, $\partial L/\partial E$.
+Round trip phase of a Fabry-P\'erot cavity, $\phi$, satisfies the relationship as
 \begin{align}
     \phi = \frac{2L\omega}{c} = \frac{4\pi L}{\lambda},
     \label{eq.cav}
@@ -468,16 +472,19 @@ This value is about one-third of the measured value.
 \subsection{Implications for gravitational wave detectors}
 
 We evaluate the impacts of noise induced by the EO effect on future GWDs.
-In GWDs such as aLIGO, horizontally polarized beam is employed for laser interferometry~\cite{Aasi2015}.
+In GWDs such as aLIGO, horizontally polarized beam is employed for laser interferometry~\cite{aasi:2015}.
 The impacts of the EO effect on GWDs depend on the alignment between the beam polarization and AlGaAs axes.
 
 Firstly, we consider the case that the polarization of the beam is aligned to the AlGaAs $[011]$ or $[0\bar{1}1]$ axes ($x'$ or $y'$) where the reflected optical phase is perturbed by the EO effect.
-The measured fluctuations in the electric field next to the test mass in aLIGO is $3\times10^{-6}\, \mathrm{(V/m)/\sqrt{Hz}}$ at $100\, \mathrm{Hz}$~\cite{Buikema2020}.
+The measured fluctuations in the electric field next to the test mass in aLIGO is $3\times10^{-6}\, \mathrm{(V/m)/\sqrt{Hz}}$ at $100\, \mathrm{Hz}$~\cite{buikema:2020}.
 Assuming that the fluctuations in the electric fields next to each of the four test masses are the same level, and uncorrelated with each other, the strain noise due to the EO effect at $100\, \mathrm{Hz}$ can be calculated as
 \begin{align}
-    \frac{\sqrt{4}\times1.1\times10^{-18}\, \mathrm{m/(V/m)}\times3\times10^{-6}\, \mathrm{(V/m)/\sqrt{Hz}}}{4\times10^3\, \mathrm{m}} \notag \\
+    \frac{\sqrt{4}\times \textcolor{red}{1.1\times10^{-17}\, \mathrm{m/(V/m)}}\footnotemark\times3\times10^{-6}\, \mathrm{(V/m)/\sqrt{Hz}}}{4\times10^3\, \mathrm{m}} \notag \\
     = 1.6\times10^{-26}\, \mathrm{1/\sqrt{Hz}}.
 \end{align}
+
+\footnotetext{\textcolor{red}{Correction to published value of $1.1\times10^{-18}$}}
+
 Here we assumed that the EO effect has flat response and the arm cavity length is $4\, \mathrm{km}$.
 The target sensitivity of A+, future upgrade plan of aLIGO, is about $2\times10^{-24}\, \mathrm{1/{\sqrt{Hz}}}$ at $100\, \mathrm{Hz}$~\cite{Barsotti2018a+}.
 Therefore, the noise level of EO effect is about two orders of magnitude smaller than the sensitivity of A+.
