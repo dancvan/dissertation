@@ -674,21 +674,18 @@ The implemented servo design uses a light source from a Mephisto 2000 NE Nd:YAG 
 The laser frequency is locked to the cavity length using the aformentioned Pound-Derver-Hall technique. The extracted error signal is then filtered by the Sensing chain (S(f)) before being passed to the Actuation chain (A(f)). When the laser is locked to the in-air cavity, the fluctuations of the laser frequency, $\Delta f$ obey \autoref{eq:cavlf}. 
 
 \subsubsection{Sensing S(f)}
-Sensing electronics are composed of a single element photodiode mounted to a tranimpedance amplifier PCB that redirects photocurrent to DC and RF filter chains. The RF path is constructed to boost the RF signal prior to being passed to a mixer within a frequency stabilization servo (FSS) \footnote{FSS schema and transfer function \autoref{appendix:fss_tf}} where it is demodulated by mixing the 25 MHz oscillator phased with variable cable length. Once demodulated, the measured beat signal while sweeping through resonance generates the PDH error signal profile \footnote{As seen in \autoref{fig:pdherr}, and \autoref{appendix:laser_sweep}}.
+Sensing electronics are composed of a single element photodiode mounted to a tranimpedance amplifier PCB, splitting photocurrent to DC and RF filter chains. The RF path is within the feedback electronics chain and constructed to boost the RF signal prior to being passed to a frequency stabilization servo (FSS) \footnote{FSS schema and transfer function \autoref{appendix:fss_tf}} where it is demodulated by mixing the 25 MHz oscillator phased with variable cable length. Once demodulated, the measured beat signal while sweeping through resonance generates the PDH error signal profile \footnote{As seen in \autoref{fig:pdherr}, and \autoref{appendix:laser_sweep}}.
+
+\textcolor{red}{inserting section of circuitry?}
 
 \subsubsection{Actuation A(f)}
-The actuation portion of the loop amplifies the FSS output with a single I/O channel of the SVR 350-3 BIP High Voltage Amplifier \footnote{HVA transfer function \autoref{appendix:hva_tfs}} from Piezomechanik GmbH with a custom pomona box (elog 412) feeding back the output to the input to attentuate ringing. The Mephisto 2220 laser cavity PZT actuator follows immediately after with a measured actuation factor of 1.7 [MHz] / [V].
+The actuation portion of the loop amplifies the FSS output with a single I/O channel of the SVR 350-3 BIP High Voltage Amplifier \footnote{HVA transfer function \autoref{appendix:hva_tfs}} from Piezomechanik GmbH with a custom pomona box (elog 412) fed back to the input. The Mephisto 2220 laser cavity PZT actuator follows immediately after with a measured actuation factor of 1.7 [MHz] / [V].
 
-\subsubsection{OLG(f)}
-\begin{figure}[H]
-  \begin{center}
-    \includegraphics[width=\textwidth]{figs/ALGAAS/tfs/OLG.pdf}
-    \caption{Measurement of the OLG taken as noted in \autoref{appendix:OLG_meas}}
-  \end{center}
-  \label{fig:OLGmeas}
-\end{figure}
+\textcolor{red}{insert section of circuitry?}
 
-\swb{You need some context for this. What is this the OLG of?}
+\subsubsection{Axis Identification}
+
+
 
 \subsection{Longitudinal Pockels Cell mirror mount assembly}
 Maximizing a controlled and well defined electric field ($|E_z|$) within the coating while requiring a through beam to and through the HR coating lead us to a design very similar to that of a longitudinal pockels cell. The most common assembly in for this study is comprised of two electrodes with a 3mm central aperture which is chosen to be at least 5 times larger than the beam size at the plate locations; to avoid significant beam clipping while maximizing field strength at the coating region of interest. There is also a required separation of at least 1/4" accounting for the thickness of the optical sample. Considering these constraints, modelling the system and computing the estimated field strength screened by the coating is the next step to the construction of the assembly.
@@ -977,6 +974,8 @@ The computed $|\mathrm{E}_z|$ is screened by the coating at $r = 0$ for $V = 1$ 
 
 \subsection{Calibration}
 
+
+
 The Electric field coupling can be expressed as a measured voltage:
 $$\mathrm{V} = \frac{1}{1 + \mathrm{G}} \cdot \mathrm{n}_\mathrm{laser} - \frac{\mathrm{G}}{1 + \mathrm{G}} \cdot \mathrm{C}  \cdot \mathrm{E} \cdot \mathrm{A}_{2} \cdot \mathrm{V}_\mathrm{in} - \frac{\mathrm{F} \cdot \mathrm{A}_1}{1 + \mathrm{G}} \cdot \mathrm{n}_\mathrm{S} - \frac{A_1}{1 + \mathrm{G}} \cdot \mathrm{n}_\mathrm{F}$$
 With G representing the open loop gain ($\mathrm{G} = \mathrm{A}_1 \cdot \mathrm{F} \cdot \mathrm{S} \cdot \mathrm{L}$). The feedback signal can also be represented as:
@@ -989,6 +988,18 @@ If the induced excitation is larger than the noise  we approximate the last equa
 
 $$ \frac{\mathrm{V}_\mathrm{out}}{\mathrm{V_{in}}} \approx \frac{\mathrm{F} \cdot \mathrm{S} \cdot \mathrm{L}}{1 + \mathrm{G}} \cdot \mathrm{C} \cdot \mathrm{E} \cdot \mathrm{A}_{2} = \frac{\mathrm{G}}{1 + \mathrm{G}} \cdot \mathrm{C} \cdot \mathrm{E} \cdot \frac{\mathrm{A}_{2}}{\mathrm{A}_{1}} $$
  \swb{The second piece is not correct, singe G = A1*F*S*L.}
+
+
+\subsubsection{OLG(f)}
+\begin{figure}[H]
+  \begin{center}
+    \includegraphics[width=\textwidth]{figs/ALGAAS/tfs/OLG.pdf}
+    \caption{Measurement of the OLG taken as noted in \autoref{appendix:OLG_meas}}
+  \end{center}
+  \label{fig:OLGmeas}
+\end{figure}
+
+\swb{You need some context for this. What is this the OLG of?}
 
 \iffalse
 The calibration math for this measurement explicitly starts with what I
