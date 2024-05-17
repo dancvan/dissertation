@@ -575,10 +575,12 @@ Measured field spectra acquired from installed electric field meters located wit
 %    h_\mathrm{EO\; noise} = 2\frac{\Delta L_\mathrm{EO \; noise}}{L} = 2\frac{\partial L}{\partial E} \times \bigg| \frac{E_\mathrm{noise}}{L_\mathrm{arm}} \bigg| = 4.95 \times 10^{-26} \; [1/ \sqrt{\mathrm{Hz}}]
 %\end{equation}
 
+\iffalse
 \swb{Check this equation - something went wrong here. Refer to equation 28 of \href{https://arxiv.org/abs/2210.08381}{https://arxiv.org/abs/2210.08381}.
 The overleaf link is here:
 \href{https://www.overleaf.com/read/jjxjjwhktfyh\#3cf8d4}{https://www.overleaf.com/read/jjxjjwhktfyh\#3cf8d4}
 Also, when you convert it to noise make sure you use the right unit, i.e. 3e-6 (V/m)/sqrt(Hz). This way the unit of strain noise will be 1/sqrt(Hz). }
+\fi
 
 % Taking the upper and the lower EFM measurements from ~\cite{efmlog} $.3\; [\mathrm{V}/\mathrm{m}/\sqrt{\mathrm{Hz}]}$ @ 60 Hz and $4\times10^{-3}\; [\mathrm{V}/\mathrm{m}/\sqrt{\mathrm{Hz}]}$ @ 4kHz.
 %% \satoshi{I don't think these values are calibrated. According to Martynov et al. 2016, the fluctuations in the electric filed is $\sim10^{-5}\,\mathrm{[(V/m)/\sqrt{Hz}]}$.}
@@ -671,21 +673,22 @@ The implemented servo design uses a light source from a Mephisto 2000 NE Nd:YAG 
 \end{tabular}
 \end{table}
 
-The laser frequency is locked to the cavity length using the aformentioned Pound-Derver-Hall technique. The extracted error signal is then filtered by the Sensing chain (S(f)) before being passed to the Actuation chain (A(f)). When the laser is locked to the in-air cavity, the fluctuations of the laser frequency, $\Delta f$ obey \autoref{eq:cavlf}. 
+The laser frequency is locked to the cavity length using the aformentioned Pound-Derver-Hall technique. The extracted error signal is then filtered by the Sensing chain (S(f)) before being passed to the Actuation chain (A(f)). When the laser is locked to the in-air cavity, the fluctuations of the laser frequency ($\Delta f$) obey \autoref{eq:cavlf}. 
 
 \subsubsection{Sensing S(f)}
 Sensing electronics are composed of a single element photodiode mounted to a tranimpedance amplifier PCB, splitting photocurrent to DC and RF filter chains. The RF path is within the feedback electronics chain and constructed to boost the RF signal prior to being passed to a frequency stabilization servo (FSS) \footnote{FSS schema and transfer function \autoref{appendix:fss_tf}} where it is demodulated by mixing the 25 MHz oscillator phased with variable cable length. Once demodulated, the measured beat signal while sweeping through resonance generates the PDH error signal profile \footnote{As seen in \autoref{fig:pdherr}, and \autoref{appendix:laser_sweep}}.
 
+\iffalse
 \textcolor{red}{inserting section of circuitry?}
+\fi
+
 
 \subsubsection{Actuation A(f)}
 The actuation portion of the loop amplifies the FSS output with a single I/O channel of the SVR 350-3 BIP High Voltage Amplifier \footnote{HVA transfer function \autoref{appendix:hva_tfs}} from Piezomechanik GmbH with a custom pomona box (elog 412) fed back to the input. The Mephisto 2220 laser cavity PZT actuator follows immediately after with a measured actuation factor of 1.7 [MHz] / [V].
 
+\iffalse
 \textcolor{red}{insert section of circuitry?}
-
-\subsubsection{Axis Identification}
-
-
+\fi
 
 \subsection{Longitudinal Pockels Cell mirror mount assembly}
 Maximizing a controlled and well defined electric field ($|E_z|$) within the coating while requiring a through beam to and through the HR coating lead us to a design very similar to that of a longitudinal pockels cell. The most common assembly in for this study is comprised of two electrodes with a 3mm central aperture which is chosen to be at least 5 times larger than the beam size at the plate locations; to avoid significant beam clipping while maximizing field strength at the coating region of interest. There is also a required separation of at least 1/4" accounting for the thickness of the optical sample. Considering these constraints, modelling the system and computing the estimated field strength screened by the coating is the next step to the construction of the assembly.
@@ -731,6 +734,18 @@ $\mathrm{t}_{cap} \; \textless \; z \; \textless \;\mathrm{t}_{cap} + 2t_{el} $ 
 
 \subparagraph*{Grounded Electrode (GND):}
 $ -t_{cap} -2t_{el} \; \textless \; z \; \textless \; -t_{cap} $ and $\mathrm{r}_{ap} \; \textless \;\mathrm{r} \; \textless \;\mathrm{r}_{d} $
+
+\subparagraph*{Simulation Area Edges:}
+$ z \; = \;\mathrm{z}_\mathrm{max} $ or  $r \; = \;\mathrm{r}_{max}$ or  $r \; = \;\mathrm{r}_{max}$ 
+\\
+
+\noindent For assured simulation convergence, an exponential falloff was applied to the simulation boundaries other than the $\mathrm{r} = 0$ edge:
+
+\begin{equation}
+    \mathrm{Simulation \; Area \; Edges} \rightarrow A_o e^{(r+z)/r_o}
+\end{equation}
+
+Where $A_o$ is a characteristic voltage, and $r_o$ is a chosen characteristic distance. Though with the region of interest being at the coating surface, these edges are far enough away that a change in these characteristic values would cause a negligible difference to the resulting E-field estimate.
 
 \paragraph*{Numerical Recipe (Finite Differencing)}
 
@@ -824,8 +839,10 @@ $$
     \end{aligned}
 \end{equation}
 
-\swb{The following is a bit hard to follow, and I think there is a bug in the $K_n^{(1)}$. Might be better not to show the full matrices. Instead be a little more explicit on how you extract the calibration number from that simulation. Touch on the fact that the answer is somewhat boundary condition-dependent, as we don't specify the B.C outside the hole.}
-
+\iffalse 
+\swb{The following is a bit hard to follow, and I think there is a bug in the $K_n^{(1)}$. Might be better not to show the full matrices. Instead be a little more explicit on how you extract the calibration number from that simulation. Touch on the fact that the answer is somewhat boundary condition-dependent, as we don't specify the B.C outside the hole.} 
+\fi
+\newpage
 Now meshgrid coordinates are set:
 
 \input{notes/LaplacE_meshgrid.tex}
@@ -938,13 +955,13 @@ Where $\mathrm{eye}(\mathrm{n})$ and $\mathrm{zeros}({n})$ represent (nxn) ident
 \]	
 \fi
 \newpage
-
+\iffalse
 \begin{equation}
     V_{n + 1} = (\mathcal{I}_{N^2}  + \mathcal{L}_{cyl}) V_{n}
 \end{equation}
 
 Where the above matrix is a tri-diagonal block sparse matrix with square embedded diagonal identity ($\mathcal{I}_n$) matrices with n non-zero diagonal elements, and sparse tridiagonal kernel ($\mathcal{K}_n$) matrices. $O_n$ presents zero matrices with $n\times n$ sharing the dimensions of $\mathcal{K}_n$ and $\mathcal{I}_n$. \footnote{Not completely clear to the author at first, the motivation behind the structural choice of sparse block diagonals is a symptom of continuously vectorizing the computation. Some standard computing libraries may be proactive about this vectorization and apply it when recognized in for-loops. Even so, the explicit structuring of the boundary conditions listed here is intended to inform of the reasoning behind the modified numerical recipe to establish a compartmentalization between the scientific motivation alongside computing tools and methods.}
-
+\fi
 
 
 \begin{figure}[H]
@@ -953,7 +970,6 @@ Where the above matrix is a tri-diagonal block sparse matrix with square embedde
   \label{fig:poissoncalcoutput}
 \end{figure}
 
-A characteristic distance of 1 [m] from the origin is set to 
 
 \subsubsection*{Computing $|\mathrm{E}_z|$(r,z)}
 
@@ -965,6 +981,7 @@ The computed $|\mathrm{E}_z|$ is screened by the coating at $r = 0$ for $V = 1$ 
 \label{fig:Ez}
 \end{figure}
 
+\iffalse
 \subsection{Servo Overview}
 \begin{figure}[!ht]
 	\includegraphics[width=\textwidth]{figs/ALGAAS/pock_control_diagram.pdf}
@@ -989,7 +1006,6 @@ If the induced excitation is larger than the noise  we approximate the last equa
 $$ \frac{\mathrm{V}_\mathrm{out}}{\mathrm{V_{in}}} \approx \frac{\mathrm{F} \cdot \mathrm{S} \cdot \mathrm{L}}{1 + \mathrm{G}} \cdot \mathrm{C} \cdot \mathrm{E} \cdot \mathrm{A}_{2} = \frac{\mathrm{G}}{1 + \mathrm{G}} \cdot \mathrm{C} \cdot \mathrm{E} \cdot \frac{\mathrm{A}_{2}}{\mathrm{A}_{1}} $$
  \swb{The second piece is not correct, singe G = A1*F*S*L.}
 
-
 \subsubsection{OLG(f)}
 \begin{figure}[H]
   \begin{center}
@@ -1001,7 +1017,6 @@ $$ \frac{\mathrm{V}_\mathrm{out}}{\mathrm{V_{in}}} \approx \frac{\mathrm{F} \cdo
 
 \swb{You need some context for this. What is this the OLG of?}
 
-\iffalse
 The calibration math for this measurement explicitly starts with what I
 call \(\alpha(f)\) which is a vector of complex numbers that represents
 the transfer function \(\mathrm{CH2}(f)/\mathrm{CH1}(f)\) where:
@@ -1072,9 +1087,14 @@ If \(\mathrm{CH1}(f)\) is in \(V_\mathrm{pk}\) then signal(f) will be in
 %	\Delta \mathrm{L} = \mathrm{source}*\alpha(f) \mathrm{A}(f)*\frac{1+\mathrm{OLG}(f)}{\mathrm{OLG}(f)}*\frac{\mathrm{L_{cav}}}{f_\mathrm{laser}} \quad \big[ m_\mathrm{pk} / \sqrt{Hz} \big]
 %\end{equation}
 
-\subsection{Assembly Mount Solution}
-%The following section details measurements performed with various longitudinal pockel cell mounts. Further details (assembly parameters, blueprints, and visual aids) can be found in the appendix.
-%\subsubsection{Assembly 3 (MACOR mount)}
+\subsection{Assembly Mount Tests/Development}
+The following section briefly discusses the nature of early measurements performed with various longitudinal pockel cell mount assemblies. Further details (assembly parameters, blueprints, and visual aids) can be found in the appendix. 
+
+\subsubsection{Assembly 0 $\rightarrow$ Assembly 2}
+A significant barrier to low differential length noise sensitivity for this experiment was the lack of low-noise optical mounts in accessible non-conductive materials. Most commercial optical mounts are constructed with conductive materials which is problematic when seeking to isolate the coating from non-normal field gradients within the coating volume of interest.  For this reason, multiple efforts were focused on developing a suitable mounting solution that would provide adequate isolation from any uncontrolled field magnitudes while driving a field normally incident on the surface with enough strength and uniformity across the beam area to extract a measurement of the differential length change from the Pockels effect. 3D printing for this project was inititally used as a means to prototype optical mount designs but public health concerns at the time made testing with alternative materials aside from PLA and PETG difficult. There were multiple 3D prints tested within the optical schema depicted in \autoref{fig:simpschema}. Varying the mechanical configurations (i.e. differential electrode and / or optic set screw settings) to the slightest degree left us to discover a variety of drive couplings via excitations from the assembly sample-mount acoustic modes while driving the voltage on electrodes plates. Tracking consistent mechanical response for assemblies prior to Assembly 3 proved challenging due to inconsistent mechanical settings between some measurements and span different geometries / material properties \footnote{For more details see \autoref{appendix:mount_assemblies}}. An adequate solution was dependent on selecting a material and geometry that would generate narrow acoustic resonances while simultaneously achieving adequately low noise within a bandwidth of interest (a not so uncommon experimental technique that is frequently used and mentioned within collaboration literature). Assembly 3 demonstrated such characteristics and is discussed further below.
+
+
+\subsubsection{Assembly 3 (MACOR mount)}
 To maintain the aforementioned boundary conditions in situ, an optical mount made of MACOR, a machinable ceramic, was constructed and installed. With the material's high Young's modulus (66.9 GPa), and a moderate Poisson ratio (.29) \cite{macor} making it by far the most durable / non-conductive mounting solution tried.
 
 An optical mount for the sample made with MACOR, along with spherical glass bearnings with a .48 $\pm$ .01 cm $\diameter$, and a McMaster-Carr 8-32, 1/2" ceramic screw were used to clamp the optical sample within a bored 25.74 $\pm$ .5 mm $\diameter$ barrel. Two 1.24" $\diameter$ holes were also bored at a 9 mm depth about the front and back side of the optical mount to accomodate for a flush fit of copper electrodes. The construction suggests a 1 $\pm$ .5 mm clearance between the front and back surface of the sample to the electrode plates.
@@ -1087,7 +1107,7 @@ An optical mount for the sample made with MACOR, along with spherical glass bear
 	    \includegraphics[width=.472\textwidth]{figs/ALGAAS/assemblies/assembly3/assembly3_isometric.pdf}
 	    \phantomcaption\label{subfig:A3isometric}
     \end{subcaptiongroup}
-    \caption{Assembly 3: \subref{subfig:A3disassembled} disassembled configuration and \subref{subfig:A3isometric} an isometric view of the assembled configuration.}
+    \caption{Assembly 3: \subref{subfig:A3disassembled} disassembled configuration and \subref{subfig:A3isometric} an isometric view of the assembled configuration. The electrodes initially used were made of copper; a material chosen its high density with the intention of combatting intertial influence at high frequency, though aluminum plates with near identical geometry were used for later results.}
     \label{fig:assembly3}
 \end{figure}
 
@@ -1098,7 +1118,9 @@ An optical mount for the sample made with MACOR, along with spherical glass bear
     \label{fig:rawtf_fast_slow}
 \end{figure}
 
+With this mounting solution, this measurement lead to the published results discussed in the next chapter.
 
+\iffalse
 \subsection{Measured birefringence from HR \texorpdfstring{$\gaas$}{gaas}/\texorpdfstring{$\algaas$}{algaas} mirror}
 
 To identify the fast and slow axes, the crystalline HR mirror is temporarily paired with a highly reflective input mirror to form a high finesse cavity. The DC power in reflection of the cavity was probed while the laser frequency was linearly swept about resonance and various input laser polarizations sampled using a half waveplate ($\lambda$ / 2). The resulting measurements exhibit a split cavity resonance when the beam polarization is not co-aligned with one of the two eigenaxes set by the HR sample birefringence.
@@ -1170,5 +1192,4 @@ The significantly improved thermal noise performance of $\gaas$/$\algaas$ HR coa
 %	\end{itemize}
 %\item \textbf{Steve's COMSOL model results}
 %\end{itemize}
-
-
+\fi
