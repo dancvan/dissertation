@@ -437,7 +437,7 @@ A comprehensive survey of relevant birefringent properties of a HR $\gaas$/$\alg
 %% FIGURE: SUB2 Ellipse cross section. New eigenpolarizations and corresponding indices and their influence on incident field (Marty's result)
 
 \subsubsection*{Analytic estimate}
-Fejer and Bonilla takes on an analytical approach to finding the impact of the electric field to the change in phase of the light through a crystalline anisotropic thin film ($\lambda/4$) stack. The construction builds off of a pre-defined defivation of thermo-optic noise calculations for the HR stack and assuming a large enough number of high-low index coating pairs~\cite{bonillafejer, fejer_estimate}:
+Fejer and Bonilla takes on an analytical approach to finding the impact of the electric field to the change in phase of the light through a crystalline anisotropic thin film ($\lambda/4$) stack. The construction builds off of a pre-defined derivation of thermo-optic noise calculations for the HR stack and assuming a large enough number of high-low index coating pairs~\cite{bonillafejer, fejer_estimate}:
 
 \begin{equation}
     \bigg| \frac{\partial \phi}{\partial E} \bigg| = - \pi \frac{r_{41}}{2}(n_\mathrm{high} n_\mathrm{low} ^2 + n_\mathrm{low} n_\mathrm{high} ^2) \frac{n_\mathrm{high}}{n_\mathrm{low}}
@@ -460,7 +460,7 @@ $$
 %\kappa_{\gamma j} = \frac{d}{d \gamma} \mathrm{log}(n_j h_j)|_{\gamma =\gamma_{O}} \bigg(\frac{\hat{n}_j'}{\hat{n}_j} +\frac{\hat{h}_j'}{\hat{h}_j} \bigg)
 %$
 
-With $\kappa$ being a scalar parameter.
+%With $\kappa$ being a scalar parameter.
 %%FIGURE: Cross sectional view of multilayer coating
 
 \begin{figure}[!ht]
@@ -691,7 +691,7 @@ The actuation portion of the loop amplifies the FSS output with a single I/O cha
 \fi
 
 \subsection{Longitudinal Pockels Cell mirror mount assembly}
-Maximizing a controlled and well defined electric field ($|E_z|$) within the coating while requiring a through beam to and through the HR coating lead us to a design very similar to that of a longitudinal pockels cell. The most common assembly in for this study is comprised of two electrodes with a 3mm central aperture which is chosen to be at least 5 times larger than the beam size at the plate locations; to avoid significant beam clipping while maximizing field strength at the coating region of interest. There is also a required separation of at least 1/4" accounting for the thickness of the optical sample. Considering these constraints, modelling the system and computing the estimated field strength screened by the coating is the next step to the construction of the assembly.
+Maximizing a controlled and well defined electric field ($|E_z|$) within the coating while requiring a through beam to and through the HR coating lead us to a design very similar to that of a longitudinal pockels cell. The most common assembly used for this study is comprised of two electrodes with a 3mm central aperture which is chosen to be at least 5 times larger than the beam size at the plate locations; to avoid significant beam clipping while maximizing field strength ($\mathrm{E}_\mathrm{z}$) at the coating region of interest. There is also a required plate separation of at least 1/4" accounting for the thickness of the optical sample. Considering these constraints, modelling the system and computing the estimated field strength screened by the coating is the next step towards building the assembly.
 
 \begin{figure}[H]
 \begin{center}
@@ -707,7 +707,7 @@ The field screened by the coating can be computed from Gauss' Law:
 \nabla \cdot D = \rho_\mathrm{free}
 \end{equation}
 
-\noindent There is no free charge within the region of interest ($\rho_\mathrm{free}=0$), though the optic sample fused silica substrate with the AlGaAs coating imposes dielectric material between the plates. Boundary conditions are expressed in terms of the differential plate potential $V$, so it is natural to first solve the potential ($V$) for all relevant system coordinate points.  
+\noindent There is no free charge within the region of interest ($\rho_\mathrm{free}=0$), though the optic fused silica substrate with the AlGaAs coating imposes dielectric material between the plates. Boundary conditions are expressed in terms of the differential plate potential $V$, so it is natural to first solve the potential ($V(\mathrm{r, z})$) for all relevant system coordinate points.  
 
 \begin{equation}\label{eq:cyllap}
 \nabla^2 V = 0
@@ -1101,13 +1101,14 @@ An optical mount for the sample made with MACOR, along with spherical glass bear
 
 %%FIGURE: sample in-situ
 \begin{figure}[!ht]
+    \centering
     \begin{subcaptiongroup}
-	    \includegraphics[width=.5\textwidth]{figs/ALGAAS/assemblies/assembly3/assembly3_disassembled.pdf}
+	    \includegraphics[width=.40\textwidth]{figs/ALGAAS/assemblies/assembly3/assembly3_disassembled.pdf}
 	    \phantomcaption\label{subfig:A3disassembled}
-	    \includegraphics[width=.472\textwidth]{figs/ALGAAS/assemblies/assembly3/assembly3_isometric.pdf}
+	    \includegraphics[width=.3776\textwidth]{figs/ALGAAS/assemblies/assembly3/assembly3_isometric.pdf}
 	    \phantomcaption\label{subfig:A3isometric}
     \end{subcaptiongroup}
-    \caption{Assembly 3: \subref{subfig:A3disassembled} disassembled configuration and \subref{subfig:A3isometric} an isometric view of the assembled configuration. The electrodes initially used were made of copper; a material chosen its high density with the intention of combatting intertial influence at high frequency, though aluminum plates with near identical geometry were used for later results.}
+    \caption{Assembly 3: [Left] disassembled configuration and [Right] an isometric view of the assembled configuration. The electrodes initially used were made of copper; a material chosen its high density with the intention of combatting intertial influence at high frequency, though aluminum plates with near identical geometry were used for later results.}
     \label{fig:assembly3}
 \end{figure}
 
