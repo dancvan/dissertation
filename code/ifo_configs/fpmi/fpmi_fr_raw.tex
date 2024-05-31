@@ -41,21 +41,14 @@ tuned for resonance
 rotation as such that:
 \begin{equation}\Delta \phi =  \frac{\omega_0}{2} \int_{t-\frac{2L}{c}}^{t} h(t')dt' \end{equation}
 
-\noindent This assumes that the static phase rotation satisfies
-\(2\omega_0L/c = 2 \pi n\). Which is the same thing that we said above
-but with different symbols (because we're fancy ;D )
-
-\noindent Say that we have something that does throw the cavity slightly off
-resonance.. doesn't have to be a gravitational wave\ldots{} but that's
-what we hope for. ANYWAY\ldots{}
-
-\noindent If the \(\Delta \phi\) becomes such that the cavity is thrown off
-resonance we get a time dependent intra-cavity field:
+\noindent This assumes that the static phase rotation satisfies \(2\omega_0L/c = 2 \pi n\). 
+\noindent Say that we have something that throws the cavity slightly off resonance.. doesn't have to be a gravitational wave\ldots{} but that's what we hope for.
+\noindent If the \(\Delta \phi\) becomes such that the cavity is thrown off resonance we get a time dependent intra-cavity field:
 
 \begin{equation} \label{eq:fpmi5} E(t) = \bar{E} + \delta E(t) \end{equation}
 
 and if the phase rotation (\(\Delta \phi\)) is super small\ldots{} which
-is pretty much guaranteed with gravy waves, we can say:
+is pretty much guaranteed with gravitational waves, we can say:
 
 \begin{equation} \label{eq:fpmi6} e^{i\Delta \phi} = 1- i \Delta \phi \end{equation}
 
@@ -74,10 +67,8 @@ will take the laplace transform of this equation to yield:
 
 \begin{equation}\delta E(s) = -i \frac{r_1r_2 \bar{E}}{1-r_1r_2e^{-2sT}} \Delta \phi(s)\end{equation}
 
-\textbf{YAS!} we are now one step closer to getting a useful expression
-for the phase response. But again.. what does this last equation mean?
-That last equation is how the change in the electric field directly
-relates to a small perturbation in phase (which could be either a small
+We are now one step closer to getting a useful expression
+for the phase response. But let's reiterate what this last equation means. The last equation is how the change in the electric field directly relates to a small perturbation in phase (which could be either a small
 change in laser frequency or length modulation)
 
 Now.. we're not done yet because that last expression does not tell us
@@ -104,11 +95,8 @@ as:
 
 \begin{equation} H_{FPMI}(\omega_g) = \frac{2 \Delta \phi_r(\omega_g)}{h(\omega_g)} =  \frac{t_1^2r_2}{(t_1^2 + r_1^2)r_2 -r_1} \frac{H_{\mathrm{MI}}(\omega_g, L)}{1-r_1r_2e^{-2i \omega_g L /c }}  \end{equation}
 
-Whew\ldots. that was a lot\ldots. now let's code it up Since we can
-seperate the calculation into two.. I'm going to parse out the
-calculation between the constant Fabry Perót term and the term with the
-frequency dependence. But first, lets set up our parameters for our
-FPMI:
+Now let's code it up. Since we can seperate the calculation into two, I'm going to parse out the
+calculation between the constant Fabry Perót term and the term with the frequency dependence. But first, lets set up our parameters for our FPMI:
 
 \begin{spacing}{1.2} \begin{lstlisting}[frame=single, language=Python]
 # Some parameters
