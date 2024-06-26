@@ -28,6 +28,23 @@
 \usepackage{placeins}
 \usepackage{listings}
 \usepackage{lscape}
+\usepackage{bibentry}
+\usepackage{natbib}
+%\usepackage[%
+%    bibstyle     = ieeetr,
+%    citestyle    = numeric,
+%    % isbn         = true,
+%    % doi          = false,
+%    % % sorting      = nty,
+%    % % sorting     = none,
+%    % % sorting     = debug,
+%    % url          = false,
+%    % defernumbers = true,
+%    % bibencoding  = utf8,
+%    % backend      = biber
+%]{biblatex}
+
+%\addbibresource{ref.bib}
 
 \definecolor{pybackcolour}{rgb}{0.95,0.95,0.92}
 
@@ -76,6 +93,7 @@
 \doublespacing
 
 \begin{document}
+
 
 \begin{titlepage}
 \begin{center}
@@ -131,13 +149,13 @@ There are a number of people I’d like to thank who contributed significantly t
 
 First, I’d like to thank my advisor Stefan. The brilliant perspectives you provided never ceased to amaze me. Not only that, but the time while doing this dissertation work has been the most challenging of my life and you took time to let me learn in the lab at my own pace and surrounded me with wonderful collaborators. 
 
-To Fabian and Gabs. You were with me through the highest of highs and lowest of lows. The countless hours of engaging conversation in and out of the lab constantly live in my mind and the lessons taken from them are an invaluable part of who I am. I’m forever grateful to you both. 
+To Fabian Maga\~{n}a-Sandoval and Gabriela Serna. You were with me through the highest of highs and lowest of lows. The countless hours of engaging conversation in and out of the lab constantly live in my mind and the lessons taken from them are an invaluable part of who I am. I’m forever grateful to you both. 
 
 To Duncan Brown, for helping us grad students get that big picture perspective.
 
 To Peter Saulson, for showing me that behind every idea there is a scientist who most likely spent a lot of time to formulate and organize it, and for the fantastic stories about quick and dirty solutions that are sometimes enough to do really interesting science.
 
-To Erik Muniz, Ari Pedersen, Derek Davis, Varun Srivastava, Steven Reyes, Nick Didio, and Elenna Capote for all the shared ideas, laughs, and tears that molded us through this common grad school experience. 
+To Erik Muniz, Ari Pedersen, Derek Davis, Varun Srivastava, Steven Reyes, Nick Didio, Soumi De, Daniel Finstad, and Elenna Capote for all the shared ideas, laughs, and tears that molded us through this common grad school experience. 
 
 To Lorena Magaña-Zertuche and Mike Senatore, for all the times we struggled and got through first year problem sets and practice exams together, all while still having fun. 
 
@@ -159,6 +177,16 @@ To the Duffys. Your love, guidance, and understanding during these last few year
 
 To Jimmy and Porkchop the dog. You’re my world. Thanks for always grounding me.
 
+\newpage
+\nobibliography{ref}
+\bibliographystyle{unsrt}
+
+\chapter*{Relevant Publications}
+\begin{enumerate}
+    \item \bibentry{hardwick:2020}
+    \item \bibentry{buikema:2020}
+    \item \bibentry{tanioka:2022}
+\end{enumerate}
 \tableofcontents
 
 \newpage
@@ -189,6 +217,7 @@ To Jimmy and Porkchop the dog. You’re my world. Thanks for always grounding me
 \input{chapters/appendix}
 
 \addcontentsline{toc}{chapter}{References}
+%\printbibliography[notkeyword=mypapers,title=References]
 \bibliography{ref.bib}
 \bibliographystyle{ieeetr}
 
