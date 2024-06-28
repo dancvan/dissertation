@@ -30,21 +30,6 @@
 \usepackage{lscape}
 \usepackage{bibentry}
 \usepackage{natbib}
-%\usepackage[%
-%    bibstyle     = ieeetr,
-%    citestyle    = numeric,
-%    % isbn         = true,
-%    % doi          = false,
-%    % % sorting      = nty,
-%    % % sorting     = none,
-%    % % sorting     = debug,
-%    % url          = false,
-%    % defernumbers = true,
-%    % bibencoding  = utf8,
-%    % backend      = biber
-%]{biblatex}
-
-%\addbibresource{ref.bib}
 
 \definecolor{pybackcolour}{rgb}{0.95,0.95,0.92}
 
@@ -177,16 +162,17 @@ To the Duffys. Your love, guidance, and understanding during these last few year
 
 To Jimmy and Porkchop the dog. You’re my world. Thanks for always grounding me.
 
-\newpage
 \nobibliography{ref}
 \bibliographystyle{unsrt}
-
 \chapter*{Relevant Publications}
+
 \begin{enumerate}
     \item \bibentry{hardwick:2020}
     \item \bibentry{buikema:2020}
     \item \bibentry{tanioka:2022}
 \end{enumerate}
+
+\newpage 
 \tableofcontents
 
 \newpage
@@ -217,7 +203,6 @@ To Jimmy and Porkchop the dog. You’re my world. Thanks for always grounding me
 \input{chapters/appendix}
 
 \addcontentsline{toc}{chapter}{References}
-%\printbibliography[notkeyword=mypapers,title=References]
 \bibliography{ref.bib}
 \bibliographystyle{ieeetr}
 
