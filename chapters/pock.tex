@@ -600,13 +600,13 @@ In order to experimetnally investigate the EO effect in $\gaas$ / $\algaas$ coat
  Measurability of the electro-optic effect is contingent upon two initial design criteria: the sensitivity of the optical plant to be implemented in the PDH servo, and the maximum achievable electric field strength along the beam axis ($|E_z|_\mathrm{max}$). Both are discussed in more detail in the following sections. 
 
 \subsection{PDH servo}\label{subsubsec:pdh}
-The Pound-Drever-Hall technique, originally and commonly used for laser frequency stabilization to an ultra-stable length reference, allows the tracking of the linear phase response of an input carrier field through cavity resonance. The servo fully realizes the ability of an optical cavity to act as a length / frequency discriminator:
+The Pound-Drever-Hall technique, originally and commonly used for laser frequency stabilization to an ultra-stable length reference, allows the tracking of the linear phase response of an input carrier field through cavity resonance. The servo fully realizes the ability of an optical cavity to act as a length / frequency discriminator \cite{pound_drever_hall:1983}:
 
 \begin{equation}\label{eq:cavlf}
 	\frac{\Delta f}{f} = -\frac{\Delta L}{L}
 \end{equation}
 
-\noindent The alternative side-of-fringe lock provides a linear response in intensity, which is adequate for some applications but with reduced sensitivity due to the required power reduction by operating off resonance. Measurements of phase are extracted through an optical heterodyne; the co-propogation of a separate (but phase-locked) optical field with a known frequency separation to the carrier reflected from the cavity input. The PDH servo bypasses the need for a complicated phase-locked two laser configuration by imposing a phase modulation onto the carrier field via an electro-optic modulator (aka Pockels cell) mentioned in section \autoref{sec:EOM}. Setting a photodiode of area ($A_\mathrm{PD}$) in reflection of the cavity with a coefficient of $r_\mathrm{cav}(\omega,L)$, we measure the reflected power of the input field given by \autoref{eq:inpEOM}\;:
+\noindent The alternative side-of-fringe lock provides a linear response in intensity, which is adequate for some applications but with reduced sensitivity due to the required power reduction by operating off resonance. Measurements of phase are extracted through an optical heterodyne; the co-propogation of a separate (but phase-locked) optical field with a known frequency separation to the carrier reflected from the cavity input. The PDH servo bypasses the need for a complicated phase-locked two laser configuration by imposing a phase modulation onto the carrier field via an electro-optic modulator (aka Pockels cell) mentioned in section \autoref{sec:EOM}. Setting a photodiode of area ($A_\mathrm{PD}$) in reflection of the cavity with a coefficient of $r_\mathrm{cav}(\omega,L)$, we measure the reflected power of the input field given by \autoref{eq:inpEOM}\;\cite{black:pdh}:
 
 %If the modulation depth given by \ref{eq:inpEOM} is set such that $\beta < 1$ then the input field may be approximated in terms of the first two Bessel functions $J_0$, $J_1$:
 
@@ -630,7 +630,7 @@ The two trailing terms in the above equation for $P_\mathrm{refl}$ generate a be
 
 \begin{figure}[H]
 	\includegraphics[width=\textwidth]{figs/ALGAAS/pdh_error.pdf}
-	\caption{By imposing 25 MHz RF sidebands, a pair of reflected reference fields near carrier resonance are off cavity resonance while beating with the carrier and provide a linear response after demodulating the sideband power. With the introduction of high and low frequency sideband fields, their presence is also detected through the DCPDs and PDH error signal. Their separations from carrier resonance are equal in phase (length, and frequency).}
+	\caption{By imposing 25 MHz RF sidebands, a pair of reflected reference fields near carrier resonance are off cavity resonance while beating with the carrier and provide a linear response after demodulating the sideband power. With the introduction of high and low frequency sideband fields, their presence is also detected through the DCPDs and PDH error signal. Their separations from carrier resonance are equal in phase (length, and frequency).~\cite{Bond:2017}}
 \label{fig:pdherr}
 \end{figure}
 
