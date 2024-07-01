@@ -29,7 +29,10 @@
 \usepackage{listings}
 \usepackage{lscape}
 \usepackage{bibentry}
-\usepackage{natbib}
+\usepackage[numbers]{natbib}
+
+\newif\ifswitch
+\switchtrue
 
 \definecolor{pybackcolour}{rgb}{0.95,0.95,0.92}
 
@@ -162,20 +165,17 @@ To the Duffys. Your love, guidance, and understanding during these last few year
 
 To Jimmy and Porkchop the dog. You’re my world. Thanks for always grounding me.
 
-\nobibliography{ref}
-\bibliographystyle{unsrt}
-\chapter*{Relevant Publications}
+\ifswitch
+    \nobibliography*
+    \chapter*{Relevant Publications}
+    \begin{itemize}
+        \item \bibentry{hardwick:2020}
+        \item \bibentry{buikema:2020}
+        \item \bibentry{tanioka:2022}
+    \end{itemize}
 
-\begin{enumerate}
-    \item \bibentry{hardwick:2020}
-    \item \bibentry{buikema:2020}
-    \item \bibentry{tanioka:2022}
-\end{enumerate}
 
-\newpage 
 \tableofcontents
-
-\newpage
 
 \pagenumbering{arabic}
 
@@ -203,7 +203,7 @@ To Jimmy and Porkchop the dog. You’re my world. Thanks for always grounding me
 \input{chapters/appendix}
 
 \addcontentsline{toc}{chapter}{References}
-\bibliography{ref.bib}
+\bibliography{ref}
 \bibliographystyle{ieeetr}
 
 \end{document}
