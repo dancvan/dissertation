@@ -56,9 +56,6 @@
 
 % HVA
 
-% FSS
-
-% Measuring OLG
 \appendix
 
 \renewcommand{\thesection}{\Alph{section}}
@@ -247,6 +244,36 @@ E_i = \frac{n^2 s_i (\vec{E}\cdot\vec{s})}{n^2 - \mu \varepsilon_i}
 Though this result requires revisiting geometrical conditions that are best visualized using a method introduced in the next section \cite{nye}. 
 
 %The most general form of the energy density can be geometrically represented as ellipsoid but a coordinate transformation we can diagonalize and realize the principal axes of the dielectric allowing a simpler form of the displacement, and in turn the energy density.
+
+\subsection{EO Modulation (Application)}\label{appendix:EOM}
+Imparting phase modulations onto an optical carrier field is a common application of the electro-optic effect. Electro-optic modulators (EOMs) or Pockel cells are sold as a standard optical components usually composed of a monolithic crystalline material sandwiched between two capacitor plates connected to a single electrical input port (typically coaxial for RF) designed to take in a voltage input of frequency ($\Omega$) within a specified modulation amplitude and frequency bandwidth. When the field amplitude across the crystal is driven by a voltage controlled oscillation, the amplitudes of the electro-optic tensor vary linearly. 
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=.5\textwidth]{figs/ALGAAS/eom_l_assembly.pdf}
+    \\
+    \vspace{-9mm}
+    \includegraphics[width=.5\textwidth]{figs/ALGAAS/eom_t_assembly.pdf}
+\caption{Longitudinal and transverse electro-optic modulators}
+\label{fig:EOM_types}
+\end{figure}
+
+The voltage amplitude of the signal input is proportional to the strength of the modulated phase on the optical carrier frequency ($\omega$); commonly quantified in terms of a modulation index ($\beta$):
+
+%%Consider a specific crystal that gives us our $\beta \mathrm{sin}(\Omega t)$
+
+$$
+	E_\mathrm{out} = E_o e^{i \omega t + \beta \mathrm{sin}( \Omega t)} \approx E_o [J_o(\beta)e^{i \omega t} + J_1(\beta) e^{i(\omega + \Omega)t} - J_1(\beta) e^{i(\omega - \Omega)t}]  
+$$
+
+\noindent Where we have approximated with the Jacobi-Anger expansion utilizing Besssel functions of the first kind ($J_n(x)$) ~\cite{oliver:1972}:
+
+\begin{equation}\label{eq:jacobianger}
+	e^{iz \mathrm{sin}(\theta)} \approx J_0(z) + 2 \sum_{n=1}^{\infty} i^n J_n(z) \mathrm{sin} (n \theta)
+\end{equation}
+
+\ref{eq:inpEOM} \; sufficiently demonstrates that, to the first order, a carrier field that is phase modulated is also, in essence, imparting power to separate optical sideband fields separated in frequency by an integer multiple of the modulation $n \cdot \Omega$. Typically $\Omega$ is a chosen frequency used for optical heterodyne detection; while for a noise-driven modulation, the phase coupling is coorelated to the local directionally relevant E-field spectra alongside the propogation length of the beam propogation within the electro-optic media.
+
 
 \section{Miller indices for highly reflective $\gaas$/$\algaas$ coatings}
 \begin{figure}[!hb]

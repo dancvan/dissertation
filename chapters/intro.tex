@@ -190,28 +190,28 @@ The Pound-Drever-Hall technique, originally and commonly used for laser frequenc
 	\frac{\Delta f}{f} = -\frac{\Delta L}{L}
 \end{equation}
 
-\noindent The alternative side-of-fringe lock provides a linear response in intensity, which is adequate for some applications but with reduced sensitivity due to the required power reduction by operating off resonance. Measurements of phase are extracted through an optical heterodyne; the co-propogation of a separate (but phase-locked) optical field with a known frequency separation to the carrier reflected from the cavity input~\cite{black:pdh}. The PDH servo bypasses the need for a complicated phase-locked two laser configuration by imposing a phase modulation onto the carrier field via an electro-optic modulator (aka Pockels cell) mentioned in section \autoref{sec:EOM}. Setting a photodiode of area ($A_\mathrm{PD}$) in reflection of the cavity with a coefficient of $r_\mathrm{cav}(\omega,L)$, we measure the reflected power of the input field given by \autoref{eq:inpEOM}\;:
+\noindent The alternative side-of-fringe lock provides a linear response in intensity, which is adequate for some applications but with reduced sensitivity due to the required power reduction by operating off resonance. Measurements of phase are extracted through an optical heterodyne; the co-propogation of a separate (but phase-locked) optical field with a known frequency separation to the carrier reflected from the cavity input~\cite{black:pdh}. The PDH servo bypasses the need for a complicated phase-locked two laser configuration by imposing a phase modulation of frequency $\Omega$ onto the carrier field with frequency $\omega$ via an electro-optic modulator (aka Pockels cell) \autoref{appendix:EOM}:
 
-%If the modulation depth given by \ref{eq:inpEOM} is set such that $\beta < 1$ then the input field may be approximated in terms of the first two Bessel functions $J_0$, $J_1$:
+\begin{equation}\label{eq:inpEOM}
+	E_\mathrm{mod} = E_0 e^{i \omega t + \beta \mathrm{sin}( \Omega t)} \approx E_0 [J_0(\beta)e^{i \omega t} + J_1(\beta) e^{i(\omega + \Omega)t} - J_1(\beta) e^{i(\omega - \Omega)t}]  
+\end{equation}
 
-%\begin{equation} \label{eq:EOM_trans_field}
-%E_\mathrm{inp} \approx E_0 [J_0(\beta)e^{i \omega t} + J_1(\beta)e^{i (\omega + \Omega) t} - J_1(\beta)e^{i(\omega -\Omega)t}]
-%\end{equation}
-%
-%With a high enough modulation frequency the terms given above can be far enough from the carrier frequency, so that the phase modulation onto the carrier field is mathematically and physically equivalent to imposing separate optical fields (sidebands) which in most cases do not resonate in the optical cavity of interest. 
+Where the Jacobi-Anger approximation has been used to characterize the modulated field into three different field components using the zeroeth order ($J_0$) and first order ($J_1$) Bessel functions of the first kind. 
+
+Setting a photodiode in reflection of the cavity with length ($L$) and a reflectivity coefficient of $r_\mathrm{cav}(\omega,L)$, we measure the reflected power of the modulated input field $E_0$ given by \autoref{eq:inpEOM}\;:
 
 \begin{equation}
  \begin{alignedat}{3}
-    &P_\mathrm{refl} && \approx \frac{|E_\mathrm{refl}|^2}{A_\mathrm{PD}} && \\
-    & &&\approx \frac{E_0^2}{A_\mathrm{PD}} && \bigg\{J_0^2 |r_\mathrm{cav}(\omega,L)|^2 + J_1^2(\beta)|r_\mathrm{cav}(\omega+\Omega,L)|^2 - J_1^2(\beta)|r_\mathrm{cav}(\omega-\Omega,L)|^2 +  \\
+    &P_\mathrm{refl} && \approx |E_\mathrm{refl}|^2 && \\
+    & &&\approx E_0^2  && \bigg\{J_0^2 |r_\mathrm{cav}(\omega,L)|^2 + J_1^2(\beta)|r_\mathrm{cav}(\omega+\Omega,L)|^2 - J_1^2(\beta)|r_\mathrm{cav}(\omega-\Omega,L)|^2 +  \\
     & && && J_0J_1(\beta)\big[r_\mathrm{cav}\omega,L) r_\mathrm{cav}^*(\omega+\Omega,L)\big] - J_ 0J_1(\beta)\big[r_\mathrm{cav}(\omega,L)r_\mathrm{cav}^*(\omega-\Omega,L)\big]\bigg\}
   \end{alignedat}
 \end{equation}
 
-The two trailing terms in the above equation for $P_\mathrm{refl}$ generate a beat frequency term between the carrier and lower and upper sidebands. The magnitude and sign of these beat terms directly relate to the phase of the reflected carrier field and can be measured and transformed to the error signal seen in \autoref{fig:pdherr} using resonant electronics (tuned to a chosen sideband frequency) for amplification and a mixer for demodulation.
+The two trailing terms in the above equation for $P_\mathrm{refl}$ generate a beat frequency term between the carrier and lower / upper sidebands. The magnitude and sign of these beat terms directly relate to the phase of the reflected carrier field and can be measured and transformed to the error signal seen in \autoref{fig:pdherr} using resonant electronics (tuned to a chosen sideband frequency) for amplification and a mixer for demodulation.
 
 \begin{figure}[H]
-	\includegraphics[width=\textwidth]{figs/ALGAAS/pdh_error.pdf}
+	\includegraphics[width=.9\textwidth]{figs/ALGAAS/pdh_error.pdf}
 	\caption{By imposing 25 MHz RF sidebands, a pair of reflected reference fields near carrier resonance are off cavity resonance while beating with the carrier and provide a linear response after demodulating the sideband power. With the introduction of high and low frequency sideband fields, their presence is also detected through the DCPDs and PDH error signal. Their separations from carrier resonance are equal in phase (length, and frequency)~\cite{Bond:2017}.}
 \label{fig:pdherr}
 \end{figure}

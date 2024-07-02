@@ -301,35 +301,6 @@ Both forms of the induced birefringence (electro-optic and photo-elastic) can be
 
 %%New principal dielectric axes for zincblende structures (zinblende photoelastic tensor, zincblende electro-optic tensor)
 
-\subsection{EO Modulation (Application)}\label{sec:EOM}
-Imparting phase modulations onto an optical carrier field is a common application of the electro-optic effect. Electro-optic modulators (EOMs) or Pockel cells are sold as a standard optical components usually composed of a monolithic crystalline material sandwiched between two capacitor plates connected to a single electrical input port (typically coaxial for RF) designed to take in a voltage input of frequency ($\Omega$) within a specified modulation amplitude and frequency bandwidth. When the field amplitude across the crystal is driven by a voltage controlled oscillation, the amplitudes of the electro-optic tensor vary linearly. 
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=.5\textwidth]{figs/ALGAAS/eom_l_assembly.pdf}
-    \\
-    \vspace{-9mm}
-    \includegraphics[width=.5\textwidth]{figs/ALGAAS/eom_t_assembly.pdf}
-\caption{Longitudinal and transverse electro-optic modulators}
-\label{fig:EOM_types}
-\end{figure}
-
-The voltage amplitude of the signal input is proportional to the strength of the modulated phase on the optical carrier frequency ($\omega$); commonly quantified in terms of a modulation index ($\beta$):
-
-%%Consider a specific crystal that gives us our $\beta \mathrm{sin}(\Omega t)$
-
-\begin{equation}\label{eq:inpEOM}
-	E_\mathrm{out} = E_o e^{i \omega t + \beta \mathrm{sin}( \Omega t)} \approx E_o [J_o(\beta)e^{i \omega t} + J_1(\beta) e^{i(\omega + \Omega)t} - J_1(\beta) e^{i(\omega - \Omega)t}]  
-\end{equation}
-
-\noindent Where we have approximated with the Jacobi-Anger expansion utilizing Besssel functions of the first kind ($J_n(x)$) ~\cite{oliver:1972}:
-
-\begin{equation}\label{eq:jacobianger}
-	e^{iz \mathrm{sin}(\theta)} \approx J_0(z) + 2 \sum_{n=1}^{\infty} i^n J_n(z) \mathrm{sin} (n \theta)
-\end{equation}
-
-\ref{eq:inpEOM} sufficiently demonstrates that, to the first order, a carrier field that is phase modulated is also, in essence, imparting power to separate optical sideband fields separated in frequency by an integer multiple of the modulation $n \cdot \Omega$. Typically $\Omega$ is a chosen frequency used for optical heterodyne detection; while for a noise-driven modulation, the phase coupling is coorelated to the local directionally relevant E-field spectra alongside the propogation length of the beam propogation within the electro-optic media.
-
 \section{Electro-optic noise of a \texorpdfstring{$\gaas$}{gaas} / \texorpdfstring{$\algaas$}{algaas} stack}
 A comprehensive survey of relevant birefringent properties of a HR $\gaas$/$\algaas$ mirrorstack is due, and for this body of work includes: 1) crystal coordinate considerations when asserting an optical axis on a highly reflective crystalline stack manufactured by the Thorlabs crystalline coatings division, 2) citations of coating parameters and observed intrinsic birefringence from the highly reflective coating stack in question, 3) analysis of the differential electro-optic effect on the phase of a reflected beam, and 4) estimating the the differential phase noise in LIGO based on preliminary electric field measurements measured at LHO.
 
@@ -341,8 +312,6 @@ A comprehensive survey of relevant birefringent properties of a HR $\gaas$/$\alg
 	\caption{The beam propogation axis with respect to the $\gaas$/$\algaas$ crystal axis. The axis formed by the [100] plane normal is drawn parallel with the beam axis (z-axis) and the polarizations of incident and reflected beam oscillate along vectors within the plane formed by the normal of that axis. The topmost coordinate axis triad is drawn to depict world vectors that can help visualize the plane of computed eigenvectors. Depicted here are also defects at the top and bottom right of the coating due to overhandling but do not effect the results of this study.}
 \label{fig:algaas_coord_defect}
 \end{figure}
-
-
 
 \noindent Thorlab's crystalline coatings division grows their HR crystalline optical coating such that the coating surface is drawn out in the $[100]$ plane, meaning that beam with a wavevector along the optical (z) axis draws a parallel line to the normal of said plane. Therefore since the beam's polarized E-field oscillates only within that plane, any differential splitting of the beam polarization occurs solely between rotated $[010]$ and $[001]$ axes. This allows us to restrict our interest to a field where $E_{z} \neq 0$ and $E_x = E_y =0$ and compute the eigenvalues ($\lambda^{*}_{x',y',z'}$ / eigenpolarizations ($\vec{x'}, \vec{y'}, \vec{z'}$) which lead us to the relevant eigenindices ($n_{x',y'})$ \footnote{There may appear to be an inconsistency between the miller indices and optical axes, but because of the isotropy of zincblende crystals prior to the field perturbation coordination of these axes is not quite relevant}:
 
