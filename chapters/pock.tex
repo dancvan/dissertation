@@ -23,7 +23,7 @@
 \section{Electro-optic measurement apparatus}\label{tanioka2022}
 %In seeking a calibrated estimate of the electro-optic effect for the $\gaas$/$\algaas$ mirror coating stack, we sought to drive an electro-optic response of a mirror sample from Thorlab's crystalline mirror coatings division placed within a custom longitudinal Pockels cell mirror mount. The assembly, with the installed sample, assumed the end mirror position within a two mirror Fabry-P\'erot cavity, while resonance of a circulating Nd:YAG 1064nm carrier beam was held by a Pound-Drever-Hall servo. As seen in the prior section, the size of the imparted phase noise for currently existing gravitational wave detector configurations is estimated to be small but notable. Investigation through measurement of said effect requires detection methods with sufficient sensitivity for the differential phase noise imparted by the effect. Details and specifications of the detection schema are discussed along with relevant measurements and results. 
 
-In order to experimetnally investigate the EO effect in $\gaas$ / $\algaas$ coatings, we developed an optical setup using a Fabry-P\'erot cavity. \autoref{fig:simpschema} shows the schematic of the experimental setup. Parameters of this setup are listed in \autoref{table:cav_params}. The Fabry-P\'erot cavity is composed of two high-reflectivity mirrors -- an amorphous coating front mirror and $\gaas$/$\algaas$ coating with the same composition used in \autoref{algaas_numericalestimate}, transferred to a planar super-polished fused silica substrate. 
+In order to experimentally investigate the EO effect in $\gaas$ / $\algaas$ coatings, we developed an optical setup using a Fabry-P\'erot cavity. \autoref{fig:simpschema} shows the schematic of the experimental setup. Parameters of this setup are listed in \autoref{table:cav_params}. The Fabry-P\'erot cavity is composed of two high-reflectivity mirrors -- an amorphous coating front mirror and $\gaas$/$\algaas$ coating with the same composition used in \autoref{algaas_numericalestimate}, transferred to a planar super-polished fused silica substrate. 
 
 \begin{figure}[H]
     \centering
@@ -31,43 +31,7 @@ In order to experimetnally investigate the EO effect in $\gaas$ / $\algaas$ coat
 	\caption{A simplified and modular schematic of the PDH servo used along with an electrostatic drive mount design comprised of a disk capacitor sandwiching the HR AlGaAs sample, a high voltage amplifier, and a signal / network analyzer.}
 \label{fig:simpschema}
 \end{figure}
- Measurability of the electro-optic effect is contingent upon two initial design criteria: the sensitivity of the optical plant to be implemented in the PDH servo, and the maximum achievable electric field strength along the beam axis ($|E_z|_\mathrm{max}$). Both are discussed in more detail in the following sections. 
-
-\subsection{PDH servo}\label{subsubsec:pdh}
-The Pound-Drever-Hall technique, originally and commonly used for laser frequency stabilization to an ultra-stable length reference, allows the tracking of the linear phase response of an input carrier field through cavity resonance. The servo fully realizes the ability of an optical cavity to act as a length / frequency discriminator \cite{pound_drever_hall:1983}:
-
-\begin{equation}\label{eq:cavlf}
-	\frac{\Delta f}{f} = -\frac{\Delta L}{L}
-\end{equation}
-
-\noindent The alternative side-of-fringe lock provides a linear response in intensity, which is adequate for some applications but with reduced sensitivity due to the required power reduction by operating off resonance. Measurements of phase are extracted through an optical heterodyne; the co-propogation of a separate (but phase-locked) optical field with a known frequency separation to the carrier reflected from the cavity input~\cite{black:pdh}. The PDH servo bypasses the need for a complicated phase-locked two laser configuration by imposing a phase modulation onto the carrier field via an electro-optic modulator (aka Pockels cell) mentioned in section \autoref{sec:EOM}. Setting a photodiode of area ($A_\mathrm{PD}$) in reflection of the cavity with a coefficient of $r_\mathrm{cav}(\omega,L)$, we measure the reflected power of the input field given by \autoref{eq:inpEOM}\;:
-
-%If the modulation depth given by \ref{eq:inpEOM} is set such that $\beta < 1$ then the input field may be approximated in terms of the first two Bessel functions $J_0$, $J_1$:
-
-%\begin{equation} \label{eq:EOM_trans_field}
-%E_\mathrm{inp} \approx E_0 [J_0(\beta)e^{i \omega t} + J_1(\beta)e^{i (\omega + \Omega) t} - J_1(\beta)e^{i(\omega -\Omega)t}]
-%\end{equation}
-%
-%With a high enough modulation frequency the terms given above can be far enough from the carrier frequency, so that the phase modulation onto the carrier field is mathematically and physically equivalent to imposing separate optical fields (sidebands) which in most cases do not resonate in the optical cavity of interest. 
-
-\begin{equation}
- \begin{alignedat}{3}
-    &P_\mathrm{refl} && \approx \frac{|E_\mathrm{refl}|^2}{A_\mathrm{PD}} && \\
-    & &&\approx \frac{E_0^2}{A_\mathrm{PD}} && \bigg\{J_0^2 |r_\mathrm{cav}(\omega,L)|^2 + J_1^2(\beta)|r_\mathrm{cav}(\omega+\Omega,L)|^2 - J_1^2(\beta)|r_\mathrm{cav}(\omega-\Omega,L)|^2 +  \\
-    & && && J_0J_1(\beta)\big[r_\mathrm{cav}\omega,L) r_\mathrm{cav}^*(\omega+\Omega,L)\big] - J_ 0J_1(\beta)\big[r_\mathrm{cav}(\omega,L)r_\mathrm{cav}^*(\omega-\Omega,L)\big]\bigg\}
-  \end{alignedat}
-\end{equation}
-
-The two trailing terms in the above equation for $P_\mathrm{refl}$ generate a beat frequency term between the carrier and lower and upper sidebands. The magnitude and sign of these beat terms directly relate to the phase of the reflected carrier field and can be measured and transformed to the error signal seen in \autoref{fig:pdherr} using resonant electronics (tuned to a chosen sideband frequency) for amplification and a mixer for demodulation.
-
-\begin{figure}[H]
-	\includegraphics[width=\textwidth]{figs/ALGAAS/pdh_error.pdf}
-	\caption{By imposing 25 MHz RF sidebands, a pair of reflected reference fields near carrier resonance are off cavity resonance while beating with the carrier and provide a linear response after demodulating the sideband power. With the introduction of high and low frequency sideband fields, their presence is also detected through the DCPDs and PDH error signal. Their separations from carrier resonance are equal in phase (length, and frequency)~\cite{Bond:2017}.}
-\label{fig:pdherr}
-\end{figure}
-
-With this linearity and sensitivity at cavity resonance, implementation into PID feedback is the next task as any small detuning of the cavity can be registered as a drift from the loop's zero point and fed back to an actuator with an estimated calibration gain factor. When implemented into a low-noise design, this servo can also be used for a high sensitivity lock-in measurement; and with well characterized instrumentation, calibration of the induced differential phase of the light within the stable reference cavity into differential length (or frequency) ~\cite{black:pdh}.
-
+ Measurability of the electro-optic effect is contingent upon two initial design criteria: the sensitivity of the optical plant to be implemented in the PDH servo, and the maximum achievable electric field strength along the beam axis ($|E_z|_\mathrm{max}$). 
 
 \subsection{Servo Parameters}
 The quantity we are attempting to measure is a differential length coupling on the order of $3.3 \times 10^{-18}$ [m/(V/m)], motivating a short cavity design as the relative differential length (phase) change scales with the sensitivity \autoref{eq:cavlf}. Considerations of the lab mirror inventory and mode matching critera lead us to two candidate plano-concave (ROC = 0.333m) HR IBS coated sample input couplers; one from CVI Melles-Griot and another from ATFilms. When paired with the plano-plano $\gaas$/$\algaas$  mirror from the Crystalline Mirror Solutions (CMS) division of Thorlabs, designed cavity length was 0.105 m.
@@ -108,19 +72,65 @@ The implemented servo design uses a light source from a Mephisto 2000 NE Nd:YAG 
 The laser frequency is locked to the cavity length using the aformentioned Pound-Derver-Hall technique. The extracted error signal is then filtered by the Sensing chain (S(f)) before being passed to the Actuation chain (A(f)). When the laser is locked to the in-air cavity, the fluctuations of the laser frequency ($\Delta f$) obey \autoref{eq:cavlf}. 
 
 \subsubsection{Sensing S(f)}
-Sensing electronics are composed of a single element photodiode mounted to a tranimpedance amplifier PCB, splitting photocurrent to DC and RF filter chains. The RF path is within the feedback electronics chain and constructed to boost the RF signal prior to being passed to a frequency stabilization servo (FSS) \footnote{FSS schema and transfer function \autoref{appendix:fss_tf}} where it is demodulated by mixing the 25 MHz oscillator phased with variable cable length. Once demodulated, the measured beat signal while sweeping through resonance generates the PDH error signal profile \footnote{As seen in \autoref{fig:pdherr}, and \autoref{appendix:laser_sweep}}.
+Sensing electronics are composed of a single element photodiode mounted to a tranimpedance amplifier circuit, splitting photocurrent to DC and RF filter chains. The RF path is within the feedback electronics chain and constructed to boost the RF signal prior to being passed to a frequency stabilization servo (FSS) \autoref{fig:fss_tf} where it is demodulated by mixing the 25 MHz oscillator phased with variable cable length. Once demodulated, the measured beat signal while sweeping through resonance generates the PDH error signal profiles \autoref{fig:pdherr}, and \autoref{appendix:laser_sweep}.
 
-\iffalse
-\textcolor{red}{inserting section of circuitry?}
-\fi
+\begin{landscape}
+    \section{FSS transfer function (LTSPICE)}\label{fig:fss_tf}
+\begin{figure}[H]
+  \begin{center}
+    \includegraphics[width=1.33\textwidth]{figs/ALGAAS/tfs/spice_FSS_tf.pdf}
+    \caption{The FSS frequency response simulated in LTspice}
+  \end{center}
+  \label{fig:spiceFSS}
+\end{figure}
+\end{landscape}
 
 
 \subsubsection{Actuation A(f)}
 The actuation portion of the loop amplifies the FSS output with a single I/O channel of the SVR 350-3 BIP High Voltage Amplifier \footnote{HVA transfer function \autoref{appendix:hva_tfs}} from Piezomechanik GmbH with a custom pomona box (elog 412) fed back to the input. The Mephisto 2220 laser cavity PZT actuator follows immediately after with a measured actuation factor of 1.7 [MHz] / [V].
 
-\iffalse
-\textcolor{red}{insert section of circuitry?}
-\fi
+
+\subsubsection{Loop Gain G(f)}
+\begin{figure}[H]
+  \begin{center}
+    \includegraphics[width=\textwidth]{figs/ALGAAS/olg_meas_diagram.pdf}
+    \caption{Open loop gain measurement diagram}
+  \end{center}
+  \label{fig:OLGmath}
+\end{figure}
+
+\begin{equation}
+    \mathrm{V}_\mathrm{b} = (\mathrm{V}_\mathrm{exc}+n) + H(\mathrm{V}_\mathrm{exc}+n) + H^2 (\mathrm{V}_\mathrm{exc}+n) + \mathrm{H.O.T.s} = \frac{\mathrm{V}_\mathrm{exc} + n}{1-H}
+\end{equation}
+
+\begin{equation}
+    \mathrm{V}_\mathrm{a} = H\cdot \mathrm{V}_\mathrm{exc} + H^2\mathrm{V}_\mathrm{exc} + H^3\mathrm{V}_\mathrm{exc} + \mathrm{H.O.T.s}  = \frac{H\mathrm{V}_\mathrm{exc}}{1-H}
+\end{equation}
+
+We take the transfer function measurement $\zeta$:
+
+\begin{equation}
+    \zeta = \frac{\mathrm{V}_\mathrm{a}}{\mathrm{V}_\mathrm{b}} = \frac{H \cdot \mathrm{V}_\mathrm{exc}/(1-H)}{(\mathrm{V}_\mathrm{exc}+n)/(1-H)}
+\end{equation}
+
+Assuming the excitation is appreciably larger than the noise ($e>>n$):
+
+\begin{equation}
+\zeta \approx H
+\end{equation}
+
+Isn't quite $\mathrm{A}(f)*\mathrm{S}(f)$ as stated. Doesn't entirely account for the optical plant.
+How the measurement is taken (important to take between installations to account for the changes in the optical plant) (elog 831)
+
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=\textwidth]{ALGAAS/olg_compare.pdf}
+\end{center}
+\caption{Comparison of the open loop gain measurement against the multiplied servo electronics measurements. The maximum gain difference is about a factor of 2.8 which is low passed to a difference of 2.0.}
+\label{fig:OLGcompare}
+\end{figure}
+
+
 
 \subsection{Longitudinal Pockels Cell mirror mount assembly}
 Maximizing a controlled and well defined electric field ($|E_z|$) within the coating while requiring a through beam to and through the HR coating lead us to a design very similar to that of a longitudinal pockels cell. The most common assembly used for this study is comprised of two electrodes with a 3mm central aperture which is chosen to be at least 5 times larger than the beam size at the plate locations; to avoid significant beam clipping while maximizing field strength ($\mathrm{E}_\mathrm{z}$) at the coating region of interest. There is also a required plate separation of at least 1/4" accounting for the thickness of the optical sample. Considering these constraints, modelling the system and computing the estimated field strength screened by the coating is the next step towards building the assembly.
@@ -155,7 +165,6 @@ The field screened by the coating can be computed from Gauss' Law:
   \label{fig:laplacecoords}
 \end{figure}
 
-
 \subparagraph*{Substrate:}
 $ -t_{opt} \; \textless \; z \; \textless \;\mathrm{t}_{opt} $ and $\mathrm{r} \; \textless \;\mathrm{r}_{opt}$
 \subparagraph*{Coating}
@@ -178,106 +187,6 @@ $ z \; = \;\mathrm{z}_\mathrm{max} $ or  $r \; = \;\mathrm{r}_{max}$ or  $r \; =
 \end{equation}
 
 Where $A_o$ is a characteristic voltage, and $r_o$ is a chosen characteristic distance. Though with the region of interest being at the coating surface, these edges are far enough away that a change in these characteristic values would cause a negligible difference to the resulting E-field estimate.
-
-\paragraph*{Numerical Recipe (Finite Differencing)}
-
-We exploit the chosen optic / disk symmetry about the polar angle ($\partial V / \partial \theta = 0$) and compute for the longitudinal ($z$) and radial ($r$) coordinates with the use of the appropriate Laplacian:
-
-\begin{equation} 
-\bigg[\frac{1}{r}\frac{\partial}{\partial r} \bigg( r \frac{\partial}{\partial r}\bigg) + \frac{\partial^2}{\partial z^2} \bigg](\varepsilon V) = 0
-\end{equation}
-
-Where $\varepsilon$ is the dielectric
-
-Observing equation \autoref{eq:cyllap} we parse the non-zero expression into it's individual parts:
-
-\begin{equation} \label{eq:cyllap_xpand}
-    \bigg[\underbrace{\frac{\partial^2}{\partial z^2}}_\text{(c)} + \underbrace{\frac{\partial^2}{\partial r^2}}_\text{(b)}  + \underbrace{\frac{1}{r} \frac{\partial}{\partial r}}_\text{(a)}\bigg] (\varepsilon V) = 0
-\end{equation}
-
-\subparagraph*{Term (a)}
-
-Starting with the first derivative, we use the central difference approximation:
-
-\begin{equation}
-    \frac{\partial}{\partial r} \rightarrow \frac{f(r + h, z) - f(r - h, z )}{2h} \rightarrow \bigg[-\frac{1}{2} \quad  0  \quad \frac{1}{2} \bigg]
-\end{equation}
-
-\subparagraph*{Term (b)}
-
-Second derivative approximation, we use the standard 2d laplace stencil
-
-\begin{equation}
-    \frac{\partial}{\partial r^2} \rightarrow \frac{f(r+h, z) - 2 f(r, z) + f(r-h, z)}{h^2} \rightarrow \big[ 1 \quad -2 \quad 1 \big]
-\end{equation}
-
-\subparagraph*{Term (c)}
-Equivalent to the second derivative approximation used above:
-
-\begin{equation}
-    \frac{\partial}{\partial z^2} \rightarrow  \frac{f(r, z+h) - 2 f(r, z) + f(r, z-h)}{h^2} \rightarrow \big[ 1\quad -2 \quad 1 \big]
-\end{equation}
-
-To build the stencil terms at the boundaries, we look at the specialized finite difference condition @ $ r = 0 $, with the symmetry about $r=0$ allowing the application of a ghost point V(-h,z) = V(h,z) :
-
-\begin{equation}\label{eq:first_deriv_V}
-	\frac{\partial V}{\partial r} = 0 \rightarrow V(h, z) = V(-h,z)
-\end{equation}
-
-\begin{equation}\label{eq:second_deriv_V}
-	\frac{\partial^2 V}{\partial r^2} = \frac{2}{h}\bigg(\frac{V(h,z) -  V(0, z) }{h}\bigg) 
-\end{equation}
-
-\autoref{eq:first_deriv_V} alone does not define V(0,z), to establish the form of this point, we proceed to (Taylor) expand the function about it:
-
-\begin{equation}\label{eq:taylor_V}
- V \approx V_0  + C_1 r +  C_2 r^{2} + \mathcal{O}(r^4) 
-\end{equation}
-
-Symmetry about the origin imposes an even function of $V$:  
-$$ \frac{\partial V}{\partial r} \approx C_1 +  2 C_2 r  + \mathcal{O}(r^3) $$
-
-\begin{equation}\label{eq:taylor_terma}
-	\frac{1}{r} \frac{\partial V}{\partial r} \approx  2 C_2  + \mathcal{O}(r^2)
-\end{equation}
-
-Where $C_1 = 0$ to avoid a singular point.
-
-\begin{equation}\label{eq:taylor_termb}
-	\frac{\partial^2 V}{\partial r^2} \approx 2 C_2 + \mathcal{O}(r^2) 
-\end{equation}
-
-Substituting \autoref{eq:taylor_terma} and \autoref{eq:taylor_termb} back into equation \autoref{eq:cyllap_xpand} :
-\begin{equation}
-    \nabla^2 (\varepsilon V)= \frac{\partial^2}{\partial z^2} + 4 C_2 
-\end{equation}
-
-The radial portion of the operator $\nabla^2 V$ given \autoref{eq:taylor_V} and \autoref{eq:second_deriv_V}:
-
-\begin{equation}
-\bigg(\frac{r_0}{h} - \frac{2}{h^2} \bigg) C_1 + \bigg(\frac{r_h}{h} + \frac{2}{h^2} \bigg) C_2 h^2 = 4 C_2
-\end{equation}
-
-Where again, we found $C_1 = 0$:
-
-$$
-(r_h * h + 2) C_2 = 4 C_2
-$$
-
-\begin{equation}
-    \begin{aligned}
-	r_h = 2 / h  \; , \\
-	r_0 = -2 / h
-    \end{aligned}
-\end{equation}
-
-\iffalse 
-\swb{The following is a bit hard to follow, and I think there is a bug in the $K_n^{(1)}$. Might be better not to show the full matrices. Instead be a little more explicit on how you extract the calibration number from that simulation. Touch on the fact that the answer is somewhat boundary condition-dependent, as we don't specify the B.C outside the hole.} 
-\fi
-\newpage
-Now meshgrid coordinates are set:
-
-\input{notes/LaplacE_meshgrid.tex}
 
 \newpage
 

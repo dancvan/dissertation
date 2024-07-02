@@ -59,7 +59,11 @@
 % FSS
 
 % Measuring OLG
+\appendix
 
+\renewcommand{\thesection}{\Alph{section}}
+
+\label{ch:appendix}
 \section{Interferometer Configurations (code)}\label{appendix:ifo_configs_code}
 \subsection{ifo\_configs.py}
 \input{code/ifo_configs/ifo_configs.tex}
@@ -174,11 +178,15 @@ The above coorelates the material index ($n$) to a path distortion ($\Psi$) (to 
 \subsection{Thermoelastic aberration}
 A much more involved derivation with a significantly larger result than above is computed in \cite{hellovinet_te:1990}, though best computed for oneself especially for coatings and substrates alternative to $\siotao$ and fused silica respectively. It is worth mentioning that the effect for an approximate 1W absorbed power yields a 10 times smaller optical path distortion than that mentioned for the thermal lens~\cite{hellovinet:1990}. 
 
+\iffalse
 \subsection{Ring Heater actuation}
+An analytical expression of the transient optical path distortion ($\Psi(t,r)$) from RH actuation is provided by ~\cite{ramette:2016}:
 \begin{equation}
 	\Psi(t,r)=2\frac{dn}{dT} \sum^{\infty}_{m,p = 1} A_{m,p} \; c^{u}_{p} \mathrm{sin}(u_m h /2a) (a/u_m)[1-e^{-\alpha t}] J_0(\zeta_p r/a)
 \end{equation}
-~\cite{ramette:2016}
+
+Where $\frac{dn}{dT} is the thermo-refractive coefficient
+\fi
 
 \section{CO2 mask}\label{sec:CO2mask}
 \begin{figure}[H]
@@ -255,6 +263,108 @@ Though this result requires revisiting geometrical conditions that are best visu
 Up to this point three varieties of orthonormal coordinates are addressed: the crystal axis (as indicated by Miller index plane normals), the principal dielectric axis (based on diagonalization of the indicatrix), and an optical beam axis (when considering a desired (laser) light propogation). The asserted beam axis can be cited \autoref{fig:algaascoords}.
 
 
+\section{Laplacian in Cylindrical coordinates (Numerical Recipe)}
+
+We exploit the chosen optic / disk symmetry about the polar angle ($\partial V / \partial \theta = 0$) and compute for the longitudinal ($z$) and radial ($r$) coordinates with the use of the appropriate Laplacian:
+
+\begin{equation} 
+\bigg[\frac{1}{r}\frac{\partial}{\partial r} \bigg( r \frac{\partial}{\partial r}\bigg) + \frac{\partial^2}{\partial z^2} \bigg](\varepsilon V) = 0
+\end{equation}
+
+Where $\varepsilon$ is the dielectric
+
+Observing equation \autoref{eq:cyllap} we parse the non-zero expression into it's individual parts:
+
+\begin{equation} \label{eq:cyllap_xpand}
+    \bigg[\underbrace{\frac{\partial^2}{\partial z^2}}_\text{(c)} + \underbrace{\frac{\partial^2}{\partial r^2}}_\text{(b)}  + \underbrace{\frac{1}{r} \frac{\partial}{\partial r}}_\text{(a)}\bigg] (\varepsilon V) = 0
+\end{equation}
+
+\subparagraph*{Term (a)}
+
+Starting with the first derivative, we use the central difference approximation:
+
+\begin{equation}
+    \frac{\partial}{\partial r} \rightarrow \frac{f(r + h, z) - f(r - h, z )}{2h} \rightarrow \bigg[-\frac{1}{2} \quad  0  \quad \frac{1}{2} \bigg]
+\end{equation}
+
+\subparagraph*{Term (b)}
+
+Second derivative approximation, we use the standard 2d laplace stencil
+
+\begin{equation}
+    \frac{\partial}{\partial r^2} \rightarrow \frac{f(r+h, z) - 2 f(r, z) + f(r-h, z)}{h^2} \rightarrow \big[ 1 \quad -2 \quad 1 \big]
+\end{equation}
+
+\subparagraph*{Term (c)}
+Equivalent to the second derivative approximation used above:
+
+\begin{equation}
+    \frac{\partial}{\partial z^2} \rightarrow  \frac{f(r, z+h) - 2 f(r, z) + f(r, z-h)}{h^2} \rightarrow \big[ 1\quad -2 \quad 1 \big]
+\end{equation}
+
+To build the stencil terms at the boundaries, we look at the specialized finite difference condition @ $ r = 0 $, with the symmetry about $r=0$ allowing the application of a ghost point V(-h,z) = V(h,z) :
+
+\begin{equation}\label{eq:first_deriv_V}
+	\frac{\partial V}{\partial r} = 0 \rightarrow V(h, z) = V(-h,z)
+\end{equation}
+
+\begin{equation}\label{eq:second_deriv_V}
+	\frac{\partial^2 V}{\partial r^2} = \frac{2}{h}\bigg(\frac{V(h,z) -  V(0, z) }{h}\bigg) 
+\end{equation}
+
+\autoref{eq:first_deriv_V} alone does not define V(0,z), to establish the form of this point, we proceed to (Taylor) expand the function about it:
+
+\begin{equation}\label{eq:taylor_V}
+ V \approx V_0  + C_1 r +  C_2 r^{2} + \mathcal{O}(r^4) 
+\end{equation}
+
+Symmetry about the origin imposes an even function of $V$:  
+$$ \frac{\partial V}{\partial r} \approx C_1 +  2 C_2 r  + \mathcal{O}(r^3) $$
+
+\begin{equation}\label{eq:taylor_terma}
+	\frac{1}{r} \frac{\partial V}{\partial r} \approx  2 C_2  + \mathcal{O}(r^2)
+\end{equation}
+
+Where $C_1 = 0$ to avoid a singular point.
+
+\begin{equation}\label{eq:taylor_termb}
+	\frac{\partial^2 V}{\partial r^2} \approx 2 C_2 + \mathcal{O}(r^2) 
+\end{equation}
+
+Substituting \autoref{eq:taylor_terma} and \autoref{eq:taylor_termb} back into equation \autoref{eq:cyllap_xpand} :
+\begin{equation}
+    \nabla^2 (\varepsilon V)= \frac{\partial^2}{\partial z^2} + 4 C_2 
+\end{equation}
+
+The radial portion of the operator $\nabla^2 V$ given \autoref{eq:taylor_V} and \autoref{eq:second_deriv_V}:
+
+\begin{equation}
+\bigg(\frac{r_0}{h} - \frac{2}{h^2} \bigg) C_1 + \bigg(\frac{r_h}{h} + \frac{2}{h^2} \bigg) C_2 h^2 = 4 C_2
+\end{equation}
+
+Where again, we found $C_1 = 0$:
+
+$$
+(r_h * h + 2) C_2 = 4 C_2
+$$
+
+\begin{equation}
+    \begin{aligned}
+	r_h = 2 / h  \; , \\
+	r_0 = -2 / h
+    \end{aligned}
+\end{equation}
+
+\iffalse 
+\swb{The following is a bit hard to follow, and I think there is a bug in the $K_n^{(1)}$. Might be better not to show the full matrices. Instead be a little more explicit on how you extract the calibration number from that simulation. Touch on the fact that the answer is somewhat boundary condition-dependent, as we don't specify the B.C outside the hole.} 
+\fi
+\newpage
+Now meshgrid coordinates are set:
+
+\input{notes/LaplacE_meshgrid.tex}
+
+
+
 
 \section{Mode matching data for Electro-optic sample cavity}
 
@@ -289,60 +399,8 @@ Up to this point three varieties of orthonormal coordinates are addressed: the c
     \caption{Different high voltage amplifier transfer functions used for the study}
     \label{fig:hvacompare}
 \end{figure}
-
-\begin{landscape}
-    \section{FSS transfer function (LTSPICE)}\label{appendix:fss_tf}
-\begin{figure}[H]
-  \begin{center}
-    \includegraphics[width=1.33\textwidth]{figs/ALGAAS/tfs/spice_FSS_tf.pdf}
-    \caption{The FSS frequency response simulated in LTspice}
-  \end{center}
-  \label{fig:spiceFSS}
-\end{figure}
-\end{landscape}
-
-\section{Measuring OLG [H]}\label{appendix:OLG_meas}
-
-\begin{figure}[H]
-  \begin{center}
-    \includegraphics[width=\textwidth]{figs/ALGAAS/olg_meas_diagram.pdf}
-    \caption{Open loop gain measurement diagram}
-  \end{center}
-  \label{fig:OLGmath}
-\end{figure}
-
-\begin{equation}
-    \mathrm{V}_\mathrm{b} = (\mathrm{V}_\mathrm{exc}+n) + H(\mathrm{V}_\mathrm{exc}+n) + H^2 (\mathrm{V}_\mathrm{exc}+n) + \mathrm{H.O.T.s} = \frac{\mathrm{V}_\mathrm{exc} + n}{1-H}
-\end{equation}
-
-\begin{equation}
-    \mathrm{V}_\mathrm{a} = H\cdot \mathrm{V}_\mathrm{exc} + H^2\mathrm{V}_\mathrm{exc} + H^3\mathrm{V}_\mathrm{exc} + \mathrm{H.O.T.s}  = \frac{H\mathrm{V}_\mathrm{exc}}{1-H}
-\end{equation}
-
-We take the transfer function measurement $\zeta$:
-
-\begin{equation}
-    \zeta = \frac{\mathrm{V}_\mathrm{a}}{\mathrm{V}_\mathrm{b}} = \frac{H \cdot \mathrm{V}_\mathrm{exc}/(1-H)}{(\mathrm{V}_\mathrm{exc}+n)/(1-H)}
-\end{equation}
-
-Assuming the excitation is appreciably larger than the noise ($e>>n$):
-
-\begin{equation}
-\zeta \approx H
-\end{equation}
-
-Isn't quite $\mathrm{A}(f)*\mathrm{S}(f)$ as stated. Doesn't entirely account for the optical plant.
-How the measurement is taken (important to take between installations to account for the changes in the optical plant) (elog 831)
-
-\begin{figure}[H]
-\begin{center}
-\includegraphics[width=\textwidth]{ALGAAS/olg_compare.pdf}
-\end{center}
-\caption{Comparison of the open loop gain measurement against the multiplied servo electronics measurements. The maximum gain difference is about a factor of 2.8 which is low passed to a difference of 2.0.}
-\label{fig:OLGcompare}
-\end{figure}
-
 \newpage
+
 
 \section{Alternate Mounting Solutions (Assemblies \texorpdfstring{$1 \rightarrow 3$}{1to3})}\label{appendix:mount_assemblies}
 

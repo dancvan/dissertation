@@ -86,16 +86,14 @@ Transient ring heater actuation from a radially symmetric thermal aberration ($\
 
 The measured transient thermo-optic response exhibits differential defocusing for $\approx$ 17.5 hours once the ring heater power has been changed; and with a large enough power steps, these adjustments to ring heater power can significantly stall precious detector observing/comissioning time due to differential mode matching. Thermo-optic time constants are reduced by applying real time digital filtering to ring heater power controls. The desired thermo-optic response is one that resembles a step from one defocus state to another with no overshoot. 
 
+\iffalse
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=.5\textwidth]{TCS/IRHF/RH_control_diagram.pdf}
 	\caption{A simple controls diagram depicting the concept of a RH control pre-filter (\textbf{G(s)}) taking a step input (\textbf{u(t)}) and transforming it before reaching the thermo-optic plant (\textbf{H(s)}) with output can also be generalized to an adaptive optics control loop.}
 	\label{fig:RH_control}
 \end{figure}
-
-The RH power control transient ($\mathrm{u}(t)$) resembles that of a Heaviside function ($\Theta(t)$), motivating an inversion of the response function which provides a reasonable first order filter correction. Therefore, the prescription for creating an input filter is realized through inverting the known RH step response with additional low passing at high frequency to avoid aliasing due to low sampling rate of the slow control system. However, a full inversion of the thermal $1/f$ roll-off at high frequencies would lead to an infinite control signal on short time scales. Since the ring heater output is physically limited by its maximum power (10 Watt), as well as zero (no heating) for negative signals, a necessary constraint for the input filter to work with any command input is that its high frequency gain is less or equal to its DC gain. In the time domain, this guarantees that the initial fast transient is less or equal to the output required over long timescales. This condition can only be violated if extra control headroom can be guaranteed by some other means. See figure \autoref{fig:rtdf_pictograph} and \autoref{fig:dynam_comparison}. 
-\iffalse \swb{In previous paragraph: replace "avoid any high frequency control instability" with "avoid aliasing due to the low sampling rate of the slow control system." Furthermore, add "However, a full inversion of the thermal $1/f$ roll-off at high frequencies would lead to an infinite control signal on short time scales. Since the ring heater output is physically limited by its maximum power (10 Watt), as well as by zero (no heating) for negative signals, a necessary constraint for the input filter to work with any command input is that its high frequency gain is less or equal to its DC gain. In time domain, this guarantees that the initial fast transient is less or equal to the output required over long timescales.
-This condition can only be violated if extra contreol headroom can be guarantees by some other mean. See figure 2.8 and 2.9."} \fi
+\fi 
 
 \begin{figure}[H]
     \centering
@@ -104,10 +102,15 @@ This condition can only be violated if extra contreol headroom can be guarantees
     \label{fig:justplant}
 \end{figure}
 
+The RH power control transient ($\mathrm{u}(t)$) resembles that of a Heaviside function ($\Theta(t)$), motivating an inversion of the response function which provides a reasonable first order filter correction. Therefore, the prescription for creating an input filter is realized through inverting the known RH step response with additional low passing at high frequency to avoid aliasing due to low sampling rate of the slow control system. However, a full inversion of the thermal $1/f$ roll-off at high frequencies would lead to an infinite control signal on short time scales. Since the ring heater output is physically limited by its maximum power (10 Watt), as well as zero (no heating) for negative signals, a necessary constraint for the input filter to work with any command input is that its high frequency gain is less or equal to its DC gain. In the time domain, this guarantees that the initial fast transient is less or equal to the output required over long timescales. This condition can only be violated if extra control headroom can be guaranteed by some other means. See figure \autoref{fig:rtdf_pictograph} and \autoref{fig:dynam_comparison}. 
+\iffalse \swb{In previous paragraph: replace "avoid any high frequency control instability" with "avoid aliasing due to the low sampling rate of the slow control system." Furthermore, add "However, a full inversion of the thermal $1/f$ roll-off at high frequencies would lead to an infinite control signal on short time scales. Since the ring heater output is physically limited by its maximum power (10 Watt), as well as by zero (no heating) for negative signals, a necessary constraint for the input filter to work with any command input is that its high frequency gain is less or equal to its DC gain. In time domain, this guarantees that the initial fast transient is less or equal to the output required over long timescales.
+This condition can only be violated if extra contreol headroom can be guarantees by some other mean. See figure 2.8 and 2.9."} \fi
+
+
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{TCS/IRHF/RH_plant_filter_fit}
-    \caption{Showing the PSD of the RH response (normalized by the input RH power) over a an $\approx$ 12.5 hour period. The zpk model of the fitted filter (H(s)) = $9.2545\mathrm{e} \text{-}12 \Big(\frac{(s+3.14210\mathrm{e}\text{-}5)}{(s+8.168\mathrm{e}\text{-}5)(s+0.0003142)(s+0.0005969)}\Big)$}
+    \caption{Showing the transfer function of the RH response (normalized by the input RH power) over a an $\approx$ 12.5 hour period. The zpk model of the fitted filter (H(s)) = $9.2545\mathrm{e} \text{-}12 \Big(\frac{(s+3.14210\mathrm{e}\text{-}5)}{(s+8.168\mathrm{e}\text{-}5)(s+0.0003142)(s+0.0005969)}\Big)$}
     \label{fig:plant_v_fit}
 \end{figure}
 
