@@ -130,8 +130,6 @@ How the measurement is taken (important to take between installations to account
 \label{fig:OLGcompare}
 \end{figure}
 
-
-
 \subsection{Longitudinal Pockels Cell mirror mount assembly}
 Maximizing a controlled and well defined electric field ($|E_z|$) within the coating while requiring a through beam to and through the HR coating lead us to a design very similar to that of a longitudinal pockels cell. The most common assembly used for this study is comprised of two electrodes with a 3mm central aperture which is chosen to be at least 5 times larger than the beam size at the plate locations; to avoid significant beam clipping while maximizing field strength ($\mathrm{E}_\mathrm{z}$) at the coating region of interest. There is also a required plate separation of at least 1/4" accounting for the thickness of the optical sample. Considering these constraints, modelling the system and computing the estimated field strength screened by the coating is the next step towards building the assembly.
 
@@ -188,44 +186,10 @@ $ z \; = \;\mathrm{z}_\mathrm{max} $ or  $r \; = \;\mathrm{r}_{max}$ or  $r \; =
 
 Where $A_o$ is a characteristic voltage, and $r_o$ is a chosen characteristic distance. Though with the region of interest being at the coating surface, these edges are far enough away that a change in these characteristic values would cause a negligible difference to the resulting E-field estimate.
 
-\newpage
-
 \subsubsection*{Computing V(r,z)}
 
-Inspired by the second-order elliptic equation, operators are modified to incorporate the aforementioned boundary conditions~\cite{Press:2007}.
+Inspired by the second-order elliptic equation, operators are modified to incorporate the aforementioned boundary conditions ~\cite{Press:2007}.
 
-
-Parallel computation of the potential over the entire meshgrid is done by vectorizing the potential:
-
-\[ 
- \begin{aligned}
-    V &= \begin{bmatrix}
-           V(\rho_0, z_0) \\
-           V(\rho_1, z_0) \\
-           \vdots \\
-	   V(\rho_n, z_0) \\
-	   ---------- \\
-	   V(\rho_0, z_1) \\
-           V(\rho_1, z_1) \\
-           \vdots \\
-	   V(\rho_n, z_1) \\
-	   ---------- \\
-	   \vdots \\
-	   ---------- \\
-	   V(\rho_0, z_{n-1}) \\
-           V(\rho_1, z_{n-1}) \\
-           \vdots \\
-           V(\rho_n, z_{n-1}) \\
-           ---------- \\
-           V(\rho_0, z_n) \\
-	   V(\rho_1, z_n) \\
-	   \vdots \\
-	   V(\rho_n, z_n) 
-         \end{bmatrix}
-  \end{aligned}
-\]
-
-\newpage
 \iffalse
 
 \[ 
@@ -295,7 +259,7 @@ Where $\mathrm{eye}(\mathrm{n})$ and $\mathrm{zeros}({n})$ represent (nxn) ident
 	O_{n} = \mathrm{zeros}(n)
 \]	
 \fi
-\newpage
+
 \iffalse
 \begin{equation}
     V_{n + 1} = (\mathcal{I}_{N^2}  + \mathcal{L}_{cyl}) V_{n}
@@ -306,8 +270,9 @@ Where the above matrix is a tri-diagonal block sparse matrix with square embedde
 
 
 \begin{figure}[H]
-  \includegraphics[width=\textwidth]{ALGAAS/assembly4_sim.pdf}
-  \caption{Numerically computed potential map estimate ($V(z,r)$ in cylindrical coordinates)}
+  \centering
+  \includegraphics[width=.875\textwidth]{ALGAAS/assembly4_sim.pdf}
+  \caption{Numerically computed potential map estimate ($V(z,r)$ in cylindrical coordinates). The potential difference between the two plates ($\Delta V$) is 1 [V] with a plate holding positive potential .5 [V] and a negative plate holding -.5 [V] to impose symmetry with the visualization. Although these held plate potentials differ from the 1 [V] and 0 [V] imposed in the experiment, the computation required to inform the field strength at the region of interest demonstrates a negligible difference between these two configurations.} 
   \label{fig:poissoncalcoutput}
 \end{figure}
 
@@ -429,18 +394,140 @@ If \(\mathrm{CH1}(f)\) is in \(V_\mathrm{pk}\) then signal(f) will be in
 %\end{equation}
 
 \subsection{Assembly Mount Tests/Development}
-The following section briefly discusses the nature of early measurements performed with various longitudinal pockel cell mount assemblies. Further details (assembly parameters, blueprints, and visual aids) can be found in the appendix. 
+The following section briefly discusses the nature of early measurements performed with various longitudinal pockel cell mount assemblies. A significant barrier to low differential length noise sensitivity for this experiment was the lack of low-noise optical mounts in accessible non-conductive materials. Most commercial optical mounts are constructed with conductive materials which is problematic when seeking to isolate the coating from non-normal field gradients within the coating volume of interest.  For this reason, efforts were focused on developing a suitable mounting solution that would provide adequate isolation from any uncontrolled field magnitudes while driving a field normally incident on the surface with enough strength and uniformity across the beam area to extract a measurement of the differential length change from the Pockels effect. 3D printing for this project was inititally used as a means to prototype optical mount designs but public health concerns at the time made testing with alternative materials aside from PLA and PETG difficult. There were multiple 3D prints tested within the optical schema depicted in \autoref{fig:simpschema}. 
 
-\subsubsection{Assembly 0 $\rightarrow$ Assembly 2}
-A significant barrier to low differential length noise sensitivity for this experiment was the lack of low-noise optical mounts in accessible non-conductive materials. Most commercial optical mounts are constructed with conductive materials which is problematic when seeking to isolate the coating from non-normal field gradients within the coating volume of interest.  For this reason, efforts were focused on developing a suitable mounting solution that would provide adequate isolation from any uncontrolled field magnitudes while driving a field normally incident on the surface with enough strength and uniformity across the beam area to extract a measurement of the differential length change from the Pockels effect. 3D printing for this project was inititally used as a means to prototype optical mount designs but public health concerns at the time made testing with alternative materials aside from PLA and PETG difficult. There were multiple 3D prints tested within the optical schema depicted in \autoref{fig:simpschema}. Varying the mechanical configurations (i.e. differential electrode and / or optic set screw settings) to the slightest degree left us to discover a variety of drive couplings via excitations from the assembly sample-mount acoustic modes while driving the voltage on electrodes plates. Tracking consistent mechanical response for assemblies prior to Assembly 3 proved challenging due to inconsistent mechanical settings between some measurements and span different geometries / material properties \footnote{For more details see \autoref{appendix:mount_assemblies}}. An adequate solution was dependent on selecting a material and geometry that would generate narrow acoustic resonances while simultaneously achieving adequately low noise within a bandwidth of interest (a not so uncommon experimental technique, esp. for optic suspensions, that is frequently used and mentioned within collaboration literature). Assembly 3 demonstrated such characteristics and is discussed further.
+\subsubsection{Assembly 0 and 1}
+
+\paragraph*{Model params}
+\begin{center}
+\begin{tabular}{ |c|c|c|c|c|c| } 
+\hline
+$\mathrm{r}_{ap}$ [m] &  $\mathrm{t}_{cap}$ [m] & $\mathrm{r}_{el}$ [m] & $\mathrm{t}_{el}$ [m] & $\mathrm{r}_{opt}$ [m] & $\mathrm{t}_{opt}$ [m] \\
+\hline
+1.5e-3 & 4.5e-3 & 38.1e-3 & 1.5e-3 & 12.7e-3 & 6.35e-3 \\ 
+\hline
+\end{tabular}
+\end{center}
+
+\paragraph*{Electrodes}
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\textwidth]{figs/ALGAAS/assemblies/assembly0/Electrode_0_1.pdf}
+  \caption{Technical drawing of the 3" disk electrode plates made of aluminum.}
+\end{figure}
 
 
+\paragraph*{Mount 0}
+
+\begin{figure}[!ht]
+	\begin{subcaptiongroup}
+		\centering
+		\includegraphics[width=.42\textwidth]{figs/ALGAAS/assemblies/assembly0/assembly0.pdf}
+		\phantomcaption\label{A0}
+		\includegraphics[width=.42\textwidth]{figs/ALGAAS/assemblies/assembly0/assembly0_incident_power.pdf}
+ 		\phantomcaption\label{A0inc}
+	\end{subcaptiongroup}
+  \caption{Assembly 0 was constructed to meet the criteria of providing a non-conductive housing for the electrode / sample assembly while maintaining a fixed length spacing using parts 3d printed with polylactic acid filament (PLA).}
+  \label{fig:assembly0bp}
+\end{figure}
+\FloatBarrier
+\subsubsection*{Mount 1.1}
+\begin{figure}[!ht]
+	\begin{subcaptiongroup}
+		\centering
+		\includegraphics[width=.42\textwidth]{figs/ALGAAS/assemblies/assembly1/assembly1_dissassembled.pdf}
+		\phantomcaption\label{A1pt2CAD}
+		\includegraphics[width=.42\textwidth]{figs/ALGAAS/assemblies/assembly1/assembly1_insitu2.pdf}
+		\phantomcaption\label{A1pt2pic}	
+	\end{subcaptiongroup}
+	\caption{Assembly 1 was constructed to meet the criteria of providing a non-conductive housing for the electrode / sample assembly while maintaining a fixed length spacing using parts 3d printed with polylactic acid (PLA). The assembly is coupled to an ortho-planar spring to allow for a built-in pitch/yaw control}
+	\label{fig:assembly1bp}
+\end{figure}
+\FloatBarrier
+
+\paragraph*{Mount 1.2}
+\begin{figure}[!ht]
+	\begin{subcaptiongroup}
+		\includegraphics[width=.5\textwidth]{figs/ALGAAS/assemblies/assembly1/assembly1_mod_front.pdf}
+		\phantomcaption\label{A1pt3CAD}
+		\includegraphics[width=.5\textwidth]{figs/ALGAAS/assemblies/assembly1/assembly1_mod_side.pdf}
+		\phantomcaption\label{A1pt3pic}
+	\end{subcaptiongroup}
+	\caption{A modification implemented with the intention of reducing pitch dithering while still having control of DC YAW}
+	\label{fig:assembly1mod}
+\end{figure}
+\newpage
+
+\subsubsection{Assembly 2}
+\paragraph*{Model Params}
+\begin{center}
+\begin{tabular}{ |c|c|c|c|c|c| } 
+\hline
+$\mathrm{r}_{ap}$ [m] &  $\mathrm{t}_{cap}$ [m] & $\mathrm{r}_{el}$ [m] & $\mathrm{t}_{el}$ [m] & $\mathrm{r}_{opt}$ [m] & $\mathrm{t}_{opt}$ [m] \\
+\hline
+1.5e-3 & 12.7e-3 & N/A (rectangular) & 1.27e-3 & 12.7e-3 & 6.35e-3 \\ 
+\hline
+\end{tabular}
+\end{center}
+
+\paragraph*{Electrodes}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\textwidth]{figs/ALGAAS/assemblies/assembly2/assembly2_electrode.pdf}
+  \caption{Rectangular (.05"X1.1"X2") plates made of aluminum.}
+\end{figure}
+
+\newpage
+
+\paragraph*{Mount 2.0}
+\begin{figure}[H]
+	\centering
+	\begin{subcaptiongroup}
+		\includegraphics[width=.76\textwidth]{figs/ALGAAS/assemblies/assembly2/assembly2_PVC_mount.pdf}
+		\phantomcaption\label{A2PVCmount}
+		\includegraphics[width=.76\textwidth]{figs/ALGAAS/assemblies/assembly2/assembly2_PVC_stage.pdf}
+		\phantomcaption\label{A2PVCstage}
+	\end{subcaptiongroup}
+	\caption{A design iteration of the assembly 2 mounts. Materials tried varied from PVC, PLA, and PETG. Quarter inch holes are bored in order to pass nylon screws holding electrode plates fixed to the mount.}
+	\label{fig:assembly2bp}
+\end{figure}
+\FloatBarrier
+
+Varying the mechanical configurations (i.e. differential electrode and / or optic set screw settings) to the slightest degree left us to discover a variety of drive couplings via excitations from the assembly sample-mount acoustic modes while driving the voltage on electrodes plates. Tracking consistent mechanical response for assemblies prior to Assembly 3 proved challenging due to inconsistent mechanical settings between some measurements and span different geometries / material properties. An adequate solution was dependent on selecting a material and geometry that would generate narrow acoustic resonances while simultaneously achieving adequately low noise within a bandwidth of interest (a not so uncommon experimental technique, esp. for optic suspensions, that is frequently used and mentioned within collaboration literature). Assembly 3 demonstrated such characteristics and is discussed further.
+\newpage
 \subsubsection{Assembly 3 (MACOR mount)}
+
+\paragraph*{Model Params}
+\begin{center}
+\begin{tabular}{ |c|c|c|c|c|c| } 
+\hline
+$\mathrm{r}_{ap}$ [m] &  $\mathrm{t}_{cap}$ [m] & $\mathrm{r}_{el}$ [m] & $\mathrm{t}_{el}$ [m] & $\mathrm{r}_{opt}$ [m] & $\mathrm{t}_{opt}$ [m] \\
+\hline
+1.5e-3 & 6.94e-3 & 15.75e-3 & 9.66e-3 & 12.7e-3 & 6.35e-3 \\ 
+\hline
+\end{tabular}
+\end{center}
+
+\paragraph*{Electrodes}
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=.6\textwidth]{figs/ALGAAS/assemblies/assembly3/electrode_3.pdf}
+  \caption{Technical drawing of thick disk electrode plates made of copper.}
+\end{figure}
+
+\paragraph*{Mount 3.0}
+
+\begin{figure}[H]
+\includegraphics[width=\textwidth]{figs/ALGAAS/assemblies/assembly3/MACOR_mount.pdf}
+\caption{MACOR mount design constucted in Shapr3D}
+\label{fig:macormountdesign}
+\end{figure}
+
 To maintain the aforementioned \hyperlink{fig:laplacecoords}{boundary conditions} in situ, an optical mount made of MACOR, a machinable ceramic, was built and installed. With the material's high Young's modulus (66.9 GPa), and a moderate Poisson ratio (.29) \cite{macor} making it by far the most durable / non-conductive mounting solution tried.
 
 An optical mount for the sample made with MACOR, along with spherical glass bearnings with a .48 $\pm$ .01 cm $\diameter$, and a McMaster-Carr 8-32, 1/2" ceramic screw were used to clamp the optical sample within a bored 25.74 $\pm$ .5 mm $\diameter$ barrel. Two 1.24" $\diameter$ holes were also bored at a 9 mm depth about the front and back side of the optical mount to accomodate for a flush fit of copper electrodes. The construction suggests a 1 $\pm$ .5 mm clearance between the front and back surface of the sample to the electrode plates.
 
-%%FIGURE: sample in-situ
 \begin{figure}[!ht]
     \centering
     \begin{subcaptiongroup}
@@ -453,14 +540,15 @@ An optical mount for the sample made with MACOR, along with spherical glass bear
     \label{fig:assembly3}
 \end{figure}
 
-
+\iffalse
 \begin{figure}[H]
     \includegraphics[width=\textwidth]{figs/ALGAAS/rawtf_fast_slow.pdf}
     \caption{Uncalibrated measurement with the polarization aligned along the slow and fast $\gaas$ / $\algaas$ coating axes using the MACOR mount}
     \label{fig:rawtf_fast_slow}
 \end{figure}
+\fi
 
-With this mounting solution, this measurement lead to the published results discussed in the next chapter.
+This mount assembly lead to the published results discussed in the next chapter.
 
 \iffalse
 \subsection{Measured birefringence from HR \texorpdfstring{$\gaas$}{gaas}/\texorpdfstring{$\algaas$}{algaas} mirror}

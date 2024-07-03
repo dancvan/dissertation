@@ -390,7 +390,35 @@ Now meshgrid coordinates are set:
 
 \input{notes/LaplacE_meshgrid.tex}
 
+Parallel computation of the potential over the entire meshgrid is done by vectorizing the potential:
 
+\[ 
+ \begin{aligned}
+    V &= \begin{bmatrix}
+           V(\rho_0, z_0) \\
+           V(\rho_1, z_0) \\
+           \vdots \\
+	   V(\rho_n, z_0) \\
+	   ---------- \\
+	   V(\rho_0, z_1) \\
+           V(\rho_1, z_1) \\
+           \vdots \\
+	   V(\rho_n, z_1) \\
+	   ---------- \\
+	   \vdots \\
+	   ---------- \\
+	   V(\rho_0, z_{n-1}) \\
+           V(\rho_1, z_{n-1}) \\
+           \vdots \\
+           V(\rho_n, z_{n-1}) \\
+           ---------- \\
+           V(\rho_0, z_n) \\
+	   V(\rho_1, z_n) \\
+	   \vdots \\
+	   V(\rho_n, z_n) 
+         \end{bmatrix}
+  \end{aligned}
+\]
 
 
 \section{Mode matching data for Electro-optic sample cavity}
