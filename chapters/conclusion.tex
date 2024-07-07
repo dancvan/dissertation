@@ -5,17 +5,18 @@
 Since the comissioning that had taken place in O3a, there has been heavy consideration into how point absorbers manifest on the core optic surfaces and ways to mitigate their effects. Some of these considerations include but are not exlusive to: non-invasive pre-installation measurements of the ITM surface / coating quality \cite{dcc:paNSFupdate2022}, upgrades to TCS to expand upon the current thermal compensation actuation modes, and scheduled vaccum chamber venting specifically for replacing the offending test mass mirror(s). 
 \\
 \\
-Increasing interferometer input power is an inevitability to reaching designed detector sensitivity and developing mode matching contingency plans is a natural progression of the current adaptive optics schema. The technique for improving the ring heater transient response represents an iterative step of pushing the existing and future thermal mode matching infrastructure towards a larger scale adaptive optics feedback schema. Some next immediate steps within the author's limited view:
+Increasing interferometer input power is an inevitability to reaching designed detector sensitivity and developing mode matching contingency plans is a natural progression of the current adaptive optics schema. The technique for improving the ring heater transient response represents an iterative step of pushing the existing and future thermal mode matching infrastructure towards a larger scale adaptive optics feedback schema. Central Heater for Transient Attenuation (CHETA) and a FROnt Surface type Irradiator (FROSTI) are notable thermal compensation upgrades that have adopted some of the techniques layed out in this work.
 
-\begin{itemize}
-	\item Improved measurement and filter fitting of the RH thermo-optic response
-	\item Improving the thermo-optic transient of the CO2 actuators with unique pre-filters using the procedure listed in \autoref{appendix:rhcontrolpf} 
-	\item Improving TCS synchronization when raising input power to potentially improve the thermo-optic carrier transient from the high circulating arm power.
-	\item Optimization of simultaneous thermo-optic transients between actuators and the carrier 
-\end{itemize}
+\subsection*{FROSTI} 
+FROSTI is a additional ceramic actuator placed promptly in front of the ETM HR surface and will project an annular heating pattern onto the test mass surface. The primary motivation of adding these actuators is to reduce optical loss to higher order modes in the FP arm from point absorbers as well as correct for uniform coating absorption that current TCS alone cannot sufficiently compensate at 1.5 [MW] circulating arm power ~\cite{frosti}.
+
+\subsection*{CHETA}
+CHETA is a formally proposed upgrade to the central CO2 pre-heating procedure detailed in \autoref{sec:tvopreload}. The primary motivation of this project is to upgrade the CO2 actuator to better replicate the carrier self heating when high circulating power in the arms is lost. The addition of this improved actuation can will aid comissioners by avoiding long periods of mode mismatch from thermal transients ~\cite{cheta}. 
+
+Both actuators are currently on track to be installed for Observing Run 5~\cite{O5_TCS_summary}. Comissioners may find that clean measurements (with the Hartmann Wavefront sensors) characterizing the thermo-optic responses for individual thermal actuators and building pre-filters as discussed in \autoref{sec:dtc} may be a helpful supplement for improved control in modifying the transient response.
 
 \section{\texorpdfstring{$\gaas / \algaas$}{gaas/algaas} Electro-optic noise}
-Though with limited sensitivity, an upper limit with the experiment is established. The discovery of driven mechanical couplings within the longitudinal pockels cell mount are discussed and were shown to be a major limitation with driven electric field injections indicated and have lead to an improved dual-polarization locked experimental design for improved sensitivity. Some additional considerations that can be taken with similar experiments:
+Though with limited sensitivity, an upper limit with the measurement is established. The discovery of driven mechanical couplings within the longitudinal pockels cell mount are discussed and were shown to be a major limitation with driven electric field injections indicated and have lead to an improved dual-polarization locked experimental design for improved sensitivity. Some additional considerations that can be taken with similar experiments:
 
 \begin{itemize}
 	\item Improved mechanical design for improved measurement SNR (esp. between 10 Hz to 1kHz)
