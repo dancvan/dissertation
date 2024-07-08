@@ -135,24 +135,13 @@ print(S_h)
 \end{lstlisting} \end{spacing}
 
 \begin{spacing}{1.2} \begin{lstlisting}[frame=single, language=Python]
-#ax1.plot(w/(FSR), F_w_cc_modsq*100)
 plt.loglog(nu, S_h/bode_amp(H), linewidth=7.5, color='C0')
 plt.ylim([1e-21, .5e-14])
 plt.xlabel('frequency [Hz]')
 plt.ylabel('$\mathdefault{S}_\mathdefault{h} \;  
 	    \mathdefault{[ 1 / \sqrt{\mathdefault{Hz}}]} $')
-#ax2_ = ax1_.twinx()
-#ax2.plot(w/(FSR), (180/np.pi)*np.arctan(F_w_cc.imag/F_w_cc.real), '--')
-#ax2_.semilogx(nu,(180/np.pi)*np.arctan(np.imag(S_h)/np.real(S_h)), '--', 
-	       linewidth=7.5,color='C1')
-#plt.xlabel('frequency [FSR]')
 plt.xlim([1,1e5])
 plt.grid(visible=True)
-#plt.subplots_adjust(hspace = 1)
-#plt.ylabel('phase [deg]',color='C1')
-#plt.tight_layout(rect=[0,0,1,1])
-#plt.title('')
-#plt.subplots_adjust(bottom=.1, top=.85) #, right=.8, left=.1)
 plt.savefig(fig_exp_dir + 'INTRO/mich_sensi.pdf', dpi=300, bbox_inches='tight')
 \end{lstlisting} \end{spacing}
 
