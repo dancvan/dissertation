@@ -79,12 +79,12 @@ The differential phase \autoref{fig:michdelphi} combined with the power at the a
 \end{figure}
 \FloatBarrier
 
-Assuming a 4km arm configuration with 25 Watts input power as indicated in figure \autoref{fig:michdelphi} the differential arm response provides a reasonable optical gain with the notches correlating to an integer number of gravitational wave half periods ($\mathrm{n}\lambda_{gw} / 2$) to the interferometer arm length in such a way that the response is null for cooresponding frequencies. Though with sights set on optimizing detection bandwidth for neutron star (NS) binaries @ 100 Hz, the basic Michelson optical gain remains insufficient, with enhancements required. This is better visualized by computing the shot noise limited Michelson sensitivity which does not reach he requirement to confirm a NS-NS coalescence ($\approx 10^{-21} \; [\frac{1}{\sqrt{\mathrm{Hz}}}]$) but an astonishing start nonetheless ~\cite{saulson:2017}.
+Assuming a 4km arm configuration with 25 Watts input power as indicated in figure \autoref{fig:michdelphi} the differential arm response provides a reasonable optical gain with the notches correlating to an integer number of gravitational wave half periods ($\mathrm{n}\lambda_{gw} / 2$) to the interferometer arm length in such a way that the response is null for cooresponding frequencies. Though with sights set on optimizing detection bandwidth for neutron star (NS) binaries @ 100 Hz, the basic Michelson optical gain remains insufficient, with enhancements required. This is better visualized by computing the shot noise limited Michelson sensitivity which does not reach he requirement to confirm a NS-NS coalescence ($\approx 10^{-21} \; [\frac{1}{\sqrt{\mathrm{Hz}}}]$) but demonstrates the high sensitivity of a Michelson interferometer to differential motion, and the promise of laser interferometers to detect GWs ~\cite{saulson:2017}.
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=\textwidth]{INTRO/mich_sensi.pdf}
-	\caption{Shot noise limited sensitivity ($\sqrt{\hbar \Omega P_\mathrm{in}}$) of a Michelson with 4 km long arms and an input power of 25 [W]. Compared to the a priori estimate of $10^{-21} \; [\frac{1}{\sqrt{\mathrm{Hz}}}]$ the signal to noise (SNR) comes to be unity. The desired confidence is set at a much higher standard with more unquestionable measurements set at SNR = 5.}
+	\caption{Shot noise limited sensitivity ($\sqrt{\hbar \Omega P_\mathrm{in}}$) of a Michelson with 4 km long arms and an input power of 25 [W]. Compared to the a priori estimate of $10^{-21} \; [\frac{1}{\sqrt{\mathrm{Hz}}}]$ the signal to noise (SNR) comes to be unity. The desired confidence is set at a much higher standard (a priori) with more unquestionable measurements set at SNR = 5.}
 	\label{fig:michsensitivity}
 \end{figure}
 
@@ -109,7 +109,7 @@ Significant length offsets between the arms reduce the integrated phasefront ove
 	\nu = \frac{P_\mathrm{max} - P_\mathrm{min}}{P_\mathrm{max} + P_\mathrm{min}}
 \end{equation}
 
-Operating on a scale from 0 to 1, $\nu \le 1$ can be an indication of : mode mismatch at the beam splitter and/or assymetrical optical loss. From a mode matching perspective $\nu = 1$ represents a mode overlap of $\eta = 100 \%$ (assuming no optical loss).  Though optical losses and aberrations are often asymetrically introduced between the orthogonal beam paths that often limit optimal interference and are indiscriminately accounted for in contrast measurements.  
+Operating on a scale from 0 to 1, $\nu \le 1$ can be an indication of : mode mismatch at the beam splitter and/or assymetrical optical loss. From a mode matching perspective $\nu = 1$ represents a mode overlap of $\eta = 100 \%$ (assuming no optical loss and balanced reflectivities between the two mirrors $\nu_x = \nu_y$).  Though optical losses and aberrations are often asymetrically introduced between the orthogonal beam paths that often limit optimal interference and are indiscriminately accounted for in contrast measurements.  
 
 \subsection{Fabry-P\'{e}rot Michelson (FPMI)}
 At the time of the LIGO proposal, constraints (physical and financial) for terrestrial gravitational wave detectors required a compact solution for increasing length (L) of the Michelson arms so to increase the beam phasefront lifetime within the Michelson arms. Two proposed arm folding techniques were considered: the Herriot Delay Line and the Fabry-P\'{e}rot cavity, though the Fabry-P\'{e}rot cavity is currently the predominent choice.
@@ -281,7 +281,7 @@ $$TEM_{p,l}(r,\phi,z) \rightarrow | U_\mathrm{p,l}(r,\phi,z)\rangle$$
 \end{figure}
 
 \newpage 
-Measurements of these HG and LG field indicate the presence of imperfections in the beam-cavity alignment and mode matching respectively. The presence of power in these modes when sweeping a mirror along the beam axis ($\Delta FSR$) indicate optical loss, while simultaneously providing useful feedback in reducing it through the construction and maintainence of a TEM00 beam-resonator coupling ~\cite{anderson:1984}. 
+Measurements of these HG and LG fields indicate the presence of imperfections in the beam-cavity alignment and mode matching respectively. The presence of power in these modes when sweeping a mirror along the beam axis ($\Delta FSR$) indicate optical loss, while simultaneously providing useful feedback in reducing it through the construction and maintainence of a TEM00 beam-resonator coupling ~\cite{anderson:1984}. 
 
 \subsection{Dual-Recycled Fabry-P\'erot Michelson (DRFPMI)}
 Recycling mirrors are an extension of the FPMI that exploits otherwise wasted optical power by providing a means of enhancing the optical gain and bandwidth of the instrument. Strategic tuning of mirror coating parameters and positions at symmetric and anti-symmetric ports can incorporate power recycling and signal recycling respectively~\cite{meers:1988}.
@@ -319,6 +319,7 @@ As may be inferred, this technique requires a mirror installation at the anti-sy
 	r_\mathrm{SRC} & = \frac{r_\mathrm{ITM} - r_\mathrm{SRM} e^{i2\phi_\mathrm{SRC}}}{1-r_\mathrm{ITM} r_\mathrm{SRM} e^{i2\phi_\mathrm{SRC}}} 
 \end{align}
 
+With $Omega$ as the optical angluar frequency, and $phi_0$ being the differential arm phase offset.
 \begin{figure}[h!]
   \begin{subcaptiongroup}
 	  \includegraphics[width=.487\textwidth]{INTRO/drfpmi_fr.pdf}

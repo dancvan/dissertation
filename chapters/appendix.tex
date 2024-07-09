@@ -59,21 +59,9 @@
 \appendix
 
 \renewcommand{\thesection}{\Alph{section}}
-
 \label{ch:appendix}
-\section{Interferometer Configurations (code)}\label{appendix:ifo_configs_code}
-\subsection{ifo\_configs.py}
-\input{code/ifo_configs/ifo_configs.tex}
 
-\subsection{MICH}\label{appendix:MICH}
-\input{code/ifo_configs/mich/mich_fr_raw.tex}
-
-\subsection{FPMI}\label{appendix:FPMI}
-\input{code/ifo_configs/fpmi/fpmi_fr_raw.tex}
-
-\subsection{DRFPMI}\label{appendix:DRFPMI}
-\input{code/ifo_configs/drfpmi/drfpmi_fr_raw.tex}
-
+\newpage
 \section{Paraxial equation} \label{sec:paraxial}
 
 The general three dimensional wave equation for an E-field $E(x,y,z,t)$ is provided by Maxwell:
@@ -94,6 +82,7 @@ The above wavefunction combined with the Helmoltz equation requires the complex 
 	\bigg( \frac{\partial^2}{\partial x ^2} + \frac{\partial^2}{\partial y^2} - 2ik \frac{\partial}{\partial z} \bigg) E_0(x,y,z) = 0
 \end{equation}
 
+\newpage
 \section{Cavity stability criteria ($G(g_1,g_2)$)} \label{sec:cavstab}
 Using spherical mirror resonators to match the phasefront of the beam mode is standard practice that has some additional geometric considerations to maximize reonance for a given beam. Choosing two mirrors with ROCs ($R_1$, $R_2$) and a set distance between them $d$, a implicit containment condition is set on the resonator \cite{salehteich:2007}:
 
@@ -107,6 +96,7 @@ Where we define $g_i = 1 + \frac{d}{R_i}$ so that we define a single parameter f
 	0 \leq G(g_1,g_2) \leq 1
 \end{equation}
 
+\newpage
 
 \section{The Equipartition theorem and the Fluctuation dissipation theorem}
 The Fluctuation Dissipation Theorem connects fluctuations on a microscopic level to fluctuations of macroscopic observables, and allows one to bypass having to venture into overly involved microscopic processes; a profound finding for experiments that are or will become thermal noise limited. Though after revisiting the equipartition theorem, there might still be some confusion how the two statements might contradict each other. We quickly revisit the 1D harmonic oscillator to provide some clarity:
@@ -120,47 +110,27 @@ $\bar{x^2}$ indicates an average position which the theorem indicates when root 
 \begin{equation}
     x^{2} = \frac{k_{B} T}{\pi^2 f^2} \Re(Y)
 \end{equation}
-
-\section{RH control pre-filter}
-\subsection{recipe}\label{appendix:rhcontrolpf}
-The following is a brief recipe to build a filter that can better optimize the RH thermo-optic response:
-\begin{enumerate}	
-	\item Fit step response to a zpk filter $H(s)$ (see ~\autoref{fig:plant_v_fit})
-	\item Invert fitted filter ($H(s) \rightarrow H^{-1}(s)$)
-            \begin{figure}[H]
-		\includegraphics[width=\textwidth]{figs/TCS/IRHF/RH_inv_filt.pdf}
-		\caption{Fitted zpk filter, inverted.}
-	        \label{fig:rh_inv_filt}
-    	    \end{figure}
-	\item Apply correction filter $G(s)$ for stability and speed tuning ($H^{-1}(s)*G(s)$)
-	    \begin{figure}[H]
-		\includegraphics[width=\textwidth]{figs/TCS/IRHF/RH_input_filt_G1_G2.pdf}
-		\caption{Fitted zpk filter to transient response of self heating COMSOL model.}
-	        \label{fig:rh_input_filt}
-    	    \end{figure}
-\end{enumerate}
-
-
-\subsection{code}
-\input{notes/IRHF_nb.tex}
+\newpage 
 
 \section{Misc. thermo-optic filters}\label{sec:TO_filt}
 \subsection{COMSOL self heating filter}
 \begin{figure}[H]
-\includegraphics[width=\textwidth]{figs/TCS/self_heating_zpk.pdf}
+    \centering
+\includegraphics[width=.75\textwidth]{figs/TCS/self_heating_zpk.pdf}
 \caption{Fitted zpk filter to transient response of self heating COMSOL model.}
 \label{fig:self_zpk_fit}
 \end{figure}
 
 \subsection{CO2 filter}
 \begin{figure}[H]
-\includegraphics[width=\textwidth]{figs/TCS/CO2_zpk.pdf}
+    \centering
+\includegraphics[width=.75\textwidth]{figs/TCS/CO2_zpk.pdf}
 \caption{Fitted zpk filter to transient CO2 actuation response.}
 \label{fig:co2_zpk_fit}
 \end{figure}
 
 \newpage
-\section{Thermo-optic Path Distortion (analytical)}
+\section{Thermo-optic Path Distortion}
 \subsection{Thermorefractive aberration}
 Consider an aberration of a substrate with an uninfluenced index of $n_0$ and a thermo-refractive term ($\frac{dn}{dT}$):
 \begin{equation}
@@ -245,7 +215,8 @@ Though this result requires revisiting geometrical conditions that are best visu
 
 %The most general form of the energy density can be geometrically represented as ellipsoid but a coordinate transformation we can diagonalize and realize the principal axes of the dielectric allowing a simpler form of the displacement, and in turn the energy density.
 
-\subsection{EO Modulation (Application)}\label{appendix:EOM}
+\newpage
+\section{EO Modulation (Application)}\label{appendix:EOM}
 Imparting phase modulations onto an optical carrier field is a common application of the electro-optic effect. Electro-optic modulators (EOMs) or Pockel cells are sold as a standard optical components usually composed of a monolithic crystalline material sandwiched between two capacitor plates connected to a single electrical input port (typically coaxial for RF) designed to take in a voltage input of frequency ($\Omega$) within a specified modulation amplitude and frequency bandwidth. When the field amplitude across the crystal is driven by a voltage controlled oscillation, the amplitudes of the electro-optic tensor vary linearly. 
 
 \begin{figure}[H]
@@ -274,7 +245,7 @@ $$
 
 \ref{eq:inpEOM} \; sufficiently demonstrates that, to the first order, a carrier field that is phase modulated is also, in essence, imparting power to separate optical sideband fields separated in frequency by an integer multiple of the modulation $n \cdot \Omega$. Typically $\Omega$ is a chosen frequency used for optical heterodyne detection; while for a noise-driven modulation, the phase coupling is coorelated to the local directionally relevant E-field spectra alongside the propogation length of the beam propogation within the electro-optic media.
 
-
+\newpage
 \section{Miller indices for highly reflective $\gaas$/$\algaas$ coatings}
 \begin{figure}[!hb]
     \begin{subcaptiongroup}
@@ -289,7 +260,7 @@ $$
 
 Up to this point three varieties of orthonormal coordinates are addressed: the crystal axis (as indicated by Miller index plane normals), the principal dielectric axis (based on diagonalization of the indicatrix), and an optical beam axis (when considering a desired (laser) light propogation). The asserted beam axis can be cited \autoref{fig:algaascoords}.
 
-
+\newpage
 \section{Laplacian in Cylindrical coordinates (Numerical Recipe)}
 
 We exploit the chosen optic / disk symmetry about the polar angle ($\partial V / \partial \theta = 0$) and compute for the longitudinal ($z$) and radial ($r$) coordinates with the use of the appropriate Laplacian:
@@ -385,7 +356,6 @@ $$
 \iffalse 
 \swb{The following is a bit hard to follow, and I think there is a bug in the $K_n^{(1)}$. Might be better not to show the full matrices. Instead be a little more explicit on how you extract the calibration number from that simulation. Touch on the fact that the answer is somewhat boundary condition-dependent, as we don't specify the B.C outside the hole.} 
 \fi
-\newpage
 Now meshgrid coordinates are set:
 
 \input{notes/LaplacE_meshgrid.tex}
@@ -431,7 +401,6 @@ Parallel computation of the potential over the entire meshgrid is done by vector
 \label{fig:beamscan2020}
 \end{figure}
 
-\subsection{``Just another mode matching tool" (JAMMT) solution}
 \subsection{Post MMT beam scan}
 
 \begin{figure}[H]
@@ -440,23 +409,9 @@ Parallel computation of the potential over the entire meshgrid is done by vector
 \label{fig:beamscan2021}
 \end{figure}
 
-\section{Laser PZT sweep}\label{appendix:laser_sweep}
+\iffalse 
+    \section{High Voltage Amplifier (HVA) transfer functions [V$_\mathrm{out}$ / V$_\mathrm{in}$]}\label{appendix:hva_tfs}
 
-\begin{figure}[H]
-	\includegraphics[width=.95\textwidth]{figs/ALGAAS/pdh_measured.pdf}
-	\caption{Ramping voltage sent to the laser PZT while probing the mixer output. The sweep was performed for sample cavity of length notes}
-\label{fig:pdhmeasured}
-\end{figure}
-
-\section{High Voltage Amplifier (HVA) transfer functions [V$_\mathrm{out}$ / V$_\mathrm{in}$]}\label{appendix:hva_tfs}
-\begin{figure}[H]
-    \includegraphics[width=\textwidth]{ALGAAS/tfs/hva_compare.pdf}
-    \caption{Different high voltage amplifier transfer functions used for the study}
-    \label{fig:hvacompare}
-\end{figure}
-\newpage
-
-\iffalse
 \section{Alternate Mounting Solutions (Assemblies \texorpdfstring{$1 \rightarrow 3$}{1to3})}\label{appendix:mount_assemblies}
 
 \section{Assembly blueprints and alternative views}
@@ -677,6 +632,44 @@ $\mathrm{r}_{ap}$ [m] &  $\mathrm{t}_{cap}$ [m] & $\mathrm{r}_{el}$ [m] & $\math
 %\mbox{}
 %\vfil
 \fi
+
+\newpage
+\section{Interferometer Configurations (code)}\label{appendix:ifo_configs_code}
+\subsection{ifo\_configs.py}
+\input{code/ifo_configs/ifo_configs.tex}
+
+\subsection{MICH}\label{appendix:MICH}
+\input{code/ifo_configs/mich/mich_fr_raw.tex}
+
+\subsection{FPMI}\label{appendix:FPMI}
+\input{code/ifo_configs/fpmi/fpmi_fr_raw.tex}
+
+\subsection{DRFPMI}\label{appendix:DRFPMI}
+\input{code/ifo_configs/drfpmi/drfpmi_fr_raw.tex}
+
+\newpage
+\section{RH control pre-filter}
+\subsection{recipe}\label{appendix:rhcontrolpf}
+The following is a brief recipe to build a filter that can better optimize the RH thermo-optic response:
+\begin{enumerate}	
+	\item Fit step response to a zpk filter $H(s)$ (see ~\autoref{fig:plant_v_fit})
+	\item Invert fitted filter ($H(s) \rightarrow H^{-1}(s)$)
+            \begin{figure}[H]
+		\includegraphics[width=\textwidth]{figs/TCS/IRHF/RH_inv_filt.pdf}
+		\caption{Fitted zpk filter, inverted.}
+	        \label{fig:rh_inv_filt}
+    	    \end{figure}
+	\item Apply correction filter $G(s)$ for stability and speed tuning ($H^{-1}(s)*G(s)$)
+	    \begin{figure}[H]
+		\includegraphics[width=\textwidth]{figs/TCS/IRHF/RH_input_filt_G1_G2.pdf}
+		\caption{Fitted zpk filter to transient response of self heating COMSOL model.}
+	        \label{fig:rh_input_filt}
+    	    \end{figure}
+\end{enumerate}
+
+
+\subsection{code}
+\input{notes/IRHF_nb.tex}
 
 \newpage
 \section{LaplacE code}
