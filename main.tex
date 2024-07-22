@@ -31,6 +31,8 @@
 \usepackage{bibentry}
 \usepackage[numbers]{natbib}
 
+
+
 \newif\ifswitch
 \switchtrue
 
@@ -78,6 +80,16 @@
                                      {1.5ex \@plus .2ex}%
 			     {\normalfont\normalsize\bfseries}}
 
+\newcommand\signature[2]{% Name; Department
+    \hspace{10.0cm}\begin{minipage}{7.5cm}
+    \noindent\vspace{2cm}\par
+    \textbf{Approved:}\;\rule{6cm}{1pt}\par
+    \hspace{3.0cm}\textbf{#1}\par
+    \noindent\vspace{0.5cm}\par
+    \hspace{0.5cm} \textbf{Date:} \hspace{0.4cm}\rule{6cm}{1pt}\par
+    \end{minipage}}
+
+
 \doublespacing
 
 \begin{document}
@@ -100,23 +112,23 @@
        \vspace{0.5cm}
        {\large B.S. California State University, Fullerton, CA, 2015}
        \\
-       {\large M.S. Syracuse University, NY, 2016}
+       {\large M.S. Syracuse University, NY, 2017}
        
        \vspace{1.0cm}
              
        {\large Submitted in partial fulfillment of the requirements\\
        For the degree of \\
-       Doctor of Philosophy in physics\\
+       Doctor of Philosophy in Physics\\
        at}
 
        \vspace{0.5cm}
 
        {\large \uppercase{Syracuse University}}
-       \vfill
-     
-       June 2024
-            
-   \end{center}
+       \\
+       August 2024
+    \end{center}
+	\signature{Stefan W. Ballmer}
+	
 \end{titlepage}
 
 \pagenumbering{roman}

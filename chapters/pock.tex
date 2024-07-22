@@ -72,7 +72,7 @@ The implemented servo design uses a light source from a Mephisto 2000 NE Nd:YAG 
 The laser frequency is locked to the cavity length using the aformentioned Pound-Derver-Hall technique. The extracted error signal is then filtered by the Sensing chain (S(f)) before being passed to the Actuation chain (A(f)). When the laser is locked to the in-air cavity, the fluctuations of the laser frequency ($\Delta f$) obey \autoref{eq:cavlf}. 
 
 \subsubsection{Sensing S(f)}
-Sensing electronics are composed of a single element photodiode mounted to a tranimpedance amplifier circuit, splitting photocurrent to DC and RF filter chains. The RF path is within the feedback electronics chain and constructed to boost the RF signal prior to being passed to a frequency stabilization servo (FSS) \autoref{fig:fss_tf} where it is demodulated by mixing the 25 MHz oscillator phased with variable cable length. Once demodulated, the measured beat signal while sweeping through resonance generates the PDH error signal profiles \autoref{fig:pdherr}, and \autoref{fig:laser_sweep}.
+Sensing electronics are composed of a single element photodiode mounted to a tranimpedance amplifier circuit, splitting photocurrent to DC and RF filter chains. The RF path is within the feedback electronics chain and constructed to boost the RF signal prior to being passed to a frequency stabilization servo (FSS) \autoref{fig:fss_tf} where it is demodulated by mixing the 25 MHz oscillator phased with variable cable length. Once demodulated, the measured beat signal while sweeping through resonance generates the PDH error signal profiles \autoref{fig:pdherr}, and \autoref{fig:pdhmeasured}.
 
 \begin{landscape}
     \section{FSS transfer function (LTSPICE)}\label{fig:fss_tf}
@@ -85,7 +85,7 @@ Sensing electronics are composed of a single element photodiode mounted to a tra
 \end{figure}
 \end{landscape}
 
-\begin{figure}[H] \label{fig:laser_sweep}
+\begin{figure}[H]    
     \centering
 	\includegraphics[width=.87\textwidth]{figs/ALGAAS/pdh_measured.pdf}
 	\caption{Ramping voltage sent to the laser PZT while probing the mixer output.}
@@ -93,7 +93,7 @@ Sensing electronics are composed of a single element photodiode mounted to a tra
 \end{figure}
 
 \subsubsection{Actuation A(f)}
-The actuation portion of the loop amplifies the FSS output with a single I/O channel of the SVR 350-3 BIP High Voltage Amplifier from Piezomechanik GmbH with a custom pomona box fed back to the input ~\cite{sugwglog:412} . The Mephisto 2220 laser cavity PZT actuator follows immediately after with a measured actuation factor of 1.7 [MHz] / [V].
+The actuation portion of the loop amplifies the FSS output with a single I/O channel of the SVR 350-3 BIP High Voltage Amplifier from Piezomechanik GmbH with a custom pomona box fed back to the input ~\cite{sugwglog:412}. The Mephisto 2220 laser cavity PZT actuator follows immediately after with a measured actuation factor of 1.7 [MHz] / [V].
 
 \begin{figure}[H]
     \centering
@@ -101,8 +101,6 @@ The actuation portion of the loop amplifies the FSS output with a single I/O cha
     \caption{Different high voltage amplifier transfer functions used for the study}
     \label{fig:hvacompare}
 \end{figure}
-
-
 
 \subsubsection{Loop Gain G(f)}
 \begin{figure}[H]
@@ -201,7 +199,7 @@ $ z \; = \;\mathrm{z}_\mathrm{max} $ or  $r \; = \;\mathrm{r}_{max}$ or  $r \; =
 Where $A_o$ is a characteristic voltage, and $r_o$ is a chosen characteristic distance. Though with the region of interest being at the coating surface, these edges are far enough away that a change in these characteristic values would cause a negligible difference to the resulting E-field estimate. Example parameters for various mount configurations can be found in the tables of the respective sections\autoref{table:assembly0and1} \autoref{table:assembly2} \autoref{table:macor_mount}.
 \subsubsection*{Computing V(r,z)}
 
-Inspired by the second-order elliptic equation, operators are modified to incorporate the aforementioned boundary conditions ~\cite{Press:2007}.
+Inspired by the second-order elliptic equation, operators are modified to incorporate the aforementioned boundary conditions ~\cite{Press:2007}. The computation is noted in detail in \autoref{appendix:numerical_recipe}.
 
 \iffalse
 
@@ -285,7 +283,7 @@ Where the above matrix is a tri-diagonal block sparse matrix with square embedde
 \begin{figure}[H]
   \centering
   \includegraphics[width=.875\textwidth]{ALGAAS/assembly4_sim.pdf}
-  \caption{Numerically computed potential map estimate ($V(z,r)$ in cylindrical coordinates). The potential difference between the two plates ($\Delta V$) is 1 [V] with a plate holding positive potential .5 [V] and a negative plate holding -.5 [V] to impose symmetry with the visualization. Although these held plate potentials differ from the 1 [V] and 0 [V] imposed in the experiment, the computation required to inform the field strength at the region of interest demonstrates a negligible difference between these two configurations.} 
+  \caption{Numerically computed potential map estimate ($V(z,r)$ in cylindrical coordinates). The potential difference between the two plates ($\Delta V$) is 1 [V] with a plate holding positive potential .5 [V] and a negative plate holding -.5 [V] to impose symmetry with the visualization. Although these held plate potentials differ from the > 1 [V] and 0 [V] imposed in the experiment, the computation required to inform the field strength at the region of interest demonstrates a negligible difference between these two configurations.} 
   \label{fig:poissoncalcoutput}
 \end{figure}
 
