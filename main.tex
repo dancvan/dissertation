@@ -30,7 +30,7 @@
 \usepackage{lscape}
 \usepackage{bibentry}
 \usepackage[numbers]{natbib}
-
+\usepackage{pdfpages}
 
 
 \newif\ifswitch
@@ -67,10 +67,6 @@
 }
 \newcommand{\swb}[1]{{\color{red} Stefan's Comment: #1}}
 
-\fancyhf{}
-\fancyhead[R]{\makebox[0pt][l]{\makebox[2.5cm][r]{\thepage}}}
-\fancyhead[L]{\MakeUppercase{\leftmark}}
-\setlength{\headheight}{27.85004pt}
 
 \makeatletter
 
@@ -95,6 +91,13 @@
 
 \begin{document}
 
+\pagenumbering{gobble}
+
+\thispagestyle{empty}
+
+\chapter*{Abstract}
+Since the first gravitational wave detection, the Laser Interferometric Gravitational Wave Observatories (LIGO) combined with an expanding and co-observing global gravitational wave network (i.e. Virgo, KAGRA) has worked to increase a novel and growing astronomical data catalog of gravitational wave detections. With each additional observing run, rates of detection continue to increase with iterative upgrades to detector technology. Discussed within this thesis are considerations pertinent to the improvement of Dual Recycled Fabry-Perot Michelson interferometer (DRFPMI) thermodynamics proposed during LIGO's third observing run (O3) for present and future detectors. The first chapter reviews fundamental material relevant to gravitational waves and how DRFPMI are used to detect them. The second discusses comissioning work on LIGO's thermal compensation system during O3 for detector operation at high power. The third introduces thermal noise and birefringent noise for a proposed highly reflective crystalline ($\gaas$/$\algaas$) coating candidate propped up for its ultra-low thermal noise properties. The fourth proposes a measurement strategy to acquire a calibrated electro-optic noise estimate. The fifth is a published paper providing a calibrated electro-optic response. The final chapter provides conclusive retrospection of the work covered in the prior chapters.  
+
 
 \begin{titlepage}
 \begin{center}
@@ -111,16 +114,17 @@
 
 
        \vspace{0.5cm}
-       {\large B.S. California State University, Fullerton, CA, 2015}
+       {\large B.S. California State University - Fullerton, 2015}
        \\
-       {\large M.S. Syracuse University, NY, 2017}
+       {\large M.S. Syracuse University, 2017}
        
        \vspace{1.0cm}
              
-       {\large Submitted in partial fulfillment of the requirements\\
+       {\large
+       Dissertation \\ 
+       Submitted in partial fulfillment of the requirements\\
        For the degree of \\
-       Doctor of Philosophy in Physics\\
-       at}
+       Doctor of Philosophy in Physics}
 
        \vspace{0.5cm}
 
@@ -128,14 +132,13 @@
        \\
        August 2024
     \end{center}
-	\signature{Stefan W. Ballmer}
+	
+%\signature{Stefan W. Ballmer}
 	
 \end{titlepage}
 
-
-\pagenumbering{roman}
-
 \clearpage
+
 \thispagestyle{empty}
 \vspace*{0.25\textheight}
 \begin{center}
@@ -144,24 +147,21 @@ All Rights Reserved
 \end{center}
 \clearpage
 
-
-\chapter*{Copyright}
 \noindent
 
 
-\chapter*{Abstract}
-Since the first gravitational wave detection, the Laser Interferometric Gravitational Wave Observatories (LIGO) combined with an expanding and co-observing global gravitational wave network (i.e. Virgo, KAGRA) has worked to increase a novel and growing astronomical data catalog of gravitational wave detections. With each additional observing run, rates of detection continue to increase with iterative upgrades to detector technology. Discussed within this thesis are considerations pertinent to the improvement of Dual Recycled Fabry-Perot Michelson interferometer (DRFPMI) thermodynamics proposed during LIGO's third observing run (O3) for present and future detectors. The first chapter reviews fundamental material relevant to gravitational waves and how DRFPMI are used to detect them. The second discusses comissioning work on LIGO's thermal compensation system during O3 for detector operation at high power. The third introduces thermal noise and birefringent noise for a proposed highly reflective crystalline ($\gaas$/$\algaas$) coating candidate propped up for its ultra-low thermal noise properties. The fourth proposes a measurement strategy to acquire a calibrated electro-optic noise estimate. The fifth is a published paper providing a calibrated electro-optic response. The final chapter provides conclusive retrospection of the work covered in the prior chapters.  
-
-\chapter*{Dedication}
-In memory of Michael (``Mikey") Vander-Hyde (1990-2017)
-\\
-Beloved brother, son, and friend.
-
-\begin{center}
-\includegraphics[width=.75\textwidth]{mikey.jpeg}
-\end{center}
-
 \chapter*{Acknowledgements}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+
+\fancyfoot[C]{\makebox[0pt][l]{\makebox[2.5cm][c]{\thepage}}}
+
+%\fancyfoot[C]{\thepage}
+\pagestyle{fancy}
+
+\pagenumbering{roman}
+\setcounter{page}{4}
+
 There are a number of people I’d like to thank who contributed significantly to my efforts contained in this dissertation:
 
 First, I’d like to thank my advisor Stefan. The brilliant perspectives you provided never ceased to amaze me. Not only that, but the time while doing this dissertation work has been the most challenging of my life and you took time to let me learn in the lab at my own pace and surrounded me with wonderful collaborators. 
@@ -194,6 +194,18 @@ To the Duffys. Your love, guidance, and understanding during these last few year
 
 To Jimmy and Porkchop the dog. You’re my world. Thanks for always grounding me.
 
+
+\chapter*{Dedication}
+In memory of Michael (``Mikey") Vander-Hyde (1990-2017)
+\\
+Beloved brother, son, and friend.
+
+\begin{center}
+\includegraphics[width=.75\textwidth]{mikey.jpeg}
+\end{center}
+
+\tableofcontents
+
 \ifswitch
     \nobibliography*
     \chapter*{Relevant Publications}
@@ -203,12 +215,15 @@ To Jimmy and Porkchop the dog. You’re my world. Thanks for always grounding me
         \item \bibentry{tanioka:2022}
     \end{itemize}
 
-
-\tableofcontents
-
-\pagenumbering{arabic}
-
 \chapter{Introduction}
+\pagenumbering{arabic}
+\fancyhf{}
+\fancyhead[R]{\makebox[0pt][l]{\makebox[2.5cm][r]{\thepage}}}
+%\fancyhead[L]{\MakeUppercase{\leftmark}}
+%\fancyhead[R]{\makebox[2.5cm][r]{\thepage}}
+\setlength{\headheight}{27.85004pt}
+
+
 \input{chapters/intro}
 \newpage
 
@@ -239,5 +254,7 @@ To Jimmy and Porkchop the dog. You’re my world. Thanks for always grounding me
 \addcontentsline{toc}{chapter}{References}
 \bibliography{ref}
 \bibliographystyle{ieeetr}
+
+\includepdf[pages=-]{resume.pdf}
 
 \end{document}
